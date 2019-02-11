@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="The Contributors" />
+  <title>KDE</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">KDE</h1>
+<p class="author">The Contributors</p>
+<p class="date">2011.10.18-00.00</p>
+</header>
+<p><span id="ch001_do-you-need-this-book.xhtml"></span></p>
+<h1>Do you need this book?</h1>
+<p>You should read this book if you want to do any development for KDE. We're using the term <em>development</em> very broadly to cover anything that can lead to a change in source code. This includes:</p>
+<ul>
+<li>Submitting a bug fix</li>
+<li>Writing a new application powered by KDE technology</li>
+<li>Contributing to an existing project</li>
+<li>Adding functionality to KDE development libraries</li>
+</ul>
+<p>In this book we'll give you the basics you need to be a productive developer. We'll explain the tools you should install, show you how to read the documentation (and write your own, once you've created new functionality!) and how to get help in other ways. We'll introduce you to the KDE community, which is key to understanding KDE because we are a free, open source project.</p>
+<p>Regular users of the software do <strong>NOT</strong> need this book! However, they might find it interesting to help understand how the complex and richly featured software they use has come into being. </p>
+<p><img src="static/powered_by_kde_vertical_115.png" /></p>
+<p><span id="ch002_the-kde-philosophy-and-community.xhtml"></span></p>
+<h1>The KDE Philosophy</h1>
+<p>KDE's success is based on a world-view that we've found to be both practical and motivating. Elements of this development philosophy include-<br />
+</p>
+<p><strong>Using available tools rather than re-inventing existing ones</strong>: Many of the basics you need to do your work are already part of KDE, such as the core libraries or Kparts, and are quite mature. So check out all available resources before trying to solve your own problem.</p>
+<p><strong>When making a suggestion, change <em>we should..</em> to <em>I will..</em></strong>: Grandiose plans are useless unless you are willing to put in the work to make them happen. You will find help once you start!</p>
+<p><strong>Improve code iteratively</strong>: Don't let the perfect be the enemy of the good. Try a small solution, get it to work, and improve it through testing and refactoring to produce an excellent patch.</p>
+<h2>The KDE Community</h2>
+<p>The KDE development platform is created and maintained by an international team that cooperates on the development and distribution of free, open source software for desktop and portable computing. Our community has developed a wide variety of applications for communication, work, education, and entertainment. We have a strong focus on finding solutions to old and new problems, creating an open atmosphere for experimentation.</p>
+<p>As a community, we value all contributions, and can use all member talents, including artwork, graphics, design, communication, translations, documentation, testing, bug-reporting and bug-hunting, system administration, and coding. </p>
+<h2>What makes KDE so exciting?</h2>
+<p>The best thing about KDE is our amazing community! We welcome new members, offering help and allowing people to experiment, learn and grow. This book is a part of that mission.</p>
+<p>Our products are used by millions of home and office workers, and are being deployed in schools around the world. Brazil alone has over 50 million school children using KDE-based software to browse, learn and communicate! As a complement to Google Summer of Code, we run our own Season of KDE, where people take on the responsibility of working on a project intensively for the summer, and get a cool T-shirt at the end, in thanks. In 2011, we had 100 proposals! What an amazing community.</p>
+<h2>Is it difficult to get involved?</h2>
+<p>Not at all! Every day, more and more people join our ever-growing family of contributors. KDE has a strong infrastructure of web resources, forums, mailing-lists, IRC, and other communication services. We can provide feedback on your code and other contributions with the goal of helping you learn. Of course, a proactive attitude and a friendly personality helps.</p>
+<p><img src="static/SolidSprint2011.jpg" /></p>
+<h2>The KDE Code of Conduct</h2>
+<p>When communicating in official KDE channels please observe the KDE Code of Conduct.</p>
+<p>Our Code of Conduct presents a summary of the shared values and <em>common sense</em> thinking in our community. The basic social ingredients that hold our project together include:</p>
+<ul>
+<li>Be considerate</li>
+<li>Be respectful</li>
+<li>Be collaborative</li>
+<li>Be pragmatic</li>
+<li>Support others in the community</li>
+<li>Get support from others in the community</li>
+</ul>
+<p>The Code of Conduct can be found here : <em>http://www.kde.org/code-of-conduct/</em></p>
+<h2>The value of being free and open source</h2>
+<p>Our code can be copied, changed, and redistributed by anybody. This means you can be confident that the software will continue to be available even if the original developers move on. It also means that development is out in the open, with comments from anyone in the world who is interested. Finally, open source code makes it easier for a developer to find and fix problems. One of the practical effects of free software is that wonderful communities tend to develop around code. We have created all this within KDE.</p>
+<p>The KDE community is involved with the larger free and open source movement. We cooperate with the GNOME community in FreeDesktop.org and the bi-annual Desktop Summit. We've been a leading participant in Google Summer of Code and Google Code-In since they began, and we regularly sprint with members of other FOSS groups, and participate in open standard efforts. We are supported in these efforts by the KDE e.V., who issue quarterly reports of their activity at <em>http://ev.kde.org/reports/</em>.</p>
+<p><img src="static/Randa2011Sprint.jpeg" /></p>
+<p><span id="ch003_how-to-get-help.xhtml"></span></p>
+<h1>How to get help</h1>
+<p>Of course, we hope our book is helpful to you! But inevitably, you will come up with questions or need help with a problem. The KDE community is helpful and friendly, so pick the most appropriate method in this chapter and ask away. Unless you have a specific need to talk to one particular person, please address the whole list or channel. </p>
+<h2>KDE Mailing Lists</h2>
+<p>The KDE mailing lists are one of the main communication channels in the KDE Community. All developers will find the KDE-devel list useful. In addition, those working on the core of the KDE Software Compilation (SC) will want to subscribe to KDE-Core-devel. Those working on applications or KDE projects should subscribe to the project mailing list. The full spectrum of KDE lists can be found at <a href="https://mail.kde.org/mailman/listinfo" class="uri" title="KDE mailing lists">https://mail.kde.org/mailman/listinfo</a>.</p>
+<p>Both help and information are available on the lists. However, if you need help quickly, IRC may be more useful.</p>
+<h2>KDE on IRC</h2>
+<p>IRC is Internet Relay Chat, a text-only, real-time communication tool. There are a variety of IRC clients available from KDE, such as Konversation, Quassel, and Kvirc.</p>
+<p> <img src="static/IRC_1.png" /></p>
+<p>Almost all KDE developers show up or idle on KDE IRC channels on Freenode (irc.freenode.net). IRC is the best way to get quick help from the KDE developers. As a developer, you will want to be in #kde, #kde-devel and your project channel or channels. You'll find that the more time you spend in IRC, the more you will get to know your fellow developers and our KDE users. Life-long friendships have started in KDE channels. Help is available about the services such as chanserv and nickserv by using the commands  <em>/msg chanserv help</em> and <em>/msg nickserv help.</em> More about using Freenode is available here: <a href="http://freenode.net/using_the_network.shtml" class="uri" title="Freenode documentation">http://freenode.net/using_the_network.shtml</a><em>.</em></p>
+<p>Userbase keeps a list of channels current at <a href="http://userbase.kde.org/IRC_Channels" class="uri">http://userbase.kde.org/IRC_Channels</a>, and you can also use the IRC command <em>/msg alis list $searchterm</em>, where <em>$searchterm</em> is the subject in which you are interested.</p>
+<p>When asking questions, please bear these tips in mind:</p>
+<ul>
+<li>If you have a question, just ask it. There's no need to ask first whether you can ask a question.</li>
+<li>Be prepared to wait for an answer. Even though IRC is a more real-time mode of communication than mailing lists, there may not be anyone available to answer your question immediately. In general, if you don't receive a response on IRC in about an hour, it's best to send an email.</li>
+<li>Don't ask your question more than once. Even though the channel is active, the right person may not be available to provide an answer. The one exception to this rule is that, if you are told to wait for a certain person to come online, ask again when you see him or her come online. Again, if you don't receive a response to your question in about an hour, it's probably best to send an email. </li>
+<li>Pasting large amounts of text is considered bad etiquette, so use a pastebin. KDE's pastebin is at http://paste.kde.org</li>
+</ul>
+<h2>KDE Community Problems</h2>
+<p>If you encounter bad behavior on a list or in a channel, please contact the list owners or one of the ops. The list owner address is <em>$listname</em>-owner@kde.org, where <em>$listname</em> is the name of the list. <span class="Apple-style-span">Ops in a channel can be identified by issuing this command:</span><span class="Apple-style-span"><em> </em></span><em>/msg chanserv access #channelname list</em><span class="Apple-style-span">. Ops will have a &quot;<em>+&quot;</em> next to their nicks.</span> For general KDE community help, please write to the Community Working Group at <em>community-wg@kde.org</em>, or stop by our IRC channel at #kde-cwg.</p>
+<p><span id="ch005_choosing-a-project.xhtml"></span></p>
+<h1>Choosing a project </h1>
+<p>When you come to KDE as a developer, you may already have a favorite project and know how you want to contribute. But it's worth looking over the various projects listed in this chapter, to find out all the ways you may be able to help. And even if you're really only interested in one project, it's useful to know what others are active because your work may interact with them. </p>
+<h2>Frameworks</h2>
+<p>These are general components underlying the applications and other visible parts of KDE. The team is working hard to make the libraries modular, clarify the dependencies, simplify, and increase the quality and stability.</p>
+<h3>KDE Core Libraries (kdelibs)</h3>
+<blockquote>
+<p>Critical functions needed across the KDE platform</p>
+</blockquote>
+<h3>Widgets &amp; Classes</h3>
+<blockquote>
+<p>Widgets and classes that are not in kdelibs but that are widely useful</p>
+</blockquote>
+<h3>D-Bus Web Service Proxy</h3>
+<blockquote>
+<p>A project to connect Web Services to the D-Bus notification framework on Linux</p>
+</blockquote>
+<h3>kdesu</h3>
+<blockquote>
+<p>Tools for gaining superuser privileges on different backends</p>
+</blockquote>
+<h3>KDE WebKit</h3>
+<blockquote>
+<p>A project integrating the QtWebKit browser engine into the KDE Software Compilation<br />
+</p>
+</blockquote>
+<h3>KioFuse</h3>
+<blockquote>
+<p>This inserts KIO(K Input Output) resources (remote, archived, or compressed files) into the root filesystem hierarchy</p>
+</blockquote>
+<h3>Nepomuk</h3>
+<blockquote>
+<p>Basic desktop operations for annotation, indexing, search, and linking</p>
+</blockquote>
+<h3>Network Management</h3>
+<blockquote>
+<p>An applet and configuration tool for Solid Networking and KNetworkManager</p>
+</blockquote>
+<h3>Oxygen</h3>
+<blockquote>
+<p>Artwork for the KDE SC</p>
+</blockquote>
+<h3>Solid</h3>
+<blockquote>
+<p>The KDE SC hardware library</p>
+</blockquote>
+<h3>Telepathy</h3>
+<blockquote>
+<p>A communications framework for Instant Messaging, VoIP, and Collaboration</p>
+</blockquote>
+<h3>Akonadi</h3>
+<blockquote>
+<p> An extensible cross-desktop storage service for PIM data and meta data</p>
+</blockquote>
+<h3>Related projects</h3>
+<blockquote>
+<p>Non-central projects that are related to KDE technology in various ways, such as dependencies or build tools</p>
+</blockquote>
+<h2>Programs</h2>
+<p>This is a small cutout of the applications created and maintained by KDE developers.</p>
+<h3>Amarok</h3>
+<blockquote>
+<p>Amarok’s tagline is <em>Rediscover Your Music</em>, and its development is based around this ideology. Amarok’s core features such as the unique <em>context browser</em>, integrated Wikipedia lookup and lyrics download help users to find new music, and to learn more about the music they have.</p>
+</blockquote>
+<blockquote>
+
+</blockquote>
+<h3>Digikam</h3>
+<blockquote>
+<p>Photo management software</p>
+</blockquote>
+<h3>Gwenview</h3>
+<blockquote>
+<p>KDE image viewer</p>
+</blockquote>
+<h3>K3b</h3>
+<blockquote>
+<p>An optical disc writer</p>
+</blockquote>
+<h3>KDevelop4</h3>
+<blockquote>
+<p>Integrated Development Environment (IDE) for KDE SC</p>
+</blockquote>
+<blockquote>
+
+</blockquote>
+<h3>KWin</h3>
+<blockquote>
+<p>The KDE Window Manager</p>
+</blockquote>
+<h3>Marble</h3>
+<blockquote>
+<p>A visually appealing globe program</p>
+</blockquote>
+<h3>Okular</h3>
+<blockquote>
+<p>A unified document viewer</p>
+</blockquote>
+<h3>Rekonq</h3>
+<blockquote>
+<p>A lightweight web browser powered by WebKit and KDE SC</p>
+</blockquote>
+<h3>System Settings</h3>
+<blockquote>
+<p>The System Settings configuration tool.</p>
+</blockquote>
+<h3>SuperKaramba</h3>
+<blockquote>
+<p>A tool for creating attractive widgets and other interactive elements</p>
+</blockquote>
+<h2>Suites</h2>
+<p>These projects group many related applications. The key concept is that data created in one part of the suite can be easily used by another application in the suite.</p>
+<h3>KDE Education Project</h3>
+<blockquote>
+<p>Educational software for KDE</p>
+</blockquote>
+<h3>KDE Finance</h3>
+<blockquote>
+<p>Financial applications</p>
+</blockquote>
+<h3>KDE Games</h3>
+<blockquote>
+<p>Desktop games for KDE</p>
+</blockquote>
+<h3>Kdetoys</h3>
+<blockquote>
+<p>A set of amusing diversions</p>
+</blockquote>
+<h3>KDE Utilities</h3>
+<blockquote>
+<p>A variety of tools to run on the desktop</p>
+</blockquote>
+<h3>KOffice and Calligra</h3>
+<blockquote>
+<p>Office suites based on KDE libraries</p>
+</blockquote>
+<h3>PIM</h3>
+<blockquote>
+<p>Personal information management tools</p>
+</blockquote>
+<h3>Plasma</h3>
+<blockquote>
+<p>Programs for the quick and easy creation of widgets, including interactive application launchers, and window and task managers</p>
+</blockquote>
+<h2>Platforms</h2>
+<p>These projects ensure that KDE works on various operating systems. </p>
+<h3>KDE on Mac OS X</h3>
+<blockquote>
+<p>KDE libraries and applications for Mac OS X</p>
+</blockquote>
+<h3>KDE on Windows</h3>
+<blockquote>
+<p>KDE libraries and applications for Microsoft Windows</p>
+</blockquote>
+<h3>KDE on FreeBSD</h3>
+<blockquote>
+<p>KDE libraries and applications on FreeBSD and other BSD versions</p>
+</blockquote>
+<h3>Plasma Active</h3>
+<blockquote>
+<p>A project for porting KDE technology to mobile devices</p>
+</blockquote>
+<h2>Working with the organisation</h2>
+<p>These projects deal with the people and processes that make KDE possible. </p>
+<h3>KDE Release Team</h3>
+<blockquote>
+<p>Schedules and coordinates releases</p>
+</blockquote>
+<h3>KDE Documentation Project</h3>
+<blockquote>
+<p>Creates and maintains KDE documentation</p>
+</blockquote>
+<h3>kde.org</h3>
+<blockquote>
+<p>Provides information around the *.kde.org websites</p>
+</blockquote>
+<h3>KDE Promotion</h3>
+<blockquote>
+<p>Promotes KDE and organizes conferences</p>
+</blockquote>
+<h3>Partner Program</h3>
+<blockquote>
+<p>Supports KDE partner Independent Software Vendors (ISVs)</p>
+</blockquote>
+<h3>KDE Usability project</h3>
+<blockquote>
+<p>Applies usability principles and practices to the K Desktop Environment</p>
+</blockquote>
+<h3>KDE Accessibility project</h3>
+<blockquote>
+<p>Builds on Qt features for making interactive environments more accessible to the disabled or others with special needs</p>
+</blockquote>
+<h3>KDE BugSquad</h3>
+<blockquote>
+<p>Keeps track of incoming bugs in KDE software, and goes through old bugs.</p>
+</blockquote>
+<h3>Summer of Code Projects</h3>
+<blockquote>
+<p>Google Summer of Code projects related to KDE</p>
+</blockquote>
+<h3>English Breakfast Network (EBN)</h3>
+<blockquote>
+<p>Provides tools dedicated to KDE Code Quality, including KDE API Documentation Validation, User Documentation Validation, Source Code Checking, etc.</p>
+</blockquote>
+<h3>KDE Research</h3>
+<blockquote>
+<p>Supports everyone who is interested in contributing to (funded) research projects with(in) the KDE community. </p>
+</blockquote>
+<p> If you are still confused which project you want to work with then try hanging out with KDE SC developers on IRC to become familiar with the project.<br />
+</p>
+<blockquote>
+
+</blockquote>
+<p><span id="ch006_the-qt-framework.xhtml"></span></p>
+<h1>The Qt Framework</h1>
+<p>To start developing on the KDE Development Platform you will need to get familiar with the Qt framework, which is one of building blocks of KDE development.</p>
+<p>Qt (pronounced officially as cute) is a cross-platform application framework based on C++, that is widely used for developing application software with a graphical user interface (GUI). Thus, it is largely a widget toolkit, but is also used for developing non-GUI programs such as command-line tools and consoles for servers.</p>
+<p>Besides the KDE Development Platform, Qt is most notably used in Autodesk Maya, Adobe Photoshop Elements, OPIE, Skype, VLC media player, VirtualBox, and Mathematica, and by the European Space Agency, DreamWorks, Google, HP, Lucasfilm, Panasonic, Philips, Samsung, Siemens, Volvo, and Walt Disney Animation Studios.</p>
+<h2>Advantages of Qt</h2>
+<h3>Writing code once to target multiple platforms</h3>
+<p>Qt allows you to write advanced applications and UIs that you can deploy across different desktops and embedded operating systems without rewriting the source code, saving time and development cost.</p>
+<h3>Creating amazing user experiences</h3>
+<p>Whether you prefer C++ or JavaScript, Qt provides the building blocks for modern, interactive interfaces: a broad set of customizable widgets, graphics canvas, style engines, and more. You can incorporate 3D graphics, multimedia audio or video, visual effects, and animations to set your application apart from the competition.</p>
+<h3>Doing more (and faster!) with less </h3>
+<p>Qt is fast to learn and to use, particularly when used together with the new Qt Creator cross-platform IDE.  And Qt's modular class library provides much of the necessary infrastructure for interactive applications.</p>
+<h3>Blending web and native code in a single application</h3>
+<p>Qt's integration with the WebKit web rendering engine means that you can quickly incorporate content and services from the Web into your native application, and can use the web environment to deliver your services and functionality.</p>
+<p>To learn how to use Qt, we recommend the tutorials here:</p>
+<blockquote>
+<p> <a href="http://doc.qt.nokia.com/" class="uri">http://doc.qt.nokia.com/</a></p>
+</blockquote>
+<p><span id="ch007_using-git-for-kde-development.xhtml"></span></p>
+<h1>Using Git for KDE Development</h1>
+<p>Git is a free and open source version control system designed to handle everything from small to very large projects with speed and efficiency. It provides lots of tools for figuring out where you have gone as you edit files, as well as merging your changes with those made by other developers.</p>
+<p>You can find more about git (and download it if necessary) at http://git-scm.com.</p>
+<h2>Git basics</h2>
+<p>There are several levels at which your changes can reside in git. You need to go through all the steps carefully in order to save changes correctly. A typical sequence of git activities starts with cloning a remote repository.  Now you have a complete copy of what the original developer has. Then you should do the following:</p>
+<ol>
+<li>Create and edit files.</li>
+<li>Run git add to tell git about any new files you have created or files that you have just edited. Files with changes are in an intermediate state called a staging area, but not in any repository yet.</li>
+<li>Run git commit to save your changes in your own local repository.</li>
+</ol>
+<p>We'll show examples of all this later in the chapter.<br />
+</p>
+<p>Instead of having to remember and type in the different full git addresses for pulling and pushing, we recommend you manually add the following to your Git User Configuration (<em>~/.gitconfig</em>):</p>
+<p><span class="Apple-style-span"> </span></p>
+<pre><code>[url &quot;git://anongit.kde.org/&quot;]
+    insteadOf = kde:
+[url &quot;git@git.kde.org:&quot;] 
+    pushInsteadOf = kde: </code></pre>
+<p></span></p>
+<h2>Cloning repositories</h2>
+<p>After setting up your <em>~/.gitconfig</em> as shown in the previous section, you need to clone the source repositories using the following command:</p>
+<pre><code>git clone kde:project_name</code></pre>
+<p>where <em>project_name</em> is the name of the project that you want to contribute to. For instance, to submit a patch to kdelibs, start with the command:</p>
+<pre><code>git clone kde:kdelibs</code></pre>
+<h2>Pulling changes</h2>
+<p>If you already have a git repository that you need to update with new changes from the original source, run the following:</p>
+<pre><code>git pull </code></pre>
+<h2>Working with branches</h2>
+<p>Git is a very powerful revision control system that supports the concept of branches. In order to develop a new feature for a KDE Development Platform Project, it's best to use a separate branch for feature development. You can check out a new branch using the following command:</p>
+<pre><code>git checkout -b feature_name</code></pre>
+<p>for example:</p>
+<pre><code>git checkout -b myFeature</code></pre>
+<p>Later on you can switch between multiple branches using the git checkout command:</p>
+<pre><code>git checkout myFeature</code></pre>
+<p>Every git project has a branch called <em>master</em> that the owners of the repository consider the main branch. Usually, nothing gets added to this branch until it is tested in a variety of environments and the project leaders are sure it's both robust and useful.  </p>
+<h3>Tracking Remote Branches </h3>
+<p>There are two types of branches in git, <em>local</em> and <em>remote</em>. Remote branches are branches that exist in the remote repository. You can also track remote branches using the following command:</p>
+<pre><code>git checkout --track remote_repository:remote_branch</code></pre>
+<p>For instance, to checkout the KDE 4.7 branch, use:</p>
+<pre><code>git checkout --track origin:KDE/4.7</code></pre>
+<h2>Committing your work</h2>
+<p>Before pushing anything to the KDE codebase, you need a KDE identity and a developer account. Please visit http://identity.kde.org/ to register your account. Your account name will almost always be your surname; do not attempt to get around this rule. Developers with a lot of experience can get accounts with commit rights, but that is outside the scope of this book.</p>
+<p>In order to generate a diff of your changes and review them, run the following:</p>
+<pre><code>git diff</code></pre>
+<p>You can pipe this output into a patch using the following:</p>
+<pre><code>git diff &gt; my_patch.patch </code></pre>
+<p>In order to commit your work, you first need to add the files you changed to the staging area using the following command:</p>
+<pre><code>git add fileName1 fileName2</code></pre>
+<p>In order to commit your changes to your local repository, use the following command:</p>
+<pre><code>git commit</code></pre>
+<p>This opens up a text editor where you can type a commit message that describes your changes.</p>
+<h2>Submitting your changes into the main tree</h2>
+<p>You can submit your patches to the KDE Review Board at <a href="https://git.reviewboard.kde.org">https://git.reviewboard.kde.org/</a>. Log in using your KDE Identity account and submit a patch to a project there.</p>
+<p>You can also directly send patches to review board using post review. The procedure is outlined at:</p>
+<blockquote>
+<p><a href="http://community.kde.org/Sysadmin/GitKdeOrgManual#Using_Review_Board_and_post-review" class="uri">http://community.kde.org/Sysadmin/GitKdeOrgManual#Using_Review_Board_and_post-review</a></p>
+</blockquote>
+<h2>Troubleshooting</h2>
+<p>For any issues related to git and the KDE Development Platform, you can seek help in one of the following channels on irc.freenode.net.</p>
+<ul>
+<li>#kde-sysadmin</li>
+<li>#kde-git</li>
+</ul>
+<p>You can read more about KDE platform development using git at <a href="http://techbase.kde.org/Development/Git" class="uri">http://techbase.kde.org/Development/Git</a>. </p>
+<p><span class="Apple-style-span"> </span></p>
+<p></span></p>
+<p><span id="ch008_choosing-an-ide.xhtml"></span></p>
+<h1>Choosing an IDE </h1>
+<p>An integrated development environment (IDE) allows you to do project management, testing, and other activities in a convenient way alongside your coding. We recommend that you install one of the following IDEs and do your KDE development work within it.</p>
+<p>We recommend QtCreator for its ease of use and features, especially its built-in text editor. But it's nice to know, if you're familiar with Eclipse already, that you can use that for KDE development too.</p>
+<h2><strong>QtCreator</strong></h2>
+<p><img src="static/qtcreator-screenshots.png" /> </p>
+<p>QtCreator is an integrated, cross-platform IDE for C++ and JavaScript that is part of the Qt SDK. It includes a visual debugger and a designer tool for GUI layout and forms. The editor's features include syntax highlighting and auto-completion. QtCreator uses the GNU C++ compiler and related tools. On Windows it can use MinGW or MSVC with the default install, and cdb when compiled from source. </p>
+<p>You can find out more about using QtCreator with the KDE development platform at: </p>
+<div data-align="center">
+http://techbase.kde.org/Development/Tutorials/Using_Qt_Creator
+</div>
+<h2><strong>KDevelop</strong> </h2>
+<p><img src="static/Kdevelop_cpp_codetooltip.png" /> </p>
+<p>KDevelop is a free, open source IDE (Integrated Development Environment) created as part of the KDE development project to support development on C/C++ and other languages on Microsoft Windows, Mac OS X, Linux, Solaris and FreeBSD. It is feature-full and can be extended through plugins. It is based on KDevPlatform and the KDE development platform and Qt libraries and has been under development since 1998.</p>
+<p>You can find out more about KDevelop at:</p>
+<div data-align="center">
+http://userbase.kde.org/KDevelop4/Manual
+</div>
+<h2><strong>Eclipse</strong> </h2>
+<p><span class="Apple-style-span">Eclipse is a popular open source IDE. It is used primarily for programming in Java, but supports a number of other languages, including C++, with the appropriate plug-in modules.</span></p>
+<p>You can find out more about using Eclipse with the KDE development platform at:</p>
+<p>http://techbase.kde.org/Development/Tools/Eclipse<br />
+</p>
+<p><span id="ch009_kde-apis.xhtml"></span></p>
+<h1>KDE APIs</h1>
+<p>An Application Programming Interface (API) is a set of functions exposed by a program or library that can be invoked by other programmers.  An API greatly extends a program by allowing third-party developers to add new functionality. It is an ideal way to allow new features to be added without the need to modify the existing, core code.</p>
+<p>The documentation for an API explains how things work and what methods can be called. For some nice tutorials to get started with using the myriad KDE development platform APIs, visit:</p>
+<blockquote>
+<p><a href="http://techbase.kde.org/Development/Tutorials" class="uri" title="Development tutorials">http://techbase.kde.org/Development/Tutorials</a> </p>
+</blockquote>
+<p><span class="Apple-style-span">The KDE development platform API documentation (apidox) can be found at:</span></p>
+<blockquote>
+<p><a href="http://api.kde.org/" title="KDE APIs">http://api.kde.org</a></p>
+</blockquote>
+<p>This documentation comes in the qch format, an extended HTML format that can be viewed either in the QtCreator Assistant or via any browser. </p>
+<p>The apidox are processed by the Doxygen documentation tool. This tool reads source code for an application (or library) and produces nicely formatted documentation from it. There is a good reference manual available, but hopefully you won't need to consult it just for basic documentation building. When you install the KDE development platform for development purposes, you should also install Doxygen. Then you can build documentation from any project by using the following command:</p>
+<pre><code>make docs  </code></pre>
+<p>More information on the KDE API docs can be found at:</p>
+<blockquote>
+<p><a href="http://techbase.kde.org/Development/Tools/apidox" class="uri" title="apidox">http://techbase.kde.org/Development/Tools/apidox</a></p>
+</blockquote>
+<h3></h3>
+<div>
+<div>
+
+</div>
+</div>
+<p><span id="ch010_documentation.xhtml"></span></p>
+<h1>Documentation</h1>
+<p><span class="Apple-style-span">If you write new functions for a KDE project, we certainly hope that you write documentation (apidox) for it, and try to explain as clearly as possible what can be done with the functions. The better you document your work, the more developers are likely to use it and the less likely they are to annoy you by asking basic questions about how it works.</span></p>
+<p>API documentation is sometimes called an API reference manual. It needn't be just a reference manual, though. It can contain extensive additional material, such as tutorials, examples, and historical information. This page refers to all the material that documents and explains the API of a piece of code as &quot;apidox&quot;, the term used in the KDE development platform documentation itself.</p>
+<div>
+<div>
+<p>Basic apidox writing is fun and simple: add specially formatted comments in your code explaining what things are supposed to be for. These comments are nearly indistinguishable from stuff you would be writing in the headers of your code anyway, so that's not hard to do. Here is a sample. </p>
+<pre><code>/**
+ * @author praxagora
+ *
+ * Returns a CHI square comparing two samples.
+ * The arrays must be the same size.
+ *
+ * @param a First sample
+ * @param b Second sample
+ *
+ * @return @size size of each sample.
+ */ 
+double chi_square(double a[], double b[], int size) { 
+double total_a=0.0, total_b=0.0, total, totals[size],
+square_a[size], square_b[size], square_totals[size],
+    terms[size],
+    terms_total=0.0, sum_total=0.0, square_sum_total=0.0;
+  int i;
+  /**
+    * This loop comprises the whole function and computes the CHI
+    * square from the two arrays.
+  */
+    { 
+  for (i = 0; i &lt; size ; i++)</code></pre>
+<p>Note that a comment was included before the function, and before the bracket that starts the next level of nesting, a for loop. All the parameters, as well as the return value, are marked.</p>
+<p>To write good apidox, you first need technical knowledge: you should understand the code you are documenting--or at least know what it is supposed to do and how it is meant to be used. The other part of good apidox is plain discipline: apidox are most useful when they are exhaustive.</p>
+</div>
+<p>Actually, documentation doesn't usually have to explain what the code does at each step. The code should be so clear, with a clean layout and well-chosen names for methods and variables, that it is self-documenting. Rather, documentation should explain what code is <em>for</em>, when and why it is called, the purposes and ranges of its arguments, and perhaps the algorithm used and the trade-offs made in memory and time.</p>
+</div>
+<p>Look at the Qt documentation to get a feeling for what good apidox look like. They have a consistency of style and are permeated with a concern for thoroughness. You can learn a lot about Qt just from reading the documentation. You do not necessarily need to run the tutorial programs or read the source code of the library to find out what a parameter or flag does in some method of the library. It is all spelled out for you.</p>
+<p> </p>
+<p><span id="ch012_prerequisites.xhtml"></span></p>
+<h1>Prerequisites</h1>
+<p>Before you actually build the KDE development environment from source, think -- do you need to do this? Yes, if you will be working on the KDE SC core. You will not need the entire environment built from source if you intend to work on one application. We recommend confirming whether you need to build the environment by posting a question on the mailing list or chatting up on the IRC.</p>
+<p>Assuming you need to build KDE from source, you will need to set up your build environment and install packages that contain header files used during the compilation of the KDE platform sources.</p>
+<h2>Setting up the Environment</h2>
+<p>In order to set up the KDE platform build environment, you need to create a file defining environment variables and other settings by following the instructions at:</p>
+<p>http://techbase.kde.org/Getting_Started/Build/Environment#Environment_Configuration</p>
+<p>Save the file in the root directory for your build environment with the name .build-config. If you need separate build environments--such as one for stable releases and one for nightly builds--it is recommended that you create a separate script for each build environment and leave it in the environment's root directory.</p>
+<h2>Build Requirements </h2>
+<h2></h2>
+<div>
+
+</div>
+</h2>
+<p>This section details the software requirements you must install on your system before you can start building the KDE platform. For most of these requirements, it is best to use the packages provided by your operating system distribution, but in some cases you will need to build these requirements yourself.</p>
+<h3>Debian/Ubuntu</h3>
+<p>Minimum build dependencies on Debian/Ubuntu for KDE 4.6  and above are as follows:<span class="Apple-style-span">  </span></p>
+<pre><code>sudo apt-get install graphviz libxml2-utils libopenexr-dev libjasper-dev libenchant-dev \
+libavahi-common-dev libaspell-dev libasound2-dev libldap2-dev libsasl2-dev \
+libsmbclient-dev libxkbfile-dev libxcb1-dev libxklavier-dev libxdamage-dev \
+libxcomposite-dev libbluetooth-dev libusb-dev network-manager-dev \
+libsensors4-dev libnm-util-dev libcfitsio3-dev libnova-dev libeigen2-dev \
+libopenbabel-dev libfacile-ocaml-dev libboost-python-dev libsvn-dev libsvncpp-dev \
+libqt4-dev libqca2-dev libstreamanalyzer-dev libstrigiqtdbusclient-dev \
+libcommoncpp2-dev libidn11 libidn11-dev libpci-dev libxss-dev libxft-dev \
+libpolkit-agent-1-dev libpolkit-backend-1-dev libpolkit-gobject-1-dev git libpoppler-qt4-dev \ 
+libspectre-dev </code></pre>
+<h4><span class="Apple-style-span"> Extra and optional packages for Debian/Ubuntu can be found at:</span></h4>
+<blockquote>
+<h4><span class="Apple-style-span"><a href="http://techbase.kde.org/Getting_Started/Build/Distributions/Debian" class="uri" title="Debian build">http://techbase.kde.org/Getting_Started/Build/Distributions/Debian</a></span></h4>
+</blockquote>
+<h3>openSUSE</h3>
+<p>Minimum build depends for openSUSE are as follows:</p>
+<pre><code> yast -i alsa-devel automoc4 avahi-devel patch cups-devel kde4-filesystem \ libbz2-devel avahi-compat-mDNSResponder-devel hal-devel xorg-x11-devel \ libQtWebKit-devel libxml2-devel kdesdk4 clucene-core-devel boost-devel \ libjpeg-devel liblrdf-devel libpng-devel libxslt-devel libredland-devel \ Mesa-devel giflib-devel subversion gcc-c++ gmp-devel xine-devel \ libgpgme-devel pcre-devel dbus-1-devel libqt4-devel cmake git \  doxygen polkit-devel docbook-xsl-stylesheets cyrus-sasl-devel libical-devel </code></pre>
+<p>Extra and optional packages for openSUSE can be found at:</p>
+<blockquote>
+<p><a href="http://techbase.kde.org/Getting_Started/Build/Distributions/Debian" title="openSUSE build">http://techbase.kde.org/Getting_Started/Build/Distributions/openSUSE</a> </p>
+</blockquote>
+<h3>Other distributions</h3>
+<p>Please refer to <a href="http://techbase.kde.org/Getting_Started/Build/Distributions" class="uri" title="build">http://techbase.kde.org/Getting_Started/Build/Distributions</a></p>
+<p> </p>
+<p><span id="ch013_other-ways-to-build-the-kde-sc.xhtml"></span></p>
+<h1>Other Ways to Build the KDE SC</h1>
+<p>You don't always have to build the KDE SC from bare sources. Many pre-packaged builds of the KDE SC are available. This chapter will focus on installing KDE SC from the git master without compiling it from sources.</p>
+<h2>Project Neon</h2>
+<p>The wonderful Project Neon team provides daily builds of the KDE SC for developers using Kubuntu. Project Neon installs binaries and libraries in <em>/opt/project-neon/</em>, which gives you a sandboxed installation of the master KDE SC alongside your stable KDE SC installation.</p>
+<p>Get Project Neon from its Launchpad home page : https://launchpad.net/~neon. You can install the packages using the following command:</p>
+<pre><code>sudo add-apt-repository ppa:neon/ppa &amp;&amp; sudo apt-get update &amp;&amp; sudo apt-get install project-neon-base</code></pre>
+<p> More information on Project Neon can be found at:</p>
+<blockquote>
+<p>https://wiki.ubuntu.com/Kubuntu/ProjectNeon</p>
+<p>http://techbase.kde.org/Getting_Started/Using_Project_Neon_to_contribute_to_KDE</p>
+</blockquote>
+<h2>openSUSE</h2>
+<p>This GNU/Linux distribution provides frequent snapshots of the KDE SC master. The target is to provide snapshots on a weekly basis, but this is not always possible. These packages may not always include openSUSE specific patches, and are not available for the oldest openSUSE releases. You must add the core packages repository to use Extra or Unstable:Playground.</p>
+<p><strong>Version: 11.4</strong></p>
+<p><strong>Core packages:</strong> http://download.opensuse.org/repositories/KDE:/Unstable:/SC/openSUSE_11.4/</p>
+<p><strong>Released applications:</strong> http://download.opensuse.org/repositories/KDE:/UpdatedApps/openSUSE_11.4/</p>
+<p><strong>Extra:</strong> http://download.opensuse.org/repositories/KDE:/Extra/openSUSE_11.4_KDE_Unstable_SC/</p>
+<p><strong>Unstable:Playground:</strong> http://download.opensuse.org/repositories/KDE:/Unstable:/Playground/openSUSE_11.4_KDE_Unstable_SC/</p>
+<p> </p>
+<p><strong>Version: 11.3</strong></p>
+<p><strong>Core packages:</strong> http://download.opensuse.org/repositories/KDE:/Unstable:/SC/openSUSE_11.3/</p>
+<p><strong>Released applications:</strong> http://download.opensuse.org/repositories/KDE:/UpdatedApps/openSUSE_11.3/</p>
+<p><strong>Extra:</strong> http://download.opensuse.org/repositories/KDE:/Extra/openSUSE_11.3_KDE_Unstable_SC/</p>
+<p><strong>Unstable:Playground:</strong> http://download.opensuse.org/repositories/KDE:/Unstable:/Playground/openSUSE_11.3_KDE_Unstable_SC/</p>
+<p> </p>
+<p><strong>Version: Factory</strong></p>
+<p><strong>Core packages:</strong> http://download.opensuse.org/repositories/KDE:/Unstable:/SC/openSUSE_Factory/</p>
+<p><strong>Released applications:</strong> Use the application packages from openSUSE:Factory</p>
+<p><strong>Extra:</strong> http://download.opensuse.org/repositories/KDE:/Extra/openSUSE_Factory_KDE_Unstable_SC/</p>
+<p><strong>Unstable:Playground:</strong> http://download.opensuse.org/repositories/KDE:/Unstable:/Playground/openSUSE_Factory_KDE_Unstable_SC/</p>
+<p>You can find  more information about openSUSE's master KDE builds at:</p>
+<blockquote>
+<p> http://en.opensuse.org/KDE_repositories#Unstable:SC_aka._KUSC_.28KDE_trunk.29</p>
+</blockquote>
+<p><span id="ch014_scripted-kde-builds-kdesrc-build.xhtml"></span></p>
+<h1>Scripted KDE Builds (<span class="Apple-style-span">kdesrc-build)</span></h1>
+<p><span class="Apple-style-span">The easiest way to build the </span><span class="Apple-style-span">KDE Software Compilation </span><span class="Apple-style-span">(SC) from scratch is to run a script named </span><span class="Apple-style-span"><em>kdesrc-build</em> <span class="Apple-style-span">(formerly <em>kdesvn-build</em>), written by Michael Pyne</span></span><span class="Apple-style-span">. This approach is highly recommended for those new to building the KDE SC, because it takes care of almost the whole process for you. The builds remain compatible with the manual methods of building KDE SC, so you can change the modules you install<strong> </strong>later if you want.</span></p>
+<p><span class="Apple-style-span"></span><em>kdesrc-build</em><span class="Apple-style-span"> automates the following tasks and more:</span></p>
+<ul>
+<li>Performing the initial checkout</li>
+<li>Handling updates for modules that are already checked out</li>
+<li>Setting up the build system for the module</li>
+<li>Performing the build and install</li>
+<li>Specifying your CMake options or configure flags (so you don't have to remember them every time)</li>
+<li>Logging build errors so you can review them more easily for troubleshooting</li>
+</ul>
+<p><span class="Apple-style-span">This is not the be all and end all for your troubles building the KDE SC. Troubleshooting may still be required. Many errors that occur using other methods occur here too: you should read the log files that are stored for you.</span> </p>
+<h2><span class="Apple-style-span">Useful links for finding modules</span></h2>
+<p>When using <em>kdesrc-build</em>, you may find it beneficial to search the source repository for modules. Sources include the following:</p>
+<ul>
+<li><span class="Apple-style-span">To browse any of the various KDE SC projects using git, you can go to <a href="https://projects.kde.org/" class="uri">https://projects.kde.org/</a> or to <a href="http://gitweb.kde.org/" class="uri">http://gitweb.kde.org/</a>.</span></li>
+<li>To browse the KDE Subversion repository, use <a href="http://websvn.kde.org/trunk/KDE/" class="uri">http://websvn.kde.org/trunk/KDE/</a></li>
+</ul>
+<h2><span class="Apple-style-span">Setup</span></h2>
+<p>These subsections cover all the things you need to get and install <span class="Apple-style-span"><em>kdesrc-build</em></span> itself. </p>
+<h3><span class="Apple-style-span">Prerequisites</span></h3>
+<p><em>kdesrc-build</em> is fairly easy to install and set up, but you need to have the right software installed to build KDE SC. The requirements to build KDE SC are available at:</p>
+<blockquote>
+<span class="Apple-style-span"><a href="http://techbase.kde.org/Getting_Started/Build/Requirements" class="uri">http://techbase.kde.org/Getting_Started/Build/Requirements</a></span>
+</blockquote>
+<p><em>kdesrc-build</em> requires Perl 5.8 or higher. It is installed by default with most distributions, and is included in the previous link. Check your version of Perl with:</p>
+<div class="mw-geshi" dir="ltr">
+<div class="text source-text">
+<pre class="de1"><code>perl -v</code></pre>
+</div>
+</div>
+<p>You will also need libwww ,<span class="Apple-style-span"> a collection of Perl Internet-related modules </span>from <span class="Apple-style-span"><a href="https://github.com/gisle/libwww-perl#readme">https://github.com/gisle/libwww-perl</a>.</span></p>
+<h3><span class="Apple-style-span">Downloading and installing kdesrc-build</span></h3>
+<p>Once your system is set up and able to compile the KDE SC, you can download <em>kdesrc-build</em> from its website, <span class="Apple-style-span"><a href="http://kdesrc-build.kde.org" class="uri external text">http://kdesrc-build.kde.org</a>.</span> The file you download will contain (at least) the <em>kdesrc-build</em> script and a sample configuration file.ut Installing <em>kdesrc-build</em> is as simple as saving the file and making it executable. If you'd like, you can move it to a directory in your PATH, however for this example we'll put it into the KDE SC source directory that we use (<em>~/kdesrc</em>).</p>
+<p><span class="Apple-style-span"></span></p>
+<p><span class="Apple-style-span"> </span></p>
+<div class="mw-geshi" dir="ltr">
+<div class="bash source-bash">
+<pre><code>mkdir -p ~/kdesrc &amp;&amp;
+cd ~/kdesrc &amp;&amp;
+tar xjvf ~/path/to/kdesrc-build-1.12.tar.bz2 &amp;&amp;
+cp kdesrc-build-1.12/kdesrc-build .</code></pre>
+</div>
+</div>
+<p></span></p>
+<p><span class="Apple-style-span">Alternatively, the newest kdesrc-build script (and sample config file) can be pulled down directly using git:</span><span class="Apple-style-span"><span class="Apple-style-span"></span></span></p>
+<div class="mw-geshi" dir="ltr">
+<div class="bash source-bash">
+<pre class="de1"><code>git clone git://anongit.kde.org/kdesrc-build.git ~/kdesrc</code></pre>
+</div>
+</div>
+<h2><span id="ch014_scripted-kde-builds-kdesrc-build.xhtml#Setup_the_configuration" class="mw-headline">Setting up the configuration</span></h2>
+<p>Configuration options for <em>kdesrc-build</em> are taken from a file named <em>~/.kdesrc-buildrc</em>. Directions for editing this file are at:</p>
+<blockquote>
+<p><span class="Apple-style-span"><a href="http://techbase.kde.org/Getting_Started/Build/kdesrc-buildrc" class="uri">http://techbase.kde.org/Getting_Started/Build/kdesrc-buildrc</a></span></p>
+</blockquote>
+<p><span class="Apple-style-span"><a href="http://techbase.kde.org/Getting_Started/Build/kdesrc-buildrc"></a></span>For the most part the defaults in the included kdesrc-buildrc-sample should be sufficient. You can copy it to your home directory as follows:</p>
+<div class="mw-geshi" dir="ltr">
+<div class="bash source-bash">
+<pre class="de1"><code>cp ~/kdesrc/kdesrc-build-1.12/kdesrc-buildrc-sample ~/.kdesrc-buildrc
+# Now edit the ~/.kdesrc-buildrc</code></pre>
+</div>
+</div>
+<p><span class="Apple-style-span">Note that the config file name begins with a leading dot (.), making it a hidden file. If you are using Dolphin or Konqueror from the desktop, y</span><span class="Apple-style-span">ou may need to show hidden files in order </span><span class="Apple-style-span">to find the configuration file and edit it. Alternatively, you can edit the sample file before copying it to <em>~/.kdesrc-buildrc</em>.</span></p>
+<p><span class="Apple-style-span"> </span></p>
+<p>Also, make sure that the modules you'll want to build are included. You'll want the following at the least:</p>
+<ul>
+<li>qt-copy</li>
+<li>kdesupport</li>
+<li>kdelibs</li>
+<li>kdepimlibs</li>
+<li>kdebase</li>
+</ul>
+<p>Modules are built in the order they appear in your <em>~/.kdesrc-buildrc</em> file, so the first module should be qt-copy. kdesupport should be before kdelibs, which should be before any other KDE SC module, and so on.</p>
+<p></span></p>
+<p><span class="Apple-style-span">The sample configuration file does include these modules by default. So you won't need to make many changes unless you'd like to add some modules to the build by uncommenting them.</span></p>
+<p><span class="Apple-style-span">If a module you'd like to build isn't already present, simply add the following to</span><span class="Apple-style-span"> the end of the <em>~/.kdesrc-buildrc:</em></span></p>
+<pre><code>module module-name
+end module</code></pre>
+<p><span class="Apple-style-span"><em>module-name</em> is whatever the module is called in the software repository (for instance, kdemultimedia).</span></p>
+<p>You may want to enable the make-install-prefix option if you are installing KDE SC or Qt to a directory that is not in your home directory. Through make-install-prefix, you can run <em>su</em> or <em>sudo</em> during the make install process so you can install files as root, or set certain programs to execute with higher permissions. (This is required for certain programs to execute properly.)</p>
+<pre><code>module kdelibs
+  make-install-prefix sudo -S # sudo with no stdin
+end module
+
+module kdebase
+  make-install-prefix sudo -S
+end module</code></pre>
+<h3><span id="ch014_scripted-kde-builds-kdesrc-build.xhtml#Git-based_modules" class="mw-headline">Git-based modules</span></h3>
+<p><span class="Apple-style-span"></span></p>
+<p><span class="Apple-style-span"></span></p>
+<p>Most of the KDE SC modules are in git, although a few of them still need to be ported from svn to git. Eventually, all KDE SC modules and projects will be in git.</p>
+<p>To build these modules in <em>kdesrc-build</em>, you just need to add a couple of lines to the module configuration. For example, konversation is developed in the Git repository at:</p>
+<blockquote>
+<p><span class="Apple-style-span"> </span></p>
+<p><a href="https://projects.kde.org/projects/extragear/network/konversation/repository" class="uri" title="konveration repository">https://projects.kde.org/projects/extragear/network/konversation/repository</a></p>
+<p></span></p>
+</blockquote>
+<p><span class="Apple-style-span"> </span></p>
+<p>So to add this module, write the following at the end of <em>~/.kdesrc-buildrc</em>:</p>
+<pre><code>module konversation
+    repository git://anongit.kde.org/konversation
+    branch master
+end module</code></pre>
+<p>In this case I selected the &quot;master&quot; branch since that is the default git branch.</p>
+<p>Now whenever you build konversation, <em>kdesrc-build</em> will use git instead of Subversion.</p>
+<h2><span id="ch014_scripted-kde-builds-kdesrc-build.xhtml#Useful_kdesrc-build_commands" class="mw-headline">Useful kdesrc-build commands</span></h2>
+<p></span><span class="Apple-style-span"> </span></p>
+<p><em>kdesrc-build</em> is driven from the command line, so here's a guide to some of the more useful command line options:</p>
+<p></span><span class="Apple-style-span"> </span></p>
+<table>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="Apple-style-span">--pretend </span><span class="Apple-style-span">(<code>-p</code>)</span></td>
+<td>This option is like a dry run. <em>kdesrc-build</em> will process the options and its configuration like normal, and run through the build as normal, but instead of downloading or running the build it will just print messages about what it would have done. You should always run with -p before running the script for real, to make sure it is doing what you expect.</td>
+</tr>
+<tr class="even">
+<td><span class="Apple-style-span">--nosvn </span><span class="Apple-style-span">(<code>--no-src</code>)</span></td>
+<td>This option skips the source code update step. This is useful if you're running <em>kdesrc-build</em> again soon after a previous update and don't want to wait just to find out there were no changes.</td>
+</tr>
+<tr class="odd">
+<td><code>--refresh-build</code></td>
+<td>This option causes <em>kdesrc-build</em> to delete the current build information for the modules given on the command line and build them again from scratch. This option adds a lot of time but offers the best chance of a successful build.</td>
+</tr>
+</tbody>
+</table>
+<p></span><span class="Apple-style-span"> </span></p>
+<p>Any non-option arguments on the command line are assumed to be modules to build (and are built in the order provided on the command line). If no modules are specified, all of the modules listed in the ~/.kdesrc-buildrc are built, in the order listed in the file.</p>
+<p></span><span class="Apple-style-span"> </span></p>
+<h2><span id="ch014_scripted-kde-builds-kdesrc-build.xhtml#Build" class="mw-headline">Building the KDE SC</span></h2>
+<p></span><span class="Apple-style-span"> </span></p>
+<p>We're almost there. If you're happy with your settings, it's time to test out <em>kdesrc-build</em>. In theory things are as simple as running kdesrc-build and then coming back later.</p>
+<div class="mw-geshi" dir="ltr">
+<div class="bash source-bash">
+<pre class="de1"><code>cd ~/kdesrc
+./kdesrc-build</code></pre>
+</div>
+</div>
+<p>You may want to test it by building just qt-copy first, however.</p>
+<div class="mw-geshi" dir="ltr">
+<div class="bash source-bash">
+<pre class="de1"><code>cd ~/kdesrc
+./kdesrc-build qt-copy</code></pre>
+</div>
+</div>
+<p>If the build failed (<em>kdesrc-build</em> will error out with a nice bright red error message), there are several possible things to check for:</p>
+<ol>
+<li>You may be missing a key piece of required software (such as a development library)</li>
+<li>The KDE SC code being compiled may be broken in some fashion so it won't build. This is commonly due to newly committed code that worked on the developer's machine, or occasionally because it is Monday (when incompatible changes are permitted to kdelibs).</li>
+<li><em>~/.kdesrc-buildrc</em> may not be set up properly. You may be trying to install to a directory that you do not have permission to access, for instance, or you may have specified a system qtdir that does not exist.</li>
+<li>The module may depend on a newer version of qt-copy or kdelibs (or another module). In this case you'll have to run <em>kdesrc-build</em> to update the out-of-date module first.</li>
+</ol>
+<p></span><span class="Apple-style-span"></span><br />
+<span class="Apple-style-span"> </span></p>
+<p>How do you find out what the error was? The output of the failing command will be in the log directory. By default, all log output is in the <em>log</em> subdirectory of the KDE SC source directory. The log directory is laid out like this: <em>log/date-run/module/output-file.log</em>. To simplify finding the appropriate file, a couple of symlinks are created:</p>
+<p>log/latest</p>
+<p></span></p>
+<blockquote>
+<p><span class="Apple-style-span"> </span></p>
+<p>Contains the debugging output from the last time <em>kdesrc-build</em> ran (--pretend does not affect this).</p>
+<p></span></p>
+</blockquote>
+<p><span class="Apple-style-span"> </span></p>
+<p>log/latest/<em>module</em>/error.log</p>
+<p></span></p>
+<blockquote>
+<p><span class="Apple-style-span"> </span></p>
+<p>Contains the debugging output for the command that caused the build of the specified <em>module</em> to fail.</p>
+<p></span></p>
+</blockquote>
+<p><span class="Apple-style-span"> </span></p>
+<p>For instance, if qt-copy just failed to build, you could read the output like this:</p>
+<div class="mw-geshi" dir="ltr">
+<div class="bash source-bash">
+<pre class="de1"><code>cd ~/kdesrc
+kwrite log/latest/qt-copy/error.log</code></pre>
+</div>
+</div>
+<p><span class="Apple-style-span">Replace <em>kwrite</em> with your preferred editor. Hopefully the output can guide you to resolving the problem. For instance, if the failure is CMake output saying you're missing a library, install that library and try again. For link errors, you can try running with the </span>--refresh-build on the module (or if that doesn't work, on required libraries like qt-copy and kdelibs).</p>
+<p>If you're stumped by the error, you may want to wait a day and try updating again, and hope that the reason for the error has been fixed. You can also try mailing the kde-devel mailing list to see whether others know about the problem or have had similar issues.</p>
+<h2><span id="ch014_scripted-kde-builds-kdesrc-build.xhtml#Running_KDE" class="mw-headline">Running your new KDE installation</span></h2>
+<p>Assuming you got enough of the modules to build and install to have a working KDE SC installation, you'll still need to set up your environment correctly to run it. <em>kdesrc-build</em> doesn't help you out here (yet), so you should follow the instructions at:</p>
+<p><a href="http://techbase.kde.org/Getting_Started/Using_an_IDE_with_KDE4" class="uri">http://techbase.kde.org/Getting_Started/Using_an_IDE_with_KDE4</a> </p>
+<p>Make sure to use the same paths as the ones you defined in <em>~/.kdesrc-buildrc</em>. For the KDEDIRS and KDEDIR variables, use the setting of the &quot;prefix&quot; option (in the global section). For the QTDIR variable, use the setting of the &quot;qtdir&quot; option.</p>
+<h1><span id="ch014_scripted-kde-builds-kdesrc-build.xhtml#Keeping_KDE_up_to_date" class="mw-headline">Keeping your KDE installation up to date</span></h1>
+<p>Keeping your KDE installation up to date is as simple as running <em>kdesrc-build</em> again. Every build has these phases:</p>
+<ol>
+<li>Update the source code for all modules being built.</li>
+<li>Build and then install all the modules.</li>
+</ol>
+<p><span class="Apple-style-span">Old build directories are not deleted by default, so the build after a small update will not normally take as long as the initial build of a module. This is called &quot;incremental make&quot;. However it may be necessary at times to perform a full rebuild, due to inconsistencies between the build directory configuration and changes to the source directory. You can use the </span>--refresh-build option to force a full rebuild.</p>
+<p><span class="Apple-style-span">For more information on how to take advantage of <em>kdesrc-build</em>, see the documentation at:</span><span class="Apple-style-span"> </span></p>
+<p></span></p>
+<blockquote>
+<p><span class="Apple-style-span"> </span></p>
+<p><a href="http://kdesrc-build.kde.org/documentation/" class="uri">http://kdesrc-build.kde.org/documentation/</a></p>
+<p></span></p>
+</blockquote>
+<p><span class="Apple-style-span"> </span></p>
+<p>The site describes all of the module options and command line options available for <em>kdesrc-build</em> and gives tips on how to perform various useful tasks.</p>
+<p></span></p>
+<p><span id="ch015_troubleshooting-your-kde-build.xhtml"></span></p>
+<h1>Troubleshooting your KDE Build</h1>
+<div>
+<p>Compile and Linking errors are frequent sources of discouragement. Make careful note of the first occurrence of an error in your build process. It could be as simple as a bad environment variable, an unexpected version of a library or missing prerequisite. Please read the instructions carefully. Check for spelling errors while using module names as well as commands.</p>
+<p>Please review your logs and do searches for fixes. If you cannot find a solution then please ask for help on IRC or a Mailing List.</p>
+<p><br />
+</p>
+<br />
+
+<p> </p>
+<p><br />
+</p>
+</div>
+<p><span id="ch017_reading-backtraces.xhtml"></span></p>
+<h1>Reading backtraces</h1>
+<p>A backtrace (also called a <em>stack trace</em> or <em>stack traceback</em>) is a report of how the program has called different functions as it goes along. <span class="Apple-style-span">It is commonly used during interactive and post-mortem debugging. It can also be displayed to the user of a program as part of an error message, which a user can report to a programmer.</span></p>
+<p><span class="Apple-style-span"></span><span class="Apple-style-span">Each function puts a <em>stack frame</em> on the stack containing its arguments and other information it needs to run. The active stack frames reflect a certain point in time during the execution of a program. </span>A stack trace allows you to track the sequence of nested functions called up to the point where the stack trace is generated. In a post-mortem scenario, the stack trace goes up to, and includes, the function where the failure occurred. Be aware, however, that the function where the failure occurred might not be responsible for the failure; an error could well have been embedded in a higher function (for instance, by passing an incorrect value to the function where the program failed).</p>
+<p>The following figure illustrates a stack frame, where main() called hello(), which called hi(), which called readinput(). A stack trace is likely to work down from the last call to the first, so that readinput() might appear first.</p>
+<p> <img src="static/tree%20(1).png" /></p>
+<p>Backtraces are essential. They may look meaningless to you, but they might actually contain a wealth of useful information. A backtrace describes which functions were called prior to the crash, so that developers may track down in which function the mess started. Exact memory addresses can also help locate problematic data, such as in a core dump (a file left behind when a program fails, containing the contents of live memory at the time of the failure). But producing good backtraces has a downside: libraries and executables occupy much more disk space than their optimized counter parts that can't provide the information to produce a backtrace.</p>
+<p>The KDE Crash Dialog (Dr. Konqi) should appear right after a crash.</p>
+<p><span class="Apple-style-span"></span></p>
+<p><a href="http://techbase.kde.org/File:Kde-crash-handler.png" class="image" title="KDE Crash Dialog"><img src="http:/techbase.kde.org/images.techbase/thumb/3/32/Kde-crash-handler.png/300px-Kde-crash-handler.png" alt="KDE Crash Dialog" width="300" height="169" /></a></p>
+<p><span class="Apple-style-span"></span></p>
+<p> </p>
+<p><br />
+</p>
+<p>Opening the &quot;Developer Information&quot; tab will display the relevant backtrace. This process may take some time and a lot of memory, so things may go sluggish all of a sudden. But the result should look something like this:</p>
+<div class="center">
+<pre><code>Using host libthread_db library &quot;/lib/libthread_db.so.1&quot;.
+[Thread debugging using libthread_db enabled]
+[New Thread -1232783168 (LWP 7604)]
+[KCrash handler]
+#6  0x0806be76 in TreeMapItem::parent (this=0x0)
+    at /home/bram/KDE/kde3/kdeaddons/konq-plugins/fsview/treemap.h:285
+#7  0x08065fea in TreeMapItemList::compareItems (this=0xbfec04a8, item1=0x0,
+    item2=0x0)
+    at /home/bram/KDE/kde3/kdeaddons/konq-plugins/fsview/treemap.cpp:720
+#8  0xb7281619 in QGList::operator== () from /usr/qt/3/lib/libqt-mt.so.3
+#9  0x0806d498 in QPtrList&lt;TreeMapItem&gt;::operator== (this=0xbfec04a8,
+    list=@0xbfec0468) at /usr/qt/3/include/qptrlist.h:74
+#10 0x08062e18 in TreeMapWidget::mousePressEvent (this=0xbfec03ac,
+    e=0xbfebff1c)
+    at /home/bram/KDE/kde3/kdeaddons/konq-plugins/fsview/treemap.cpp:1840
+#11 0xb7004a63 in QWidget::event () from /usr/qt/3/lib/libqt-mt.so.3
+#12 0xb6f6bca7 in QApplication::internalNotify ()
+   from /usr/qt/3/lib/libqt-mt.so.3
+#13 0xb6f6ca88 in QApplication::notify () from /usr/qt/3/lib/libqt-mt.so.3
+#14 0xb7725a84 in KApplication::notify (this=0xbfec055c, receiver=0xbfec03ac,
+    event=0xbfebff1c)
+    at /home/bram/KDE/kde3/kdelibs/kdecore/kapplication.cpp:550
+#15 0xb6f0bfd2 in QETWidget::translateMouseEvent ()
+   from /usr/qt/3/lib/libqt-mt.so.3
+#16 0xb6f0b8b0 in QApplication::x11ProcessEvent ()
+   from /usr/qt/3/lib/libqt-mt.so.3
+#17 0xb6f1b761 in QEventLoop::processEvents () from /usr/qt/3/lib/libqt-mt.so.3
+#18 0xb6f82831 in QEventLoop::enterLoop () from /usr/qt/3/lib/libqt-mt.so.3
+#19 0xb6f826b6 in QEventLoop::exec () from /usr/qt/3/lib/libqt-mt.so.3
+#20 0xb6f6b72f in QApplication::exec () from /usr/qt/3/lib/libqt-mt.so.3
+#21 0x0805181e in main (argc=134673960, argv=0xffffffff)  
+    at /home/bram/KDE/kde3/kdeaddons/konq-plugins/fsview/main.cpp:55  </code></pre>
+</div>
+<p>In this backtrace, the first stack frame is shown on line #6. Because the stack is unwound from the end back to the beginning, we can see that the call that crashed the program was parent(), which was called by compareItems() on line #7, which in turn was called by the overloaded == operator on line #8, and so on. </p>
+<p>After the line number, the hexadecimal number starting each line is the address in memory where the stack frame starts for each function. Unless you have a core dump, this is not useful to you. More interesting are the lists of arguments and the addresses of their data in parentheses. Thus , line #6 shows that <span class="Apple-style-span">parent()</span> was called with a single argument, this, whose value was 0 (0x0 in hex). Of course, the name <span class="Apple-style-span">this</span> is assigned to the object on which the method was invoked. So the <span class="Apple-style-span">parent()</span> method was actually called without arguments. Methods in object-oriented languages are passed the pointer to the object on which they were invoked as their first argument. So compareItems() on line #7 was called with two arguments, but because <span class="Apple-style-span">this</span> was passed as the first argument, three are shown in parentheses.</p>
+<p>On line #6, the string &quot;(this=0x0)&quot; indicates that the parent() function is being called with a NULL pointer. Of course, any program will crash if it tries to retrieve data from, or put data into, an address to which it doesn't have access. The address 0x0 on virtually every computer system is reserved and unavailable to the program, so you can tell that reading from or writing to a NULL pointer will cause a crash. You can also see, in the documentation for the Qt function parent(), that it is called without arguments (so the problem was not caused by a bad argument) and returns a pointer to the parent of the object on which it is called. Therefore, the developer should try to figure out what object parent() was called on and why the parent could not be returned.</p>
+<p><span id="ch019_useful-tools.xhtml"></span></p>
+<h1>Useful Tools</h1>
+<p>This chapter lists some of our favorite tools for software development, debugging. building, and other activities. Some are discussed in other parts of the book as well.  </p>
+<h2>Core Tools</h2>
+<p>These are absolutely required to build and develop KDE software. On Linux, they will typically be provided by your distribution. On other platforms, packages should normally be available, often for download directly from the home page of the tool. Of course, the standard development tools, such as a C/C++ compiler and some sort of text editor, are also required.</p>
+<p><strong>CMake</strong> - CMake is the build system of choice for the KDE SC. Once you have this, you can use it to configure a software project for building, and that process will tell you of any other requirements you are missing. </p>
+<p><strong>Git</strong> - Most KDE SC projects are developed in Git, so you will need it to get the source code in the first place. You can find the relevant Git URLs at the KDE SC projects directory. It will be helpful to follow the git configuration instructions. </p>
+<p><strong>Subversion</strong> - The KDE SC still uses Subversion for some things, notably translations.</p>
+<h2>Debugging and Analysis Tools</h2>
+<p>These are used to analyze a program and do such tasks as profiling.</p>
+<p><strong>Valgrind</strong> - Valgrind helps to find memory leaks and uninitialized memory blocks. It also includes a profiler and more. Valgrind is one of the most important development tools.  </p>
+<p><strong>The GNU Project Debugger (GDB)</strong><span class="Apple-style-span"> - GDB helps you find problems in source code by allowing </span>you to set breakpoints, step through the code, look at stack traces, etc. It keeps evolving, but we currently recommend version 6.x. Graphical frontends are available. See also the debugging tutorial &quot;Debugging with GDB&quot; at <span class="Apple-style-span"><a href="http://techbase.kde.org/Development/Tutorials/Debugging/Debugging_with_GDB" class="uri">http://techbase.kde.org/Development/Tutorials/Debugging/Debugging_with_GDB</a> </span></p>
+<p><strong>KDbg and DDD</strong> - KDbg and DDD are graphical user interfaces to GDB. </p>
+<p><strong></strong></p>
+<p><strong>MS Windows tools (Process Explorer, Console, WinDbg, DebugView, etc.)</strong> - More information about these is available on the &quot;KDE on Windows&quot; page on Techbase:</p>
+<blockquote>
+<p><a href="http://techbase.kde.org/Projects/KDE_on_Windows" class="uri" title="KDE on Windows at Techbase">http://techbase.kde.org/Projects/KDE_on_Windows</a> </p>
+</blockquote>
+<h2>Development Tools</h2>
+<p>These are more basic tools that will help you with your development. We have discussed some of these earlier. </p>
+<h3>Qt Creator</h3>
+<p>This is the recommended IDE for KDE SC development, making it easy to write new programs and to integrate existing ones into an IDE. Further details can be found in this tutorial:</p>
+<blockquote>
+<p> <a href="http://www.developer.nokia.com/Community/Wiki/How_to_use_Qt_Creator_IDE%20" title="Qt Creator">http://www.developer.nokia.com/Community/Wiki/How_to_use_Qt_Creator_IDE</a> </p>
+</blockquote>
+<h3>KDevelop</h3>
+<p>KDevelop is the IDE created as part of the KDE SC for developing KDE and Qt C++ applications. It includes a an integrated debugger, a powerful editor with syntax highlighting, a Project wizard to create applications from templates, the automake/autoconf suite, and even the class documentation. Further details can also be found on the KDevelop wiki.</p>
+<p><span class="Apple-tab-span"> </span>http://kdevelop.org/ </p>
+<h3>Eclipse</h3>
+<p>Eclipse was developed for Java programming, but designed with a view toward extensibility that has made it popular for many programming languages. You can find out more at <a href="http://www.eclipse.org/" title="Eclipse">http://www.eclipse.org</a>.</p>
+<h3>MS Visual Studio® Express IDE (Windows only)</h3>
+<p>Visual C++® Express is the free version of the Microsoft Visual Studio compiler from, and is officially supported by Nokia. It is a choice for compiling Qt and KDE applications on Windows. More information can be found at:</p>
+<blockquote>
+<p><a href="http://techbase.kde.org/Projects/KDE_on_Windows" class="uri" title="KDE on Windows">http://techbase.kde.org/Projects/KDE_on_Windows</a> </p>
+</blockquote>
+<p><span class="Apple-style-span">Internationalization (i18n) Tools</span></p>
+<p>These help you create applications that can be viewed and used in different languages and with the local conventions of different countries for currency, time, etc. </p>
+<h3>Lokalize</h3>
+<p>Lokalize is a computer-aided translation (CAT) system that focuses on productivity and quality assurance. It has the usual components for CAT tools: translation memory, a glossary, etc. It also includes a unique translation merging (synchronization) capability. It is targeted at software translation and integrates external conversion tools for freelance office document translation. </p>
+<h3>Dr. Klash</h3>
+<p>This reports conflicting shortcuts in menus. It's helpful for both translators and developers.</p>
+<p><span class="Apple-style-span"><strong></strong></span></p>
+<p><strong>The x-test language</strong></p>
+<h3></h3>
+<p><span class="Apple-style-span">This language helps you find untranslated strings in applications. If you start your application with the &quot;x-test&quot; locale, all translated strings will appear with trailing and leading xx's.</span> </p>
+<h2>Helper Tools</h2>
+<p>These provide a variety of useful functions.</p>
+<h3><strong><strong></strong></strong></h3>
+<p>kde4-config</p>
+<p></strong></strong> <strong></strong></p>
+<p></strong></p>
+</h3>
+<p><span class="Apple-style-span">This helps a user to find out more about a KDE SC installation. </span></p>
+<h3><strong></strong></h3>
+<p><strong></strong></p>
+<p>kfmclient</p>
+<p></strong></strong> <strong></strong></p>
+<p></strong></p>
+</h3>
+<p><span class="Apple-style-span">This lets you control the Konqueror browser through scripts. </span></p>
+<p><strong>kioclient</strong></p>
+<p>Command-line tool for network-transparent operations <span id="ch019_useful-tools.xhtml#lbAC"> </span></p>
+<h3><strong></strong></h3>
+<p>kconf_update</p>
+<p></strong></p>
+</h3>
+<p><span class="Apple-style-span">This updates configuration files. </span></p>
+<h3><strong></strong></h3>
+<p>apidox tools</p>
+<p></strong></p>
+</h3>
+<p><span class="Apple-style-span">These help develop and generate API documentation for your code. </span></p>
+<h3><strong></strong></h3>
+<p>Automoc4</p>
+<p></strong></p>
+</h3>
+<p><span class="Apple-style-span">This is a helper tool that builds KDE SC4. It automatically generates moc-files. </span></p>
+<h3><strong></strong></h3>
+<p>svnmerge.py</p>
+<p></strong></p>
+</h3>
+<p><span class="Apple-style-span">This tool helps you keep track of merges between different SVN branches.</span></p>
+<h2><strong></strong></h2>
+<p><strong></strong></p>
+<p>Quality Assurance</p>
+<p></strong></strong> <strong></strong></p>
+<p></strong></p>
+</h2>
+<h3><strong></strong></h3>
+<p><strong></strong></p>
+<p>Code Review</p>
+<p></strong></strong> <strong></strong></p>
+<p></strong></p>
+</h3>
+<p><span class="Apple-style-span">KDE uses the Review Board for performing code reviews; see the page on the Review Board on the kDE Techbase for more information:</span></p>
+<blockquote>
+<p><span class="Apple-style-span"><a href="http://techbase.kde.org/Development/Review_Board" class="uri" title="Review Board">http://techbase.kde.org/Development/Review_Board</a></span></p>
+</blockquote>
+<h3><strong></strong></h3>
+<p>Continuous Building - Dashboards</p>
+<p></strong></p>
+</h3>
+<p><span class="Apple-style-span">Dirk's dashboard has all KDE modules, while the </span>win32 dashboard has a selection available on Windows.</p>
+<h3>English Breakfast Network - Static Analysis</h3>
+<p>The English Breakfast Network is a collection of machines that do automated KDE source artifact quality checking. Basically, that means they have a git clone of the entire KDE codebase (including documentation and whatnot) and they run checking tools on that.</p>
+<p>EBN uses:<br />
+</p>
+<ul>
+<li>Krazy - Code Analysis</li>
+</ul>
+<ul>
+<li>APIDOX - API Documentation </li>
+</ul>
+<ul>
+<li><span class="Apple-style-span">Sanitizer - DocBook Checker</span></li>
+</ul>
+<ul>
+<li><span class="Apple-style-span">Usability Checks</span></li>
+</ul>
+<p><span id="ch020_frequently-asked-questions.xhtml"></span></p>
+<h1>KDE Developer Guide Frequently asked questions (FAQ)</h1>
+<p>Q. I want to help/develop the KDE SC. How do I start?</p>
+<p>A. A great way to get familiar with the codebase is to fix some bugs. You can find a number of &quot;Junior Jobs&quot; on the KDE Bugzilla. Search for the &quot;Junior Jobs&quot; link on the KDE bugzilla ( <a href="http://bugs.kde.org/">http://bugs.kde.org</a> ) on the left.<span class="Apple-style-span"></span></p>
+<p> </p>
+<p>Q. I do not understand what [insert strange term here] means.</p>
+<p>A. Check the term in the <em>General Glossary and KDE Jargon</em>.<br />
+</p>
+<p><br />
+</p>
+<p>Q. What project should I contribute to?</p>
+<p>A. Find something that interests you, and start hacking! Most people start by &quot;scratching their own itches&quot; first, which means that they try to fix the bugs that irritate them the most. See also the list of KDE SC projects in the section <em>Choosing a project</em>.<br />
+</p>
+<p><br />
+</p>
+<p>Q. How do I set up the Development Environment?</p>
+<p>A. This is documented in the <em>KDE Development build environment</em> section of this book.  </p>
+<p><br />
+</p>
+<p>Q. What programming languages do I need to know?</p>
+<p>A. Most of the KDE SC is written in C++, but KDE SC has bindings for Python, Ruby, etc. The Qt toolkit will be very useful to you in most of the KDE SC codebase.</p>
+<p><br />
+</p>
+<p>Q. What programming concepts do I need to know?</p>
+<p>A. An understanding of object-oriented programming (OOP) is valuable if you want to hack on the KDE development platform, but is not necessary for developing applications. You need also to know about software version control and the Qt communications concepts of signals and slots. </p>
+<p> </p>
+<p>Q. How do I read backtraces?</p>
+<p>A. This is covered in the <em>Reading Backtraces</em> section of this book.</p>
+<p><br />
+</p>
+<p>Q. How do I use Valgrind?</p>
+<p>A. Please refer to <a href="http://techbase.kde.org/Development/Tools/Valgrind" class="uri">http://techbase.kde.org/Development/Tools/Valgrind</a> for a brief overview of Valgrind.</p>
+<p> </p>
+<p>Q. <span class="Apple-style-span">What's the best distro for KDE SC development?</span></p>
+<p>A. Any distribution that provides the latest and greatest KDE SC packages is just fine for developing the KDE SC.</p>
+<div>
+<br />
+
+</div>
+<p>Q. How do I report a bug?</p>
+<p>A.  Use Bugzilla, our bug tracking software.  A good bug report is thorough (containing all details that could be relevant, such as the operating system you're using, the versions of all related software, and the precise actions you were doing when the bug occurred). It should also be factual, polite, and clearly written. For a quick introduction to bugzilla, please refer to:</p>
+<blockquote>
+<p><a href="http://techbase.kde.org/Contribute/Bugsquad/Quick_Introduction_to_Bugzilla" class="uri" title="Bugzilla">http://techbase.kde.org/Contribute/Bugsquad/Quick_Introduction_to_Bugzilla</a></p>
+</blockquote>
+<p> </p>
+<p>For more Frequently Asked Questions visit http://techbase.kde.org/Category:FAQs</p>
+<blockquote>
+
+</blockquote>
+<p><span id="ch021_general-glossary-and-kde-jargon.xhtml"></span></p>
+<h1>General glossary</h1>
+<div title="Page Break">
+
+</div>
+<p><span class="Apple-style-span">A</span></p>
+<div>
+<div>
+<p><strong>Accessibility (a11y)</strong>: The ability of all people, regardless of disability or severity of impairment, to use the features of a program.</p>
+<p><strong>Akonadi</strong>: KDE extensible cross-desktop storage service for personal information management (PIM) data and metadata providing concurrent read, write, and query access. Provides desktop-wide object identification and retrieval.</p>
+<p><strong>Akregator</strong>: KDE open source feed aggregator, supporting both RSS and Atom. Feeds can be sorted into categories, and there is an incremental search feature for the titles of all the entries in the database.</p>
+<p><strong>Algorithm</strong>: step-by-step procedure for calculations, data processing, and automated reasoning.</p>
+<p><strong>Amarok</strong>: <em>Rediscover Your Music</em> using KDE's Amarok. Core features such as the unique <em>context browser</em>, integrated Wikipedia lookup and lyrics download help users to find new music, and to learn more about the music they have.</p>
+<p><strong>Application programming interface (API)</strong>: A particular set of coding rules and specifications that software programs can follow to communicate with another. It serves as an interface between different software programs and facilitates their interaction, similar to the way the user interface facilitates interaction between humans and computers.</p>
+<p><strong>apidox</strong>: API Documentation</p>
+<p><strong>Applet</strong>: Program written in Java to be embedded in another environment, such as a Web page.</p>
+<h2>B</h2>
+<p><strong>Backtrace</strong>: also called <em>stack backtrace, stack trace</em> or <em>stack traceback.</em> This is a report of the active stack frames at a certain point in time during the execution of a program. When using KDE software, one gets the best backtrace from Dr. Konqui, if it pops up after a crash. Otherwise, GDB can be used to get a backtrace.</p>
+<p><strong>Bot</strong>: Software applications that run automated tasks over the Internet, or in IRC channels.</p>
+<p><strong>Bug</strong>: An error, flaw, mistake, failure, or fault in a computer program or system that produces an incorrect or unexpected result, or causes it to behave in unintended ways.</p>
+<p><strong>Bug Squad</strong>: The team that keeps track of incoming bugs in KDE software.</p>
+<p><strong>Bugzilla</strong>: A web-based, general-purpose bugtracker and testing tool, used by the KDE community.</p>
+<p><strong>Build</strong>: Short for software build, which refers either to the process of converting source code files into standalone software artifact(s) that can be run on a computer, or the result of doing so. One of the most important steps of a software build is the compilation process, which converts source code files into executable code.</p>
+<p><strong>Build system</strong>: Software tools that script or automates a wide variety of tasks that software developers do in their day-to-day activities, such as compiling computer source code into binary code, packaging binary code, running tests, deploying code to production systems, and creating documentation and/or release notes.</p>
+<h2>C</h2>
+<p><strong>Channel, IRC channel</strong>: The basic place to ask questions and get help in IRC. It is rude to direct questions to one person rather than asking the help channel in general.</p>
+<p><strong>CMake</strong>: an open-source build system that enables developers to automate compiling, testing and packaging of software based on specifications written in text files.</p>
+<p><strong>Code</strong>: Text written in a computer programming language.</p>
+<p><strong>Commit</strong>: To make a set of tentative changes permanent.</p>
+<p><strong>Compile</strong>: To use a compiler to process source code into executable code. Also a destination for messages logged by programs or the operating system, where administrators or developers can view the messages.</p>
+<p><strong>Console</strong>: A command-line interface (CLI).</p>
+<p><strong>C++</strong>: The coding language in which KDE software is primarily built.</p>
+<h2>D</h2>
+<p><strong>Debugger</strong>: A computer program used to test and find bugs in other programs (the <em>target</em> programs).</p>
+<p><strong>Desktop</strong>: In graphical computing, a desktop environment (DE) commonly refers to a style of graphical user interface (GUI) derived from the desktop metaphor that is seen on most modern personal computers. The most popular modern Linux desktops are the KDE workspaces and GNOME.</p>
+<p><strong>Dependency</strong>: A package you need to install in order for your application to build and run. </p>
+<p><strong>Diff</strong>: A file comparison utility that outputs the differences between two files. Also refers to the output of such a program, which can be called a patch (since the output can be applied with the Unix program <em>patch</em>).</p>
+<p><strong>digiKam</strong>: an image organizer and editor that uses the KDE Platform. It runs on most known desktop environments and window managers, supports all major image file formats, and can organize collections of photographs in directory-based albums, or dynamic albums by date, timeline, or tags. Users can also add captions and ratings to their images, search through them and save searches for later use. With the plugins one can also export albums to 23hq, Facebook, Flickr, Gallery2, Google Earth's KML files, SmugMug, Piwigo, and Simpleviewer, or burn them onto a CD, or create a web gallery.</p>
+<p><strong>Distributed repository</strong>: A peer-to-peer approach to sharing and maintaining code or other collaborative work, in contrast to the client-server approach of centralized systems. Rather than a single, central repository on which clients synchronize, each peer's working copy of the codebase is a separate repository bound by a web of trust.</p>
+<p><strong>Distribution (Distro)</strong>: a selection of packages that make up a working software system, and provided together to the user. Often applied to the GNU/Linux system in particular.</p>
+<p><strong>Docs</strong>: <em>documentation,</em> an essential part of the development process.</p>
+<h2>E</h2>
+<p><strong>EBN</strong>: English Breakfast Network, a site dedicated to the contemplation of tea, KDE API Documentation Validation, User Documentation Validation, Source Code Checking, omphaloskepsis, and star-gazing.</p>
+<p><strong>Eclipse</strong>: A multi-language software development environment comprising an integrated development environment (IDE) and an extensible plug-in system. It is written mostly in Java and can be used to develop applications in Java and, by means of various plug-ins, other programming languages including Ada, C, C++, COBOL, Perl, PHP, Python, R, Ruby (including the Ruby on Rails framework), Scala, Clojure, Groovy, and Scheme.</p>
+<p><strong><span class="Apple-style-span">Environment</span></strong><span class="Apple-style-span">: A set of configuration scripts and bash commands provided as a recommended configuration when building KDE software manually.</span></p>
+<p><strong>e.V.</strong>: <em>Eingetragener Verein</em>, a registered voluntary association in Germany. The KDE e.V. is a registered non-profit organization that represents the KDE Community in legal and financial matters.</p>
+<h2>F</h2>
+<p><strong>Forum</strong>: An online discussion site where people can hold conversations by posting messages. They differ from chat rooms in that messages are archived. A discussion forum is hierarchical or tree-like in structure: a forum can contain a number of subforums, each of which may have several topics. Within a forum's topic, each new discussion started is called a thread, and can be replied to by anyone who wishes to.</p>
+<p><strong>FOSS:</strong> Free and open-source software (F/OSS, FOSS) or free/libre/open-source software (FLOSS, FL/OSS) is software that is liberally licensed to grant users the right to use, study, share, change, and improve its design through access to its source code.</p>
+<p><strong>Framework</strong>: An abstraction in which software providing generic functionality can be selectively changed by user code, thus providing application specific software. It is a collection of software libraries providing a defined application programming interface (API).</p>
+<p><strong>Frameworks</strong>: Beginning with KDE Frameworks 5.0, KDE has a roadmap for the next major releast of KDE's libraries and runtime requirements, with an emphasis is on modularity, dependency clarity, simplification and increasing quality.</p>
+<p><strong>Freenode</strong>: An IRC network used to discuss peer-directed projects.</p>
+<h2>G</h2>
+<p><strong>GDB</strong>: GNU Debugger, usually called just GDB and named gdb as an executable file. This is the standard debugger for the GNU software system.</p>
+<p><strong>Git</strong>: a distributed revision control system with an emphasis on speed and support for multiple branches shared among many developers. Every Git working directory is a full-fledged repository with complete history and full revision tracking capabilities, not dependent on network access or a central server. Free software distributed as GPL v.2.</p>
+<p><strong>Gluon</strong>: a way of creating and playing games, and a means for players and makers of games to get together and talk about their shared interest. You can use the powerful Gluon Creator to build the games, interact with other makers and players of games on the GamingFreedom.org network site, and play them on any of the many supported platforms with one of the Gluon Player applications.</p>
+<p><strong>GPL</strong>: The GNU General Public License is a free, copyleft license for software and other kinds of works.</p>
+<h2>H</h2>
+<h2>I</h2>
+<p><strong>Integrated development environment (IDE)</strong>: a software application that provides comprehensive facilities to computer programmers for software development. An IDE normally consists of a source code editor, a compiler and/or an interpreter, build automation tool, and a debugger. (Also known as <em>integrated design environment</em>, <em>integrated debugging environment</em>, or <em>interactive development environment.</em>) </p>
+<p><strong>Internationalization (i18n)</strong>: The insertion of constructs that make it easy to change the interface and language of a program for different cultures and countries (see also <strong>Localization</strong>).</p>
+<p><strong>Internet Relay Chat (IRC)</strong>: A text-based real-time communication tool. KDE channels are on <em>irc://irc.freenode.net</em>.</p>
+<h2>J</h2>
+<h2>K</h2>
+<p><strong>Kate</strong>: a text editor included in the KDE SC. The name Kate is an acronym for KDE Advanced Text Editor.</p>
+<p><strong><span class="Apple-style-span">KDE PIM</span></strong><span class="Apple-style-span">: KDE Personal Information Management, such as Kontact, KMail, KOrganizer, etc. Also,</span> a work group within the larger KDE SC project that develops the individual Kontact applications in a coordinated way.</p>
+<p><strong>KDE SC</strong>: KDE Software Compilation, the sources for the KDE distribution</p>
+<p><strong>KMail</strong>: KDE email client that supports folders, filtering, viewing HTML mail, and international character sets. It can handle IMAP, IMAP IDLE, dIMAP, POP3, and local mailboxes for incoming mail. It can send mail via SMTP or sendmail.</p>
+<p><strong>Konqueror</strong>: KDE web browser and file manager. Provides file-viewer functionality to a wide variety of things: local files, files on a remote ftp server and files in a disk image.</p>
+<p><strong>Konsole</strong>: a free terminal emulator that is part of KDE SC. The KDE applications Konqueror, Krusader, Kate, Konversation, Dolphin and KDevelop use Konsole to provide embedded terminal functionality.</p>
+<p><strong>Kontact</strong>: KDE's personal information manager and groupware software suite. Supports calendars, contacts, notes, to-do lists, news, and email. Uses KParts to embed the various applications (KMail, KAddressBook, Akregator, etc.) into the container application.</p>
+<p><strong>Kopete</strong>: KDE's multi-protocol, free software instant messaging client.</p>
+<p><strong>Kpackage Kit</strong>: KDE's frontend for PackageKit. PackageKit is an open source suite of software applications designed to provide a consistent and high-level front end for a number of different package management systems.</p>
+<p><strong>Kparts</strong>: component framework for the KDE SC. For example, Konsole is available as a KPart and is used in applications like Konqueror and Kate.</p>
+<p><strong>Konversation</strong>: user-friendly Internet Relay Chat (IRC) client built on the KDE Platform.</p>
+<p><strong>KWin</strong>: the window manager that is an integral part of the KDE SC. It can also be used on its own or with other desktop environments.</p>
+<h2>L</h2>
+<p><strong>LAMP</strong>: acronym for a software bundle or platform consisting of Linux, Apache, MySQL and Perl/PHP/Python.</p>
+<p><strong>Licensing</strong>: legal instruments (usually by way of contract law) that govern the usage or redistribution of software. All software is copyright protected, except material in the public domain.</p>
+<p><strong>Localization (l10n)</strong>: making the changes required to display a program's interface using the language and conventions of a particular country (see also <strong>Internationalization</strong>).</p>
+<h2>M</h2>
+<p><strong>Mailing list</strong>: A collection of names and addresses used by an individual or an organization to send material to multiple recipients. Often extended to include the people subscribed to such a list, so the group of subscribers is referred to as <em>the mailing list</em>, or simply <em>the list</em>.</p>
+<h2>N</h2>
+<p><strong>Nepomuk</strong>: KDE workspaces project that supports annotations, indexing, search, and linking.</p>
+<p><strong>Nick</strong>: a user's screen name or online handle.</p>
+<p><strong>Nightly</strong>: a neutral build that reflects the current state of the source code checked into the version control system by the developers, as built in a neutral environment (that is, in an environment not used for development). A nightly build is a neutral build that takes place automatically, typically each night. Project Neon is such a project for KDE.</p>
+<h2>O</h2>
+<p><strong>Object-oriented programming (OOP)</strong>: a programming paradigm using <em>objects</em> – data structures consisting of data fields and methods together with their interactions – to design applications and computer programs.</p>
+<p><strong>Ocular</strong>: KDE's universal document viewer based on KPDF.</p>
+<p><strong>Operators (IRCops)</strong>: Channel operators have powers over the IRC channel, including moderating or kicking out disruptive users. <em>IRCops or sysops</em> control the IRC server, so they control the channels as well as having control over who can participate. On most systems, ops are identified with a symbol next to their nicks, but Freenode discourages ops from appearing as such unless they have work to do in the channel.</p>
+<h2>P </h2>
+<p><strong>Package, packaging</strong>: There are two types of packages that may be downloaded from the KDE FTP site: binary packages (rpms, debs, and the like) and source packages. Binary packages are compiled (&quot;runnable&quot;) versions of KDE SC that are built to run on a specific OS or distribution. Source packages are the raw code that makes up KDE SC, and need to be compiled before they can be used. KDE software packages available from the distributions may be slightly different from the pure KDE source packages.</p>
+<p><strong>Pastebin</strong>: a web application that allows users to upload snippets of text, usually samples of source code, for public viewing.Use is encouraged in IRC channels, where pasting large amounts of text is considered bad etiquette. KDE's pastebin is hosted at http://paste.kde.org</p>
+<p><strong>Patch</strong>: software designed to fix problems with, or update a computer program or its supporting data. This includes fixing security vulnerabilities and other bugs, and improving the usability or performance.</p>
+<p><strong>Phonon</strong>: multimedia API provided by Qt; the standard abstraction for handling multimedia streams within the KDE SC.</p>
+<p><strong>Plasma Active</strong>: the latest initiative of the Plasma team, bringing KDE functionality to mobile devices.</p>
+<p><strong>Plasma</strong>: KDE SC framework to facilitate the creation of widgets. These cover interactive application launchers, window and task managers, and more.</p>
+<p><strong>Plasmoid</strong>: <strong></strong> widget in the Plasma Desktop environment.</p>
+<p><strong>Post-mortem debugging:</strong> Debugging after a crash report has been filed.</p>
+<h2>Q</h2>
+<p><strong>QtCreator</strong>: An integrated, cross-platform IDE for C++ and JavaScript that is part of the Qt SDK.</p>
+<p><strong>Qt</strong>: Cross-platform application framework that is widely used for developing application software with a graphical user interface (GUI).</p>
+<p><strong>Quassel</strong>: cross-platform, distributed IRC client, meaning that one (or multiple) client(s) can attach to and detach from a central core -- much like the popular combination of screen and a text-based IRC client such as WeeChat, but graphical.</p>
+<h2>R</h2>
+<p><strong>Rekonq</strong>: KDE web browser based on WebKit.</p>
+<p><strong>Reviewboard</strong>: web-based collaborative code review tool, available as free software under the MIT License. An alternative to Rietveld and Gerrit, Review Board integrates with Bazaar, ClearCase, CVS, Git, Mercurial, Perforce, and Subversion.</p>
+<p><strong>Review</strong>: systematic examination (often as peer review) of computer source code. It is intended to find and fix mistakes overlooked in the initial development phase, improving both the overall quality of software and the developers' skills.</p>
+<h2>S</h2>
+<p><strong>Script</strong>: small program written for a command interpreter or another scripting language.</p>
+<p><strong>Server</strong>: computer program running to serve the requests of other programs, the <em>clients</em>.</p>
+<p><strong>Solid</strong>: device integration framework for KDE SC. It functions on similar principles to KDE's multimedia pillar Phonon; rather than managing hardware on its own, instead it makes existing solutions accessible through a single API.</p>
+<p><strong>Source</strong>: Human-readable instructions in a programming language, to be transformed into machine instructions by a compiler, interpreter, assembler or other such system.</p>
+<p><strong>Sprint</strong>: face-to-face meeting of team members who usually work together remotely.</p>
+<p><strong>Suite</strong>: collection of computer programs, usually application software and programming software of related functionality, often sharing a more-or-less common user interface and some ability to smoothly exchange data with each other.</p>
+<p><strong>Summit</strong>: in KDE and FOSS, a large meeting for members who usually work remotely. Team sprints may take place before, during and after a large summit.</p>
+<p><strong>SVN (Subversion)</strong>: A software versioning and a revision control system distributed under a free license, part of the Apache Foundation.</p>
+<h2>T</h2>
+<p><strong>Techbase</strong>: KDE's developer documentation wiki.</p>
+<p><strong>Telepathy</strong>: A realtime communication framework that supports instant messaging, VoIP, and collaboration.</p>
+<p><strong>Terminal</strong>: interface for serial entry and display of textual data. See also <strong>console</strong>.</p>
+<p><strong>Testing</strong>: investigation conducted to provide stakeholders with information about the quality of the product or service under test.</p>
+<p><strong>Text editor: </strong>program used for editing plain text files.</p>
+<p><strong>Toolchain</strong>: set of programming tools that are used to create a product (typically another computer program or system of programs). The tools may be used in a chain, so that the output of each tool becomes the input for the next, but the term is used widely to refer to any set of <em>linked development tools</em>.</p>
+<p><strong>Toolkit</strong>: set of basic building units for graphical user interfaces. KDE SC uses the Qt toolkit.</p>
+<p><strong>Trunk</strong>: the unnamed branch (version) of a file tree under revision control. The trunk (or <em>master</em>) is usually meant to be the base of a project on which development progresses.</p>
+<h2>U</h2>
+<p><strong>Unit tests</strong>: method by which individual units of source code are tested to determine if they are fit for use. A unit is the smallest testable part of an application. In object-oriented programming a unit is usually an interface, such as a class.</p>
+<p><strong>Usability</strong>: ease of use and learnability of a human-made object, in this case, our software.</p>
+<p><strong>Userbase</strong>: KDE's user documentation wiki.</p>
+<h2>V</h2>
+<p><strong>Valgrind</strong>: GPL licensed programming tool for memory debugging, memory leak detection, and profiling. The name valgrind comes from the main entrance to Valhalla in Norse mythology.</p>
+<p><strong>Variable</strong>: symbolic name given to some known or unknown quantity or information, for the purpose of allowing the name to be used independently of the information it represents. A variable name in computer source code is usually associated with a data storage location and thus also its contents, and these may change during the course of program execution.</p>
+<p><strong>Version control</strong>: Revision control, also known as version control and source control (and an aspect of software configuration management or SCM), is the management of changes to documents, programs, and other information stored as computer files. It is most commonly used in software development, where a team of people may change the same files. Changes are usually identified by a number or letter code, termed the &quot;revision number&quot;, &quot;revision level&quot;, or simply &quot;revision&quot;.</p>
+<h2>W</h2>
+<p><strong>Widget</strong>: element of a graphical user interface (GUI) that displays an information arrangement changeable by the user, such as a window or a text box. The defining characteristic of a widget is to provide a single interaction point for the direct manipulation of a given kind of data. In other words, widgets are basic visual building blocks which, combined in an application, hold all the data processed by the application and the available interactions on this data.</p>
+<p><strong>Wiki</strong>: website that allows the creation and editing of any number of interlinked web pages via a web browser using a simplified markup language or a WYSIWYG text editor. Wikis are typically powered by wiki software and are often used collaboratively by multiple users. </p>
+<p><strong>Word processor: </strong>computer application used for the production (including composition, editing, formatting, and possibly printing) of any sort of printable material.</p>
+<h2>X</h2>
+<p> <strong>X, X window system</strong>: computer software system and network protocol that provides a basis for graphical user interfaces (GUIs) and rich input device capability for networked computers. It creates a hardware abstraction layer where software is written to use a generalized set of commands, allowing for device independence and reuse of programs on any computer that implements X. <strong>X.Org</strong> serves as the canonical implementation of X, and is what KDE SC uses.</p>
+<h2>Y</h2>
+<p><strong>Yakuake</strong>: drop-down terminal emulator based on KDE Konsole technology.</p>
+</div>
+</div>
+<h2>Z</h2>
+<p><strong>Z-machine</strong>: virtual machine used by Infocom for its text adventure games. Kwest is a Z-machine interpreter for KDE.</p>
+<p><span id="ch022_useful-links.xhtml"></span></p>
+<h1>Useful links</h1>
+<h3>KDE: http://kde.org/</h3>
+<blockquote>
+<p>The KDE Project home page</p>
+</blockquote>
+<h3>KDE Techbase: http://techbase.kde.org/</h3>
+<blockquote>
+<p>The KDE Development wiki</p>
+</blockquote>
+<h3>KDE Userbase: http://userbase.kde.org/</h3>
+<blockquote>
+<p>The KDE User wiki</p>
+</blockquote>
+<h3>KDE Identity: https://identity.kde.org/</h3>
+<blockquote>
+<p>A single sign-in system used across several KDE websites</p>
+</blockquote>
+<h3>KDE Projects Page: https://projects.kde.org/</h3>
+<blockquote>
+<p>An overview of all projects within git.kde.org that are based on KDE technology</p>
+</blockquote>
+<h3>Qt Tutorials: http://doc.qt.nokia.com/</h3>
+<blockquote>
+<span class="Apple-style-span">An extensive reference to Qt documentation</span>
+</blockquote>
+<h3>Git in 30 minutes: http://blip.tv/scott-chacon/git-in-30-minutes-4064151 <span class="Apple-style-span"> </span></h3>
+<blockquote>
+<p> A useful video that introduces the concepts revolving around git</p>
+</blockquote>
+<h3><strong>The Dot: http://dot.kde.org/  </strong></h3>
+<blockquote>
+<p>The official KDE community news outlet</p>
+</blockquote>
+<p><strong></strong></p>
+<h3><strong>Behind KDE: http://behindkde.org/</strong></h3>
+<blockquote>
+<p>People Behind KDE interviews the people who work on KDE</p>
+</blockquote>
+<h3><strong>Planet KDE: http://planetkde.org/</strong></h3>
+<blockquote>
+<p>Aggregation of KDE community member blogs </p>
+</blockquote>
+<h3>The KDE Release Schedule: <span class="Apple-style-span"><a href="http://techbase.kde.org/Schedules/Release_Schedules_Guide">http://techbase.kde.org/Schedules</a></span></h3>
+<blockquote>
+ 
+</blockquote>
+<p><span id="ch023_about-this-book.xhtml"></span></p>
+<h1>About this book</h1>
+<h3>Acknowledgments </h3>
+<p><span class="Apple-style-span">A few people have really helped us make this book what it is so this book is incomplete without a vote of thanks and a hug of appreciation to them. So , in no specific order:</span></p>
+<ul>
+<li><span class="Apple-style-span">Gunner, from Aspiration (<a href="http://www.aspirationtech.org/" class="uri" title="Aspiration">http://www.aspirationtech.org/</a>), inspired and made us all smarter, as did the other teams at the sprint, namely OpenMRS, OpenStreetMap, and Sahana Eden.</span></li>
+</ul>
+<ul>
+<li><span class="Apple-style-span">Nóirín Plunkett  &amp; Belinda Lopez provided amazing writing and editing resources for all of us.</span></li>
+</ul>
+<ul>
+<li>Adam from Floss Manuals was endlessly helpful, and the Booki team worked with us on needed functionality and bug-fixing as the week and work went along.</li>
+</ul>
+<ul>
+</ul>
+<address>
+</address>
+<ul>
+</ul>
+<p>We also thank the KDE community, who provided for us both an atmosphere in which we could grow and thrive as contributors and human beings, but also for providing wonderful documentation from which we could steal with wild abandon.</p>
+<p>In particular, Ingo Malchow, Lydia Pintscher, and the KDE-Promo team gave us great help in our time-pinch.</p>
+<h3>The Team </h3>
+<p>This book was first created at a three-day book sprint in October, 2011, at the Googleplex in Mountain View, California. Carol Smith of Google Summer of Code fame got us the needed funding to fly Karan, Supreet, and Rohan from India, and to house and feed us while we worked. Rohan turned 21 during the sprint, and the group celebrated with an X-box party!<br />
+ <br />
+Rohan Garg - rohan16garg@gmail.com<br />
+Supreet Pal Singh - supreetpal@gmail.com<br />
+Karan Pratap Singh - wizard.karan@gmail.com<br />
+Valorie Zimmerman - valorie.zimmerman@gmail.com<br />
+Andy Oram - andyo@oreilly.com </p>
+<p><img src="static/IMG_0153_1.JPG" /> </p>
+<p><em>KDE team at the Doc Sprint, October 2011</em> </p>
+</body>
+</html>

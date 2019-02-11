@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="The Contributors" />
+  <title>Airtime</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">Airtime</h1>
+<p class="author">The Contributors</p>
+<p class="date">2012.04.23-18.47</p>
+</header>
+<p><span id="ch001_enter-new-chapter-title.xhtml"></span></p>
+<h1>What is Airtime?</h1>
+<p><em>Updated for Airtime 1.9.5</em><br />
+</p>
+<p><a href="http://airtime.sourcefabric.org/" title="Airtime homepage">Airtime</a> is the open broadcast software for scheduling and remote station management. Web browser access to the station's media archive, multi-file upload and automatic metadata verification features are coupled with a collaborative on-line scheduling calendar and playlist management. The scheduling calendar is managed through an easy-to-use interface and triggers playout with sub-second precision.</p>
+<p><img src="static/Screenshot57-Airtime1.7_admin_interface.png" /></p>
+<p>Airtime has been intended to provide a solution for a wide range of broadcast projects, from community to public and commercial stations. The scalability of Airtime allows implementation in a number of scenarios, ranging from an unmanned broadcast unit accessed remotely through the Internet, to a local network of machines accessing a central Airtime storage system. Airtime supports the playout of files in both the commonly used MP3 format and the open, royalty-free equivalent <a href="http://www.vorbis.com/" title="Ogg Vorbis homepage">Ogg Vorbis</a>.</p>
+<p>Airtime manages the <a href="http://savonet.sourceforge.net/">Liquidsoap</a> stream generator, which is at the heart of the system. Liquidsoap generates streams from files in the Airtime media archive, which is indexed in a <a href="http://www.postgresql.org/">PostgreSQL</a> database. Live shows are automatically recorded with <a href="http://eca.cx/ecasound/" title="Ecasound homepage">Ecasound</a>, using the soundcard line input. Editors and station controllers can use Airtime to build playlists and manage files (upload, add metadata, manage advertisements) inside the station or via the Internet, using a standard web browser such as Mozilla Firefox or Internet Explorer.</p>
+<p>The scheduler in Airtime has a calendar view, organized by months, weeks and days. Here the program editors can schedule playlists and shows for their broadcast station. In some scenarios, the transmitter is situated outside the reach of the broadcaster and all program management has to be maintained through the web interface. Possible reasons for this scenario might be of a pragmatic nature (running many stations from one central office due to limited human resources) or an emergency (running a transmitter in a crisis area without putting staff at risk).</p>
+<h2>Airtime workflow</h2>
+<p>This typical workflow is intended to clarify the difference between the various components that make up a complete Airtime system. <br />
+</p>
+<p>1. There are media files on a server, which include metadata in their tags (title, creator, genre and so on).</p>
+<p>2. There is a PostgreSQL database which contains the location of those media files and their metadata. This means you can search for and select a set of media files according to the specific metadata that you require.<br />
+</p>
+<p>3. There is a Liquidsoap stream generator on the server which can take individual media files and assemble them into a continuous stream. This stream can be sent to a soundcard (e.g. for a broadcast mixer, on the way to an FM or DAB transmitter) or to a streaming server for IP network distribution, such as LAN, local WiFi or the Internet. You can stream to a soundcard and to IP networks with the same server, if you wish.<br />
+</p>
+<p>4. Icecast (<a href="http://www.icecast.org/" class="uri" title="Icecast homepage">http://www.icecast.org/</a>) is the default streaming server, but in theory you could stream from Liquidsoap to any online service, including Shoutcast (<a href="http://www.shoutcast.com" class="uri" title="Shoutcast homepage">http://www.shoutcast.com</a>). If a suitable software interface is not available for your streaming service of choice, you can send audio from Liquidsoap to a separate encoding or streaming machine via a soundcard.<br />
+</p>
+<p>5. Airtime manages all of these components, and provides an easy to use web interface to the system. It enables your station staff to:</p>
+<p>a) upload media files to the storage server</p>
+<p>b) automatically import the file metadata into the PostgreSQL database</p>
+<p>c) edit the metadata for the files, if required</p>
+<p>d) create and edit playlists of media files (playlists are also saved in the database)</p>
+<p>e) schedule shows (which can contain playlists, or be live) for specific dates and times on a calendar</p>
+<p>f) record live shows from the soundcard input with Ecasound, upload them to the storage server and import them into the database automatically</p>
+<p>g) manage presenter access to the schedule calendar</p>
+<p>h) see what is about to be played by Liquidsoap in the 'Now Playing' view</p>
+<h2>Example system</h2>
+<p>Combining Airtime, the Liquidsoap stream generator, the PostgreSQL database and file storage, you can supply a broadcast station with all the functionality needed for automation.</p>
+<p>In the diagram below, the media files are stored on a separate machine which also includes a PostgreSQL database, accessible through the local network. Liquidsoap outputs streams to both the transmitter and a streaming media server. The machine running Airtime is behind a firewall because it is connected both to the local network, and to the Internet for remote access. This enables Airtime to offer password-protected access to the media database and scheduling from both inside and outside the studio building.</p>
+<p><img src="static/Screenshot3-Airtime-Diagram.png" /></p>
+<p><br />
+</p>
+<p><span id="ch002_rights-and-royalties.xhtml"></span></p>
+<h1>Rights and royalties</h1>
+<p>If you're new to broadcasting, or have not streamed your station online before, reading the following brief explanation of compensation rules for musicians may save you a great deal of trouble later.</p>
+<p>Independent music radio on the Internet is not what it might have been, due to royalty demands from SoundExchange in the USA, and similar organisations in other territories. These organisations are usually membership societies or government-sanctioned national authorities which are intended to collect money from broadcasters to compensate musicians for the use of their work. The royalty collection societies require payment before you can stream just about any music released on a commercial CD to the general public — whether you make any money out of streaming, or not. It's not so much the percentage of revenue demanded, but that there is usually an annual minimum fee to pay, which hurts small stations disproportionately.</p>
+<p>For example, in the UK, the MCPS-PRS Limited Online Music Licence covers non-commercial music streaming by groups and individuals, as long as their gross revenue is less then £12,500 per year. The cost is on a sliding scale, up to £1,120 plus 20% tax per year for delivering up to 450,000 individual streams or serving 25,000 files; after that, you have to apply for a full MCPS-PRS Online Music Licence. That doesn't sound too bad at first, but 25,000 files per year works out at less than four downloads per hour for a round-the-clock website. This licence only covers publishing rights, not recording rights, so you have to negotiate an additional licence from Phonographic Performance Limited to actually play records or CDs.</p>
+<p>Typically, you have to provide full statistical details to the royalty society of all music streamed or downloaded from your site. Even if your radio station is mostly speech, there are many limitations in the small print of these music licences. For instance, you can't use music for promotional purposes, and you can't stream a whole opera, without negotiating separate licences. Weirdly, you are not allowed to play a piece of music in a 'derogatory context' to the writer or performers; no drummer jokes allowed, then.</p>
+<p>However, the biggest pitfall is that these MCPS-PRS licences only cover listeners in the UK. So if your Internet station picked up a significant number of listeners in other countries, you would have to pay for similar music licences in those countries as well. It's no wonder that many not-for-profit radio stations have disappeared from the virtual airwaves over the last few years, since not having the right licences could leave the operator liable to legal action. If you want to go down the paid licence route, and you can afford it, check out the <a href="http://www.prsformusic.com" class="uri" title="MCPS-PRS Alliance">http://www.prsformusic.com</a> and <a href="http://www.ppluk.com" class="uri">http://www.ppluk.com</a> websites for UK licence details. In the USA, the <a href="http://www.soundexchange.com" class="uri" title="SoundExchange">http://www.soundexchange.com</a> website currently quotes a $500 minimum annual fee for non-commercial webcasters, plus a usage fee above a certain number of listener hours, for the right to stream music from its member record labels.</p>
+<p>Free content streaming offers the chance that DIY Internet radio could rise again. Since royalty collection societies like MCPS-PRS and SoundExchange can only represent the interests of their own members, it follows that if you are not a member, you can stream your own self-produced content without paying for their licences. If you state somewhere on your website that the stream is of your own copyrighted material, and is made available to the public under a specific licence, then no-one should misunderstand your intentions. You might be able to persuade other people to allow you to stream their content too, as long as they do not have a conflicting legal obligation, such as having previously joined one of the many royalty collection societies around the world. You can ask for permission to stream when website visitors upload their own music files to you via a HTML form, much as the likes of MySpace do. Or you can collect files licensed under an appropriate Creative Commons (<a href="http://www.creativecommons.org" class="uri" title="Creative Commons">http://www.creativecommons.org</a>) or other free content licence.</p>
+<p>Explicit permission to stream on your particular server is always going to be the ideal, so think about your own terms and conditions before you accept files from third parties for streaming. How, for example, would you know if someone uploaded a file to your online radio station that unknown to you, had been ripped from a commercially released CD? That's the kind of thing that could get you in trouble with the licensing authorities and copyright holders.</p>
+<p><span id="ch004_getting-started.xhtml"></span></p>
+<h1>Getting started</h1>
+<p>If the Airtime server has a web browser installed, you can access the administration interface by opening the address:</p>
+<pre><code>http://localhost/login</code></pre>
+<p>If you have set up Airtime so that it can be accessed from other computers, you would use a domain name instead. For example:</p>
+<pre><code>http://airtime.example.com/login</code></pre>
+<p>You can log in for the first time with the username <em>admin</em> and password <em>admin</em>.</p>
+<p><img src="static/Screenshot14-Airtime_login.png" /></p>
+<p>After you have logged in as <em>admin</em> for the first time, a pop-up window will ask if you wish to send technical support data about your server to Sourcefabric. These details can be viewed by clicking on the <strong>Show me what I am sending</strong> link, which expands a scrolling window. The data helps Sourcefabric engineers resolve any problems with your Airtime installation, as well as count the number of installations worldwide. Sourcefabric has a privacy policy regarding data collection, which you can read by clicking the link to <a href="http://www.sourcefabric.org/en/about/policy/" class="uri" title="Sourcefabric privacy policy">http://www.sourcefabric.org/en/about/policy/</a> further down. After checking the <strong>Send support feedback</strong> and <strong>privacy policy</strong> boxes, you can submit the data by clicking the <strong>Yes, help Airtime</strong> button.<br />
+</p>
+<p><img src="static/Screenshot167-Register_Airtime.png" /> </p>
+<p>This window also offers the opportunity to <strong>Promote my station on Sourcefabric.org</strong> (on the page <a href="http://sourcefabric.org/en/products/airtime_whosusing" class="uri" title="Promote your station on sourcefabric.org">http://sourcefabric.org/en/products/airtime_whosusing</a>) by checking the box. Fill in the form which will appear with some details about your station. The contact details are only requested for verification purposes, and will not be made available to the public. Click the <strong>Browse</strong> button to select a <strong>Station Logo</strong> image from the file manager on your computer.<br />
+</p>
+<p><img src="static/Screenshot169-Promote_my_station.png" /><br />
+</p>
+<p>After the pop-up window is closed, you should now see the <strong>Master Panel</strong>, which is present at the top of every page of the Airtime interface. On the left hand side, the Master Panel displays the details of the <strong>Previous</strong> file played out, the current file playing (with an orange progress bar and time elapsed/time remaining), and the details of the <strong>Next</strong> file due to play. It also displays the name and scheduled time of the current show, with a blue progress bar.</p>
+<p>Beneath this side of the Master Panel is the main navigation menu, with sub-menus labelled <strong>Now Playing</strong>, <strong>Add Media</strong>, <strong>Playlist Builder</strong>, <strong>Calendar</strong>, <strong>Configure</strong> and <strong>Help</strong>. We'll be looking at the contents of these menus in the following chapters of this book.</p>
+<p><img src="static/Screenshot131-Master_panel_left.png" /></p>
+<p>On the right hand side, the Master Panel features an <strong>On Air</strong> indicator, which turns from gray to red whenever a file is being played out. There is also a clock indicating the <strong>Station time</strong> and time zone. Over on the far right side, an <strong>About</strong> link opens a pop-up window with some information about the version of Airtime installed. The name of the user currently logged in is displayed, and below this there is the link to <strong>Logout</strong>. </p>
+<p><img src="static/Screenshot132-Master_panel_right.png" /></p>
+<h2>Checking an Icecast server</h2>
+<p>If you have enabled the Icecast streaming option when you installed Airtime, you can check that the Icecast server is running by opening port 8000 of the server in your web browser. For example, on the server itself, you can use:</p>
+<pre><code>http://localhost:8000/</code></pre>
+<p>You should see the Icecast status page, with details of the connection that Airtime has made to Icecast. If you have only just installed Airtime, there won't be any media playing out yet.</p>
+<p><img src="static/Screenshot13-Icecast_status_page.png" /></p>
+<p><span id="ch005_manage-users.xhtml"></span></p>
+<h1>Manage users</h1>
+<p>You should set a new administrator password immediately, using the <strong>Manage Users</strong> entry on the <strong>Configure</strong> menu.</p>
+<p><img src="static/Screenshot133-Manage_users.png" /></p>
+<p>On the left hand side of the <strong>Manage Users</strong> page, click on <em>admin</em> in the user list. The details for this user will appear in the box on the right hand side. At the moment, the <em>admin</em> user only has a <strong>Username</strong> and a <strong>Password</strong>.<br />
+</p>
+<p><img src="static/Screenshot134-Admin_user_1.png" /></p>
+<p>Enter a secure password (as long and as varied as is practical) into the <strong>Password</strong> field. Keeping this password secure is essential for the smooth running of your station, because it enables access to all scheduling and management features. You can also enter other details for your user account on this page, including your full name and contact details. Then click the <strong>Submit</strong> button.<br />
+</p>
+<p><img src="static/Screenshot135-Update_admin.png" /></p>
+<p>To add further user accounts to the system, one for each of your station staff that need access to Airtime, click the <strong>New User</strong> button. Enter a user name, password and contact details, and then select the <strong>User Type</strong> from the drop down menu, which can be <em>Admin</em>, <em>Program Manager</em>, <em>DJ</em>, or <em>Guest</em>. The difference between these user types is:<br />
+</p>
+<ul>
+<li>An <em>Admin</em> (station manager) has read and write access to all the features of Airtime. This role should be reserved for trusted staff members only. If you give the <em>Admin</em> role to too many people, there could be arguments!</li>
+<li>A <em>Program Manager</em> has write access to the entire broadcast schedule, but cannot see the <strong>Configure</strong> menu and therefore cannot adjust Airtime preferences, manage user accounts or media folder settings.<br />
+</li>
+<li>A <em>DJ</em> (presenter) only has write access to features related to the specific shows assigned to them by an <em>Admin</em> or <em>Program Manager</em>. The <em>DJ</em> can read data for other shows in the <strong>Calendar</strong>, but not write to them. This read access to other shows helps staff plan their own shows, for instance avoiding the scenario where two DJs play the same music by coincidence. Like a <em>Program Manager</em>, a <em>DJ</em> cannot see or use the <strong>Configure</strong> menu when they log in.<br />
+</li>
+<li>A <em>Guest</em> can log in to read the forthcoming schedule or playlists, but has no write permission for any feature. <em>Guest</em> users cannot see the <strong>Add Media</strong>, <strong>Playlist Builder</strong> or <strong>Configure</strong> menus when they log in. The group of guest users might include the station accountant, or the show assistants.</li>
+</ul>
+<p>New users that you add will be shown in the list on the left-hand side of the <strong>Manage Users</strong> page. If you have a large number of users on the system, you can use the search tool above the list (which has a magnifying glass icon) to identify specific user accounts. Click on the chevrons in the list headings to sort the search results by <strong>Username</strong>, <strong>Firstname</strong>, <strong>Lastname</strong> or <strong>User Type</strong>.</p>
+<p>To edit a user account, click on that user's row in the list, change the user's details in the box on the right hand side, and then click the <strong>Submit</strong> button. To remove a user account, click the small <strong>x</strong> icon to the right side of its row in the list.</p>
+<p><span id="ch006_preferences.xhtml"></span></p>
+<h1>Preferences</h1>
+<p>On the <strong>Configure</strong> menu, click <strong>Preferences</strong> to set your <strong>Station Name</strong> and the <strong>Default Fade</strong> time that you would like to set for automated fades. The <strong>Stream Label</strong> option allows you to set the metadata that will be sent with direct Icecast streams; <em>Artist</em> and <em>Title</em>, <em>Show</em>, <em>Artist</em> and <em>Title</em>, or <em>Station name</em> and <em>Show name</em>.</p>
+<p>You can also enable live, read-only access to the Airtime schedule calendar for your station's public website with the <strong>Allow Remote Websites to Access Schedule Info?</strong> option, if you wish. (There is more about this feature in the <em>Advanced Configuration</em> section of this book). Then click the <strong>Submit</strong> button.</p>
+<p><img src="static/Screenshot181-Station_name.png" /></p>
+<h2>SoundCloud settings<br />
+</h2>
+<p>If your station has a SoundCloud account (on <a href="http://soundcloud.com/" title="SoundCloud">http://soundcloud.com</a>), you may want to upload live show recordings to this service automatically. Click the small black triangle next to <strong>SoundCloud Settings</strong> to show this option. Apart from checking the <strong>Upload Recorded Shows To SoundCloud</strong> box, you will need to enter your SoundCloud login email address and password, and the metadata that SoundCloud will use to categorize your show recordings. You can also set a default genre, track type and copyright license here, including public domain, all rights reserved, or one of the <em>Creative Commons</em> licenses (see <a href="http://creativecommons.org/" title="Creative Commons">http://creativecommons.org</a>).</p>
+<p><img src="static/Screenshot182-Soundcloud_settings.png" /></p>
+<p>Please note that like most online distribution services, SoundCloud terms of service require you to have copyright in, or permission for Internet distribution from the copyright holder of, any media that you upload.<br />
+</p>
+<p><span id="ch007_manage-media-folders.xhtml"></span></p>
+<h1>Manage media folders</h1>
+<p>Airtime has a media storage archive, which by default is in the <em>/srv/airtime/stor/</em> folder on your server. In <strong>Manage media folders</strong> on the <strong>Configure</strong> menu, you can change this default location, or add extra folders to be watched by Airtime.</p>
+<p><img src="static/Screenshot136-Manage_folders.png" /></p>
+<p>Any new media files you add to the <em>/srv/airtime/stor/organize</em> folder or a watched folder will be automatically imported into the Airtime database. The <em>organize</em> or watched folders can be exported to computers on the local network, to enable dragging and dropping of media uploads using the file managers on the desktop computers at your studio.<br />
+</p>
+<p><img src="static/Screenshot194-Drop_files_into_organize.png" /></p>
+<p>A file dropped into the <em>organize</em> folder will appear to vanish as the metadata is read, and the file is moved to the correct location in the storage hierarchy, according to its creator and title. This could be under a filesystem path such as <em>/srv/airtime/stor/imported/Beck/Midnite Vultures/</em> in the screenshot below.<br />
+</p>
+<p><img src="static/Screenshot195-Midnite_Vultures-File_Browser.png" /></p>
+<p>Files in watched folders are not moved into the main Airtime storage folder, but any files deleted from a watched folder will be automatically removed from the Airtime database.</p>
+<h2>Changing the storage folder<br />
+</h2>
+<p>To change Airtime's storage folder, click the upper <strong>choose folder</strong> button. In the pop-up window that opens, double-click on the folder names to select the folder that you require. Then click the <strong>Open</strong> button to open that folder.<br />
+</p>
+<p><img src="static/Screenshot137-Choose_folder.png" /> </p>
+<p>Back on the <strong>Manage Media Folders</strong> page, click the <strong>Set</strong> button to change the storage folder. Airtime will ask if you are sure about this action. Click the <strong>OK</strong> button to confirm your choice.<br />
+</p>
+<p><img src="static/Screenshot138-Storage_warning.png" /></p>
+<p>The <strong>Manage Media Folders</strong> page will now display the new storage location.</p>
+<p><img src="static/Screenshot139-Storage_updated.png" /></p>
+<p>The storage folder cannot be changed while a file import is in progress. If you attempt to do this, an error message will be displayed.</p>
+<p><img src="static/Screenshot179-Please_wait_for_import.png" /><br />
+</p>
+<h2>Watching a folder</h2>
+<p>Under <strong>Choose a folder to watch</strong>, click the lower <strong>choose folder</strong> button, open the folder you require, and then click the <strong>Add</strong> button. You can add as many watched folders as you require. To remove a watched folder, click the small <strong>x</strong> on the right side of its row in the list.</p>
+<p><img src="static/Screenshot140-Remove_watched.png" /></p>
+<p>Again, you will be asked to confirm if you are sure about the action.</p>
+<p><img src="static/Screenshot141-Confirm_unwatch.png" /></p>
+<p>Edits to your stored and watched media files are automatically noticed by Airtime. If you edit any file in the archive, such as trimming the duration of a track, Airtime will automatically adjust the playlist and show lengths for that particular file.</p>
+<p>The directory structure and file names in the storage archive are human-readable. This means you can find files for download and editing using a file browser on your server, as well as through the <strong>Search</strong> tab in the <strong>Playlist Builder</strong>.</p>
+<p><span id="ch008_support-settings.xhtml"></span></p>
+<h1>Support settings</h1>
+<p>If you did not already register Airtime when you installed it, as shown in the <em>Getting Started</em> chapter, you can click <strong>Support Settings</strong> on the <strong>Configure</strong> menu to display Airtime's automated feedback options. Check the <strong>Send support feedback</strong> box in order to post technical details about your Airtime installation to Sourcefabric, over the Internet. These details help Sourcefabric diagnose any problem that you might be having with your broadcast automation system.</p>
+<p>You may also wish to send details of your station to Sourcefabric, so that your station has the opportunity to be promoted with other Airtime users on the <a href="http://www.sourcefabric.org/">http://www.sourcefabric.org</a> website. This feature also helps Sourcefabric target its support services to the countries where they are needed most. Check the box <strong>Promote my station on Sourcefabric.org</strong> and fill in the details of your station. You can upload a station logo file from your desktop computer by clicking the <strong>Browse</strong> button.<br />
+</p>
+<p><img src="static/Screenshot183-Support_settings.png" /><br />
+</p>
+<p>Click on the <strong>Show me what I am sending</strong> link to expand a box which displays the technical data being returned to Sourcefabric. The data is collected according to the Sourcefabric privacy policy (<a href="http://www.sourcefabric.org/en/about/policy/" class="uri" title="Sourcefabric privacy policy">http://www.sourcefabric.org/en/about/policy/</a>) which you are required to agree to before you can submit the information.</p>
+<p><img src="static/Screenshot130-What_sending.png" /></p>
+<p><span id="ch009_now-playing.xhtml"></span></p>
+<h1>Now playing</h1>
+<p>This page provides two views of the files your station is playing, which can be switched using the <strong>Day View</strong> and <strong>Now View</strong> buttons in the top right corner of the administration interface. If you've only just installed Airtime, there won't be any files shown in either view yet.<br />
+</p>
+<p>The default is <strong>Now View</strong>, in which files that have already been played are removed from the top of the list automatically. Show titles have a blue background, while individual files have a light gray background. The row for the currently playing file is displayed with an orange background. Any underbooked shows (shows with insufficient content to fill the time allowed) are displayed with a row indicating the length of the gap in seconds. These <strong>Gap until show end</strong> rows have a red background.</p>
+<p><img src="static/Screenshot58-Airtime1.7-now_playing.png" /></p>
+<p>On the right hand side of the <strong>Now View</strong>, the <strong>Playlist</strong> and <strong>Show</strong> that each file is a part of is displayed. (Creating playlists and shows is covered in later chapters of this book). If a show is overbooked, which means the total playout length is longer than the time allowed for the show, a red and white warning icon is shown in the <strong>Status</strong> column. This warning icon indicates that the file in this row will be cut off when the show ends.<br />
+</p>
+<p><img src="static/Screenshot59-Airtime1.7-Now_view.png" /></p>
+<p>A live show that is set for recording is displayed with a dark gray background, to indicate that it does not contain any playlists.<br />
+</p>
+<p><img src="static/Screenshot106-Live_show_recording.png" /><br />
+</p>
+<p>The <strong>Day View</strong> is similar to the <strong>Now View</strong>, except that files which have already played out are displayed at the top of the window. You can select which day of the schedule you wish to view by clicking on the date box, just to the left of the <strong>Day View</strong> button, and selecting a day from the pop-up calendar.</p>
+<p><img src="static/Screenshot60-Airtime1.7-Day_view.png" /><br />
+</p>
+<p><span id="ch010_add-media.xhtml"></span></p>
+<h1>Add media</h1>
+<p>If you do not have direct access to the Airtime server, you can add files to the Airtime storage and database using the <strong>Add media</strong> page of the administration interface. This page includes an upload queue for files which supports drag and drop from your computer's file manager, if you are using the recommended <em>Firefox 3.6</em> web browser.</p>
+<p>The <strong>Add Media</strong> page is not visible to <em>Guest</em> users.<br />
+</p>
+<p><img src="static/Screenshot142-Drag_drop.png" /></p>
+<p>If your web browser does not support drag and drop, you can use the <strong>Add files</strong> button, which has a white plus sign in a green circle icon, to open a file selection window on your computer.</p>
+<p><img src="static/Screenshot143-File_upload.png" width="595" height="500" /><br />
+</p>
+<p>After you have added all the files that you require to the upload queue, click the <strong>Start Upload</strong> button, which has a green arrow icon.</p>
+<p><img src="static/Screenshot144-Start_upload.png" /></p>
+<p>The row of the file currently being uploaded is highlighted in pale green. At the bottom of the upload queue, a progress bar and percentage indicates how much of the upload has taken place so far.<br />
+</p>
+<p><img src="static/Screenshot145-Upload_status.png" /></p>
+<p>Once it has been uploaded successfully, each file row displays a white check mark in a green circle icon.</p>
+<p><img src="static/Screenshot146-Upload_done.png" /> </p>
+<p>Your files are now imported into the Airtime storage and database, ready to be included in your broadcast playlist.<br />
+</p>
+<p><span id="ch011_playlist-builder.xhtml"></span></p>
+<h1>Playlist builder</h1>
+<p>This page of the Airtime interface enables you to search the media archive, sort and display the search results by the criteria that you choose, and drag and drop search results into an open playlist. You can also re-arrange the currently open playlist by dragging and dropping.</p>
+<p>The <strong>Playlist Builder</strong> page is not visible to <em>Guest</em> users.<br />
+</p>
+<h2>The Search tab</h2>
+<p>On the left hand side of the Playlist Builder page, the <strong>Search</strong> tab lists both the media and the playlists in the Airtime storage archive, with ten entries shown per page by default. Click on the <strong>Show entries</strong> drop-down menu in the top right corner to select the display of 10, 25, 50 or 100 entries per page, according to your preference.</p>
+<p>Click the column headings <strong>Title</strong>, <strong>Creator</strong>, <strong>Album</strong>, <strong>Track</strong>, <strong>Length</strong> or <strong>Type</strong> to sort the entries. In the <strong>Type</strong> column, audio files are represented by a loudspeaker icon, while playlists are represented with a document icon. At the bottom of the window, click the <strong>First</strong>, <strong>Previous</strong>, <strong>Next</strong>, <strong>Last</strong> or individual page number buttons to browse the media archive.<br />
+</p>
+<p><img src="static/Screenshot31-Search_window.png" /></p>
+<p>Type a search term into the box in the upper left corner, with the magnifying glass icon. You can search by Title, Creator, Album, Track number, or Length. For example, to search for all files between seven and eight minutes long, enter <em>00:07</em> into the search box. Like an Internet search engine, the filtered entries shown are refined as you type - there is no need to press the Enter key on your keyboard.</p>
+<p><img src="static/Screenshot32-Search_results_1.png" /></p>
+<p>Clicking on a file row in the <strong>Search</strong> tab opens a pop-up menu which enables you to <strong>Edit Metadata</strong> for that file, <strong>Download</strong> it to your local computer or mobile device for audition or editing, or <strong>Delete</strong> it from the Airtime storage server. The <strong>Delete</strong> option should be used with caution, because this action cannot be undone. For this reason, only <em>admin</em> users are allowed to delete files.<br />
+</p>
+<p><img src="static/Screenshot105-Download_file.png" /><br />
+</p>
+<h2>Creating a new playlist</h2>
+<p>Once you have found the media that you require using the <strong>Search</strong> tab, you can create a new playlist on the right hand side of the <strong>Playlist Builder</strong> page. Click the <strong>New</strong> button to begin.<br />
+</p>
+<p><img src="static/Screenshot147-No_open_playlist.png" /></p>
+<p>Enter a <strong>Title</strong> and <strong>Description</strong> for the playlist, then click the <strong>Submit</strong> button. Setting good quality metadata here will help you find the playlist using the <strong>Search</strong> tab later, so you should be as descriptive as possible. <br />
+</p>
+<p><img src="static/Screenshot148-New_playlist.png" /></p>
+<p>Next, drag and drop files from the Search tab on the left into the new playlist on the right.</p>
+<p><img src="static/Screenshot149-Drag_to_playlist.png" /></p>
+<p>After dragging files into the new playlist, the total playlist time is displayed in the top right corner. The duration of an individual file is shown in each row of the playlist in a white font, and beneath this figure the time since the beginning of the playlist is displayed in a smaller light gray font.</p>
+<p>To audition a playlist file in your web browser, click the white triangle <strong>play/pause</strong> button on the left side of each row. Click the small white <strong>x</strong> icon on the right hand side of each row to remove a file from the playlist. You can also drag and drop files to re-order them.<br />
+</p>
+<p><img src="static/Screenshot150-Drag_rearrange.png" /></p>
+<p>Click on the pencil icon to the right of the name of the playlist to edit it, or click on <strong>View/edit description</strong> to open a box for entering playlist metadata.<br />
+</p>
+<p><img src="static/Screenshot151-Playlist_description.png" /></p>
+<p>Click the playlist <strong>Fade</strong> button (two horizontal white arrows crossing in a gray rectangle), to the right of the <strong>New</strong> and <strong>Delete</strong> buttons, to open a beige bar in which you can set the <strong>Fade in</strong> and <strong>Fade out</strong> times for this playlist.</p>
+<p><img src="static/Screenshot152-Playlist_fade.png" /></p>
+<p>Click any one of the smaller <strong>Fade</strong> buttons between file rows to open another beige bar which enables you to set fade in and fade out times between two adjacent files in the playlist. The fade buttons for adjacent files change to an orange background when you click them.<br />
+</p>
+<p><img src="static/Screenshot153-Playlist_crossfade.png" /></p>
+<p>Each file in the playlist also has a button with two square brackets, which enables you to set cue in and cue out times for that particular file. Like the fade button, it changes to an orange background when you click it. The length of the file in the playlist is updated automatically, but the <strong>Original Length</strong> of the file is also displayed for your reference.<br />
+</p>
+<p><img src="static/Screenshot154-Playlist_cue.png" /><br />
+</p>
+<p>When your playlist is complete, click the <strong>Done Editing</strong> button in the top right corner. If you want to edit the playlist contents or the playlist metadata later, you can find it by <strong>Title</strong>, <strong>Creator</strong> or <strong>Length</strong> using the <strong>Search</strong> tab. Click on the playlist in the search results list, and select <strong>Edit</strong> from the pop-up context menu. A playlist that is already open for editing will show the option <strong>Close</strong> in the context menu instead. You can also <strong>Delete</strong> a playlist from this context menu.</p>
+<p><img src="static/Screenshot109-Edit_playlist.png" /><br />
+</p>
+<p><span id="ch012_calendar.xhtml"></span></p>
+<h1>Calendar</h1>
+<p>The Calendar page of the Airtime administration interface has three views: <strong>Day</strong>, <strong>Week</strong> and <strong>Month</strong>, which can be switched using the gray buttons in the top right corner. By default, the <strong>Month</strong> view is shown, with today's date highlighted by a pale green background.<br />
+</p>
+<p><img src="static/Screenshot155-Calendar_month.png" /></p>
+<p>In the top left corner of the page, you can go back or forward through the <strong>Calendar</strong> by clicking on the buttons which have a small gray triangle in a white circle. Click the <strong>Today</strong> button to jump to today's date in the current view. In the <strong>Day</strong> or <strong>Week</strong> views, there is also a drop-down menu which allows you to set the resolution displayed for the calendar, ranging from one minute per row to sixty minutes per row.<br />
+</p>
+<p><img src="static/Screenshot156-Calendar_day.png" /></p>
+<h2>Adding a show</h2>
+<p>Only Admins and Program Managers can use this feature. To add a new show to the Calendar, click the <strong>+ Show</strong> button in the top left corner of the page, or click on any empty row in the Calendar itself. Either of these actions opens the <strong>Add this show</strong> box, which has five sections, arranged vertically: <strong>What</strong>, <strong>When</strong>, <strong>Record &amp; Rebroadcast, Who</strong>, and <strong>Style</strong>. Click the small black triangle to the left of the section name if you wish to minimize or maximize it.</p>
+<p>In the <strong>What</strong> box, enter the name, public website URL, genre and description for the show that you are creating.<br />
+</p>
+<p><img src="static/Screenshot157-Show_what.png" /></p>
+<p>Next, in the <strong>When</strong> section, if you clicked on a date in the <strong>Calendar</strong> this should already be entered in the <strong>Date/Time Start</strong> field. To set another date for the show, click on the date in the <strong>Date/Time Start</strong> field and select the alternative date that you require for the show from the small pop-up calendar which will appear. Click on the adjacent time field to set the start time for the show, with the pop-up <strong>Hour</strong> and <strong>Minute</strong> box. The minute values in the pop-up time boxes are rounded to the nearest five minutes, but you can adjust the times manually by clicking into the fields and typing. Repeat the process to set the <strong>Date/Time End</strong> fields. The <strong>Duration</strong> of the show will be displayed automatically, based on the start and end times you have set.<br />
+</p>
+<p><img src="static/Screenshot158-Show_when.png" /></p>
+<p>To schedule a regular show, check the <strong>Repeats?</strong> box and select either <strong>Weekly</strong>, <strong>Bi-weekly</strong> or <strong>Monthly</strong> from the <strong>Repeat Type</strong> drop-down menu that will appear. Then check the boxes for the days of the week that you want to schedule the regular show on. Set the <strong>Date End</strong> for the regular show to finish, or check the <strong>No End</strong> box to schedule the show indefinitely.<br />
+</p>
+<p><img src="static/Screenshot159-Show_repeats.png" /></p>
+<p>In the <strong>Record &amp; Rebroadcast</strong> section, the <strong>Record?</strong> box enables automatic recording of the soundcard line input, if your Airtime server has one, at the time of the show. Shows set for live recording cannot also contain playlists. The default audio format for live recordings is MP3, and the recording files are saved in the storage directory that was set when Airtime was installed.<br />
+</p>
+<p>If you wish the recording to be played out at a later time, check the <strong>Rebroadcast?</strong> box, and then select up to ten date and time slots in the <strong>Repeat Days</strong> box.</p>
+<p><img src="static/Screenshot160-Show_record.png" /></p>
+<p>Shows set for recording have a small red dot icon in the calendar, while rebroadcast shows have a white loop icon.<br />
+</p>
+<p><img src="static/Screenshot92-Record_and_rebroadcast_icons.png" /></p>
+<p>In the <strong>Who</strong> section, type the first few letters of the name of the show's DJ (presenter) in the <strong>Search Users</strong> field to select a name from the database, or check one of the <strong>DJs</strong> boxes in the vertical list below. This association of a DJ name with a particular show enables that DJ to add playout media to the show, so it is important to get the DJ's name right.<br />
+</p>
+<p><img src="static/Screenshot161-Show_users.png" /></p>
+<p>Finally, select a <strong>Background Colour</strong> and <strong>Text Colour</strong> from the <strong>Style</strong> section, so that the new show can be easily identified in the <strong>Calendar</strong>. Click the colored circle icon in the lower right corner to close this pop-up window.<br />
+</p>
+<p><img src="static/Screenshot162-Show_colours.png" /> </p>
+<p>Click the <strong>Add this show</strong> button at the top or bottom of the box. The new show will now be displayed in the <strong>Calendar</strong>, with a regular slot if you have chosen to schedule one. </p>
+<h2>Editing a show</h2>
+<p>Show configuration and metadata can be changed at any time until broadcast of that show commences. Click on the show in the Calendar, and select <strong>Edit Show</strong> from the pop-up context menu. This opens the <strong>Update Show</strong> box, which is almost exactly the same as the <strong>Add this Show</strong> box. Click the <strong>Update Show</strong> button at the top or bottom of the box when you are done.</p>
+<p>Alternatively, individual shows can be clicked on and dragged to new days and times in the calendar. However, Airtime will not allow you to drag a future show into the past, or drag a show onto a day where this would cause show times to overlap.  <br />
+</p>
+<p>In the <strong>Day</strong> and <strong>Week</strong> views, show length can be adjusted by clicking on the lower edge of the show box, and dragging the edge of the box upwards or downwards. The new show length is calculated automatically. Airtime will not allow you to drag a show end time beyond the start of the next show. <br />
+</p>
+<h2>Adding content to a show</h2>
+<p>To add content to a show, click on it in the Calendar, and select <strong>Add/Remove Content</strong> from the pop-up context menu.</p>
+<p><img src="static/Screenshot100-Add_remove_content.png" /></p>
+<p>This action opens the <strong>Schedule Media</strong> pop-up window. Just like when using the <strong>Playlist Builder</strong> to find files, you can search for playlists and drag them into the <strong>Items In This Show</strong> box.<br />
+</p>
+<p><img src="static/Screenshot163-Schedule_media.png" /></p>
+<p>The orange progress bar underneath the <strong>Items in this Show</strong> box updates automatically to show how much time remains from the allocated show duration. If you add too much media relative to the length of time allocated to the show, Airtime will display a warning, and playout will be cut when the show ends. Click the small white triangle on the left of each row to see details of the playlist, or click the white <strong>x</strong> icon on the right side to remove it from the show.<br />
+</p>
+<p><img src="static/Screenshot164-Show_items.png" /> </p>
+<p>When your show has all the required content, click the <strong>OK</strong> button in the bottom right corner to close the window. You should make sure that you click <strong>OK</strong> before the show's scheduled start time. Back in the <strong>Calendar</strong>, click on the show and select <strong>Show content</strong> from the pop-up context menu to view a list of content now included in the show.</p>
+<p><img src="static/Screenshot99-Show_context_menu.png" /> </p>
+<p>Click on any row in the <strong>Show Contents</strong> window to download the individual file for audition, or further editing. Once you're done, click the <strong>OK</strong> button in the bottom right corner, or the white <strong>x</strong> icon in the top right corner, to close the<strong></strong> window.</p>
+<p><img src="static/Screenshot55-Show-content.png" /><br />
+</p>
+<h2>Removing content from a show</h2>
+<p>To remove an individual playlist from a show, click on the show in the <strong>Calendar</strong>, and select <strong>Add/Remove Content</strong> from the pop-up menu. In the <strong>Schedule Media</strong> window which opens, use the white <strong>x</strong> icon to remove the playlist from the show content. To remove all playlists from a show, click on the show in the <strong>Calendar</strong>, and select <strong>Remove All Content</strong> from the pop-up menu.</p>
+<p><img src="static/Screenshot101-Remove_all_content.png" /> </p>
+<h2>Deleting a forthcoming show<br />
+</h2>
+<p>To delete one instance of a forthcoming show, click on the show in the <strong>Calendar</strong>, and select <strong>Delete This Instance</strong> from the pop-up menu. If you wish to delete all future instances of this particular show, select <strong>Delete This Instance and All Following</strong> from the pop-up menu.</p>
+<p>You cannot delete or remove content from shows that have already played out. These shows have only one option on the pop-up menu, which is <strong>Show Content</strong>.</p>
+<h2>Canceling playout and recording</h2>
+<p>If you wish to cancel the recording of a live show and delete the recorded file from the storage server, click on the show in the <strong>Calendar</strong> and select <strong>Cancel Current Show</strong> from the pop-up menu. In the same way, it is also possible to immediately cancel playout of a playlist based or pre-recorded show while it is running.<br />
+</p>
+<p><img src="static/Screenshot115-Cancel_current_show.png" /></p>
+<p>Airtime will ask you if you are sure about this action, as it cannot be undone.</p>
+<p><img src="static/Screenshot116-Erase_recording.png" /><br />
+</p>
+<p><span id="ch013_help.xhtml"></span></p>
+<h1>Help</h1>
+<p>The Help menu in Airtime offers a 'quick start' guide for new users.</p>
+<p><img src="static/Screenshot117-Help_page.png" /></p>
+<p>You can visit the Airtime online support forum, and sign up for the mailing list, at <a href="http://forum.sourcefabric.org/index.php/f/14/" class="uri" title="Airtime support forum">http://forum.sourcefabric.org/index.php/f/14/</a></p>
+<p>This forum is mirrored by the mailing list, so posts on the forum appear on the mailing list and vice versa. You can therefore also post a message there by emailing <a href="mailto:airtime-support@lists.sourcefabric.org">airtime-support@lists.sourcefabric.org</a></p>
+<p>To subscribe to forum updates via mail, please register or login to the forum by clicking the appropriate link. Then click the 'Subscribe' button at the top of each forum page.</p>
+<h2>Bug reporting</h2>
+<p>Airtime needs your input to improve. If you think you've found a bug, please visit <a href="http://dev.sourcefabric.org/" class="uri" title="Sourcefabric development site">http://dev.sourcefabric.org/</a> and sign in, using the same login and password that you registered for the Airtime forum. Create a bug report by selecting <strong>Create Issue</strong>, then <strong>Airtime</strong>, and then <strong>Bug</strong>. That way, the Airtime team can keep track of your problem and notify you when it has been fixed. You can also suggest improvements and new features for Airtime on that site.</p>
+<h2>Contact</h2>
+<p>Finally, when all other avenues have been exhausted, email us directly at <a href="mailto:contact@sourcefabric.org">contact@sourcefabric.org</a> and we'll try to help!</p>
+<h2>Other help</h2>
+<p>The UNESCO wiki <em>Community Radio - A user's guide to the technology</em>: <a href="http://cr-userguide.web4all.in/" class="uri" title="Community Radio guide">http://cr-userguide.web4all.in/</a> features a very comprehensive guide to setting up a community radio station. This guide is aimed at people thinking about setting up a radio station in India, but includes lots of practical advice that would be useful in any country.</p>
+<p><span id="ch015_preparing-the-server.xhtml"></span></p>
+<h1>Preparing the server</h1>
+<p>The following instructions assume that you have root access (<em>sudo</em> on Ubuntu) to a GNU/Linux server, and are familiar with basic command line tasks. Experienced system administrators may prefer to skip to the <em>Expert install</em> chapter in the appendix of this book.<br />
+</p>
+<p>The recommended Airtime server platform is Ubuntu 10.04 'Lucid Lynx' LTS. Debian 6.0 'squeeze' is also a good option. The server should have at least a 1GHz processor and 512MB of RAM, preferably 1GB RAM or more. If you are using a desktop environment and web browser directly on the server you should install at least 2GB RAM, to avoid swapping to disk.</p>
+<p>The Airtime installation does not use much disk space, but you should allow plenty of storage capacity for the media archive. A hot-swap RAID array is recommended for the media archive, in case of disk failure. You should also consider a UPS or other battery powered system to offer some protection against short-term power failures.</p>
+<p>The Airtime web administration interface is intended to work with any browser, on any desktop or mobile platform. The recommended web browser is Mozilla Firefox 3.6.</p>
+<h2>Soundcards</h2>
+<p>If you intend that your Airtime server will have a direct audio output to a broadcast transmitter or a separate stream encoder, your server machine must have a soundcard supported by an ALSA driver. You will also need a soundcard to make use of Airtime's live show recording feature. Almost all standard soundcards have ALSA drivers built into the Linux kernel, which do not need to be installed separately. If in doubt about driver support for your soundcard, check the ALSA soundcard matrix at: <a href="http://www.alsa-project.org/main/index.php/Matrix:Main" class="uri" title="ALSA soundcard matrix">http://www.alsa-project.org/main/index.php/Matrix:Main</a></p>
+<p>Some server motherboards do not have a default ALSA device, because a USB soundcard is prevented from getting index number 0 by the GNU/Linux distro's configuration. This setting may be in a file such as <em>/etc/modprobe.d/alsa-base.conf</em> in Ubuntu. Comment out these lines to fix the problem:<br />
+</p>
+<pre><code># Prevent abnormal drivers from grabbing index 0
+
+# options snd-usb-audio index=-2
+# options snd-usb-us122l index=-2
+# options snd-usb-usx2y index=-2
+# options snd-usb-caiaq index=-2</code></pre>
+<p>When using a USB soundcard with ALSA, some how-to documents advocate setting the <em>nrpacks=1</em> option, but this is not recommended for Airtime because it can increase CPU load significantly.<br />
+</p>
+<p>If your Airtime machine will only be used to stream directly to an Icecast or Shoutcast streaming media server, you do not require a soundcard to be installed on the Airtime server side. This option is suitable for Airtime installations at your ISP's datacenter, remote from any transmitter. However, you will not be able to take advantage of Airtime's live show recording feature.<br />
+</p>
+<h2>Disable desktop and other sounds</h2>
+<p>If you are installing Airtime on a desktop computer, make sure you disable or remove any programs that could send unintended audio to a soundcard you are using for broadcast output. This includes alert sounds which play when the computer is ready for use, or when a user logs in. On Ubuntu, these sounds are configured using <em>System -&gt; Preferences -&gt; Sound</em> on the main desktop menu. This configuration dialog only works when the PulseAudio sound server is installed.<br />
+</p>
+<p>You may prefer to remove all unwanted sound files from the computer, in case they could be played unintentionally via the soundcard. For example, on Ubuntu you may wish to remove the <strong>ubuntu-sounds</strong> package, with the following command:</p>
+<pre><code>$ sudo apt-get purge ubuntu-sounds</code></pre>
+<h2>Remove PulseAudio, if installed</h2>
+<p>The PulseAudio sound server is not compatible with Airtime soundcard output, but is installed by default on Ubuntu. To remove PulseAudio from an Ubuntu machine, type the following command:</p>
+<pre><code>$ sudo apt-get purge pulseaudio</code></pre>
+<p>Removing the <em>pulseaudio</em> package on a desktop Ubuntu machine may force the removal of the <em>ubuntu-desktop</em> metapackage. However, this metapackage is only installed on the system for managing upgrades; removing it does not remove the GNOME desktop.</p>
+<p>After removing PulseAudio, if your Airtime machine has a desktop, you can install a mixer applet which can control the ALSA soundcard driver directly, such as <em>gnome-alsamixer</em>:</p>
+<pre><code>$ sudo apt-get install gnome-alsamixer</code></pre>
+<p>On a server with a soundcard but without a desktop, you can control sound input and output levels using the command line program <em>alsamixer</em>:<br />
+</p>
+<p><img src="static/Screenshot7-Alsamixer.png" /></p>
+<p>This program should already be installed on an Ubuntu or Debian machine with a soundcard. If not, you can install it with the command:</p>
+<pre><code>$ sudo apt-get install alsa-utils</code></pre>
+<h2>Remove webmin, if installed</h2>
+<p>The <em>webmin</em> control panel (<a href="http://www.webmin.com" class="uri" title="Webmin homepage">http://www.webmin.com</a>) has been known to remove Apache and PHP packages on Debian and Ubuntu systems, which can cause the Airtime package to be removed in turn. This problem is easily reversed by re-installation of the affected packages, but it has the potential to disrupt your broadcast playout from Airtime. Webmin is not likely to be installed on your server unless your system administrator has installed it manually. This is because <em>webmin</em> was removed from official Debian and Ubuntu package repositories some years ago.</p>
+<h2>RabbitMQ hostname</h2>
+<p>RabbitMQ requires a fixed and resolvable hostname (see<a href="http://www.rabbitmq.com/ec2.html#issues-hostname" class="uri" title="RabbitMQ hostname issue">http://www.rabbitmq.com/ec2.html#issues-hostname</a>), which is normal for a server. For a desktop or laptop machine where the hostname changes frequently or is not resolvable, this issue may prevent RabbitMQ from starting. When using a desktop or laptop computer with a dynamic IP address, such as an address obtained from a wireless network, the <em>rabbitmq-server</em> daemon must not start up before the <em>NetworkManager</em> service.<br />
+</p>
+<h2>RabbitMQ on Debian<br />
+</h2>
+<p>In Debian 6.0 (Squeeze) the <em>rabbitmq-server</em> daemon does not start automatically after a reboot. This should be fixed before installing Airtime, to prevent problems at playout time. If the <em>rabbitmq-server</em> package was installed before the last reboot, you will need to run:</p>
+<pre><code># invoke-rc.d rabbitmq-server start</code></pre>
+<p>as the root user before the installation of Airtime. If it is not already installed, run the following command as root:</p>
+<pre><code># apt-get install rabbitmq-server</code></pre>
+<p>After a fresh installation, rabbitmq-server will start automatically, so there is no need to run the <em>invoke-rc.d</em> command mentioned above.<br />
+</p>
+<p>In either case, you should then edit lines 13 and 14 of the file <em>/etc/init.d/rabbitmq-server</em> (as root) to show:</p>
+<pre><code># Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6</code></pre>
+<p>and then run the command (as root):</p>
+<pre><code># update-rc.d rabbitmq-server defaults</code></pre>
+<p>This should make sure that <em>rabbitmq-server</em> starts after the next reboot.</p>
+<h2>Proceed to installation<br />
+</h2>
+<p>Now your server should be ready for Airtime to be installed. Depending on your requirements, you should now proceed to either chapter <em>Easy install</em>, the chapter <em>Manual installation</em> or the chapter <em>Automated installation</em>.<br />
+</p>
+<p><span id="ch016_easy-install.xhtml"></span></p>
+<h1>Easy install</h1>
+<p>The <em>airtime-easy-install</em> package sets up a typical Airtime configuration without prompting you for any settings. You can then install the latest Airtime package from the Sourcefabric repository with a few clicks.</p>
+<p>After that, the Airtime administration interface can be accessed at the default domain name of the computer (such as http://airtime.example.com). If you have not yet set a fully qualified domain name for the computer, you can use a URL such as http://ubuntu/ on the localhost for testing purposes. Whichever domain name you use, the Icecast administration interface will be at port 8000 of the same URL (such as http://airtime.example.com:8000).</p>
+<p>You can download the <em>airtime-easy-install</em> package from <a href="http://apt.sourcefabric.org/misc/airtime-easy-install.deb" class="uri" title="Airtime easy install package">http://apt.sourcefabric.org/misc/airtime-easy-install.deb</a> which is a link to the latest version of the package. You should stay connected to the Internet throughout the installation, as a number of dependency packages have to be installed from online repositories.<br />
+</p>
+<p>On Ubuntu 10.04 'lucid' or Debian 6.0 'squeeze', you can run the <em>airtime-easy-install</em> package from your browser using the program <strong>GDebi</strong>.</p>
+<p><img src="static/Screenshot221-Opening%20airtime-easy-install.deb.png" /> </p>
+<p>If you have chosen to save the package to your computer instead, in the desktop file manager, right-click on the <em>airtime-easy-install</em> package and select <strong>Open with GDebi Package Installer</strong>:</p>
+<p><img src="static/Screenshot222-Open_deb_in_Nautilus.png" /> </p>
+<p>Or for an Ubuntu lucid or Debian squeeze server without a desktop, you can use <span>gdebi</span> on the command line:</p>
+<pre><code>$ sudo apt-get update
+$ sudo gdebi airtime-easy-install.deb</code></pre>
+<p>If gdebi is not installed, you can run the command:</p>
+<pre><code>$ sudo apt-get install gdebi</code></pre>
+<p>Later versions of Ubuntu have replaced GDebi with the program <strong>software-center</strong>. On a desktop installation, right-click on the package and select <strong>Open with Ubuntu Software Center</strong>. This program can also be run from the command line, for example: <br />
+</p>
+<pre><code>$ software-center airtime-easy-install.deb</code></pre>
+<p>Any of the methods above should resolve package dependencies automatically.</p>
+<h2>Install Airtime<br />
+</h2>
+<p>Once the installation of <em>airtime-easy-install</em> has completed, you can install the latest Airtime package on a desktop system using your usual package manager, such as <strong>Ubuntu Software Center</strong>, or <strong>Synaptic</strong> on Debian.</p>
+<p><img src="static/Screenshot193-Ubuntu_software_center.png" /> </p>
+<p>On a server, you can use the commands:</p>
+<pre><code>$ sudo apt-get update
+$ sudo apt-get install airtime</code></pre>
+<h2>Configure for production</h2>
+<p>To convert a test installation into a production installation, you can run the command:<br />
+</p>
+<pre><code>$ sudo dpkg-reconfigure airtime</code></pre>
+<p>The <strong>dkpg-reconfigure</strong> command will run through the configuration steps shown in the <em>Automated installation</em> chapter, so that you can set the correct hostnames and passwords for your production Airtime server.<br />
+</p>
+<p><span id="ch017_manual-installation.xhtml"></span></p>
+<h1>Manual installation</h1>
+<p>You do not normally need to install Airtime manually, unless you are testing a development version of the software. Versions of Airtime recommended for production use are available for download and upgrade via <em>secure apt</em>, as shown in the <em>Automated installation</em> chapter.<br />
+</p>
+<h2>Updating python-virtualenv</h2>
+<p>Airtime requires a version of <strong>python-virtualenv</strong> later than 1.4.8, but Ubuntu Lucid includes the older version 1.4.5 of this package. Before performing a manual installation on Lucid, you should update <strong>python-virtualenv</strong> using the backported package available from the <a href="http://apt.sourcefabric.org">http://apt.sourcefabric.org/</a> repository. This step is not necessary when performing an automated installation, in which dependencies are resolved automatically.<br />
+</p>
+<h2>Full install</h2>
+<p>The <strong>airtime-full-install</strong> script has been tested on Ubuntu GNU/Linux servers and is designed to configure your server for you, using typical default settings.</p>
+<p>1. In the server terminal or console, download Airtime from <a href="https://sourceforge.net/projects/airtime/files/" class="uri">https://sourceforge.net/projects/airtime/files/</a> with <strong>wget</strong>. For example, to download version 1.9.5, you could use the command:</p>
+<pre><code>$ wget http://downloads.sourceforge.net/project/airtime/1.9.5/airtime-1.9.5.tar.gz</code></pre>
+<p>2. Unzip the downloaded file in your home directory. This action will create a subdirectory called <em>airtime-1.9.5</em>:</p>
+<pre><code>$ sudo tar -xvzf airtime-1.9.5.tar.gz -C ~/</code></pre>
+<p>3. Run the <strong>airtime-full-install</strong> script:<br />
+</p>
+<pre><code>$ sudo ~/airtime-1.9.5/install_full/ubuntu/airtime-full-install</code></pre>
+<p>The installation script will indicate which files are being installed on your system, and the directories they are being unpacked into. Finally, it will run the <strong>airtime-check-system</strong> script to confirm that your server environment is set up correctly.</p>
+<pre><code> *** Verifying your system environment ***
+CPU                            = Dual Core AMD Opteron(tm) Processor 170
+Total RAM                      = 6128244 kB
+Free RAM                       = 167276 kB
+OS                             = Ubuntu 10.04.3 LTS x86-64
+AIRTIME_CONFIG_FILES           = OK
+POSTGRESQL_DATABASE            = OK
+PYTHON_KOMBU_VERSION           = 1.2.0
+PYTHON_POSTER_VERSION          = 0.8.1
+PYTHON_MUTAGEN_VERSION         = 1.20
+PYTHON_PYINOTIFY_VERSION       = 0.9.2
+RABBITMQ_SERVER                = OK
+AIRTIME_VERSION_URL            = http://localhost:80/api/version/api_key/%%api_key%%
+APACHE_CONFIGURED              = YES
+AIRTIME_VERSION                = 1.9.5
+PLAYOUT_ENGINE_PROCESS_ID      = 24021
+PLAYOUT_ENGINE_RUNNING_SECONDS = 7
+LIQUIDSOAP_PROCESS_ID          = 24025
+LIQUIDSOAP_RUNNING_SECONDS     = 7
+MEDIA_MONITOR_PROCESS_ID       = 24078
+MEDIA_MONITOR_RUNNING_SECONDS  = 7
+SHOW_RECORDER_PROCESS_ID       = 24055
+SHOW_RECORDER_RUNNING_SECONDS  = 7
+ICECAST_PROCESS_ID             = 23649
+
+  -- System setup looks OK!
+
+********************** Install Complete ***********************</code></pre>
+<p>You are now ready to proceed to the <em>Configuration</em> chapter.</p>
+<h2>Minimal install<br />
+</h2>
+<p>The alternative <strong>airtime-install</strong> script does not attempt to configure your server, an option which you may find more suitable if you have special requirements.</p>
+<p>1. In the server terminal or console, install the list of dependencies. For example, on Ubuntu 10.04 (Lucid Lynx) LTS you could enter the command:</p>
+<pre><code>$ sudo apt-get install apache2 curl ecasound gzip libao-ocaml \
+libapache2-mod-php5 libcamomile-ocaml-dev libesd0 libmad-ocaml \
+libmp3lame-dev libportaudio2 libsamplerate0 libsoundtouch-ocaml \
+libtaglib-ocaml libvorbis-ocaml-dev monit mpg123 odbc-postgresql \
+patch php-pear php5-curl php5-gd php5-pgsql python2.6 \
+python-virtualenv rabbitmq-server sudo tar unzip</code></pre>
+<p>The other dependency to install is <em>phing</em> (note that you must use the version number shown):</p>
+<pre><code>$ sudo pear channel-discover pear.phing.info
+$ sudo pear install phing/phing-2.4.2</code></pre>
+<p>2. Check that the Apache web server modules that Airtime requires are enabled:<br />
+</p>
+<pre><code>$ sudo a2enmod php5 rewrite</code></pre>
+<p>The server should respond:</p>
+<pre><code>Module php5 already enabled
+Module rewrite already enabled</code></pre>
+<p>3. Create a directory to contain the Airtime web interface:</p>
+<pre><code>$ sudo mkdir -p /usr/share/airtime/public</code></pre>
+<p>4. Next, create the Airtime virtual host configuration file for Apache:</p>
+<pre><code>$ sudo nano /etc/apache2/sites-available/airtime</code></pre>
+<p>and enter the information below, substituting your server's hostname for <em>airtime.example.com</em> and your system administrator's email address for <em>admin@example.com</em>. Make sure you set the <em>DocumentRoot</em> and <em>Directory</em> paths correctly. This should match the <em>public</em> directory that the installer will unpack the web interface into, which by default is the <em>/usr/share/airtime/public/</em> directory.</p>
+<pre><code>&lt;VirtualHost *:80&gt;
+   ServerName airtime.example.com
+   ServerAdmin admin@example.com
+   DocumentRoot /usr/share/airtime/public
+   php_admin_value upload_tmp_dir /tmp
+
+  &lt;Directory /usr/share/airtime/public&gt;
+      DirectoryIndex index.php
+      AllowOverride all
+      Order allow,deny
+      Allow from all
+  &lt;/Directory&gt;
+&lt;/VirtualHost&gt;</code></pre>
+<p>Press Ctrl+O to save the file, then Ctrl+X to exit the <strong>nano</strong> editor.</p>
+<p>5. Create the PHP configuration file <em>/etc/airtime/airtime.ini</em> in nano:</p>
+<pre><code>$ sudo nano /etc/airtime/airtime.ini</code></pre>
+<p>with the following contents:<br />
+</p>
+<pre><code>[PHP]
+memory_limit = 512M
+magic_quotes_gpc = Off
+file_uploads = On
+upload_tmp_dir = /tmp</code></pre>
+<p>Save and exit nano, then link this file to the system's PHP configuration with the command:</p>
+<pre><code>$ sudo ln -s /etc/airtime/airtime.ini /etc/php5/conf.d/airtime.ini</code></pre>
+<p>6. Enable the new configuration by entering the command:</p>
+<pre><code>$ sudo a2ensite airtime</code></pre>
+<p>The server should respond:</p>
+<pre><code>Enabling site airtime.
+Run &#39;/etc/init.d/apache2 reload&#39; to activate new configuration!</code></pre>
+<p>You may also need to disable the default site configuration, which may otherwise interfere with your Airtime installation:</p>
+<pre><code>$ sudo a2dissite default</code></pre>
+<p>As suggested by the output of the command above, reload the web server configuration.</p>
+<pre><code>$ sudo /etc/init.d/apache2 reload</code></pre>
+<p>The server should respond:</p>
+<pre><code> * Reloading web server config apache2</code></pre>
+<p>7. Download Airtime from <a href="https://sourceforge.net/projects/airtime/files/" class="uri">https://sourceforge.net/projects/airtime/files/</a> with <strong>wget</strong>. For example, to download version 1.9.5, you could use the command:</p>
+<pre><code>$ wget http://downloads.sourceforge.net/project/airtime/1.9.5/airtime-1.9.5.tar.gz</code></pre>
+<p>8. Unzip the downloaded file in your home directory. This action will create a subdirectory called <em>airtime-1.9.5</em>:</p>
+<pre><code>$ sudo tar -xvzf airtime-1.9.5.tar.gz -C ~/</code></pre>
+<p>9. Monit is a utility which Airtime uses to make sure that the system runs smoothly. Enable it by opening the <em>/etc/default/monit</em> file in the <strong>nano</strong> editor: <br />
+</p>
+<div class="code panel">
+<div class="codeContent panelContent">
+<pre class="code-java"><code>$ sudo nano /etc/default/monit</code></pre>
+</div>
+</div>
+<p>Find the line that begins with <em>startup</em> and change the value to 1:</p>
+<div class="code panel">
+<div class="codeContent panelContent">
+<pre class="code-java"><code>startup=1</code></pre>
+</div>
+</div>
+<p>Save the file with Ctrl+O and close nano with Ctrl+X. Now copy the Monit configuration from the Airtime install directory to the <em>/etc/monit/conf.d/</em> directory:<br />
+</p>
+<div class="code panel">
+<div class="codeContent panelContent">
+<pre class="code-java"><code>$ sudo cp ~/airtime-1.9.5/python_apps/monit/airtime-monit.cfg /etc/monit/conf.d/</code></pre>
+</div>
+</div>
+<p>Open the <em>/etc/monit/monitrc</em> file in <strong>nano</strong>:</p>
+<pre><code>$ sudo nano /etc/monit/monitrc</code></pre>
+<p>At the end of the file, add the line:</p>
+<pre><code>include /etc/monit/conf.d/*</code></pre>
+<p>Save the file with Ctrl+O and close nano with Ctrl+X. Then start Monit with:</p>
+<pre><code>$ sudo invoke-rc.d monit start</code></pre>
+<p>More information about monit is available in the chapter <em>Using Monit</em>.<a href="http://mmonit.com/monit/%20" title="Monit website"></a></p>
+<p>10. On Debian squeeze, make sure the rabbitmq-server daemon has started:</p>
+<pre><code>$ sudo invoke-rc.d rabbitmq-server start</code></pre>
+<p>11. Finally, run the <strong>airtime-install</strong> script: <br />
+</p>
+<pre><code>$ sudo ~/airtime-1.9.5/install_minimal/airtime-install </code></pre>
+<p>Once the <strong>airtime-check-system</strong> script confirms that the install has been successful, you are now ready to proceed to the <em>Configuration</em> chapter.</p>
+<h2>Install script options</h2>
+<p>By default, the <strong>airtime-install</strong> script preserves any existing configuration or installation that it finds on the server. However, it is also possible to dictate the behaviour of the script with a command line option, as follows:<br />
+</p>
+<pre><code>--help|-h            Displays usage information.
+--overwrite|-o       Overwrite any existing config files.
+--preserve|-p        Keep any existing config files.
+--no-db|-n           Turn off database install.
+--reinstall|-r       Force a fresh install of this Airtime version</code></pre>
+<h2>Manual uninstall</h2>
+<p>To manually uninstall Airtime from the server, run the <strong>airtime-uninstall</strong> script from the original installation directory, for example:<br />
+</p>
+<pre><code>$ sudo ~/airtime-1.9.5/install_minimal/airtime-uninstall</code></pre>
+<p>Optionally, you can also delete the Airtime storage archive and configuration folders, if you have backups and are not going to need the data on this particular server again. The <strong>rm</strong> command should be used with caution, because it has no undo feature.<br />
+</p>
+<pre><code>$ sudo rm -r /srv/airtime
+$ sudo rm -r /etc/airtime</code></pre>
+<p><span id="ch018_automated-installation.xhtml"></span></p>
+<h1>Automated installation</h1>
+<p>This installation method is intended for computers running Ubuntu or Debian GNU/Linux, and is the recommended method for production Airtime systems. If you have previously performed a manual installation of Airtime on the server, you should run the <em>airtime-uninstall</em> script to remove it before setting up the server for automated installation.<br />
+</p>
+<h2>Set up repositories for Ubuntu</h2>
+<p>When installing on an Ubuntu server, a few of the packages that Airtime relies on are in the Ubuntu <em>universe</em> or <em>multiverse</em> repositories. If either of these repositories is disabled, you can enable them in the <em>/etc/apt/sources.list</em> file, by opening the <em>nano</em> editor in your server's console. The <em>nano</em> editor should be installed by default, but if not, you can install it with the command:</p>
+<pre><code>$ sudo apt-get install nano  </code></pre>
+<p>Then open the <em>sources.list</em> file with the command:</p>
+<pre><code>$ sudo nano /etc/apt/sources.list</code></pre>
+<p>For an Ubuntu Lucid server, find the lines which begin <em>deb</em> and end with <em>lucid universe</em> or <em>lucid-updates universe</em>, adding <em>multiverse</em> to the end of these lines, if it is not there already. The <em>multiverse</em> repository is required for the <em>libmp3lame0</em> library, which is an MP3 encoder.<br />
+</p>
+<p><img src="static/Screenshot75-Sources_list.png" /></p>
+<p>The exact repository mirror URLs in your <em>sources.list</em> file will differ from the above screenshot, depending on your location.</p>
+<p>The Sourcefabric repository contains packages for Airtime, and any other packages which Airtime requires. To add the Sourcefabric repository to an Ubuntu Lucid server, scroll to the end of the <em>sources.list</em> file and add the following line:<br />
+</p>
+<pre><code>deb http://apt.sourcefabric.org/ lucid main</code></pre>
+<p>For Ubuntu Maverick, Natty or Oneiric, substitute <em>maverick, natty</em> or <em>oneiric</em> in place of <em>lucid</em> in the line above.</p>
+<p><img src="static/Screenshot61-Sources_list.png" /></p>
+<p>Press Ctrl+O (the Ctrl key and the letter O together) to save the file, then Ctrl+X to exit the nano editor.</p>
+<h2>Set up repositories for Debian</h2>
+<p>On a Debian squeeze server, you can edit the <em>/etc/apt/sources.list</em> file as root with the command:</p>
+<pre><code># nano /etc/apt/sources.list</code></pre>
+<p>Packages for MP3 encoding are not included in official Debian repositories. You can obtain the necessary <em>libmp3lame0</em> and <em>libmp3lame-dev</em> packages by adding the following repository to the end of the file:</p>
+<pre><code>deb http://www.debian-multimedia.org squeeze main non-free</code></pre>
+<p>To add the Sourcefabric repository to a Debian squeeze server, add the following line to the end of the file:<br />
+</p>
+<pre><code>deb http://apt.sourcefabric.org/ squeeze main</code></pre>
+<p>Press Ctrl+O (the Ctrl key and the letter O together) to save the file, then Ctrl+X to exit the <em>nano</em> editor.</p>
+<h2>Install the Sourcefabric signing key </h2>
+<p>Reload the system's package list with:</p>
+<pre><code>$ sudo apt-get update</code></pre>
+<p>You will see an error message about a missing public key.</p>
+<p><img src="static/Screenshot62-No_pubkey.png" /></p>
+<p>To fix this system error, you need to install the <em>sourcefabric-keyring</em> package, which contains the package signing key. This encryption key is a security measure which helps ensure that the Airtime packages you will be downloading in future have not been tampered with by a third party. You can install the key with the command:</p>
+<pre><code>$ sudo apt-get install sourcefabric-keyring</code></pre>
+<p>When prompted, press the <em>y</em> key on your keyboard to install the <em>sourcefabric-keyring</em> package without verification. If you wish to verify the authenticity of the package signing key, please contact Sourcefabric for assistance.</p>
+<p><img src="static/Screenshot63-Sourcefabric_keyring.png" /></p>
+<p>If you are running Debian squeeze, you should also install the <em>debian-multimedia-keyring</em> package:</p>
+<pre><code>$ sudo apt-get install debian-multimedia-keyring </code></pre>
+<p>Update your computer's software sources again, to confirm that you are now using a trusted software repository:</p>
+<pre><code>$ sudo apt-get update</code></pre>
+<p>You should no longer see the error message about the missing public key.</p>
+<h2>Install the database management system<br />
+</h2>
+<p>Airtime uses a PostgreSQL database to keep track of media assets and associated metadata in its storage server. Depending on the scale of your Airtime installation and the hardware available, you may wish to install PostgreSQL on a separate server. If you only have one server, you can install the <em>postgresql</em> package on the same machine as Airtime with the command:</p>
+<pre><code>$ sudo apt-get install postgresql</code></pre>
+<h2>Install a streaming server</h2>
+<p>Optionally, you may wish to stream directly from Airtime to an <strong>Icecast</strong> media distribution server, without requiring a soundcard or mixer in the broadcast chain. This option is particularly suitable for fully automated stations, in which all shows are played out using Airtime. You can install the <em>icecast2</em> package on your server with the command:</p>
+<pre><code>$ sudo apt-get install icecast2</code></pre>
+<p>In some scenarios, you may wish to stream from Airtime to a remote Icecast server, for example when Icecast is installed on a server in a datacenter with greater bandwidth available than an Airtime server located at your broadcast studio has. This separation may become necessary if your stream becomes popular, because each additional listener which connects to the Icecast stream uses additional bandwidth. In this case, you do not need to install the <em>icecast2</em> package on the Airtime server.</p>
+<p>Before running Icecast for the first time, you should edit the file <em>/etc/icecast2/icecast.xml</em> to change the default <em>&lt;source-password&gt;</em>, <em>&lt;relay-password&gt;</em> and <em>&lt;admin-password&gt;</em> values from '<em>hackme</em>' to something more secure.</p>
+<pre><code>$ sudo nano /etc/icecast2/icecast.xml</code></pre>
+<p><img src="static/Screenshot77-Icecast_config.png" /></p>
+<p>You should also set the value of <em>&lt;hostname&gt;</em> to the domain name of the Icecast server, for example:<br />
+</p>
+<pre><code>&lt;hostname&gt;icecast.example.com&lt;/hostname&gt;</code></pre>
+<p>Save and close the <em>icecast.xml</em> file with Ctrl+O and Ctrl+X. Then set the Icecast server to start automatically when the server boots in the <em>/etc/default/icecast2</em> file:</p>
+<pre><code>$ sudo nano /etc/default/icecast2</code></pre>
+<p>by setting the value of <em>ENABLE</em> to <em>true</em> on the last line of that file:</p>
+<pre><code>ENABLE=true</code></pre>
+<p>Save and close this file with Ctrl+O and Ctrl+X, then start Icecast:</p>
+<pre><code>$ sudo service icecast2 start</code></pre>
+<p>The server should respond:</p>
+<pre><code>Starting icecast2: Starting icecast2
+Detaching from the console
+icecast2.</code></pre>
+<h2>Install Airtime<br />
+</h2>
+<p>You can now install the Airtime package with:<br />
+</p>
+<pre><code>$ sudo apt-get install airtime</code></pre>
+<p>This command will install all of the Airtime components, plus any other packages that Airtime requires in order to run.</p>
+<pre><code>$ sudo apt-get install airtime
+Reading package lists... Done
+Building dependency tree      
+Reading state information... Done
+Suggested packages:
+  airtime-audio-samples lame mpg123
+The following NEW packages will be installed
+  airtime
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 0B/15.6MB of archives.
+After this operation, 73.1MB of additional disk space will be used.
+Preconfiguring packages ...
+Selecting previously deselected package airtime.
+(Reading database ... 400129 files and directories currently installed.)
+Unpacking airtime (from .../airtime_1.9.4-10_amd64.deb) ...</code></pre>
+<p>Once all the packages have been downloaded and installed, you will be asked a few questions about the configuration of the Airtime system. You can accept the default settings by pressing the <strong>Enter</strong> key, or use the <strong>Tab</strong> key to change your selection.</p>
+<p>Firstly, you will asked if you wish to create an <strong>Apache</strong> virtual host web server configuration automatically.</p>
+<p><img src="static/Screenshot65-Create_vhost.png" /></p>
+<p>If so, you will need to enter the domain name that your station staff will use to access Airtime. For a test server that will only be accessed directly from the same machine, you can use the default setting of <em>localhost</em> here.</p>
+<p><img src="static/Screenshot66-Set_domain.png" /></p>
+<p>Next, set the contact email address of the server administrator, which is good practice in case of any server problems. For a test server, using an address at the <em>localhost</em> is acceptable.</p>
+<p><img src="static/Screenshot67-Admin_email.png" /></p>
+<p>Debian and Ubuntu servers are set up with a default Apache configuration, which might block station staff from accessing Airtime. If you wish, this default configuration can be removed automatically for you.</p>
+<p><img src="static/Screenshot68-Remove_default.png" /></p>
+<p>If you are setting up Airtime to stream directly to Icecast without using a soundcard in between, you can set the hostname and passwords for the Icecast server during the Airtime installation.</p>
+<p><img src="static/Screenshot184-Configure_Icecast.png" /></p>
+<p>First, set the hostname of the Icecast server. If you have Icecast installed on the same machine as Airtime, you can use <em>localhost</em> here.</p>
+<p><img src="static/Screenshot185-Icecast_hostname.png" /><br />
+</p>
+<p>The security of your streaming server depends on the strength of the passwords that you choose. You should set strong passwords for <em>source</em>, <em>relay</em> and <em>admin</em> access.</p>
+<p><img src="static/Screenshot186-Icecast_source_password.png" /><br />
+</p>
+<p>Finally, you will be asked for the local timezone at your station. You can find a list of timezones in the <strong>Appendix</strong> of this book.</p>
+<p><img src="static/Screenshot188-Configure_timezone.png" /><br />
+</p>
+<p>On some GNU/Linux distributions, you may be warned about upgrading the <em>rabbitmq-server</em> package, even if you have never installed this package before. If RabbitMQ is only being used by Airtime on your server, it is safe to press the <strong>Enter</strong> key to continue.<br />
+</p>
+<p><img src="static/Screenshot73-Rabbit_upgrade.png" /><br />
+</p>
+<p>The Airtime installer will then run a script to check that your server environment is set up correctly.</p>
+<pre><code> *** Verifying your system environment ***
+CPU                            = Dual Core AMD Opteron(tm) Processor 170
+Total RAM                      = 6128244 kB
+Free RAM                       = 167276 kB
+OS                             = Ubuntu 10.04.3 LTS x86-64
+AIRTIME_CONFIG_FILES           = OK
+POSTGRESQL_DATABASE            = OK
+PYTHON_KOMBU_VERSION           = 1.2.0
+PYTHON_POSTER_VERSION          = 0.8.1
+PYTHON_MUTAGEN_VERSION         = 1.20
+PYTHON_PYINOTIFY_VERSION       = 0.9.2
+RABBITMQ_SERVER                = OK
+AIRTIME_VERSION_URL            = http://localhost:80/api/version/api_key/%%api_key%%
+APACHE_CONFIGURED              = YES
+AIRTIME_VERSION                = 1.9.5
+PLAYOUT_ENGINE_PROCESS_ID      = 24021
+PLAYOUT_ENGINE_RUNNING_SECONDS = 7
+LIQUIDSOAP_PROCESS_ID          = 24025
+LIQUIDSOAP_RUNNING_SECONDS     = 7
+MEDIA_MONITOR_PROCESS_ID       = 24078
+MEDIA_MONITOR_RUNNING_SECONDS  = 7
+SHOW_RECORDER_PROCESS_ID       = 24055
+SHOW_RECORDER_RUNNING_SECONDS  = 7
+ICECAST_PROCESS_ID             = 23649
+
+  -- System setup looks OK!
+
+********************** Install Complete ***********************</code></pre>
+<p>You are now ready to proceed to the <em>Configuration</em> chapter.</p>
+<p><span id="ch019_configuration.xhtml"></span></p>
+<h1>Configuration</h1>
+<p>The Debian/Ubuntu package of Airtime sets PHP preferences in the file <em>/usr/share/airtime/public/.htaccess</em> but if you have used one of the manual installation methods, you should check that the PHP time zone matches local time at your station. You can edit the <em>.htaccess</em> file in the <strong>nano</strong> editor with the command:</p>
+<pre><code>$ sudo nano /usr/share/airtime/public/.htaccess</code></pre>
+<p>Find the following line, and change it to the correct timezone for your station, for example:</p>
+<pre><code>php_value date.timezone &quot;Europe/London&quot;</code></pre>
+<p>You can find the correct timezone value for your location in the <strong>Appendix</strong> of this book.</p>
+<p><img src="static/Screenshot191-Timezone_htaccess.png" /></p>
+<p>Press Ctrl+O to save the <em>.htaccess</em> file, then Ctrl+X to exit the <strong>nano</strong> editor.</p>
+<h2>Configure Liquidsoap</h2>
+<p>The broadcast playout from Airtime is configured via <strong>Liquidsoap</strong>. You can open the <em>liquidsoap.cfg</em> file for editing with the command:<br />
+</p>
+<pre><code>$ sudo nano /etc/airtime/liquidsoap.cfg</code></pre>
+<p>If you require output to an ALSA soundcard device on the Airtime server, in addition to a direct Icecast or Shoutcast stream, you should change the value of <em>output_sound_device</em> from the default of <em>false</em> to <em>true</em>:<br />
+</p>
+<pre><code>output_sound_device = true</code></pre>
+<p>If you do not require a stream in either Ogg Vorbis or MP3 format, you can set the values of <em>output_icecast_vorbis</em>, <em>output_icecast_mp3</em> or <em>output_shoutcast</em> to <em>false</em>. Disabling unused streaming features will reduce the CPU load on your server, because stream encoding places a continuous demand on system resources. If your server is underpowered, you may prefer to perform the stream encoding on a separate machine.   <br />
+</p>
+<p> <img src="static/Screenshot171-Liquidsoap_config.png" /></p>
+<p>If using the Debian/Ubuntu package, you may have set up direct streaming to Icecast during the installation. To set up the Airtime server for direct streaming manually, set the value of <em>icecast_pass</em> to the <em>&lt;source-password&gt;</em> value that you set in the Icecast configuration file. If you are streaming to a separate Icecast server, set the value of <em>icecast_host</em> to the domain name or IP address of the other machine. The value of <em>icecast_port</em> can be left as the default of <em>8000,</em> unless you have been provided with a different port number by the system administrator of the Icecast server. Shoutcast has similar settings, except with a default port of <em>9000</em>.<br />
+</p>
+<p><img src="static/Screenshot166-Stream_configuration.png" /></p>
+<p>You can also configure the values of <em>mount_point_mp3</em>, <em>mount_point_vorbis</em>, <em>icecast_url</em>, <em>icecast_description</em>, and <em>icecast_genre</em> to suit your station. Shoutcast has similar options <em>shoutcast_url</em> and <em>shoutcast_genre</em>. The option <em>output_icecast_vorbis_metadata</em> defaults to <em>false</em> because some media player clients are known to disconnect from the stream when Ogg Vorbis metadata changes to show new track information.</p>
+<p>Once you're done, save and close the <em>/etc/airtime/liquidsoap.cfg</em> file with Ctrl+O and Ctrl+X. Then restart Airtime's playout engine to enable the new settings, with the command:<br />
+</p>
+<pre><code>$ sudo invoke-rc.d airtime-playout restart</code></pre>
+<p>The server should respond:</p>
+<pre><code>Restarting Airtime Playout: Done.</code></pre>
+<h2>Configure the database<br />
+</h2>
+<p>Optionally, you may wish to edit the file <em>/etc/airtime/airtime.conf</em> to set the PostgreSQL database host, and the username and password to connect to the database with.<br />
+</p>
+<pre><code>$ sudo nano /etc/airtime/airtime.conf</code></pre>
+<p>You can also set options for RabbitMQ messaging, the Airtime API and Soundcloud in this file, although you should not normally need to adjust the defaults.</p>
+<p><img src="static/Screenshot174-Database_configuration.png" /></p>
+<p>Save and close the file with Ctrl+O and Ctrl+X. If you have changed the database settings, you should now run the command:</p>
+<pre><code>$ sudo airtime-update-db-settings</code></pre>
+<p>to make sure all of Airtime's database configuration files are updated. This command should output a large amount of text to the server console, ending with:</p>
+<pre><code>BUILD FINISHED</code></pre>
+<p>and a report of the total time taken to update the configuration.<br />
+</p>
+<p>You should now be able to log in to the Airtime administration interface, as shown in the <strong>Getting started</strong> chapter.<br />
+</p>
+<p><span id="ch020_setting-the-time.xhtml"></span></p>
+<h1>Setting the server time</h1>
+<p>Accurate time keeping on your server is vital for optimal Airtime performance. You can confirm that the date and time of your server are set correctly with the <em>date</em> command:</p>
+<pre><code>$ date</code></pre>
+<p>The server should respond with the date, time, time zone and year in a format similar to the following example:</p>
+<pre><code>Mon Mar  7 14:59:17 GMT 2011</code></pre>
+<p>The time zone reported should match the continent and city set in the <span>.htaccess</span> file during Airtime installation, such as <em>GMT</em> in the example above matching <em>Europe/London</em>. If not, see the section <strong>Adjusting the server time zone</strong> below.<br />
+</p>
+<p>Although it is possible to set the date and time of the server manually, this is not recommended because the server clock can drift over time, compromising the accuracy of your broadcast schedule. If your Airtime server is permanently connected to the Internet, you can synchronize your server to a time server with the <em>ntp</em> program. If <em>ntp</em> is not yet installed, you can enter the following command on Debian or Ubuntu:<br />
+</p>
+<pre><code>$ sudo apt-get install ntp</code></pre>
+<p>Optionally, open the <em>ntp</em> configuration file in the <em>nano</em> editor to add further time server names:<br />
+</p>
+<pre><code>$ sudo nano /etc/ntp.conf</code></pre>
+<p>On Ubuntu GNU/Linux, the default time server is <em>ntp.ubuntu.com</em>, but there are many other time servers available on the public Internet, including the group of servers listed at <a href="http://www.pool.ntp.org/" class="uri">http://www.pool.ntp.org/</a> for each country. Using a variety of NTP servers located closely to your Airtime server will produce the most accurate results. For example, for a server in the United Kingdom you could use the following list:<br />
+</p>
+<pre><code># You do need to talk to an NTP server or two (or three).
+server ntp.ubuntu.com
+server 0.uk.pool.ntp.org
+server 1.uk.pool.ntp.org
+server 2.uk.pool.ntp.org
+server 3.uk.pool.ntp.org</code></pre>
+<p>Enter the server names you require, press Ctrl+O to write out the <em>/etc/ntp.conf</em> file, then Ctrl+X to exit <em>nano</em>. Restart the <em>ntp</em> service with:<br />
+</p>
+<pre><code>$ sudo service ntp restart</code></pre>
+<p>The server should respond:<br />
+</p>
+<pre><code>* Stopping NTP server ntpd                                 [ OK ]
+* Starting NTP server ntpd                                 [ OK ]</code></pre>
+<p>Then use the <em>ntpq -p</em> command to confirm that ntp is working. This command should produce output similar to the following screenshot:</p>
+<p><img src="static/Screenshot17-ntpq_output.png" /><br />
+</p>
+<h2>Adjusting the server time zone </h2>
+<p>If your server is set to a different time zone than the one that you set during Airtime installation, your broadcast schedule may be played out at incorrect times. The datacenter which hosts your Airtime server could be located anywhere in the world. Some servers are set to Coordinated Universal Time or UTC (similar to Greenwich Mean Time or GMT), regardless of their location. If this is not appropriate for your station, on a Debian or Ubuntu server you can reconfigure the <em>tzdata</em> (time zone data) package with the command:</p>
+<pre><code>$ sudo dpkg-reconfigure tzdata</code></pre>
+<p>This command opens a menu in which you can select the continent that you require, by pressing the Enter key.</p>
+<p><img src="static/Screenshot15-Configuring_tzdata.png" /> </p>
+<p>The next step is to select your nearest city, again by pressing the Enter key. The appropriate time zone is selected according to the information that you have entered.<br />
+</p>
+<p><img src="static/Screenshot16-Configure_city.png" /> </p>
+<p>The console output from the <em>dpkg-reconfigure tzdata</em> command will confirm the new setting. <br />
+</p>
+<pre><code>Current default time zone: &#39;Europe/London&#39;
+Local time is now:      Mon Mar  7 15:04:58 GMT 2011.
+Universal Time is now:  Mon Mar  7 15:04:58 UTC 2011.</code></pre>
+<p><span id="ch022_using-the-import-script.xhtml"></span></p>
+<h1>Using the import script</h1>
+<p>If you have a large number of files in your media library, importing these files one at a time into a broadcast automation system would be time-consuming and tedious. That's why Airtime includes a script that can import an entire directory of files in one go.</p>
+<h2>Metadata quality</h2>
+<p>The <strong>airtime-import</strong> script automatically imports any metadata that is in the files' ID3 tags. If these tags are incorrect or are missing information, you will have to either edit the metadata before importing them, or suffer the consequences. For example, if the tags have creator or genre metadata missing, it will be impossible to search for, playlist or schedule the media according to these criteria.</p>
+<p>There are a number of programs available which can be used to correct mistakes or incomplete information in ID3 tags. On GNU/Linux, the program <strong>Ex Falso</strong> (<a href="http://code.google.com/p/quodlibet/)">http://code.google.com/p/quodlibet/</a>) can be useful for batch setting and editing ID3 tags before importing files into your Airtime server. On an Ubuntu desktop machine, you can install this program with the command:</p>
+<pre><code>$ sudo apt-get install exfalso</code></pre>
+<p>After installation, you can run the program with the command:</p>
+<pre><code>$ exfalso</code></pre>
+<p>The <em>Tags From Path</em> feature of this program is a particularly useful time saver if you have a large archive of untagged files. Sometimes there is useful creator or title information in the file name or directory path structure, which can be converted into an ID3 tag automatically.</p>
+<p><img src="static/Screenshot175-Ex_Falso.png" /></p>
+<h2>Silence in media files</h2>
+<p>Before importing media, it is good practice to check for any silent sections in the media files. While Airtime can compensate for leading and trailing silence with the use of cue-in and cue-out points in the <strong>Playlist Builder</strong>, it is better to trim these files to the intended length before upload. This is because trimmed files do not require station staff to set cue points over and over again, as media in the Airtime storage archive could potentially be re-used for many different shows. <strong>Audacity</strong> is a cross-platform editor suitable for the task of trimming audio files, available from <a href="http://audacity.sourceforge.net">http://audacity.sourceforge.net/</a></p>
+<p>Very quiet introductions or over-long fades can also lead to apparent gaps in your broadcast playout. Some audio CDs feature a 'hidden track' at the end, which in fact uses a long period of silence within the final track, rather than an actual separate track on the disc. This means that CD encoding programs will encode both the hidden material and the silence in the media file. For example, the track <em>Debra</em> from the CD <em>Midnite Vultures</em> by <em>Beck</em> includes hidden material preceded by seven minutes of silence, as shown in the screen shot from Audacity below.</p>
+<p><img src="static/Screenshot126-Debra_silence.png" /></p>
+<h2>Copying versus watching</h2>
+<p>There are three main options when using the <strong>airtime-import</strong> script: Either to <strong>copy</strong> or <strong>move</strong> files into Airtime's main storage folder, or to <strong>watch</strong> files elsewhere. Each option has advantages and disadvantages, so you will have to think about how the files will be used in your station in the long term.</p>
+<ul>
+<li>For files that are <em>copied</em> or <em>moved</em>, you may run into problems with hard disk space if you do not remove files from the storage server periodically.</li>
+<li>For files that are <span>watched</span>, you must make sure that the files are actually going to be there at playout time, otherwise they will be skipped. For this reason, it is not recommended to use the <strong>watch</strong> option for easily-removable storage (like MP3 players or USB memory sticks). There's a strong likelihood that the storage might be unplugged and taken away before playout time. It is also important to make sure that any external hard disk with watched files is powered on, and stays on.</li>
+</ul>
+<p>The <strong>airtime-import</strong> script works from the command line, so you must first log into a console on the Airtime server. In recent versions of Airtime, you no longer need to specify the full file system path to the media files that you wish to import. Copying is specified with the <strong>copy</strong> sub-command:</p>
+<pre><code>$ airtime-import copy &lt;directory&gt;</code></pre>
+<p>where <em>&lt;directory&gt;</em> is the root directory of the media files that you wish to import.<br />
+</p>
+<p>Alternatively, you may wish to delete the files from the original location after copying them to the storage archive, which is accomplished with the <strong>move</strong> sub-command:<br />
+</p>
+<pre><code>$ airtime-import move &lt;directory&gt;</code></pre>
+<p>If the new files are exact duplicates of files that have already been imported, the script will detect this.<br />
+</p>
+<p>Any users logged into the administration interface will be warned if a file import is in progress. Users assigned the <em>admin</em> privilege should not attempt to change Airtime's default storage directory while an import is taking place.</p>
+<p><img src="static/Screenshot178-File_import_in_progress.png" /></p>
+<p>Watching a new folder is specified by using the <strong>watch add</strong> sub-command:</p>
+<pre><code>$ airtime-import watch add &lt;directory&gt;</code></pre>
+<p>The script will report the name of the folder now being watched, for example:</p>
+<pre><code>$ airtime-import watch add /home/daniel/Music/mp3/Beck
+/home/daniel/Music/mp3/Beck/ added to watched folder list successfully</code></pre>
+<p>The watched folder will also be listed on the <strong>Manage Media Folders</strong> page in the Airtime administration interface. To obtain a list of currently watched folders in the server console, you can use the <strong>watch list</strong> sub-command:</p>
+<pre><code>$ airtime-import watch list
+/home/daniel/Music/mp3/Beck/</code></pre>
+<p>Any new files copied to a watched folder (for example, using your desktop computer's file manager) will automatically appear in the Airtime database, and are then ready for playout. In the same way, if you delete a media file using your file manager, it will be automatically removed from the Airtime database, and will no longer be available for playout.<br />
+</p>
+<p>If you wish to no longer watch a particular folder, use the <strong>watch remove</strong> sub-command:</p>
+<pre><code>$ airtime-import watch remove /home/daniel/Music/mp3/Beck
+/home/daniel/Music/mp3/Beck/ removed from watched folder list successfully </code></pre>
+<h2>Get or set the storage folder path<br />
+</h2>
+<p>The airtime-import script also enables you to read or write Airtime's storage folder path configuration. You can find out the current setting with the <strong>storage-dir get</strong> sub-command:<br />
+</p>
+<pre><code>$ airtime-import storage-dir get
+/srv/airtime/stor</code></pre>
+<p>A new storage folder path can be configured using the <strong>storage-dir set</strong> sub-command:</p>
+<pre><code>$ airtime-import storage-dir set /home/daniel/Music/mp3/
+Successfully set storage folder to /home/daniel/Music/mp3/</code></pre>
+<p>The <strong>storage-dir set</strong> sub-command should be used with caution on a production server, because moving the storage folder during scheduled programming has the potential to disrupt your broadcast playout.<br />
+</p>
+<p><span id="ch023_the-airtime-user-command.xhtml"></span></p>
+<h1>The airtime-user command</h1>
+<p>Airtime includes a command-line tool <strong>airtime-user</strong> which can be used to add, update or remove user accounts. You can see the options for the command by typing it in the server console without any arguments:<br />
+</p>
+<pre><code>$ airtime-user
+
+airtime-user
+===============
+    This program allows you to manage Airtime users.
+
+OPTIONS:
+    --addupdate &lt;username&gt;
+        Add the user or update user information.
+    --delete &lt;username&gt;
+        Remove the user.</code></pre>
+<p>For example, to create an account for a DJ known as <em>Disco Dave</em>, you could enter the following:<br />
+</p>
+<pre><code>$ airtime-user --addupdate dave
+Creating user
+Enter password (min 6 characters): saturdaynightfever1977
+Enter first name: Disco
+Enter last name: Dave
+Enter user type [(A)dmin|(P)rogram Manager|(D)J|(G)uest]: D</code></pre>
+<p>Existing user accounts can be updated using the same command.</p>
+<p> </p>
+<p><span id="ch024_backing-up-the-server.xhtml"></span></p>
+<h1>Backing up the server</h1>
+<p>The following shell commands can be used for database backup and restore on a running <em>PostgreSQL</em> server in an Airtime system.</p>
+<p>You can dump the entire database to a zipped file with the combination of the <strong>pg_dumpall</strong> command and <strong>gzip</strong>. The <strong>pg_dumpall</strong> command is executed as the user <em>postgres</em>, by using the <strong>sudo</strong> command and the <strong>-u</strong> switch. It is separated from the <strong>gzip</strong> command with the pipe symbol.<br />
+</p>
+<pre><code>$ sudo -u postgres pg_dumpall | gzip -c &gt; airtime-backup.gz</code></pre>
+<p>This command can be automated to run on a regular basis using the standard <strong>cron</strong> tool on your server.<br />
+</p>
+<p>When restoring a production database on a cleanly installed Airtime system, it may be necessary to drop the empty database that was created during the new installation, by using the <strong>dropdb</strong> command. Again, this command is executed with <strong>sudo</strong> as the user <em>postgres</em>: <br />
+</p>
+<pre><code>$ sudo -u postgres dropdb airtime</code></pre>
+<p>This <strong>dropdb</strong> command above is necessary to avoid 'already exists' errors on table creation when overwriting an empty Airtime database in the next step. These errors might prevent some data from being restored, such as user account data.</p>
+<p>To restore, first unzip the backup file with <strong>gunzip</strong>, then use the <strong>psql</strong> command as the <em>postgres</em> user:<br />
+</p>
+<pre><code>$ gunzip airtime-backup.gz
+$ sudo -u postgres psql -f airtime-backup postgres</code></pre>
+<p>You should now be able to log in to the Airtime web interface in the usual way.</p>
+<p>For safety reasons, your regular database backups should be kept in a directory which is backed up by your storage backup tool of choice; for example, the <em>/srv/airtime/database_backups</em> directory. This should ensure that a storage restore can be made along with a matching and complete version of the Airtime database from the day that the storage backup was made. <br />
+</p>
+<h2>Storage backup</h2>
+<p>Backing up the Airtime database with <strong>pg_dumpall</strong> will not back up the Airtime media storage server, which is likely to need a great deal more backup space. Creating a compressed file from hundreds of gigabytes of storage server contents is likely to take a very long time, and may have little benefit for the amount of CPU power used, if the media files are already stored in a highly compressed format. It is also impractical to copy very large backup files across the network on a daily basis.</p>
+<p>Instead, it is preferable to use an incremental backup technique to synchronise the production Airtime server storage with a backup server each day or night. If the backup server also contains an Airtime installation, it should be possible to switch playout to this second machine relatively quickly, in case of a hardware failure or other emergency on the production server.</p>
+<p>A standard incremental backup tool on GNU/Linux servers is <em>rsync</em> <a href="http://rsync.samba.org/)">(http://rsync.samba.org/)</a> which can be installed using the package manager of your GNU/Linux distribution. However, incremental backup alone cannot help in the scenario where a file which later proves to be important has been deleted by an administrator. For backups that can be rolled back to restore from an earlier date than the current backup, the tool <em>rdiff-backup</em> <a href="http://www.nongnu.org/rdiff-backup/">(http://www.nongnu.org/rdiff-backup/</a>) can be deployed.  <br />
+</p>
+<p><span id="ch025_upgrading.xhtml"></span></p>
+<h1>Upgrading</h1>
+<p>Before upgrading a production Airtime server, you should back up both the PostgreSQL database and the storage server used by Airtime. This is especially important if you have not already set up a regular back up routine. This extra back up is a safety measure in case of accidental data loss during the upgrade, for example due to the wrong command being entered when moving files. See the chapter <em>Backing up the server</em> in this book for details of how to perform these back ups.</p>
+<p>If you have deployed Airtime using the method shown in the <em>Automated installation</em> chapter, you can upgrade in the same way. A new Airtime package available in the Sourcefabric repository can be installed with:</p>
+<pre><code>$ sudo apt-get update
+$ sudo apt-get upgrade</code></pre>
+<p>If you have used the method shown in the <em>Manual installation</em> chapter, you should repeat the installation steps of downloading and unpacking the tarball to an installation directory, and running the <strong>airtime-install</strong> script. The installation script will detect an existing Airtime deployment and back up any configuration files that it finds.</p>
+<p>After the upgrade has completed, you may need to clear your web browser's cache before logging into the new version of the Airtime administration interface. If the playout engine starts up and detects that a show should be playing at the current time, it will skip to the right point in the track and start playing.</p>
+<p>In Airtime 1.9.0 onwards, the concept of <em>linked files</em> was replaced with the concept of <em>watched folders</em>. If you are upgrading from a version of Airtime earlier than 1.9.0 and you have previously linked files, the folders they are in will not be watched until you add them to your watched folder list. See the chapter <em>Manage Media Folders</em> for more details. <br />
+</p>
+<p><span id="ch026_troubleshooting.xhtml"></span></p>
+<h1>Troubleshooting</h1>
+<p>If your Airtime server is not working as expected, individual components of the system can be stopped, started or restarted using the <strong>service</strong> command:</p>
+<pre><code>$ sudo service airtime-playout        start|stop|restart|status
+$ sudo service airtime-media-monitor  start|stop|restart|status
+$ sudo service airtime-show-recorder  start|stop|restart|status</code></pre>
+<p>On Debian squeeze, use the command <strong>invoke-rc.d</strong> in place of <strong>service</strong> in the commands above.<br />
+</p>
+<p>The <strong>status</strong> option runs the <strong>airtime-check-system</strong> script to confirm that all of Airtime's dependencies are installed and running correctly.</p>
+<p>Airtime stores log files under the directory path <em>/var/log/airtime/</em> which can be useful for diagnosing the cause of any problems. The <strong>less</strong> command, when used with the <strong>+G</strong> option, enables reading the Airtime playout log file from the end:</p>
+<pre><code>$ less +G /var/log/airtime/pypo/pypo.log</code></pre>
+<p>If you want to watch a log file as it continues, such as the Liquidsoap log, you can use the <strong>tail</strong> command with the <strong>-f</strong> option:</p>
+<pre><code>$ sudo tail -f /var/log/airtime/pypo-liquidsoap/ls_script.log</code></pre>
+<p>You can interrupt <strong>tail</strong> by pressing <strong>Ctrl-C</strong> on your keyboard. The Airtime media monitor has its own log, in the file:<br />
+</p>
+<pre><code>/var/log/airtime/media-monitor/media-monitor.log</code></pre>
+<p>and the Airtime show recorder has a log in the file: <br />
+</p>
+<pre><code>/var/log/airtime/show-recorder/show-recorder.log</code></pre>
+<p>Copies of these log files may be requested by Sourcefabric engineers while they are providing technical support for your Airtime deployment.</p>
+<p><span id="ch028_icecast-and-shoutcast.xhtml"></span></p>
+<h1>Icecast and Shoutcast</h1>
+<p>When sending metadata about your stream to an Icecast server in non-Latin alphabets, you may find that Icecast does not display the characters correctly for an MP3 stream, even though they are displayed correctly for an Ogg Vorbis stream. In the following screenshot, Russian characters are being displayed incorrectly in the Current Song field for the MP3 stream:</p>
+<p><img src="static/Screenshot223-Icecast_UTF-8_metadata.png" /></p>
+<p>The solution is to specify that the metadata for the MP3 mount point you are using should be interpreted using UTF-8 encoding. You can do this by adding the following stanza to the <em>/etc/icecast2/icecast.xml</em> file, where <em>airtime.mp3</em> is the name of your mount point:</p>
+<pre><code>  &lt;mount&gt;
+       &lt;mount-name&gt;/airtime.mp3&lt;/mount-name&gt;
+       &lt;charset&gt;UTF-8&lt;/charset&gt;
+  &lt;/mount&gt;</code></pre>
+<p>After saving the <em>/etc/icecast2/icecast.xml</em> file, you should restart the Icecast server:</p>
+<pre><code>$ sudo invoke-rc.d icecast2 restart
+Restarting icecast2: Starting icecast2
+Detaching from the console
+icecast2.</code></pre>
+<p><span id="ch029_stream-player-for-your-website.xhtml"></span></p>
+<h1>Stream player for your website</h1>
+<p>If you are using Airtime for web streaming, you can embed a player applet into your website. <strong>jPlayer</strong> is an open source player applet (available under the GNU GPL from <a href="http://jplayer.org/" class="uri" title="jPlayer homepage">http://jplayer.org/</a>) which uses the <em>&lt;audio&gt;</em> tag feature of HTML5 to play your streams. If the listener's browser does not support HTML5, the applet falls back to using Adobe Flash instead.<br />
+</p>
+<h2>Example code</h2>
+<p>You can download the example code for this chapter from:</p>
+<p><a href="http://en.flossmanuals.net/airtime/_booki/airtime/static/jPlayer_demo.zip" class="uri" title="jPlayer example code">http://en.flossmanuals.net/airtime/_booki/airtime/static/jPlayer_demo.zip</a></p>
+<p>Unzip this file on your computer, and then open the file <em>jplayer-demo.html</em> in your editor:</p>
+<pre><code>$ nano jplayer-demo.html</code></pre>
+<p>We'll focus on the two areas that you need to concern yourself with. Firstly, in the <em>&lt;head&gt;</em> tag of the document, you'll see some code:</p>
+<pre><code>$(document).ready(function(){
+
+ $(&quot;#jquery_jplayer_1&quot;).jPlayer({
+
+  ready: function () {
+   $(this).jPlayer(&quot;setMedia&quot;, {
+     oga: &quot;http://localhost:8000/airtime.ogg&quot;
+      }).jPlayer(&quot;play&quot;);
+  },
+
+   ended: function (event) {
+    $(this).jPlayer(&quot;play&quot;);
+   },
+
+    swfPath: &quot;js&quot;,
+    supplied: &quot;oga&quot;
+
+ });
+
+});</code></pre>
+<p>This code loads jPlayer, and specifies the source of the Airtime stream. The stream setting of <em>http://localhost:8000/airtime.ogg</em> will work if you are testing jPlayer directly on the Icecast server that Airtime is connecting to. When testing on a remote server, you should change this setting to the IP address or domain name, port number and mount point of the Icecast server you are using.<br />
+</p>
+<p>As soon as jPlayer has finished loading, it will automatically begin to play the stream. The parameters <em>ready</em>, <em>ended</em>, <em>swfPath</em> and <em>supplied</em> are arguments passed to jPlayer. A full list of constructor arguments is available in the <strong>jPlayer Developer Guide</strong> at <a href="http://www.jplayer.org/latest/developer-guide/" class="uri" title="jPlayer Developer Guide">http://www.jplayer.org/latest/developer-guide/</a><br />
+</p>
+<h2>jPlayer controls<br />
+</h2>
+<p>Secondly, the <em>&lt;body&gt;</em> tag of the file <em>jplayer-demo.html</em> defines the controls displayed by jPlayer. jPlayer can be as simple as just one Play/Pause button, or a fully-fledged playback interface with a playlist, progress bar and volume control. In this example code, we're using one of the simpler skins available for jPlayer, <em>Blue Monday</em>.<br />
+</p>
+<p>A stop button or progress bar is not useful when we are streaming continuously from Icecast, so we can simply remove these tags from the demo code, along with the tags specifying the playback time and file duration. The simplified HTML creates a play/pause button and a mute button, and looks as follows:</p>
+<pre><code>&lt;div id=&quot;jquery_jplayer_1&quot; class=&quot;jp-jplayer&quot;&gt;&lt;/div&gt;
+
+ &lt;div class=&quot;jp-audio&quot;&gt;
+  &lt;div class=&quot;jp-type-single&quot;&gt;
+
+   &lt;div id=&quot;jp_interface_1&quot; class=&quot;jp-interface&quot;&gt;
+
+    &lt;div class=&quot;label&quot;&gt;Airtime Radio! 99.9 FM&lt;/div&gt;
+
+     &lt;ul class=&quot;jp-controls&quot;&gt;
+      &lt;li&gt;&lt;a href=&quot;#&quot; class=&quot;jp-play&quot; tabindex=&quot;1&quot;&gt;play&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#&quot; class=&quot;jp-pause&quot; tabindex=&quot;1&quot;&gt;pause&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#&quot; class=&quot;jp-mute&quot; tabindex=&quot;1&quot;&gt;mute&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#&quot; class=&quot;jp-unmute&quot; tabindex=&quot;1&quot;&gt;unmute&lt;/a&gt;&lt;/li&gt;
+     &lt;/ul&gt;
+
+   &lt;/div&gt;
+
+   &lt;div id=&quot;jp_playlist_1&quot; class=&quot;jp-playlist&quot;&gt;&lt;/div&gt;
+
+  &lt;/div&gt;
+ &lt;/div&gt;</code></pre>
+<p>When you open the HTML file <em>jplayer-demo.html</em> in a web browser, your player should appear as follows:</p>
+<p><img src="static/Screenshot196-jPlayer_demo.png" /></p>
+<p>The original version of this demo code and skin are available from <a href="http://jplayer.org/download/" class="uri" title="jPlayer download page">http://jplayer.org/download/</a> for further experimentation.<br />
+</p>
+<p><span id="ch030_using-monit.xhtml"></span></p>
+<h1>Using Monit</h1>
+<p><strong>Monit</strong> is a utility which can be used to manage and monitor processes, files, directories and filesystems on your Airtime server. It is installed by default when you install Airtime.</p>
+<p>To view the Monit web interface, open port 2812 of your server in a web browser:</p>
+<pre><code>http://localhost:2812/</code></pre>
+<p>You will have to log in to see the Monit web interface. The default username is <em>admin</em> and the default password is <em>monit</em>.</p>
+<p><img src="static/Screenshot180-Monit_web_interface.png" /></p>
+<h2>Remote access</h2>
+<p>By default, Monit is configured for access from the <em>localhost</em> only. To enable remote access, you will need to edit the file <em>/etc/monit/conf.d/airtime-monit.cfg</em> with <strong>nano</strong>:<br />
+</p>
+<pre><code>$ sudo nano /etc/monit/conf.d/airtime-monit.cfg</code></pre>
+<p>Comment out the line <em>use address 127.0.0.1</em> and then add an 'allow' line with the IP address and netmask of the machine to connect to monit from, such as:</p>
+<pre><code>    allow 10.0.1.2/255.255.255.0</code></pre>
+<p>If you enable remote access, be sure to change the default admin password of <em>monit</em> in the line <em>allow admin:monit</em> to something more secure:<br />
+</p>
+<pre><code>set httpd port 2812 and # use address 127.0.0.1
+    allow localhost
+    allow 10.0.1.2/255.255.255.0
+    allow admin:pleasedonothackme</code></pre>
+<p>Press Ctrl+O to save the file, then Ctrl+X to exit <strong>nano</strong>. Then restart monit with:</p>
+<pre><code>$ sudo invoke-rc.d monit restart</code></pre>
+<h2>Sending email alerts<br />
+</h2>
+<p>To configure Monit to send email alerts, edit the file <em>/etc/monit/monitrc</em> to uncomment the <em>set mailserver</em> parameter. Change this line to show the name of the SMTP server on your Airtime server's network, as provided by your system administrator.<br />
+</p>
+<pre><code>$ sudo nano /etc/monit/monitrc</code></pre>
+<p><img src="static/Screenshot189-Configure_monit.png" /></p>
+<p>Further down the configuration file, you can set the <em>From:</em> and <em>To:</em> addresses for the alert emails using the <em>set mail-format</em> and <em>set alert</em> parameters. Then uncomment the lines required.<br />
+</p>
+<p><img src="static/Screenshot190-Configure_monit2.png" /></p>
+<p>Press Ctrl+O to save the file, then Ctrl+X to exit <strong>nano</strong>. Then restart monit with:</p>
+<pre><code>$ sudo invoke-rc.d monit restart</code></pre>
+<p> More information about using Monit is available at <a href="http://mmonit.com/monit/documentation/" class="uri" title="Monit documentation">http://mmonit.com/monit/documentation/</a></p>
+<p><span id="ch031_automated-file-import.xhtml"></span></p>
+<h1>Automated file import</h1>
+<p>The <em>airtime-import</em> script can be combined with the standard <em>SFTP</em> (secure FTP) program and <em>cron</em> daemon on a GNU/Linux server to enable automated file import from multiple remote desktop computers. This saves time for your station staff when using distributed production methods, or content syndication.<br />
+</p>
+<p>Traditional FTP servers use plain text passwords (without encryption) and are therefore not recommended for upload accounts on Airtime servers accessible from the public Internet. SFTP is a cross-platform protocol which works with many desktop programs including <strong>gFTP</strong> for GNU/Linux (<a href="http://www.gftp.org/" class="uri" title="gFTP homepage">http://www.gftp.org/</a>). This program can be installed on Debian or Ubuntu desktop computers with the command:</p>
+<pre><code> $ sudo apt-get install gftp</code></pre>
+<p>Other popular SFTP clients include <strong>FileZilla</strong> for Windows (<a href="http://filezilla-project.org/" class="uri" title="FileZilla">http://filezilla-project.org/</a>) and <strong>Cyberduck</strong> for Mac and Windows (<a href="http://cyberduck.ch/" class="uri" title="Cyberduck">http://cyberduck.ch/</a>).</p>
+<p>To enable SFTP uploads, first invoke the <strong>adduser</strong> command to create the <em>uploads</em> account on the server. For security reasons this user account is restricted to using SFTP only; it cannot be used for executing other commands in a login shell.<br />
+</p>
+<pre><code>$ sudo adduser --home /srv/airtime/uploads --shell /usr/lib/sftp-server uploads</code></pre>
+<p>The server will then invite you to type in the password for the new <em>uploads</em> user, and once again for confirmation. The security of your Airtime server depends on the strength of the password that you set, so be sure to use a long and complex password with upper case, lower case and numerical characters. It is not necessary to set a full name or other details for this account. </p>
+<pre><code>Adding user `uploads&#39; ...
+Adding new group `uploads&#39; (1003) ...
+Adding new user `uploads&#39; (1002) with group `uploads&#39; ...
+Creating home directory `/srv/airtime/uploads&#39; ...
+Copying files from `/etc/skel&#39; ...
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+Changing the user information for uploads
+Enter the new value, or press ENTER for the default
+    Full Name []:
+    Room Number []:
+    Work Phone []:
+    Home Phone []:
+    Other []:
+Is the information correct? [Y/n] Y</code></pre>
+<p> Next, create a folder to contain the incoming files:</p>
+<pre><code> $ sudo mkdir /srv/airtime/uploads/incoming/</code></pre>
+<p>Then create a script to run once per hour:<br />
+</p>
+<pre><code> $ sudo nano /etc/cron.hourly/airtime-upload</code></pre>
+<p>The script should import the newly uploaded files from the incoming folder specified, using the <em>copy</em> option, and then remove the original uploaded files. This step, rather than simply using the <em>watch</em> option on the <em>/srv/airtime/uploads/incoming/</em> folder, ensures that the <em>uploads</em> SFTP account does not have direct write access to the Airtime storage archive. That could be a security risk if the password was compromised.   <br />
+</p>
+<pre><code>#!/bin/sh
+
+# Run the import script on fresh uploads
+
+airtime-import copy /srv/airtime/uploads/incoming/
+
+# Clean the incoming directory to save disk space
+
+rm -r /srv/airtime/uploads/incoming/*.mp3
+rm -r /srv/airtime/uploads/incoming/*.ogg</code></pre>
+<p>Finally, the script should be made executable so that the cron daemon can run it.</p>
+<pre><code>$ sudo chmod +x /etc/cron.hourly/airtime-upload</code></pre>
+<p>By default, Debian and Ubuntu GNU/Linux run <em>cron.hourly</em> tasks at 17 minutes past each hour. This value can be adjusted in the file <em>/etc/crontab</em> on the server, if required.</p>
+<p>Remote users should connect to the Airtime server using their client software of choice, making sure that they specify an SFTP rather than FTP connection. The remote directory for the clients to use would be <em>/srv/airtime/uploads/incoming/</em> as configured above.<em><br />
+</em></p>
+<p><img src="static/Screenshot118-gFTP_upload.png" /><br />
+</p>
+<p>For additional security, you could configure your Airtime server to use an encryption key pair for the <em>uploads</em> account, instead of a password. See <a href="https://help.ubuntu.com/community/SSH/OpenSSH/Keys" class="uri">https://help.ubuntu.com/community/SSH/OpenSSH/Keys</a> for details of how to do this on an Ubuntu server.</p>
+<p> </p>
+<p><span id="ch032_exporting-the-schedule.xhtml"></span></p>
+<h1>Exporting the schedule</h1>
+<p>Airtime has a feature which enables your station's current show and schedule information to be displayed on remote websites. This feature is included in Airtime because you would not usually invite the general public to access your Airtime server directly. If you had very large numbers of people requesting data from the Airtime server at once, the burst of network traffic might overload the server, potentially disrupting your broadcasts. If carried out maliciously, this network overload is known as a <em>denial of service attack</em>.<br />
+</p>
+<p>Instead, your public-facing web server can retrieve the schedule information from Airtime. This information can then be displayed on your broadcast station or affiliate websites by a content management system, such as Sourcefabric's <strong>Newscoop</strong> (<a href="http://newscoop.sourcefabric.org/" class="uri" title="Newscoop homepage">http://newscoop.sourcefabric.org/</a>). It can be presented using Javascript widgets and styled with CSS, in any format that you require.</p>
+<p>There are two kinds of information that can be retrieved remotely from Airtime; the metadata for the current show plus the following show (live-info), or the schedule for the current week (week-info). This metadata includes show names, times, descriptions and individual show URLs on your public website. That way, the audience for your station can click through from the schedule information to find out more about a particular show, or download a previous show recording that you might have made available.<br />
+</p>
+<p>If your Airtime server was accessible at <em>http://airtime.example.com</em> the live show information could be retrieved by your web server using this URL:</p>
+<pre><code>http://airtime.example.com/api/live-info/?callback</code></pre>
+<p>The comma-separated text metadata returned to your web server might be something like this:</p>
+<pre><code>({
+&quot;env&quot;:&quot;development&quot;,
+&quot;schedulerTime&quot;:&quot;2011-05-09 15:01:18&quot;,
+&quot;currentShow&quot;:[{&quot;start_timestamp&quot;:&quot;2011-05-09 16:00:00&quot;,
+&quot;end_timestamp&quot;:&quot;2011-05-09 17:00:00&quot;,
+&quot;name&quot;:&quot;Funk Show&quot;,
+&quot;id&quot;:&quot;8&quot;,
+&quot;instance_id&quot;:&quot;8&quot;,
+&quot;record&quot;:&quot;0&quot;,
+&quot;url&quot;:&quot;http:\/\/funk.example.com\/&quot;}],
+&quot;nextShow&quot;:[{&quot;id&quot;:&quot;9&quot;,&quot;starts&quot;:&quot;2011-05-09 17:00:00&quot;,
+&quot;ends&quot;:&quot;2011-05-09 18:00:00&quot;,
+&quot;show_id&quot;:&quot;9&quot;,
+&quot;record&quot;:&quot;0&quot;,
+&quot;rebroadcast&quot;:&quot;0&quot;,
+&quot;instance_id&quot;:null,
+&quot;file_id&quot;:null,
+&quot;soundcloud_id&quot;:null,
+&quot;time_filled&quot;:null,
+&quot;name&quot;:&quot;Dance show&quot;,
+&quot;url&quot;:&quot;http:\/\/dance.example.com&quot;,
+&quot;genre&quot;:&quot;Dance&quot;,
+&quot;description&quot;:&quot;Techno, techno, techno, techno!&quot;,
+&quot;color&quot;:&quot;000000&quot;,
+&quot;background_color&quot;:&quot;ffea00&quot;,
+&quot;start_timestamp&quot;:&quot;2011-05-09 17:00:00&quot;,
+&quot;end_timestamp&quot;:&quot;2011-05-09 18:00:00&quot;}],
+&quot;timezone&quot;:&quot;BST&quot;,
+&quot;timezoneOffset&quot;:&quot;3600&quot;
+})</code></pre>
+<p>The information for the current week's schedule could be retrieved using the URL:</p>
+<pre><code>http://airtime.example.com/api/week-info/?callback</code></pre>
+<p>In this case, the metadata returned would be in a different format from the above example, something like the following. To keep the example short, this particular schedule export only contains four shows on a Monday. A full weekly schedule export would contain a great deal more text.  </p>
+<pre><code>({
+&quot;sunday&quot;:[],
+&quot;monday&quot;:[
+{&quot;show_starts&quot;:&quot;2011-05-09 14:25:00&quot;,
+&quot;show_ends&quot;:&quot;2011-05-09 14:35:00&quot;,
+&quot;show_name&quot;:&quot;Elvis Show&quot;,
+&quot;url&quot;:&quot;http:\/\/elvis.example.com\/&quot;},
+{&quot;show_starts&quot;:&quot;2011-05-09 14:50:00&quot;,
+&quot;show_ends&quot;:&quot;2011-05-09 14:55:00&quot;,
+&quot;show_name&quot;:News&quot;,
+&quot;url&quot;:&quot;http:\/\/news.example.com\/&quot;},
+{&quot;show_starts&quot;:&quot;2011-05-09 16:00:00&quot;,
+&quot;show_ends&quot;:&quot;2011-05-09 17:00:00&quot;,
+&quot;show_name&quot;:&quot;Funk Show&quot;,
+&quot;url&quot;:&quot;http:\/\/funk.example.com\/&quot;},
+{&quot;show_starts&quot;:&quot;2011-05-09 17:00:00&quot;,
+&quot;show_ends&quot;:&quot;2011-05-09 18:00:00&quot;,
+&quot;show_name&quot;:&quot;Dance show&quot;,
+&quot;url&quot;:&quot;http:\/\/dance.example.com&quot;}
+],
+&quot;tuesday&quot;:[],
+&quot;wednesday&quot;:[],
+&quot;thursday&quot;:[],
+&quot;friday&quot;:[],
+&quot;saturday&quot;:[]
+})</code></pre>
+<p>If you see the message <em>You are not allowed to access this resource</em> when attempting to display schedule information in your web browser, log in to the Airtime administration interface, click Configure in the main menu, then Preferences. Set <strong>Allow Remote Websites To Access &quot;Schedule&quot; Info?</strong> to <strong>Enabled</strong>, click the <strong>Submit</strong> button, then refresh the browser window opened on the schedule export URL.</p>
+<p><img src="static/Screenshot181-Station_name.png" /> </p>
+<h2>Caching schedule information<br />
+</h2>
+<p>If the Airtime server is behind a firewall, or you want to protect the Airtime server from large numbers of schedule requests, you may wish to cache the schedule information on a public-facing or intermediate server. You can then create a firewall rule that only allows the schedule server to connect to the Airtime server, in addition to any remote users of the Airtime web interface.<br />
+</p>
+<p>Your system administrator can set up schedule caching on a standard Apache and PHP enabled web server with the <em>curl</em> program installed, using the following steps:</p>
+<p>1. Create a bash script on the schedule server that polls the Airtime server, and writes the metadata returned into a pair of temporary files:</p>
+<pre><code>$ sudo nano /usr/local/bin/airtime-schedule.sh</code></pre>
+<p>The content of this file should be like the following script, replacing <em>air1.example.com</em> with the name of your Airtime server:<br />
+</p>
+<pre><code>#!/bin/sh
+
+curl -s &quot;http://air1.example.com/api/live-info/?callback=***&quot; &gt; /tmp/live-info
+
+curl -s &quot;http://air1.example.com/api/week-info/?callback=***&quot; &gt; /tmp/week-info</code></pre>
+<p>2. Make the bash script executable:</p>
+<pre><code>$ sudo chmod +x /usr/local/bin/airtime-schedule.sh</code></pre>
+<p>3. Create an Apache VirtualHost configuration for the schedule server:<br />
+</p>
+<pre><code>$ sudo nano /etc/apache2/sites-available/schedule</code></pre>
+<p>containing a definition like the following, replacing <em>schedule.example.com</em> with the name of your schedule server:</p>
+<pre><code>&lt;VirtualHost *:80&gt;
+   ServerName schedule.example.com
+   DocumentRoot /var/www/schedule/
+&lt;/VirtualHost&gt;</code></pre>
+<p>4. In the schedule server's DocumentRoot folder, create the folders <em>api/live-info/</em> and <em>api/week-info/</em></p>
+<pre><code>$ sudo mkdir -p /var/www/schedule/api/live-info/
+$ sudo mkdir -p /var/www/schedule/api/week-info/</code></pre>
+<p>5. Create an index.php file in the <em>api/live-info/</em> folder:</p>
+<pre><code>$ sudo nano /var/www/schedule/api/live-info/index.php</code></pre>
+<p>containing the following code:</p>
+<pre><code>&lt;?php
+$filename = &#39;/tmp/live-info&#39;;  // define here the path and name of uploaded live-info file
+
+header(&#39;Content-Type: text/javascript&#39;);
+header(&quot;Expires: Thu, 01 Jan 1970 00:00:00 GMT&quot;);
+header(&quot;Cache-Control: no-store, no-cache, must-revalidate&quot;);
+
+$callback = empty($_GET[&#39;callback&#39;]) ? null : $_GET[&#39;callback&#39;];
+$content = file_get_contents($filename);
+$content = str_replace(&#39;***&#39;, $callback, $content);
+echo $content;
+?&gt;</code></pre>
+<p>6. Create an index.php file in the <em>api/week-info/</em> folder:</p>
+<pre><code>$ sudo nano /var/www/schedule/api/week-info/index.php</code></pre>
+<p>containing the following code:</p>
+<pre><code>&lt;?php
+$filename = &#39;/tmp/week-info&#39;;  // define here the path and name of uploaded week-info file
+
+header(&#39;Content-Type: text/javascript&#39;);
+header(&quot;Expires: Thu, 01 Jan 1970 00:00:00 GMT&quot;);
+header(&quot;Cache-Control: no-store, no-cache, must-revalidate&quot;);
+
+$callback = empty($_GET[&#39;callback&#39;]) ? null : $_GET[&#39;callback&#39;];
+$content = file_get_contents($filename);
+$content = str_replace(&#39;***&#39;, $callback, $content);
+echo $content;
+?&gt;</code></pre>
+<p>7. Enable the new configuration and reload the Apache web server:<br />
+</p>
+<pre><code>$ sudo a2ensite schedule
+$ sudo /etc/init.d/apache2 reload</code></pre>
+<p>8. Create a cron job to run the bash script each minute:</p>
+<pre><code>$ sudo nano /etc/cron.d/airtime-schedule</code></pre>
+<p>containing the line:<br />
+</p>
+<pre><code>* * * * * www-data /usr/local/bin/airtime-schedule.sh</code></pre>
+<p>The schedule server will now be serving the same show information as the Airtime server, with a cache lifetime of one minute. You can adjust the cache lifetime by altering the frequency of the cron job that polls the Airtime server.</p>
+<h2>Website widgets</h2>
+<p>Example HTML, Javascript and CSS code for your public website are provided in the <em>widgets</em> folder of the Airtime installation tarball. For the widgets to work on a typical web server, links to the Javascript and CSS code have to be included in the HTML page &lt;head&gt; element, like the following example:<br />
+</p>
+<pre><code>&lt;head&gt;
+ &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+  &lt;title&gt;Airtime widgets&lt;/title&gt;
+   &lt;script src=&quot;js/jquery-1.6.1.min.js&quot; type=&quot;text/javascript&quot;&gt;
+    &lt;/script&gt;
+   &lt;script src=&quot;js/jquery-ui-1.8.10.custom.min.js&quot; type=&quot;text/javascript&quot;&gt;
+    &lt;/script&gt;
+   &lt;script src=&quot;js/jquery.showinfo.js&quot; type=&quot;text/javascript&quot;&gt;
+    &lt;/script&gt;
+  &lt;link href=&quot;css/airtime-widgets.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+&lt;/head&gt;</code></pre>
+<p>A full example is shown in the <em>widgets/sample_page.html</em> file in the Airtime installation tarball.<br />
+</p>
+<p>The following code is for a small <em>airtimeLiveInfo</em> widget that displays information about the current show (show time elapsed, and show time remaining), as well as some information about the next show (start time and end time). In this example, the label text for <em>onAirNow</em> is translated into French for local language support:<br />
+</p>
+<pre><code>&lt;script&gt;
+    $(document).ready(function() {
+        $(&quot;#headerLiveHolder&quot;).airtimeLiveInfo({
+            sourceDomain: &quot;http://schedule.example.com/&quot;,
+            text: {onAirNow:&quot;Sur Les Antennes&quot;, offline:&quot;Offline&quot;, current:&quot;Current&quot;, next:&quot;Next&quot;},
+            updatePeriod: 20 //seconds
+        });
+    });
+&lt;/script&gt;</code></pre>
+<p>On the public website, this widget can be made to look like the following screenshot:</p>
+<p> <img src="static/Screenshot-85-now_playing_widget.png" /></p>
+<p>The CSS properties <em>color:</em> and <em>text-transform:uppercase</em> have been used to style the <em>onAirNow</em> label. There is a full example CSS file <em>widgets/css/airtime-widgets.css</em> in the Airtime installation tarball.<br />
+</p>
+<p>The next widget <em>airtimeShowSchedule</em> is medium sized, and displays the upcoming show schedule for that day.</p>
+<pre class="code-java"><code>&lt;script&gt;
+    $(document).ready(function() {
+        $(&quot;#onAirToday&quot;).airtimeShowSchedule({
+            sourceDomain: &quot;http://schedule.example.com/&quot;,
+            text: {onAirToday:&quot;On air today&quot;},
+            updatePeriod: 5 //seconds
+        });
+    });
+&lt;/script&gt;</code></pre>
+<p> The widget code above can be styled to look like this screenshot:</p>
+<p><img src="static/Screenshot-86-upcoming_shows_widget.png" /><br />
+</p>
+<p>Finally, the following code creates a large widget <em>airtimeWeekSchedule</em> that enables site visitors to browse through the show schedule for that week. In this example, all widget labels have been translated into French:</p>
+<pre><code>&lt;script&gt;    
+    $(document).ready(function() {
+        $(&quot;#scheduleTabs&quot;).airtimeWeekSchedule({
+            sourceDomain:&quot;http://schedule.example.com/&quot;,
+            dowText:{monday:&quot;Lundi&quot;, tuesday:&quot;Mardi&quot;, wednesday:&quot;Mercredi&quot;, thursday:&quot;Jeudi&quot;, friday:&quot;Vendredi&quot;, saturday:&quot;Samedi&quot;, sunday:&quot;Dimanche&quot;},
+            miscText:{time:&quot;Temps&quot;, programName:&quot;Nom du Programme&quot;, details:&quot;Détails&quot;, readMore:&quot;Lire La Suite&quot;},
+            updatePeriod: 600 //seconds
+        });
+    });
+&lt;/script&gt;</code></pre>
+<p>Using the code above and CSS, the first six hours of the schedule each day can be styled to look like this:</p>
+<p><img src="static/Screenshot-87-weekly_schedule_widget.png" /> </p>
+<p>The value of <strong>sourceDomain</strong> in the code examples above should match the URL that you wish to serve schedule information to the public from. If you have used the <em>Caching schedule information</em> method detailed above, this would be the URL of your schedule server, not the Airtime server directly.</p>
+<p><span id="ch033_interface-customization.xhtml"></span></p>
+<h1>Interface customization</h1>
+<p>The Airtime administration interface, as a web application, is fully customizable using the same methods that you might use to update a website. For instance, you may wish to increase the font sizes or change the colours in the Airtime interface to better suit staff users with impaired vision. To do this, open one of the CSS files in the <em>/public/css/</em> directory under the Airtime <em>DocumentRoot</em> directory in a text editor such as <strong>nano</strong>:</p>
+<pre><code>$ sudo nano /usr/share/airtime/public/css/styles.css</code></pre>
+<p>To change the background colour of the administration interface from dark gray to white, the <em>background:</em> property of the body tag could be changed to <em>#ffffff</em> as follows:</p>
+<pre><code>body {
+      font-size: 62.5%;
+      font-family:Arial, Helvetica, sans-serif;
+      background: #ffffff;
+      margin: 0;
+      padding: 0;
+}</code></pre>
+<p>Save the file with Ctrl+O, then refresh your browser to see the change to the interface background colour.</p>
+<p><img src="static/Screenshot176-White_background.png" /></p>
+<p>Any custom changes that you make to the administration interface should be backed up before upgrading Airtime to a newer version, otherwise they could be overwritten. If you have made improvements that you think might be useful to other Airtime users, please contact Sourcefabric and tell us about them.</p>
+<h2>Modifying the Icecast interface</h2>
+<p>If you have installed Icecast, in the directory <em>/etc/icecast2/web/</em> you will find several XSLT and other files which are used to generate the Icecast web interface. If you are familiar with HTML you should be able to modify these pages, as they are well commented. You do have to be careful with syntax, because something as simple as a missing bracket can cause the Icecast web interface to break down.</p>
+<p>For example, you could change the <em>status.xsl</em> page:</p>
+<pre><code>$ sudo nano /etc/icecast2/web/status.xsl</code></pre>
+<p>Modifying the <em>status.xsl</em> page is a good place to start, because this is the default page that site visitors see when they browse port 8000 on your Icecast server. The most obvious change to make in the XSLT pages is the content of the <em>&lt;title&gt;</em> and <em>&lt;h2&gt;</em> tags, to announce the name of your station. You can also modify the <em>style.css</em> file in this directory to change colour and layout options.</p>
+<p>After saving the file with Ctrl+O, refresh your web browser, and the new look should now be visible.</p>
+<p><img src="static/Screenshot177-Icecast_rocks.png" /> </p>
+<p>When you're happy with the way the web interface looks and the sound quality you are streaming, you can uncomment the <em>&lt;directory&gt;</em> section in the <em>/etc/icecast2/icecast.xml</em> file to have your new station automatically listed on the Icecast directory website <a href="http://dir.xiph.org/index.php" title="Xiph.org directory">http://dir.xiph.org</a> which could help you pick up a few more listeners. You can also put a link to the Icecast status page at port 8000 on your station's homepage, to help integrate the two sites.</p>
+<p><span id="ch034_integration-with-mixxx.xhtml"></span></p>
+<h1>Integration with Mixxx</h1>
+<p>Mixxx is a cross-platform Open Source application for DJs, available from <a href="http://www.mixxx.org/" class="uri" title="Mixxx homepage">http://www.mixxx.org/</a></p>
+<p>Installed on a desktop or laptop computer, Mixxx complements your Airtime server to provide a complete system for both live and scheduled broadcasting. Although Mixxx has many features designed for dance music DJs that require beat matching and pitch independent time stretching, the program can be used for any kind of manually triggered broadcast playout, including live speech shows such as news or current affairs.</p>
+<p>Mixxx supports a wide variety of popular hardware control surfaces, which can be connected to your computer using a USB cable. A control surface might replace or augment an analogue mixer in your studio, depending on your live mixing and playout requirements.</p>
+<p>If you make the Airtime server's storage directory <em>/srv/airtime/stor/</em> accessible to a desktop machine as a read-only location, Mixxx will accept that location as its default music library when starting up for the first time. (This location can also be configured after installation by clicking Options, then Preferences, then Library in the main Mixxx menu).</p>
+<p><img src="static/Screenshot103-Mixxx_Preferences.png" /> </p>
+<p>You may need to adjust file and directory permissions so that the storage directory has read access from the desktop user account. Enabling write access directly to the storage server is not recommended, as this would allow desktop users to delete files which might be needed for playout later.</p>
+<p>If the filesystem path has been configured correctly, the metadata for the files in the Airtime storage server will be displayed in the main window of the Mixxx interface. Individual files from the Airtime storage server can then be added to either of Mixxx's live players with a right-click on the filename, or by using the appropriate hardware buttons on a control surface. Therefore it is possible to manage the station's storage archive remotely and collaboratively through Airtime, while using Mixxx as the live playout client in multiple, remote studios.</p>
+<p><img src="static/Screenshot102-Mixxx_with-Airtime_storage.png" /></p>
+<p>The Airtime storage archive can be exported like any other file server share. The method that you implement would depend on the operating system of your desktop client machines, and whether they were on the same local network as the Airtime server, or remote. For performance and redundancy reasons it is advisable to cache files required for a particular show on the client machine where Mixxx is installed. For example, for a GNU/Linux client machine, a nightly <strong>rsync</strong> download of new media in the archive would guard against network problems at playout time potentially disrupting a broadcast at a remote studio.<br />
+</p>
+<p>Mixxx users can also record a show, encode it, and then upload it through the Airtime web interface on a local or remote server for collaborative or user-generated broadcasts. In addition, Mixxx 1.9.0 or later includes a live streaming client which, like Airtime, is compatible with the <strong>Icecast</strong> media server.</p>
+<h2>Airtime skin for Mixxx</h2>
+<p>An Airtime themed skin for Mixxx, designed with broadcast users in mind, is available for download from <a href="https://sourceforge.net/projects/airtime/files/" class="uri" title="Airtime skin for Mixxx">https://sourceforge.net/projects/airtime/files/</a></p>
+<p>This skin is a simplified interface for live broadcasting which does away with pitch/tempo control, EQ, flange effect, looping and other features required by beat-matching dance music DJs. Instead, the emphasis is on a clear and uncluttered interface which does not require large mouse movements to operate the most important controls.</p>
+<p><img src="static/Screenshot124-Airtime_skin_for_Mixxx.png" /></p>
+<p>After downloading, extract the zip file and copy it to the <em>skins</em> directory on the computer where Mixxx is installed. For example, on Debian or Ubuntu:</p>
+<pre><code>$ unzip Airtime1280x1024_skin_for_Mixxx.zip
+$ sudo cp -r Airtime1280x1024 /usr/share/mixxx/skins/</code></pre>
+<p>Then, start Mixxx and select the Airtime skin by clicking <em>Options</em>, <em>Preferences</em>, then <em>Interface</em> in the Mixxx main menu.</p>
+<p><img src="static/Screenshot125-Mixxx_interface_preferences.png" /> </p>
+<p><span id="ch035_stream-handover.xhtml"></span></p>
+<h1>Stream handover</h1>
+<p>In a typical configuration, the live output from the broadcast studio and the scheduled output from the storage archive are mixed together before being sent further along the broadcast chain, such as to a transmitter or streaming media server on the Internet.<br />
+</p>
+<p>If your Airtime server is hosted in a remote data centre, you may not have the option to handover the streaming media source from a live to scheduled show manually, because you have no physical access to connect a broadcast mixer to the server. Alternatively, you may have an Airtime server at the studio, connected to your main mixer, but wish stream handovers to take place automatically at the correct times. Disconnecting the stream and beginning another is less than ideal, because the audience's media players will also be disconnected when that happens.<br />
+</p>
+<p>The <strong>Icecast</strong> server has a <em>fallback-mount</em> feature which can be used to move clients (media players used by listeners or viewers) from one source to another, as new sources become available. This makes it possible to handover from Airtime scheduled output to a live show from another source, and handover to Airtime again once the live show has ended.</p>
+<p>To enable fallback mounts, edit the main Icecast configuration file to define the mount points you will use, and the relationship between them.</p>
+<pre><code>$ sudo nano /etc/icecast2/icecast.xml</code></pre>
+<p>The example <em>&lt;mount&gt;</em> section provided in the <em>icecast.xml</em> file is commented out by default. Before or after the commented section, add three mount point definitions. The default mount point used by Airtime is <em>/airtime.ogg</em> which is shown in the <em>/etc/airtime/liquidsoap.cfg</em> file. You must also define a mount point for the live source (called <em>/live.ogg</em> in this example) and a mount point for the public to connect to (called <em>/stream.ogg</em> in this example).<br />
+</p>
+<pre><code>   &lt;mount&gt;
+        &lt;mount-name&gt;/airtime.ogg&lt;/mount-name&gt;
+        &lt;hidden&gt;0&lt;/hidden&gt;
+   &lt;/mount&gt;
+
+   &lt;mount&gt;
+        &lt;mount-name&gt;/live.ogg&lt;/mount-name&gt;
+        &lt;fallback-mount&gt;/airtime.ogg&lt;/fallback-mount&gt;
+        &lt;fallback-override&gt;1&lt;/fallback-override&gt;
+        &lt;hidden&gt;0&lt;/hidden&gt;
+   &lt;/mount&gt;
+
+   &lt;mount&gt;
+        &lt;mount-name&gt;/stream.ogg&lt;/mount-name&gt;
+        &lt;fallback-mount&gt;/live.ogg&lt;/fallback-mount&gt;
+        &lt;fallback-override&gt;1&lt;/fallback-override&gt;
+        &lt;hidden&gt;0&lt;/hidden&gt;
+   &lt;/mount&gt;</code></pre>
+<p>These mount point definitions mean that a client connecting to a URL such as <em>http://icecast.example.com:8000/stream.ogg</em> will first fall back to the <em>/live.ogg</em> mount point if it is available. If not, the client will fall back in turn to the <em>/airtime.ogg</em> mount point for scheduled show playout.</p>
+<p>Setting the value of <em>&lt;fallback-override&gt;</em> to 1 (enabled) means that when the <em>/live.ogg</em> mount point becomes available again, the client will be re-connected to it.  If you wish to hide the <em>/airtime.ogg</em> and <em>/live.ogg</em> mount points from the public Icecast web interface, set the value of <em>&lt;hidden&gt;</em> in each of these definitions to 1.</p>
+<h2>Live source configuration</h2>
+<p>To integrate the live streaming source with Airtime, connect the live source to the Icecast server with the same parameters defined in the <em>/etc/airtime/liquidsoap.cfg</em> file, except for the mount point. This should be the live mount point you have defined in the <em>/etc/icecast2/icecast.xml</em> file, such as <em>/live.ogg</em> in the example above.</p>
+<p>To configure <strong>Mixxx</strong> for streaming to Icecast, click <em>Options</em>, <em>Preferences</em>, then <em>Live Broadcasting</em>. For server <em>Type</em>, select the default of <em>Icecast 2</em> when streaming to Debian or Ubuntu servers, as this is the version of Icecast supplied with those GNU/Linux distributions.<br />
+</p>
+<p><img src="static/Screenshot123-Mixxx_Preferences.png" /> </p>
+<p>By default, Icecast streams are buffered to guard against network problems, which causes latency for remote listeners. When monitoring the stream from a remote location, you may have to begin the live stream a few seconds before the previous stream ends to enable a smooth transition.<br />
+</p>
+<p><span id="ch037_expert-install.xhtml"></span></p>
+<h1>Expert install</h1>
+<p>These quick install steps are suitable for experienced GNU/Linux system administrators. For a more detailed explanation, please read the chapter <em>Automated installation</em> in this book.</p>
+<p>1. Edit the repositories file for your server:</p>
+<pre><code>$ sudo nano /etc/apt/sources.list</code></pre>
+<p>For Ubuntu Lucid servers, use the Sourcefabric repository:</p>
+<pre><code>deb http://apt.sourcefabric.org/ lucid main</code></pre>
+<p>and enable the multiverse repository if you need MP3 encoding support:</p>
+<pre><code>deb http://archive.ubuntu.com/ubuntu/ lucid multiverse</code></pre>
+<p>For Debian Squeeze servers, use the Sourcefabric repository:</p>
+<pre><code>deb http://apt.sourcefabric.org/ squeeze main</code></pre>
+<p>and enable the Debian Multimedia repository if you need MP3 encoding support:</p>
+<pre><code>deb http://www.debian-multimedia.org squeeze main non-free</code></pre>
+<p>2. Install the Sourcefabric package signing key. Also install the Debian Multimedia key if you are running Squeeze:</p>
+<pre><code>$ sudo apt-get update
+$ sudo apt-get install sourcefabric-keyring
+$ sudo apt-get install debian-multimedia-keyring</code></pre>
+<p>3. Install the database management system:</p>
+<pre><code>$ sudo apt-get install postgresql</code></pre>
+<p>4. Install the streaming media server (optional):</p>
+<pre><code>$ sudo apt-get install icecast2</code></pre>
+<p>5. Remove PulseAudio:</p>
+<pre><code>$ sudo apt-get purge pulseaudio</code></pre>
+<p>6. Install Airtime:</p>
+<pre><code>$ sudo apt-get install airtime</code></pre>
+<p>Refer to the <em>Configuration</em> chapter for configuration options. Now you should be able to log in to the Airtime administration interface, as shown in the <em>Getting started</em> chapter.</p>
+<p><span id="ch038_time-zones.xhtml"></span></p>
+<h1>Time zones</h1>
+<p>Use the appropriate time zone value from the list below in the <em>php.ini</em> file on your Airtime server.</p>
+<h2>Africa</h2>
+<p>Africa/Abidjan, Africa/Accra, Africa/Addis_Ababa, Africa/Algiers, Africa/Asmara, Africa/Asmera, Africa/Bamako, Africa/Bangui, Africa/Banjul, Africa/Bissau, Africa/Blantyre, Africa/Brazzaville, Africa/Bujumbura, Africa/Cairo, Africa/Casablanca, Africa/Ceuta, Africa/Conakry, Africa/Dakar, Africa/Dar_es_Salaam, Africa/Djibouti, Africa/Douala, Africa/El_Aaiun, Africa/Freetown, Africa/Gaborone, Africa/Harare, Africa/Johannesburg, Africa/Kampala, Africa/Khartoum, Africa/Kigali, Africa/Kinshasa, Africa/Lagos, Africa/Libreville, Africa/Lome, Africa/Luanda, Africa/Lubumbashi, Africa/Lusaka, Africa/Malabo, Africa/Maputo, Africa/Maseru, Africa/Mbabane, Africa/Mogadishu, Africa/Monrovia, Africa/Nairobi, Africa/Ndjamena, Africa/Niamey, Africa/Nouakchott, Africa/Ouagadougou, Africa/Porto-Novo, Africa/Sao_Tome, Africa/Timbuktu, Africa/Tripoli, Africa/Tunis, Africa/Windhoek</p>
+<h2>America</h2>
+<p>America/Adak, America/Anchorage, America/Anguilla, America/Antigua, America/Araguaina, America/Argentina/Buenos_Aires, America/Argentina/Catamarca, America/Argentina/ComodRivadavia, America/Argentina/Cordoba, America/Argentina/Jujuy, America/Argentina/La_Rioja, America/Argentina/Mendoza, America/Argentina/Rio_Gallegos, America/Argentina/Salta, America/Argentina/San_Juan, America/Argentina/San_Luis, America/Argentina/Tucuman, America/Argentina/Ushuaia, America/Aruba, America/Asuncion, America/Atikokan, America/Atka, America/Bahia, America/Bahia_Banderas, America/Barbados, America/Belem, America/Belize, America/Blanc-Sablon, America/Boa_Vista, America/Bogota, America/Boise, America/Buenos_Aires, America/Cambridge_Bay, America/Campo_Grande, America/Cancun, America/Caracas, America/Catamarca, America/Cayenne, America/Cayman, America/Chicago, America/Chihuahua, America/Coral_Harbour, America/Cordoba, America/Costa_Rica, America/Cuiaba, America/Curacao, America/Danmarkshavn, America/Dawson, America/Dawson_Creek, America/Denver, America/Detroit, America/Dominica, America/Edmonton, America/Eirunepe, America/El_Salvador, America/Ensenada, America/Fort_Wayne, America/Fortaleza, America/Glace_Bay, America/Godthab, America/Goose_Bay, America/Grand_Turk, America/Grenada, America/Guadeloupe, America/Guatemala, America/Guayaquil, America/Guyana, America/Halifax, America/Havana, America/Hermosillo, America/Indiana/Indianapolis, America/Indiana/Knox, America/Indiana/Marengo, America/Indiana/Petersburg, America/Indiana/Tell_City, America/Indiana/Vevay, America/Indiana/Vincennes, America/Indiana/Winamac, America/Indianapolis, America/Inuvik, America/Iqaluit, America/Jamaica, America/Jujuy, America/Juneau, America/Kentucky/Louisville, America/Kentucky/Monticello, America/Knox_IN, America/La_Paz, America/Lima, America/Los_Angeles, America/Louisville, America/Maceio, America/Managua, America/Manaus, America/Marigot, America/Martinique, America/Matamoros, America/Mazatlan, America/Mendoza, America/Menominee, America/Merida, America/Mexico_City, America/Miquelon, America/Moncton, America/Monterrey, America/Montevideo, America/Montreal, America/Montserrat, America/Nassau, America/New_York, America/Nipigon, America/Nome, America/Noronha, America/North_Dakota/Beulah, America/North_Dakota/Center, America/North_Dakota/New_Salem, America/Ojinaga, America/Panama, America/Pangnirtung, America/Paramaribo, America/Phoenix, America/Port-au-Prince, America/Port_of_Spain, America/Porto_Acre, America/Porto_Velho, America/Puerto_Rico, America/Rainy_River, America/Rankin_Inlet, America/Recife, America/Regina, America/Resolute, America/Rio_Branco, America/Rosario, America/Santa_Isabel, America/Santarem, America/Santiago, America/Santo_Domingo, America/Sao_Paulo, America/Scoresbysund, America/Shiprock, America/St_Barthelemy, America/St_Johns, America/St_Kitts, America/St_Lucia, America/St_Thomas, America/St_Vincent, America/Swift_Current, America/Tegucigalpa, America/Thule, America/Thunder_Bay, America/Tijuana, America/Toronto, America/Tortola, America/Vancouver, America/Virgin, America/Whitehorse, America/Winnipeg, America/Yakutat, America/Yellowknife</p>
+<h2>Antarctica</h2>
+<p>Antarctica/Casey, Antarctica/Davis, Antarctica/DumontDUrville, Antarctica/Macquarie, Antarctica/Mawson, Antarctica/McMurdo, Antarctica/Palmer, Antarctica/Rothera, Antarctica/South_Pole, Antarctica/Syowa, Antarctica/Vostok</p>
+<h2>Arctic</h2>
+<p>Arctic/Longyearbyen</p>
+<h2>Asia</h2>
+<p>Asia/Aden, Asia/Almaty, Asia/Amman, Asia/Anadyr, Asia/Aqtau, Asia/Aqtobe, Asia/Ashgabat, Asia/Ashkhabad, Asia/Baghdad, Asia/Bahrain, Asia/Baku, Asia/Bangkok, Asia/Beirut, Asia/Bishkek, Asia/Brunei, Asia/Calcutta, Asia/Choibalsan, Asia/Chongqing, Asia/Chungking, Asia/Colombo, Asia/Dacca, Asia/Damascus, Asia/Dhaka, Asia/Dili, Asia/Dubai, Asia/Dushanbe, Asia/Gaza, Asia/Harbin, Asia/Ho_Chi_Minh, Asia/Hong_Kong, Asia/Hovd, Asia/Irkutsk, Asia/Istanbul, Asia/Jakarta, Asia/Jayapura, Asia/Jerusalem, Asia/Kabul, Asia/Kamchatka, Asia/Karachi, Asia/Kashgar, Asia/Kathmandu, Asia/Katmandu, Asia/Kolkata, Asia/Krasnoyarsk, Asia/Kuala_Lumpur, Asia/Kuching, Asia/Kuwait, Asia/Macao, Asia/Macau, Asia/Magadan, Asia/Makassar, Asia/Manila, Asia/Muscat, Asia/Nicosia, Asia/Novokuznetsk, Asia/Novosibirsk, Asia/Omsk, Asia/Oral, Asia/Phnom_Penh, Asia/Pontianak, Asia/Pyongyang, Asia/Qatar, Asia/Qyzylorda, Asia/Rangoon, Asia/Riyadh, Asia/Saigon, Asia/Sakhalin, Asia/Samarkand, Asia/Seoul, Asia/Shanghai, Asia/Singapore, Asia/Taipei, Asia/Tashkent, Asia/Tbilisi, Asia/Tehran, Asia/Tel_Aviv, Asia/Thimbu, Asia/Thimphu, Asia/Tokyo, Asia/Ujung_Pandang, Asia/Ulaanbaatar, Asia/Ulan_Bator, Asia/Urumqi, Asia/Vientiane, Asia/Vladivostok, Asia/Yakutsk, Asia/Yekaterinburg, Asia/Yerevan</p>
+<h2>Atlantic Ocean</h2>
+<p>Atlantic/Azores, Atlantic/Bermuda, Atlantic/Canary, Atlantic/Cape_Verde, Atlantic/Faeroe, Atlantic/Faroe, Atlantic/Jan_Mayen, Atlantic/Madeira, Atlantic/Reykjavik, Atlantic/South_Georgia, Atlantic/St_Helena, Atlantic/Stanley</p>
+<h2>Australia</h2>
+<p>Australia/ACT, Australia/Adelaide, Australia/Brisbane, Australia/Broken_Hill, Australia/Canberra, Australia/Currie, Australia/Darwin, Australia/Eucla, Australia/Hobart, Australia/LHI, Australia/Lindeman, Australia/Lord_Howe, Australia/Melbourne, Australia/North, Australia/NSW, Australia/Perth, Australia/Queensland, Australia/South, Australia/Sydney, Australia/Tasmania, Australia/Victoria, Australia/West, Australia/Yancowinna</p>
+<h2>Europe</h2>
+<p>Europe/Amsterdam, Europe/Andorra, Europe/Athens, Europe/Belfast, Europe/Belgrade, Europe/Berlin, Europe/Bratislava, Europe/Brussels, Europe/Bucharest, Europe/Budapest, Europe/Chisinau, Europe/Copenhagen, Europe/Dublin, Europe/Gibraltar, Europe/Guernsey, Europe/Helsinki, Europe/Isle_of_Man, Europe/Istanbul, Europe/Jersey, Europe/Kaliningrad, Europe/Kiev, Europe/Lisbon, Europe/Ljubljana, Europe/London, Europe/Luxembourg, Europe/Madrid, Europe/Malta, Europe/Mariehamn, Europe/Minsk, Europe/Monaco, Europe/Moscow, Europe/Nicosia, Europe/Oslo, Europe/Paris, Europe/Podgorica, Europe/Prague, Europe/Riga, Europe/Rome, Europe/Samara, Europe/San_Marino, Europe/Sarajevo, Europe/Simferopol, Europe/Skopje, Europe/Sofia, Europe/Stockholm, Europe/Tallinn, Europe/Tirane, Europe/Tiraspol, Europe/Uzhgorod, Europe/Vaduz, Europe/Vatican, Europe/Vienna, Europe/Vilnius, Europe/Volgograd, Europe/Warsaw, Europe/Zagreb, Europe/Zaporozhye, Europe/Zurich</p>
+<h2>Indian Ocean</h2>
+<p>Indian/Antananarivo, Indian/Chagos, Indian/Christmas, Indian/Cocos, Indian/Comoro, Indian/Kerguelen, Indian/Mahe, Indian/Maldives, Indian/Mauritius, Indian/Mayotte, Indian/Reunion</p>
+<h2>Pacific Ocean</h2>
+<p>Pacific/Apia, Pacific/Auckland, Pacific/Chatham, Pacific/Chuuk, Pacific/Easter, Pacific/Efate, Pacific/Enderbury, Pacific/Fakaofo, Pacific/Fiji, Pacific/Funafuti, Pacific/Galapagos, Pacific/Gambier, Pacific/Guadalcanal, Pacific/Guam, Pacific/Honolulu, Pacific/Johnston, Pacific/Kiritimati, Pacific/Kosrae, Pacific/Kwajalein, Pacific/Majuro, Pacific/Marquesas, Pacific/Midway, Pacific/Nauru, Pacific/Niue, Pacific/Norfolk, Pacific/Noumea, Pacific/Pago_Pago, Pacific/Palau, Pacific/Pitcairn, Pacific/Pohnpei, Pacific/Ponape, Pacific/Port_Moresby, Pacific/Rarotonga, Pacific/Saipan, Pacific/Samoa, Pacific/Tahiti, Pacific/Tarawa, Pacific/Tongatapu, Pacific/Truk, Pacific/Wake, Pacific/Wallis, Pacific/Yap</p>
+<p><span id="ch039_about-this-manual.xhtml"></span></p>
+<h1>About this manual</h1>
+<p><strong>Copyright (C) 2011 Sourcefabric o.p.s</strong></p>
+<p>This manual was written for Sourcefabric by Daniel James, using the tools at FLOSS Manuals. Please add your comments and contributions at: <a href="http://en.flossmanuals.net/airtime/" class="uri" title="Airtime at FLOSS Manuals">http://en.flossmanuals.net/airtime/</a></p>
+<p>This documentation is free documentation; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3.</p>
+<p>This documentation is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License along with this documentation; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.</p>
+<div title="Page Break">
+
+</div>
+<p><br />
+</p>
+<h3>GNU GENERAL PUBLIC LICENSE</h3>
+<p>Version 3, 29 June 2007</p>
+<p>Copyright © 2007 Free Software Foundation, Inc. &lt;<a href="http://fsf.org/" class="uri">http://fsf.org/</a>&gt;</p>
+<p>Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed.</p>
+<h3><span id="ch039_about-this-manual.xhtml#preamble"></span>Preamble</h3>
+<p>The GNU General Public License is a free, copyleft license for software and other kinds of works.</p>
+<p>The licenses for most software and other practical works are designed to take away your freedom to share and change the works. By contrast, the GNU General Public License is intended to guarantee your freedom to share and change all versions of a program--to make sure it remains free software for all its users. We, the Free Software Foundation, use the GNU General Public License for most of our software; it applies also to any other work released this way by its authors. You can apply it to your programs, too.</p>
+<p>When we speak of free software, we are referring to freedom, not price. Our General Public Licenses are designed to make sure that you have the freedom to distribute copies of free software (and charge for them if you wish), that you receive source code or can get it if you want it, that you can change the software or use pieces of it in new free programs, and that you know you can do these things.</p>
+<p>To protect your rights, we need to prevent others from denying you these rights or asking you to surrender the rights. Therefore, you have certain responsibilities if you distribute copies of the software, or if you modify it: responsibilities to respect the freedom of others.</p>
+<p>For example, if you distribute copies of such a program, whether gratis or for a fee, you must pass on to the recipients the same freedoms that you received. You must make sure that they, too, receive or can get the source code. And you must show them these terms so they know their rights.</p>
+<p>Developers that use the GNU GPL protect your rights with two steps: (1) assert copyright on the software, and (2) offer you this License giving you legal permission to copy, distribute and/or modify it.</p>
+<p>For the developers' and authors' protection, the GPL clearly explains that there is no warranty for this free software. For both users' and authors' sake, the GPL requires that modified versions be marked as changed, so that their problems will not be attributed erroneously to authors of previous versions.</p>
+<p>Some devices are designed to deny users access to install or run modified versions of the software inside them, although the manufacturer can do so. This is fundamentally incompatible with the aim of protecting users' freedom to change the software. The systematic pattern of such abuse occurs in the area of products for individuals to use, which is precisely where it is most unacceptable. Therefore, we have designed this version of the GPL to prohibit the practice for those products. If such problems arise substantially in other domains, we stand ready to extend this provision to those domains in future versions of the GPL, as needed to protect the freedom of users.</p>
+<p>Finally, every program is threatened constantly by software patents. States should not allow patents to restrict development and use of software on general-purpose computers, but in those that do, we wish to avoid the special danger that patents applied to a free program could make it effectively proprietary. To prevent this, the GPL assures that patents cannot be used to render the program non-free.</p>
+<p>The precise terms and conditions for copying, distribution and modification follow.</p>
+<h3><span id="ch039_about-this-manual.xhtml#terms"></span>TERMS AND CONDITIONS</h3>
+<h4><span id="ch039_about-this-manual.xhtml#section0"></span>0. Definitions.</h4>
+<p>“This License” refers to version 3 of the GNU General Public License.</p>
+<p>“Copyright” also means copyright-like laws that apply to other kinds of works, such as semiconductor masks.</p>
+<p>“The Program” refers to any copyrightable work licensed under this License. Each licensee is addressed as “you”. “Licensees” and “recipients” may be individuals or organizations.</p>
+<p>To “modify” a work means to copy from or adapt all or part of the work in a fashion requiring copyright permission, other than the making of an exact copy. The resulting work is called a “modified version” of the earlier work or a work “based on” the earlier work.</p>
+<p>A “covered work” means either the unmodified Program or a work based on the Program.</p>
+<p>To “propagate” a work means to do anything with it that, without permission, would make you directly or secondarily liable for infringement under applicable copyright law, except executing it on a computer or modifying a private copy. Propagation includes copying, distribution (with or without modification), making available to the public, and in some countries other activities as well.</p>
+<p>To “convey” a work means any kind of propagation that enables other parties to make or receive copies. Mere interaction with a user through a computer network, with no transfer of a copy, is not conveying.</p>
+<p>An interactive user interface displays “Appropriate Legal Notices” to the extent that it includes a convenient and prominently visible feature that (1) displays an appropriate copyright notice, and (2) tells the user that there is no warranty for the work (except to the extent that warranties are provided), that licensees may convey the work under this License, and how to view a copy of this License. If the interface presents a list of user commands or options, such as a menu, a prominent item in the list meets this criterion.</p>
+<h4><span id="ch039_about-this-manual.xhtml#section1"></span>1. Source Code.</h4>
+<p>The “source code” for a work means the preferred form of the work for making modifications to it. “Object code” means any non-source form of a work.</p>
+<p>A “Standard Interface” means an interface that either is an official standard defined by a recognized standards body, or, in the case of interfaces specified for a particular programming language, one that is widely used among developers working in that language.</p>
+<p>The “System Libraries” of an executable work include anything, other than the work as a whole, that (a) is included in the normal form of packaging a Major Component, but which is not part of that Major Component, and (b) serves only to enable use of the work with that Major Component, or to implement a Standard Interface for which an implementation is available to the public in source code form. A “Major Component”, in this context, means a major essential component (kernel, window system, and so on) of the specific operating system (if any) on which the executable work runs, or a compiler used to produce the work, or an object code interpreter used to run it.</p>
+<p>The “Corresponding Source” for a work in object code form means all the source code needed to generate, install, and (for an executable work) run the object code and to modify the work, including scripts to control those activities. However, it does not include the work's System Libraries, or general-purpose tools or generally available free programs which are used unmodified in performing those activities but which are not part of the work. For example, Corresponding Source includes interface definition files associated with source files for the work, and the source code for shared libraries and dynamically linked subprograms that the work is specifically designed to require, such as by intimate data communication or control flow between those subprograms and other parts of the work.</p>
+<p>The Corresponding Source need not include anything that users can regenerate automatically from other parts of the Corresponding Source.</p>
+<p>The Corresponding Source for a work in source code form is that same work.</p>
+<h4><span id="ch039_about-this-manual.xhtml#section2"></span>2. Basic Permissions.</h4>
+<p>All rights granted under this License are granted for the term of copyright on the Program, and are irrevocable provided the stated conditions are met. This License explicitly affirms your unlimited permission to run the unmodified Program. The output from running a covered work is covered by this License only if the output, given its content, constitutes a covered work. This License acknowledges your rights of fair use or other equivalent, as provided by copyright law.</p>
+<p>You may make, run and propagate covered works that you do not convey, without conditions so long as your license otherwise remains in force. You may convey covered works to others for the sole purpose of having them make modifications exclusively for you, or provide you with facilities for running those works, provided that you comply with the terms of this License in conveying all material for which you do not control copyright. Those thus making or running the covered works for you must do so exclusively on your behalf, under your direction and control, on terms that prohibit them from making any copies of your copyrighted material outside their relationship with you.</p>
+<p>Conveying under any other circumstances is permitted solely under the conditions stated below. Sublicensing is not allowed; section 10 makes it unnecessary.</p>
+<h4><span id="ch039_about-this-manual.xhtml#section3"></span>3. Protecting Users' Legal Rights From Anti-Circumvention Law.</h4>
+<p>No covered work shall be deemed part of an effective technological measure under any applicable law fulfilling obligations under article 11 of the WIPO copyright treaty adopted on 20 December 1996, or similar laws prohibiting or restricting circumvention of such measures.</p>
+<p>When you convey a covered work, you waive any legal power to forbid circumvention of technological measures to the extent such circumvention is effected by exercising rights under this License with respect to the covered work, and you disclaim any intention to limit operation or modification of the work as a means of enforcing, against the work's users, your or third parties' legal rights to forbid circumvention of technological measures.</p>
+<h4><span id="ch039_about-this-manual.xhtml#section4"></span>4. Conveying Verbatim Copies.</h4>
+<p>You may convey verbatim copies of the Program's source code as you receive it, in any medium, provided that you conspicuously and appropriately publish on each copy an appropriate copyright notice; keep intact all notices stating that this License and any non-permissive terms added in accord with section 7 apply to the code; keep intact all notices of the absence of any warranty; and give all recipients a copy of this License along with the Program.</p>
+<p>You may charge any price or no price for each copy that you convey, and you may offer support or warranty protection for a fee.</p>
+<h4><span id="ch039_about-this-manual.xhtml#section5"></span>5. Conveying Modified Source Versions.</h4>
+<p>You may convey a work based on the Program, or the modifications to produce it from the Program, in the form of source code under the terms of section 4, provided that you also meet all of these conditions:</p>
+<ul>
+<li>a) The work must carry prominent notices stating that you modified it, and giving a relevant date.</li>
+<li>b) The work must carry prominent notices stating that it is released under this License and any conditions added under section 7. This requirement modifies the requirement in section 4 to “keep intact all notices”.</li>
+<li>c) You must license the entire work, as a whole, under this License to anyone who comes into possession of a copy. This License will therefore apply, along with any applicable section 7 additional terms, to the whole of the work, and all its parts, regardless of how they are packaged. This License gives no permission to license the work in any other way, but it does not invalidate such permission if you have separately received it.</li>
+<li>d) If the work has interactive user interfaces, each must display Appropriate Legal Notices; however, if the Program has interactive interfaces that do not display Appropriate Legal Notices, your work need not make them do so.</li>
+</ul>
+<p>A compilation of a covered work with other separate and independent works, which are not by their nature extensions of the covered work, and which are not combined with it such as to form a larger program, in or on a volume of a storage or distribution medium, is called an “aggregate” if the compilation and its resulting copyright are not used to limit the access or legal rights of the compilation's users beyond what the individual works permit. Inclusion of a covered work in an aggregate does not cause this License to apply to the other parts of the aggregate.</p>
+<h4><span id="ch039_about-this-manual.xhtml#section6"></span>6. Conveying Non-Source Forms.</h4>
+<p>You may convey a covered work in object code form under the terms of sections 4 and 5, provided that you also convey the machine-readable Corresponding Source under the terms of this License, in one of these ways:</p>
+<ul>
+<li>a) Convey the object code in, or embodied in, a physical product (including a physical distribution medium), accompanied by the Corresponding Source fixed on a durable physical medium customarily used for software interchange.</li>
+<li>b) Convey the object code in, or embodied in, a physical product (including a physical distribution medium), accompanied by a written offer, valid for at least three years and valid for as long as you offer spare parts or customer support for that product model, to give anyone who possesses the object code either (1) a copy of the Corresponding Source for all the software in the product that is covered by this License, on a durable physical medium customarily used for software interchange, for a price no more than your reasonable cost of physically performing this conveying of source, or (2) access to copy the Corresponding Source from a network server at no charge.</li>
+<li>c) Convey individual copies of the object code with a copy of the written offer to provide the Corresponding Source. This alternative is allowed only occasionally and noncommercially, and only if you received the object code with such an offer, in accord with subsection 6b.</li>
+<li>d) Convey the object code by offering access from a designated place (gratis or for a charge), and offer equivalent access to the Corresponding Source in the same way through the same place at no further charge. You need not require recipients to copy the Corresponding Source along with the object code. If the place to copy the object code is a network server, the Corresponding Source may be on a different server (operated by you or a third party) that supports equivalent copying facilities, provided you maintain clear directions next to the object code saying where to find the Corresponding Source. Regardless of what server hosts the Corresponding Source, you remain obligated to ensure that it is available for as long as needed to satisfy these requirements.</li>
+<li>e) Convey the object code using peer-to-peer transmission, provided you inform other peers where the object code and Corresponding Source of the work are being offered to the general public at no charge under subsection 6d.</li>
+</ul>
+<p>A separable portion of the object code, whose source code is excluded from the Corresponding Source as a System Library, need not be included in conveying the object code work.</p>
+<p>A “User Product” is either (1) a “consumer product”, which means any tangible personal property which is normally used for personal, family, or household purposes, or (2) anything designed or sold for incorporation into a dwelling. In determining whether a product is a consumer product, doubtful cases shall be resolved in favor of coverage. For a particular product received by a particular user, “normally used” refers to a typical or common use of that class of product, regardless of the status of the particular user or of the way in which the particular user actually uses, or expects or is expected to use, the product. A product is a consumer product regardless of whether the product has substantial commercial, industrial or non-consumer uses, unless such uses represent the only significant mode of use of the product.</p>
+<p>“Installation Information” for a User Product means any methods, procedures, authorization keys, or other information required to install and execute modified versions of a covered work in that User Product from a modified version of its Corresponding Source. The information must suffice to ensure that the continued functioning of the modified object code is in no case prevented or interfered with solely because modification has been made.</p>
+<p>If you convey an object code work under this section in, or with, or specifically for use in, a User Product, and the conveying occurs as part of a transaction in which the right of possession and use of the User Product is transferred to the recipient in perpetuity or for a fixed term (regardless of how the transaction is characterized), the Corresponding Source conveyed under this section must be accompanied by the Installation Information. But this requirement does not apply if neither you nor any third party retains the ability to install modified object code on the User Product (for example, the work has been installed in ROM).</p>
+<p>The requirement to provide Installation Information does not include a requirement to continue to provide support service, warranty, or updates for a work that has been modified or installed by the recipient, or for the User Product in which it has been modified or installed. Access to a network may be denied when the modification itself materially and adversely affects the operation of the network or violates the rules and protocols for communication across the network.</p>
+<p>Corresponding Source conveyed, and Installation Information provided, in accord with this section must be in a format that is publicly documented (and with an implementation available to the public in source code form), and must require no special password or key for unpacking, reading or copying.</p>
+<h4><span id="ch039_about-this-manual.xhtml#section7"></span>7. Additional Terms.</h4>
+<p>“Additional permissions” are terms that supplement the terms of this License by making exceptions from one or more of its conditions. Additional permissions that are applicable to the entire Program shall be treated as though they were included in this License, to the extent that they are valid under applicable law. If additional permissions apply only to part of the Program, that part may be used separately under those permissions, but the entire Program remains governed by this License without regard to the additional permissions.</p>
+<p>When you convey a copy of a covered work, you may at your option remove any additional permissions from that copy, or from any part of it. (Additional permissions may be written to require their own removal in certain cases when you modify the work.) You may place additional permissions on material, added by you to a covered work, for which you have or can give appropriate copyright permission.</p>
+<p>Notwithstanding any other provision of this License, for material you add to a covered work, you may (if authorized by the copyright holders of that material) supplement the terms of this License with terms:</p>
+<ul>
+<li>a) Disclaiming warranty or limiting liability differently from the terms of sections 15 and 16 of this License; or</li>
+<li>b) Requiring preservation of specified reasonable legal notices or author attributions in that material or in the Appropriate Legal Notices displayed by works containing it; or</li>
+<li>c) Prohibiting misrepresentation of the origin of that material, or requiring that modified versions of such material be marked in reasonable ways as different from the original version; or</li>
+<li>d) Limiting the use for publicity purposes of names of licensors or authors of the material; or</li>
+<li>e) Declining to grant rights under trademark law for use of some trade names, trademarks, or service marks; or</li>
+<li>f) Requiring indemnification of licensors and authors of that material by anyone who conveys the material (or modified versions of it) with contractual assumptions of liability to the recipient, for any liability that these contractual assumptions directly impose on those licensors and authors.</li>
+</ul>
+<p>All other non-permissive additional terms are considered “further restrictions” within the meaning of section 10. If the Program as you received it, or any part of it, contains a notice stating that it is governed by this License along with a term that is a further restriction, you may remove that term. If a license document contains a further restriction but permits relicensing or conveying under this License, you may add to a covered work material governed by the terms of that license document, provided that the further restriction does not survive such relicensing or conveying.</p>
+<p>If you add terms to a covered work in accord with this section, you must place, in the relevant source files, a statement of the additional terms that apply to those files, or a notice indicating where to find the applicable terms.</p>
+<p>Additional terms, permissive or non-permissive, may be stated in the form of a separately written license, or stated as exceptions; the above requirements apply either way.</p>
+<h4><span id="ch039_about-this-manual.xhtml#section8"></span>8. Termination.</h4>
+<p>You may not propagate or modify a covered work except as expressly provided under this License. Any attempt otherwise to propagate or modify it is void, and will automatically terminate your rights under this License (including any patent licenses granted under the third paragraph of section 11).</p>
+<p>However, if you cease all violation of this License, then your license from a particular copyright holder is reinstated (a) provisionally, unless and until the copyright holder explicitly and finally terminates your license, and (b) permanently, if the copyright holder fails to notify you of the violation by some reasonable means prior to 60 days after the cessation.</p>
+<p>Moreover, your license from a particular copyright holder is reinstated permanently if the copyright holder notifies you of the violation by some reasonable means, this is the first time you have received notice of violation of this License (for any work) from that copyright holder, and you cure the violation prior to 30 days after your receipt of the notice.</p>
+<p>Termination of your rights under this section does not terminate the licenses of parties who have received copies or rights from you under this License. If your rights have been terminated and not permanently reinstated, you do not qualify to receive new licenses for the same material under section 10.</p>
+<h4><span id="ch039_about-this-manual.xhtml#section9"></span>9. Acceptance Not Required for Having Copies.</h4>
+<p>You are not required to accept this License in order to receive or run a copy of the Program. Ancillary propagation of a covered work occurring solely as a consequence of using peer-to-peer transmission to receive a copy likewise does not require acceptance. However, nothing other than this License grants you permission to propagate or modify any covered work. These actions infringe copyright if you do not accept this License. Therefore, by modifying or propagating a covered work, you indicate your acceptance of this License to do so.</p>
+<h4><span id="ch039_about-this-manual.xhtml#section10"></span>10. Automatic Licensing of Downstream Recipients.</h4>
+<p>Each time you convey a covered work, the recipient automatically receives a license from the original licensors, to run, modify and propagate that work, subject to this License. You are not responsible for enforcing compliance by third parties with this License.</p>
+<p>An “entity transaction” is a transaction transferring control of an organization, or substantially all assets of one, or subdividing an organization, or merging organizations. If propagation of a covered work results from an entity transaction, each party to that transaction who receives a copy of the work also receives whatever licenses to the work the party's predecessor in interest had or could give under the previous paragraph, plus a right to possession of the Corresponding Source of the work from the predecessor in interest, if the predecessor has it or can get it with reasonable efforts.</p>
+<p>You may not impose any further restrictions on the exercise of the rights granted or affirmed under this License. For example, you may not impose a license fee, royalty, or other charge for exercise of rights granted under this License, and you may not initiate litigation (including a cross-claim or counterclaim in a lawsuit) alleging that any patent claim is infringed by making, using, selling, offering for sale, or importing the Program or any portion of it.</p>
+<h4><span id="ch039_about-this-manual.xhtml#section11"></span>11. Patents.</h4>
+<p>A “contributor” is a copyright holder who authorizes use under this License of the Program or a work on which the Program is based. The work thus licensed is called the contributor's “contributor version”.</p>
+<p>A contributor's “essential patent claims” are all patent claims owned or controlled by the contributor, whether already acquired or hereafter acquired, that would be infringed by some manner, permitted by this License, of making, using, or selling its contributor version, but do not include claims that would be infringed only as a consequence of further modification of the contributor version. For purposes of this definition, “control” includes the right to grant patent sublicenses in a manner consistent with the requirements of this License.</p>
+<p>Each contributor grants you a non-exclusive, worldwide, royalty-free patent license under the contributor's essential patent claims, to make, use, sell, offer for sale, import and otherwise run, modify and propagate the contents of its contributor version.</p>
+<p>In the following three paragraphs, a “patent license” is any express agreement or commitment, however denominated, not to enforce a patent (such as an express permission to practice a patent or covenant not to sue for patent infringement). To “grant” such a patent license to a party means to make such an agreement or commitment not to enforce a patent against the party.</p>
+<p>If you convey a covered work, knowingly relying on a patent license, and the Corresponding Source of the work is not available for anyone to copy, free of charge and under the terms of this License, through a publicly available network server or other readily accessible means, then you must either (1) cause the Corresponding Source to be so available, or (2) arrange to deprive yourself of the benefit of the patent license for this particular work, or (3) arrange, in a manner consistent with the requirements of this License, to extend the patent license to downstream recipients. “Knowingly relying” means you have actual knowledge that, but for the patent license, your conveying the covered work in a country, or your recipient's use of the covered work in a country, would infringe one or more identifiable patents in that country that you have reason to believe are valid.</p>
+<p>If, pursuant to or in connection with a single transaction or arrangement, you convey, or propagate by procuring conveyance of, a covered work, and grant a patent license to some of the parties receiving the covered work authorizing them to use, propagate, modify or convey a specific copy of the covered work, then the patent license you grant is automatically extended to all recipients of the covered work and works based on it.</p>
+<p>A patent license is “discriminatory” if it does not include within the scope of its coverage, prohibits the exercise of, or is conditioned on the non-exercise of one or more of the rights that are specifically granted under this License. You may not convey a covered work if you are a party to an arrangement with a third party that is in the business of distributing software, under which you make payment to the third party based on the extent of your activity of conveying the work, and under which the third party grants, to any of the parties who would receive the covered work from you, a discriminatory patent license (a) in connection with copies of the covered work conveyed by you (or copies made from those copies), or (b) primarily for and in connection with specific products or compilations that contain the covered work, unless you entered into that arrangement, or that patent license was granted, prior to 28 March 2007.</p>
+<p>Nothing in this License shall be construed as excluding or limiting any implied license or other defenses to infringement that may otherwise be available to you under applicable patent law.</p>
+<h4><span id="ch039_about-this-manual.xhtml#section12"></span>12. No Surrender of Others' Freedom.</h4>
+<p>If conditions are imposed on you (whether by court order, agreement or otherwise) that contradict the conditions of this License, they do not excuse you from the conditions of this License. If you cannot convey a covered work so as to satisfy simultaneously your obligations under this License and any other pertinent obligations, then as a consequence you may not convey it at all. For example, if you agree to terms that obligate you to collect a royalty for further conveying from those to whom you convey the Program, the only way you could satisfy both those terms and this License would be to refrain entirely from conveying the Program.</p>
+<h4><span id="ch039_about-this-manual.xhtml#section13"></span>13. Use with the GNU Affero General Public License.</h4>
+<p>Notwithstanding any other provision of this License, you have permission to link or combine any covered work with a work licensed under version 3 of the GNU Affero General Public License into a single combined work, and to convey the resulting work. The terms of this License will continue to apply to the part which is the covered work, but the special requirements of the GNU Affero General Public License, section 13, concerning interaction through a network will apply to the combination as such.</p>
+<h4><span id="ch039_about-this-manual.xhtml#section14"></span>14. Revised Versions of this License.</h4>
+<p>The Free Software Foundation may publish revised and/or new versions of the GNU General Public License from time to time. Such new versions will be similar in spirit to the present version, but may differ in detail to address new problems or concerns.</p>
+<p>Each version is given a distinguishing version number. If the Program specifies that a certain numbered version of the GNU General Public License “or any later version” applies to it, you have the option of following the terms and conditions either of that numbered version or of any later version published by the Free Software Foundation. If the Program does not specify a version number of the GNU General Public License, you may choose any version ever published by the Free Software Foundation.</p>
+<p>If the Program specifies that a proxy can decide which future versions of the GNU General Public License can be used, that proxy's public statement of acceptance of a version permanently authorizes you to choose that version for the Program.</p>
+<p>Later license versions may give you additional or different permissions. However, no additional obligations are imposed on any author or copyright holder as a result of your choosing to follow a later version.</p>
+<h4><span id="ch039_about-this-manual.xhtml#section15"></span>15. Disclaimer of Warranty.</h4>
+<p>THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.</p>
+<h4><span id="ch039_about-this-manual.xhtml#section16"></span>16. Limitation of Liability.</h4>
+<p>IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES AND/OR CONVEYS THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+<h4><span id="ch039_about-this-manual.xhtml#section17"></span>17. Interpretation of Sections 15 and 16.</h4>
+<p>If the disclaimer of warranty and limitation of liability provided above cannot be given local legal effect according to their terms, reviewing courts shall apply local law that most closely approximates an absolute waiver of all civil liability in connection with the Program, unless a warranty or assumption of liability accompanies a copy of the Program in return for a fee.</p>
+<p>END OF TERMS AND CONDITIONS</p>
+</body>
+</html>

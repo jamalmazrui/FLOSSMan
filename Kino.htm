@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="The Contributors" />
+  <title>KINO</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">KINO</h1>
+<p class="author">The Contributors</p>
+<p class="date">2011.03.12-03.02</p>
+</header>
+<p><span id="ch001_introduction.xhtml"></span></p>
+<h1>Kino</h1>
+<p>Kino is a free, open source video editing program that lets you capture video through firewire then add titles, transitions and video effects to the footage. It operates on Linux and is not available for Windows or MacOSX.<br />
+</p>
+<p>For the latest information regarding Kino please refer on the Kino website:</p>
+<p><a href="http://www.kinodv.org" class="uri">http://www.kinodv.org</a></p>
+<p>This manual introduces the main features of Kino, in a series of short exercises that take you, step-by-step, through the typical tasks you might do when using the software:</p>
+<ul>
+<li>capturing video</li>
+<li>editing clips</li>
+<li>adding titles and credits</li>
+<li>adding effects</li>
+<li>using sound</li>
+<li>outputting the movie</li>
+</ul>
+<h2><span id="ch001_introduction.xhtml#Hardware%20required"></span> Hardware required</h2>
+<p>Kino is designed to capture video through a Firewire or iLink connection (IEEE1394 connection).</p>
+<p>To edit video on a PC with Linux installed. It should be a fast computer and plenty of memory. The bare minimum is a 500MHz Processor and 128MB of RAM for running the programme. You will also need several gigabytes (GB) of hard drive space. For 5 minutes footage, for example, you will need about 1GB of free space. You may need additional space for any audio files, transitions and effects you put on, and to output the finished movie you may require the same amount of memory space again.</p>
+<p><span id="ch003_capturing-video.xhtml"></span></p>
+<h1><span id="ch003_capturing-video.xhtml#Capturing%20Video"></span> Capturing Video</h1>
+<h2><span id="ch003_capturing-video.xhtml#Connecting%20your%20camera"></span> Connecting your camera</h2>
+<p>Kino has good support for the IEE1394 standard. You will need both a PC and a camera with this type of interface. IEE1394 connections come with 4 or 6 pins, laptops and cameras usually have a 4 pin connection, PC boxes the 6-pin connection. Connect your DV camera to the PC using a an IEE1394 cable.</p>
+<p><img src="static/Kino-capture-02_connection_1394_4pin_female-en.jpg" alt="02_connection_1394_4pin_female.jpg" width="200" height="200" /></p>
+<p>A 4-pin IEEE1394 port connector on the side of a laptop.</p>
+<p><img src="static/Kino-capture-02_cable_1394_4pin_male-en.jpg" alt="02_cable_1394_4pin_male.jpg" width="200" height="200" /></p>
+<p>A 4 pin cable</p>
+<p><img src="static/Kino-capture-02_connection_1394_6pin_female-en.jpg" alt="02_connection_1394_6pin_female.jpg" width="200" height="200" /></p>
+<p>A 6-pin, 3 connector Firewire card one with a cable attached.</p>
+<p><img src="static/Kino-capture-02_cable_1394_6pin_male-en.jpg" alt="02_cable_1394_6pin_male.jpg" width="200" height="200" /></p>
+<p>A 6-pin cable</p>
+<h2><span id="ch003_capturing-video.xhtml#Opening%20Kino"></span> Opening Kino</h2>
+<p>Before opening Kino turn the camera on and go to Playback (or VCR) mode. On your PC open a terminal window and type the command line 'kino'. Press Enter and Kino opens.</p>
+<h2><span id="ch003_capturing-video.xhtml#The%20Kino%20Layout"></span> The Kino Layout</h2>
+<p><img src="static/Kino-capture-03_kino_window_open-en.jpg" alt="03_kino_window_open.jpg" width="501" height="345" /></p>
+<p>The Kino layout is straightforward and is divided into three main columns:</p>
+<ol>
+<li>Storyboard for arranging clips</li>
+<li>Main window video and mode options</li>
+<li>Function buttons for different editing modes</li>
+</ol>
+<p>The Toolbar at the top adds quick access to the more commonly used features in Kino.</p>
+<p>The Transport Controls below the main window let you playback your footage:</p>
+<ol>
+<li>
+<p>Scrub bar: Click and drag to view the project video clips</p>
+</li>
+<dl>
+<dd>
+<dl>
+<dt>
+<li>
+<p>Transport</p>
+</li>
+</dt>
+<dd>
+<p>For playing, advancing and rewinding.</p>
+</dd>
+<dt>
+<li>
+<p>Shuttle</p>
+</li>
+</dt>
+<dd>
+<p>Plays the project at different speed. The speed will display bottom left of the Kino window.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</ol>
+<p>Kino Help: Press the F1 key when Kino is open for help file.</p>
+<h2><span id="ch003_capturing-video.xhtml#Preferences"></span> Preferences</h2>
+<p>Before capturing check Kino preferences. Open Edit &gt; Preferences and select the options below:</p>
+<ul>
+<li>Defaults</li>
+<li>Capture</li>
+<li>Audio</li>
+<li>Other</li>
+<li>See the appendix for more detailed information on defaults.</li>
+</ul>
+<p><img src="static/Kino-capture-04_kino_preferences-en.jpg" alt="04_kino_preferences.jpg" width="301" height="331" /></p>
+<h2><span id="ch003_capturing-video.xhtml#Capture%20location"></span> Capture location</h2>
+<p>To set the where captured video is stored on your hard drive, click on the folder icon above the transport controls. Create a folder and add a file name and Kino will do the rest, sequentially numbering clips and adding the file extension.</p>
+<p>Remember to Save your work regularly: File &gt; Save.</p>
+<p>If you want to undo any changes made select the Edit mode then Edit &gt; Undo</p>
+<h2><span id="ch003_capturing-video.xhtml#Camera%20Control"></span> Camera Control</h2>
+<p>Select the AV/C tab to activate the cameras VCR controls. Hover the mouse over a button to view function information. Play, capture and stop the footage as required.</p>
+<p>If your camera doesn't support this then use the in-camera VCR controls. The recorded clips will appear in the storyboard window. Repeat the process until the footage is in the computer.</p>
+<p>The clips are displayed in the storyboard window. To view the different properties of a clip use the Time pull down list below the transport controls.</p>
+<div class="ds-topicform">
+
+</div>
+<p><span id="ch004_editing-clips.xhtml"></span></p>
+<h1><span id="ch004_editing-clips.xhtml#Editing%20Clips"></span> Editing Clips</h1>
+<p>Once the clips are in Kino they can be re-ordered in Edit mode. Click on a clip then drag and drop it into a different position on the storyboard.</p>
+<p><img src="static/Kino-editing-06_rearange_clips-en.jpg" alt="06_rearange_clips.jpg" width="460" height="299" /></p>
+<p>The scrub bar below the main window is divided into sections that correspond to the storyboard scenes. You can play the movie using the transport controls. Alternatively click onto the play-head (the scrub triangle) and drag it along the scrub bar to view the footage.</p>
+<p><img src="static/Kino-editing-07_scrub_bar-en.jpg" alt="07_scrub_bar.jpg" width="460" height="91" /></p>
+<h2><span id="ch004_editing-clips.xhtml#The%20Timeline"></span> The Timeline</h2>
+<p>Select the Timeline tab and the selected clip displays as a sequence of frames. This mode provides a basic visual storyboard. The clips are un-editable in this mode.</p>
+<p><img src="static/Kino-editing-08_timeline-en.jpg" alt="08_timeline.jpg" width="460" height="300" /></p>
+<p>To display the full movie increase the End number to its maximum.</p>
+<h2><span id="ch004_editing-clips.xhtml#Trimming%20clips"></span> Trimming clips</h2>
+<p>The captured clips may require topping and tailing. Select a clip that requires further editing and go to Trim mode.</p>
+<p><img src="static/Kino-editing-09_triim-en.jpg" alt="09_triim.jpg" width="460" height="300" /></p>
+<p>Using the scrub triangle or transport controls move the play-head to the in point that you want your clip to start from. Trim the front of the clip by clicking on the black triangle right of the 'In' box. The same routine applies to setting a new out point, only use the right black triangle. The greyed out portion of the scrub bar is the excluded video, it's still there, it just won't be played.</p>
+<p>Alternatively click and drag the small triangle immediately below the scrub bar to a new start point position.</p>
+<p><img src="static/Kino-editing-10_trim_tabs-en.jpg" alt="10_trim_tabs.jpg" width="460" height="95" /></p>
+<p>To set the new points select the 'Overwrite' mode and click on Apply. The clip on the storyboard will change to reflect the modifications.</p>
+<h2><span id="ch004_editing-clips.xhtml#Importing%20Video"></span> Importing Video</h2>
+<p>There are two ways of importing footage into a project. If you want to quickly assemble footage then use the import buttons. This will insert a clip before / after the selected clip on the timeline.</p>
+<p><img src="static/Kino-editing-11_insert_buttons-en.jpg" alt="11_insert_buttons.jpg" width="369" height="156" /></p>
+<p>If your clips require trimming or cutting up into sections then it may be more convenient to trim the clips as you import them. If this is the case then import into Trim mode. Choose the 'Insert' mode and browse for a file using the folder icon left of the 'Before' button. The video comes in ready for trimming.</p>
+<p><img src="static/Kino-editing-12_trim_insert-en.jpg" alt="12_trim_insert.jpg" width="501" height="65" /></p>
+<p><span id="ch005_adding-titles.xhtml"></span></p>
+<h1><span id="ch005_adding-titles.xhtml#Adding%20titles%20and%20credits"></span> Adding titles and credits</h1>
+<p>If you want to add titles or credits to your video you'll need the 'dvtitler' plugin installed. For more information see:</p>
+<p><a href="http://dvtitler.sourceforge.net" class="uri">http://dvtitler.sourceforge.net</a></p>
+<p>Click on the FX tab and a 2-column window opens.</p>
+<p>The first column has Output and Preview settings that have self-explanatory options to select from. The video preview will play in this column once effects are added.</p>
+<p>The second column has a selection of audio and video filters that can be applied to your movie. Before looking at specific effects let's look briefly at the difference between the Overwrite and Create options.</p>
+<p><img src="static/Kino-addinttitles-13_title-en.jpg" alt="13_title.jpg" width="460" height="300" /></p>
+<h2><span id="ch005_adding-titles.xhtml#Overwrite%20and%20Create%20modes"></span> Overwrite and Create modes</h2>
+<p>An important point to note is the difference between the choices to Overwrite and to Create. Overwrite writes the titles on top of the video. Create adds titles onto a background of your choice.</p>
+<p><img src="static/Kino-addinttitles-14_overwrite-en.jpg" alt="14_overwrite.jpg" width="460" height="115" /></p>
+<p>A typical title may be a centrally aligned text that fades in and out on top of the footage. To create this, select the first clip in the sequence and choose Overwrite mode. In order to set the duration of the title sequence, first check the 'Limit to' box and select the 'Opening' option. Enter 45 frames in the selection area. This is equivalent to about 2 seconds of video.</p>
+<p>Next click on the Video filter tab and from the dropdown menu select 'DV Titler'</p>
+<p><img src="static/Kino-addinttitles-15_dvtitler-en.jpg" alt="15_dvtitler.jpg" width="460" height="337" /></p>
+<h2><span id="ch005_adding-titles.xhtml#Text%20options"></span> Text options</h2>
+<p>The DV Titler input area is displayed.</p>
+<p>Type in your title, in this example I use 'Our Gran's Joint'.</p>
+<p><img src="static/Kino-addinttitles-16_text_options-en.jpg" alt="16_text_options.jpg" width="460" height="296" /></p>
+<p>From the options click the font box and select Sans (default font) and choose size 72.</p>
+<p><img src="static/Kino-addinttitles-17_font-en.jpg" alt="17_font.jpg" width="217" height="200" /></p>
+<p>Set the FG (text colour) to white and the BG (background) to black.</p>
+<p><img src="static/Kino-addinttitles-18_dvtitler_colour-en.jpg" alt="18_dvtitler_colour.jpg" width="454" height="304" /></p>
+<p>Set Align to Center, as this will keep the text centrally aligned if it expands to more than one line. Next set Padding to 6 – this extends the background colour of the text box and makes the text more prominent on the selected clip.</p>
+<p>Set both text positions to Center (In order to animate the text, select different positions for the Initial position and the Final position.)</p>
+<p>Set the Fade in and Fade out frames to 6.</p>
+<p>Click on the Preview button to view the title as it will appear in the video. This screenshot shows the titles as they fade in.</p>
+<p><img src="static/Kino-addinttitles-19_preview_title-en.jpg" alt="19_preview_title.jpg" width="284" height="333" /></p>
+<p>When you're happy with the result click the Render button and a new clip appears in the Storyboard window. It's named as a kinofx.dv file.</p>
+<p><img src="static/Kino-addinttitles-20_title_added-en.jpg" alt="20_title_added.jpg" width="320" height="453" /></p>
+<h2><span id="ch005_adding-titles.xhtml#Create%20mode"></span> Create mode</h2>
+<p>We'll look at the other way of creating titles, having them scroll on black. This method is often employed for the credit sequences. Select the Create mode option. In the first options box choose Fixed Colour and type in the number of frames you wish.</p>
+<p><img src="static/Kino-addinttitles-21_create-en.jpg" alt="21_create.jpg" width="460" height="143" /></p>
+<p>In the DV Titler options set the font size to 36, the foreground colour to white. The background can be left as the chequered design (this indicates that it will be transparent). Set the Align, Initial position and the Final Position all to Center.</p>
+<p>If you wish the credits to scroll then select Initial position to Bottom Off, and the Final Position to Top off. Now add a 6 frame Fade in and out and type in your credits.</p>
+<p>Preview the Credits and then render.</p>
+<p><img src="static/Kino-addinttitles-22_credits-en.jpg" alt="22_credits.jpg" width="460" height="325" /></p>
+<p>The new clip drops into the Storyboard. Place the credits to the end of the clip sequence.</p>
+<h2><span id="ch005_adding-titles.xhtml#Black%20Video"></span> Black Video</h2>
+<p>It's good practice to put in a section of black video at the start and at the end of the video if the movie is being run back to DV tape. Here's how to create it:</p>
+<ol>
+<li>Select the Create tab.</li>
+<li>Enter the Frames number you want. Choose 250 for 10 seconds of video.</li>
+<li>Choose Fixed Colour &amp; select the colour Black.</li>
+<li>Select the 'Before current edit frame' radio button.</li>
+<li>Select the video Transition 'No Change'</li>
+<li>Render. A new black video clip is placed in the Storyboard.</li>
+<li>Drag it to the front of the sequence.</li>
+<li>Copy the clip (Edit &gt; Copy)</li>
+<li>Drag the copy to the end of the clip.</li>
+<li>Save your work.</li>
+</ol>
+<p><span id="ch006_transitions-and-effects.xhtml"></span></p>
+<h1><span id="ch006_transitions-and-effects.xhtml#Transitions%20and%20effects"></span> Transitions and effects</h1>
+<h2><span id="ch006_transitions-and-effects.xhtml#Adding%20transitions"></span> Adding transitions</h2>
+<p>Kino provides a number of transition effects, with many additional ones available in the 'timfx' and 'Kino Plus' plugins. Transitions are used to join movie clips together and can add something extra to a movie when used thoughtfully. The most commonly used transition is where one clip fades into another. It is sometimes referred to as a cross dissolve or Fade.</p>
+<p>To create a fade from one clip to another in Kino first select the clip the transition will start from; choose Overwrite and specify the duration. In this example the limit is set to 10 frames.</p>
+<p><img src="static/Kino-transitions-23_fade_fx-en.jpg" alt="23_fade_fx.jpg" width="501" height="220" /></p>
+<p>Select Fade Video from the Transitions pull-down menu and Preview the transition then click Render. A new clip drops into the Storyboard window.</p>
+<p><img src="static/Kino-transitions-24_fade_example-en.jpg" alt="24_fade_example.jpg" width="501" height="223" /></p>
+<p>The image above shows the transition effect that's been added to the project.</p>
+<p>This image shows the cross fade preview between clips.</p>
+<p><span id="ch007_audio-filters.xhtml"></span></p>
+<h1><span id="ch007_audio-filters.xhtml#Audio%20Filters"></span> Audio Filters</h1>
+<p>Audio filters work in much the same way as video filters except you don't need to select overwrite or create options. There are only a few audio filters and transitions but they're useful for basic editing.</p>
+<p>Their titles describe their function so explanations aren't really necessary. Dub means that the original audio will be replaced with the selected audio file. Firstly select your clip, Preview then Render. If you wish to replace the whole audio with a single audio file then render your movie first, import this into a new project and dub the clip. For more advanced audio editing export your audio file and edit in a sound-editing programme such as Audacity.</p>
+<p>If you want to add external audio files to Kino these should be in the 'wav' format.</p>
+<p><img src="static/Kino-audiofilters-25_audio_transitions-en.jpg" alt="25_audio_transitions.jpg" width="504" height="216" /></p>
+<p>Images of audio transitions and audio clips.</p>
+<p><img src="static/Kino-audiofilters-26_audio_filter-en.jpg" alt="26_audio_filter.jpg" width="272" height="211" /></p>
+<p><span id="ch008_exporting-video.xhtml"></span></p>
+<h1><span id="ch008_exporting-video.xhtml#Exporting%20Video"></span> Exporting Video</h1>
+<p>Once your movie is edited you can complete it by making (or rendering) the movie as a single AVI file or exporting the finished movie back to DV tape. Other options include exporting the movie as stills, as audio, as MPEG (DVD and VCD and SVCD) and DV Pipe for importing into another programme.</p>
+<h2><span id="ch008_exporting-video.xhtml#Exporting%20to%20tape"></span> Exporting to tape</h2>
+<p>With your video camera turned on, cued up and ready to receive a video input through the IEEE1394 port (check your camera's manual). Select the Export tab and choose IEEE1394. Press the Export button and the camera will start to record the footage. If there are issues you may need to experiment with changing the parameter values on this page. Note that some IEEE1394 cards will not export back to tape. See <a href="http://www.linux1394.org/" class="uri">http://www.linux1394.org/</a> for compatibility information.</p>
+<h2><span id="ch008_exporting-video.xhtml#Export%20as%20AVI"></span> Export as AVI</h2>
+<p>To create a single movie clip select the DV File tab and specify the name and location for the finished movie.</p>
+<p><img src="static/Kino-exporting-27_export_dvfile-en.jpg" alt="27_export_dvfile.jpg" width="460" height="303" /></p>
+<p>Next select your file type; DV AVI Type 2 is a more compatible format, if you intend sharing your movie as an AVI it's advisable to select this option, though file sizes are larger. Click on Export.</p>
+<h2><span id="ch008_exporting-video.xhtml#Export%20to%20DVD"></span> Export to DVD</h2>
+<p>Please refer to Kino Help pages and <a href="http://www.tappin.me.uk/Linux/dvd.html" class="uri">http://www.tappin.me.uk/Linux/dvd.html</a> for more information.</p>
+<h2><span id="ch008_exporting-video.xhtml#Creating%20a%20movie%20slideshow"></span> Creating a movie slideshow</h2>
+<p>Select the FX tab then click on the Create tab. Choose Multiple Image Import from the pull-down list and select files for the project. You can specify where you want the sequence to begin in the edit, how many times you want the image to repeat and whether you want the image aspect ratio honoured.</p>
+<p><span id="ch010_additional-help.xhtml"></span></p>
+<h1>More Help</h1>
+<p>For more help with <strong>Kino</strong> you can try these avenues:</p>
+<h2><span id="ch010_additional-help.xhtml#Icecast_Documentation"></span>Kino Documentation </h2>
+<p>should first look at the very good documentation at the developers site:<br />
+<br />
+</p>
+<h2><span id="ch010_additional-help.xhtml#Online_Forums"></span> Online Forums </h2>
+<p>You can also try searching through the forums for information.  <br />
+<br />
+</p>
+<p>The forums contain a lot of postings from users on many topics. You can use the search system to locate topics or just browse the categories. If you don't find what you want then try subscribing to the forums and posting your question to the relevant category. There are a few things to keep in mind when asking a question in a forum or to a mailing list. First, be as clear as you can with your question and provide any infromation that you might think would help some to try to help you. You might, for example, include information about the operating system you are using, or various specifics that relate to what you are terying to achieve. Additionally, it is always good practice to also post back to any forum or mailing list if you manage to solve your query and include clear information on how you solved the puzzle. This is so that someone else that may have the same issue can resolve it using what you have found out. If possible post back to the same thread (discussion topic) so tha tanyone searching through the forum can follow the discussion including the solution.</p>
+<h2><span id="ch010_additional-help.xhtml#Web_Search"></span> <strong>Web Search</strong></h2>
+<p>Searching the web is always useful. If you are looking for problems arising from errors reported by the software then try entering the error text into the search engine. Be sure to edit out any information that doesn't look generic when doing this. Some search engines also enable you to try searches of mailing lists, online groups etc, this can also provide good results.<strong><br />
+</strong></p>
+<h2><span id="ch010_additional-help.xhtml#Mailing_Lists"></span> Mailing Lists</h2>
+<p>Mailing lists are good places to look through for answers to questions. The archives are located here :</p>
+<p><br />
+</p>
+<p>You can also subscribe to the mailing lists and ask a question:</p>
+<p><br />
+</p>
+<p>Please note the suggestions about posting to forums and mailing lists in the above section.</p>
+<h2><span id="ch010_additional-help.xhtml#IRC"></span> <strong>IRC</strong></h2>
+<p><strong>IRC</strong> is a type of online chat. it is not the easiest to use if you are not familair with it but it is a very good system. There are a variety of softwares for all operating systems that enable you to use <strong>IRC</strong>. The <strong>IRC</strong> channel for <strong>VLC</strong> is where a number of the developers are online and some 'superusers'. So logging into this channel can be useful but it is very important that you know exactly what you are trying to find out before trying this route. The protocol for using the channel is jus tot log in, and ask the question immediately. Don't try and be too chatty as you are probably going to be ignored. It is also preferable if you have done some research using the other methods above before trying the channel. The details for the <strong>IRC</strong> channel are:</p>
+<ul>
+<li>IRC network:<code></code></li>
+<li>Channel: <code>#</code></li>
+</ul>
+<p><span id="ch011_credits.xhtml"></span></p>
+<h1><span id="ch011_credits.xhtml#License"></span> License</h1>
+<p>All chapters copyright of the authors (see below). Unless otherwise stated all chapters in this manual licensed with <strong>GNU General Public License version 2</strong></p>
+<p>This documentation is free documentation; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.</p>
+<p>This documentation is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License along with this documentation; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.</p>
+<h2><span id="ch011_credits.xhtml#Authors"></span> Authors</h2>
+<p>This manual originally forged at Your Machines : <a href="http://www.yourmachines.org/" class="uri">http://www.yourmachines.org/</a> . Check out Your Machines for other very interesting and well written manuals! Many thanks for to Simon Yuill for porting the manual from Your Machines and agreeing to re-licensing it under the GPL.</p>
+<p><em>ADDING TITLES</em><br />
+© Tim Cullen 2007<br />
+Modifications:<br />
+adam hyde 2007, 2008<br />
+Thomas Middleton 2008<br />
+Zita Joyce 2008<br />
+</p>
+<hr />
+<p><em>AUDIO FILTERS</em><br />
+© Tim Cullen 2007<br />
+Modifications:<br />
+adam hyde 2007, 2008<br />
+Thomas Middleton 2008<br />
+</p>
+<hr />
+<p><em>CAPTURING VIDEO</em><br />
+© Tim Cullen 2007<br />
+Modifications:<br />
+adam hyde 2007, 2008<br />
+Thomas Middleton 2008<br />
+Zita Joyce 2008<br />
+</p>
+<hr />
+<p><em>CREDITS</em><br />
+© adam hyde 2006, 2007, 2008</p>
+<hr />
+<p><em>EDITING CLIPS</em><br />
+© Tim Cullen 2007<br />
+Modifications:<br />
+adam hyde 2007, 2008<br />
+Thomas Middleton 2008<br />
+</p>
+<hr />
+<p><em>EXPORTING VIDEO</em><br />
+© Tim Cullen 2007<br />
+Modifications:<br />
+adam hyde 2007, 2008<br />
+Thomas Middleton 2008<br />
+</p>
+<hr />
+<p><em>ADDITIONAL HELP</em><br />
+© adam hyde 2006, 2008<br />
+Modifications:<br />
+Thomas Middleton 2008<br />
+</p>
+<hr />
+<p><em>INTRODUCTION</em><br />
+© Tim Cullen 2006<br />
+Modifications:<br />
+adam hyde 2006, 2007, 2008<br />
+Simon Yuill 2007<br />
+Thomas Middleton 2008<br />
+</p>
+<hr />
+<p><em>TRANSITIONS AND EFFECTS</em><br />
+© Tim Cullen 2007<br />
+Modifications:<br />
+adam hyde 2007, 2008<br />
+Thomas Middleton 2008<br />
+</p>
+<hr />
+<p> </p>
+<p><a href="http://www.flossmanuals.net/"><img src="static/Floss-100-en.gif" alt="100.gif" width="110" height="54" /></a><br />
+<strong></strong></p>
+<p><sub>Free manuals for free software</sub></p>
+<p> </p>
+<p> </p>
+<h2><span id="ch011_credits.xhtml#General%20Public%20License"></span> General Public License</h2>
+<p>Version 2, June 1991</p>
+<p>Copyright (C) 1989, 1991 Free Software Foundation, Inc.<br />
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA<br />
+<br />
+Everyone is permitted to copy and distribute verbatim copies<br />
+of this license document, but changing it is not allowed.<br />
+</p>
+<p><strong>Preamble</strong></p>
+<p>The licenses for most software are designed to take away your freedom to share and change it. By contrast, the GNU General Public License is intended to guarantee your freedom to share and change free software--to make sure the software is free for all its users. This General Public License applies to most of the Free Software Foundation's software and to any other program whose authors commit to using it. (Some other Free Software Foundation software is covered by the GNU Lesser General Public License instead.) You can apply it to your programs, too.</p>
+<p>When we speak of free software, we are referring to freedom, not price. Our General Public Licenses are designed to make sure that you have the freedom to distribute copies of free software (and charge for this service if you wish), that you receive source code or can get it if you want it, that you can change the software or use pieces of it in new free programs; and that you know you can do these things.</p>
+<p>To protect your rights, we need to make restrictions that forbid anyone to deny you these rights or to ask you to surrender the rights. These restrictions translate to certain responsibilities for you if you distribute copies of the software, or if you modify it.</p>
+<p>For example, if you distribute copies of such a program, whether gratis or for a fee, you must give the recipients all the rights that you have. You must make sure that they, too, receive or can get the source code. And you must show them these terms so they know their rights.</p>
+<p>We protect your rights with two steps: (1) copyright the software, and (2) offer you this license which gives you legal permission to copy, distribute and/or modify the software.</p>
+<p>Also, for each author's protection and ours, we want to make certain that everyone understands that there is no warranty for this free software. If the software is modified by someone else and passed on, we want its recipients to know that what they have is not the original, so that any problems introduced by others will not reflect on the original authors' reputations.</p>
+<p>Finally, any free program is threatened constantly by software patents. We wish to avoid the danger that redistributors of a free program will individually obtain patent licenses, in effect making the program proprietary. To prevent this, we have made it clear that any patent must be licensed for everyone's free use or not licensed at all.</p>
+<p>The precise terms and conditions for copying, distribution and modification follow.</p>
+<p><strong>TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION</strong></p>
+<p><strong>0.</strong> This License applies to any program or other work which contains a notice placed by the copyright holder saying it may be distributed under the terms of this General Public License. The &quot;Program&quot;, below, refers to any such program or work, and a &quot;work based on the Program&quot; means either the Program or any derivative work under copyright law: that is to say, a work containing the Program or a portion of it, either verbatim or with modifications and/or translated into another language. (Hereinafter, translation is included without limitation in the term &quot;modification&quot;.) Each licensee is addressed as &quot;you&quot;.</p>
+<p>Activities other than copying, distribution and modification are not covered by this License; they are outside its scope. The act of running the Program is not restricted, and the output from the Program is covered only if its contents constitute a work based on the Program (independent of having been made by running the Program). Whether that is true depends on what the Program does.</p>
+<p><strong>1.</strong> You may copy and distribute verbatim copies of the Program's source code as you receive it, in any medium, provided that you conspicuously and appropriately publish on each copy an appropriate copyright notice and disclaimer of warranty; keep intact all the notices that refer to this License and to the absence of any warranty; and give any other recipients of the Program a copy of this License along with the Program.</p>
+<p>You may charge a fee for the physical act of transferring a copy, and you may at your option offer warranty protection in exchange for a fee.</p>
+<p><strong>2.</strong> You may modify your copy or copies of the Program or any portion of it, thus forming a work based on the Program, and copy and distribute such modifications or work under the terms of Section 1 above, provided that you also meet all of these conditions:</p>
+<dl>
+<dt>
+<p><br />
+</p>
+</dt>
+<dd>
+<p><strong>a)</strong> You must cause the modified files to carry prominent notices stating that you changed the files and the date of any change.</p>
+</dd>
+<dt>
+<p><br />
+</p>
+</dt>
+<dd>
+<p><strong>b)</strong> You must cause any work that you distribute or publish, that in whole or in part contains or is derived from the Program or any part thereof, to be licensed as a whole at no charge to all third parties under the terms of this License.</p>
+</dd>
+<dt>
+<p><br />
+</p>
+</dt>
+<dd>
+<p><strong>c)</strong> If the modified program normally reads commands interactively when run, you must cause it, when started running for such interactive use in the most ordinary way, to print or display an announcement including an appropriate copyright notice and a notice that there is no warranty (or else, saying that you provide a warranty) and that users may redistribute the program under these conditions, and telling the user how to view a copy of this License. (Exception: if the Program itself is interactive but does not normally print such an announcement, your work based on the Program is not required to print an announcement.)</p>
+</dd>
+</dl>
+<p>These requirements apply to the modified work as a whole. If identifiable sections of that work are not derived from the Program, and can be reasonably considered independent and separate works in themselves, then this License, and its terms, do not apply to those sections when you distribute them as separate works. But when you distribute the same sections as part of a whole which is a work based on the Program, the distribution of the whole must be on the terms of this License, whose permissions for other licensees extend to the entire whole, and thus to each and every part regardless of who wrote it.</p>
+<p>Thus, it is not the intent of this section to claim rights or contest your rights to work written entirely by you; rather, the intent is to exercise the right to control the distribution of derivative or collective works based on the Program.</p>
+<p>In addition, mere aggregation of another work not based on the Program with the Program (or with a work based on the Program) on a volume of a storage or distribution medium does not bring the other work under the scope of this License.</p>
+<p><strong>3.</strong> You may copy and distribute the Program (or a work based on it, under Section 2) in object code or executable form under the terms of Sections 1 and 2 above provided that you also do one of the following:</p>
+<dl>
+<dt>
+<p><br />
+</p>
+</dt>
+<dd>
+<p><strong>a)</strong> Accompany it with the complete corresponding machine-readable source code, which must be distributed under the terms of Sections 1 and 2 above on a medium customarily used for software interchange; or,</p>
+</dd>
+<dt>
+<p><br />
+</p>
+</dt>
+<dd>
+<p><strong>b)</strong> Accompany it with a written offer, valid for at least three years, to give any third party, for a charge no more than your cost of physically performing source distribution, a complete machine-readable copy of the corresponding source code, to be distributed under the terms of Sections 1 and 2 above on a medium customarily used for software interchange; or,</p>
+</dd>
+<dt>
+<p><br />
+</p>
+</dt>
+<dd>
+<p><strong>c)</strong> Accompany it with the information you received as to the offer to distribute corresponding source code. (This alternative is allowed only for noncommercial distribution and only if you received the program in object code or executable form with such an offer, in accord with Subsection b above.)</p>
+</dd>
+</dl>
+<p>The source code for a work means the preferred form of the work for making modifications to it. For an executable work, complete source code means all the source code for all modules it contains, plus any associated interface definition files, plus the scripts used to control compilation and installation of the executable. However, as a special exception, the source code distributed need not include anything that is normally distributed (in either source or binary form) with the major components (compiler, kernel, and so on) of the operating system on which the executable runs, unless that component itself accompanies the executable.</p>
+<p>If distribution of executable or object code is made by offering access to copy from a designated place, then offering equivalent access to copy the source code from the same place counts as distribution of the source code, even though third parties are not compelled to copy the source along with the object code.</p>
+<p><strong>4.</strong> You may not copy, modify, sublicense, or distribute the Program except as expressly provided under this License. Any attempt otherwise to copy, modify, sublicense or distribute the Program is void, and will automatically terminate your rights under this License. However, parties who have received copies, or rights, from you under this License will not have their licenses terminated so long as such parties remain in full compliance.</p>
+<p><strong>5.</strong> You are not required to accept this License, since you have not signed it. However, nothing else grants you permission to modify or distribute the Program or its derivative works. These actions are prohibited by law if you do not accept this License. Therefore, by modifying or distributing the Program (or any work based on the Program), you indicate your acceptance of this License to do so, and all its terms and conditions for copying, distributing or modifying the Program or works based on it.</p>
+<p><strong>6.</strong> Each time you redistribute the Program (or any work based on the Program), the recipient automatically receives a license from the original licensor to copy, distribute or modify the Program subject to these terms and conditions. You may not impose any further restrictions on the recipients' exercise of the rights granted herein. You are not responsible for enforcing compliance by third parties to this License.</p>
+<p><strong>7.</strong> If, as a consequence of a court judgment or allegation of patent infringement or for any other reason (not limited to patent issues), conditions are imposed on you (whether by court order, agreement or otherwise) that contradict the conditions of this License, they do not excuse you from the conditions of this License. If you cannot distribute so as to satisfy simultaneously your obligations under this License and any other pertinent obligations, then as a consequence you may not distribute the Program at all. For example, if a patent license would not permit royalty-free redistribution of the Program by all those who receive copies directly or indirectly through you, then the only way you could satisfy both it and this License would be to refrain entirely from distribution of the Program.</p>
+<p>If any portion of this section is held invalid or unenforceable under any particular circumstance, the balance of the section is intended to apply and the section as a whole is intended to apply in other circumstances.</p>
+<p>It is not the purpose of this section to induce you to infringe any patents or other property right claims or to contest validity of any such claims; this section has the sole purpose of protecting the integrity of the free software distribution system, which is implemented by public license practices. Many people have made generous contributions to the wide range of software distributed through that system in reliance on consistent application of that system; it is up to the author/donor to decide if he or she is willing to distribute software through any other system and a licensee cannot impose that choice.</p>
+<p>This section is intended to make thoroughly clear what is believed to be a consequence of the rest of this License.</p>
+<p><strong>8.</strong> If the distribution and/or use of the Program is restricted in certain countries either by patents or by copyrighted interfaces, the original copyright holder who places the Program under this License may add an explicit geographical distribution limitation excluding those countries, so that distribution is permitted only in or among countries not thus excluded. In such case, this License incorporates the limitation as if written in the body of this License.</p>
+<p><strong>9.</strong> The Free Software Foundation may publish revised and/or new versions of the General Public License from time to time. Such new versions will be similar in spirit to the present version, but may differ in detail to address new problems or concerns.</p>
+<p>Each version is given a distinguishing version number. If the Program specifies a version number of this License which applies to it and &quot;any later version&quot;, you have the option of following the terms and conditions either of that version or of any later version published by the Free Software Foundation. If the Program does not specify a version number of this License, you may choose any version ever published by the Free Software Foundation.</p>
+<p><strong>10.</strong> If you wish to incorporate parts of the Program into other free programs whose distribution conditions are different, write to the author to ask for permission. For software which is copyrighted by the Free Software Foundation, write to the Free Software Foundation; we sometimes make exceptions for this. Our decision will be guided by the two goals of preserving the free status of all derivatives of our free software and of promoting the sharing and reuse of software generally.</p>
+<p><strong>NO WARRANTY</strong></p>
+<p><strong>11.</strong> BECAUSE THE PROGRAM IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM &quot;AS IS&quot; WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.</p>
+<p><strong>12.</strong> IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY AND/OR REDISTRIBUTE THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+<p><strong>END OF TERMS AND CONDITIONS</strong></p>
+</body>
+</html>

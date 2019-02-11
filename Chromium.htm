@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="The Contributors" />
+  <title>Chromium</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">Chromium</h1>
+<p class="author">The Contributors</p>
+<p class="date">2011.04.29-10.13</p>
+</header>
+<p><span id="ch001_a-history-of-web-browsing.xhtml"></span></p>
+<h1>A History of Web Browsing</h1>
+<p>Web browsers have had one of the most public and interesting competitive lives of any software.</p>
+<p>The very first web browser was the WorldWideWeb (not to be confused with the Web in general), created by Tim Berners-Lee and released to the publc in 1991. It had a graphical user interface, but it did not display web pages with images embedded in them.</p>
+<p>The first browser that could display images alongside text was known as Mosaic, and it really was an innovation that changed the world, the web browser that popularized Web usage. In 1994, Marc Andreessen and a few of the original Mosaic developers banded together to start Netscape along with Jim Clark, a well known Silicon Valley entrepreneur. The early days of commercial browser development were marked by high energy and many innovations that continued to expand and improve the kinds of information the internet could provide. Every week it seemed that new sites popped up and new features appeared in browsers. A Wired Magazine article (<a href="http://www.wired.com/wired/archive/2.10/mosaic.html" class="uri">http://www.wired.com/wired/archive/2.10/mosaic.html</a>) captured some of the excitement from those early days when browsers and the web were starting to take off and grow rapidly.</p>
+<p>However, while Mosaic and then Netscape Navigator were first to enter the game, they failed to corner the market. After a relatively short and aggressive &quot;browser war&quot;, Microsoft's Internet Explorer (IE) took the lead. Through spending over $100 million on the development and promotion of IE and aggressive business practices, Microsoft was able to capture around 96% market share of all browsers in use. Some of the business practices Microsoft engaged in during the &quot;browser war&quot; were later determined to be anti-trust violations (<a href="http://www.usdoj.gov/atr/cases/ms_index.htm" class="uri">http://www.usdoj.gov/atr/cases/ms_index.htm</a>). With control of the market and no perceived business case for improving the browser, Microsoft began scaling back development in 2002 and 2003. In 2003, it announced there would be no more standalone versions of Internet Explorer (<a href="http://www.usdoj.gov/atr/cases/ms_index.htm" class="uri">http://www.usdoj.gov/atr/cases/ms_index.htm</a>).</p>
+<p>With Microsoft out of the game, Netscape in decline, and many websites using pop-ups and untargeted advertising schemes, some consider 2001-2004 as a dark age of innovation and improvements for browsers and the web.</p>
+<p>A new chapter was added to this story with the debut of Firefox. Firefox is a distant descendant of Mosaic and Netscape. In 1998, Netscape set up the Mozilla Project and made its browser code freely available as an experimental strategy to gain a competitive advantage against Microsoft. This allowed programmers around the world to study the Mozilla code and follow its development.</p>
+<p>In 2003, the Mozilla Foundation was created as an independent organization, and in 2004, Firefox 1.0 was released. Since then the number of users has grown steadily. As of 2009, Firefox had approximately 23% of worldwide market share, with more than 300 million of the 1.2 billion Internet users around the world using Firefox as their web browser.</p>
+<p>In response to Firefox, Microsoft changed its plans, restarted its browser development, and released IE9 in March 2011. In addition, Apple introduced its own web browser, Safari, in 2003, which has since been included in all Apple computers as the default browser. The rise of Firefox, and the returning focus on web browser development and competition, has led internauts to unofficially announce the &quot;second browser war&quot;.</p>
+<p>Google is the latest entrant into the web browser market, releasing Chrome for the Windows operating system in 2008. An open-sourced version of Chrome, called Chromium, was also released. Chromium allowed developers access to the browser's source code in order to convert Chrome for use on Apple Mac OS X and Linux operating systems. From this work, versions of Google Chrome for Mac OS X and Linux were released in 2009.</p>
+<p>As of writing (April 2011), Internet Explorer is still the most widely used web browser. However, it is leading by a slight and diminishing margin. Firefox follows IE in browser market share, while the less-used Chrome and Safari are both continually increasing in popularity.</p>
+<p><span id="ch002_about-chromium.xhtml"></span></p>
+<h1>About Chromium</h1>
+<p><img src="static/100px-Chromium_11_Logo.jpg" />When Google released the Chrome web browser in 2008, it also released its source code to the public through the Chromium project. The code was issued under the BSD (Berkeley Software Distribution) license, which meant that the source code for Chromium may be freely used, copied, modified, and distributed for use in other programs.</p>
+<p>The goal of the Chromium project is to improve web browser technology, which leads to a better web user experience for everyone. Chromium is designed to load web pages quickly via a clean, minimal, tabbed interface free of extraneous applications. By openly releasing source code through the Chromium project, Google facilitates the sharing of innovative codes between Chromium and other open source programs, improving the performance, security, and reliability of web applications in general. Through the Chromium project, the open source community can find ways to make Chromium and Chrome run even faster, contribute to the development of web browser technology, and begin to pioneer the next generation of web applications.</p>
+<p><span id="ch003_chromium-versus-chrome.xhtml"></span></p>
+<h1>Chromium Versus Chrome</h1>
+<p>Since Chromium is the open source version of Google Chrome, the two web browsers share similar functions and features. In fact, their user interfaces appear to be virtually identical. However, there are some noteworthy differences between Chromium and Chrome, as outlined in the following table.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td> </td>
+<td><h2>Chromium</h2></td>
+<td><h2>Chrome</h2></td>
+</tr>
+<tr class="even">
+<td>Logo<br />
+</td>
+<td><img src="static/75px-Chromium_11_Logo.jpg" /> <br />
+</td>
+<td><img src="static/75px-Chrome_Logo.jpg" /><br />
+</td>
+</tr>
+<tr class="odd">
+<td>Source code<br />
+</td>
+<td>Open<br />
+</td>
+<td>Closed<br />
+</td>
+</tr>
+<tr class="even">
+<td>Integrated Flash player<br />
+</td>
+<td>No<br />
+</td>
+<td>Adobe Flash Player<br />
+</td>
+</tr>
+<tr class="odd">
+<td>Automatic software updating<br />
+</td>
+<td>No</td>
+<td>Google Update</td>
+</tr>
+<tr class="even">
+<td>Installation licensing agreement<br />
+</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>Collection and delivery of usage statistics and browser crash reports<br />
+</td>
+<td>No</td>
+<td>Yes<br />
+</td>
+</tr>
+</tbody>
+</table>
+<p><span id="ch004_about-this-manual.xhtml"></span></p>
+<h1>About This Manual</h1>
+<p>This manual was written from January to April 2011. It was written primarily written by Edward Cheung, who was given the framework and scope of the project by Scott Nesbitt. Scott also contributed to the writing and the editing of the document. Additional editing was done by Mark Hancock.</p>
+<p>In addition, certain chapters contain information that was reused or adapted from the following sources:</p>
+<ul>
+<li>The Firefox FLOSS Manual at <a href="http://en.flossmanuals.net/firefox" class="uri">http://en.flossmanuals.net/firefox</a></li>
+<li>The following Wikipedia entries:
+<ul>
+<li>Web Browser: <a href="http://en.wikipedia.org/wiki/Web_browser" class="uri">http://en.wikipedia.org/wiki/Web_browser</a></li>
+<li>History of the Web Browser: <a href="http://en.wikipedia.org/wiki/History_of_the_web_browser" class="uri">http://en.wikipedia.org/wiki/History_of_the_web_browser</a></li>
+<li>Browser Wars: <a href="http://en.wikipedia.org/wiki/Browser_Wars" class="uri">http://en.wikipedia.org/wiki/Browser_Wars</a></li>
+<li>Usage Share of Web Browsers: <a href="http://en.wikipedia.org/wiki/Usage_share_of_web_browsers" class="uri">http://en.wikipedia.org/wiki/Usage_share_of_web_browsers</a></li>
+<li>Chromium: <a href="http://en.wikipedia.org/wiki/Chromium_(web_browser)" class="uri">http://en.wikipedia.org/wiki/Chromium_(web_browser)</a></li>
+<li>Google Chrome: <a href="http://en.wikipedia.org/wiki/Google_Chrome" class="uri">http://en.wikipedia.org/wiki/Google_Chrome</a></li>
+<li>Safari: <a href="http://en.wikipedia.org/wiki/Safari_(web_browser)" class="uri">http://en.wikipedia.org/wiki/Safari_(web_browser)</a></li>
+<li>World Wide Web: <a href="http://en.wikipedia.org/wiki/World_Wide_Web" class="uri">http://en.wikipedia.org/wiki/World_Wide_Web</a></li>
+</ul></li>
+<li>The Chromium Blog at <a href="http://blog.chromium.org/" class="uri">http://blog.chromium.org/</a></li>
+<li>The Google Chrome Help website at <a href="http://www.google.com/support/chrome/" class="uri">http://www.google.com/support/chrome/</a></li>
+</ul>
+<p><span id="ch006_installing-chromium-on-windows.xhtml"></span></p>
+<h1>Installing Chromium on Windows</h1>
+<p><strong>Note</strong>: The following steps are specific to Windows 7 Professional. They should work with earlier versions of Windows.</p>
+<p>Since Chromium is an ongoing open source project, you will not find an official Chromium browser download page. Instead, to install Chromium, visit the web page where developers post the latest hourly builds, or code updates, of Chromium for download.</p>
+<p>To install Chromium on Windows, do the following:</p>
+<ol>
+<li><p>Go to <a href="http://build.chromium.org/f/chromium/snapshots/chromium-rel-xp/" class="uri">http://build.chromium.org/f/chromium/snapshots/chromium-rel-xp/</a>.</p>
+<p><img src="static/InstallWindowsA1.JPG" /></p></li>
+<li>Scroll down to the bottom of the page and click on <strong>Latest</strong>.</li>
+<li>Note the number that appears on screen. This is the number of the latest Chromium build. You should download and install this version.</li>
+<li>Press the <strong>Back</strong> button in your browser to return to the Chromium build index, and click on the latest build number.</li>
+<li><p>Click <strong>mini_installer.exe</strong>.</p>
+<p><img src="static/InstallWindowsC.JPG" /></p></li>
+<li><p>Save the file to a folder on your computer.</p>
+<p><img src="static/InstallWindowsD.JPG" /></p>
+<p>After the file <strong>mini_installer.exe</strong> has finished downloading, double click the file to open it.</p></li>
+<li><p>Your computer prompts you to confirm that you would like to open a program from an unverified publisher. Click <strong>Run</strong>.</p>
+<p><img src="static/InstallWindowsE.JPG" /></p>
+<p>The Chromium browser should start up. You should also find shortcuts to the program on your desktop and under the Start Menu in the Windows taskbar.</p></li>
+</ol>
+<p><span id="ch007_installing-chromium-on-mac-osx.xhtml"></span></p>
+<h1>Installing Chromium on Mac OS X</h1>
+<p><strong>Note</strong>: The following steps are specific to Mac OS X 10.6. They should work with earlier versions of Mac OS.</p>
+<p>Since Chromium is an ongoing open source project, you will not find an official Chromium browser download page. Instead, to install Chromium, visit the web page where developers post the latest hourly builds, or code updates, of Chromium for download.</p>
+<h2>Downloading and installing Chromium</h2>
+<p>To download and install Chromium, do the following:</p>
+<ol>
+<li><p>Go to <a href="http://build.chromium.org/f/chromium/snapshots/chromium-rel-mac/" class="uri">http://build.chromium.org/f/chromium/snapshots/chromium-rel-mac/</a>.</p>
+<p><img src="static/InstallMacA.png" /></p></li>
+<li>Scroll down to the bottom of the page and click on <strong>Latest.</strong></li>
+<li>Note the number that appears onscreen. This is the number of the latest Chromium build. You should download and install this version.</li>
+<li>Press the <strong>Back</strong> button in your web browser to return to the Chromium build index, and click on the latest build number.</li>
+<li><p>Click on <strong>chrome-mac.zip</strong>.</p>
+<p><img src="static/InstallMacB.png" /></p></li>
+<li>Save the zip file at a location on your computer.</li>
+</ol>
+<h2>Opening Chromium for the first time</h2>
+<p>To open Chromium for the first time, do the following:</p>
+<ol>
+<li>Double click on the file <strong>chrome-mac.zip</strong> file on your computer to unzip it.</li>
+<li><p>Double click on the unzipped folder to open it.</p>
+<p><img src="static/InstallMacC1.png" /></p>
+<p>You should see the Chromium application icon.</p></li>
+<li>Drag and drop the Chromium application icon to the desired folder on your computer.</li>
+<li>Double click on the Chromium icon to open the program.</li>
+<li><p>Your computer asks you if you'd like to open a program downloaded from the Internet. Click <strong>Open</strong> to continue.</p>
+<p><img src="static/InstallMacD.png" /></p></li>
+<li><p>In the next window, Chromium asks you to select a search engine for integrated use in the Chromium browser.</p>
+<p><img src="static/InstallMacE.png" /></p>
+<p>After you make your selection, Chromium opens.</p></li>
+</ol>
+<p><span id="ch008_installing-chromium-on-ubuntu.xhtml"></span></p>
+<h1>Installing Chromium on Ubuntu</h1>
+<p>There are two procedures for installing Chromium on Ubuntu: using the Ubuntu Software Center or installing Chromium from a Personal Package Archive. We take a look at both below.</p>
+<h2>Using the Ubuntu Software Center</h2>
+<p>If you're using Ubuntu 10.04 or newer, the easiest way to install Chromium is through the Ubuntu Software Center.</p>
+<p>To install Chromium from the Ubuntu Software Center, do the following:</p>
+<ol>
+<li><p>Click <strong>Ubuntu Software Center</strong> under the Applications menu.</p>
+<p><img src="/thunderbird/edit/static/Thunderbird-installation-Screenshot_Ubuntu_Software_Center-en.png" alt="Screenshot_Ubuntu_Software_Center.png" width="600" height="350" /></p></li>
+<li>Type &quot;Chromium&quot; in the search box and press Enter on your keyboard. The Ubuntu Software Center finds Chromium in its list of available software.</li>
+<li>Click the <strong>Install</strong> button. If Chromium needs any additional libraries (software it requires to run), the Ubuntu Software Center alerts you and installs them along with Chromium.</li>
+</ol>
+<p>You can find the shortcut to start Chromium in the Internet option under the Applications menu:</p>
+<p><img src="static/launch_chromium.png" /></p>
+<h2>Installing from a Personal Package Archive</h2>
+<p>If you're using an earlier version of Ubuntu, or just want to stay on the cutting edge of Chromium, you can install it from a Personal Package Archive (PPA). A PPA is a special repository for Ubuntu software that's separate from ones you would normally use either with the Ubuntu Software Center or Synaptic Package Manager. A PPA contains more frequent updates to software - updates which are often created nightly.</p>
+<p>Remember that the software that you get from a PPA is 'cutting edge.' It may be buggy or unstable. Use it at your own risk.</p>
+<p>To install Chromium from a PPA, do the following:</p>
+<ol>
+<li>Go to the Chromium Beta PPA at <a href="https://launchpad.net/~chromium-daily/+archive/beta" class="uri" title="Mozilla Daily PPA for Ubuntu">https://launchpad.net/~chromium-daily/+archive/beta</a>.</li>
+<li><p>At the Chromium PPA site, select your version of Ubuntu from the <strong>Display sources.list entries for:</strong> list. Two lines, which look like the following, appear below the list:</p>
+<p>deb <a href="http://ppa.launchpad.net/chromium-daily/beta/ubuntu" class="uri">http://ppa.launchpad.net/chromium-daily/beta/ubuntu</a> maverick main<br />
+deb-src <a href="http://ppa.launchpad.net/chromium-daily/beta/ubuntu" class="uri">http://ppa.launchpad.net/chromium-daily/beta/ubuntu</a> <span id="ch008_installing-chromium-on-ubuntu.xhtml#series-deb-src">maverick</span> main</p></li>
+<li>In Ubuntu, click <strong>Administration</strong> under the System Menu and then click <strong>Software Sources</strong>.</li>
+<li><p>You are asked to enter your root password. This is the password that you use to log into Ubuntu. The Software Sources window then appears.</p>
+<p><img src="/thunderbird/edit/static/Thunderbird-installation-ubuntu_install_software_sources-en.png" title="ubuntu_install_software_sources" alt="ubuntu_install_software_sources" width="384" height="378" /></p></li>
+<li><p>In the Software Sources window, click the <strong>Other Software</strong> tab and then click <strong>Add</strong>.</p>
+<p><img src="/thunderbird/edit/static/Thunderbird-installation-ubuntu_install_add_sources-en.png" title="ubuntu_install_add_sources" alt="ubuntu_install_add_sources" width="280" height="162" /></p></li>
+<li>Copy the first line from the list of sources that you created in step 2, paste it into the <strong>APT Line</strong> field, and then click <strong>Add Source</strong>.</li>
+<li>Repeat steps 5 and 6 for the second line from list of sources that you created in step 2.</li>
+<li>In the Software Sources window, click <strong>Close</strong>. Ubuntu updates the list of software sources that it uses.</li>
+<li><p>Once that's done, click <strong>Administration</strong> under the System menu, then click <strong>Synaptic Package Manager</strong>.</p>
+<p><img src="/thunderbird/edit/static/Thunderbird-installation-install_ubuntu_synaptic-en.png" title="install_ubuntu_synaptic" alt="install_ubuntu_synaptic" width="295" height="404" /></p></li>
+<li>You are asked to enter your root password. This is the password that you use to log into Ubuntu.</li>
+<li>In the Quick search box, type <strong>Chromium</strong> and then press Enter on your keyboard.<br />
+A list of software that you can install (called <em>packages</em>) appears.</li>
+<li>Find Chromium in the list, right click on it, and then click on <strong>Mark for installation</strong> from the menu that appears.</li>
+<li>If Chromium needs any additional libraries, Synaptic Package Manager alerts you and marks those packages for installation along with Chromium.</li>
+<li>Click the <strong>Apply</strong> button.</li>
+</ol>
+<p><span id="ch009_installing-chromium-on-other-linux-distributions.xhtml"></span></p>
+<h1>Installing Chromium in Other Linux Distributions</h1>
+<p>Ubuntu is not the only Linux distribution out there. You might be able to install Chromium on any Linux distribution using that distribution's package manager. For example, use YaST in OpenSUSE or yum in Fedora.</p>
+<p>But, if your distribution's package manager doesn't include Chromium, you can visit the index page where developers post the latest hourly builds, or code updates of Chromium for download.</p>
+<p>To install Chromium, do the following:</p>
+<ol>
+<li>Go to <a href="http://build.chromium.org/f/chromium/snapshots/Linux/" class="uri">http://build.chromium.org/f/chromium/snapshots/Linux/</a>.</li>
+<li>Scroll down to the bottom of the index and click on <strong>Latest</strong>.</li>
+<li>Note the number that appears in your browser window. This is the number of the latest Chromium build. You should install this version.</li>
+<li>Press the <strong>Back</strong> button on your browser to return to the Chromium build index, and click on the latest build number.</li>
+<li>Click the file chrome-linux.zip to download the software.</li>
+<li><p>Open a terminal window and enter superuser mode. You are prompted for your root password.</p>
+<pre><code>$ su
+
+  </code></pre></li>
+<li><p>Copy the file you downloaded to the /usr/local directory.</p>
+<pre><code>$ cp -a directory/filename /usr/local
+
+  </code></pre>
+<ul>
+<li><em>directory</em> is the name of the directory in which you downloaded the file, for example <em>downloads</em>.</li>
+<li><em>filename</em> is the name of the file, for example <em>chrome-linux.zip</em>.</li>
+</ul></li>
+<li><p>Extract the archive to the installation directory. This creates the /usr/local/chrome-linux directory and copies the Thunderbird program into it.</p>
+<pre><code>$ cd /usr/local
+$ tar -xjvf filename.tar.bz2
+
+  </code></pre></li>
+<li><p>Delete the archive. When you are prompted, enter <strong>y</strong> on your keyboard.</p>
+<pre><code>$ rm filename
+
+  </code></pre></li>
+<li><p>Create a symbolic link to the Chromium executable.</p>
+<pre><code>$ ln -s ../../usr/local/chrome-linux/chrome /usr/bin/chrome
+
+  </code></pre></li>
+<li>Finally, create a shortcut on your desktop that points to /usr/bin/chrome and double-click that shortcut to start Chromium .</li>
+</ol>
+<p><span id="ch011_updating-chromium.xhtml"></span></p>
+<h1>Updating Chromium</h1>
+<p>Unlike Google Chrome, which has an automatic software update included, Chromium does not update itself or prompt the user to install an update. Since it is an ongoing open source project, keeping Chromium updated means downloading the hourly builds or snapshots from the Chromium snapshots page, where the latest updates for Chromium are available for download.</p>
+<ol>
+<li><p>Go to <a href="http://build.chromium.org/f/chromium/snapshots/" class="uri">http://build.chromium.org/f/chromium/snapshots/</a>.</p>
+<p><img src="static/UpdateA.png" /></p></li>
+<li>Click on the link beside the folder for your operating system (Linux, Mac, or Win).</li>
+<li>Scroll down to the bottom of the index and click on <strong>Latest</strong>.</li>
+<li>Note the number that appears. This is the latest version of Chromium. You should download this version.</li>
+<li>Press the <strong>Back</strong> button to return to the index page, and click on the latest update number.</li>
+<li>Click on the zip file for Mac OS, or the <strong>mini_installer.exe</strong> file for Windows, and save the file to your computer.</li>
+<li>Install and open the latest Chromium update as you would for the first installation of the browser.</li>
+</ol>
+<h2>Updating Chromium in Ubuntu</h2>
+<p>In Ubuntu, Chromium (like other pieces of software that are installed on your computer) will update automatically when a new version is available. Updates are controlled by an application called Update Manager.</p>
+<p>Depending on how you've configured Update Manager, it will check for updates at the following intervals:</p>
+<ul>
+<li>Daily</li>
+<li>Every two days</li>
+<li>Weekly</li>
+<li>Every two weeks</li>
+</ul>
+<p>When Update Manager finds updated software, it will automatically launch. You can also launch Update Manager by selecting <strong>System &gt; Administration &gt; Update Manager</strong>. If you manually launch Update Manager, you'll need to click the <strong>Check</strong> button for Update Manager to check for new versions of software.</p>
+<p><img src="static/Chromium-update_manager_1.png" /></p>
+<p>Click the <strong>Install Updates</strong> button and, when prompted, type the password that you use to log into Ubuntu and then click <strong>OK</strong>.</p>
+<p><span id="ch013_removing-chromium-from-windows.xhtml"></span></p>
+<h1>Removing Chromium from Windows</h1>
+<p><strong>Note</strong>: The following steps are specific to Windows 7 Professional. They should work with earlier versions of Windows.</p>
+<h2>Removing Chromium through the All Programs List</h2>
+<p>To remove Chromium through the All Programs list, do the following:</p>
+<ol>
+<li>Click on the <strong>Start Menu</strong>, and then choose <strong>All Programs</strong>.</li>
+<li>Click on the Chromium folder, and then choose <strong>Uninstall Chromium</strong>.</li>
+<li><p>Click <strong>Uninstall</strong> in the confirmation dialog box.</p>
+<p><img src="static/RemoveWindowsA.JPG" /></p></li>
+</ol>
+<h2>Removing Chromium using the Control Panel</h2>
+<p>To remove Chromium using the Control Panel, do the following:</p>
+<ol>
+<li>Open the Control Panel, and then choose <strong>Uninstall a program</strong>.</li>
+<li><p>Choose Chromium from the list of programs, and then click on the <strong>Uninstall</strong> button at the header of the list.</p>
+<p><img src="static/RemoveWindowsB2.JPG" /></p></li>
+<li><p>Click <strong>Uninstall</strong> in the confirmation dialog dialog box.</p>
+<p><img src="static/RemoveWindowsA.JPG" /></p></li>
+</ol>
+<h2>Removing Chromium user data and settings</h2>
+<p>To clear your computer of Chromium bookmarks, browsing history, and cookies, do the following:</p>
+<ol>
+<li>Click on the <strong>Start Menu</strong> in the Windows taskbar, and search for <strong>Folder Options</strong>.<br />
+</li>
+<li>Click on <strong>Folder Options</strong>, and under the <strong>View</strong> tab. enable <strong>Show hidden files, folders, and drives</strong>.</li>
+<li>Go to <strong>Computer/Local Disk (C:)/Users/(your username)/AppData/</strong>.</li>
+<li><p>Open the <strong>Local</strong> and <strong>Roaming</strong> folders, and if you see a Chromium folder inside either of them, remove it.</p>
+<p><img src="static/RemoveWindowsC.JPG" /></p></li>
+</ol>
+<p><span id="ch014_removing-chromium-from-mac-os-x.xhtml"></span></p>
+<h1>Removing Chromium from Mac OS X</h1>
+<p><strong>Note</strong>: The following steps are specific to Mac OS X 10.6. They should work with earlier versions of Mac OS.</p>
+<p>To remove Chromium, do the following:</p>
+<ol>
+<li><p>Go to the folder on your computer where you placed the Chromium application file, and move it to Trash.</p>
+<p>If you've created any aliases for Chromium, move them to Trash as well.</p></li>
+<li><p>To remove Chromium user data and settings (like bookmarks, browsing history, and cookies), go to <strong>Machintosh HD/Users/(your home folder)/Library/Application Support/Chromium</strong>, and move the Chromium folder to Trash.</p>
+<p><img src="static/RemoveMacA2.png" /></p></li>
+</ol>
+<p><span id="ch015_removing-chromium-from-ubuntu.xhtml"></span></p>
+<h1>Removing Chromium from Ubuntu</h1>
+<p>There are two procedures for removing Chromium on Ubuntu. Which one you use will depend on whether you installed Chromium using the Ubuntu Software Center or from a Personal Package Archive. We take a look at both below:</p>
+<h2>Removing Chromium with Ubuntu Software Center</h2>
+<p>If you're using Ubuntu 10.04 or newer, the easiest way to remove Chromium is through the Ubuntu Software Center.</p>
+<p>To remove Chromium with the Ubuntu Software Center, do the following:</p>
+<ol>
+<li>Click <strong>Ubuntu Software Center</strong> under the Applications menu.</li>
+<li><p>Type <strong>Chromium</strong> in the search box and press the Enter on your keyboard. The Ubuntu Software Center finds Chromium in its list of available software.</p>
+<p><img src="static/chromium_remove_usc1.png" /></p></li>
+<li>Click the <strong>Remove</strong> button.</li>
+</ol>
+<h2>Removing Chromium using the Synaptic Package Manager</h2>
+<p>If you installed Chromium using a Personal Package Archive, you can remove it using Synaptic Package Manager. Here's how:</p>
+<ol>
+<li>Click <strong>Administration</strong> under the System menu, then click <strong>Synaptic Package Manager</strong>.</li>
+<li>When prompted, type the password that you use to log into Ubuntu and then click <strong>OK</strong>.</li>
+<li>In the Quick search box, type &quot;Chromium&quot; and then press Enter on your keyboard. A list of software that is installed on your computer (called packages) appears.</li>
+<li><p>Find Chromium in the list, right click on it, and then click on <strong>Mark for complete removal</strong> in the menu that appears.</p>
+<p><img src="static/chromium_remove_synaptic.png" /></p></li>
+<li>Click the <strong>Apply</strong> button.</li>
+</ol>
+<p><span id="ch016_removing-chromium-from-other-linux-distributions.xhtml"></span></p>
+<h1>Removing Chromium from Other Linux Distributions</h1>
+<p>If you installed Chromium on a Linux distribution other than Ubuntu, using that distribution's package manager, you can remove Chromium from your system using the package manager. If, however, you installed Chromium from a zip archive, you'll need to manually remove it from your system. Here's how:</p>
+<ol>
+<li><p>Open a terminal window and enter superuser mode. You will be prompted for your root password.</p>
+<pre><code>$ su
+
+  </code></pre></li>
+<li><p>Change to the directory above the directory where you installed Chromium. For example, if you installed Chromium in /usr/local/chrome-linux, type the following command:</p>
+<pre><code>$ cd /usr/local
+</code></pre></li>
+<li><p>Type the following command to delete the directory chrome-linux and everything under it:</p>
+<pre><code>$ rm -rf chrome-linux
+</code></pre></li>
+<li>If you added a shortcut to your desktop, delete it.</li>
+</ol>
+<p><span id="ch018_overview-of-the-interface.xhtml"></span></p>
+<h1>Using the Chromium Interface</h1>
+<p><img src="static/ChromiumInterfaceLabA.png" /></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><h2>Label</h2></td>
+<td><h2>Browser feature</h2></td>
+<td><h2>Description</h2></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>Browsing tab<br />
+</td>
+<td>Allows the user to browse the internet.<br />
+</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>New tab<br />
+</td>
+<td>Creates a new tab for browsing in multiple tabs.<br />
+</td>
+</tr>
+<tr class="even">
+<td>3<br />
+</td>
+<td>Omnibox (address and search bar)<br />
+</td>
+<td>Allows the user to visit a website by typing in a URL or a set of search keywords.<br />
+</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>Add Bookmark button<br />
+</td>
+<td>Adds the current web page as a bookmark.<br />
+</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>Wrench icon<br />
+</td>
+<td>Accesses additional Chromium functions and the settings to configure the browser.<br />
+</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>Back and Forward buttons; Reload/Stop button<br />
+</td>
+<td>Navigate to previously visited web pages; refreshes or stops the loading of the current page.<br />
+</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>Bookmarks Bar (hidden by default)<br />
+</td>
+<td>Displays added bookmarks.<br />
+</td>
+</tr>
+</tbody>
+</table>
+<p><span id="ch019_navigating-the-web.xhtml"></span></p>
+<h1>Navigating the Web</h1>
+<p>To start browsing the Internet with Chromium, type the URL of the website you wish to visit into the Omnibox, or type keywords into the Omnibox to search for web pages that contain the information you're looking for.</p>
+<h2>Navigating by URL</h2>
+<p>While typing the URL into the Omnibox, Chromium displays suggested web addresses based on your browsing history and bookmarks. This saves you the time and effort of remembering and typing out an entire URL.</p>
+<p>If one of the suggested web addresses matches what you're looking for, use your mouse or the arrow keys on your keyboard to choose it, then mouse click or press Enter on your keyboard to select it and navigate to the suggested web page.</p>
+<p>Alternatively, if the suggested web addresses are not what you're looking for, continue typing the entire URL, and press Enter on your keyboard to visit the page.</p>
+<p><img src="static/Omnibox1.jpg" /></p>
+<h2>Navigating by keywords</h2>
+<p>If you don't know or remember the URL of the website you wish to visit, or if you would like to perform a web search for information, type in the name of the website or some search keywords into the Omnibox.</p>
+<p>Much like typing the URL into the Omnibox, Chromium will display suggested web searches and addresses as you type in keywords, based on keyword relevancy, your browsing history, and your bookmarks. If one of the suggestions matches what you're looking for, use your mouse or the arrow keys on your keyboard to choose it, and mouse click or press Enter on your keyboard to select it.</p>
+<p><img src="static/Omnibox2.png" /></p>
+<h2>Opening a new tab</h2>
+<p>To open a new tab for browsing multiple web pages at once, click on the <strong>New Tab</strong> button located to the right of the current tab header, or press <strong>Control</strong> (Windows and Linux OSs) or <strong>Command</strong> (Mac OS) <strong>+ T</strong> on your keyboard.</p>
+<p><span id="ch020_retracing-your-steps.xhtml"></span></p>
+<h1>Retracing Your Steps</h1>
+<h2>Back button</h2>
+<p>To return to a web page that you previously visited, click the <strong>Back</strong> button.</p>
+<p>If you have visited several pages during your browsing session, click and hold the <strong>Back</strong> button to see a list of previously visited web pages. While holding down the mouse button, move the mouse to choose from your previously visited web pages, and release the mouse button to visit the specified page.</p>
+<p><img src="static/BackButton.jpg" /></p>
+<h2>Forward button</h2>
+<p>Once you've used the <strong>Back</strong> button to visit a web page, the <strong>Forward</strong> button becomes active. It allows you to return to the web page you were browsing before you pressed the <strong>Back</strong> button.</p>
+<p>Similar to the <strong>Back</strong> button, if you have visited several pages during your browsing session, click and hold the <strong>Forward</strong> button to see a list of previously-visited web pages. While holding down the mouse button, move the mouse to choose from your previously visited web pages, and release the mouse button to visit a page.</p>
+<p><img src="static/ForwardButton.jpg" /></p>
+<h2>History tab</h2>
+<p>Chromium remembers the sites and pages that you visited within the previous 10 weeks. If you would like to see your web page browsing history, do one of the following:</p>
+<ul>
+<li>Click on the Wrench icon and select <strong>History</strong>.</li>
+<li>Hold down on the <strong>Back</strong> or <strong>Forward</strong> button and select <strong>Show Full History</strong>.</li>
+</ul>
+<p><img src="static/History1.png" /></p>
+<p>You can search through your browsing history by typing keywords or web page titles in the search field.</p>
+<p>Also, by clicking <strong>Edit items...</strong>, you can remove certain pages from your browsing history by clicking the option box beside a page and then clicking <strong>Remove selected items</strong>.</p>
+<p>The <strong>Clear all browsing data...</strong> button opens a menu that allows you to remove other types of browser-related history, such as download history, cache, and cookies.</p>
+<p>Finally, once you are done editing your browsing history, click <strong>Done removing items</strong>.</p>
+<p><img src="static/HistoryD.png" /></p>
+<p><span id="ch021_stopping-and-reloading.xhtml"></span></p>
+<h1>Stopping and Reloading</h1>
+<p>In Chromium, the <strong>Stop</strong> button and the <strong>Reload</strong> button are combined. You see the <strong>Reload</strong> button when Chromium has finished loading a web page.</p>
+<p><img src="static/ReloadButton.png" /></p>
+<p>The button changes into the <strong>Stop</strong> button when Chromium is loading a web page, to allow you to stop a slow-loading page or the loading of a faulty web page.</p>
+<p><img src="static/StopButton.png" /></p>
+<p><span id="ch023_how-to-bookmark-a-page.xhtml"></span></p>
+<h1>Bookmarking a Page</h1>
+<p>Bookmarks (also called <em>Favorites</em> in some browsers) are links to web pages. By saving bookmarks in Chromium, you can easily revisit pages without having to remember the address or search for them again, much like using bookmarks in a book.</p>
+<p>To bookmark a page, do the following:</p>
+<ol>
+<li><p>Bookmark the web page you are browsing by clicking the star-shaped <strong>Add Bookmark</strong> button located at the right end of the Omnibox.</p>
+<p>Alternatively, press the keyboard shortcut <strong>Control</strong> or <strong>Command</strong> <strong>+ D</strong> to bookmark a web page.</p></li>
+<li><p>Confirm that you'd like to add the bookmark by clicking the <strong>Done</strong> button or by pressing Enter on your keyboard.</p>
+<p>If you'd like to rename the bookmark or save it in another folder, click on the <strong>Edit...</strong> button.</p>
+<p><img src="static/Bookmark2.png" /></p>
+<p>Type the new name of the bookmark in the <strong>Name</strong> field to rename the bookmark. Click on <strong>New folder</strong> to create a new folder for the bookmark. Once you are finished, click <strong>OK</strong>.</p></li>
+</ol>
+<p><span id="ch024_where-to-find-bookmarks.xhtml"></span></p>
+<h1>Where to Find Bookmarks</h1>
+<p>To find your bookmarks, use the Bookmarks Bar or the Bookmark Manager.</p>
+<h2>Bookmarks Bar</h2>
+<p>The Bookmarks Bar is located below the Omnibox and displays the bookmarks you've added to the default Bookmarks Bar folder.</p>
+<p>To show the Bookmarks Bar, click on the Wrench icon, choose <strong>Tools</strong>, and select <strong>Always Show Bookmarks Bar</strong>. You can also press the keyboard command <strong>Shift + Control (or Command) + B</strong> to show the bar.</p>
+<p>By default, the Bookmarks Bar is hidden from view, to simplify Chromium's interface.</p>
+<p>You can drag and drop the bookmarks in the Bookmarks Bar to rearrange them, including the bookmarks filed under the <strong>&gt;&gt;</strong> button.</p>
+<p>You can also drag the icon just to the left of the current URL in the Omnibox down to the Bookmarks Bar to quickly add a bookmark.</p>
+<p><img src="static/BookmarksBar.png" /></p>
+<h2>Bookmark Manager</h2>
+<p>The Bookmark Manager allows you to view all the bookmarks you've added into the default Chromium bookmark folders (Bookmarks Bar and Other Bookmarks), as well as those added into the folders you've created.</p>
+<p><img src="static/BookmarkManager2.png" /></p>
+<p>To access the Bookmark Manager, click on the Wrench icon and select <strong>Bookmark Manager</strong> in the menu.</p>
+<p><img src="static/BookmarkManagerWrench.png" /></p>
+<p><span id="ch025_managing-your-bookmarks.xhtml"></span></p>
+<h1>Managing Your Bookmarks</h1>
+<p>While you can use the Bookmarks Bar to manage your bookmarks, the Bookmark Manager is a better-organized and more user-friendly way to manage the bookmarks you've added.</p>
+<p>To access the Bookmark Manager, click on the Wrench icon and select <strong>Bookmark Manager</strong>.</p>
+<p><img src="static/BookmarkManager2.png" /></p>
+<p>You can view all your bookmarks and the folders that contain them via the index on the left side of the page.</p>
+<p>To move and reorder bookmarks and folders, drag and drop them to the desired location.</p>
+<p>At the top of the page, you can search for a bookmark by typing keywords into the search field.</p>
+<p>By clicking on the <strong>Organize</strong> menu, you can also do the following:</p>
+<ul>
+<li>Add a new bookmark or a new folder.</li>
+<li>Edit the name and URL of a bookmark.</li>
+<li>Rename a folder.</li>
+<li>Cut, copy, or delete a bookmark or folder.</li>
+<li>Import and Export bookmarks between Chromium and another browser.</li>
+</ul>
+<p>Also, if you right-click on a bookmark or a folder, you can perform many of the same actions as in the <strong>Organize</strong> menu, in addition to opening bookmarks in new tabs, in a new window, or in an Incognito window.</p>
+<p><span id="ch026_synchronizing-your-bookmarks.xhtml"></span></p>
+<h1>Synchronizing Your Bookmarks</h1>
+<h2>What is bookmark synchronization?</h2>
+<p>Synchronizing your bookmarks saves them to your Google Account. By doing this, you can access and edit them on any computer by logging into your Google Account. Along with synchronizing extensions, apps, themes, and browser preferences, bookmark synchronization gives you the same browsing experience at work, at home, or anywhere else you're using a computer connected to the Internet.</p>
+<h2>Syncing your bookmarks</h2>
+<p>To sync your bookmarks, do the following:</p>
+<ol>
+<li>Click on the Wrench icon and select <strong>Options</strong> (Windows OS) or <strong>Preferences</strong> (Mac and Linux OSs).</li>
+<li>In the Options/Preferences menu, select <strong>Personal Stuff</strong> from the index at the left side of the page.</li>
+<li><p>In the <strong>Sync</strong> section, click on the <strong>Set Up Sync...</strong> button.</p>
+<p><img src="static/BookmarkSync.png" /></p></li>
+<li>Enter your Google Account username and password and click <strong>Sign in</strong>.</li>
+<li><p>In the <strong>Configure Sync</strong> section of the pop-up window, click on <strong>Choose what to sync</strong>.</p>
+<p><img src="static/BookmarkSync2.png" /></p></li>
+<li>Ensure that <strong>Bookmarks</strong> is selected, and click <strong>OK</strong>.</li>
+</ol>
+<h2>Disabling bookmark synchronization</h2>
+<p>To disable bookmark synchronization, do the following:</p>
+<ol>
+<li>Click on the Wrench icon and select <strong>Options</strong> (Windows OS) or <strong>Preferences</strong> (Mac and Linux OSs).</li>
+<li>In the Options/Preferences menu, select <strong>Personal Stuff</strong> from the index at the left side of the page.</li>
+<li><p>In the <strong>Sync</strong> section, click on <strong>Stop syncing to this account</strong>.</p>
+<p><img src="static/BookmarkDisableSync.png" /></p></li>
+<li>Click on <strong>Stop syncing</strong> in the confirmation dialog box.</li>
+</ol>
+<p><span id="ch028_accessing-chromiums-preferences.xhtml"></span></p>
+<h1>Accessing Chromium's Options/Preferences</h1>
+<p>If you would like to configure Chromium, click on the Wrench icon and select <strong>Options</strong> (Windows OS) or <strong>Preferences</strong> (Mac and Linux OSs).</p>
+<p>The Options/Preferences menu is organized into three tabs that are displayed on the left side of the page: <strong>Basics</strong>, <strong>Personal Stuff</strong>, and <strong>Under the Hood</strong>.</p>
+<h2>The Basics tab</h2>
+<p>The <strong>Basics</strong> tab allows you to configure the following:</p>
+<ul>
+<li>The page Chromium will display when you open the browser.</li>
+<li>The web page selected as the home page.</li>
+<li>To show or hide the home page button in the toolbar.</li>
+<li>The search engine used in the Omnibox.</li>
+<li>To set Chromium as your default browser.</li>
+</ul>
+<p><img src="static/ConfigureBasics.png" /></p>
+<h2>The Personal Stuff tab</h2>
+<p>The <strong>Personal Stuff</strong> tab allows you to configure the following:</p>
+<ul>
+<li>Synchronization of your browser settings via your Google Account.</li>
+<li>Password saving.</li>
+<li>Form Autofill.</li>
+<li>To import browsing data (like browsing history and bookmarks) from another browser.</li>
+<li>Browser themes.</li>
+</ul>
+<p><img src="static/ConfigurePersonalStuff.png" /></p>
+<h2>The Under the Hood tab</h2>
+<p>The <strong>Under the Hood</strong> tab allows you to configure the following:</p>
+<ul>
+<li>Privacy settings.</li>
+<li>Font size, page zoom, language and spelling checker.</li>
+<li>Network settings.</li>
+<li>Language settings.</li>
+<li>Download settings.</li>
+<li>Security settings.</li>
+</ul>
+<p><img src="static/ConfigureUnderHood.png" /></p>
+<p>For more information on the Options/Preferences menu, visit this Google Chrome Help web page: <a href="http://www.google.com/support/chrome/bin/answer.py?hl=en&amp;answer=1183665" class="uri">http://www.google.com/support/chrome/bin/answer.py?hl=en&amp;answer=1183665</a>.</p>
+<p><span id="ch029_making-chromium-your-default-browser.xhtml"></span></p>
+<h1>Making Chromium Your Default Browser</h1>
+<p>To make Chromium your default browser, do the following:</p>
+<ol>
+<li>Click on the Wrench icon and select <strong>Options</strong> (Windows OS) or <strong>Preferences</strong> (Mac and Linux OSs).</li>
+<li><p>In the <strong>Basics</strong> tab, click on <strong>Make Chromium my default browser</strong> in the <strong>Default browser</strong> section.</p>
+<p><img src="static/ConfigureDefaultBrowser.JPG" /></p></li>
+</ol>
+<p><span id="ch030_setting-startup-and-start-page-options.xhtml"></span></p>
+<h1>Setting Startup and Start Page Options</h1>
+<p>You can configure Chromium's startup and home page settings in the <strong>Basics</strong> tab in the <strong>Options</strong> (Windows OS) or <strong>Preferences</strong> (Mac and Linux OSs) menu.</p>
+<p><img src="static/ConfigureStartupHome.png" /></p>
+<h2>Startup options</h2>
+<p>Using the option buttons in the <strong>On Startup</strong> section, you can set Chromium to open the home page when you start up the browser, or to return to the pages that were open when the browser was previously closed, or to open specific pages. The latter option requires you to enter the URL(s) of the specific web page(s) you'd like to see on startup.</p>
+<h2>Home page options</h2>
+<p>Using the option buttons in the <strong>Home page</strong> section, you can set Chromium to use the New Tab page (which displays installed apps, most visited pages, and recently closed pages) as the home page, or to use a specific web page. To use the latter option, enter the URL of the web page that you'd like to use -- for example, http://booki.flossmanuals.net.</p>
+<h2>Show Home button</h2>
+<p>In the <strong>Toolbar</strong> section, click on the box beside <strong>Show Home button</strong> to add a shortcut icon to your home page. The <strong>Home</strong> button is located to the left of the Omnibox.</p>
+<p><img src="static/ShowHomeButton.JPG" /></p>
+<p><span id="ch031_choosing-and-using-a-search-engine.xhtml"></span></p>
+<h1>Choosing and Using a Search Engine</h1>
+<p>The search engine you choose to use for Chromium affects the search results you get when you type keywords into the Omnibox.</p>
+<p>To select the search engine you'd like to use, do the following:</p>
+<ol>
+<li>Click on the Wrench icon and select <strong>Options</strong> (Windows OS) or <strong>Preferences</strong> (Mac and Linux OSs).</li>
+<li><p>Under the <strong>Basics</strong> tab, in the <strong>Search</strong> section, the left button displays your current Chromium search engine. Click on this button to view the other default search engines, and to select the one you'd like to use.</p>
+<p><img src="static/ConfigureSearchEngine1.png" /></p></li>
+</ol>
+<h2>Adding search engines to Chromium</h2>
+<p>If you'd like to use additional search engines that are not included in Chromium, do the following:</p>
+<ol>
+<li>Click on the Wrench icon and select <strong>Options</strong> (Windows OS) or <strong>Preferences</strong> (Mac and Linux OSs).</li>
+<li>Under the <strong>Basics</strong> tab, in the <strong>Search</strong> section, click on the <strong>Manage Search Engines</strong> button.</li>
+<li><p>In the <strong>Other search engines</strong> section, type the name of the new search engine that you'd like to use in the field on the left, its associated keyword in the centre field, and its URL in the field on the right.</p>
+<p>To find the URL of the search engine you'd like to use, do a search on the web page of that search engine. At the search results page, copy the URL of the web page, and replace the query keywords in the URL with <strong>%s</strong>.</p></li>
+<li><p>After entering in the information for the new search engine, highlight it and click on <strong>Make Default</strong> to use it in the Chromium Omnibox.</p>
+<p><img src="static/ConfigureSearchEngineB.png" /></p></li>
+</ol>
+<h2>Enabling Instant</h2>
+<p>If you'd like to speed up your web browsing and searches, click on the box beside <strong>Enable Instant for faster searching and browsing</strong> in the <strong>Search</strong> section. Not only does Chromium guess which web page you'd like to visit while you type keywords or an URL into the Omnibox, it also loads that web page before you finish typing.</p>
+<p><span id="ch032_handling-personal-information.xhtml"></span></p>
+<h1>Handling Personal Information</h1>
+<p>If you are wary of Chromium tracking your usage data and browsing history, there are several things you can do to control what information does and doesn't get recorded.</p>
+<h2>Privacy settings in Options/Preferences</h2>
+<p>To change Chromium's privacy settings, do the following:</p>
+<ol>
+<li>Click on the Wrench icon and select <strong>Options</strong> (Windows OS) or <strong>Preferences</strong> (Mac and Linux OSs).</li>
+<li>Choose <strong>Under the Hood</strong> from the index on the left side of the page.</li>
+<li><p>In the <strong>Privacy</strong> section, you can do the following:</p>
+<ul>
+<li><p>Click on the <strong>Content Settings</strong> button to configure a host of parameters (cookies, images, Javascript, plug-ins, pop-ups, location).</p>
+<p><img src="static/ConfigurePrivacy1.png" /></p></li>
+<li><p>Clear your browsing data (which includes browsing and download history, cache, cookies, saved passwords, and form Autofill) within a specified time frame.</p>
+<p><img src="static/ConfigurePrivacy2.png" /></p></li>
+<li>Adjust additional settings via option boxes.</li>
+</ul>
+<p>For more information on the individual parameters in the Privacy section, visit Google Chrome Help's Privacy and security settings page: <a href="http://www.google.com/support/chrome/bin/topic.py?hl=en&amp;topic=14666" class="uri">http://www.google.com/support/chrome/bin/topic.py?hl=en&amp;topic=14666</a>.</p></li>
+</ol>
+<h2>Incognito mode</h2>
+<p>Chromium's Incognito mode doesn't record your browsing and download history, and cookies are deleted once you close all open Incognito windows. However, bookmarks and general settings are still saved.</p>
+<p>For more information on Incognito mode, consult the chapter &quot;Using the Incognito Window&quot; in the <strong>Other Features and Functions</strong> section of this manual.</p>
+<h2>External tools to remove Chromium User ID</h2>
+<p>When you install Chromium, a unique user ID is assigned to your computer to create individual user profiles of a user's actions (such as browsing and download history, and cookies) while using Chromium.</p>
+<p>If this is a privacy concern for you, consider downloading one of the following tools to delete this unique ID from your computer:</p>
+<ul>
+<li>Unchrome: <a href="http://www.abelssoft.net/unchrome.php" class="uri">http://www.abelssoft.net/unchrome.php</a>.</li>
+<li>Chrome Privacy Guard: <a href="http://blog.gjl-network.net/archives/166-google-chrome-chrome-privacy-guard-cpg.html" class="uri">http://blog.gjl-network.net/archives/166-google-chrome-chrome-privacy-guard-cpg.html</a>.</li>
+</ul>
+<p><span id="ch034_opening-a-new-tab.xhtml"></span></p>
+<h1>Opening a New Tab</h1>
+<p>To open a new browsing tab, either click on the New Tab button to the right of the header of the latest tab to be opened, or press <strong>Control</strong> (Windows or Linux OSs) / <strong>Command</strong> (Mac OS) <strong>+ T</strong> on your keyboard.</p>
+<p><img src="static/NewTabA.png" /></p>
+<p><img src="static/NewTabB.png" /></p>
+<p><span id="ch035_opening-a-link-in-a-new-tab.xhtml"></span></p>
+<h1>Opening a Link in a New Tab</h1>
+<p>To open a hyperlink in a new tab, right click on it and select <strong>Open Link in New Tab</strong>. Alternatively, press <strong>Control</strong> (Windows or Linux OSs) or <strong>Command</strong> (Mac OS) <strong>+ mouse click</strong> on a hyperlink to open it in a new tab.</p>
+<p><img src="static/NewLinkTab1.png" /></p>
+<p><br />
+</p>
+<p>If you'd like Chromium to switch to the new tab as you open the hyperlink, press <strong>Shift + Control + mouse click</strong> (Windows or Linux OSs) or <strong>Shift + Command + mouse click</strong> (Mac OS) on a hyperlink.</p>
+<p>Also, if you'd like to load the current web page in a new tab, right-click on the tab header and select <strong>Duplicate</strong>.</p>
+<p><img src="static/NewLinkTabDuplicate.png" /></p>
+<p><span id="ch036_moving-tabs.xhtml"></span></p>
+<h1>Moving Tabs</h1>
+<p>To reorder your browser tabs, click and drag a tab header to the left or right.</p>
+<p>You can also drag a tab away from the current window to create a new window. You can then drag it back to the previous window if you wish.</p>
+<p><img src="static/MoveTab3.png" /></p>
+<p><span id="ch037_closing-tabs.xhtml"></span></p>
+<h1>Closing Tabs</h1>
+<p>To close a tab, press the <strong>x</strong> button on the right side of the tab header. Alternatively, press <strong>Control</strong> (Windows and Linux OSs) or <strong>Command</strong> (Mac OS) <strong>+ W</strong> on your keyboard to close a tab.</p>
+<p><img src="static/TabClose2.png" /></p>
+<p><br />
+</p>
+<p>If you'd like to reopen a closed tab, do one of the following steps:</p>
+<ul>
+<li><p>Open a new tab, and on the New Tab page, find the tab you'd like to reopen under <strong>Recently closed</strong>.</p>
+<p><img src="static/TabCloseRecently2.png" /></p></li>
+<li><p>Right-click on a tab header and select <strong>Reopen closed tab</strong>.</p>
+<p><img src="static/TabCloseReopen.png" /></p></li>
+<li>Press <strong>Control</strong> (Windows and Linux OSs) or <strong>Command</strong> (Mac OS) <strong>+ Shift + T</strong>.</li>
+</ul>
+<p><span id="ch038_killing-tabs.xhtml"></span></p>
+<h1>Killing Tabs</h1>
+<p>When a web page crashes or doesn't load properly, it may immobilize the browsing tab used to view it. To <em>kill</em> this tab, do one of the following:</p>
+<ul>
+<li><p>If a dialog box pops up and asks you to either <strong>Kill pages</strong> or <strong>Wait</strong>, choose <strong>Kill pages</strong>.</p>
+<p><img src="static/KillPages.png" /></p></li>
+<li><p>If no dialog box pops up, click on the Wrench icon, and under <strong>Tools</strong>, select <strong>Task Manager</strong>.</p>
+<p><img src="static/TabTaskManager1.png" /></p>
+<p><br />
+</p>
+<p>Find the tab that has crashed, and click on <strong>End process</strong>.</p>
+<p><img src="static/TabTaskManager2A.png" /></p></li>
+</ul>
+<p><span id="ch040_downloading-files.xhtml"></span></p>
+<h1>DOWNLOADING FILES</h1>
+<h2>Download bar</h2>
+<p>When you download a file from the Internet using Chromium, the Download bar appears along the bottom of the browser.</p>
+<p><img src="static/DownloadFile1.png" /></p>
+<p>Files that are being downloaded appear as rectangular buttons on the Download bar. Click on the right side of a button to open a menu that allows you to open the file when it is finished downloading; to pause, resume, or cancel the download; and to show the location where the file is saved on your computer.</p>
+<p><img src="static/DownloadFile2.png" /></p>
+<p>When you are done with the Download bar, press the <strong>x</strong> button on the right side of the bar to close it.</p>
+<h2>Downloads tab</h2>
+<p>You can also view all of your downloads, both files in the process of downloading and files that have finished downloading, in the Downloads tab. To access the Downloads tab, do one of the following:</p>
+<ul>
+<li>Click on <strong>Show all downloads</strong> on the right end of the Download bar.</li>
+<li>Click on the Wrench icon and select <strong>Downloads</strong>.</li>
+<li>Press <strong>Control</strong> (Windows and Linux OSs) or <strong>Command</strong> (Mac OS) <strong>+ J</strong> on your keyboard.</li>
+</ul>
+<p><img src="static/DownloadsTabA.png" /></p>
+<p>The Downloads tab allows you to pause, resume, or cancel an ongoing download, and to show where the file is saved on your computer. During a download, the tab also shows the size of the file and the estimated time remaining in the download.</p>
+<p><span id="ch041_downloading-files-without-displaying-them.xhtml"></span></p>
+<h1>Downloading Files Without Displaying Them</h1>
+<p>If you'd like to download a file that can open in your browser (a .pdf or a .mp3 file, for example), but you'd rather not open it immediately after clicking on the download link, right-click on the link and select <strong>Save Link As</strong>.</p>
+<p><img src="static/SaveLinkAs.png" /></p>
+<p>Chromium asks you to name the file and to select where you'd like to save the file on your computer.</p>
+<p><span id="ch043_copying-text.xhtml"></span></p>
+<h1>Copying Text</h1>
+<p>To copy and paste text from a web page, do the following:</p>
+<ol>
+<li>Select the text you wish to copy by clicking and dragging your mouse over the text.</li>
+<li><p>Press <strong>Control</strong> (Windows and Linux OSs) or <strong>Command</strong> (Mac OS) <strong>+ C</strong> to copy the text.</p>
+<p>Alternatively, you can right-click your mouse and select <strong>Copy</strong> from the pop-up menu.</p>
+<p>Or, you can click on the Wrench icon and select <strong>Copy</strong> in the <strong>Edit</strong> section.</p>
+<p><img src="static/CopyText.png" /></p></li>
+<li><p>Go to the tab, window, or program where you'd like to paste the text, and press <strong>Control</strong> (Windows and Linux OSs) or <strong>Command</strong> (Mac OS) <strong>+ V</strong> to paste the text.</p>
+<p>Alternatively, you can right-click your mouse and select <strong>Paste</strong> from the pop-up menu.</p>
+<p>If you're pasting the text in a Chromium tab or window, you can also click on the Wrench icon and select <strong>Paste</strong> in the <strong>Edit</strong> section.</p></li>
+</ol>
+<p><span id="ch044_copying-a-link-or-an-image-link.xhtml"></span></p>
+<h1>Copying a Link or an Image Link</h1>
+<p>To copy a link or an image link, right-click on the link or image and select <strong>Copy Link Address</strong> for a link, or select <strong>Copy Image URL</strong> for an image. You can then paste the URL into the Omnibox of another tab.</p>
+<p><img src="static/CopyLinkA.png" /></p>
+<p><img src="static/CopyImageLink.png" /></p>
+<p><span id="ch045_saving-a-page.xhtml"></span></p>
+<h1>Saving a Page</h1>
+<p>To save a web page, click on the Wrench icon and select <strong>Save page as</strong>, or right-click on a web page (away from links and images) and select <strong>Save as</strong>.</p>
+<p>In the <strong>Save As</strong> pop-up window that appears, choose where you'd like to save the web page on your computer. Also, choose whether you'd like to save the page as one of the following:</p>
+<ul>
+<li>A complete web page, which includes all graphics, stylesheets, and other media linked to the page.</li>
+<li>Just the text of the web page, saved as HTML code.</li>
+</ul>
+<p><img src="static/SavePageAs.JPG" /></p>
+<p><span id="ch046_saving-an-image-from-a-page.xhtml"></span></p>
+<h1>Saving an Image From a Page</h1>
+<p>To save an image from a web page, right-click on it and select <strong>Save Image As...</strong></p>
+<p><img src="static/SaveImage.png" /></p>
+<p>Chromium asks you where you'd like to save the image on your computer. Choose the desired folder and click on <strong>Save</strong> to save the image.</p>
+<p><span id="ch047_printing-a-page.xhtml"></span></p>
+<h1>Printing a Page</h1>
+<p>To print a web page, do one of the following:</p>
+<ul>
+<li>Right-click on the web page (away from links and images) and select <strong>Print</strong>.</li>
+<li>Click on the Wrench icon and select <strong>Print</strong>.</li>
+<li>Press <strong>Control</strong> (Windows or Linux OSs) or <strong>Command</strong> (Mac OS) <strong>+ P</strong> on your keyboard.</li>
+</ul>
+<p>A dialog box opens to allow you to adjust your printer settings.</p>
+<p>Note that certain types of web pages or files, like an email inbox or a PDF file, have their own print commands on the web page or file itself.</p>
+<p><span id="ch049_viewing-the-source-of-a-page.xhtml"></span></p>
+<h1>Viewing the Source of a Page</h1>
+<p>Viewing the source code of a web page is useful if you come across a page with a design and layout that you'd like to implement in your own website or blog.</p>
+<p>To view the source code of a web page, do one of the following:</p>
+<ul>
+<li>Right-click on the page (away from images and links) and select <strong>View Page Source</strong>.</li>
+<li>Click on the Wrench icon, select <strong>Tools</strong>, and then click on <strong>View Source</strong>.</li>
+</ul>
+<p><img src="static/ViewPageSource.png" /></p>
+<p><span id="ch050_viewing-information-about-a-page.xhtml"></span></p>
+<h1>Viewing Information About a Page</h1>
+<p>To view security information about a web page, such as the identity of the page and the security of your connection to it, right-click on a page (away from images and links) and select <strong>View Page Info</strong>.</p>
+<p><img src="static/ViewPageInfo.png" /></p>
+<p><span id="ch051_inspecting-an-element-on-a-page.xhtml"></span></p>
+<h1>Inspecting the Elements on a Page</h1>
+<p>Every web page is made up of a number of elements. These include HTML tags, style directives, images, scripts, and more.</p>
+<p>Inspecting the elements on a web page enables you to view coding errors on a page. When you've isolated the error, you can go back to your source file and edit the page's code. The element inspector in Chromium also monitors the amount of time it takes for each element on a web page to load, which is useful to gauge a website's level of performance.</p>
+<p>To inspect the elements on a web page, right-click on the page (away from images and links) and select <strong>Inspect Element</strong>.</p>
+<p><img src="static/InspectElement.png" /></p>
+<p><span id="ch053_finding-and-installing-extensions.xhtml"></span></p>
+<h1>Finding and Installing Extensions</h1>
+<h2>What are extensions?</h2>
+<p>Extensions are additional features that you can download for use with Chromium. They provide a number of functions that extend the capabilities of Chromium. Like what? Like Gmail inbox alerts, automatically mapping addresses, verifying the security information of a website, and much more.</p>
+<h2>Finding extensions</h2>
+<p>You can find extensions for Chromium at the Google Chrome Extensions Gallery: <a href="https://chrome.google.com/extensions" class="uri">https://chrome.google.com/extensions</a></p>
+<p><img src="static/ChromeExtensionsGallery.png" /></p>
+<p><br />
+</p>
+<p>If you're using Chromium in North America, you can also visit the Chrome Web Store at <a href="https://chrome.google.com/webstore" class="uri">https://chrome.google.com/webstore</a> and look for extensions in the Extensions section.</p>
+<p><img src="static/ChromeWebStore.png" /></p>
+<p><br />
+</p>
+<p>On both sites, extensions are organized in categories like <em>Featured</em>, <em>Popular</em>, and <em>Top Rated</em>. They're also organized by function -- for example, <em>Education</em>, <em>Productivity</em>, and <em>Utilities</em>. On both sites, you can search for extensions using keywords.</p>
+<h2>Installing extensions</h2>
+<p>To install an extension, click on the <strong>Install</strong> button on the description page of an extension. After Chromium finishes downloading the extension, it asks whether you'd like to install the extension. Click on <strong>Install</strong> to start using the extension.</p>
+<p><img src="static/InstallExtension1.png" /></p>
+<p><br />
+</p>
+<p><img src="static/InstallExtension2.png" /></p>
+<p><br />
+</p>
+<p>In the Chrome Web Store, the description page of an extension also tells you what types of data the extension can access on your computer. Also, in both the Web Store and the Google Chrome Extensions Gallery, this privacy info pops up when Chromium asks you to confirm the installation of an extension.</p>
+<p><span id="ch054_managing-extensions.xhtml"></span></p>
+<h1>Managing Extensions</h1>
+<h2>Extensions Toolbar</h2>
+<p><img src="static/ExtensionsToolbar1.png" /></p>
+<p>The Extensions Toolbar is located to the right of the Omnibox. The extensions you install for Chromium appear here as buttons. As you add extensions, the Omnibox shortens to accommodate more extension buttons.</p>
+<p>To adjust the length of the Omnibox and to control how many extension buttons are shown, place the mouse cursor to the right border of the Omnibox, then click and drag it.</p>
+<p>You can also reorder the extensions buttons by clicking and dragging them.</p>
+<p>If you right-click on an extension button, a pop-up menu appears that allows you to do the following:</p>
+<ul>
+<li>View the extension's home page.</li>
+<li>Access the extension's options.</li>
+<li>Disable or uninstall the extension.</li>
+<li>Hide the extension button.</li>
+<li>Access the Extensions Manager.</li>
+</ul>
+<p><img src="static/ExtensionsToolbar2.png" /></p>
+<h2>Extensions Manager</h2>
+<p>The Extensions Manager is a dedicated browser tab for the extensions you've installed. It allows you to do the following:</p>
+<ul>
+<li>View the extension's home page.</li>
+<li>Access the extension's options.</li>
+<li>Disable or uninstall the extension.</li>
+<li>Use the extension in Incognito mode.</li>
+<li>Find and install more extensions.</li>
+</ul>
+<p>To access the Extensions Manager, click on the Wrench icon, select <strong>Tools</strong>, then click on <strong>Extensions</strong>.</p>
+<p><img src="static/ExtensionsManager.png" /></p>
+<p><span id="ch055_disabling-and-removing-extensions.xhtml"></span></p>
+<h1>Disabling and Removing Extensions</h1>
+<h2>Disabling an extension</h2>
+<p>To temporarily disable an extension, do one of the following:</p>
+<ul>
+<li>Right-click on the extension button and select <strong>Disable</strong>.</li>
+<li>Click on the Wrench icon, select <strong>Tools</strong>, then select <strong>Extensions</strong>. In the Extensions Manager, find the extension you'd like to disable and click on <strong>Disable</strong>.</li>
+</ul>
+<p>Once disabled, an extension is removed from the Extensions Toolbar. You can still access a disabled extension in the Extensions Manager.</p>
+<h2>Removing an extension</h2>
+<p>To uninstall an extension, do one of the following:</p>
+<ul>
+<li>Right-click on the extension button and select <strong>Uninstall</strong>.</li>
+<li>Click on the Wrench icon, select <strong>Tools</strong>, then select <strong>Extensions</strong>. In the Extensions Manager, find the extension you'd like to remove and click on <strong>Uninstall</strong>.</li>
+</ul>
+<p>Chromium asks you to confirm the uninstalling of the extension. Click <strong>Uninstall</strong> to remove the extension.</p>
+<p><img src="static/ExtensionUninstall.png" /></p>
+<p><span id="ch056_some-recommended-extensions.xhtml"></span></p>
+<h1>Some Recommended Extensions</h1>
+<p>Here are some recommended extensions for use with Chromium:</p>
+<h2>Adblock</h2>
+<p><a href="https://chrome.google.com/extensions/detail/gighmmpiobklfepjocnamgkkbiglidom">http://bit.ly/mAGyJ1</a> -- this extension removes the ads from any web page you visit.</p>
+<h2>BuzzGrowl</h2>
+<p><a href="https://chrome.google.com/extensions/detail/icjocbnbhcddhjhjlfogoacocamjaepk">http://bit.ly/fO3jq6</a> -- this extension displays what Twitter and Facebook users are saying about the website you're currently browsing.</p>
+<h2>Mail Checker Plus for Google Mail</h2>
+<p><a href="https://chrome.google.com/extensions/detail/gffjhibehnempbkeheiccaincokdjbfe?hl=en">http://bit.ly/92jBxs</a> -- this extension allows you to preview your Gmail account without the need to open another tab. It displays the number of unread messages in your inbox, and lets you delete, archive, and mark messages. When you wish to read a message, it opens up your Gmail inbox in a new browsing tab.</p>
+<h2>Web Clipboard</h2>
+<p><a href="https://chrome.google.com/extensions/detail/idonmcopbgceobhkdbikbdellmdogkih">http://bit.ly/ltEzJm</a> -- this extension allows you to copy and save multiple text and HTML items onto a web clipboard. You can then paste the items into any Google App that features the Web Clipboard function (e.g. Google Docs).</p>
+<p><span id="ch058_creating-application-shortcuts.xhtml"></span></p>
+<h1>Creating Application Shortcuts</h1>
+<p>Application shortcuts enable you to quickly open web applications (like Google Docs) or apps that you've installed from the Chrome Web Store without starting Chromium, by creating shortcuts for them, just like you would a desktop application.</p>
+<p>Actually, you're still using Chromium with those apps. By using application shortcuts, however, you're eliminating all the distractions that exist in the browser window like tabs, the Omnibox, bookmark bars, and menus.</p>
+<p>Why do that? It's easier to use a shortcut than to fire up a browser, click a bookmark or type a URL, and then log into the web application.</p>
+<p>Let's take a look at how to create application shortcuts.</p>
+<h2>Creating shortcuts for web applications</h2>
+<p>To create a shortcut for a web application, do the following:</p>
+<ol>
+<li>In Chromium, go to the URL of the web application for which you want to create the shortcut -- for example, http://docs.google.com.</li>
+<li>Click the Wrench icon, select <strong>Tools</strong>, and then select <strong>Create Application Shortcuts</strong>.</li>
+<li><p>On the Create application shortcuts dialog box, choose to create the app shortcut on your Desktop, in your Start menu (Windows OS), in the Application menu (other operating systems), or all of the above.</p>
+<p><img src="static/chromium_appShortcut.png" /></p></li>
+<li>Click <strong>Create</strong></li>
+</ol>
+<h2>Creating shortcuts for apps from the Chrome Web Store</h2>
+<p>To create an application shortcut for an app from the Chrome Web Store, do the following:</p>
+<ol>
+<li>Open a new tab.</li>
+<li><p>On the New Tab page, go to the desired app and right-click, then select <strong>Create shortcut</strong>.</p>
+<p><img src="static/AppShortcut1A.jpg" /></p></li>
+<li><p>On the Create application shortcuts dialog box, click on the option boxes to create the app shortcut on your Desktop, Start menu, and/or pin the shortcut to the Taskbar. Then, click on <strong>Create</strong>.</p>
+<p><img src="static/AppShortcut2.JPG" /></p></li>
+</ol>
+<p><span id="ch059_using-chromiums-developer-tools.xhtml"></span></p>
+<h1>Using Chromium's Developer Tools</h1>
+<p>Chromium's Developer Tools allow website developers to debug (correct coding errors). Once you determine the problem, you can go to the source file and edit a web page's code to correct the problem.</p>
+<p>Developer Tools also monitor the amount of time it takes for each element on a web page to load, which is useful to gauge a website's level of performance, and which allows developers to edit code in order to increase a website's loading speed.</p>
+<p>To access the Developer Tools, click on the Wrench icon, select <strong>Tools</strong>, then click on <strong>Developer Tools</strong>.</p>
+<p><img src="static/DeveloperTools.png" /></p>
+<p>To learn more about Chromium's Developer Tools, watch the introductory videos to Google Chrome's Developer Tools at <a href="http://blog.chromium.org/2009/11/update-for-google-chromes-developer.html">http://bit.ly/7b4Mdk</a>, and visit Chrome's Developer Tools mini-site at <a href="http://code.google.com/chrome/devtools/" class="uri">http://code.google.com/chrome/devtools/</a>.</p>
+<p><span id="ch060_covering-your-tracks.xhtml"></span></p>
+<h1>Covering Your Tracks</h1>
+<p>Essentially, covering your tracks means deleting your browsing history after using Chromium. Doing this erases the data that the browser has recorded on your web usage. This also means your browsing preferences -- like your most-visited web addresses, form Autofills, saved passwords, and other types of web page settings -- will be deleted.</p>
+<p>To cover your tracks in Chromium, do the following:</p>
+<ol>
+<li><p>Click on the Wrench icon, select <strong>Tools</strong>, then click on <strong>Clear Browsing Data</strong>.</p>
+<p><img src="static/ConfigurePrivacy2.png" /></p></li>
+<li>In the pop-up window, choose which type of browsing data you'd like to delete by clicking on its associated option box:
+<ul>
+<li>Browsing history (the URLs of websites you've visited).</li>
+<li>Download history (the list of files you've downloaded).</li>
+<li>Cache (copies of frequently-visited web pages and associated images saved on your computer).</li>
+<li>Cookies (records of visited websites, viewed web pages, items you've clicked on, and personalized web page settings).</li>
+<li>Passwords.</li>
+<li>Autofill form data.</li>
+</ul></li>
+<li>After you've chosen which types of browsing data to delete, use the combo box at the top to choose the timeframe in which the data is to be deleted, from the past hour all the way up to everything.</li>
+<li>Click on <strong>Clear Browsing Data</strong> to complete the process.</li>
+</ol>
+<p><span id="ch061_using-the-incognito-window.xhtml"></span></p>
+<h1>Using the Incognito Window</h1>
+<p>Chromium's Incognito mode doesn't record your browsing data. Download history and cookies are deleted once you close any Incognito windows. However, bookmarks and general settings are still saved.</p>
+<p>To open an Incognito window, do one of the following:</p>
+<ul>
+<li>Click on the Wrench icon and select <strong>New Incognito Window</strong>.</li>
+<li>Press <strong>Control</strong> (Windows and Linux OSs) or <strong>Command + Shift + N</strong> (Mac OS).</li>
+</ul>
+<p><img src="static/IncognitoWindow.png" /></p>
+<p>The Incognito window is distinguished by a different window header design and a New Tab page that gives information on the features in Incognito mode.</p>
+<p>Note that Incognito mode only prevents Chromium from recording your browsing data. The websites you browse can still store information about your visit.</p>
+<p><span id="ch062_chromiums-online-help.xhtml"></span></p>
+<h1>Chromium's Online Help</h1>
+<p>If you run into problems while using Chromium, or if you have questions about how to use one of Chromium's features, the Google Chrome Help website provides quite a bit of information that applies not only to Chrome, but also to Chromium. Visit <a href="http://www.google.com/support/chrome/?hl=en" class="uri">http://www.google.com/support/chrome/?hl=en</a>.</p>
+<p>Type in the keywords to your question in the search field, click on <strong>Search Help</strong>, and you should get either a help article or a help forum topic that deals with your question.</p>
+<p><img src="static/GoogleChromeHelp.png" /></p>
+<p><span id="ch063_other-sources-of-help.xhtml"></span></p>
+<h1>Other Sources of Help</h1>
+<p>Besides the Google Chrome Help website at <a href="http://www.google.com/support/chrome/?hl=en" class="uri">http://www.google.com/support/chrome/?hl=en</a>, which provides a wealth of information applicable to Chromium, here are some additional resources to aid or enhance your Chromium experience:</p>
+<ul>
+<li>The Chromium Blog at <a href="http://blog.chromium.org/" class="uri">http://blog.chromium.org/</a> is created and managed by Chromium developers, who regularly update the blog with the latest developments and changes to the Chromium browser, like new extensions, loading speed improvements, stability, and compatibility with drivers and applications.</li>
+<li>The Chromium-discuss discussion group at <a href="http://groups.google.com/a/chromium.org/group/chromium-discuss/topics" class="uri">http://groups.google.com/a/chromium.org/group/chromium-discuss/topics</a> is a forum where Chromium users can ask developers and other users about Chromium features, troubleshoot Chromium, or suggest enhancements.</li>
+<li>Various websites have a list of Google Chrome tips and tricks that also apply to Chromium:
+<ul>
+<li>The tips and tricks section in Google Chrome Help: <a href="http://www.google.com/support/forum/p/Chrome/label?lid=15a63e2e9903747f&amp;hl=en">http://bit.ly/alu1Tb</a></li>
+<li>The Chrome Plugins forum: <a href="http://www.chromeplugins.org/google/chrome-tips-tricks/">http://bit.ly/51vOrU</a></li>
+<li>Mashable: <a href="http://mashable.com/2010/09/09/chrome-tips-tricks-shortcuts/">http://on.mash.to/9ER5md</a></li>
+<li>Geeksugar: <a href="http://www.geeksugar.com/Google-Chrome-Browser-Tips-Tricks-14967184">http://bit.ly/ft9RnK</a></li>
+</ul></li>
+</ul>
+<p><span id="ch065_troubleshooting.xhtml"></span></p>
+<h1>Troubleshooting</h1>
+<p>The following topics are some of the more common Chromium issues. For a searchable list of troubleshooting articles, visit the troubleshooting section of Google Chrome Help at <a href="http://www.google.com/support/chrome/bin/topic.py?topic=14684&amp;ctx=search&amp;query=troubleshooting%20google%20chrome">http://bit.ly/kJRczQ</a>.</p>
+<h2>&quot;Aw, Snap!&quot; web page crash</h2>
+<p>If this happens often when you use Chromium, check the following:</p>
+<ul>
+<li><strong>Any anti-virus or firewall applications you've installed</strong>: they may affect how Chromium operates.</li>
+<li><strong>Any extensions you've installed</strong>: some extensions may cause problems, so try disabling them in the Extensions manager (click on the Wrench icon, select <strong>Tools</strong>, then click on <strong>Extensions</strong>).</li>
+<li><strong>Malware</strong>: use anti-virus software to see there is any malicious software on your computer.</li>
+<li><strong>Your Chromium user profile</strong>: if you've done all the above steps and the &quot;Aw, Snap!&quot; error message continues to appear, your Chromium user profile may be corrupted, and you'll need to create a new profile. Visit the Google Chrome Help page on how to create a new user profile at <a href="http://www.google.com/support/chrome/bin/answer.py?answer=142059">http://bit.ly/a0MAl</a>.</li>
+</ul>
+<h2>&quot;A script on this page is taking a loooong time to do its job.&quot;</h2>
+<p>This may happen if the website you're browsing uses a lot of Javascript or Flash, and the Javascript or Flash actions on the page fail to complete themselves within Chromium's time limit. You can choose to stop running the script or to let it continue loading if you think the page is operating normally.</p>
+<h2>&quot;Whoa! Chromium has crashed.&quot;</h2>
+<p>Usually, Chromium runs normally again when you reopen it after a browser crash. If Chromium continues to crash, check this Google Chrome Help page for further steps to correct this error: <a href="http://www.google.com/support/chrome/bin/answer.py?hl=en&amp;answer=142063">http://bit.ly/4p1L8f</a>.</p>
+<h2>Web pages load slowly or not at all</h2>
+<p>Many factors can make web pages load slowly. Try the following to solve this problem:</p>
+<ul>
+<li>Open the page in an Incognito window. If the page loads properly, the issue is with either your installed extensions or your saved browsing data. Try disabling your extensions one by one in the Extension manager (click on the Wrench icon, select <strong>Tools</strong>, then click on <strong>Extensions</strong>) and clearing your browsing data (click on the Wrench icon, the click on <strong>Options</strong> or <strong>Preferences</strong>, then select <strong>Under the Hood</strong> from the tabs to the left, and click on <strong>Clear browsing data</strong>).</li>
+<li>Note if there is a specific error message that appears. Visit the associated Google Chrome Help page if you see one of the following messages:
+<ul>
+<li>&quot;Oops! This link appears broken&quot;: <a href="http://www.google.com/support/chrome/bin/answer.py?answer=95671">http://bit.ly/dBw57A</a></li>
+<li>&quot;Resolving proxy&quot;: <a href="http://www.google.com/support/chrome/bin/answer.py?answer=106010">http://bit.ly/jXl19w</a></li>
+<li>&quot;This webpage is not available&quot;: <a href="http://www.google.com/support/chrome/bin/answer.py?answer=117805">http://bit.ly/aWCXLx</a></li>
+</ul></li>
+<li>Check any anti-virus or firewall applications you've installed. They may affect how Chromium operates.</li>
+<li>Check for malware using anti-virus software to see there is any malicious software on your computer.</li>
+</ul>
+<p><span id="ch066_glossary.xhtml"></span></p>
+<h1>Glossary</h1>
+<h2>Apps</h2>
+<p>Apps, abbreviated from <em>web-based applications</em>, are like desktop programs (for example, word processors, photo editing software, music production tools, news websites, games) that don't need to be installed on your computer. Instead, they are web-based and run entirely in Chromium.</p>
+<p>Visit the Chrome Web Store at <a href="https://chrome.google.com/webstore" class="uri">https://chrome.google.com/webstore</a> to browse and download apps for Chromium.</p>
+<h2>Cache</h2>
+<p>Chromium saves a copy of the web documents you encounter while browsing through websites (for example, HTML pages and images). These copies are stored in a directory known as the cache. When you return to these websites, data can be recalled from the cache instead of being retransmitted from the web server, which minimizes page loading time and speeds up your browsing experience.</p>
+<p>For privacy purposes, you can clear this cache in the <strong>Under the Hood</strong> tab of the <strong>Options</strong> / <strong>Preferences</strong> menu.</p>
+<h2>Cookies</h2>
+<p>When you visit a website, it may create and store data about your visit (for example, your settings and preferences on a website, the links you've clicked on, your history of browsed pages, your profile information on the website) in a text file. This text file is a cookie.</p>
+<p>For privacy purposes, you can remove cookies in the <strong>Under the Hood</strong> tab of the <strong>Options</strong> / <strong>Preferences</strong> menu.</p>
+<h2>Developer Tools</h2>
+<p>Chromium's Developer Tools allow website developers to debug (correct coding errors) a web page. Developer Tools also monitor the amount of time it takes for each element on a web page to load, which is useful to gauge a website's level of performance, and which allows developers to edit code in order to increase a website's loading speed.</p>
+<h2>Extensions</h2>
+<p>Extensions are additional features that you can download for use in Chromium. They provide functions like instant Gmail inbox alerts, automatically mapping addresses, verifying the security information of a website, and many more.</p>
+<p>Visit the Google Chrome Extensions gallery at <a href="https://chrome.google.com/extensions" class="uri">https://chrome.google.com/extensions</a> to browse and download extensions for Chromium.</p>
+<h2>Incognito mode</h2>
+<p>For users who are wary of websites and Chromium recording browsing data, Incognito mode does not record browsing or download history, and cookies stored in Incognito mode are deleted once all Incognito windows are closed.</p>
+<p>Note that bookmarks and general browser settings that are created or adjusted in Incognito mode are still recorded.</p>
+<h2>Killing a tab</h2>
+<p>The option to kill a tab appears when a web page takes a very long time to finish loading, either because there is too much data, or because there are errors on the page. Killing a tab stops the loading process so that you can open a new tab and continue browsing.</p>
+<h2>Omnibox</h2>
+<p>Chromium's URL address bar also functions as a field where you can type in keywords for web searches. Its multiple functions inspired the name &quot;Omnibox&quot;.</p>
+<h2>Snapshots; hourly builds</h2>
+<p>Since Chromium is an ongoing open source browser project, new codes for the browser are constantly being developed by open source programmers. These developments are compiled into a downloadable package and uploaded more or less hourly onto the Chromium download page at <a href="http://build.chromium.org/f/chromium/snapshots/" class="uri">http://build.chromium.org/f/chromium/snapshots/</a>. The name <em>snapshot</em> refers to the temporary nature of each version of Chromium, since a newer version is already being developed while a user downloads the current version.</p>
+<h2>Sync; synchronization</h2>
+<p>Syncing in Chromium allows you to save your browsing data, like bookmarks, passwords, extensions, and apps, to your Google account so that you can access them no matter what computer you're using.</p>
+<p><span id="ch067_links.xhtml"></span></p>
+<h1>Links</h1>
+<p>The following links provide more information on Chromium, from its conception, its continuing developments, to user issues:</p>
+<ul>
+<li>The Google Chrome Help website: <a href="http://www.google.com/support/chrome/" class="uri">http://www.google.com/support/chrome/</a></li>
+<li>The Chromium Blog: <a href="http://blog.chromium.org/" class="uri">http://blog.chromium.org/</a></li>
+<li>The Chromium discussion group: <a href="http://groups.google.com/group/chromium-discuss" class="uri">http://groups.google.com/group/chromium-discuss</a></li>
+<li>The Wikipedia page on Chromium: <a href="http://en.wikipedia.org/wiki/Chromium_(web_browser)" class="uri">http://en.wikipedia.org/wiki/Chromium_(web_browser)</a></li>
+</ul>
+<p><span id="ch068_license.xhtml"></span></p>
+<h1>License</h1>
+<p>All chapters © Edward Cheung 2011, © Scott Nesbitt 2011. All chapters licensed with <strong>GNU General Public License version 2</strong>.</p>
+<p>This documentation is free documentation; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.</p>
+<p>This documentation is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License along with this documentation; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.</p>
+<p>Also, you can visit <a href="http://www.gnu.org/licenses/gpl-2.0.html" class="uri">http://www.gnu.org/licenses/gpl-2.0.html</a> to view the GNU General Public License online.</p>
+</body>
+</html>

@@ -1,0 +1,2614 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="The Contributors" />
+  <title>PLUMI</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">PLUMI</h1>
+<p class="author">The Contributors</p>
+<p class="date">2011.05.08-12.03</p>
+</header>
+<p><span id="ch001_introduction.xhtml"></span></p>
+<h1><img src="static/plumi_logo-en.gif" alt="plumi_logo.gif" width="140" height="120" /><br />
+</h1>
+<h2>Plumi<br />
+</h2>
+<p><a href="http://blog.plumi.org/" title="Plumi Blog">Plumi</a> is a Free Software Content Management System designed for video-sharing, based on <a href="http://plone.org/" title="Plone">Plone</a> and produced by <a href="http://www.engagemedia.org/" title="EngageMedia">EngageMedia</a>. Plumi enables you to create your own video-sharing site; by installing Plumi on your web server your can use a wide array of functionality to facilitate video distribution and community creation.</p>
+<p>Features include video podcasting, server-side flash/ogg transcoding and embedded playback, open content licensing, a sophisticated publishing workflow and large file uploading via FTP. You can also utilise many of Plone's other built in features including news, events, comments and user profiles.</p>
+<p><img src="static/Plumi-Introduction-plumi-en.jpg" alt="plumi.jpg" width="600" height="492" /></p>
+<p>This manual covers a basic guide to features for ordinary users, use of site administration tools, and installation and configuration of a new Plumi website on a Linux web server. The sections on installation and configuration require some prior knowledge as <a href="http://en.flossmanuals.net/bin/view/Plumi/Installation" title="Installation chapter">listed here</a>.<br />
+</p>
+<h2>Key Terminology<br />
+</h2>
+<p>Throughout this manual, various external documentation is referred to - often using the term &quot;Plone&quot; as opposed to &quot;Plumi&quot;. This is because Plumi is based on the Plone content management system, and most documentation on the web is written for Plone more generally, rather than specifically for Plumi.</p>
+<h3>For Users</h3>
+<div class="definitions">
+<ul>
+<li><strong>Vodcast</strong> or <strong>video podcast</strong> - RSS-based syndication of content, including a video file.</li>
+<li><strong>Dashboard</strong> - a Plumi site user's basic control panel to access functions including profile, personal preferences and site contributions.</li>
+<li><strong>FTP</strong> - (File Transfer Protocol) is a way of transferring files, not by uploading or downloading through the web-browser, but by using an FTP-client, that offers features such as resumable up/downloads.<br />
+</li>
+</ul>
+</div>
+<h3>For Site Administrators and Developers<br />
+</h3>
+<div class="definitions">
+<ul>
+<li><a href="http://blog.plumi.org/" title="Plumi Blog"><strong>Plumi</strong></a> - the video-sharing web-application, based on Plone/Zope, for which this manual was written.</li>
+<li><strong><a href="http://plone.org/" title="Plone.org">Plone</a></strong> - Free Software Content Management System based on Zope.</li>
+<li><a href="http://www.zope.org/" title="Zope"><strong>Zope</strong></a> - Application server and database.</li>
+<li><strong><a href="http://www.python.org/" title="Python website">Python</a></strong> - the dynamic programming language in which Plone/Plumi is largely written, that is used in a wide variety of <a href="http://www.python.org/about/apps" class="reference external">application domains</a>. Python is often compared to Perl, Ruby, Scheme or Java.</li>
+<li><strong>ZMI</strong> <strong>(Zope Management Interface)</strong> - an interface for configuring Zope, including the ability to add and configure Plone sites (instances).<br />
+</li>
+<li><a href="http://pypi.python.org/pypi/collective.transcode.daemon/"><strong>Transcode Daemon</strong></a> - video transcoding framework and network service, which converts video files using ffmpeg, integrated into Plone.<br />
+</li>
+<li><strong>Skin</strong> or <strong>Theme</strong> - the visual design of a Plone website, including its page templates, CSS and images.</li>
+<li><strong>Product</strong> - a Python package for Zope, a type of software module that can be used in Plone.<br />
+</li>
+<li><strong>Package</strong> - a more general term, but in the Zope world often refers to something that doesn't live in the Products name space.<br />
+</li>
+<li><strong>Egg</strong> - a way to distribute packages. Supports automatic dependency management: dependencies can be downloaded from <a href="http://pypi.python.org/pypi" title="Python Packages Index">PyPI</a><a href="http://pypi.python.org/pypi" title="Python Packages Index">/The Cheese Shop.</a></li>
+<li><strong>GenericSetup</strong> - a way to configure a Plone site using declarative XML files.</li>
+<li><strong>Policy Product</strong> - a pattern whereby a project has a single product which, upon installation, installs all dependencies and customisations in one step.</li>
+</ul>
+<div>
+<br />
+
+</div>
+</div>
+<p><span id="ch003_key-features.xhtml"></span></p>
+<h1>Key User Features<br />
+</h1>
+<p>Plumi includes numerous video-sharing and content-management features. Many of the features below are quite straight-forward, some of these features are covered in further detail in this manual.</p>
+<p>In terms of programming and development of new features, the possibilities for altering, extending and improving Plumi for your own use-case are endless. Please visit the <a href="http://blog.plumi.org/" title="Plumi Blog">blog</a> which has further details about how to <a href="http://blog.plumi.org/get-involved/" title="Develop Plumi">get involved</a> in Plumi development. </p>
+<p><strong>Users can do the following things on a Plumi site:</strong></p>
+<ul>
+<li>
+<p><strong><a href="http://en.flossmanuals.net/bin/view/Plumi/WatchVideos" title="Watch Videos chapter">Watch and download videos</a>.</strong></p>
+</li>
+<ul>
+<li>Watch in Flash player (flowplayer) or watch fullscreen.</li>
+<li>View High or Low quality versions suited to your bandwidth.</li>
+<li>Watch using the HTML5 video tag using Ogg Theora.<br />
+</li>
+<li>Download original higher-quality version using your browser.</li>
+<li>Download via BitTorrent (new in Plumi 4.x)</li>
+</ul>
+<li>
+<p><strong><a href="http://en.flossmanuals.net/bin/view/Plumi/PublishVideo" title="Publish Videos chapter">Publish videos</a>.</strong><br />
+</p>
+</li>
+<ul>
+<li>In many formats (including .avi, .mpg, .3gp, .mp4, .ogg).</li>
+<li>Automatically converted to Flash video for embedded playback (Ogg Theora another configurable option).<br />
+</li>
+<li>Attach an open content license (Creative Commons and GPL Free Documentation).</li>
+<li>Include thumbnail, synopsis, production info, tags and categories.<br />
+</li>
+<li>Thumbnails are generated automatically if not uploaded by user.</li>
+<li>Video views and downloads are displayed (new in Plumi 4.x).</li>
+<li>Progress bar for video uploads (new in Plumi 4.x).</li>
+</ul>
+<li>
+<p><strong>Publish <a href="http://en.flossmanuals.net/bin/view/Plumi/PublishNews" title="Publish News chapter">news</a> and <a href="http://en.flossmanuals.net/bin/view/Plumi/PublishEvent" title="Publish Event chapter">events</a>.<br />
+</strong></p>
+</li>
+<li>
+<p><strong>Publish other content</strong> such as Callouts (calls for submissions), pages and images.<br />
+</p>
+</li>
+<li>
+<p><strong><a href="http://en.flossmanuals.net/bin/view/Plumi/BrowseVideos" title="Browse Videos chapter">Browse videos</a> by category</strong>.<br />
+</p>
+</li>
+<ul>
+<li>By country.</li>
+<li>By topic.</li>
+<li>By genre.</li>
+<li>By tag.</li>
+</ul>
+<li>
+<p>Use your <strong><a href="http://en.flossmanuals.net/bin/view/Plumi/SharingContent" title="Sharing Content and Workspace chapter">personal workspace</a>.</strong><br />
+</p>
+</li>
+<ul>
+<li>Automatically lists all your videos, news and events in their own folders.<br />
+</li>
+<li>Add other content such as pages, images and documents.<br />
+</li>
+</ul>
+<li>
+<p><a href="http://en.flossmanuals.net/bin/view/Plumi/SharingContent" title="Sharing Content and Workspace chapter"><strong></strong></a><strong><span>Share content and collaborat</span>e</strong>.<br />
+</p>
+</li>
+<ul>
+<li>Edit files along with other members of the site.<br />
+</li>
+</ul>
+<li>
+<p><strong><a href="http://en.flossmanuals.net/bin/view/Plumi/ProfilesSocialNetworking" title="Profiles and Social Networking chapter">Create or view author profiles</a>.</strong><br />
+</p>
+</li>
+<ul>
+<li>Edit your own, or view other site members.</li>
+<li>View latest videos, news and events by each user.<br />
+</li>
+<li>Biographical information.</li>
+<li>Activities (production, distribution, screenings etc.)<br />
+</li>
+<li>Crowd-funding - add a donate button, prompting users to donate to that member via PayPal (new in Plumi 4.x).</li>
+</ul>
+<li>
+<p><a href="http://en.flossmanuals.net/bin/view/Plumi/ProfilesSocialNetworking" title="Profiles and Social Networking chapter"><strong>Social networking</strong></a></p>
+</li>
+<ul>
+<li>Find other users on the site with the same genre interests, activities and from the same places.<br />
+</li>
+</ul>
+<li>
+<p>Use your <strong>personal dashboard.</strong></p>
+</li>
+<ul>
+<li>Configure the way you view the Plumi site.</li>
+<li>Change your preferences.<br />
+</li>
+<li>View your profile.</li>
+</ul>
+<li>
+<p><a href="http://en.flossmanuals.net/bin/view/Plumi/EmbedVideoOnAnotherWebsite" title="Embed Video on Another Website chapter"><strong>Embed a video</strong></a> from Plumi on another website or blog.</p>
+</li>
+<li>
+<p>Use a <a href="http://en.flossmanuals.net/bin/view/Plumi/VideoPodcasting" title="Video Podcasting chapter"><strong>video-podcasting</strong></a> application such as Miro to view/download Plumi video feeds.</p>
+</li>
+<li>
+<p><a href="http://en.flossmanuals.net/bin/view/Plumi/SwitchLanguages" title="Switch Languages chapter"><strong>Switch languages</strong></a> to change the user interface into another language.</p>
+</li>
+<li>
+<p><a href="http://en.flossmanuals.net/bin/view/Plumi/TranslateContent" title="Translate Content chapter"><strong>Translate content</strong></a> into another language.<br />
+</p>
+</li>
+<li>
+<p><strong><a href="http://en.flossmanuals.net/bin/view/Plumi/UploadingViaFTP" title="Uploading via FTP chapter">Upload videos via FTP</a></strong> (great for connections which are interrupted, or very large files).</p>
+</li>
+<li>
+<p><strong>Add comments</strong> to content such as videos, news and events.<br />
+</p>
+</li>
+</ul>
+<p><strong>Site</strong> <strong>Managers (Administrators) or</strong> <strong>Reviewers can use the following Plumi site administration tools:</strong></p>
+<ul>
+<li><a href="http://en.flossmanuals.net/bin/view/Plumi/UserManagement" title="Manage Users chapter"><strong>Manage users</strong></a> (adding or deleting).</li>
+<li><strong><a href="http://en.flossmanuals.net/bin/view/Plumi/UserManagement" title="Manage Users chapter">Manage user roles</a></strong> (grant users site Reviewer or Manager permissions).</li>
+<li><a href="http://en.flossmanuals.net/bin/view/Plumi/PublishingWorkflow" title="Publishing Workflow chapter"><strong>Moderate content</strong></a> (use the publishing workflow to check content waiting for publishing approval via Review List, or email notification).</li>
+<li><a href="http://en.flossmanuals.net/bin/view/Plumi/FeaturingContent" title="Featuring Content chapter"><strong>Feature videos, news and events</strong></a> on the front page.</li>
+<li><strong><a href="http://en.flossmanuals.net/bin/view/Plumi/ManageLanguages" title="Manage Languages chapter">Manage site languages</a>.<br />
+</strong></li>
+</ul>
+<p><span id="ch004_user-guide.xhtml"></span></p>
+<h1>User Guide Topics<br />
+</h1>
+<h2>Plumi User Manual<br />
+</h2>
+<p>This Plumi manual only contains the most pertinent user topics, plus some specific instructions of functionality only available within Plumi, in these chapters:</p>
+<p><strong>User side:</strong><br />
+</p>
+<ul>
+<li><a href="http://en.flossmanuals.net/view/Plumi/UserGuide">User Guide</a></li>
+<li><a href="http://en.flossmanuals.net/view/Plumi/KeyFeatures">Key Features</a></li>
+<li><a href="http://en.flossmanuals.net/view/Plumi/BrowseVideos">Browse Videos</a></li>
+<li><a href="http://en.flossmanuals.net/view/Plumi/WatchVideos">Watch Videos</a></li>
+<li><a href="http://en.flossmanuals.net/view/Plumi/PublishVideo">Publish Video</a></li>
+<li><a href="http://en.flossmanuals.net/view/Plumi/PublishNews">Publish News</a></li>
+<li><a href="http://en.flossmanuals.net/view/Plumi/PublishEvent">Publish Event</a></li>
+<li><a href="http://en.flossmanuals.net/view/Plumi/EditContent">Edit Content</a></li>
+<li><a href="http://en.flossmanuals.net/bin/view/Plumi/SharingContent">Sharing Content and Workspace</a><br />
+</li>
+<li><a href="http://en.flossmanuals.net/view/Plumi/ProfilesSocialNetworking">Profiles and Social Networking</a></li>
+<li><a href="http://en.flossmanuals.net/view/Plumi/EmbedVideoOnAnotherWebsite">Embed Video On Another Website</a></li>
+<li><a href="http://en.flossmanuals.net/view/Plumi/VideoPodcasting">Video Podcasting</a></li>
+<li><a href="http://en.flossmanuals.net/view/Plumi/SwitchLanguages">Switch Languages</a></li>
+<li><a href="http://en.flossmanuals.net/bin/view/Plumi/TranslateContent">Translate Content</a><br />
+</li>
+<li><a href="http://en.flossmanuals.net/view/Plumi/UploadingViaFTP">Uploading Via FTP</a><br />
+</li>
+</ul>
+<p><strong>Site administrators and developers:</strong></p>
+<ul>
+<li><a href="http://en.flossmanuals.net/bin/view/Plumi/UserManagement">User Management</a></li>
+<li><a href="http://en.flossmanuals.net/bin/view/Plumi/FeaturingContent">Featuring Content</a></li>
+<li><a href="http://en.flossmanuals.net/bin/view/Plumi/PublishingWorkflow">Publishing Workflow</a></li>
+<li><a href="http://en.flossmanuals.net/bin/view/Plumi/PublicationStates">Publication States</a></li>
+<li><a href="http://en.flossmanuals.net/bin/view/Plumi/ManageLanguages">Manage Languages</a></li>
+<li><a href="http://en.flossmanuals.net/bin/view/Plumi/Installation">Installation</a></li>
+<li><a href="http://en.flossmanuals.net/bin/view/Plumi/Configuration">Configuration</a></li>
+<li><a href="http://en.flossmanuals.net/bin/view/Plumi/ChangeLogoTitle">Change Logo and Title</a></li>
+<li><a href="http://en.flossmanuals.net/bin/view/Plumi/StaticPagesPortalTabs">Static Pages and Portal Tabs</a></li>
+<li><a href="http://en.flossmanuals.net/bin/view/Plumi/EmailNotifications">Email Notifications</a></li>
+<li><a href="http://en.flossmanuals.net/bin/view/Plumi/ConfigurePortlets">Configure Portlets</a></li>
+<li><a href="http://en.flossmanuals.net/bin/view/Plumi/CustomiseDesign">Customise Design</a></li>
+<li><a href="http://en.flossmanuals.net/bin/view/Plumi/ChangeCategories">Change Categories</a></li>
+<li><a href="http://en.flossmanuals.net/bin/view/Plumi/Transcoding">Transcoding</a></li>
+<li><a href="http://en.flossmanuals.net/bin/view/Plumi/DevelopmentMap">Development Map</a></li>
+<li><a href="http://en.flossmanuals.net/bin/view/Plumi/GettingHelp">Getting Help</a></li>
+</ul>
+<h2>Plone User Manual<br />
+</h2>
+<p>As Plumi is based on the Plone content management system, you can find a guide to many of Plone's functions in the <a href="http://plone.org/documentation/manual/plone-3-user-manual/" title="Plone 3 User Manual">Plone User Manual</a> including sections on:<br />
+</p>
+<ul>
+<li><a href="http://plone.org/documentation/manual/plone-3-user-manual/introduction"><span class="state-published">Introduction and Overview of Users and Preferences<br />
+</span></a></li>
+<li><a href="http://plone.org/documentation/manual/plone-3-user-manual/introduction"><span class="state-published"></span></a> <a href="http://plone.org/documentation/manual/plone-3-user-manual/adding-content"><span class="state-published">Adding Content</span></a></li>
+<li><a href="http://plone.org/documentation/manual/plone-3-user-manual/managing-content"><span class="state-published">Managing Content</span></a></li>
+<li><a href="http://plone.org/documentation/manual/plone-3-user-manual/collaboration-and-workflow"><span class="state-published">Collaboration and Workflow</span></a></li>
+<li><a href="http://plone.org/documentation/manual/plone-3-user-manual/using-collections"><span class="state-published">Using Collections</span></a></li>
+<li><a href="http://plone.org/documentation/manual/plone-3-user-manual/portlet-management"><span class="state-published">Portlet Management</span></a></li>
+<li><a href="http://plone.org/documentation/manual/plone-3-user-manual/next-steps"><span class="state-published">Next Steps and Further Documentation</span></a></li>
+</ul>
+<p> </p>
+<p><span id="ch005_browse-videos.xhtml"></span></p>
+<h1>Browse Videos</h1>
+<p>It is possible to browse videos via country, topic, genre or tag. You can also browse videos via the RSS1 and RSS2 feeds (see the<a href="http://en.flossmanuals.net/bin/view/Plumi/VideoPodcasting" title="Video Podcasting chapter">Video Podcasting</a> chapter for more info).<br />
+</p>
+<h2>Browse by Country, Topic or Genre<br />
+</h2>
+<p>To view videos by country, topic or genre, first click the <strong>BROWSE</strong> button in the sidebar.</p>
+<p><img src="static/Plumi-BrowseVideos-browse_button-en.jpg" alt="browse_button.jpg" width="179" height="183" /> </p>
+<h2>Browse by Country</h2>
+<ol>
+<li>To browse by country, click the <strong>Countries</strong> folder.<br />
+<br />
+<img src="static/Plumi-BrowseVideos-browse_select-en.jpg" alt="browse_select.jpg" width="600" height="185" /> <br />
+</li>
+<li>Click the country of choice to view all videos from that country.<br />
+<br />
+<img src="static/Plumi-BrowseVideos-browse_countries-en.jpg" alt="browse_countries.jpg" width="427" height="273" /><br />
+<br />
+</li>
+<li>Choose a video from the list to watch.<br />
+<br />
+<img src="static/Plumi-browsevideos5-en.jpg" alt="browsevideos5.jpg" width="571" height="503" /><br />
+</li>
+</ol>
+<h2>Browse by Topic</h2>
+<ol>
+<li>To browse by topic, click the <strong>Video Topics</strong> folder.<br />
+<br />
+<img src="static/Plumi-BrowseVideos-browse_select_topics-en.jpg" alt="browse_select_topics.jpg" width="423" height="222" /> <br />
+<br />
+</li>
+<li>Click the topic of choice to view all videos featuring that topic.<br />
+<br />
+<img src="static/Plumi-BrowseVideos-browse_topics-en.jpg" alt="browse_topics.jpg" width="554" height="257" /> <br />
+<br />
+</li>
+<li>Choose a video from the list to watch.<br />
+<br />
+<img src="static/Plumi-browsevideos8-en.jpg" alt="browsevideos8.jpg" width="575" height="487" /> <br />
+</li>
+</ol>
+<h2>Genre</h2>
+<ol>
+<li>To browse by video genre, click the <strong>Video Genres</strong> folder.<br />
+<br />
+<img src="static/Plumi-BrowseVideos-browse_select_genre-en.jpg" alt="browse_select_genre.jpg" width="407" height="220" /> <br />
+<br />
+</li>
+<li>Click the genre of choice to view all videos of that genre.<br />
+<br />
+<img src="static/Plumi-BrowseVideos-browse_genres-en.jpg" alt="browse_genres.jpg" width="446" height="310" /> <br />
+<br />
+</li>
+<li>Choose a video from the list to watch.<br />
+<br />
+<img src="static/Plumi-browsevideos11-en.jpg" alt="browsevideos11.jpg" width="573" height="511" /> <br />
+</li>
+</ol>
+<h2>Browse by Tags</h2>
+<ol>
+<li>To view videos by tag, click the tag in the Tag Cloud portlet in one of the side bars.<br />
+<br />
+<img src="static/Plumi-BrowseVideos-tagcloud-en.jpg" alt="tagcloud.jpg" width="162" height="259" /><br />
+<br />
+</li>
+<li>Choose a video from the list to watch.<br />
+<br />
+<img src="static/Plumi-BrowseVideos-resized_560x204_tagcloud_select-en.jpg" alt="tagcloud_select.jpg" width="560" height="204" /> </li>
+</ol>
+<p><span id="ch006_watch-videos.xhtml"></span></p>
+<h1>Watch or Download Videos</h1>
+<p>With Plumi you can watch videos using the Flash video player (<a href="http://flowplayer.org/" title="Flowplayer Flash Video Player">Flowplayer</a>) right in the browser. Or you can choose to download the video in its original higher-quality format, for viewing on your desktop, or for screening and re-distribution.</p>
+<p>You can also choose download an Ogg Theora version of the file (or watch this in the browser if you have a browser such as Firefox installed) or download the video file via BitTorrent.</p>
+<p>To watch or download a video, <a href="http://en.flossmanuals.net/bin/view/Plumi/BrowseVideos" title="Browse Videos chapter">browse for one by topic, genre, country or tag</a>. Or click on a video anywhere from within the site, for example, click the name of a video on the latest videos page.</p>
+<p><img src="static/Plumi-watchvideos1-en.jpg" /><br />
+</p>
+<h2>Watching Videos</h2>
+<p>To watch a video, click either of the two play buttons on the video player.</p>
+<p><img src="static/Plumi-watchvideos2-en.jpg" /></p>
+<p>You can control playback of a video by scrubbing through (moving left and right) with the playhead (position bar), or clicking the pause button. You can also control the volume using the volume slider.</p>
+<p><img src="static/Plumi-watchvideos3-en.jpg" /></p>
+<p>To view the video fullscreen, click the fullscreen button on the video player.</p>
+<p><img src="static/Plumi-watchvideos4-en.jpg" /></p>
+<h2>Downloading Videos</h2>
+<p>To download a video, in its original higher-quality format, just click the <strong>Download Hi-Res / Screening Version button</strong>. The size of the video file is listed here, so you can estimate how long it might take to download.</p>
+<p><img src="static/Plumi-watchvideos5-en.jpg" /><br />
+</p>
+<p>Once you have downloaded a video, we recommend using the <a href="http://www.videolan.org/" title="VLC media player">VLC (Video Lan Client)</a> media player to play the video back on your computer. This software is available for all major platforms (Windows, Mac, Linux) and can handle nearly any type of video file. It is also Free Software. You can download VLC by clicking the link at <strong>Videos best viewed on VLC player</strong> below the player.<br />
+</p>
+<p><img src="static/Plumi-watchvideos6-en.jpg" /></p>
+<h2>Downloading / Watching Ogg Theora Video</h2>
+<p>If you have a browser such as <a href="http://www.mozilla.com/en-US/firefox/" title="Firefox Web Browser">Firefox</a>, Opera or Chrome you can make the most of the new HTML5 video technologies and watch an Ogg Theora version of a video play back right in your browser - no plugin necessary (such as Flash). Plumi supports Ogg Theora and HTML5 as an open-standards, open-source and patent-free alternative to commercial video technologies.</p>
+<p>To watch the Ogg Theora version, just click the link Download / Watch Ogg Theora Version.</p>
+<p><img src="static/ogg-theora-watch.jpg" /> </p>
+<p>The video will start playing in a new page in your browser. Use the HTML5 video player controls as you would using the Flash video player above.</p>
+<p><img src="static/html5-player.jpg" /> </p>
+<p>If you don't have Firefox, Opera or Chrome, the video will just start downloading. You can use <a href="http://www.videolan.org/" title="Video Lan Client">VLC</a> (and many other media players) to play this back on your desktop. </p>
+<p>You can read more about HTML5 in this <a href="http://diveintohtml5.org/" title="Guide to HTML5 Video">handy guide</a>. </p>
+<h2>Downloading Videos via BitTorrent</h2>
+<p>New in Plumi 4.x is the ability to download and share videos from a Plumi site via BitTorrent. This means that you can share the bandwidth required to make these videos available amongst many users (peers) in the network, rather than just relying on one server.</p>
+<p>You will need a &quot;torrent client&quot; to download via BitTorrent, we recommend using <a href="http://www.utorrent.com/" title="uTorrent torrent client">uTorrent</a>, <a href="http://deluge-torrent.org/" title="Deluge torrent client">Deluge</a> or <a href="http://www.tixati.com/" title="Tixati torrent client">Tixati</a>.</p>
+<p>You can see the number of people who are sharing a copy of the video, by seeing how many &quot;Seeders&quot; are listed next to the <strong>Download via BitTorrent</strong> link (the more Seeders there are, the faster it should be to download your video):</p>
+<p><img src="static/seeders.jpg" /> </p>
+<p>To download a video via BitTorrent, simply click the <strong>Download via BitTorrent</strong><span class="Apple-style-span"><a href="http://testing.plumi.org/Members/clopy/videos/dsfs/@@download_torrent/sample_iTunes.mov" id="ch006_watch-videos.xhtml#torrent-link"> </a>link, below the video player.</span></p>
+<p><img src="static/bittorrent.jpg" /> </p>
+<p>Open the torrent file that has just downloaded (this should be listed in the Downloads window of your browser):</p>
+<p><img src="static/torrent-file.jpg" /> </p>
+<p>This will open in your torrent client and start downloading. When it is finished downloading you can open it to watch it, using a video player such as <a href="http://www.videolan.org/" title="Video Lan Client">VLC</a>. It will also start sharing (seeding) the file with others:</p>
+<p><img src="static/seeding.jpg" /> </p>
+<p> </p>
+<p><strong>Note:</strong> you may experience errors using the Transmission torrent client, as it does not always work well with certain trackers using UDP URLs. If you experience problems using Transmission, please try another client such as those listed above.</p>
+<p><span id="ch007_publish-video.xhtml"></span></p>
+<h1>Publish Video</h1>
+<p>To publish a video you must have registered, and must be signed-in.</p>
+<p><strong>Note:</strong> it may take a while to upload your video, depending on your internet connection, so please be patient. Also your video will not be published immediately - the default set up of a Plumi site is for new contributions to be moderated by site reviewers. After the content is reviewed you will be notified via email. You will not be able to edit the video unless you <a href="http://en.flossmanuals.net/Plumi/EditContent" title="Edit Content chapter">retract it</a>.<br />
+</p>
+<h2>Publish Video Steps<br />
+</h2>
+<p>Click the Publish button in the sidebar.</p>
+<p><img src="static/Plumi-publishvideo1-en.jpg" alt="publishvideo1.jpg" /><br />
+</p>
+<p>Choose Publish Video button.</p>
+<p><img src="static/Plumi-publishvideo2-en.jpg" alt="publishvideo2.jpg" /><br />
+</p>
+<h2>Step One</h2>
+<p>Fill out the form, adding a <strong>Title (required)</strong>, <strong>Description (required - a short summary)</strong> as much other production information as you choose (<strong>Producer</strong>, <strong>Director</strong> etc.).<br />
+</p>
+<p><img src="static/Plumi-publishvideo3-en.jpg" alt="publishvideo3.jpg" /><br />
+</p>
+<p>Choose a <strong>Release Date</strong> , add a <strong>Full Description</strong> (HTML, can include images and links) and click the <strong>next</strong> button to take you to the next step.</p>
+<p><img src="static/Plumi-publishvideo4-en.jpg" alt="publishvideo4.jpg" /><br />
+</p>
+<h2>Step Two<br />
+</h2>
+<p>Now it's time to categorise your video. Choose the <strong>Country of origin</strong>, <strong>Video Genre</strong>, <strong>Topics</strong> (hold down CTRL/COMMAND and click to select multiple topics) and enter <strong>Tags</strong> (your own words to categorise the video, these <strong>MUST</strong> BE ENTERED ONE PER LINE, <strong>NOT</strong> WITH COMMAS) into the box.<br />
+</p>
+<p><img src="static/Plumi-publishvideo5-en.jpg" alt="publishvideo5.jpg" /><br />
+</p>
+<p>Enter the <strong>Location</strong> which your video is primarily about.<br />
+</p>
+<p><img src="static/Plumi-publishvideo8_1-en.jpg" title="Publish Video - Location" alt="publishvideo8.jpg" width="338" height="66" /> <br />
+</p>
+<p>Enter the copyright information for your video. If the <strong>Copyright Holder</strong> (creator) is not you, enter their name instead of &quot;(site default)&quot;.<br />
+<br />
+Now choose your <strong>Copyright License</strong>. Plumi allows for multiple licensing forms including <a href="http://en.wikipedia.org/wiki/Open_content" title="Open Content on Wikipedia">open-content licenses</a> to give you more choice about who can distribute, copy or re-edit your work.</p>
+<p>If you wish to use the site default <span>license, you don't need to change anything. If you want to choose your own license, just tick the box next to <strong>All Rights Reserved</strong> (<a href="http://en.wikipedia.org/wiki/Copyright" title="Copyright on Wikipedia">standard copyright</a>), <strong>GNU</strong> </span><strong>Free Documentation License</strong> (the license Wikipedia uses, <a href="http://en.wikipedia.org/wiki/Gnu_free_documentation_license" title="GNU Free Doc License on Wikpedia">more info here</a>) or <strong>Creative Commons License</strong> (<a href="http://creativecommons.org/about/licenses" title="Creative Commons licenses">more info here</a>).</p>
+<p>You can choose what kind of Creative Commons license you want to attach to your video by clicking <strong>(Choose)</strong> next to <strong>Creative Commons License</strong>. This will open another window where you can choose which license you want based on some simple questions. The license you have chosen will display here.</p>
+<p>You can also tick the box next to <strong>Other</strong> and click the <strong>(Choose)</strong> button to attach any other kind of license you wish to your video.</p>
+<p><img src="static/Plumi-publishvideo9-en.jpg" alt="publishvideo9.jpg" /><br />
+</p>
+<p><br />
+Add <strong>Related items</strong> - search for related content already on the website by clicking the add button. This will open a new a new window where you can browse or search for other content that is related to your video. Click the <strong>next</strong> button to take you to the next step (or the <strong>previous</strong> button if you wish to change what you've entered into Step 1).</p>
+<p><img src="static/Plumi-publishvideo10_1-en.jpg" alt="publishvideo10_1.jpg" /><br />
+</p>
+<h2>Step Three</h2>
+<p>Browse for a video file on your computer by clicking the <strong>Browse</strong> button.<br />
+</p>
+<p><img src="static/Plumi-publishvideo12-en.jpg" alt="publishvideo12.jpg" /></p>
+<p>Choose the video you wish to upload, and click the <strong>Save</strong> button.<br />
+</p>
+<p><img src="static/Plumi-publishvideo13-en.jpg" alt="publishvideo13.jpg" /></p>
+<p>Attach a thumbnail image to your video by clicking the <strong>Browse</strong> button, and choosing an image from your computer (note this is optional - Plumi will automatically grab an image from the video you uploaded if you don't upload your own thumbnail image).</p>
+<p><img src="static/Plumi-publishvideo14-en.jpg" alt="publishvideo14.jpg" /><br />
+</p>
+<p>Give the image a description by entering text (also optional) into <strong>Thumbnail image description</strong>.</p>
+<p><img src="static/Plumi-publishvideo15-en.jpg" alt="publishvideo15.jpg" /><br />
+</p>
+<p>Click the <strong>save</strong> button.</p>
+<p><img src="static/Plumi-publishvideo16-en.jpg" alt="publishvideo16.jpg" /><br />
+</p>
+<p>Your video will now go into the <a href="http://en.flossmanuals.net/bin/view/Plumi/ContentStates" title="Content States chapter">pending content state</a>, awaiting publishing by a Reviewer or Manager (it will not be available within the site, for example on the front page, until it has been moderated).</p>
+<p><img src="static/Plumi-publishvideo17-en.jpg" alt="publishvideo17.jpg" /> </p>
+<p><span id="ch008_publish-news.xhtml"></span></p>
+<h1>Publish News</h1>
+<p>To publish a news item you must have registered, and must be signed-in.</p>
+<p><strong>Note:</strong> your news item will not be published immediately - it will be moderated by site reviewers, and then you will be notified via email when it is actually published. You will not be able to edit the news item unless you <a href="http://en.flossmanuals.net/bin/view/Plumi/EditContent" title="Edit Content chapter">retract it</a>. <br />
+</p>
+<h2>Publish News Steps<br />
+</h2>
+<p>Click the <strong>Publish</strong> button in the sidebar.</p>
+<p><img src="static/Plumi-publishnews1-en.jpg" /><br />
+<br />
+</p>
+<p>Click the <strong>Publish News</strong> button.<br />
+</p>
+<p><img src="static/Plumi-publishnews2-en.jpg" /><br />
+<br />
+</p>
+<p>Enter a <strong>Title</strong>, <strong>Description</strong> (short summary) and <strong>Body Text</strong> (can contain links, images and other HTML).<br />
+</p>
+<p><img src="static/Plumi-publishnews3-en.jpg" width="600" /><br />
+<br />
+</p>
+<p>Click the <strong>Browse...</strong> button to browse for an <strong>Image</strong> to upload.<br />
+</p>
+<p><img src="static/Plumi-publishnews4-en.jpg" /><br />
+<br />
+</p>
+<p>Select the image you wish to upload and click <strong>Open</strong>.</p>
+<p><img src="static/Plumi-publishnews5-en.jpg" /><br />
+<br />
+</p>
+<p>Give your image an <strong>Image Caption</strong>.<br />
+</p>
+<p><img src="static/Plumi-publishnews6-en.jpg" /><br />
+<br />
+</p>
+<p>Click the <strong>Save</strong> button.</p>
+<p><img src="static/Plumi-publishnews7-en.jpg" /><br />
+</p>
+<p>Your news item will now go into the <a href="http://en.flossmanuals.net/bin/view/Plumi/ContentStates" title="Content States chapter">pending content state</a>, awaiting publishing by a Reviewer or Manager (it will not be available within the site, for example on the front page, until it has been moderated).</p>
+<p><br />
+</p>
+<p> </p>
+<p><span id="ch009_publish-event.xhtml"></span></p>
+<h1>Publish Event</h1>
+<p>To publish an event you must have registered, and must be signed-in.</p>
+<p><strong>Note:</strong> your event will not be published immediately - it will be moderated by site reviewers, and then you will be notified via email when it is actually published. You will not be able to edit the event unless you <a href="http://en.flossmanuals.net/bin/view/Plumi/EditContent" title="Edit Content chapter">retract it</a>.<br />
+</p>
+<h2>Publish Event Steps<br />
+</h2>
+<p>Click the <strong>Publish</strong> button in the sidebar.</p>
+<p><img src="static/Plumi-publishevent1-en.jpg" /><br />
+<br />
+</p>
+<p>Choose <strong>Publish News</strong> button.</p>
+<p><img src="static/Plumi-publishevent2-en.jpg" /> <br />
+<br />
+</p>
+<p>Enter a <strong>Title</strong>, <strong>Description</strong> (short summary) and a <strong>Location</strong> for your event. Set a date and time for the start, and the end, of your event. Choose these from drop-down menus provided.</p>
+<p><img src="static/Plumi-publishevent3-en.jpg" /> <br />
+<br />
+</p>
+<p>Enter some Event <strong>Body Text</strong> (can contain links, images and other HTML).</p>
+<p><img src="static/Plumi-publishevent4-en.jpg" /><br />
+<br />
+</p>
+<p>Enter the names of any known <strong>attendees</strong>, add <strong>categories</strong> (tags) that describe your event, add a <strong>URL</strong> for more information, give a <strong>contact name, contact email address</strong> and <strong>phone number</strong> for this event (all of these are optional), and click the <strong>Save</strong> button. <br />
+</p>
+<p><img src="static/Plumi-publishevent5-en.jpg" /> <br />
+<br />
+</p>
+<p>Click the <strong>Save</strong> button.</p>
+<p><img src="static/Plumi-publishevent6-en.jpg" />  <br />
+</p>
+<p>Your event will now go into the <a href="http://en.flossmanuals.net/bin/view/Plumi/ContentStates" title="Content States chapter">pending content state</a>, awaiting publishing by a Reviewer or Manager (it will not be available within the site, for example on the front page, until it has been moderated). <br />
+</p>
+<p> </p>
+<p><span id="ch010_edit-content.xhtml"></span></p>
+<h1>Edit Content</h1>
+<h2>Permissions to Edit Content<br />
+</h2>
+<p>On a Plumi site you need permission to edit content. You automatically have permission to edit any content that you have personally added and you can share ownership of content using the Sharing tab to give others permission to edit or view the content also. More information on this can be found in the <a href="http://en.flossmanuals.net/bin/view/Plumi/SharingContent" title="Sharing Content">Sharing Content chapter</a>.<br />
+<br />
+If you are a site Manager, you have permission to edit any content added by any user. You can also change the owner of an item (see the end of this page for details).<br />
+</p>
+<h2>Publication Workflow - Is My Content Published?</h2>
+<p>Plumi uses what is called a &quot;work-flow&quot; for the publishing of content. It means that members of the site create content and submit it for publishing, and editors of the site then review that content and approve it or reject it on the basis of the site's editorial policy.<br />
+</p>
+<p>Once you've submitted content for publishing it goes into a work-flow state of &quot;pending&quot; - so site editors know that it is pending review. At this point the content is no longer editable by the member who created it - the &quot;creator&quot;. The content remains unable to be edited when it is actually published.<br />
+</p>
+<p>Now this makes good sense - if content was editable after being submitted for publishing then the original creator could change the content into something inappropriate, for example it could be a way for spammers to get advertising onto the website.</p>
+<p>However it means that as a content creator, you need to know how to retract your video once you have submitted it for publishing (&quot;pending&quot;) or it is actually published (&quot;published&quot;).</p>
+<p>More info can be found in the <a href="http://en.flossmanuals.net/bin/view/Plumi/ContentStates" title="Publication States chapter">Publication States chapter</a>, but we cover the basics of what to do to retract your content, so you can edit it, in the section below.<br />
+</p>
+<h2>Editing Content</h2>
+<p>This section explains how to edit a video, news item, callout, event or other content after you have added it, or submitted it for publishing.</p>
+<p>Here's how to do it:</p>
+<p>1. Navigate to the content you wish to edit. We will use an event as an example.<br />
+</p>
+<p><img src="static/Plumi-editcontent1b-en.jpg" title="editcontent1" alt="editcontent1" width="678" height="650" />  <br />
+<br />
+</p>
+<p>4. Click the drop-down menu that says <strong>pending</strong> if the content has not yet been approved, or <strong>published</strong> if it has already been approved.</p>
+<p><img src="static/Plumi-editcontent2b-en.jpg" title="editcontent2" alt="editcontent2" width="678" height="178" /><br />
+<br />
+</p>
+<p>5. Choose <strong>retract</strong> from this drop-down menu.</p>
+<p><img src="static/Plumi-editcontent3-en.jpg" />  <br />
+<br />
+</p>
+<p>6. Click the <strong>Edit</strong> tab that now appears, as your content is in <strong>public-draft</strong> state (this means it is available on the web, but does not come up in listings such as Latest Videos).</p>
+<p><img src="static/Plumi-editcontent4-en.jpg" /><br />
+<br />
+</p>
+<p>7. Edit your content as you wish.</p>
+<p><img src="static/Plumi-editcontent5-en.jpg" /><br />
+<br />
+</p>
+<p>8. Save your content by clicking the <strong>Save</strong> button.</p>
+<p><img src="static/Plumi-editcontent6-en.jpg" /><br />
+<br />
+</p>
+<p>9. Submit for publishing once again by clicking <strong>Submit for publication</strong> from the drop-down menu (videos are submitted automatically each time you save them) by clicking.</p>
+<p><img src="static/Plumi-editcontent7-en.jpg" /><br />
+<br />
+</p>
+<p>10. The item will once more be in the <strong>pending review</strong> state, waiting for review and approval by content editors (note you cannot see the Edit tab anymore).</p>
+<p><img src="static/Plumi-editcontent8-en.jpg" /></p>
+<h2>Changing Ownership</h2>
+<p>When logged in as a manager, it is possible to change the owner of a piece of content. This is done via the &quot;Ownership&quot; tab.</p>
+<p><img src="static/Plumi-OwnershipTab1-en.jpg" title="OwnershipTab1" alt="OwnershipTab1" width="333" height="57" /> </p>
+<p> </p>
+<p>Once in the Ownership tab, you can enter the name of the new owner and then click on the Perform Search button.</p>
+<p><img src="static/Plumi-OwnershipTab2-en.jpg" title="OwnershipTab2" alt="OwnershipTab2" width="638" height="298" /> </p>
+<p>This will return a drop down box with a list of all the users who match your search value. Select the one you want and then click the Save button.</p>
+<p><img src="static/Plumi-OwnershipTab3-en.jpg" title="OwnershipTab3" alt="OwnershipTab3" width="630" height="442" /> </p>
+<p>Once completed, you will be returned to the content item's display and a confirmation message will be shown.</p>
+<p><img src="static/Plumi-OwnershipTab4-en.jpg" title="OwnershipTab4" alt="OwnershipTab4" width="331" height="79" /> </p>
+<p> </p>
+<p><span id="ch011_sharing-content.xhtml"></span></p>
+<h1>Sharing Content and Workspace</h1>
+<h2>Sharing Content Via Social Media</h2>
+<p>Each content item in a Plumi site can be easily shared via social media (eg: Facebook, Digg, etc). At the top right hand corner of each item can be found the Share This icon.</p>
+<p><img src="static/Plumi-ShareThis1-en.jpg" title="ShareThis1" alt="ShareThis1" width="221" height="84" /></p>
+<p>When you click on this icon, it will expand into a list of icons for the various social media sites, allowing you to click on the site you want at which point the site will open and you can start entering information about the item you want to share.</p>
+<p><img src="static/Plumi-ShareThis2-en.jpg" title="ShareThis2" alt="ShareThis2" width="360" height="100" /><br />
+</p>
+<h2>Workspace / My Folder</h2>
+<p>Every user of a Plumi site has a workspace called <strong>my folder</strong>. Inside this folder, you can add not only videos, news, events and callouts, but also other content such as pages, folders, images, or links.</p>
+<p>As an example, here is how to add a page.<br />
+</p>
+<h3>Adding a Page</h3>
+<ol>
+<li>Click <strong>my folder</strong> to visit your workspace.<br />
+<br />
+<img src="static/Plumi-sharingcontent1-en.jpg" /><br />
+<br />
+</li>
+<li>Click the <strong>add new...</strong> drop-down menu, and click <strong>page.<br />
+<br />
+</strong><img src="static/Plumi-sharingcontent2-en.jpg" /><br />
+<br />
+</li>
+<li>Give your page a title, description and body text, and click <strong>Save</strong>.<br />
+<br />
+<img src="static/Plumi-sharingcontent3-en.jpg" /><br />
+<br />
+</li>
+</ol>
+<h3></h3>
+<h2>Sharing Content With Other Plumi Users</h2>
+<p>Plumi can be used as a shared space to collaborate on content. Sharing gives others permission to do certain things with content you have created - such as viewing or editing. Others can share their content with you too, giving you certain permissions. This sharing function allows you to collaboratively author content with other Members of the site.</p>
+<p>There are many different circumstances in which you could use the workspace and share content with others. As an example, we will use the case that you could add a page, share that page with others, and use that page to collaboratively edit a script or project plan for a movie.</p>
+<h3></h3>
+<ol>
+<li>Navigate to an existing item you have already created (in this example we will use the page we just added). Click the <strong>sharing</strong> tab.<br />
+<br />
+<img src="static/Plumi-sharingcontent4-en.jpg" /><br />
+<br />
+</li>
+<li>Enter the username of the Member you wish to share this page with (in this case, Bob) into the searchbox and click <strong>search.<br />
+<br />
+</strong><img src="static/Plumi-sharingcontent5-en.jpg" /><br />
+<strong><br />
+</strong></li>
+<li>Click the <strong>can edit</strong> and <strong>can view</strong> checkboxes and click the <strong>save</strong> button.<br />
+<br />
+<img src="static/Plumi-sharingcontent6-en.jpg" /><br />
+<br />
+</li>
+<li>The user Bob can now view and edit this page, enabling both of you to collaborate on it.<strong><br />
+</strong></li>
+</ol>
+<p><br />
+</p>
+<p> <br />
+</p>
+<p><span id="ch012_profiles-and-social-networking.xhtml"></span></p>
+<h1>Profiles and Social Networking</h1>
+<p>Each member of a Plumi website has a Profile or Author Page. This page lists biographical information, activities you are interested in, and a list of contributions you have made to the website.</p>
+<p>New in Plumi 4.0 is the ability to add links to your various blogs or social networking sites, as well as a simple crowd-funding initiative - a way for other users to donate to you via PayPal to support your media activities.</p>
+<h2>Viewing Your Profile</h2>
+<p>To view your Profile at any time, click your <strong>username</strong>:</p>
+<p><img src="static/Plumi-profile1-en.jpg" /><br />
+</p>
+<p>This is your public profile on the Plumi site.</p>
+<p><img src="static/Plumi-profile2-en.jpg" /><br />
+</p>
+<h2>Viewing Another User's Profile</h2>
+<p>To find another member's profile, click <strong>Users</strong> in the sidebar.</p>
+<p><img src="static/Plumi-profile3-en.jpg" /><br />
+</p>
+<p>You can search for users by username, email or full name. Enter one of these, and click the <strong>Search</strong> button.</p>
+<p><img src="static/Plumi-profile4-en.jpg" /><br />
+</p>
+<p>Choose the user from the search results.</p>
+<p><img src="static/Plumi-profile5-en.jpg" /></p>
+<p>Click the username next to any of these folders</p>
+<p><img src="static/Plumi-profile5-1-en.jpg" /></p>
+<p>You can also view a user's profile by clicking on their name alongside any content they have created throughout the website.</p>
+<p><img src="static/Plumi-profile6-en.jpg" /><br />
+</p>
+<h2>Networking Using Plumi</h2>
+<p>You can find other users in a Plumi site who share the same genre interests, your activities, the media formats you use, and those who are based in the same country as yourself.</p>
+<p>Click on the activity, genre, media format or country on the user's profile.</p>
+<p><img src="static/Plumi-profile7-en.jpg" /><br />
+</p>
+<p>This shows you a listing of all other users who share the same activities, genre interests, media formats, or those who live in that country.</p>
+<p><img src="static/Plumi-profile7-1-en.jpg" /><br />
+</p>
+<h2>Editing Your Profile</h2>
+<p>To edit your profile, just click the <strong>edit</strong> tab when viewing your profile.</p>
+<p><img src="static/Plumi-profile8-en.jpg" /><br />
+</p>
+<p>Edit your <strong>Full Name</strong>, <strong>Email Address</strong> and <strong>City of Residence</strong>. Choose your <strong>Country of Residence</strong> from the drop-down menu.</p>
+<p><img src="static/Plumi-profile9-1-en.jpg" /><br />
+</p>
+<p>Enter a short <strong>Biography</strong> describing who you are and what you do. Choose the <strong>Language</strong> you wish the site to appear in from the available options in the drop-down menu.<br />
+</p>
+<p><img src="static/Plumi-profile11-en.jpg" /></p>
+<p>Enter your <strong>Website Address</strong> as well as any <strong>Social Networks and Blogs</strong>. If you want to add another social network or blog (such as MySpace or Facebook, or your Wordpress blog) just click the <strong>add</strong> button and another field will appear:</p>
+<p><img src="static/website-blogs.jpg" /> </p>
+<p>Enter your <strong>Physical Address</strong>, <strong>Postcode</strong> and <strong>Phone Number</strong> (these are optional, please be wary of privacy issues before publishing your contact details online).</p>
+<p><img src="static/profile12-new.jpg" /><br />
+</p>
+<p>Choose <strong>Genre Interests,</strong> <strong>Activities</strong> and <strong>Media Formats</strong> that you use, or are interested in, by multiple selecting items from the list (hold down control or command key as you click each item).</p>
+<p><img src="static/Plumi-profile13-en.jpg" /><br />
+</p>
+<p>Choose your <strong>Content Editor</strong> (this is the WYSIWYG or What You See Is What You Get editor, which allows you to format HTML without having to enter the code, for most users you will leave this as the default - TinyMCE). <strong>Enable external editing</strong> if you choose (this requires that you have some software installed on your computer to assist you with editing pages on the Plumi website, for most users you will leave this as the default - unchecked). Choose whether or not you wish to be <strong>Listed in Searches</strong> (for most users you will want other users to find you, so leave this as the default - checked).</p>
+<p><img src="static/content-editor.jpg" /><br />
+</p>
+<p>Browse for a portrait image of yourself to attach to your profile by clicking the <strong>Browse...</strong> button.</p>
+<p><img src="static/Plumi-profile17-en.jpg" /><br />
+</p>
+<p>Choose an image from your computer to upload.</p>
+<p><img src="static/Plumi-profile18-en.jpg" /><br />
+</p>
+<p>You can also delete your portrait image if you choose, by selecting the tickbox next to <strong>Delete Portrait</strong>.</p>
+<p><img src="static/Plumi-profile19-en.jpg" /><br />
+</p>
+<p><em>If you wish to include a donate button linked to your PayPal account, follow the instructions in the next section.</em></p>
+<p>Click the <strong>Save</strong> button.<br />
+</p>
+<p><img src="static/Plumi-profile20-en.jpg" /></p>
+<h2><strong>PayPal Donations - Crowd-funding Your Media Project</strong></h2>
+<p>If you have a PayPal account, you can add a button to your profile so that other users can donate to your media projects. Plumi plans to include other crowd-funding and donating options in the future.</p>
+<p>1/ Login to your <strong>Paypal accoun<em>t</em></strong> e.g. <a href="http://www.paypal.com/">www.paypal.com</a></p>
+<p>2/ Click <strong>Merchant Services</strong>.</p>
+<p><img src="static/paypal-1.jpg" /><br />
+3/ Click <strong><em>Website Payments Standard</em></strong>.</p>
+<p><img src="static/paypal-2.jpg" /><br />
+</p>
+<p>4/ Choose the donate button - click &quot;<strong>create one now</strong>&quot; for &quot;Accept donations from anyone, anywhere on the web&quot;</p>
+<p><img src="static/paypal-3.jpg" /><br />
+5/ Create button making sure Merchant account IDs has '<strong>Use my secure merchant account ID</strong>' selected.</p>
+<p><img src="static/paypal-4.jpg" /><br />
+</p>
+<p>6/ Copy and paste the generated code, the complete PKCS7 wrapper, into the <strong>Donations via PayPal</strong> field (once you've closed this help box by clicking the <img src="static/x-cross.png" /> symbol).</p>
+<p><img src="static/paypal-5.jpg" />  </p>
+<p>A donate button is now displayed on your author page profile:</p>
+<p><img src="static/donate-button.jpg" /> </p>
+<p><span id="ch013_embed-video-on-another-website.xhtml"></span></p>
+<h1>Embed Video on Another Website</h1>
+<p>You can choose to embed a video from a Plumi website onto another website or blog. This means you are using the Plumi site and web server to make that video available, but you are showing it somewhere else.</p>
+<p>You first need to copy the embed/object code from the Plumi website, and then you need to enter it into your webpage or blog.<br />
+</p>
+<h2>Copying the embed code</h2>
+<p>Browse to the video you wish to embed. Copy all the text in the box below the Flash video player.</p>
+<p><img src="static/Plumi-embedvideo1-en.jpg" /><br />
+</p>
+<h2>Entering embed code on another webpage</h2>
+<h3>Entering code into HTML webpage.<br />
+</h3>
+<p>Some people create their websites by writing HTML markup directly into an HTML document. For these users, just paste the HTML code into your web page.</p>
+<p>Some people create their websites using software on their computer to help create the HTML markup, such as iWeb or Dreamweaver. For these users you should &quot;edit source&quot; to edit the HTML directly.</p>
+<p>Enter the embed code between the body tags of your HTML document.</p>
+<p><img src="static/Plumi-embedvideo2-en.jpg" /><br />
+</p>
+<p>Save the HTML document and upload to your server as usual.<br />
+</p>
+<h3>Entering code into a blog<br />
+</h3>
+<p>Some people create their websites using a web-application installed on the server, such as a Wordpress blog.</p>
+<p>Firstly you must be logged into your website's application as an administrator or content creator.</p>
+<p>When adding a new entry, toggle the user-interface to show the HTML code, rather than the visual display. Paste in the embed code.<br />
+</p>
+<p><img src="static/Plumi-embedvideo3-en.jpg" /></p>
+<p>Publish the entry.</p>
+<p><img src="static/Plumi-embedvideo3-1-en.jpg" /><br />
+</p>
+<p>Your video should appear on the page when viewed.</p>
+<p><img src="static/Plumi-embedvideo4-en.jpg" /><br />
+</p>
+<p><strong><em>NOTE:</em></strong> Some blog software such as Wordpress will prevent users from adding embed or object tags into a blog post, as a security measure. Please consult the user manual for your web application if this is the case.<br />
+</p>
+<p><span id="ch014_video-podcasting.xhtml"></span></p>
+<h1>Video Podcasting</h1>
+<h2>What is RSS?<br />
+</h2>
+<p>RSS stands for Really Simple Syndication, which is a way that websites can share, or syndicate, information between each other. Other software, such as video podcast applications and feed readers, can also syndicate content from the original website which publishes that feed.</p>
+<p>RSS feeds include information about a piece of content - such as a blog entry. This information generally consists of a title, summary and sometimes full text of the original article, as well as other &quot;metadata&quot; such as date and author.</p>
+<p>Plumi generates RSS1 feeds, that syndicate the title, date published and a summary of the content, including a link back to the full article on the Plumi website. You can access these RSS1 feeds using a feed reader such as <a href="http://www.feedreader.com/" title="Feedreader RSS reader">Feedreader</a> or <a href="http://www.google.com.au/reader">Google Reader</a>. You can often also read RSS feeds with your email client, such as <a href="http://www.mozillamessaging.com/thunderbird/" title="Thunderbird">Thunderbird</a> or web browser such as <a href="http://www.mozilla.com/firefox/" title="Firefox web browser">Firefox</a>.<br />
+</p>
+<h2>What is a video podcast?<br />
+</h2>
+<p>A video podcast is an RSS2 feed. RSS2 is a type of RSS that includes &quot;video enclosures&quot;, basically a link to a video file. This way, a video podcast application can not only view information such as title, summary and full text, but also download and play back that video file.</p>
+<p>Plumi generates RSS2 or video podcast feeds that syndicate the title, date published and a summary of the content, including a link back to the full article on the Plumi website, as well as a link to download the video file. You can access these video podcast feeds using programs such as <a href="http://www.getmiro.com/" title="Miro video podcast player">Miro</a> or <a href="http://www.apple.com/itunes/" title="iTunes media player">iTunes</a>.<br />
+</p>
+<h2>Plumi Video Podcasts<br />
+</h2>
+<p>Plumi creates automatic video podcast feeds that list the latest videos by:<br />
+</p>
+<ul>
+<li><strong>user</strong>;<br />
+</li>
+<li><strong>country</strong>;<br />
+</li>
+<li><strong>genre</strong>;</li>
+<li>and <strong>topic</strong>.</li>
+</ul>
+<p>Plumi also has built in video podcast feeds for:</p>
+<ul>
+<li><strong>latest videos</strong>;<br />
+</li>
+<li>and <strong>featured videos</strong>.</li>
+</ul>
+<p><br />
+<strong>Note:</strong> your videos will not appear in the video podcast feed until they have been <a href="http://en.flossmanuals.net/bin/view/Plumi/ReviewList" title="Review List chapter">published by a reviewer</a>.<br />
+</p>
+<h2>How to View a Video Podcast</h2>
+<p>All you need to do to view a video podcast is to copy the podcast link, and paste it into your video podcast software. Examples are given below for Miro and iTunes.</p>
+<h3>Copy Video Podcast Link from Plumi site</h3>
+<p>Visit the latest videos page (or any topic, genre or country listing). Right-click or control-click on the <em><strong>VODCAST</strong></em> button.</p>
+<p><img src="static/Plumi-videopodcasting1-en.jpg" /><br />
+</p>
+<p>Select <strong>copy</strong> or <strong>copy link location</strong>.</p>
+<p><img src="static/Plumi-videopodcasting2-en.jpg" /><br />
+</p>
+<p>Paste this link into your podcast software (instructions follow for Miro and iTunes).<br />
+</p>
+<h2>Miro</h2>
+<p>Miro is Free Software, available for download <a href="http://www.getmiro.com/" title="Miro video podcast player">here</a>.You could also read the <a href="http://en.flossmanuals.net/Miro/KeepingFiles" title="Miro FLOSS manual">Miro FLOSS manual</a>.<br />
+</p>
+<h4></h4>
+<h4>Paste Video Podcast Link Into Miro</h4>
+<p>Choose <em><strong>Add Feed</strong></em> from the <em><strong>Sidebar</strong></em> menu.</p>
+<p><img src="static/Plumi-videopodcasting3-en.jpg" /><br />
+</p>
+<p>Paste the video podcast link into the URL box and click <em><strong>Create Feed</strong></em>.</p>
+<p><img src="static/Plumi-videopodcasting4-en.jpg" /><br />
+</p>
+<h4>View/Download Videos</h4>
+<p>Click on the Plumi feed in sidebar.</p>
+<p><img src="static/Plumi-videopodcasting5-en.jpg" /><br />
+</p>
+<p>Browse videos in feed, viewing title, description and release date.</p>
+<p><img src="static/Plumi-videopodcasting6-en.jpg" /><br />
+</p>
+<p>Click <em><strong>Download</strong></em> button to download video.</p>
+<p><img src="static/Plumi-videopodcasting7-en.jpg" /><br />
+</p>
+<p>Click Play button to view video in Miro.</p>
+<p><img src="static/Plumi-videopodcasting8-en.jpg" /></p>
+<p>Use video controls to play, rewind, fast-forward or pause the video.</p>
+<p><img src="static/Plumi-videopodcasting8-1-en.jpg" /><br />
+</p>
+<h4>Change Automatic Download Settings</h4>
+<p>Many users choose to download new videos when they become available. However, if you are concerned about your bandwidth, download usage or disk space, you will want to disable automatic downloading of new videos (new content as it becomes available).<br />
+</p>
+<p>Select <strong>Off</strong> from <strong>Auto Download</strong> drop-down menu when viewing a channel.</p>
+<p><img src="static/Plumi-videopodcasting9-en.jpg" /><br />
+</p>
+<h2>iTunes</h2>
+<p>iTunes is proprietary software, produced by Apple, available <a href="http://www.apple.com/itunes/" title="iTunes">here</a>. Please note that iTunes will only play Apple supported formats such as .mov and .mp4. If, for example, there are .wmv or .ogg files in the feed iTunes will not display or play them<br />
+</p>
+<h4>Paste Video Podcast Link Into iTunes</h4>
+<p>Choose <em><strong>Subscribe to Podcast</strong></em> from the <em><strong>Advanced</strong></em> menu.</p>
+<p><img src="static/Plumi-videopodcasting10-en.jpg" /><br />
+</p>
+<p>Paste the video podcast link into the URL box and click <em><strong>OK</strong></em>.</p>
+<p><img src="static/Plumi-videopodcasting11-en.jpg" /><br />
+</p>
+<h4>View/Download Videos</h4>
+<p>Double-click on the EngageMedia podcast entry.</p>
+<p><img src="static/Plumi-videopodcasting12-en.jpg" /><br />
+</p>
+<p>Browse videos in feed, viewing title, duration, release date and description.</p>
+<p><img src="static/Plumi-videopodcasting13-en.jpg" /><br />
+</p>
+<p>Click <em><strong>GET</strong></em> button to download an individual video, or <em><strong>GET ALL</strong></em> to download all videos in the feed.</p>
+<p><img src="static/Plumi-videopodcasting14-en.jpg" /><br />
+</p>
+<p>Watch the video in iTunes by double-clicking on the file name.</p>
+<p><img src="static/Plumi-videopodcasting15-en.jpg" /></p>
+<p>Control playback of the video as you watch.</p>
+<p><img src="static/Plumi-videopodcasting15_2-en.jpg" alt="videopodcasting15_2.jpg" width="594" height="357" /><br />
+</p>
+<h4>Disable Automatic Download</h4>
+<p>Many users choose to download new videos when they become available. However, if you are concerned about your bandwidth, download usage or disk space, you will want to disable automatic downloading of new podcast episodes (new content as it becomes available).<br />
+</p>
+<p>Click <em><strong>Podcasts</strong></em> in sidebar.</p>
+<p><img src="static/Plumi-videopodcasting16-en.jpg" /><br />
+</p>
+<p>Select the podcast whose settings you wish to change.</p>
+<p><img src="static/Plumi-videopodcasting12-en.jpg" /><br />
+</p>
+<p>Click <em><strong>Settings</strong></em> button.</p>
+<p><img src="static/Plumi-videopodcasting18-en.jpg" /><br />
+</p>
+<p>Uncheck <em><strong>Use Default Settings.</strong></em></p>
+<p><img src="static/Plumi-videopodcasting19-en.jpg" /><br />
+</p>
+<p>Choose <em><strong>Do Nothing</strong></em> from <em><strong>When new episodes are available</strong></em>. Click <em><strong>OK</strong></em>.</p>
+<p><img src="static/Plumi-videopodcasting22-en.jpg" alt="videopodcasting22.jpg" width="566" height="304" /></p>
+<h4><br />
+</h4>
+<p><br />
+</p>
+<p><span id="ch015_translate-content.xhtml"></span></p>
+<h1>Translate Content</h1>
+<p>Any Member of the site, when logged in, can easily translate certain types of content into the other languages available on your Plumi site. At present Plumi offers both English and Indonesian languages, but your site administrator can make more languages available (<a href="http://en.flossmanuals.net/bin/view/Plumi/ManageTranslations" title="Language Setup chapter">covered in this chapter</a>).</p>
+<p>You can learn how to switch the language of your Plumi site <a href="http://en.flossmanuals.net/bin/view/Plumi/SwitchLanguages" title="Switch Languages">in this chapter</a>. Once somebody has translated an item, it will become automatically available, if the viewer has switched to that language.<br />
+</p>
+<p>Currently news, events, callouts and pages can be translated - but not yet videos. Here we will use the example of translating a news item to show how easy it is to add a translation.<br />
+</p>
+<ol>
+<li>Navigate to an item of content (here we use news item) on the site. Click the <strong>translate into...</strong> drop-down menu and click the language you wish to translate it into e.g. <span>French. </span><br />
+<br />
+<img src="static/Plumi-translate1-en.jpg" /><br />
+<br />
+<strong></strong></li>
+<li>Translate the <strong>Title</strong>, <strong>Description</strong> (short summary) and <strong>Body Text</strong> from one language into the other.<br />
+<br />
+<img src="static/Plumi-translate2-en.jpg" /><br />
+<br />
+</li>
+<li>Translate the <strong>Image Caption</strong> and click the <strong>Save</strong> button.<br />
+<br />
+<img src="static/Plumi-translate3-en.jpg" /><br />
+<br />
+</li>
+<li>You will notice that the site is now viewable in the language you have just used to translate the page. You can also see that the translation is in the pending state (here in French).<br />
+<br />
+<img src="static/Plumi-translate4-en.jpg" /><br />
+<br />
+</li>
+<li>Click the flag of your original language, to change the site back into that language.<br />
+<br />
+<img src="static/Plumi-translate5-en.jpg" /><br />
+<br />
+</li>
+<li>You will need to wait until a site Manager has published your content. The translation of this news item will now be available if the user has <a href="http://en.flossmanuals.net/bin/view/Plumi/SwitchLanguages" title="Switch Languages chapter">switched languages</a>.<br />
+<br />
+<img src="static/Plumi-translate6-en.jpg" /><br />
+<br />
+</li>
+</ol>
+<p><span id="ch016_switch-languages.xhtml"></span></p>
+<h1>Switch Languages</h1>
+<p>Plumi has built in support for internationalisation based on the LinguaPlone project, this adds the ability to translate the website into other languages. Translations must have been contributed, and languages must have been enabled by site administrators for this function to be available.<br />
+</p>
+<p>To select another available language, click the flag corresponding to that national language (here we click the French flag, to change the site language to French).</p>
+<p><img src="static/Plumi-switchlanguages1_2-en.jpg" alt="switchlanguages1_2.jpg" width="600" height="385" /><br />
+ </p>
+<p>Here you can see that most of the interface is translated already into French. But only some of the content has been translated into French (Plumi depends on users to translate content, rather than machine translation).</p>
+<p><img src="static/Plumi-switchlanguages2-en.jpg" alt="switchlanguages2.jpg" width="600" height="384" /><br />
+</p>
+<p><span id="ch017_uploading-via-ftp.xhtml"></span></p>
+<h1>Uploading via FTP With Plumi<br />
+</h1>
+<h2>Introduction</h2>
+<p>Having trouble uploading videos to your <a href="http://blog.plumi.org">Plumi</a> based site because your Internet connection keeps breaking? Uploading large files through web based forms can be difficult as the connection can often break. FTP (File Transfer Protocol) is a protocol that lets you resume broken uploads. You can use an FTP extension within Plumi to upload your videos straight into your account on the website.</p>
+<p>To use this you will need a program called an 'FTP Client'. There are many of these around; <a href="http://filezilla-project.org/">Filezilla</a> is a popular free program which can be used on Windows, Linux or Mac OSX, and will be the focus of this chapter. You can also use most other FTP programs (except <a href="http://cyberduck.ch/">Cyberduck</a> with which you may encounter errors) or <a href="http://en.flossmanuals.net/Firefox/FireFtp">FireFTP</a> lets you integrate FTP into the Firefox web browser.</p>
+<p>This chapter uses <a href="http://www.engagemedia.org">www.engagemedia.org</a>  as an example Plumi site. The visual design (skin) looks a little different to the standard Plumi skin, but not very much. Many Plumi sites will opt to have a different skin in any case.</p>
+<p><strong>Note:</strong> currently you can't upload files in .m4v format via FTP. This issue is being addressed in future Plumi releases, for now please convert your files to another format.</p>
+<h2>Filezilla (All Platforms)</h2>
+<p><strong>Note:</strong> before continuing, please ensure <em>the filename of your video contains no spaces.</em> E.g. instead of using a file named &quot;My Video About Forests.avi&quot; you should change the name to &quot;My-Video-About-Forests.avi&quot;. Many systems, including FTP, do not like files with spaces in the filename.</p>
+<ol>
+<li>Download and install Filezilla from <a href="http://filezilla-project.org/" class="uri">http://filezilla-project.org/</a></li>
+<li>Open Filezilla, and in the address bar at the top enter:
+<ul>
+<li>Host: www.engagemedia.org (or your plumi server's address)</li>
+<li>Username: Your EngageMedia or Plumi login</li>
+<li>Password: Your EngageMedia or Plumi password.</li>
+<li>Click 'Quickconnect'<br />
+<br />
+</li>
+</ul>
+<img src="static/Plumi-UploadingViaFTP-ftp1-en.png" alt="Filezilla: Login" width="600" height="305" /><br />
+<br />
+</li>
+<li>In the top part of the screen you should get some server messages. Do not worry about these, unless you get 'Authentication failed' or 'Could not connect to server'. In this case, check your password and Internet connection, or contact your server administrator.<br />
+<br />
+<img src="static/Plumi-UploadingViaFTP-ftp2-en.png" alt="Filezilla: Login OK" width="600" height="583" /><br />
+<br />
+</li>
+<li>The left side of the window has the files on your computer. Find the video you want to upload, then drag it onto the right side of the window (the server).<br />
+<br />
+</li>
+<li>While the file is uploading, you should see a progress bar at the bottom of the screen.<br />
+<br />
+<img src="static/Plumi-UploadingViaFTP-ftp3-en.png" alt="Filezilla: Upload in Progress" width="600" height="416" /><br />
+<br />
+</li>
+<li>If your upload gets interrupted or broken for whatever reason, start Filezilla again, and log in. Find the file on your local computer on the left side of the screen. In the right side of the window you should see the file you have started uploading. Drag the file again from the left to the right.<br />
+<br />
+</li>
+<li>You will get a message saying 'Target file already exists', and some options. Choose <em>'Resume'</em> and click OK.<br />
+<br />
+<img src="static/Plumi-UploadingViaFTP-ftp4-en.png" alt="Filezilla: Resume Upload" width="600" height="402" /><br />
+<br />
+</li>
+<li>There will be more server messages in the top part of the program. Eventually there will be a message saying 'Transfer complete', then 'Directory listing successful'. <br />
+<br />
+</li>
+<li>If your file has successfully finished uploading, it might not appear in the right window file listing as it has been copied across now to the website. Try the next step, rather than uploading again.<br />
+<br />
+<img src="static/Plumi-UploadingViaFTP-ftp5-en.png" alt="Filezilla: Upload Complete" width="600" height="386" /><br />
+<br />
+</li>
+</ol>
+<h2>Adding Meta-Data</h2>
+<p>Once finished uploading, you will need to add meta-data (information) to your video. You do this in the same way you would normally publish a video, just without uploading the video:</p>
+<ol>
+<li>In a web browser, go to <a href="http://www.engagemedia.org/">http://www.engagemedia.org</a> (or other Plumi site) and log in. Then go to: <a href="http://www.engagemedia.org/Members/YOURUSERNAME/videos/folder_contents">http://www.engagemedia.org/Members/USERNAME/videos/folder_contents</a> (replace USERNAME with your login name, and www.engagemedia.org with your website's address)<br />
+<br />
+<img src="static/Plumi-UploadingViaFTP-ftp6-en.png" alt="Metadata: find uploaded video" width="600" height="660" /><br />
+<br />
+</li>
+<li>You will be able to see the video you have just uploaded. You will also be able to see it in the folder listing on the left side of the page. Click on this video.<br />
+<br />
+</li>
+<li>There will not be any video information yet, so click on the '<strong>edit</strong>' tab near the top of the page.<br />
+<br />
+<img src="static/Plumi-UploadingViaFTP-ftp7-en.png" alt="Metadata: edit video button" width="600" height="629" /><br />
+<br />
+</li>
+<li>Change the title, description, and any other information you want to add. This step is the same as publishing a video through the web form.<br />
+<br />
+<img src="static/Plumi-UploadingViaFTP-ftp8-en.png" alt="Metadata: edit video step 1" width="600" height="707" /><br />
+<br />
+</li>
+<li>At step 3, you need to make sure you have '<strong>Keep existing file</strong>' selected.<br />
+<br />
+<img src="static/Plumi-UploadingViaFTP-ftp9-en.png" alt="Metadata: keep existing file" width="600" height="638" /><br />
+<br />
+</li>
+<li>Click '<strong>save</strong>'. Your video will then be added to the reviewers queue for checking.<br />
+<br />
+</li>
+</ol>
+<p><span id="ch019_user-management.xhtml"></span></p>
+<h1>User Roles and Management <br />
+</h1>
+<ol>
+</ol>
+<h2>User Roles<br />
+</h2>
+<p>Users may be assigned different user roles on a Plumi web site. Here we will illustrate the four major user roles; <em>member</em>, <em>reviewer, editor</em> and <em>manager</em>. Consider the different rights or &quot;power&quot; of these three roles:</p>
+<h3>Member<br />
+</h3>
+<ul>
+<li><strong>Has a user account</strong>, so can log in.</li>
+<li><strong><em>Can</em> add content, but only in specific areas</strong>, and can't edit anything outside of this area; users are given a &quot;workspace,&quot; to treat as personal space where they can add content.<br />
+</li>
+<li><strong><em>Can not</em> publish content</strong> so that it appears in listings throughout the site (e.g. Latest Videos page, or the front page), even content which they added; a person with manager or reviewer role must approve content for publishing.<br />
+</li>
+</ul>
+<h3>Reviewer<br />
+</h3>
+<ul>
+<li><strong>Has a user account</strong>, so can log in.</li>
+<li><strong><em>Can</em> add content, but only in specific areas</strong>, and can't edit anything outside of this area; users are given a &quot;workspace,&quot; to treat as personal space where they can add content.</li>
+<li><strong><em>Can</em> publish or send back <em>any</em> content</strong>.<br />
+</li>
+</ul>
+<h3>Editor</h3>
+<ul>
+<li><strong>Has a user account</strong>, so can log in.</li>
+<li><strong><em>Can</em> add content, but only in specific areas</strong>, and can't edit anything outside of this area; users are given a &quot;workspace,&quot; to treat as personal space where they can add content.</li>
+<li><strong><em>Can</em> retract, or submit for publishing, any content</strong> but <em>not</em> publish it.<br />
+</li>
+<li><strong><em>Can</em> edit any content</strong> (if it is published or pending review the Editor must be retract it first).<br />
+</li>
+<li><strong><em>Can</em> view the contents of any folder</strong> from the root level.<br />
+</li>
+</ul>
+<h3>Manager<br />
+</h3>
+<ul>
+<li><strong>Has a user account</strong>, so can log in.</li>
+<li><strong><em>Can</em> add content anywhere</strong> and has the power to <strong>edit anything.</strong></li>
+<li><strong><em>Can</em> publish or send back <em>any</em> content.</strong></li>
+<li><strong>Can perform other site administration tasks</strong> such as users and groups management and site-wide settings.</li>
+<li><strong><em>Can</em> access the ZMI (Zope Management Interface)</strong>, and use this to customise code or install products.<br />
+</li>
+</ul>
+<p>There are two common ways of giving a Member one of the roles above: by assigning a role to that Member, or by adding a Member to a group that has one of these roles (both explained below).</p>
+<p>Members can have more than one role, the powers for each role they are assigned cascade (so for example a Member with additional Editor and Reviewer roles can edit content and then publish it).<br />
+</p>
+<h2>Common User Management Tasks </h2>
+<p>Any user management task on this page first requires you to log into your Plumi site as a Manager:</p>
+<ol>
+<li>Log in as admin, or any user with Manager role. Go to Site Setup area by clicking <strong>site setup.</strong><br />
+<br />
+<img src="static/Plumi-usermanage1-en.jpg" /><br />
+<br />
+</li>
+<li>Choose <strong>Users and Groups</strong> from the list of Plone Configuration tasks.<br />
+<br />
+<img src="static/Plumi-usermanage2-en.jpg" /><br />
+</li>
+</ol>
+<h3>Add a User</h3>
+<p>You may wish to add a new user, rather than having that user join the site themselves.<br />
+</p>
+<ol>
+<li>Click <strong>add new user</strong> button.<br />
+<br />
+<img src="static/Plumi-usermanage3-en.jpg" /><br />
+<br />
+</li>
+<li>Fill out Registration Form for new user including <strong>Full Name</strong>, <strong>User Name</strong> and <strong>E-mail</strong>. Enter and confirm the password, and click <strong>register</strong>.<br />
+<br />
+<img src="static/Plumi-usermanage4-en.jpg" /><br />
+<br />
+</li>
+<li>Notify the new user of their account details, who may then log in.<span></span><strong><br />
+</strong></li>
+</ol>
+<h3>Remove a User</h3>
+<p>You can remove a user account if you wish.<br />
+</p>
+<ol>
+<li>Enter the username you wish to delete in the <strong>user search</strong> box and click the <strong>search</strong> button.<br />
+<br />
+<img src="static/Plumi-usermanage5-en.jpg" /><br />
+<br />
+</li>
+<li>Check the <strong>remove user</strong> box and click the <strong>apply changes</strong> button.<br />
+<br />
+<img src="static/Plumi-usermanage6-en.jpg" /><br />
+<br />
+</li>
+</ol>
+<h3>Add a User to a Group</h3>
+<p>You may wish to add a user to a group, for example to the Reviewers group, which has the Reviewer role already assigned. You may also wish to use groups to jointly share the ability to edit content that you wish to collaborate on (if they group has permission to edit that content, then every member of the group does too).<br />
+</p>
+<ol>
+<li>Click the <strong>groups</strong> tab.<br />
+<br />
+<img src="static/Plumi-usermanage7-en.jpg" /><br />
+<br />
+</li>
+<li>Click the group name.<br />
+<br />
+<img src="static/Plumi-usermanage8-en.jpg" /><br />
+<br />
+</li>
+<li>Enter the username of the Member you wish to add into the <strong>Quick search</strong> box and click the <strong>search</strong> button.<br />
+<br />
+<img src="static/Plumi-usermanage9-en.jpg" /><br />
+<br />
+</li>
+<li>Check the box next to the username of the Member you wish to add to this group and click <strong>add selected groups and users to this group</strong> button.<br />
+<br />
+<img src="static/Plumi-usermanage10-en.jpg" /><br />
+<br />
+</li>
+</ol>
+<h3>Assign Role to a User</h3>
+<p>If you choose, you can assign a role directly to a user, rather than adding them to a group which has that role assigned to it.<br />
+</p>
+<ol>
+<li>Enter the username you wish to assign the role to in the <strong>user search</strong> box and click the <strong>search</strong> button.<br />
+<br />
+<img src="static/Plumi-usermanage5-en.jpg" /><br />
+<br />
+</li>
+<li>Check the box for the role you wish to assign to the user and click the <strong>apply changes</strong> button.<br />
+<br />
+<img src="static/Plumi-usermanage11-en.jpg" /><br />
+<br />
+<br />
+</li>
+</ol>
+<p><span id="ch020_featuring-content.xhtml"></span></p>
+<h1>Featuring Content on the Front Page </h1>
+<p>You can feature videos, news and events on Plumi. Featuring content will make it appear on the front page, in the slots for <strong>Featured Video</strong> and <strong>News and Events</strong>. The most recently featured video will appear in Featured Video and the most recently featured News or Event will will appear in News and Events.</p>
+<p>Previous versions of Plumi handled featuring content by adding a keyword or tag of &quot;featured&quot; to that item, this has now been deprecated. </p>
+<p><img src="static/Plumi-frontpage_featured-en.jpg" alt="frontpage_featured.jpg" width="440" height="367" /><br />
+</p>
+<h2>How to Feature a Video, News or Event</h2>
+<ol>
+<li><strong><span class="Apple-style-span">Log in as a user with Reviewer, Editor or Manager role. </span></strong></li>
+<li><strong><span class="Apple-style-span">Browse to a video, news item or event that has been published. Click the </span>state<span class="Apple-style-span"> dropdown menu and select </span>feature<span class="Apple-style-span">.</span><br />
+<br />
+</strong><img src="static/feature-dropdown.jpg" /><br />
+<br />
+</li>
+<li>The video will now be <strong>featured</strong>. <strong><span class="Apple-style-span">It will now appear on the front page (the most recently featured item will appear).</span></strong><br />
+<br />
+<strong><img src="static/featured.jpg" /> </strong></li>
+</ol>
+<p><strong>Note:</strong> a user will not be able to retract an item that is featured. The item must first be un-featured, then can be retracted, rejected etc. </p>
+<p><span id="ch021_publishing-workflow.xhtml"></span></p>
+<h1>Publishing Workflow </h1>
+<div id="ch021_publishing-workflow.xhtml#content-wrapper">
+<div class="grid-row">
+<div class="grid-cell position-leftmost width-two-thirds">
+<div id="ch021_publishing-workflow.xhtml#region-content" class="documentContent">
+<dl class="portalMessage info" id="kssPortalMessage">
+<dd>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<p>In Plumi all content is moderated before becoming available on the web site. Ordinary users must submit content for publication (as described in the chapter on <a href="http://en.flossmanuals.net/bin/view/Plumi/ContentStates" title="Publication States chapter">Publication States</a>) unless they are Managers, Reviewers or Editors themselves. See <a href="http://en.flossmanuals.net/bin/view/Plumi/UserManagement" title="User Roles and Management on Plumi Manual">User Roles and Management</a> for more info on this.</p>
+<p>The process whereby content is submitted, retracted, published or sent back, is known as the <strong>publishing workflow</strong> (a Plone term).<br />
+</p>
+<p>The default publishing workflow on Plumi looks something like this:</p>
+<ul>
+<li>
+<p>A Member creates content - it is automatically submitted for publishing when it is saved.</p>
+</li>
+<li>
+<p>At this point any of these things could happen:</p>
+</li>
+<ul>
+<li>The Member could retract the content, choosing to re-edit it and re-submit it for publishing, or choose to make it private (where it is not viewable to anyone else but the owners of that content, or a Manager) or in the public draft state (where it is viewable, but not included in site listings such as Latest Videos or the front page).</li>
+<li>An Editor could choose to retract (make public draft), re-edit that content, and then re-submit it for publishing.</li>
+<li>A Reviewer could choose to publish the content, or send it back (making the content a public draft).</li>
+<li>A Manager could choose to re-edit, publish, send back, make the content private, or even delete it.<br />
+</li>
+</ul>
+<li>
+<p>Once the content is published, any of these options are still available.<br />
+</p>
+</li>
+</ul>
+<h2>Review List and Email Notification<br />
+</h2>
+<p>A Review List is used to list all content that has been added by Members, and then submitted for publication. This makes it easy for Reviewers to see what content needs to be reviewed.</p>
+<p>All Reviewers are also emailed automatically when new content is submitted for publication. <br />
+</p>
+<h3>Publishing / Sending Back Content<br />
+</h3>
+<ol>
+<li>To visit the Review List, you must be logged-in as a Reviewer, and then click the <strong>Review List</strong> menu tab, or the link in the sidebar.<br />
+<br />
+<img src="static/Plumi-review1-en.jpg" /><br />
+<br />
+</li>
+<li>To approve (publish) or disapprove (send back) content click on the content item in the list.<br />
+<br />
+<img src="static/Plumi-review2-en.jpg" /><br />
+<br />
+</li>
+<li>Then choose <strong>publish</strong> or <strong>send back</strong> from the drop-down state menu. Publishing it will mean the content &quot;goes live&quot; on the website and is included in all listings. Sending it back will mean that the content goes into the public draft state, and an email will be sent to the contributor to notify them it has been sent back.<br />
+<br />
+<img src="static/Plumi-review3-en.jpg" /><br />
+</li>
+</ol>
+<p><strong>Note:</strong> both the publishing workflow, and the text within the email notification can be configured (if you are a developer you can visit the <a href="http://en.flossmanuals.net/bin/view/Plumi/Configuration" title="Plumi Configuration chapter">configuration chapter for more info on this</a>).</p>
+<p><span id="ch022_publication-states.xhtml"></span></p>
+<div id="ch022_publication-states.xhtml#content">
+<h1><span id="ch022_publication-states.xhtml#parent-fieldname-title"> Publication States</span></h1>
+<p><span id="ch022_publication-states.xhtml#parent-fieldname-description"> Plumi inherits the system for controlling publication states from Plone. As a basic feature, publication states allow you to make content you have created either public or private (available to everyone, or just yourself and those you wish to share it with). However the system is actually a little more complicated than that as there are various states content may be in, and this forms a key part of the publishing workflow covered in the <a href="http://en.flossmanuals.net/bin/view/Plumi/ReviewList" title="Publishing Workflow">next chapter</a>.</span></p>
+<p>For starters we'll look at the different states that content can be in. Every item on a Plumi site (videos, news, events etc.) will have a state that it is in. This chapter will help you understand what that state means.<br />
+</p>
+<div id="ch022_publication-states.xhtml#parent-fieldname-text">
+<p>In the upper right corner of the edit panel for any content type (videos, news, events, folders etc.) there is a menu on the right for publication state. This <strong><em>state</em></strong> menu has settings for controlling publication state:</p>
+<p><img src="http:/plone.org/documentation/manual/plone-3-user-manual/collaboration-and-workflow/statemenu1.png" class="image-inline" /></p>
+<p>The header for the menu will show the current publication state for the content item, such as <em>State: Private</em>, as shown above.</p>
+<p><em><strong>Private</strong></em> is the initial state when you create content (such as a video, news item or event) and in the private state, as the name indicates, the content item will generally not be available to visitors to the web site - only to yourself and to site administrators, when logged-in. If your content is not already private, you can make it so using the <em><strong>make private</strong></em> menu option.</p>
+<p>The <strong><em>Submit for publication</em></strong> menu choice is used when content must be approved for publication by Reviewers, as discussed below. When you choose this option, your content will go into the <strong><em>pending review</em></strong> publication state.</p>
+<p><strong>Note</strong>: Plumi sites by default place created content in the pending state on pressing save, this however is configurable.<br />
+</p>
+<p><img src="static/Plumi-ContentStates-publication_control_1-en.png" alt="publication_control_1.png" width="249" height="70" /> </p>
+<p>If you have submitted your content for publication, but wish to re-edit it, or otherwise make it unavailable for publishing, you can choose the <em><strong>retract</strong></em> menu option. It will go into the <em><strong>public draft</strong></em> state - which means it will be available to anonymous users, but won't be listed on the front page, or other listings of content around the web site. From here you can choose to make it private again if you wish, or re-edit it, and submit it for publication once more.<br />
+</p>
+</div>
+</div>
+<p><img src="static/Plumi-ContentStates-publication_control_2-en.jpg" alt="publication_control_2.jpg" width="249" height="116" /></p>
+<p>The <strong><em>Publish</em></strong> menu choice will be available if you are a site Manager or Reviewer. This will make the content item available to any visitor to the site, and appear within site listings (such as the front page). When you choose this option, your content will go into the <em><strong>published</strong></em> publication state.</p>
+<p><strong>Note:</strong> Some content taken and edited from: <a href="http://plone.org/documentation/manual/plone-3-user-manual/collaboration-and-workflow/basic-publication-states" class="uri">http://plone.org/documentation/manual/plone-3-user-manual/collaboration-and-workflow/basic-publication-states</a><br />
+</p>
+<p><span id="ch023_manage-languages.xhtml"></span></p>
+<h1>Manage Languages</h1>
+<p>As a site administrator (Manager) you can define which languages the user interface will appear in, within your Plumi site. By default, Plumi offers both English and Indonesian languages (the interface is already translated into Indonesian), with more languages in the pipeline. Once you have made this language available, any Member can <a href="http://en.flossmanuals.net/bin/view/Plumi/TranslateContent" title="Translate Content chapter">translate certain types of content</a> into that language.<br />
+</p>
+<p><strong>Note:</strong> content that has been contributed by members of your Plumi site will remain in the language it has been added, there is no machine translation in Plumi.</p>
+<p>Currently full translations of the Plumi interface are only available for English and Indonesian. However, much of the interface is inherited from Plone, which has been translated into many different languages. If you choose to enable one of these other languages, only some of the interface will be translated.</p>
+<p>If you wish to assist in translating the Plumi interface into another language, please consult this <a href="http://plone.org/documentation/faq/translating-sites/view?searchterm=translation" title="Translation of Plone">FAQ</a> or <a href="http://blog.plumi.org/contact/" title="Contact Form on Plumi Blog">contact the Plumi developers</a> for more info.</p>
+<p>If you wish to switch the language you are viewing the Plumi site in (from available languages) visit <a href="http://en.flossmanuals.net/Plumi/SwitchLanguages" title="Switch Languages chapter">this chapter</a>.<br />
+</p>
+<h2>Language Settings Control Panel<br />
+</h2>
+<p>To manage languages in Plumi you first need to log in as an admin, or any user with Manager role.<br />
+<br />
+</p>
+<ol>
+<li>Go to Site Setup area by clicking <strong>site setup.</strong><br />
+<br />
+<img src="static/Plumi-managetranslations1-en.jpg" /><br />
+<br />
+</li>
+<li>Go to the Language Settings by clicking <strong>Language.<br />
+<br />
+</strong><img src="static/Plumi-managetranslations2-en.jpg" /></li>
+</ol>
+<h2>Change Default Site Language<br />
+</h2>
+<ol>
+<li>Access the Language Settings control panel (above). Change the default language of your website by choosing the language from the <strong>Default site language</strong> drop-down menu.<strong><br />
+<br />
+</strong><img src="static/Plumi-managetranslations3-en.jpg" /><br />
+<br />
+</li>
+<li>Click <strong>Save.</strong><br />
+<br />
+<img src="static/Plumi-managetranslations4-en.jpg" /></li>
+</ol>
+<h2>Change Available Languages</h2>
+<ol>
+<li>Access the Language Settings control panel (above). Choose which languages are available on your Plumi site by multiple-selecting those languages from the <strong>Available languages</strong> drop-down menu. Click <strong>Save.<br />
+<br />
+</strong><img src="static/Plumi-managetranslations5-en.jpg" alt="managetranslations5.jpg" width="388" height="353" /><br />
+<strong><br />
+</strong></li>
+<li>Your website will now show a flag icon for that language. Any user may select to view the website in that language by clicking on the flag.<br />
+<br />
+<img src="static/Plumi-managetranslations6-en.jpg" /></li>
+</ol>
+<p><span id="ch025_installation.xhtml"></span></p>
+<div data-align="right">
+<br />
+
+</div>
+<h1>Installation</h1>
+<p>This is a guide for installing <a href="http://blog.plumi.org/" title="Plumi Blog">Plumi</a> 4.x on a <a href="http://www.debian.org/" title="Debian Linux">Debian</a> or <a href="http://www.ubuntu.com/products/whatIsubuntu/serveredition" title="Ubuntu Server edition">Ubuntu</a> <a href="http://www.linux.org/" title="Linux">Linux</a> server using an <a href="http://httpd.apache.org/" title="Apache">Apache2</a> web server.</p>
+<p><em><strong>Plumi is untested on other operating systems.</strong></em> You can find more information about installing Plone on different kinds of servers <a href="http://plone.org/documentation/phc_topic_area?topic=Installation" title="Installation Documentation on plone.org">here</a>, which should aid you in installing the Plumi buildout on other operating systems. Please contribute your installation notes on these or different OSs via the <a href="http://lists.plumi.org/listinfo/discuss" title="Plumi discussion list">Plumi email list</a> and/or by editing <a href="http://en.flossmanuals.net/bin/view/Plumi/Installation" title="Plumi Manual Installation Chapter">this manual chapter</a> here on FLOSSmanuals.<br />
+</p>
+<h2>Prior Knowledge</h2>
+<p>This guide requires that you already have intermediate knowledge of systems administration, Debian or Ubuntu Linux, the shell and Apache. A basic knowledge of Python is desirable for installation. Knowledge of Zope and Plone will aid in set up of your Plumi site.<br />
+</p>
+<h2>Requirements</h2>
+<ul>
+<li>
+<p>Debian or Ubuntu Linux server machine with <a href="http://plone.org/documentation/kb/plone-system-requirements" title="Plone system requirements">these system requirements</a> and Apache2 web server &amp; domain set up in which to run your Plumi site (a tutorial on setting up an Ubuntu web server can be found <a href="https://help.ubuntu.com/6.06/ubuntu/serverguide/C/httpd.html" title="Ubuntu web server tutorial">here</a> and one for a Debian web server is <a href="http://www.howtoforge.com/perfect-server-debian-lenny-ispconfig2" title="How to Set Up Debian Server">here</a>).<br />
+</p>
+</li>
+<li>
+<p><a href="http://en.wikipedia.org/wiki/Shell_(computing)" title="Shell definition on Wikipedia">Shell</a> access to server and an account with permissions over domain's directory.</p>
+</li>
+<li>
+<p>The server will need to have:<br />
+</p>
+</li>
+<ul>
+<li><a href="http://gcc.gnu.org/" title="GNU Compiler Collection">GCC</a> development tools.</li>
+<li>make.<br />
+</li>
+<li><a href="http://subversion.apache.org/packages.html" title="Get Subversion">Subversion</a> version control system (svn).</li>
+</ul>
+</ul>
+<ul>
+<li>Plumi 4.x is built on Plone 4.x which requires Python 2.6 to operate correctly. It will be installed as part of the installation detailed in this chapter.<br />
+</li>
+</ul>
+<h4>Two Domains Required</h4>
+<p>Plumi requires two domains to operate although they can point to the same server:</p>
+<ul>
+<li>The Plumi Site (eg: example.org)<br />
+</li>
+<li>Plumi Transcode Daemon and transcoded files (videos.example.org)</li>
+</ul>
+<p>Please ensure that these domains are set up in advance of your site installation and have had sufficient time to propagate through  the Internet (eg: 24-48 hours).</p>
+<p><strong>NOTE:</strong> If you server is not going to be accessed from the Internet, you still need to set up the domains within your private network (eg: internal DNS server, /etc/hosts files on all workstations, etc). If you want to run a development version to test plumi, you do not need to set up these domains. Plumi development setup will work out of the box on localhost.<br />
+</p>
+<p><strong>Setting up Python, yasm, libjpeg and zlib, groff-base </strong></p>
+<p>You can install Python and other required tools by running these commands:</p>
+<pre><code>sudo apt-get install python-setuptools yasm subversion python2.6-dev
+sudo apt-get install libjpeg62-dev zlib1g-dev groff-base build-essential
+sudo apt-get install libssl-dev python-profiler libjpeg62-dev
+sudo apt-get install libreadline5-dev libxml2-dev</code></pre>
+<h4>Creating a Python Virtual Environment<br />
+</h4>
+<p>If you are running other applications and web sites on your server, it may be worth while creating a python virtual environment for developing in - this can avoid problems between python packages installed by your operating system and those installed by easy_install. You will need to have the virtualenv package installed first - in Debian and Ubuntu systems you can apt-get install python-virtualenv, then:</p>
+<pre class="wiki"><code>$ virtualenv -p /usr/bin/python2.6 --no-site-packages src/pyvirt
+. src/pyvirt/bin/activate
+$ easy_install http://dist.repoze.org/PIL-1.1.6.tar.gz</code></pre>
+<p>This will install the virtual env into src/pyvirt, activate it and then install the (required) Python Imaging Library into the virtual env.</p>
+<h2>Installing via Buildout<br />
+</h2>
+<p>Here you will find information on how to install Plumi from buildout, which is the recommended process. A buildout puts together Zope, Plone, the third-party products and all customisations into one package. This makes it very easy for you to get everything up and running quickly. The buildout tutorial on Plone.org is available <a href="http://plone.org/documentation/tutorial/buildout" title="Buildout Tutorial on Plone">here</a>.</p>
+<p>Some links for background reading on buildout/setuptools/disutils/virtualenv : <a href="http://us.pycon.org/2009/tutorials/schedule/1PM3/" class="ext-link"><span class="icon"> </span>http://us.pycon.org/2009/tutorials/schedule/1PM3/</a></p>
+<p><strong>NOTE:</strong> Plumi uses ports 8080 to run Zope, 8100 to run zep and 8888 as the listen port for the transcode daemon. In production buildouts you can see and change all the ports used by editing the site.cfg file.  If you have other systems using these ports, please configure your buildout prior to running it (see the <a href="http://en.flossmanuals.net/bin/view/Plumi/Configuration" title="Configuration of Buildout">buildout configuration</a> section for details).<br />
+</p>
+<h3>Buildout Installation Process</h3>
+<p>This process assumes that you are creating a Plumi site called &quot;plumi&quot; at www.example.com. Before installing Plumi, you need to answer the following questions:<br />
+</p>
+<h4>Where are you going to put your Plumi files on your web server?</h4>
+<ul>
+<li>We are using /opt/plumi but you could use /home/zope or something similar.</li>
+<li><strong>NOTE:</strong> Do not install the files into /var/www or any other publicly accessible space on your server.</li>
+</ul>
+<h4>Which version of Plumi do you want to get?</h4>
+<ul>
+<li>The trunk version of Plumi contains the latest development code and may therefore be unstable. If you are contributing to the development of Plumi by coding or testing then this is the version you should install.</li>
+<li>Tagged versions of Plumi are releases that have been packaged and may include Beta Releases, Release Candidates or full production versions.</li>
+</ul>
+<p><strong>Do I want to create a development site or a production site?</strong></p>
+<ul>
+<li>If you wish to run a production site you can use the fully-fledged production build with caching, multiple load balanced zope instances, etc.</li>
+<li>If you simply want to evaluate or develop Plumi, then a much more lightweight buildout is provided instead in the development buildout.</li>
+</ul>
+<h4>Download Plumi from SVN<br />
+</h4>
+<p>Plumi is available from the Plone SVN server. To download the latest Trunk version of Plumi, run the following command:</p>
+<pre><code>svn co https://svn.plone.org/svn/collective/plumi.app/trunk/ target_folder_name</code></pre>
+<p>To download the latest Tagged version of Plumi, run the following command:</p>
+<pre><code>svn co https://svn.plone.org/svn/collective/plumi.app/tags/Tag_Name  target_folder_name</code></pre>
+<p><strong>NOTE:</strong> <em>target_folder_name</em> is where you want the code to go (eg: /opt/plumi/4.0-final or /home/zope/plumi) and <em>Tag_Name</em> is tagged version you want to get (eg: 4.0, etc)</p>
+<h4>Download Plumi as a Packaged Release</h4>
+<p>Plumi can be downloaded as a fully packaged release in an archive using the <em>tar</em> or <em>zip</em> format. Only tagged versions are available this way, not the current trunk. To download a packaged release, visit the Plone product page here:</p>
+<p><a href="http://plone.org/products/plumi/releases/" title="Plumi Releases on Plone.org">http://plone.org/products/plumi/releases/ </a></p>
+<p>Find the release you want, copy the download link and follow the instructions below e.g.:</p>
+<pre><code>mkdir /opt/plumi
+wget Download_Link
+tar -xzvf Zip_File
+cd Created_Directory</code></pre>
+<p><em></em><strong>NOTE:</strong> <em>Download_Link</em> is the link to the package file from Plone.org / PyPI e.g. <span class="Apple-style-span">http://pypi.python.org/packages/source/p/plumi.app/plumi.app-4.0.zip#md5=807dbf4f54b2845351dd74087b2c2e80, </span><em>Zip_File</em> is the name of the archive file (eg: plumi.app-4.0.zip) and <em>Created_Directory</em> is the name of the directory created after the archive is extracted (eg: plumi4.1beta). </p>
+<h4>Set Site Configuration Information</h4>
+<p>Configure the specific information about this Plumi installation in the site.cfg, including:</p>
+<ul>
+<li>Change all references to hostname &amp; email address</li>
+<li>Check the ports and change them if the defaults are already in use</li>
+<li>Set the effective user for both zeo and zope to the name of the user account that each is to be installed under (<strong>NOTE:</strong> This user should already be set up - the Plumi installation script will not create it/them)</li>
+<li>Set the default Zope admin user &amp; password if you want them to be different (recommended)</li>
+</ul>
+<p><strong>NOTE:</strong> It is best to use the default 'localhost' URLs unless you are putting the transcoder on a separate machine.</p>
+<p><strong><br />
+</strong></p>
+<h4>Devel buildout : Run the buildout then setup &amp; configure Plumi</h4>
+<ol>
+<li><p>Prepare to run the buildout (bootstrap is a Python script that creates a number of directories and scripts based on the buildout configuration file, and downloads the latest version of the zc.buildout egg).<br />
+</p>
+<pre><code>$ python2.6 bootstrap.py -c devel.cfg</code></pre></li>
+<li><p>Run the buildout (in verbose mode). This will take between 5 to 10 minutes, possibly more depending on your server's configuration &amp; load. Sit down, grab a coffee and wait till it finishes!<br />
+</p>
+<pre><code>$ ./bin/buildout -c devel.cfg</code></pre></li>
+<li>Supervisor will be managing the ZEO server and the transcode daemon. Start supervisor like this<br />
+</li>
+</ol>
+<h4>Production buildout : Run the buildout then setup &amp; configure Plumi</h4>
+<ol>
+<li><p>Prepare to run the buildout (bootstrap is a Python script that creates a number of directories and scripts based on the buildout configuration file, and downloads the latest version of the zc.buildout egg).<br />
+</p>
+<pre><code>$ python2.6 bootstrap.py -c production.cfg</code></pre></li>
+<li><p>Run the buildout (in verbose mode). This will take between 5 to 10 minutes, possibly more depending on your server's configuration &amp; load. Sit down, grab a coffee and wait till it finishes!<br />
+</p>
+<pre><code>$ ./bin/buildout -v -c production.cfg</code></pre></li>
+<li><p>Supervisor will be managing the ZEO, Zope instances, load balancer cache server and the transcode daemon. Start supervisor like this <br />
+</p>
+<pre><code>sudo ./bin/supervisord
+</code></pre>
+<p> You can check that all the services have started via :</p>
+<pre><code>sudo ./bin/supervisorctl status</code></pre>
+<p> <br />
+</p></li>
+</ol>
+<p><strong>Production buildout sets up and configures an nginx web server based on your site.cfg setup</strong>. However, if your server already has Apache set up on it (eg: for hosting other, non-Plumi sites), you can stop nginx and use configure apache to use with plumi. Here is the apache configuration for <a href="http://demo.plumi.org">demo.plumi.org</a>  to help get you started:</p>
+<p> </p>
+<pre><code>&lt;VirtualHost *:80&gt;
+        ServerName  demo.plumi.org
+        ServerAdmin contact@engagemedia.org
+
+        &lt;Directory /&gt;
+                Options FollowSymLinks
+                AllowOverride None
+                Order allow,deny
+                allow from all
+                deny from 60.224.93.59,203.184.26.179
+        &lt;/Directory&gt;
+
+        ErrorLog /var/log/apache2/plumidemo/plumidemo-error.log
+        # Possible values include: debug, info, notice, warn, error, crit,
+        # alert, emerg.
+        LogLevel warn
+
+        CustomLog /var/log/apache2/plumidemo/plumidemo-access.log combined
+        ServerSignature On
+        RewriteEngine On
+
+ # Normalize URLs by removing trailing /&#39;s
+ RewriteRule ^/(.*)/$ http://127.0.0.1:8381/VirtualHostBase/http/%{SERVER_NAME}:80/demo/VirtualHostRoot/$1 [L,P]
+ # Pass all other urls straight through
+ RewriteRule ^/(.*)$  http://127.0.0.1:8381/VirtualHostBase/http/%{SERVER_NAME}:80/demo/VirtualHostRoot/$1 [L,P]
+
+  &lt;Location /&gt;
+   Order Allow,Deny
+   Deny from none
+   Allow from all
+  &lt;/Location&gt;
+
+&lt;/VirtualHost&gt;
+&lt;VirtualHost *:80&gt;
+
+    ServerName videos.demo.plumi.org
+
+    RewriteEngine On
+    RewriteLog /var/log/apache2/demo.plumi.org/rewrite_videos.demo.plumi.org.log
+    RewriteLogLevel 0
+
+    CustomLog /var/log/apache2/demo.plumi.org/access_videos.demo.plumi.org.log common
+    ErrorLog /var/log/apache2/demo.plumi.org/error_videos.demo.plumi.org.log
+
+    &lt;Proxy http://127.0.0.1:8338&gt;
+      Allow from all
+    &lt;/Proxy&gt;
+
+    #Alias /transcoded /var/log/apache2/demo-41.plumi.org/transcoded
+    Alias /transcoded /home/plone/demo-41.plumi.org/transcoded
+    &lt;Directory /home/plone/demo-41.plumi.org/transcoded&gt;
+       Order allow,deny
+       Allow from all
+    &lt;/Directory&gt;
+
+    RewriteRule ^/transcoded - [L]
+    RewriteRule ^(.*)$ - [E=BACKEND_LOCATION:127.0.0.1]
+    RewriteRule ^(.*)$ - [E=BACKEND_PORT:8338]
+    RewriteRule ^(.*)$ - [E=HOST:videos.demo.plumi.org]
+    RewriteRule ^(.*)$ - [E=PORT:80]
+    RewriteRule ^(.*)$ - [E=PROTO:http]
+    RewriteRule  ^/(.*)/$ http://%{ENV:BACKEND_LOCATION}:%{ENV:BACKEND_PORT}/$1 [L,P]
+    RewriteRule  ^/(.*)$ http://%{ENV:BACKEND_LOCATION}:%{ENV:BACKEND_PORT}/$1 [L,P]
+
+&lt;/VirtualHost&gt;
+</code></pre>
+<ol>
+<li>Once the instance is running, go to the Zope Management Interface (ZMI).<br />
+<strong>http://www.example.org:8080/manage<br />
+</strong></li>
+<li>Log in to the ZMI using the admin login details you specified in site.cfg (eg: username: admin, password: admin). If you want to change the admin user's ZMI password once logged in, navigate to the <strong>acl_users</strong> folder in the left-hand sidebar.<br />
+<br />
+<img src="static/Plumi-installation14-en.jpg" /><br />
+<br />
+Click on <strong>users.</strong><br />
+<br />
+<img src="static/Plumi-installation15-en.jpg" /><br />
+<br />
+Click <strong>password.</strong><br />
+<br />
+<img src="static/Plumi-installation16-en.jpg" /><br />
+<br />
+Enter password and confirm by re-entering, then click <strong>Update Password.</strong><br />
+<br />
+<img src="static/Plumi-installation17-en.jpg" /><br />
+<br />
+</li>
+<li>Add a Plone site or instance in the ZMI.<br />
+<br />
+Click “<strong>Root Folder</strong>” in the left-hand sidebar. Choose <strong>Plone site</strong> from the <strong>Select type to add...</strong> drop-down menu and click <strong>Add</strong>.<br />
+<br />
+<img src="static/Plumi-installation1-en.jpg" /><br />
+<br />
+Enter the <strong>ID, Name and Description</strong>, e.g. ID &quot;plumi&quot; and Name &quot;Plumi Site&quot;. Click <strong>Add Plone Site.<br />
+<br />
+</strong><img src="static/Plumi-installation2-en.jpg" /><strong><br />
+<br />
+</strong></li>
+<li>Visit your new plone site by entering this URL: <strong>http://www.example.org:8080/plumi</strong></li>
+<li>Click <strong>site setup</strong> in the top right corner.<br />
+<br />
+<img src="static/Plumi-installation3-en.jpg" /><br />
+<br />
+</li>
+<li>Follow the prompt to change your mail settings.<br />
+<br />
+<img src="static/Plumi-installation5-en.jpg" /><br />
+<br />
+</li>
+<li>Change/add your mail settings and click <strong>Save</strong>.<br />
+<br />
+<img src="static/Plumi-installation6-en.jpg" /><br />
+<br />
+</li>
+<li>Click <strong>Add/Remove Products</strong> from Site Setup sidebar.<br />
+<br />
+<img src="static/Plumi-installation7-en.jpg" /><br />
+<br />
+</li>
+<li>Tick the tick box next to <strong>Plumi.</strong><br />
+<br />
+<br />
+<br />
+</li>
+<li>Click <strong>Install.</strong><br />
+<br />
+<img src="static/Plumi-installation9-en.jpg" /><br />
+<br />
+</li>
+<li>Wait a few minutes for your Plumi site to install. </li>
+<li>Click <strong>Add/Remove Products</strong> from Site Setup sidebar again.</li>
+<li>Tick the tick box next to <strong>Plumi skin</strong>. </li>
+<li>When it is done, the page will reload and you should see a freshly installed Plumi site complete with the Plumi skin/theme.<br />
+<br />
+<img src="static/Plumi-installation10-en.jpg" /><br />
+<br />
+</li>
+<li>Add a new user to your Plumi site for testing (the admin user may not have the correct folders created for them, as this user is created before the Plumi site is generated).<br />
+<br />
+Click <strong>log out</strong>.<br />
+<br />
+<img src="static/Plumi-installation11-en.jpg" /><br />
+<br />
+Register a new user by clicking <strong>register.</strong><br />
+<br />
+<img src="static/Plumi-installation13-en.jpg" /><br />
+<br />
+Log in with new user account details by clicking <strong>log in.<br />
+<br />
+</strong><img src="static/Plumi-installation12-en.jpg" /><strong><br />
+<br />
+</strong></li>
+<li>Try <a href="http://en.flossmanuals.net/bin/view/Plumi/PublishVideo" title="How to Publish a Video">publishing a video</a> in your new Plumi site (logged in as this new testing user).<br />
+</li>
+<li>Check the video after it has uploaded to see if it has been created and transcoded correctly.</li>
+</ol>
+<h2>Configuring Plumi to start automatically</h2>
+<p>To ensure that Plumi will start automatically whenever your server is turned on, add the following lines to your /etc/rc.local file:<br />
+</p>
+<pre><code>./bin/instance start
+./bin/squid-instance
+su zope -c &#39;./bin/transcodedaemon start&#39;
+./bin/apachectl start  </code></pre>
+<p><strong>NOTE:</strong> Replace the &quot;zope&quot; in &quot;su zope -c&quot; with the name of the user you installed Plumi under (the &quot;effective-user&quot; from site.cfg)</p>
+<h2>Troubleshooting</h2>
+<p>If you are having trouble installing Plumi please join one of our email lists or IRC channels listed <a href="http://blog.plumi.org/get-involved/" title="Plumi email lists and IRC">here</a> or contact the Plumi maintainers <a href="http://blog.plumi.org/contact/" title="Plumi contact form">here</a>.<br />
+</p>
+<h3>Running Multiple Plumi Buildouts<br />
+</h3>
+<p>You may encounter difficulties if you are already running a Plumi site from another buildout on this webserver (note that you would usually add another Plone site within the one buildout rather than run multiple sites from different buildouts). If you must run multiple Plumi installations on the same server, you will need to set up Apache &amp; Squid yourself &amp; not use the default configurations included in the buildout process. You will also need to change the default ports in the installation's site.cfg file. If you are running more than one transcode daemon as well, you will need to change the <a href="http://en.flossmanuals.net/Plumi/Transcoding" title="Transcoding chapter">name of the Transcode Daemon process ID file</a>.<br />
+</p>
+<h2>Development Map</h2>
+<p>The <a href="http://en.flossmanuals.net/Plumi/DevelopmentMap" title="Development Map chapter">development map chapter</a> describes the anatomy of the Plumi buildout, and explains the products and packages that are installed.</p>
+<p><span id="ch026_configuration.xhtml"></span></p>
+<h1>Configuration</h1>
+<p>Plumi and Plone itself (upon which Plumi is built) are highly configurable. The complexity of what you wish to customise will vary, but this chapter covers some of the aspects of Plumi which you can configure easily, with links to further documentation about customisation.</p>
+<p><a href="http://en.flossmanuals.net/Plumi/ChangeLogoTitle">Changing the logo and the site title</a> are covered later in this chapter. Information covered here includes changing the portlets (content areas in the sidebars), changing the design and configuring the transcoding framework.</p>
+<p>This chapter will briefly discuss these options:</p>
+<ul>
+</ul>
+<ol>
+<li><strong>Site Setup</strong> - configuring Plumi using the built-in Plone Site Setup.</li>
+<li><strong>Configuring Through-The-Web</strong> - using the Zope Management Interface.</li>
+<li><strong>Further Configuration</strong> - links to further information on Plone.org.<br />
+</li>
+<li><strong>Customisation and Development</strong> - links to further information for developers.</li>
+</ol>
+<ul>
+</ul>
+<h2>1. Site Setup<br />
+</h2>
+<p>The Admin user of your Plumi site, or any user with Manager privileges, can access the Site Setup area of Plumi. You can access Site Setup by clicking the site setup link in the top right. Please note that you must be logged in as a Manager to do this.<br />
+</p>
+<p><img src="static/Plumi-configuration1-en.jpg" /></p>
+<p>Links to different options for Plone Configuration are available, as well as configuration of Add-On Products, and an overview of the Plone version you have installed.</p>
+<p><img src="static/Plumi-configuration2-1-en.jpg" />⁞<br />
+</p>
+<p>Using the options found in Site Setup you can:</p>
+<ul>
+<li><strong>Add/Remove Products.</strong> Tells you which products (Plone software modules) have been added and are now available to implement on your Plumi site</li>
+<li><strong>Calendar.</strong> Change calendar settings such as the first day of the calendar week, and the workflow states that will appear in the calendar</li>
+<li><strong>Configuration Registry.</strong> This stores settings for products that need to manage some configurable, user-editable values. Here you can change options for allowing comments from anonymous users, or showing the profile image of a user next to their comment.</li>
+<li><strong>Content Rules.</strong> Here you can set up rules which will automatically perform actions on content when certain triggers take place. You can apply these rules to specific folders.</li>
+<li><strong>Errors.</strong> This page lists a log of the most recent errors which have occurred on the site.</li>
+<li><strong>HTML Filter.</strong> Plone filters HTML tags that are considered security risks. Here you can change the settings for which tags are stripped and which are allowed.</li>
+<li><strong>Language Settings.</strong> Here you can define which languages are available on your site. Plumi currently offers both English and Indonesian with more languages to follow.<br />
+</li>
+<li><strong>Mail.</strong> Here you can change your mail settings, including SMTP server details and the &quot;From:&quot; address for emails sent by your website. </li>
+<li><strong>Maintenance.</strong> Here you can restart the Zope application server (which runs Plone, and your Plumi site) and change other maintenance options.</li>
+<li><strong>Markup.</strong> Allows you to change your settings from the default HTML to other kinds of markup such as plain or structured text.</li>
+<li><strong>Navigation.</strong> Change your navigation settings, including what kinds of content appear in the navigation tree.</li>
+<li><strong>Search.</strong> Change the kinds of content which are searched on the site.</li>
+<li><strong>Security.</strong> Change settings including self-registration and passwords.</li>
+<li><strong>Site.</strong> Change site title and description plus various site-wide settings including enabling/disabling inline editing and link integrity checking.</li>
+<li><strong>Theme.</strong> Choose the default theme or skin for your Plumi site, and enable/disable other settings such as external link and content type icons.</li>
+<li><strong>Types.</strong> Workflow, visibility and versioning settings for your content types.</li>
+<li><strong>Users and Groups.</strong> Add or remove users, change a user details, add or remove users in groups, assign roles (permissions) to users and to groups.<br />
+</li>
+<li><strong>Visual Editor.</strong> Change settings for the Kupu visual or WYSIWYG editor.<br />
+</li>
+<li>Z<strong>ope Management Interface.</strong> Takes you to the ZMI for further configuration settings.<br />
+</li>
+</ul>
+<ol>
+</ol>
+<h2>2. Configuring Through-The-Web (TTW) Using Zope Management Interface (ZMI)<br />
+</h2>
+<p>Visit <a href="http://www.themeswiki.org/Customizing_Plone_3" title="Customising Plone 3 TTW">this page</a> for a how-to on configuring your Plumi site using the ZMI. This is no longer recommended as a method for configuring a Plone site, given that the modifications that are made cannot easily be brought across to an upgraded buildout. It could still be useful for minor changes in the short-term.<br />
+</p>
+<h2>3. Further Configuration</h2>
+<p>For more information on configuring your Plumi site please consult the <a href="http://plone.org/documentation/topic/Configuration+and+Set-Up" title="Configuration and Set Up on Plone.org">Configuration and Set Up</a> pages on Plone.org. This includes info on other add-on products (Plone software modules), backup procedures, optimising performance and caching with Squid, connecting to MySQL databases and more.</p>
+<h2>4. Customisation and Development</h2>
+<p>For more information on how to customise your Plumi site please consult the <a href="http://plone.org/documentation/manual/developer-manual" title="Plone developers manual">Plone developers manual</a>.</p>
+<p>This slideshow by Martin Aspeli introduces you to extending and customising Plone 3:</p>
+<div id="ch026_configuration.xhtml#__ss_148785">
+<a href="http://www.slideshare.net/wooda/martin-aspeli-extending-and-customising-plone-3" title="Martin Aspeli Extending And Customising Plone 3">Martin Aspeli Extending And Customising Plone 3</a>
+</div>
+<p> </p>
+<p><span id="ch027_change-logo-and-title.xhtml"></span></p>
+<h1>Change Logo and Site Title</h1>
+<p>To make any changes to the logo or site title you must be logged in as admin, or any user with the Manager role.<br />
+</p>
+<h2>Change Logo<br />
+</h2>
+<p>(from <a href="http://plone.org/documentation/kb/change-the-logo-in-plone-3" class="uri">http://plone.org/documentation/kb/change-the-logo-in-plone-3</a>)</p>
+<p>The logo image - logo.jpg - can be found in the skins folder of the Plone Default theme. The quickest way to replace this is simply to upload your own image and give it the same name:<br />
+</p>
+<ol>
+<li>Go to Site Setup area by clicking <strong>site setup</strong> in the top right of the page.<br />
+<strong><br />
+</strong><img src="static/Plumi-managetranslations1-en.jpg" /><strong><br />
+<br />
+</strong></li>
+<li>Go to the ZMI by clicking <strong>Zope Management Interface.<br />
+<br />
+</strong><img src="static/Plumi-changelogo1-en.jpg" /><strong><br />
+<br />
+</strong></li>
+<li>Click on <strong>portal_skins</strong> (scroll down the list to find it).<br />
+<br />
+<img src="static/Plumi-changelogo2-en.jpg" /><br />
+<br />
+</li>
+<li>Click on <strong>plumi_skin_custom_images.</strong><br />
+<br />
+<img src="static/Plumi-changelogo3-en.jpg" /><br />
+<br />
+</li>
+<li>Click <strong>logo.gif.<br />
+<br />
+</strong><img src="static/Plumi-changelogo4-en.jpg" /><strong><br />
+<br />
+</strong></li>
+<li>Click the <strong>customize</strong> button.<br />
+<br />
+<img src="static/Plumi-changelogo5-en.jpg" /><br />
+<br />
+</li>
+<li>Now replace the image by clicking <strong>Choose File</strong> button and choosing your own image from your file system. Click <strong>Upload.<br />
+<br />
+</strong><img src="static/Plumi-changelogo6-en.jpg" /><br />
+<strong><br />
+</strong></li>
+<li>Edit the <strong>Title</strong> field (this will ensure that the title attribute changes in the HTML). Click <strong>Save Changes</strong>.<br />
+<br />
+<img src="static/Plumi-changelogo7-en.jpg" /><strong><br />
+<br />
+</strong></li>
+<li>Visit your Plone site and refresh your browser to see the changes on your site. You should see a new logo in the top left-hand corner.<br />
+<br />
+<img src="static/Plumi-changelogo8-en.jpg" /><br />
+</li>
+</ol>
+<h2>Change Site Title</h2>
+<p>This will change the title of your website that appears in the web browser.<br />
+</p>
+<ol>
+<li>Choose <strong>site setup</strong> from top right-hand corner.<br />
+<br />
+<img src="static/Plumi-managetranslations1-en.jpg" /><br />
+<br />
+</li>
+<li>Choose <strong>Site</strong> from left-hand sidebar.<br />
+<br />
+<img src="static/Plumi-changetitle1-en.jpg" /><br />
+<br />
+</li>
+<li>Enter a new <strong>Site Title</strong>.<br />
+<br />
+<img src="static/Plumi-changetitle2-en.jpg" /><br />
+<br />
+</li>
+<li>Click <strong>Save</strong> button.<br />
+<br />
+<img src="static/Plumi-changetitle3-en.jpg" /><br />
+<br />
+</li>
+<li>Your web browser will now display your new site title.<br />
+<br />
+<img src="static/Plumi-changetitle4-en.jpg" /><br />
+</li>
+</ol>
+<p><span id="ch028_static-pages-and-portal-tabs.xhtml"></span></p>
+<h1>Static Pages and Portal Tabs<br />
+</h1>
+<p>Static pages (not containing dynamic content) can be create to correspond to &quot;portal tabs&quot; that show in the top menu section in Plumi, to appear on all pages of a Plumi website.</p>
+<p><img src="static-pages-and-portal-tabs/static/Plumi-staticpages1-en.jpg" /></p>
+<p>To make changes to the static pages and portal tabs you must firstly log in as a Manager.</p>
+<h3>Adding/Deleting/Modifying a Portal Tab</h3>
+<p>You can edit, add or delete a portal tab. We'll use the example of deleting a tab.</p>
+<ol>
+<li>Create a static page in the root directory of your Plumi site e.g. <a href="http://testing.plumi.org">http://testing.plumi.org/</a> by clicking the drop-down menu <strong>add new... <span class="Apple-style-span">and selecting </span>page.<img src="static-pages-and-portal-tabs/static/select-page.jpg" /></strong></li>
+<li><strong><span class="Apple-style-span">Give the page a title and description, following instructions for <a href="http://en.flossmanuals.net/bin/view/Plumi/EditContent" title="Edit Content chapter">editing content in this chapter</a> making sure you publish the page. In this example we've created a page &quot;test-tab&quot;</span></strong></li>
+<li><strong><span class="Apple-style-span"></span></strong>Click <strong>site setup.<br />
+<br />
+</strong><img src="static-pages-and-portal-tabs/static/Plumi-managetranslations1-en.jpg" /></li>
+<li>Choose <strong>Zope Management Interface.<br />
+<br />
+</strong><img src="static-pages-and-portal-tabs/static/Plumi-changelogo1-en.jpg" /><strong><br />
+<br />
+</strong></li>
+<li>Click <strong>portal_actions</strong> (scroll down the list to find it).<strong><br />
+<br />
+</strong><img src="static-pages-and-portal-tabs/static/Plumi-staticpages4-en.jpg" /><strong><br />
+<br />
+</strong></li>
+<li>Click <strong>portal_tabs.<br />
+<br />
+</strong><img src="static-pages-and-portal-tabs/static/Plumi-staticpages5-en.jpg" /><strong><br />
+<br />
+</strong></li>
+<li>Tick the box next to <strong>review_list</strong> and click <strong>Copy</strong> button.<img src="static-pages-and-portal-tabs/static/portal-tab-copy.jpg" /></li>
+<li>Click the <strong>Paste</strong> button. <img src="static-pages-and-portal-tabs/static/portal-tab-paste.jpg" /></li>
+<li>Click the <strong>copy_of_review_list</strong> link. <img src="static-pages-and-portal-tabs/static/edit-copy.jpg" /></li>
+<li>Edit the details of the portal tab - give it a new <strong>Title</strong>, change the end of the <strong>URL</strong> to the short name of the page you added e.g. &quot;test-tab&quot;, choose <strong>View</strong> from <strong>Permissions</strong> and click <strong>Save Changes</strong> button. <img src="static-pages-and-portal-tabs/static/editing-portal-tab.jpg" /></li>
+<li>Click the <strong>portal_tabs</strong> link. <img src="static-pages-and-portal-tabs/static/click-portal-tabs.jpg" /></li>
+<li>Choose the tick box next to <strong>copy_of_review_list</strong> and click <strong>Rename. <img src="static-pages-and-portal-tabs/static/rename-portal-tab.jpg" /></strong></li>
+<li>Give your tab a new <strong>name</strong> and click the <strong>OK</strong> button. <img src="static-pages-and-portal-tabs/static/rename-portal-tab-ok.jpg" /></li>
+<li>You can now view the new tab, and visit the page you created, by navigating back to your Plumi site and clicking the name e.g. Test in the top menu.<img src="static-pages-and-portal-tabs/static/test-tab-appears.jpg" /></li>
+<li>If you wish to delete a tab, go back to portal_tabs in the ZMI and select the checkbox for the tab you wish to delete and click <strong>delete.<br />
+<br />
+</strong><img src="static-pages-and-portal-tabs/static/Plumi-staticpages6-en.jpg" /> <strong></strong></li>
+</ol>
+<p> </p>
+<p> </p>
+<p> </p>
+<div>
+<h3>Changing the Text of a Static Page / Portal Tab <br />
+</h3>
+<p>If you want to retain a static page that appears in the portal tabs, such as About Us, and merely change what is written in that page, follow these instructions. If you want to add a different static page and have it appear in the portal tabs, or remove one, see the next section. <br />
+</p>
+<ol>
+<li>To change the text that appears in each of these tabs click on a tab such as About Us. <br />
+<br />
+<img src="static-pages-and-portal-tabs/static/Plumi-staticpages2-en.jpg" alt="staticpages2.jpg" width="530" height="44" /><br />
+<br />
+</li>
+<li>Click the edit tab and <br />
+<img src="static-pages-and-portal-tabs/static/Plumi-staticpages3-en.jpg" /></li>
+</ol>
+</div>
+<p><span id="ch029_configure-portlets.xhtml"></span></p>
+<h1>Configure Portlets</h1>
+<p>Portlets are the boxes of dynamic content that appear in the sidebars of a Plumi site (outlined in red boxes in the screenshot below). As a site Manager, you can change the order in which these appear, and add new portlets.<br />
+</p>
+<p><br />
+<img src="static/Plumi-frontpage_portlets-en.jpg" alt="frontpage_portlets.jpg" width="600" height="500" /></p>
+<p>This is just one of the ways you can change the layout and design of your Plumi site, please consult the <a href="http://en.flossmanuals.net/bin/view/Plumi/ChangeDesign" title="Change Design chapter">design chapter</a> for more info.<br />
+</p>
+<p><strong>Note</strong>: screenshots for this section of the manual are from the default Plone visual theme, which looks slightly different to the Plumi visual theme.<br />
+</p>
+<p>The Home Folder is where the site administrator can manage the portlets for most of the site. If you configure portlets in any other folder on the site, your changes will only have effect in that folder.<br />
+</p>
+<h2><strong>Adding a portlet</strong></h2>
+<ol>
+<li>Log in as Manager.</li>
+<li><em>Make sure that you are on the <strong><span>Home</span> page</strong> of your site.<br />
+</em></li>
+<li>Click the <strong>manage portlets</strong> link at the bottom of either the right or left column.<br />
+</li>
+</ol>
+<p><img src="http:/plone.org/documentation/kb/how-to-manage-portlets-in-plone-3/manageportlets1.png" alt="managing portlets 1" class="image-inline" />   </p>
+<p>Result: This will take you to a <span>Manage portlets</span> screen:</p>
+<p>  <img src="http:/plone.org/documentation/kb/how-to-manage-portlets-in-plone-3/manageportlets2.png" alt="managing portlets 2" class="image-inline" /> </p>
+<p><span><strong>Note:</strong> there are two</span><span> pull-down menus on either side of this page. Each pull-down lists all of the portlets that are in a Plone site.<br />
+<br />
+To add a portlet, select the name of the portlet from the drop down where you would like the portlet to display.<br />
+<br />
+<img src="http:/plone.org/documentation/kb/how-to-manage-portlets-in-plone-3/manageportlets3.png" alt="managing portlets 3" class="image-inline" /><br />
+<br />
+</span><span>If the portlet you have selected requires configuration, a screen will appear that allows you to fill in this information. </span></p>
+<p><span>For instance, if you select the </span><span>Search</span><span> portlet, you will then be prompted to select whether to enable LiveSearch:<br />
+<br />
+<img src="http:/plone.org/documentation/kb/how-to-manage-portlets-in-plone-3/manageportlets4.png" alt="managing portlets 4" class="image-inline" /><br />
+<br />
+</span></p>
+<div>
+<span> Once you click <strong>Save</strong>, Plone (Plumi) will add this portlet to your home page </span><span>and across the entire site.</span>
+</div>
+<h2>Rearranging and Removing Portlets</h2>
+<p><span>You can use the </span><strong><span>Portlets assigned here</span></strong><span> controls to rearrange the display order of your portlets or to remove a portlet from the display. Click the up or down arrow to reorder portlets. </span></p>
+<p><span>If you want to remove a portlet from the display, click the red </span><span>X</span><span>.<br />
+<br />
+<img src="http:/plone.org/documentation/kb/how-to-manage-portlets-in-plone-3/manageportlets5.png" alt="managing portlets 5" class="image-inline" /><br />
+<br />
+</span><span> <strong>Note:</strong> </span><span>any portlet managment that you do in the Home Folder affects your entire Plone site.</span><span></span><span> However, you can override these selections using the </span><span>Block/unblock portlets</span> controls within folders and on individual pages.</p>
+<p><strong>Credits:</strong> The information above is from: <a href="http://plone.org/documentation/kb/how-to-manage-portlets-in-plone-3%20" title="Managing Portlets in Plone 3">http://plone.org/documentation/kb/how-to-manage-portlets-in-plone-3</a>(visit this page for further info including how to fine-tune portlet display at the folder level, manage portlets on a group or user basis, or how to manage portlets using your Dashboard.  </p>
+<p><span id="ch030_change-categories.xhtml"></span></p>
+<h1>Change Categories<br />
+</h1>
+<p><strong><em>Portal vocabularies</em></strong> are used to define categories to describe content in Plumi, such as video topics, video genres and submission categories. A <strong><em>vocabulary term</em></strong> is set up for that category, and then a <strong><em>collection</em></strong> is created to reference items with that category. A collection is what was previously known in Plone as a smart folder, a folder that displays dynamic content based on a set of criteria.<br />
+</p>
+<p>There are two methods available for adding a new video topic (also known as video category), video genre or callout category (also known as submission category). You can either set these up BEFORE or AFTER installation of Plumi. Setting these up before installing is a little easier, but both methods are listed below.<br />
+</p>
+<h2>Before Installation</h2>
+<ol>
+<li>Checkout the Plumi buildout as per the instructions in the <a href="http://en.flossmanuals.net/bin/view/Plumi/Installation" title="Installation Documentation for Plumi Manual">installation chapter</a>. Before running the buildout, execute the following process (between steps 2 and 3).<br />
+</li>
+<li><p>Edit the vocabs.py file via the shell:<br />
+</p>
+<pre><code>$ vi plumi-buildout/src/plumi.app/plumi/app/vocabs.py </code></pre></li>
+<li><p>Here you can view the dictionary vocab_set.<br />
+</p>
+<pre><code>from zope.i18nmessageid import MessageFactory
+_ = MessageFactory(&quot;plumi&quot;)
+
+vocab_set = {}
+
+taxonomy_sub_folder={&#39;topic&#39;:&#39;video_categories&#39;,&#39;genre&#39;:&#39;video_genre&#39;,&#39;callouts&#39;:&#39;submission_categories&#39;,&#39;countries&#39;:&#39;&#39;}
+
+vocab_set[&#39;video_categories&#39;] = (
+         (&#39;poverty&#39;, _(u&#39;Poverty / Development&#39;)),
+         (&#39;indigenous&#39;, _(u&#39;Indigenous&#39;)),
+         (&#39;refugee&#39;, _(u&#39;Refugee / Migration&#39;)),
+         (&#39;health&#39;, _(u&#39;Health&#39;)),
+         (&#39;corporations&#39;, _(u&#39;Corporations / Privatisation&#39;)),
+         (&#39;globalisation&#39;, _(u&#39;Globalisation&#39;)),
+         (&#39;law&#39;, _(u&#39;Law / Justice&#39;)),
+         (&#39;work&#39;, _(u&#39;Work&#39;)),
+         (&#39;consumerism&#39;, _(u&#39;Consumerism&#39;)),
+         (&#39;war&#39;, _(u&#39;War / Peace&#39;)),
+         (&#39;human&#39;, _(u&#39;Human Rights&#39;)),
+         (&#39;disability&#39;, _(u&#39;Disability Rights&#39;)),
+         (&#39;gender&#39;, _(u&#39;Gender / Sexuality&#39;)),
+         (&#39;race&#39;, _(u&#39;Race&#39;)),
+         (&#39;religion&#39;, _(u&#39;Religion&#39;)),
+         (&#39;art&#39;, _(u&#39;Art / Culture&#39;)),
+         (&#39;internet&#39;, _(u&#39;Internet&#39;)),
+         (&#39;media&#39;, _(u&#39;Media&#39;)),
+         (&#39;activism&#39;, _(u&#39;Activism&#39;)),
+         (&#39;politics&#39;, _(u&#39;Politics&#39;)),
+         (&#39;education&#39;, _(u&#39;Education&#39;)),
+         (&#39;biodiversity&#39;, _(u&#39;Biodiversity&#39;)),
+         (&#39;climate&#39;, _(u&#39;Climate Change&#39;)),
+         (&#39;conservation&#39;, _(u&#39;Forests / Conservation&#39;)),
+         (&#39;nuclear&#39;, _(u&#39;Nuclear&#39;)),
+         (&#39;sustainablity&#39;, _(u&#39;Sustainability&#39;)),
+         (&#39;animal&#39;, _(u&#39;Animal Rights&#39;)),
+         (&#39;water&#39;, _(u&#39;Water&#39;)),
+         (&#39;biotech&#39;, _(u&#39;Biotech&#39;)),
+         (&#39;civillib&#39;,_(u&#39;Civil Liberties&#39;)),
+        )
+vocab_set[&#39;video_genre&#39;] = (
+         (&#39;documentary&#39;, _(u&#39;Documentary&#39;)),
+         (&#39;experimental&#39;, _(u&#39;Experimental&#39;)),
+         (&#39;fiction&#39;, _(u&#39;Fiction&#39;)),
+         (&#39;animation&#39;, _(u&#39;Animation&#39;)),
+         (&#39;music&#39;, _(u&#39;Music&#39;)),
+         (&#39;newsreport&#39;, _(u&#39;News Report&#39;)),
+        )
+vocab_set[&#39;submission_categories&#39;] = (
+         (&#39;festival&#39;, _(u&#39;Festival&#39;)),
+         (&#39;screening&#39;, _(u&#39;Screening&#39;)),
+         (&#39;dvd&#39;, _(u&#39;DVD&#39;)),
+         (&#39;production&#39;, _(u&#39;Production&#39;)),
+         (&#39;conference&#39;, _(u&#39;Conference&#39;)),
+         (&#39;workshop&#39;, _(u&#39;Workshop&#39;)),
+         (&#39;crew&#39;, _(u&#39;Crew&#39;)),
+         (&#39;competition&#39;, _(u&#39;Competition&#39;)),
+         (&#39;artprize&#39;, _(u&#39;Art Prize&#39;)),
+         (&#39;exhibition&#39;,_(u&#39;Exhibition&#39;)),
+         (&#39;other&#39;, _(u&#39;Other&#39;)),
+        )</code></pre></li>
+<li>Video categories correspond to video topics. Video genres correspond to video genres. Submission categories correspond to callout categories.<br />
+</li>
+<li>To delete a submission category, video category or video genre, just delete the line corresponding to that entry.<br />
+</li>
+<li><p>To add an entry just enter a new line e.g.<br />
+</p>
+<pre><code>         (&#39;newtopic&#39;, _(u&#39;New Topic&#39;)),</code></pre></li>
+<li>Save the file.<br />
+</li>
+<li>Continue the <a href="http://en.flossmanuals.net/bin/view/Plumi/Installation" title="Plumi Manual Installation Chapter">installation process</a> from Step 3. When you install Plumi, the categories/genres you have defined will be created.<br />
+</li>
+</ol>
+<h2>After Installation</h2>
+<p>To make changes to the portal vocabularies, you must log into your Plumi site using the Admin account, or any user with the Manager role. Modifying the portal vocabularies after you have already installed Plumi requires a little more work.</p>
+<p><strong>Note:</strong> configuration of vocabulary terms and collections happens in special places within the normal Plone (Plumi) user interface, <strong>not</strong> in the ZMI (Zope Management Interface) and <strong>not</strong> in site setup.</p>
+<p><strong>Also note:</strong> an easier way to do this quickly would be to edit (or copy and paste) an existing vocabulary term, and an existing collection. In particular, setting collections up with criteria can be confusing at first, so in some way editing (or copying and pasting) an existing collection could be simpler, and give you greater chance of success. Please read through the full process below to get an idea of how these are set up, and then choose to edit existing items if you prefer.<br />
+</p>
+<p>This is the <strong>broad outline</strong> of what you need to do:</p>
+<ol>
+<li>Go to /portal_vocabularies, select category/genre/submission and add simple vocabulary term.</li>
+<li>Go to:<br />
+  /taxonomy/genre for 'video genre'<br />
+  /taxonomy/topic for 'video topic'<br />
+  /taxonomy/callouts for 'submission category'</li>
+<li>Add a new collection, give the title of your desired vocabulary term, publish and set criteria.<br />
+</li>
+</ol>
+<p>This is the <strong>in-depth process</strong>, using the example of adding a new video category:</p>
+<ol>
+<li>Visit this page (replace example details in bold with your own):<br />
+http://<strong>www.mysite.com</strong>/portal_vocabularies/video_categories<br />
+<br />
+</li>
+<li>Click <strong>add simple vocabulary term.<br />
+<br />
+</strong><img src="static/Plumi-portalvocabularies1-en.jpg" /><strong><br />
+<br />
+</strong></li>
+<li>Give your vocabulary term a key and a Value(name) and click <strong>Save</strong>.<strong><br />
+<br />
+</strong><img src="static/Plumi-portalvocabularies2-en.jpg" alt="portalvocabularies2.jpg" width="396" height="256" /><strong><br />
+<br />
+</strong></li>
+<li>Visit this page(replace example details in bold with your own):<br />
+http://<strong>www.mysite.com</strong>/taxonomy/topic</li>
+<li>Select <strong>Collection</strong> from the <strong>add new...</strong> drop-down menu.<br />
+<br />
+<img src="static/Plumi-portalvocab3-en.jpg" /><br />
+<br />
+</li>
+<li>Give your Collection a title.<br />
+<br />
+<img src="static/Plumi-portalvocab4-en.jpg" /><br />
+<br />
+and click <strong>Save</strong>.<br />
+<br />
+<img src="static/Plumi-portalvocab5-en.jpg" /><br />
+<br />
+</li>
+<li>Select <strong>publish</strong> from the <strong>state:</strong> drop-down menu.<br />
+<br />
+<img src="static/Plumi-portalvocab6-en.jpg" alt="portalvocab6.jpg" width="577" height="196" /><br />
+<br />
+</li>
+<li>Click the <strong>criteria</strong> tab.<br />
+<br />
+<img src="static/Plumi-portalvocab7-en.jpg" /><br />
+<br />
+</li>
+<li>Insert the following criterias: <strong>Video categories</strong> with Criteria type of <strong>Text,</strong> <strong>Item Type</strong> with Criteria type of <strong>Select content types</strong>, and <strong>State</strong> with Criteria Type of <strong>List of values</strong>. E.g. to add Video categories with Criteria type of Text, select Video categories from the Field Name drop-down menu.<br />
+<br />
+<img src="static/Plumi-portalvocab8-en.jpg" /><br />
+<br />
+Select Text from the Criteria Type drop-down menu.<br />
+<br />
+<img src="static/Plumi-portalvocab9-en.jpg" alt="portalvocab9.jpg" width="356" height="295" /><br />
+<br />
+Click <strong>add criteria</strong> button.<br />
+<br />
+<img src="static/Plumi-portalvocab10-en.jpg" /><br />
+<br />
+Repeat process, adding <strong>Item Type</strong> with Criteria type of <strong>Select content types</strong>, and <strong>State</strong> with Criteria Type of <strong>List of values</strong>.<br />
+<br />
+</li>
+<li>Choose <strong>Plumi Video</strong> from <strong>Item Type</strong>, enter your new vocabulary term (MAKE SURE YOU USE THE <strong>KEY</strong> YOU ENTERED EARLIER, NOT THE VALUE/NAME) into <strong>Video Categories</strong>, and enter <strong>published</strong> in <strong>State</strong>. Click <strong>Save</strong> button.<br />
+<br />
+<img src="static/Plumi-portalvocab12-en.jpg" /><br />
+</li>
+</ol>
+<h3>Warning! - Don't Delete Term Already Associated With Item<br />
+</h3>
+<p>If you're going to delete a vocabulary term, make sure no video has been assigned with this term. For example, if you delete a video genre, and visit a video that is of this video genre, then you will have an error! First change the video genres of that video to remove references to the genre you wish to delete,  and then delete that video genre.</p>
+<p><span id="ch031_email-notifications.xhtml"></span></p>
+<h1>Configuring Email Notifications - Publishing Workflow</h1>
+<p>Each time content is submitted for publishing, published, retracted or sent back (see <a href="http://en.flossmanuals.net/bin/view/Plumi/ReviewList" title="Publishing Workflow chapter">publishing workflow chapter</a>) an email is sent to the content owner and/or Reviewers.</p>
+<p>You can change the text of these emails via this file:</p>
+<pre><code>$ vi src/plumi.content/plumi/content/adapters.py</code></pre>
+<p>Here you can navigate to, for example, the definition of the text sent to the content owner when their video is submitted for publishing (text is in bold), and make changes as necessary:</p>
+<pre><code>    def notifyOwnerVideoSubmitted(self):
+        &quot;&quot;&quot; Email the owner of the submitted video &quot;&quot;&quot;
+        logger = logging.getLogger(&#39;plumi.content.adapters&#39;)
+        #IPlumiVideo implementing objects only
+        if IPlumiVideo.providedBy(self.context):
+
+            obj_title=self.context.Title()
+            creator=self.context.Creator()
+            obj_url=self.context.absolute_url()
+            membr_tool = getToolByName(self.context,&#39;portal_membership&#39;)
+            member=membr_tool.getMemberById(creator)
+            mTo = member.getProperty(&#39;email&#39;,None)
+            if mTo is not None and mTo is not &#39;&#39;:
+                mMsg = &#39;Hi %s \nYour contribution has been submitted for review before publishing on the site\n&#39; % member.getProperty(&#39;fullname&#39;, creator)
+                mMsg += &#39;Title: %s\n\n&#39; % obj_title
+                mMsg += &#39;%s/view \n\n&#39; % obj_url
+                urltool = getToolByName(self.context, &#39;portal_url&#39;)
+                portal = urltool.getPortalObject()
+                mFrom = portal.getProperty(&#39;email_from_address&#39;)
+                mSubj = &#39;Your contribution : %s : was submitted for review.&#39; % obj_title
+                logger.info(&#39;notifyOwnerVideoSubmitted&#39;)
+                #send email to object owner
+                try:
+                    logger.info(&#39;notifyOwnerVideoSubmitted , im %s - sending email to %s from %s &#39; % (self.context, mTo, mFrom) )
+                    self.context.MailHost.send(mMsg, mTo, mFrom, mSubj)
+                except:
+                    logger.error(&#39;Didnt actually send email! Something amiss with SecureMailHost.&#39;)
+                    pass
+</code></pre>
+<p><span id="ch032_customise-design.xhtml"></span></p>
+<h1>Customise Design</h1>
+<p>Before changing the visual design (otherwise known as the &quot;theme&quot;, or &quot;skin&quot;) of your Plumi site it is helpful to understand how a Plone site is put together. <a href="http://plone.org/documentation/kb/where-is-what" title="Plone.org documentation">This tutorial</a> on plone.org breaks down the main display elements in a Plone site, and shows you how to control and customize the appearance of each element.</p>
+<p>The most basic way to change the layout of your site is to rearrange, add or delete portlets as described in the <a href="http://en.flossmanuals.net/bin/view/Plumi/ChangePortlets" title="Change Portlets chapter">previous chapter</a>.</p>
+<h2>Changing CSS</h2>
+<p>One of the easiest ways to change the look of your Plumi site is to change the CSS. A tutorial on how to change the CSS by using the Firefox developer tool Firebug, in conjunction with the Zope Management Interface (ZMI) can be found <a href="http://plone.org/documentation/kb/how-to-edit-plone-s-css" title="Documentation on Firebug and Plone CSS">here</a>.</p>
+<h2>Further Info<br />
+</h2>
+<p>More documentation on changing the visual design of your Plumi site can be found on plone.org <a href="http://plone.org/documentation/phc_topic_area?topic=Visual+Design" title="Visual Design Docs on plone.org">here</a>, including the following topics.</p>
+<p>Minor tweaks:</p>
+<ul>
+<li><a href="http://plone.org/documentation/kb/replacing-tabs-with-images" title="Replacing Portal Tabs with Images docs">Replacing Portal Tabs with images</a></li>
+<li><a href="http://plone.org/documentation/kb/formatting-portlets" title="Formatting Portlets">Formatting Portlets</a></li>
+<li><a href="http://plone.org/documentation/kb/setting-the-site-icon-favicon-for-your-plone-site" title="Setting the favicon for your plone site">Setting the site icon (favicon)</a></li>
+</ul>
+<p>A great reference guide to theming Plone:</p>
+<ul>
+<li><a href="http://plone.org/documentation/manual/theme-reference" title="Plone Theme Reference">Plone Theme Reference</a> </li>
+</ul>
+<p>Advanced theming topics:</p>
+<ul>
+<li><a href="http://www.themeswiki.org/Creating_a_Custom_theme_for_Plone" title="Creating a Custom Theme for Plone">Creating a Custom Theme for Plone</a></li>
+<li><a href="http://plone.org/documentation/kb/how-to-create-a-plone-3-theme-product-on-the-filesystem" title="Plone 3 Theme Product Docs">Creating a Plone 3.x Theme Product</a></li>
+<li><a href="http://plone.org/documentation/kb/how-to-install-a-3-x-theme-using-buildout" title="Plone 3 Theme Installation">Installing a Plone 3.x Theme Using Buildout</a> </li>
+</ul>
+<p>A new way of theming your Plumi site has evolved using technologies such as Diazo or Deliverance, which enable you to create a separate HTML/CSS theme for your site, and then map existing content out of Plumi/Plone into this theme using XSLT. Some more info on this can be found here:</p>
+<ul>
+<li><a href="http://plone.org/documentation/kb/advanced-xdv-theming" title="Advanced xdv theming"></a><a href="http://plone.org/documentation/kb/advanced-xdv-theming" title="Advanced xdv theming">Rules-based theming - advanced XDV theming with collective.xdv</a></li>
+<li><a href="http://collective.examples.diazo/" title="Diazo examples doc on Plone.org">collective.examples.diazo</a> - examples of using Diazo/XDV to theme your Plone site</li>
+<li><a href="http://valentinewebsystems.com/en/blog/2011/plone-4-themeing-aka-diazo-is-simple" class="uri">http://valentinewebsystems.com/en/blog/2011/plone-4-themeing-aka-diazo-is-simple</a></li>
+<li><a href="http://www.sixfeetup.com/blog/plone-theming-diazo-deliverance-themeeditor%20">http://www.sixfeetup.com/blog/plone-theming-diazo-deliverance-themeeditor </a></li>
+<li><a href="http://blog.aclark.net/2011/01/19/new-website-for-2011/" class="uri">http://blog.aclark.net/2011/01/19/new-website-for-2011/</a></li>
+</ul>
+<p><span id="ch033_transcoding.xhtml"></span></p>
+<h1>Transcoding</h1>
+<p>Transcoding of video files uploaded by users into Plumi is currently handled by <a href="http://pypi.python.org/pypi/collective.transcode.star" title="Transcode Star on PyPI">Transcode Star</a>, a Python package which creates a video transcoding framework and network service which has been integrated into Plone, which converts video files using<a href="http://www.ffmpeg.org/" title="ffmpeg docs">ffmpeg</a> and <a href="http://en.flossmanuals.net/ffmpeg2theora" title="ffmpeg2theora on FLOSS manuals">ffmpeg2theora</a>.</p>
+<p>Transcode Star, in addition to creating an <a href="http://en.wikipedia.org/wiki/H.264/MPEG-4_AVC" title="H264 on Wikipedia">H.264/AAC mp4</a> file (for use in the <a href="http://flowplayer.org/" title="Flowplayer Flash Video Player">Flowplayer</a> Flash video player, and/or for use by the new new <a href="http://diveintohtml5.org/video.html" title="HTML5 video tag">video tag</a> in <a href="http://diveintohtml5.org/" title="dive into HTML5">HTML5</a>) and an <a href="http://www.theora.org/" title="Theora">Ogg Theora/Vorbis</a> file (for use by the new video tag<a href="http://diveintohtml5.org/" title="dive into HTML5"></a>) also creates a jpeg thumbnail from uploaded video files, for use inside Plumi. As of Plumi 4.1, it also creates a low-resolution/bitrate version of the video file, which can be activated by users with low bandwidth connections. These default settings can be altered.</p>
+<p><strong>Note:</strong> use of the HTML5 video tag is not currently the default playback method in Plumi, as not all browsers are compatible with this tag, and a better way of defaulting to Flowplayer needs to be implemented. However it is available as a link &quot;Watch/Download Ogg Theora Version&quot; which will play back a theora file in a new browser window if HTML5/Ogg is present, or download the file if it is not. If you wish to use the video tag, please contact the <a href="http://blog.plumi.org/get-involved/" title="Plumi Blog">Plumi developer community</a> here if you need some help.</p>
+<p>In this chapter we look at configuring Transcode Star and changing the transcoding profiles (output video files). If you wish to run multiple Transcode Daemon processes on the same server please consult the documentation on changing the PID file at the bottom of this chapter.</p>
+<h2>Configure Transcode Star in the Control Panel<br />
+</h2>
+<p>You will need to configure Transcode Star with your site details. If you have changed the port numbers you need to change the Transcode Settings to reflect this also.</p>
+<p>Visit the Transocde Settings page in the plone control panel here (swap <a href="http://www.mysite.com/">www.mysite.com</a>  for your URL):<br />
+</p>
+<p><a href="http://anna.plumi.org/portal_properties/plumi_properties/manage_workspace" class="moz-txt-link-freetext">http://www.mysite.com/@@transcode-controlpanel</a></p>
+<h2>Transcoding Profiles</h2>
+<p>If you wish to change the output of ffmpeg (the transcoding engine), for example to output a different codec, or use different settings, you can set up the transcoding profiles.<br />
+</p>
+<p><strong><em>You must set up these profiles prior to running the buildout.</em></strong></p>
+<p>You can edit the profiles for transcoded video files by making changes to the buildout configuration file in the directory where you installed Plumi:</p>
+<pre><code>$ nano site.cfg</code></pre>
+<p>Go down to the transcode-profiles. You can see that by default an .mp4 H.264/AAC, a low resolution .mp4 H.264/AAC and an .ogg Theora/Vorbis file are created, as well as a jpeg thumbnail.<br />
+</p>
+<pre><code>transcode-profiles = [ { &#39;id&#39; : &#39;jpeg&#39;, &#39;cmd&#39; : &#39;scripts/getThumb %s %s&#39;, &#39;supported_mime_types&#39;: ${transcodedaemon:default_supported_mimetypes}, &#39;output_mime_type&#39;: &#39;image/jpeg&#39;, &#39;output_extension&#39;: &#39;jpg&#39; }, { &#39;id&#39; : &#39;mp4&#39;, &#39;cmd&#39; : &#39;scripts/transcodeMp4 %s %s&#39;, &#39;supported_mime_types&#39;: ${transcodedaemon:default_supported_mimetypes}, &#39;output_mime_type&#39;: &#39;video/mp4&#39;, &#39;output_extension&#39;: &#39;mp4&#39; }, { &#39;id&#39; : &#39;ogg&#39;, &#39;cmd&#39; : &#39;scripts/transcodeTheora %s %s&#39;, &#39;supported_mime_types&#39;: ${transcodedaemon:default_supported_mimetypes}, &#39;output_mime_type&#39;: &#39;video/ogg&#39;, &#39;output_extension&#39;: &#39;ogv&#39; }, { &#39;id&#39; : &#39;low&#39;, &#39;cmd&#39; : &#39;scripts/transcodelow \&quot;%s\&quot; \&quot;%s\&quot;&#39;, &#39;supported_mime_types&#39;: ${site:default_supported_mimetypes}, &#39;output_mime_type&#39;: &#39;video/mp4&#39;, &#39;output_extension&#39;: &#39;mp4&#39; } ]</code></pre>
+<p>For example, the ffmpeg command to create the .mp4 file can be found in scripts/transcodeMp4:</p>
+<pre><code>#!/bin/sh
+PATH=.:./bin:$PATH
+ffmpeg -y -i &quot;$1&quot; -s 640x480 -threads 0 -r 25 -ar 44100 -vcodec libx264 -crf 22 -vpre medium -acodec libfaac -ab 64k -f mp4 &quot;$2&quot;
+qt-faststart &quot;$2&quot; &quot;${2}.fst&quot;
+mv &quot;${2}.fst&quot; &quot;$2&quot;</code></pre>
+<p>To edit the settings of the .mp4 file, you change the parameters. For example, to change the video framesize or resolution, change e.g.<br />
+</p>
+<pre><code>640x480</code></pre>
+<p>to this:</p>
+<pre><code>320x240</code></pre>
+<p>Other parameters for the .mp4, .ogg and .jpg can be altered in a similar fashion. New profiles can also be added.</p>
+<p>It may be useful to reference the documentation for <a href="http://ffmpeg.org/documentation.html" title="ffmpeg docs">ffmpeg</a> and <a href="http://en.flossmanuals.net/FFmpeg2Theora/BasicEncoding" title="ffmpeg2theora on FLOSS manuals">ffmpeg2theora</a>.</p>
+<h2><strong>Transcoding and FTP</strong></h2>
+<p><strong></strong>Videos uploaded through ftp don't get picked up by the transcode daemon currently. A workaround to this issue is described in <a href="http://plumi.org/ticket/636">this ticket</a><br />
+</p>
+<p><span id="ch034_bittorrent-configuration.xhtml"></span></p>
+<h1><span class="Apple-style-span">BitTorrent Configuration</span></h1>
+<p><span class="Apple-style-span"></span></p>
+<p><span>Introduction</span></p>
+<p>Plumi provides BitTorrent support since Plumi 4.1, through <a href="http://pypi.python.org/pypi/collective.seeder/" title="collective.seeder on PyPI">collective.seeder</a>. For each uploaded video file, a torrent file is created and is available for download from the video view page. Since Plone/Plumi 4 uses blobstorage for storing files, a symbolic link is being created for each video file. <br />
+</p>
+<p><strong>Configuration</strong></p>
+<p>You can configure the announce urls for the torrents by visiting the Plone Control Panel and clicking on Seeder Settings.</p>
+<p>Visit the Seeder Settings page in the plone control panel here (swap www.mysite.com for your URL): <br />
+</p>
+<p><strong>http://www.mysite.com/@@seeder-controlpanel</strong></p>
+<p><a href="http://anna.plumi.org/portal_properties/plumi_properties/manage_workspace" class="moz-txt-link-freetext"></a>You will also need to specify the absolute paths to the directories where you would like to store your symbolic links and torrents.</p>
+<p><img src="static/seeder-panel.png" /> </p>
+<p><strong>Automatic Seeding and Seeder statistics</strong></p>
+<p>Automatic Seeding can be done by using any BitTorrent client that supports autoseeding all torrents from a specified folder (most known clients do). However in order to retrieve seeder statistics for each torrent you need to use the Deluge Torrent Client Daemon (deluged) and cosole (deluge-info). Information on how to configure deluge can be found on the <a href="http://dev.deluge-torrent.org/wiki/UserGuide" title="Deluge User Guide Wiki">Deluge User Guide</a>. You can also use deluge-web for a web interface to configure deluged through a graphical intereface.</p>
+<p>Once deluged is on the system path and torrents start gettting seeded, you should see the available seeders on the video view page. </p>
+<p><span id="ch035_development-map.xhtml"></span></p>
+<h1>Development Map</h1>
+<p>This page is designed to give developers an overview of the Plumi software. This is a work in progress, further documentation of the Plumi project will follow.<br />
+</p>
+<h2>Anatomy of Plumi Buildout<br />
+</h2>
+<p>This is what you will find inside your Plumi buildout, with a brief explanation of each file/directory. This may change between different Plumi releases, so it should be used as a guide only.</p>
+<ul>
+<li><strong>AUTHORS.txt</strong> - a list of authors of the Plumi buildout code</li>
+<li><strong>bin</strong> - contains executables<br />
+</li>
+<li><strong>bootstrap.py</strong> - Python script used to run the buildout</li>
+<li><strong>build.cfg, base.cfg</strong> - the main configuration files for the buildout</li>
+<li><strong>production.cfg, devel.cfg</strong> - production and development buildout files<br />
+</li>
+<li><strong>develop-eggs</strong> - contains egg-links to development eggs<strong><br />
+</strong></li>
+<li><strong>downloads</strong> - a directory to hold downloaded software <strong></strong> such as Squid and Zope tarballs<strong><br />
+</strong></li>
+<li><strong>eggs</strong> - contains downloaded eggs (distributed Python packages)<br />
+</li>
+<li><strong>fake-eggs -</strong> a way of locating pre-egg Zope packages, a fake-egg is like a develop egg that po<span class="highlightedSearchTerm">in</span>ts to the source code <span class="highlightedSearchTerm">in</span> parts/zope2/lib/python/* (or wherever your Zope software home is)</li>
+<li><strong>GPL-3.txt</strong> - full text of the GNU General Public License, Version 3 </li>
+<li><strong>LICENSE.txt</strong> - notes the licence under which Plumi is released (see full text in GPL-3.txt)</li>
+<li><strong>MIGRATING.txt</strong> - notes on migrating from previous versions of Plumi<strong><br />
+</strong></li>
+<li><strong>parts</strong> - contains files managed by the buildout<strong><br />
+</strong></li>
+<li><strong>products</strong> - can be used for old-style Zope/Plone products (pre-egg)<br />
+</li>
+<li><strong>README-PLUMI.txt</strong> - readme notes for Plumi</li>
+<li><strong>README.txt</strong> - readme notes for using any custom Plone buildout</li>
+<li><strong>site.cfg</strong> - site specific configuration information used in buildout to drive the process<br />
+</li>
+<li><strong>scripts</strong> - holds scripts utilised by the transcode daemon<strong><br />
+</strong></li>
+<li><strong>src</strong> - used for custom eggs</li>
+<li><strong>TODO.txt</strong> - the general to-do list for Plone-based buildouts</li>
+<li><strong>transcoded</strong> - contains video files transcoded by Transcode Daemon</li>
+<li><strong>twistd.log</strong> - a log for the Twisted event-driven <span class="searchword1">network</span>ing engine (part of Transcode Daemon)<br />
+</li>
+<li><strong>var</strong> - used for Data.fs and logs</li>
+<li><strong>versions</strong> - contains configuration files listing which versions of packages the buildout will use</li>
+</ul>
+<h2>Plumi Packages and Application Setup</h2>
+<p>The Plumi buildout consists of a few elements as add-ons to Zope and Plone, which are the Plumi application setup, Plumi skin, Plumi content types and third-party products or Python packages. This section needs filling out in more detail, but should give you an overview of what Plumi encompasses.<br />
+</p>
+<ul>
+<li>
+<p><strong>Zope and Plone</strong> - application server, database and content management system<br />
+</p>
+</li>
+<li>
+<p><strong>Squid/Apache</strong> - Squid caching and Apache configuration<br />
+</p>
+</li>
+<li>
+<p><strong>Plumi Application Setup</strong> (pulls in all of the packages required by Plumi, and installs default settings, objects and portal tabs)<br />
+</p>
+</li>
+<ul>
+<li>
+<p><strong>Plumi Skin</strong> (CSS and page templates)<br />
+</p>
+</li>
+<li>
+<p><strong>Plumi Content Types</strong> (additional to default news, video, events, pages etc. provided by Plone)<br />
+</p>
+</li>
+<ul>
+<li>Plumi Video</li>
+<li>Callouts<br />
+</li>
+</ul>
+<li>
+<p><strong>Plumi migration</strong> (migrating from Plone 2.x sites, deprecated since Plumi 4)</p>
+</li>
+<li>
+<p><strong>Transcode Daemon</strong> (network service, video playback in the browser and transcoding framework, integrating transcoding of uploaded video files into Plone)<br />
+</p>
+</li>
+<li>
+<p><strong>Third-Party Plone Products and packages,</strong> e.g.<br />
+</p>
+</li>
+<ul>
+<li>
+<p><strong>ATVocabularyManager -</strong> to manage topics and genres<strong><br />
+</strong></p>
+</li>
+<li>
+<p><strong>Configuration registry -</strong> A 'Mozilla about:config' style configuration registry</p>
+</li>
+<li>
+<p><strong>ContentLicensing</strong> - package to integrate open content licenses</p>
+</li>
+<li>
+<p><strong>LinguaPlone</strong> - Multi-lingual support for Plone</p>
+</li>
+<li>
+<p><strong>Marshall</strong></p>
+</li>
+<li>
+<p><strong>Plone Discussions</strong> - Commenting infrastructure for Plone</p>
+</li>
+<li>
+<p><strong>Plone JQuery Tools Integration</strong> - Profile for Plone's JQuery Tools resources.</p>
+</li>
+<li>
+<p><strong>unweb.shareit</strong> - Share content on social networking sites<br />
+</p>
+</li>
+<li>
+<p><strong>qi.Portlet.Tagcloud</strong> - A static tagcloud product with a topic navigation</p>
+</li>
+<li>
+<p><strong>contentratings</strong> - Extension profile for the &quot;contentratings&quot; Plone theme.</p>
+</li>
+<li>
+<p><strong>json_migrator</strong></p>
+</li>
+<dl>
+<dd>
+<dl>
+<dt>
+<li>
+<p><strong>plone.app.blob</strong></p>
+</li>
+</dt>
+<dd>
+<p>'File' replacement type - Extension profile to replace the standard 'File' content type with a compatible one based on ZODB 3.8 blobs</p>
+<li>
+<p><strong>plone.app.imaging</strong> - User-configurable image scaling  </p>
+</li>
+</dd>
+</dl>
+</dd>
+</dl>
+</ul>
+</ul>
+</ul>
+<p><span id="ch036_getting-help.xhtml"></span></p>
+<h1>Getting Help<br />
+</h1>
+<p>You can get in touch with other Plumi developers via the <a href="http://blog.plumi.org/" title="Plumi Blog">Plumi blog</a> which has information on <a href="http://blog.plumi.org/get-involved/" title="Get Involved on Plumi blog">email lists</a>, the Plumi <a href="http://blog.plumi.org/get-involved/" title="Get Involved on Plumi blog">IRC channel</a> and a <a href="http://blog.plumi.org/contact/" title="Contact Form on Plumi Blog">contact form</a> to send an email directly to the project maintainers. We can't always solve your problem, but should always be able to offer some advice or direct you to other people who may be able to help.</p>
+<p>It's always best to browse through the <a href="http://plumi.org/report/" title="Plumi Tracker">issue tracker</a> before asking a question, as this lists known issues and feature requests.<br />
+</p>
+<p>If your query relates to customisation beyond Plumi itself, you can also visit the Plone <a href="http://plone.org/support/chat">chat rooms</a> or <a href="http://plone.org/support/forums">support forums</a> if you have more specific questions. Or learn how to design, build, and deploy a website in Plone through one of the numerous <a href="http://plone.org/events/training">Plone training sessions</a> around the world.</p>
+<p><span id="ch038_credits.xhtml"></span></p>
+<h1>Credits</h1>
+<h2>License</h2>
+<p>All chapters copyright of the authors (see below). Unless otherwise stated all chapters in this manual licensed with <strong>GNU General Public License version 2</strong></p>
+<p>This documentation is free documentation; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.</p>
+<p>This documentation is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License along with this documentation; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.</p>
+<h2>Authors</h2>
+<p>This manual was originally written by <a href="http://anna.sagaponic.org" title="Anna Helme">Anna Helme</a>, edited by Grant McHerron and Andrew Lowenthal, and produced by <a href="http://www.engagemedia.org" title="EngageMedia">EngageMedia</a>, with the support of the <a href="http://www.soros.org/" title="Open Society Institute">Open Society Institute</a>. Please see individual chapter credits for updated author and contributor details.<br />
+</p>
+<p><em>Browse Videos</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Andrew L 2010<br />
+Grant McHerron 2010<br />
+Lusiana Rumintang 2010<br />
+</p>
+<hr />
+<p><em>Change Categories</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Change Logo and Title</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Andrew L 2010<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Configuration</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Andrew L 2010<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Configure Portlets</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Credits</em><br />
+© adam hyde 2006, 2007<br />
+Modifications:<br />
+Anna Helme 2010<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Customise Design</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Development Map</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Edit Content</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Andrew L 2010<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Email Notifications</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Andrew L 2010<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Embed Video On Another Website</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Andrew L 2010<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Featuring Content</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Andrew L 2010<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Getting Help</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Andrew L 2010<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Installation</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Andrew L 2010<br />
+Anne Gilles 2010<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Introduction</em><br />
+© adam hyde 2006, 2007<br />
+Modifications:<br />
+Andrew L 2010<br />
+Anna Helme 2010<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Key Features</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Andrew L 2010<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Manage Languages</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Andrew L 2010<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Profiles and Social Networking</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Publication States</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Andrew L 2010<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Publish Event</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Andrew L 2010<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Publish News</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Andrew L 2010<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Publish Video</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Andrew L 2010<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Publishing Workflow</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Andrew L 2010<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Sharing Content</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Static Pages and Portal Tabs</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Switch Languages</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Andrew L 2010<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Transcoding</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Andrew L 2010<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Translate Content</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Andrew L 2010<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Uploading Via FTP</em><br />
+© Victor Rajewski 2009<br />
+Modifications:<br />
+Andrew L 2010<br />
+Andrew Lowenthal 2009<br />
+Anna Helme 2010<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>User Guide</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Andrew L 2010<br />
+Grant McHerron 2010<br />
+Lusiana Rumintang 2010<br />
+</p>
+<hr />
+<p><em>User Management</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Andrew L 2010<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Video Podcasting</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Andrew L 2010<br />
+Grant McHerron 2010<br />
+</p>
+<hr />
+<p><em>Watch Videos</em><br />
+© Anna Helme 2010<br />
+Modifications:<br />
+Andrew L 2010<br />
+Grant McHerron 2010<br />
+Lusiana Rumintang 2010<br />
+</p>
+<hr />
+<p> </p>
+<p><a href="http://www.flossmanuals.net/"><img src="static/Floss-100-en.gif" alt="100.gif" width="110" height="54" /></a><br />
+<strong></strong></p>
+<p><sub>Free manuals for free software</sub></p>
+<p> </p>
+<p> </p>
+<h2>General Public License</h2>
+<p>Version 2, June 1991</p>
+<p>Copyright (C) 1989, 1991 Free Software Foundation, Inc.<br />
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA<br />
+<br />
+Everyone is permitted to copy and distribute verbatim copies<br />
+of this license document, but changing it is not allowed.<br />
+</p>
+<p><strong>Preamble</strong></p>
+<p>The licenses for most software are designed to take away your freedom to share and change it. By contrast, the GNU General Public License is intended to guarantee your freedom to share and change free software--to make sure the software is free for all its users. This General Public License applies to most of the Free Software Foundation's software and to any other program whose authors commit to using it. (Some other Free Software Foundation software is covered by the GNU Lesser General Public License instead.) You can apply it to your programs, too.</p>
+<p>When we speak of free software, we are referring to freedom, not price. Our General Public Licenses are designed to make sure that you have the freedom to distribute copies of free software (and charge for this service if you wish), that you receive source code or can get it if you want it, that you can change the software or use pieces of it in new free programs; and that you know you can do these things.</p>
+<p>To protect your rights, we need to make restrictions that forbid anyone to deny you these rights or to ask you to surrender the rights. These restrictions translate to certain responsibilities for you if you distribute copies of the software, or if you modify it.</p>
+<p>For example, if you distribute copies of such a program, whether gratis or for a fee, you must give the recipients all the rights that you have. You must make sure that they, too, receive or can get the source code. And you must show them these terms so they know their rights.</p>
+<p>We protect your rights with two steps: (1) copyright the software, and (2) offer you this license which gives you legal permission to copy, distribute and/or modify the software.</p>
+<p>Also, for each author's protection and ours, we want to make certain that everyone understands that there is no warranty for this free software. If the software is modified by someone else and passed on, we want its recipients to know that what they have is not the original, so that any problems introduced by others will not reflect on the original authors' reputations.</p>
+<p>Finally, any free program is threatened constantly by software patents. We wish to avoid the danger that redistributors of a free program will individually obtain patent licenses, in effect making the program proprietary. To prevent this, we have made it clear that any patent must be licensed for everyone's free use or not licensed at all.</p>
+<p>The precise terms and conditions for copying, distribution and modification follow.</p>
+<p><strong>TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION</strong></p>
+<p><strong>0.</strong> This License applies to any program or other work which contains a notice placed by the copyright holder saying it may be distributed under the terms of this General Public License. The &quot;Program&quot;, below, refers to any such program or work, and a &quot;work based on the Program&quot; means either the Program or any derivative work under copyright law: that is to say, a work containing the Program or a portion of it, either verbatim or with modifications and/or translated into another language. (Hereinafter, translation is included without limitation in the term &quot;modification&quot;.) Each licensee is addressed as &quot;you&quot;.</p>
+<p>Activities other than copying, distribution and modification are not covered by this License; they are outside its scope. The act of running the Program is not restricted, and the output from the Program is covered only if its contents constitute a work based on the Program (independent of having been made by running the Program). Whether that is true depends on what the Program does.</p>
+<p><strong>1.</strong> You may copy and distribute verbatim copies of the Program's source code as you receive it, in any medium, provided that you conspicuously and appropriately publish on each copy an appropriate copyright notice and disclaimer of warranty; keep intact all the notices that refer to this License and to the absence of any warranty; and give any other recipients of the Program a copy of this License along with the Program.</p>
+<p>You may charge a fee for the physical act of transferring a copy, and you may at your option offer warranty protection in exchange for a fee.</p>
+<p><strong>2.</strong> You may modify your copy or copies of the Program or any portion of it, thus forming a work based on the Program, and copy and distribute such modifications or work under the terms of Section 1 above, provided that you also meet all of these conditions:</p>
+<dl>
+<dt><br />
+</dt>
+<dd><strong>a)</strong> You must cause the modified files to carry prominent notices stating that you changed the files and the date of any change.
+</dd>
+<dt><br />
+</dt>
+<dd><strong>b)</strong> You must cause any work that you distribute or publish, that in whole or in part contains or is derived from the Program or any part thereof, to be licensed as a whole at no charge to all third parties under the terms of this License.
+</dd>
+<dt><br />
+</dt>
+<dd><strong>c)</strong> If the modified program normally reads commands interactively when run, you must cause it, when started running for such interactive use in the most ordinary way, to print or display an announcement including an appropriate copyright notice and a notice that there is no warranty (or else, saying that you provide a warranty) and that users may redistribute the program under these conditions, and telling the user how to view a copy of this License. (Exception: if the Program itself is interactive but does not normally print such an announcement, your work based on the Program is not required to print an announcement.)
+</dd>
+</dl>
+<p>These requirements apply to the modified work as a whole. If identifiable sections of that work are not derived from the Program, and can be reasonably considered independent and separate works in themselves, then this License, and its terms, do not apply to those sections when you distribute them as separate works. But when you distribute the same sections as part of a whole which is a work based on the Program, the distribution of the whole must be on the terms of this License, whose permissions for other licensees extend to the entire whole, and thus to each and every part regardless of who wrote it.</p>
+<p>Thus, it is not the intent of this section to claim rights or contest your rights to work written entirely by you; rather, the intent is to exercise the right to control the distribution of derivative or collective works based on the Program.</p>
+<p>In addition, mere aggregation of another work not based on the Program with the Program (or with a work based on the Program) on a volume of a storage or distribution medium does not bring the other work under the scope of this License.</p>
+<p><strong>3.</strong> You may copy and distribute the Program (or a work based on it, under Section 2) in object code or executable form under the terms of Sections 1 and 2 above provided that you also do one of the following:</p>
+<dl>
+<dt><br />
+</dt>
+<dd><strong>a)</strong> Accompany it with the complete corresponding machine-readable source code, which must be distributed under the terms of Sections 1 and 2 above on a medium customarily used for software interchange; or,
+</dd>
+<dt><br />
+</dt>
+<dd><strong>b)</strong> Accompany it with a written offer, valid for at least three years, to give any third party, for a charge no more than your cost of physically performing source distribution, a complete machine-readable copy of the corresponding source code, to be distributed under the terms of Sections 1 and 2 above on a medium customarily used for software interchange; or,
+</dd>
+<dt><br />
+</dt>
+<dd><strong>c)</strong> Accompany it with the information you received as to the offer to distribute corresponding source code. (This alternative is allowed only for noncommercial distribution and only if you received the program in object code or executable form with such an offer, in accord with Subsection b above.)
+</dd>
+</dl>
+<p>The source code for a work means the preferred form of the work for making modifications to it. For an executable work, complete source code means all the source code for all modules it contains, plus any associated interface definition files, plus the scripts used to control compilation and installation of the executable. However, as a special exception, the source code distributed need not include anything that is normally distributed (in either source or binary form) with the major components (compiler, kernel, and so on) of the operating system on which the executable runs, unless that component itself accompanies the executable.</p>
+<p>If distribution of executable or object code is made by offering access to copy from a designated place, then offering equivalent access to copy the source code from the same place counts as distribution of the source code, even though third parties are not compelled to copy the source along with the object code.</p>
+<p><strong>4.</strong> You may not copy, modify, sublicense, or distribute the Program except as expressly provided under this License. Any attempt otherwise to copy, modify, sublicense or distribute the Program is void, and will automatically terminate your rights under this License. However, parties who have received copies, or rights, from you under this License will not have their licenses terminated so long as such parties remain in full compliance.</p>
+<p><strong>5.</strong> You are not required to accept this License, since you have not signed it. However, nothing else grants you permission to modify or distribute the Program or its derivative works. These actions are prohibited by law if you do not accept this License. Therefore, by modifying or distributing the Program (or any work based on the Program), you indicate your acceptance of this License to do so, and all its terms and conditions for copying, distributing or modifying the Program or works based on it.</p>
+<p><strong>6.</strong> Each time you redistribute the Program (or any work based on the Program), the recipient automatically receives a license from the original licensor to copy, distribute or modify the Program subject to these terms and conditions. You may not impose any further restrictions on the recipients' exercise of the rights granted herein. You are not responsible for enforcing compliance by third parties to this License.</p>
+<p><strong>7.</strong> If, as a consequence of a court judgment or allegation of patent infringement or for any other reason (not limited to patent issues), conditions are imposed on you (whether by court order, agreement or otherwise) that contradict the conditions of this License, they do not excuse you from the conditions of this License. If you cannot distribute so as to satisfy simultaneously your obligations under this License and any other pertinent obligations, then as a consequence you may not distribute the Program at all. For example, if a patent license would not permit royalty-free redistribution of the Program by all those who receive copies directly or indirectly through you, then the only way you could satisfy both it and this License would be to refrain entirely from distribution of the Program.</p>
+<p>If any portion of this section is held invalid or unenforceable under any particular circumstance, the balance of the section is intended to apply and the section as a whole is intended to apply in other circumstances.</p>
+<p>It is not the purpose of this section to induce you to infringe any patents or other property right claims or to contest validity of any such claims; this section has the sole purpose of protecting the integrity of the free software distribution system, which is implemented by public license practices. Many people have made generous contributions to the wide range of software distributed through that system in reliance on consistent application of that system; it is up to the author/donor to decide if he or she is willing to distribute software through any other system and a licensee cannot impose that choice.</p>
+<p>This section is intended to make thoroughly clear what is believed to be a consequence of the rest of this License.</p>
+<p><strong>8.</strong> If the distribution and/or use of the Program is restricted in certain countries either by patents or by copyrighted interfaces, the original copyright holder who places the Program under this License may add an explicit geographical distribution limitation excluding those countries, so that distribution is permitted only in or among countries not thus excluded. In such case, this License incorporates the limitation as if written in the body of this License.</p>
+<p><strong>9.</strong> The Free Software Foundation may publish revised and/or new versions of the General Public License from time to time. Such new versions will be similar in spirit to the present version, but may differ in detail to address new problems or concerns.</p>
+<p>Each version is given a distinguishing version number. If the Program specifies a version number of this License which applies to it and &quot;any later version&quot;, you have the option of following the terms and conditions either of that version or of any later version published by the Free Software Foundation. If the Program does not specify a version number of this License, you may choose any version ever published by the Free Software Foundation.</p>
+<p><strong>10.</strong> If you wish to incorporate parts of the Program into other free programs whose distribution conditions are different, write to the author to ask for permission. For software which is copyrighted by the Free Software Foundation, write to the Free Software Foundation; we sometimes make exceptions for this. Our decision will be guided by the two goals of preserving the free status of all derivatives of our free software and of promoting the sharing and reuse of software generally.</p>
+<p><strong>NO WARRANTY</strong></p>
+<p><strong>11.</strong> BECAUSE THE PROGRAM IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM &quot;AS IS&quot; WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.</p>
+<p><strong>12.</strong> IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY AND/OR REDISTRIBUTE THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+<p><strong>END OF TERMS AND CONDITIONS</strong></p>
+</body>
+</html>

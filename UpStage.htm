@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="The Contributors" />
+  <title>UpStage v2.4.2 User Manual</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">UpStage v2.4.2 User Manual</h1>
+<p class="author">The Contributors</p>
+<p class="date">2013.04.26-10.23</p>
+</header>
+<p><span id="ch001_upstage-v242.xhtml"></span></p>
+<h1></h1>
+<p><br />
+<img src="http:/www.flossmanuals.net/_booki/upstage-user-manual/static/upstagelogo_large_screen_resolution.jpg" /></p>
+<p> </p>
+<h1 data-align="center">Version 2.4.2 User Manual <br />
+</h1>
+<p> </p>
+<h1 data-align="center">www.upstage.org.nz <br />
+</h1>
+<p><span> </span><strong>This manual was last updated on 25 January 2013</strong></p>
+<p><span id="ch002_introduction.xhtml"></span></p>
+<h1>Introduction</h1>
+<p>Welcome to the user manual for <strong>UpStage version 2.4.2</strong>; released in October 2012, this version introduces a new media management system. If you are working with an earlier version of UpStage, please refer to the <a href="http://en.flossmanuals.net/upstage-user-manual/" title="UpStage v2.1 User Manual">version 2.1 manual</a>.</p>
+<h2>Background </h2>
+<p><span lang="EN-NZ"><a href="http://www.upstage.org.nz/">UpStage</a> is a web-based venue for cyberformance<span id="ch002_introduction.xhtml#InsertNoteID_7_marker8" class="InsertNoteMarker"><sup><a href="introduction#InsertNoteID_7">1</a></sup></span> - the real-time compilation of digital media into live performance, by multiple remote players for an online audience (and sometimes an offline audience as well). People anywhere in the world can participate in live performance events by using standard browser software to access UpStage, without having to download and install additional software and without needing to know anything other than a web address.</span> <br />
+</p>
+<p><span lang="EN-NZ">The concept for UpStage was developed by </span><span lang="EN-NZ"><span class="Apple-style-span"><a href="http://www.avatarbodycollision.org/">Avatar Body <em>Collision</em></a></span>, a globally dispersed cyberformance troupe whose members have been experimenting with online theatrical performance since 1999, and together as Avatar Body <em>Collision</em></span><span lang="EN-NZ"> since 2002. UpStage was born from the desire to reach a wider audience and to make it easier for audiences and performers alike to participate in live performance via the internet.</span> <br />
+</p>
+<p><span lang="EN-NZ">The software combines the different elements of cyberformance - graphical avatars, web cams, audio, images, text chat (and who knows what else in the future) - into a single interface. The audience simply directs their browser to the web address at the appointed time, to watch and participate in the cyberformance.</span></p>
+<div data-align="left">
+The UpStage server application is open source and <a href="https://sourceforge.net/projects/upstage/">free to download</a>. It is available under dual licensing: a Creative Commons Attribution-NonCommercial-ShareAlike 2.5 License and GNU General Public Licence (GPL). 
+</div>
+<p><span lang="EN-NZ">The initial development of UpStage was funded in 2003 through the Smash Palace Collaboration Fund, a joint initiative of Creative New Zealand and the NZ Ministry of Science, Research and Technology. In 2006, the UpStage project received funding from the Community Partnerships Fund of the New Zealand government’s Digital Strategy to develop UpStage version 2. UpStage V2 was also supported by partners CityLink, MediaLab and Auckland University of Technology.</span> <br />
+</p>
+<p><span lang="EN-NZ">Currently, UpStage is supported by <a href="http://www.citylink.co.nz" title="CityLink">CityLink</a>, who provide free server hosting and traffic, and <a href="http://www.aut.ac.nz" title="AUT">Auckland University of Technology</a>, who provide teams of final-year computer programming students to work on the ongoing development of the software. The UpStage team and user community are very grateful for this vital support.</span> <br />
+</p>
+<p><span lang="EN-NZ"></span></p>
+<p><span lang="EN-NZ">This is the <strong>user manual</strong></span><span lang="EN-NZ">; it provides general instructions for using UpStage version 2.4.2 and is divided into 7 sections:</span></p>
+<ul>
+<li><span lang="EN-NZ">Introduction</span></li>
+<li><span lang="EN-NZ">Audience</span></li>
+<li><span lang="EN-NZ">Players</span></li>
+<li>Media Management <br />
+</li>
+<li><span lang="EN-NZ">Creating Media</span></li>
+<li>Webcams</li>
+<li><span lang="EN-NZ"></span>Appendices <br />
+</li>
+</ul>
+<p><span lang="EN-NZ">Open sessions are held regularly in UpStage, providing training in the basic use of UpStage and how to create cyberformance. For dates and times for the next open session, visit <a href="http://www.upstage.org.nz">www.upstage.org.nz</a> and <a href="https://lists.sourceforge.net/lists/listinfo/upstage-announce">join the UpStage Announce list</a>.</span> <br />
+</p>
+<p><span lang="EN-NZ">If you are looking for technical support including instructions for installing the UpStage server, please refer to the</span><span lang="EN-NZ"> <a href="https://sourceforge.net/apps/trac/upstage/">SourceForge trac</a> and the <a href="https://sourceforge.net/mailarchive/forum.php?forum_name=upstage-list">developers' mailing list</a>.</span> <br />
+</p>
+<p><span lang="EN-NZ">For further information and updates, please visit <a href="http://www.upstage.org.nz/">www.upstage.org.nz</a>.</span></p>
+<p> </p>
+<div data-align="center">
+<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img src="http:/i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" alt="Creative Commons License" /></a> <br />
+
+</div>
+<p><span href="http://purl.org/dc/dcmitype/Text" rel="dct:type">The UpStage User Manual</span> has been edited by <a href="http://www.creative-catalyst.com/">Helen Varley Jamieson</a> in collaboration with Vicki Smith and Miljana Peric, and is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>. <span lang="EN-NZ"><br />
+</span></p>
+<div>
+<br />
+
+<hr />
+</div>
+<ol>
+<li><span id="ch002_introduction.xhtml#InsertNoteID_7">Cyberformance uses internet technologies to bring remote performers together in live theatrical events; <a href="http://creative-catalyst.com/cyberformance/">www.cyberformance.org</a><span id="ch002_introduction.xhtml#InsertNoteID_7_LinkBacks"><sup><a href="introduction#InsertNoteID_7_marker8">^</a></sup></span></span></li>
+</ol>
+<p><span id="ch003_upstage-team.xhtml"></span></p>
+<h1>UpStage Team</h1>
+<p><span lang="EN-NZ">This project was initiated in 2003 by Avatar Body <em>Collision</em></span><span lang="EN-NZ">, who are Vicki Smith, Leena Saarinen, Karla Ptacek and Helen Varley Jamieson. The project continues to be managed by</span> Vicki Smith and<span lang="EN-NZ"> Helen Varley Jamieson. For more information about the Colliders, please visit <a href="http://www.avatarbodycollision.org">www.avatarbodycollision.org</a>.</span> </p>
+<p><span lang="EN-NZ">The UpStage application was originally written by Douglas Bagnall, who is a digital artist with a background in open source development of online projects. His artistic work includes the development of a film-making robot and a cloud-classifier; visit <a href="http://halo.gen.nz/" class="uri">http://halo.gen.nz/</a> for more information.</span></p>
+<p>At the end of 2010, former AUT student Paul Rohrlach joined the team as a developer and server administrator and in 2011 Francesco Buonaiuto became our volunteer documenter. Many other artists are involved in the annual UpStage Festival, and we have a growing team of open source developers who are supporting the maintenance and development of the software.<br />
+</p>
+<p><span lang="EN-NZ">Since December 2004, the UpStage server has been generously hosted by</span> <a href="http://www.citylink.co.nz/">Citylink</a>.</p>
+<p><span lang="EN-NZ">Thanks to Anne Philpott, we have an ongoing relationship with <a href="http://www.aut.ac.nz/">Auckland University of Technology</a> (New Zealand) which has seen teams of final year software development students working on UpStage as their major project since 2006. </span></p>
+<p><span lang="EN-NZ">The AUT UpStage teams<span id="ch003_upstage-team.xhtml#InsertNoteID_6_marker7" class="InsertNoteMarker"><sup><a href="upstage-team#InsertNoteID_6">1</a></sup></span>  to date are:</span></p>
+<ul>
+<li>2012-13: <span>Scott Riddell, Gavin Chan &amp; Craig Farrell</span></li>
+<li>2012: <span>Benjamin Qin and Daniel Han</span></li>
+<li>2011-12: <span>Nessa Baterina, Karena Goh, Corey Robb</span></li>
+<li>2011: <span>Heath Behrens and Vibhu Patel</span></li>
+<li>2010-11: Mohammad Al-Timimi, JR Malonzo and Henry Goh</li>
+<li>2010: Tom Choi, Paul Rohrlach &amp; Craig Farrell</li>
+<li>2009-10: Natasha Pullenster, Nicholas Robinson and Shaun Narayan</li>
+<li>2009: John Coleman and Vishaal Solanki</li>
+<li>2008-09: Shaun Nesbitt, Wendy Wen, Candy Yang</li>
+<li>2008: Aaron Barnett</li>
+<li>2007-08: Alan Crow and Tony Wong</li>
+<li>2007: Endre Bernhardt, Lauren Kilduff &amp; Phillip Quinlan</li>
+<li>2006-07: Beau Hardy, Francis Palma, Lucy Chu and Wise Wang.</li>
+</ul>
+<p><span lang="EN-NZ">Many other people have contributed to the development of UpStage through encouragement, advice, user testing, feedback, and simply believing that it was possible. The project team thanks every one of you.</span> <br />
+</p>
+<p><span lang="EN-NZ">If you are interested in being a part of the development of UpStage, you can join the developer list, <a href="https://lists.sourceforge.net/lists/listinfo/upstage-list" class="uri">https://lists.sourceforge.net/lists/listinfo/upstage-list</a>.</span><span lang="EN-NZ"></span> <br />
+</p>
+<p><span lang="EN-NZ">If you would like to be kept informed about events in UpStage, you can join the announcements list: <a href="https://lists.sourceforge.net/lists/listinfo/upstage-announce" class="uri">https://lists.sourceforge.net/lists/listinfo/upstage-announce</a>.</span><span lang="EN-NZ">  </span> </p>
+<ol>
+<li><span id="ch003_upstage-team.xhtml#InsertNoteID_6">Students in their final year of Bachelor of Computer and Information Science at Auckland University of Technology (New Zealand) have worked on UpStage as a &quot;real world&quot; project since 2006.<span id="ch003_upstage-team.xhtml#InsertNoteID_6_LinkBacks"><sup><a href="upstage-team#InsertNoteID_6_marker7">^</a></sup></span></span></li>
+</ol>
+<p><span id="ch004_technical-information.xhtml"></span></p>
+<h1>Technical Information</h1>
+<p>UpStage is a server-side application. This means that it runs on a web-server, and the users of UpStage (players and audience) access it via a web browser; you do NOT install UpStage on your own computer.</p>
+<p>If you have access to a web server and wish to install your own, customisable, version of UpStage, please refer to the installation manual and other support available on the <a href="https://sourceforge.net/projects/upstage/">SourceForge site</a>.</p>
+<h2>Programming technologies </h2>
+<p><span lang="EN-NZ">Upstage is written in Python, using the <a href="http://twistedmatrix.com/">Twisted framework</a> for event-driven asynchronous networking<a href="http://www.twistedmatrix.com/"></a>. It doesn't require Apache (or MYSQL or anything else). The client is written in pure Actionscript, and is compiled using <a href="http://www.mtasc.org/">Mtasc</a>, so there is no requirement for Macromedia software other than the Flash player plug-in on the client computer. </span></p>
+<p><span lang="EN-NZ">Words typed in by the players are converted into speech using the <a href="http://festvox.org/festival/">Fesitval speech library</a>, <a href="http://espeak.sourceforge.net/">eSpeak</a> and <a href="http://tcts.fpms.ac.be/synthesis/mbrola.html">MBROLA</a>, and streamed to the clients as MP3s.</span> <br />
+</p>
+<p><span lang="EN-NZ">The server runs on Debian Linux, but should easily convert to other platforms. Python and Twisted are cross-platform, but there is a line or two of shell scripts that tie in the speech synthesis.</span><span lang="EN-NZ"></span></p>
+<p><span lang="EN-NZ">The software has been worked on since June 2003 and contains some 8000 lines. Please visit our <a href="https://sourceforge.net/projects/upstage/" title="UpStage on SourceForge">SourceForge site</a> to find the latest stable version and installation documentation.</span></p>
+<h2><span id="ch004_technical-information.xhtml#_Toc110935643"><span lang="EN-NZ">Client hardware and software requirements</span></span></h2>
+<h3></h3>
+<p><span lang="EN-NZ">If your computer has a browser with the Flash player plug-in, then you already have everything you need to use UpStage. Obviously faster processors and higher RAM give improved performance, but UpStage has been designed to work on relatively low-spec client machines.</span></p>
+<p><span lang="EN-NZ">A broadband internet connection will give the best performance, but UpStage performs surprisingly well over dial-up. The main disadvantage when using dial-up is that the load time for each stage is longer. You may need to allow up to 15 minutes to load a stage, depending on how many graphics are on it. Once it’s loaded, the real-time interaction and overall performance of UpStage is not much slower on dial-up than on broadband.</span></p>
+<h3></h3>
+<p><span lang="EN-NZ">UpStage has been designed to run on a wide range of clients using the Macromedia Flash Player plug-in (we recommend the latest version). It should function properly in all standard browsers such as Firefox, Safari, Internet Explorer and Opera. </span></p>
+<p><span lang="EN-NZ"><strong>Note</strong>: due to an issue in Chrome for Mac, at the time of writing it is not possible to upload .swf files from a Mac computer using the Chrome browser. Until such time as Chrome fixes this issue, you will need to use an alternative browser such as Safari or Firefox to upload .swf files.</span></p>
+<p><span lang="EN-NZ">Linux users may need to install gsfonts and gsfonts-x11 (see the section <a href="http://en.flossmanuals.net/upstage-v242-user-manual/troubleshooting" title="Troubleshooting"><strong>Troubleshooting</strong></a> for information about this).</span></p>
+<h2><span id="ch004_technical-information.xhtml#_Toc110935646"><span lang="EN-NZ"><span></span></span><span lang="EN-NZ">Firewalls</span></span></h2>
+<p><span lang="EN-NZ">UpStage will function through most but not all firewalls, depending on how the firewall has been set up. </span></p>
+<p><span lang="EN-NZ">If you install your own UpStage server, it will ask you to specify which ports you want to use (the defaults are 8081 and 7230). You will need to ensure that your users have the correct ports open.</span></p>
+<p><span lang="EN-NZ">The <a href="http://upstage.org.nz:8084/">Open UpStage server</a> uses ports 8084 and 7230-7233, therefore these ports need to be open if you are trying to access this server through a firewall. These ports are open by default in most private internet connections, but some organisational networks will close any “unnecessary” ports.  </span></p>
+<p><span id="ch005_how-to-help-upstage.xhtml"></span></p>
+<h1>How to Help UpStage</h1>
+<p><span id="ch007_audience-view.xhtml"></span></p>
+<h1>Audience View</h1>
+<p>Audience members enter UpStage by following a web link from an email or web page; they do not need to download or install any additional software as long as they have a browser with the Flash player plug-in<span id="ch007_audience-view.xhtml#InsertNoteID_6_marker7" class="InsertNoteMarker"><sup><a href="audience-view#InsertNoteID_6">1</a></sup></span>. Audience members do not log in, and do not have access to the on-stage tools used by the players.</p>
+<p>A splash screen covers the stage while it loads, preventing the audience from interacting until the stage is fully loaded. As the stage loads drawing is shown, once loaded the audience will see any graphics that have already been placed on the stage, they will see and hear the performance, and they will be able to participate in the text chat by typing into the text input field. Audience chat is silent.</p>
+<p>The audience view of the stage is shown below: the text chat window is at the right, with an input field at the bottom and up-down scroll arrows on the right top and bottom corners. Above the text chat window, a counter shows how many players and audience members are on the stage. The rest of the screen is the &quot;stage&quot; where the visual action of the performance takes place. <br />
+</p>
+<div data-align="center">
+<img src="static/101010_foyer.jpg" alt="UpStage audience view" width="600" height="439" /><br />
+
+</div>
+<ol>
+<li><span id="ch007_audience-view.xhtml#InsertNoteID_6">The Flash player plugin comes preinstalled with most browsers; if you don't have it, it is free to download here: <a href="http://www.adobe.com/support/flashplayer/downloads.html">www.adobe.com/support/flashplayer/downloads.html</a>.<span id="ch007_audience-view.xhtml#InsertNoteID_6_LinkBacks"><sup><a href="audience-view#InsertNoteID_6_marker7">^</a></sup></span></span></li>
+</ol>
+<p><span id="ch008_audience-chat.xhtml"></span></p>
+<h1>Audience Chat</h1>
+<p>Audience members are also known as &quot;chatters&quot;, because they can interact with the performance by typing into the text input field at the bottom right of the screen. This text appears in the text chat window, amongst the players’ text. </p>
+<p>Audience text is grey, silent and anonymous, while players' text is slightly darker and larger than audience text, spoken and identified with the avatar’s name. Audience can identify themselves by adding their name at the start of their comments (in the future we hope it will be possible for audience members to have a name if they want).</p>
+<p><img src="static/Picture%2022.png" alt="UpStage screengrab" width="563" height="410" /> </p>
+<p>The screengrab above, from <em>West Side's Story</em> (101010 UpStage Festival) shows audience and player text in the chat. </p>
+<p>The audience chat has a life of its own. Often at the beginning of a performance, audience members will ask where other people are physically located and have conversations between each other. During the performance, the audience can respond to and commentate on the action of the performance, embellish the narrative or provide a counterpoint. Obviously every audience is different, making every performance significantly different - sometimes an audience may be very quiet but at other times very chatty.</p>
+<h2>Re-presenting the chat <br />
+</h2>
+<p>Audience text can also be incorporated into the performance, for example repeated or responded to by the players. Another effective re-presentation of audience chat into the performance is the projection of chat text and its subsequent capturing and re-presentation as a web cam image, as shown in the screengrab below from <em>Belonging</em> by Avatar Body <em>Collision</em> (2007).</p>
+<p> <img src="http:/en.flossmanuals.net/_booki/upstage-user-manual/static/belonging-11.png" alt="Belonging" width="539" height="349" /></p>
+<p><span id="ch009_audience-commands.xhtml"></span></p>
+<h1>Audience Commands</h1>
+<p>Audience members can use a number of commands in the text chat; these are instructions typed into the text chat input field after a <strong>/</strong>  </p>
+<p>For example:</p>
+<p><strong>/asize 8</strong> (or another number): this changes the font size of audience-input text to 8 (the default size is 5) on that computer. This is useful for people with visual impairment or if the screen is being projected for a group audience.</p>
+<p><strong>/psize 8</strong> (or another number): this changes the font size of player-input text, as above.</p>
+<p><strong>/info</strong>: gives some information about UpStage.</p>
+<p>Players have a lot more commands available to them - see the chapter on <a href="http://en.flossmanuals.net/upstage-v242-user-manual/commands/" title="Commands">Commands</a> for more information. </p>
+<p><span id="ch011_logging-in.xhtml"></span></p>
+<h1>Logging In</h1>
+<p>Players log in to UpStage to create and present performances. They do not need anything other than a browser with the Flash player plugin to do this.</p>
+<p>Note that audience members do NOT log in to UpStage; their view of the stage is different to that of logged in players.</p>
+<p>When attending others' performances, players are advised to log out first so that they experience the performance as it's intended to be viewed, without the distraction of the on-stage player tools. A stage access feature is in development, which will allow players to specify which other players may enter a stage as a logged-in player; if you are logged in but don't have player access to a stage, you will then automatically see the audience view, without having to log out. This feature will be implemented in v2.4.3 (ETA 2013).</p>
+<h2>Log in </h2>
+<p>From the home page, enter your username and password in the input boxes at top right. </p>
+<p><img src="static/login.jpg" width="380" height="140" /> </p>
+<p><img src="static/logged_in.jpg" width="291" height="134" /> </p>
+<h2>Player permissions</h2>
+<p>Different levels of permissions and access can be given to a player.<br />
+</p>
+<h3></h3>
+<h3>Default player </h3>
+<p>The default permissions enable a logged in player to access the on-stage player tools, so that they can collaborate in a performance. This level is also used for guest log-ins, for open walkthroughs and workshops where people are learning the basic operations of UpStage before starting to make their own show. This default level does not give access to the Workshop.</p>
+<h3>User</h3>
+<p>A player with &quot;user&quot; permissions can access the Workshop and upload media, edit their own media, create stages and edit their own stages; as well as access the on-stage player tools.</p>
+<h3>Administer </h3>
+<p>A player with admin access can administer their own and others media and stages, add/edit players, and edit the Workshop pages.</p>
+<h3>Unlimited upload</h3>
+<p>A player with unlimited upload permission can upload files larger than the 1MB file upload limit.</p>
+<p><span id="ch012_player-profile.xhtml"></span></p>
+<h1>Player Profile</h1>
+<p>All players with more than the default (guest, act-only) level of access can edit their own profile, change their password or add/update their email address. </p>
+<p>From the Workshop navigation, click on <strong>Edit Players</strong> then edit the information you want to update.</p>
+<p><img src="static/edit_profile.jpg" width="468" height="361" /> </p>
+<p><span id="ch013_player-view.xhtml"></span></p>
+<h1>Player View</h1>
+<p><span lang="EN-NZ">Players log in to UpStage to create and present performances. They do not need anything other than a browser with the Flash player plugin<span id="ch013_player-view.xhtml#InsertNoteID_6_marker7" class="InsertNoteMarker"><sup><a href="player-view#InsertNoteID_6">1</a></sup></span> to do this.</span></p>
+<p>Different levels of access and permissions can be given to players. The default level allows access only to the on-stage player tools, for collaborating in performances and learning how UpStage works (see the chapter <strong><a href="http://en.flossmanuals.net/upstage-v242-user-manual/logging-in/" title="Logging In">Logging In</a></strong> for more information about player permissions).</p>
+<p>The &quot;player view&quot; of the stage is different to the &quot;audience view&quot; (see the chapter <a href="http://en.flossmanuals.net/upstage-v242-user-manual/audience-view/" title="Audience View"><strong>Audience View</strong></a>). </p>
+<p><img src="static/stage.jpg" width="576" height="419" /> </p>
+<p><span lang="EN-NZ">The Wardrobe (top right hand corner) is a scrollable list of the avatars that have been assigned to this stage. The Mirror (the square beside the Wardrobe) shows the avatar you are currently holding, with its name in the rectangle under the mirror. </span></p>
+<p><span lang="EN-NZ">There are tools below the Mirror, and image galleries for backdrops and props along the bottom of the stage area. Players see a smaller text chat window than the audience.</span></p>
+<p><span lang="EN-NZ">The tools and palettes are explained in detail in the chapter <strong><a href="http://en.flossmanuals.net/upstage-v242-user-manual/on-stage-player-tools" title="On-stage Player Tools">On-stage Player Tools</a></strong>.</span></p>
+<p> </p>
+<ol>
+<li><span id="ch013_player-view.xhtml#InsertNoteID_6">The Flash player plugin comes preinstalled with most browsers; if you don't have it, it is free to download here: <a href="http://www.adobe.com/support/flashplayer/downloads.html">www.adobe.com/support/flashplayer/downloads.html</a>.<span id="ch013_player-view.xhtml#InsertNoteID_6_LinkBacks"><sup><a href="player-view#InsertNoteID_6_marker7">^</a></sup></span></span></li>
+</ol>
+<p><span id="ch014_on-stage-player-tools.xhtml"></span></p>
+<h1>On-stage Player Tools</h1>
+<p>Logged-in players have access to a range of on-stage tools, not visible to the audience, which enable the real-time manipulation of preloaded media and live elements on the stage. <br />
+</p>
+<h2><span id="ch014_on-stage-player-tools.xhtml#_Toc110935619"><span lang="EN-NZ"><span></span></span><span lang="EN-NZ">Holding and Moving an Avatar</span></span></h2>
+<p>The avatars assigned to a stage appear as small icons in the Wardrobe. To hold a particular avatar, click on its icon in the Wardrobe (use the arrows to scroll up and down the Wardrobe). The icon will disappear from your Wardrobe and appear in your Mirror, the square area to the left of the Wardrobe. This shows you which avatar you are currently holding. A greyed-out icon in your Wardrobe means that another player is holding that avatar.<span id="ch014_on-stage-player-tools.xhtml#_Toc110935619"><span lang="EN-NZ"></span></span></p>
+<p>Once you have an avatar in your Mirror, click on the stage area and your full-size avatar will appear there. Click in another place, and it will move there. <br />
+</p>
+<h3><span id="ch014_on-stage-player-tools.xhtml#_Toc110935619"><span lang="EN-NZ">Tools</span></span></h3>
+<p><span id="ch014_on-stage-player-tools.xhtml#_Toc110935619"><span lang="EN-NZ">The Player tools are the set of buttons below the mirror, and the green arrows in the mirror. These arrows allow you to move your avatar in front of and behind other avatars on the stage.</span></span></p>
+<h4><img src="http:/en.flossmanuals.net/_booki/upstage-user-manual/static/tools_with_audiobutton.jpg" width="294" height="215" /><span lang="EN-NZ">Fast/Slow</span></h4>
+<h4></h4>
+<p><span lang="EN-NZ">This button controls the avatar movement – fast causing the avatar to jump to where you click, and slow causing it to glide there. The button shows the action that the avatar will change to when next clicked – for example if your avatar is gliding, the button will show fast. Click on it to change to fast, and the button will become orange and say “slow”.</span></p>
+<h4><span lang="EN-NZ">Stop</span></h4>
+<p><span lang="EN-NZ">When your avatar is gliding (in slow mode), click on stop to stop it at any point in its trajectory.</span></p>
+<h4><span lang="EN-NZ">Name</span></h4>
+<p><span lang="EN-NZ">This button will hide or show your avatar’s name on the stage – this is particularly useful when working with invisible avatars. When you first hold an avatar, the default state is for the name to be showing, so click on “name” before you place the avatar on the stage if you don’t want the name to show.</span></p>
+<h4><span lang="EN-NZ">Draw</span></h4>
+<p><span lang="EN-NZ">This button changes the function from acting to drawing, displaying the drawing tools palette instead of the avatar tools. See the chapter <a href="http://en.flossmanuals.net/upstage-v242-user-manual/drawing/" title="Drawing"><strong>Drawing</strong></a> for more information about drawing.</span></p>
+<h4><span lang="EN-NZ">Drop</span></h4>
+<p><span lang="EN-NZ">The drop button will remove your avatar from the stage, and put it back in the Wardrobe so that you are no longer holding it. If you want to leave your avatar on the stage while you operate another avatar, simply select the new avatar from the Wardrobe without clicking drop.</span></p>
+<h4><span lang="EN-NZ">Clear</span></h4>
+<p><span lang="EN-NZ">Use clear to remove all unheld avatars and props from the stage.</span></p>
+<h4><span lang="EN-NZ">Audio</span></h4>
+<p><span lang="EN-NZ">This button displays the audio tools palette. See the chapter <a href="http://en.flossmanuals.net/upstage-v242-user-manual/audio/" title="Audio"><strong>Audio</strong></a> for more information about using audio.</span></p>
+<h4><span lang="EN-NZ">Player/Audience counter</span></h4>
+<p><span lang="EN-NZ">Below the control buttons, a counter keeps a live tally of the number of players (P) and audience (A) present on stage at any time. Typing /details will list the usernames of the players and the number of audience in the chat window.</span></p>
+<p><span lang="EN-NZ"></span></p>
+<h3><span id="ch014_on-stage-player-tools.xhtml#_Toc110935621"><span lang="EN-NZ"></span><span lang="EN-NZ">Operating Multi-frame or Animated Avatars</span></span><span lang="EN-NZ"></span></h3>
+<p>Avatars that have been created as .swf animations, or uploaded as multiframe avatars, allow you to change the avatar while it is on stage.</p>
+<p><span lang="EN-NZ"></span></p>
+<h4><span lang="EN-NZ">Animated Avatars</span></h4>
+<p><span lang="EN-NZ">Created as .swf files, these avatars will animate in the Workshop, Wardrobe and Mirror. When placed on stage, animated sequences will appear as a still image in the first frame of the animation. Type <strong>/a 0</strong> to start the looped animation, and to display a different still frame type <strong>/a 1</strong> (the default), <strong>/a 2</strong>, <strong>/a 3</strong> etc.</span></p>
+<p><span lang="EN-NZ"></span><span lang="EN-NZ">Flash Movieclips will animate on loop without typed-in commands. You need to create these as movies in Flash – see the chapter <strong><a href="http://en.flossmanuals.net/upstage-v242-user-manual/creating-graphics-for-upstage/" title="Creating Graphics for UpStage">Creating Graphics for UpStage</a></strong> for more information (but note that this does not attempt to be a comprehensive Flash tutorial - you will need to have some prior knowledge of Flash).</span></p>
+<h4><span lang="EN-NZ">Multi-frame Avatars</span></h4>
+<p><span lang="EN-NZ">These work in a similar way to the animated avatars, but are created by uploading a series of still images (in .png or .jpg format) rather than using Flash.</span></p>
+<h3><span id="ch014_on-stage-player-tools.xhtml#_Toc110935622"><span lang="EN-NZ"></span><span lang="EN-NZ">Changing Your Avatar’s Name</span></span><span lang="EN-NZ"></span></h3>
+<p><img src="http:/en.flossmanuals.net/_booki/upstage-user-manual/static/changename.jpg" /> </p>
+<p><span lang="EN-NZ">To change the name of the avatar you are holding, type <strong>/nick <em>newname</em></strong> in the text input field at the bottom of the chat window. You will see the name underneath your mirror change, and when the avatar is on stage the new name will appear below it (unless you have used the “name” button to turn off the name). The new name will also appear in the text chat window before the text your avatar speaks.</span></p>
+<p>When using invisible avatars, you can make words float around the stage by showing the name, and using <strong>/nick</strong> to change the visible word on screen. Only up to 9 characters will be visible on stage; if you have a longer name it will all be visible in the text chat.</p>
+<p><span lang="EN-NZ"></span></p>
+<h2><span id="ch014_on-stage-player-tools.xhtml#_Toc524237052"></span><span id="ch014_on-stage-player-tools.xhtml#_Toc110935624"><span lang="EN-NZ"><span></span></span><span lang="EN-NZ">Holding and Placing Props</span></span><span lang="EN-NZ"></span></h2>
+<p><span lang="EN-NZ">The props assigned to the stage appear as small icons in the Props Gallery at the centre bottom of the screen.</span></p>
+<p><img src="http:/en.flossmanuals.net/_booki/upstage-user-manual/static/props_scroll.jpg" /> </p>
+<p><span lang="EN-NZ">When you roll your cursor over the icons, a name label appears, allowing you to distinguish between similar or very small props. If more than 8 props are assigned to a stage, arrows will appear at either end of the bar to allow you to scroll through the props, which are displayed alphabetically.</span></p>
+<p><span lang="EN-NZ">You must be holding an avatar and be on stage to hold a prop. Click on the prop icon in the Gallery, and it will appear at the top left of your avatar. Click again on the prop icon in the Gallery, and it will remove the prop from your avatar. If another player clicks on the same prop that you are holding, it will be transferred to their avatar.</span></p>
+<p>Props that have been created as .swf animations, or uploaded as multiframe props, do NOT allow you to change the frame of the prop while it is on stage (as is the case with avatars and backdrops). When placed on the stage, a prop which has been uploaded as an animated sequence will appear only as a looped animation; a prop uploaded as a single frame (as .swf, .jpg or .png) will appear only as a still image. </p>
+<p><span lang="EN-NZ"><strong></strong></span></p>
+<p><span lang="EN-NZ"><strong></strong></span></p>
+<h2><span id="ch014_on-stage-player-tools.xhtml#_Toc110935625"><span lang="EN-NZ"><span> </span></span><span lang="EN-NZ">Changing Backdrops</span></span><span lang="EN-NZ"></span></h2>
+<p><span lang="EN-NZ">The backdrops assigned to a particular stage appear as small icons in the Backdrops Gallery, at the bottom left of your screen.</span></p>
+<p><span lang="EN-NZ"></span><span lang="EN-NZ">Roll your cursor over the icons to display the name label so that you can accurately choose the backdrop you want. If more than 8 backdrops are assigned to a stage, arrows will appear at either end of the bar to allow you to scroll through the backdrops, which are displayed alphabetically.</span></p>
+<p><img src="http:/en.flossmanuals.net/_booki/upstage-user-manual/static/backdrops.jpg" /></p>
+<p><span lang="EN-NZ">Click once on the icon to place the backdrop onto the stage; click the icon a second time to remove it.</span></p>
+<p><span lang="EN-NZ"></span><span lang="EN-NZ">Multiframe backdrops can be used in the same way as normal backdrops; to change the backdrop's frame, type <strong>/b 1</strong>, <strong>/b 2</strong> etc in the text input field. Type <strong>/b 0</strong> to make the backdrop animate through its frame</span><span lang="EN-NZ"></span><span lang="EN-NZ">s.</span> </p>
+<p><span id="ch015_speech-and-text-chat.xhtml"></span></p>
+<h1>Speech and Text Chat</h1>
+<p><br />
+</p>
+<p>Using text2speech synthesis, avatars' text can be spoken aloud in a variety of ways.</p>
+<p>Note that at the moment, it is only possible to use characters from the Roman alphabet (including letters with accents such as é, ñ, ø, ü) but not other alphabets such as Cyrillic, Greek, etc. </p>
+<p><img src="http:/en.flossmanuals.net/_booki/upstage-user-manual/static/speech_helen.jpg" alt="Ive got something to say" width="265" height="352" /></p>
+<h2>Speaking </h2>
+<p><span lang="EN-NZ">To make your avatar speak, type into the text input field below the chat window (bottom right of your screen) and hit enter (if there isn’t a blinking cursor line there already, you may need to click the mouse there). </span></p>
+<p><span lang="EN-NZ">Your text will appear with your avatar’s name in the text chat window, as well as on the stage beside your avatar (unless you have not put your avatar onto the stage). It will be spoken aloud in the voice selected for that avatar (note that you cannot change an avatar's voice on stage, this must be done in the avatar edit screen from the Workshop).</span> <br />
+</p>
+<p><span lang="EN-NZ">The audience can also type into the text chat, but their text won't be spoken out loud and only appears in the text chat window, not on the stage. As the audience doesn’t log in, there are no names connected to the audience chat. If you aren’t holding an avatar, your text will appear as audience text.</span></p>
+<p><img src="http:/en.flossmanuals.net/_booki/upstage-user-manual/static/think_vicki.jpg" alt="I think therefore I am" width="265" height="352" /></p>
+<h2>Thinking </h2>
+<p><span lang="EN-NZ">You can <strong>make your avatar &quot;think&quot;</strong></span><span lang="EN-NZ"> by typing <strong>:</strong> (colon) before the text. Your text will appear in a thought bubble over the avatar, but won't be spoken aloud. It will appear in the text chat window in blue and with curly brackets around it (see image below).</span></p>
+<p><img src="http:/en.flossmanuals.net/_booki/upstage-user-manual/static/shouting_texchat.jpg" alt="this is how we shout" width="263" height="44" /></p>
+<p> </p>
+<p> </p>
+<p><span lang="EN-NZ">Note that the default font size in the text chat window is 5. You can increase or decrease the size of the font on individual computers using the commands /asize (audience text) and /psize (player text) followed by a number, e.g. &quot;/asize 8&quot; to make the audience text font size 8.</span></p>
+<h2><span lang="EN-NZ">Shouting</span></h2>
+<p><span lang="EN-NZ">To <strong>make your avatar &quot;shout&quot;</strong></span><span lang="EN-NZ">, type <strong>!</strong> (exclamation) before the text. Your text will appear in a red-outlined bubble over the avatar, and in the text chat window as red capitalised text. It will be spoken aloud and the avatar's voice is subtly modified upwards in pitch.</span></p>
+<p> <img src="http:/en.flossmanuals.net/_booki/upstage-user-manual/static/shouting_dan.jpg" alt="listen up everybody" width="184" height="353" /></p>
+<p><span lang="EN-NZ"> </span></p>
+<h2><span id="ch015_speech-and-text-chat.xhtml#_Toc110935627"><span lang="EN-NZ">Avatar Voices</span></span></h2>
+<p><span lang="EN-US">UpStage uses the <a href="http://festvox.org/festival/">Festival</a> Speech Synthesiser and <a href="http://tcts.fpms.ac.be/synthesis/mbrola.html">MBROLA</a> to generate text2speech audio for the avatars' voices.</span> <br />
+</p>
+<p><span lang="EN-US">When you upload a new avatar, you can select a voice for it from the dropdown menu in the upload screen. To change the voice of an avatar that has previously been uploaded, go to the edit screen for that avatar and select the new voice from the dropdown menu. In both situations, you can test the voices to decide which one you want </span>directly from that avatar's edit screen.</p>
+<p><span lang="EN-US">Once you have changed the voice, you will need to reset the stage(s) it is assigned to for the change to take effect.</span> <br />
+</p>
+<p><span lang="EN-US">Note that changing an avatar's voice will change it on ALL stages that the avatar is assigned to; therefore you should not change the voice of an avatar that is not yours, or that other people may be using on another stage.</span> <br />
+</p>
+<p><span lang="EN-US">See the appendix on <strong><a href="http://en.flossmanuals.net/upstage-v242-user-manual/text2speech-voices" title="Text2Speech Voices">Text2Speech Voices</a></strong> for more information about available voices, descriptions, and how to add more.</span></p>
+<h2><span id="ch015_speech-and-text-chat.xhtml#_Toc524237054"></span><span id="ch015_speech-and-text-chat.xhtml#_Toc110935628"><span lang="EN-NZ"><span></span></span><span lang="EN-NZ">Saving the log</span></span><span lang="EN-NZ"></span></h2>
+<p><span lang="EN-NZ">The text chat is automatically saved by the server, and can be viewed by adding &quot;/log&quot; to the end of the URL in the address bar of your browser (e.g. http://upstage.org.nz:8084/stages/walkthrough/log). You can then either select <strong>Save as</strong> from your browser’s file menu, or copy and paste the text into a text file.</span> <br />
+</p>
+<p><span lang="EN-NZ">To permanently delete all of the text from the chat log for a stage, go to the stage edit screen and click <strong>Clear stage</strong> at the bottom of that screen. Note that this will also remove any drawing, and clear any media left on stage (</span>NB: currently this clears everything).<br />
+</p>
+<h2><span id="ch015_speech-and-text-chat.xhtml#_Toc110935629"><span lang="EN-NZ"><span></span></span><span lang="EN-NZ">Whispering</span></span><span lang="EN-NZ"></span></h2>
+<p><span lang="EN-NZ">Players can &quot;whisper&quot; to other logged-in players; this lets you communicate with your fellow players without the audience hearing or seeing it. You can whisper to an individual player, a number of players, or to all logged in players present on the same stage as you. You can also whisper to players on other stages, but you must use their usernames, and there is currently no way to whisper to a player who is in the Workshop and has no stage open. Note that you can have multiple stages open at the same time in different browser tabs or windows, and you can have the Workshop open as well as a stage or stages.</span> <br />
+</p>
+<p><span lang="EN-NZ">Typing a whisper command incorrectly displays a &quot;how to&quot; message in your chat </span><span lang="EN-NZ">window.  If messages are not delivered to users (due to misspelling a username, or a user not currently being online), the whisper &quot;bounces&quot; and informs the sender what went wrong in the chat field.</span> </p>
+<p><span lang="EN-NZ">Commands:</span></p>
+<table>
+<tbody>
+<tr class="odd">
+<td> To whisper: <br />
+</td>
+<td> Type:</td>
+</tr>
+<tr class="even">
+<td> <span lang="EN-NZ">to a single player</span></td>
+<td> <span lang="EN-NZ">/wh username1=Message</span></td>
+</tr>
+<tr class="odd">
+<td> <span lang="EN-NZ">to multiple players</span></td>
+<td> <span lang="EN-NZ">/wh username1,username2,username3=Message</span></td>
+</tr>
+<tr class="even">
+<td> <span lang="EN-NZ">to all users on the current stage</span></td>
+<td> <span lang="EN-NZ">/wh *=Message</span></td>
+</tr>
+</tbody>
+</table>
+<p><span lang="EN-NZ">Note - <strong>/whisper</strong> works exactly the same as <strong>/wh</strong> but obviously it's easier to just type <strong>/wh</strong></span></p>
+<p> </p>
+<p><span id="ch016_drawing.xhtml"></span></p>
+<h1>Drawing</h1>
+<p><span lang="EN-NZ">Clicking on the <strong>draw</strong> button in the tool palette reveals a different set of tools – the <strong>drawing palette</strong>. You can be still holding an avatar while you are drawing and can speak, but you won’t be able to move your avatar on stage. Click the <strong>act</strong> button to return to the tool palette so that you can operate your avatar again.</span></p>
+<h2>Layers </h2>
+<p><img src="http:/en.flossmanuals.net/_booki/upstage-user-manual/static/drawing_tools.jpg" width="292" height="213" /><span lang="EN-NZ">Drawing allows you to draw directly onto the stage, in one of four layers; the layers correspond to the four boxes on the right hand side of the drawing palette. Click on the <strong>red pencil</strong> icon to select a layer to draw in. The black border shows which layer you have selected; a pale blue border indicates that another player is holding that layer. If you select a layer with a  blue border you will &quot;steal&quot; it from the other player. The top box will draw on the top layer, obscuring avatars. The next two layers will let you draw amongst the avatar layers, and the bottom layer draws behind the backdrop.</span> </p>
+<h2>Tools</h2>
+<p><span lang="EN-NZ">Click the <strong>eye icon</strong> to hide or show your drawing. Click <strong>clear</strong> to erase all the drawing from that layer. Note that it is currently not possible to erase only part of the drawing in a layer.</span> <br />
+</p>
+<p><span lang="EN-NZ">The <strong>slider in the layer box</strong> controls the transparency of what has already been drawn in that layer: move it to the left and the drawing in that layer will become more transparent; move it all the way to the left and it will vanish completely. This is useful for fading prepared drawing in and out.</span> <br />
+</p>
+<p><span lang="EN-NZ">The <strong>colour picker</strong> at the top has three sliders, letting you adjust the colour of what you’re about to draw. Move the sliders to change the hue, and the new colour appears in the square to the left of the sliders.</span> <br />
+</p>
+<p><span lang="EN-NZ">The slider immediately below the colour picker controls the <strong>transparency</strong> of what you are ABOUT to draw, that is you can draw in percentages of transparency on the same layer (use the slider in the layer box to change the transparency of something AFTER you have drawn it).</span></p>
+<p><img src="http:/en.flossmanuals.net/_booki/upstage-user-manual/static/drawing.jpg" alt="UpStage drawing" width="300" height="269" /><span lang="EN-NZ">The circle and slider below the transparency slider control the <strong>size of your brush</strong>. Move the slider to the right and the circle will increase in size, indicating how big it will appear on stage. Move it to the left to make it smaller. </span></p>
+<p><span lang="EN-NZ">Currently it is not possible to erase, other than to clear everything in a particular layer. If you are trying to draw a curved line and finding that it appears as sections of straight lines, you are moving your mouse faster than UpStage can keep up with; try drawing slower for smoother curves. </span></p>
+<p><span lang="EN-NZ">If you want to draw a completely straight line, hold the shift key down while you click at the beginning and the end of the line.<br />
+</span></p>
+<p><span id="ch017_audio.xhtml"></span></p>
+<h1>Audio</h1>
+<p>Prerecorded MP3 audio files can be uploaded and played in UpStage. See the chapter <strong><a href="http://en.flossmanuals.net/upstage-v242-user-manual/uploading-media" title="Uploading Media">Uploading Media</a></strong> for information on how to upload audio files.<br />
+</p>
+<h2>The audio palette </h2>
+<p><span lang="EN-NZ">Click on the yellow <strong>audio</strong> button in the tool palette to reveal the <strong>audio palette</strong>. Audio files assigned to the stage will appear alphabetically in a list on the right, with musical notes indicating music tracks and &quot;sfx&quot; indicating sound effects. Use the green arrows to scroll up and down if there are more than six tracks assigned to the stage.</span></p>
+<p><img src="http:/en.flossmanuals.net/_booki/upstage-user-manual/static/audio%20palette.jpg" alt="UpStage audio palette" width="350" height="250" /><span lang="EN-NZ">Click on a track and its file name will appear in one of the three slots to the left, where you can start, pause and stop individual tracks, set looping and adjust the volume with the slider.</span> </p>
+<p><span lang="EN-NZ">You can stop all tracks at the same time by clicking <strong>stop all</strong>.</span> <br />
+</p>
+<p><span lang="EN-NZ">Click on the blue <strong>act</strong> button to return to the avatar tool palette. (Your avatar can still speak and move when you have the audio palette open).</span></p>
+<h2>Known bug   <br />
+</h2>
+<p>There is a known bug with being unable to stop a looping track, if after you have set it playing and looping you fill up the other two tracks and then add a fourth. The fourth track will replace the first looping track, but it won't stop it. Clicking <strong>stop all</strong> will also not stop it. The only solution is to reload the stage. This bug has been lodged on SourceForge and we hope to fix it soon, but in the meantime the workaround is to be careful not to select a fourth track when the first one is still looping. </p>
+<p><span id="ch018_commands.xhtml"></span></p>
+<h1>/ Commands</h1>
+<p><span id="ch018_commands.xhtml#_Toc110935630"><span lang="EN-NZ"></span></span><span lang="EN-NZ"></span></p>
+<p><span lang="EN-NZ">There are a number of commands you can type into the text chat input field to do certain things. Typing a <strong>/</strong> at the beginning tells UpStage that what is following is a command, rather than text to be spoken.</span></p>
+<p><img src="static/details.jpg" width="334" height="157" /> </p>
+<p>Here is a list of the commands that can be used by players: </p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p><span lang="EN-NZ"><strong>/a 1</strong>, <strong>/a 2 </strong></span><span lang="EN-NZ">etc</span></p></td>
+<td><p><span lang="EN-NZ">displays a different frame of an animated or multiframe avatar</span></p></td>
+</tr>
+<tr class="even">
+<td><p><span lang="EN-NZ"><strong>/a 0</strong></span></p></td>
+<td><p><span lang="EN-NZ">animates a multi-frame or animated avatar</span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span lang="EN-NZ"><strong>/asize</strong></span><span lang="EN-NZ"></span></p></td>
+<td><p><span lang="EN-NZ"><strong>/asize</strong> followed by a number will adjust the size of the audience text in your chat window (note – this only affects your own screen; the text size will not adjust for the audience or other players); the default size is 5. Audience can also use this command to adjust the size of font in their browser</span></p></td>
+</tr>
+<tr class="even">
+<td><p><span lang="EN-NZ"><strong>/b 1</strong>, <strong>/b 2 </strong></span><span lang="EN-NZ"> etc</span></p></td>
+<td><p><span lang="EN-NZ">displays a different frame of a multi-frame backdrop</span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span lang="EN-NZ"><strong>/b 0</strong></span></p></td>
+<td><p><span lang="EN-NZ">animates a multi-frame backdrop</span></p></td>
+</tr>
+<tr class="even">
+<td><p><span lang="EN-NZ"><strong>/details</strong></span><span lang="EN-NZ"></span></p></td>
+<td><p><span lang="EN-NZ">lists the usernames of all players and the number of audience members who are present on that particular stage</span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span lang="EN-NZ"><strong>/help</strong></span></p></td>
+<td><p><span lang="EN-NZ">gives you a list of some of these commands</span></p></td>
+</tr>
+<tr class="even">
+<td><p><span lang="EN-NZ"><strong>/info</strong></span></p></td>
+<td><p><span lang="EN-NZ">shows information about UpStage including which version of the software you are using</span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span lang="EN-NZ"><strong>/nick</strong></span></p></td>
+<td><p><span lang="EN-NZ">allows you to change the name of the avatar you are holding – type <strong>/nick <em>newname</em></strong></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span lang="EN-NZ"><strong>/license</strong></span></p></td>
+<td><p><span lang="EN-NZ">provides information about the dual GPL and Creative Commons license</span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span lang="EN-NZ"><strong>/psize</strong></span></p></td>
+<td><p><span lang="EN-NZ"><strong>/psize</strong> followed by a number will adjust the size of the player text in your chat window  (note – this only affects your own screen, the text size will not adjust for the audience or other players); the default size is 5. Audience can also use this command to adjust the size of font in their browser</span></p></td>
+</tr>
+<tr class="even">
+<td><p><span lang="EN-NZ"><strong>/whisper</strong> or <strong>/wh</strong></span></p></td>
+<td><p><span lang="EN-NZ">allows you to communicate with other players without the audience being aware; the whisper command is explained in the chapter <strong><a href="http://en.flossmanuals.net/upstage-v242-user-manual/speech-and-text-chat" title="Speech and Text Chat">Speech and Text Chat</a></strong></span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span lang="EN-NZ"><strong>:</strong></span></p></td>
+<td><p><span lang="EN-NZ">typing <strong>:</strong> before your text will give you a silent thought bubble, rather than a speech bubble and spoken text. The text is blue in the chat window</span></p></td>
+</tr>
+<tr class="even">
+<td><p><span lang="EN-NZ"><strong>!</strong></span></p></td>
+<td><p><span lang="EN-NZ">typing <strong>!</strong> before your text will make your avatar shout. The speech bubble outline and the chat text is red</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p><span lang="EN-NZ"> </span></p>
+<p> </p>
+<p><span id="ch020_the-workshop-interface.xhtml"></span></p>
+<h1>The Workshop Interface</h1>
+<p>Once you have logged in to UpStage, you arrive at the Workshop, from where you can either proceed to a stage to rehearse or perform, or choose from a range of options that allow you to create and manage stages and players, and upload and manage the media (graphics and audio) that you will use in your performances. </p>
+<p><img src="static/workshop.jpg" /></p>
+<p>At the top left, the <strong>UpStage logo</strong> provides a link to the <a href="http://upstage.org.nz/" title="UpStage">UpStage web site</a>, where you can find information about the UpStage project, festivals, regular open sessions and other activities. </p>
+<p>To the right of the logo, <strong>HOME</strong> will take you to the foyer page for this UpStage server: this is the public entry point, where audience can find information about upcoming shows and click on links to enter stages. The content of the Home or Foyer page can be edited by players with admin permissions.</p>
+<p><strong>WORKSHOP</strong> is the page you are on, and <strong>STAGES</strong> gives a list of all the stages on this server.</p>
+<p>In the top right-hand corner, you can <strong>log out</strong>, and you can also see how many players and audience are currently on this server.</p>
+<h2>Workshop Navigation</h2>
+<p>From the Workshop links between the green and black lines, you can do the following:</p>
+<ul>
+<li><strong>Create/Edit Stage</strong>: create a new stage, or edit an existing one</li>
+<li><strong>Upload media</strong>: upload graphics and audio files, and in the same process assign them to stages and select voices for avatars</li>
+<li><strong>Edit/View Media</strong>: browse and view media (filtered by who has uploaded it, type of media, or stage it is assigned to); edit your own media (including changing avatar voices); and assign or unassign media to and from the stages.</li>
+</ul>
+<div>
+<p>How to do all of these things is explained in more detail in the following chapters.</p>
+<h2>Messages for UpStage users</h2>
+<p>The text area below the navigation is an editable area (by users with admin permissions) that can be used to provide information for players on this server - for example if maintenance is scheduled at a particular time, or to remind people about upcoming events and deadlines.</p>
+<p>At the very bottom of the screen is the version of UpStage and the date it was last updated. </p>
+</div>
+<p><span id="ch021_creating-and-editing-players.xhtml"></span></p>
+<h1>Creating and Editing Players</h1>
+<p>All players can edit their own information; if you have admin permissions you can edit your own and others information, and create new players. </p>
+<p><img src="static/edit_players.jpg" /> </p>
+<p>From the Workshop navigation, click <strong>Edit Players.</strong></p>
+<p><strong></strong>All players can update their email address or change their password.</p>
+<p><img src="static/player_details.jpg" width="533" height="426" /> </p>
+<p>If you have administrative permissions, you will also have the ability to create new players, edit the details of existing players, and delete players. You will find these <strong>Administration Links</strong> below the save buttons at the end of your details. </p>
+<p><img src="static/player_admin_links.png" width="512" height="280" /> </p>
+<h2>Adding a player </h2>
+<p>To add a new player: </p>
+<ol>
+<li>Click <strong>Create New Player</strong> and a dialogue box will pop up. </li>
+<li>Enter a username and password for the new player (if you use a generic or easy password, you should advise them to change their password when they first log in). </li>
+<li>Enter their email address (if you don't have it, this can be added at a later date by you or the player). </li>
+<li>Select the permissions (explained below) that you wish to give this player.</li>
+<li>Click <strong>Save Player</strong>. </li>
+</ol>
+<p><img src="static/add_player2.jpg" alt="Add player" width="363" height="349" /> </p>
+<h3>Player Permissions</h3>
+<p>Different permissions can be given to players, according to what you want them to be able to do and access on your UpStage server. The default permissions allow access to the on-stage tools, but no access to the Workshop to upload/edit media, or create/edit stages. Tick the checkboxes to give a player extra permissions:</p>
+<ul>
+<li><strong>WUser:</strong> upload/edit own media and create/edit own stages</li>
+<li><strong>Administer:</strong> administer own and others media and stages, add/edit players, and edit Workshop pages</li>
+<li><strong>Unlimited:</strong> override the 1MB file upload limit for this player.</li>
+</ul>
+<div>
+<h2>Editing Players</h2>
+<p>From time to time, you may need to edit the details of a player other than yourself - for example if someone's email address has changed but they haven't updated it themselves, or if you wish to give someone extra permissions such as an unlimited upload limit. The most common example is when a player has forgotten their password - an admin player can create a new password for them so that they can log back in.</p>
+<p>The <strong>Edit Existing Player Details</strong> link at the bottom of an administrator's <strong>Edit Players</strong> screen will give a list of all players, and clicking on a player will open a pop-up window as shown below.</p>
+<p><img src="static/edit_players2.jpg" width="574" height="438" /> </p>
+<p>Make the changes that you want to make for the player, then scroll down to click <strong>Update Player</strong>; this is also where you can delete a player, by clicking on the <strong>Delete Player</strong> button at the end of this pop-up window. </p>
+<p><img src="static/edit_players3.png" width="571" height="430" /> </p>
+</div>
+<p><span id="ch022_creating-and-editing-stages.xhtml"></span></p>
+<h1>Creating and Editing Stages</h1>
+<p><strong>Stages</strong> are web pages on which UpStage performances take place. An UpStage server can have any number of stages, and media uploaded to the server can be assigned to multiple stages.</p>
+<p>A player can be &quot;in&quot; more than one stage at a time, simply by having different stages open in different browser tabs.  </p>
+<p>Audiences enter a stage for a performance by clicking on the stage link - from the foyer page of your UpStage server, from another web site, or from an email. In a similar manner, an audience member could attend concurrent shows on different stages by using tabs or windows.<br />
+</p>
+<p><img src="static/createedit_stage.jpg" />  </p>
+<h2>Create a new stage </h2>
+<p>To create a new stage,  click <strong>Create/Edit Stage</strong> in the Workshop menu, and then with the dropdown menu showing <strong>New Stage</strong>, click <strong>Select</strong>.</p>
+<p><img src="static/newstage.png" width="343" height="152" /> </p>
+<p>A dialogue box will open over the page. Enter a name for your stage and the URL - this can be the same as the name, but it can't have any spaces in it.</p>
+<p><img src="static/newstage2.png" /> </p>
+<p>Click <strong>Create Stage</strong> and, voila! your stage has been created. You will find yourself at the edit screen for your new stage. </p>
+<h2>Editing a stage </h2>
+<p>You will arrive at the edit screen when you create a new stage following the steps above. If you wish to edit an existing stage, in the Workshop menu click <strong>Create/Edit Stage</strong> and then select the stage you wish to edit from the dropdown menu.<br />
+<br />
+<img src="static/stage_edit.jpg" width="849" height="657" /> </p>
+<h3>Stage name</h3>
+<p>You can edit the name of the stage, and its URL, by changing the text in the appropriate boxes then scrolling to the bottom of the edit screen to click <strong>Save</strong>. </p>
+<p><img src="static/stage_edit2.jpg" width="382" height="132" /> </p>
+<h3>Splash message </h3>
+<p>The splash message appears on the screen while a stage is loading; you can use this text to give some information about your show. After editing the text, scroll to the bottom and click <strong>Save</strong>.</p>
+<p><img src="static/stage_edit4.jpg" width="572" height="168" /> </p>
+<p><strong>Debug message</strong> </p>
+<p>The option to print debug messages on the backdrop of your stage is primarily for developers, so that they can identify bugs by seeing what is happening as actions are performed on the stage. However, it can and has been used in performance, to add a layer of performing code to your show.</p>
+<h3>Background colour </h3>
+<p>Here you can select background colours for different areas of your stage: the chat window, the tool palette, the props and backdrops bars and the entire stage. Click on the radio button for the area whose colour you wish to change, then select from the colour palette. The chosen colour will be displayed in the box under the name of the area.</p>
+<p>Remember to scroll to the end of the screen and click <strong>Save</strong> in order to save your changes. </p>
+<p><img src="static/stage_edit3.jpg" width="348" height="393" /><br />
+</p>
+<p><strong>Player access</strong> </p>
+<p>This feature is still in development and will be implemented in version 2.4.3; it will allow you to select which players can access your stage as players, and which other players can edit your stage.</p>
+<p><strong>Save buttons</strong></p>
+<p>At the end of the screen are a number of different possibilities for saving your stage: </p>
+<p><strong><img src="http:/en.flossmanuals.net/_booki/upstage-v242-user-manual/static/stage_edit5.jpg" width="576" height="117" /></strong></p>
+<ul>
+<li><p><strong>Save stage</strong> will save the changes you have just made in the edit screen.</p>
+<p> </p></li>
+<li><strong>Clear screen changes</strong> will remove any changes you have entered in the screen, without saving them, so your stage will not be changed.</li>
+<li><strong>Delete stage</strong> will delete the stage completely (note that this does not delete any media that has been assigned to the stage).</li>
+<li><strong>Clear stage</strong> SHOULD delete any text in the chat window, remove any media that has been left on the stage (it will still be assigned to the stage, but not actually visible on the stage area) and remove any drawings that have been left in the drawing palette. However, currently this clears everything except text. This is a bug and we are working on it ...<br />
+</li>
+<li><strong>Save and reload stage</strong> will save the changes you have entered, and cause the stage to reload for any players and audience who are currently on it. This is useful during rehearsals when you are trying out different media and want people to see something you have just assigned to the stage, but should be avoided during performances - unless you deliberately want the audience to experience an unexpected stage reload. </li>
+</ul>
+<p><span id="ch023_uploading-media.xhtml"></span></p>
+<h1>Uploading Media</h1>
+<p>The following media formats can be uploaded to UpStage:</p>
+<ul>
+<li>audio: mp3 ONLY</li>
+<li>graphics: swf, png, jpg and gif; swf will give the best quality result, as all files are converted to swf on upload. swf and png will allow for transparency.</li>
+</ul>
+<div>
+<p>You must first create your media in a graphics or audio application, before uploading; please see the section on <strong><a href="http://en.flossmanuals.net/upstage-v242-user-manual/creating-graphics-for-upstage/">Creating Media</a></strong> for more information about this.</p>
+<p><strong>Note</strong>: due to an issue in Chrome for Mac, at the time of writing it is not possible to upload .swf files from a Mac computer using the Chrome browser. Until such time as Chrome fixes this issue, you will need to use an alternative browser such as Safari or Firefox to upload .swf files.</p>
+<h2>How to upload media </h2>
+<p><img src="static/upload_media.jpg" /> </p>
+</div>
+<p> Click on <strong>Upload Media</strong> in the Workshop navigation bar, and you will see the following screen:</p>
+<p><img src="static/media-upload.png" width="467" height="386" /> </p>
+<p>When you click on the radio button for the type of media you want to upload (Avatar, Prop, etc) the screen will expand to provide the upload form. </p>
+<p>We will look at each media type in detail.</p>
+<h2>Upload an avatar </h2>
+<p>When you select the <strong>Avatar radio button</strong>, the screen will expand to give you the form below: </p>
+<p><img src="static/upload_avatar_1.jpg" width="550" height="348" /> </p>
+<p>Enter a <strong>name</strong> and any <strong>tags</strong> you want to attach to this media item (tags can help you to find a media item later) then click <strong>Browse</strong> to navigate to where your media item is on your hard drive or online.</p>
+<h3>Avatar voice </h3>
+<p>Select a voice for your avatar from the <strong>dropdown menu of voices</strong>. To hear what each voice sounds like, click <strong>Test Voice</strong> (you can change the text that will be spoken in the input box). There is more information about the different voices in the appendix <strong><a href="http://en.flossmanuals.net/upstage-v242-user-manual/text2speech-voices" title="Text2speech Voices">Text2speech Voices</a></strong>.</p>
+<h3>Multi-frame avatars </h3>
+<p>One way to create animated or multi-frame avatars is to use an application such as Flash that can generate a multi-framed swf file. Another option is to create multi-frame avatars in the upload process. You will need to prepare each frame beforehand, making sure that each image is the same size, then upload them using the <strong>number of frames</strong> dropdown menu.</p>
+<ol>
+<li>Select the number of frames you require, which will create additional fields below <strong>Filename 1:</strong> for each frame. </li>
+<li>Click <strong>Browse</strong> to navigate to the file that you have created for each frame of the avatar.</li>
+</ol>
+<h3>Assign to a stage </h3>
+<p>You can assign your avatar to any of the existing stages as part of the upload process:</p>
+<ol>
+<li>Click on the name of the stage in the <strong>Unassigned</strong> list to select it.</li>
+<li>Click on the arrows to move it to the <strong>Assigned</strong> list.</li>
+</ol>
+<h3>Upload! </h3>
+<p>When you're ready, click <strong>Upload</strong> to upload your media. If you've forgotten to enter any required information - such as a name - a dialogue box will prompt you. You can also change information later by editing your media.  </p>
+<h2>Upload a prop </h2>
+<p>To upload a prop, click on the <strong>Prop</strong> <strong>radio button</strong> and you will see a similar form to that for uploading an avatar, minus the voice selection and test.</p>
+<p><img src="static/upload_prop.jpg" width="550" height="374" /> </p>
+<h2>Upload a backdrop </h2>
+<p>Backdrops also work in the same way as props; select the <strong>Backdrop radio button</strong> and the form is the same.</p>
+<h2>Upload an audio file </h2>
+<p>Select the <strong>Audio radio button</strong>, navigate to find your file, and select any stages that you wish to assign the audio to. The only difference this time is that you are also asked to select either <strong>Sound Effect</strong> or <strong>Music</strong> as the type of audio file. Audio files MUST be MP3.<br />
+</p>
+<p><img src="static/upload_audio.jpg" width="550" height="366" /> </p>
+<h2>Upload a video avatar </h2>
+<p>This last option allows you to send a stream of jpeg images from a live webcam to an avatar on the stage. Please see the separate chapter on <strong><a href="http://en.flossmanuals.net/upstage-v242-user-manual/webcams" title="Webcams">Webcams</a></strong> for information on how to do this.</p>
+<p><span id="ch024_editview-media.xhtml"></span></p>
+<h1>Browse Media</h1>
+<p>One of the major improvements in this version of UpStage is the greatly enhanced ability to filter and browse media that has been uploaded to the server. You can use filtering and tags in order to find what you want quickly and easily. </p>
+<p><img src="static/editview_media.jpg" alt="Edit/View Media" width="558" height="90" /><br />
+</p>
+<p>Clicking <strong>Edit/View Media</strong> in the Workshop navigation bar gives you an interface where you can browse all of the media that has been uploaded, by yourself and other players, as well as edit individual media items (see the chapter <strong><a href="http://en.flossmanuals.net/upstage-v242-user-manual/edit-media" title="Edit Media">Edit Media</a></strong> for information on editing).</p>
+<p><img src="static/editview_media2.jpg" /> </p>
+<h2>Filter your displayed media</h2>
+<p>Probably you are most interested in finding your own media, or media uploaded by your collaborators for a particular show. The filtering system allows you to do that easily.</p>
+<p>Under the <strong>Category</strong> dropdown menu, you can select:</p>
+<ul>
+<li><strong>User</strong> to display all the media uploaded by a particular player</li>
+<li><strong>Stage</strong> to display all the media items assigned to a particular stage</li>
+<li><strong>Type</strong> to display all the media of a particular type.</li>
+</ul>
+<div>
+<p>Once you have chosen which category you want to filter by, the <strong>Sub-category</strong> dropdown menu will then allow you to select from all the options within that category - i.e. all players who have uploaded media, all stages, or all media types.</p>
+<p>For example, you could set the filters to <strong>Category: Type</strong> and <strong>Sub-category: Backdrops</strong> to find all the backdrops that have been uploaded. </p>
+<h3>Add a second filter </h3>
+<p>But let's say that you only want to see all the backdrops that you have uploaded yourself. Click <strong>Add Filter</strong> to add a second level of filtering to your search. This time, select the <strong>Category: User</strong> and for the <strong>Sub-category</strong> your own player name. Only the backdrops that you have uploaded yourself will be shown.</p>
+<p>Another example would be to see all of the avatars on a particular stage:</p>
+<ol>
+<li>Set the Category to Stage.</li>
+<li>Set the Sub-category to the name of the particular stage.</li>
+<li>Click Add Filter.</li>
+<li>Set the Category to Type.</li>
+<li>Set the Sub-category to Avatar.</li>
+</ol>
+<p>And voila! the thumbnails displayed are only the avatars that have been assigned to that particular stage.</p>
+<h2>Search by tags </h2>
+<p>Another way to search for specific media items or groups of media items is to use <strong>tags</strong>. Tags can be added at the time of upload, or later by editing a media item (see the chapter <strong><a href="http://en.flossmanuals.net/upstage-v242-user-manual/edit-media" title="Edit Media">Edit Media</a></strong> for information on how to do this).</p>
+<p>For example, you may wish to be able to easily find all media that has been uploaded for a particular show, even if some are test items and have not been assigned to the stage. Filtering would allow you to find the items assigned to the stage, but if you have given them all a common tag, such as the name of the show, searching for this tag will allow you to find all of that media. This can be useful when you want to delete all of the unwanted test media, if you want to decide to use an item that you'd previously rejected, or if you are making different versions of the same show that require slightly different sets of media.</p>
+<p>Tags can also be used to:</p>
+<ul>
+<li>group media that is intended for workshops and tutorials, such as informative backdrops and example media items</li>
+<li>make media on a specific theme findable by other players</li>
+<li>help manage a large amount of media if you are a heavy UpStage user.</li>
+</ul>
+</div>
+<p><span id="ch025_edit-media.xhtml"></span></p>
+<h1>Edit Media</h1>
+<p>To edit media that has been previously uploaded, click <strong>Edit/View Media</strong> in the Workshop navigation bar.</p>
+<p><img src="static/editview_media.jpg" alt="Edit/View Media" width="558" height="90" /> </p>
+<p>Use the filters or tag search (explained in the chapter <strong><a href="http://en.flossmanuals.net/upstage-v242-user-manual/editview-media" title="Browse Media">Browse Media</a></strong>) to find the media item(s) you want to edit, and click on the text below the icon of the item to open the Edit interface. </p>
+<p>For this example, the media type we are editing is an avatar, but most of the following information applies to all media types. </p>
+<p><img src="static/edit_avatar.jpg" width="550" height="320" /> </p>
+<p>Here you can:</p>
+<ul>
+<li>change the name (note that this will change it on all stages where the media item has been assigned)</li>
+<li>change the voice of an avatar: select from the dropdown menu, and click <strong>Test Voice</strong> to hear what it sounds like</li>
+<li>assign the media item to stages, or unassign it: select the stage name and use the arrow buttons to move that name from one list to the other</li>
+<li>add tags: more than one tag can be added by separating them with a comma</li>
+<li>permanently remove an item from the server with the <strong>Delete Media</strong> button (if the item is assigned to stages, check the <strong>Delete even if in use</strong> box first).</li>
+</ul>
+<div>
+<p>Once you have made your changes, click <strong>Save Changes</strong>.</p>
+<h2>Display details </h2>
+<p>Click <strong>Display Details</strong> to see more information about this media item, including:</p>
+<ul>
+<li>the upload date and time (useful if you have uploaded multiple versions of a media item and want to delete all but the last, best, one; or if you are having a purge of your media and want to delete everything before a certain date)</li>
+<li>the filename and url of the media item (useful if for some reason you need to download the item from the server). </li>
+</ul>
+<p> <img src="static/display_details.jpg" width="425" height="430" /></p>
+<p>Click <strong>Edit Media</strong> to go back to the Edit interface for that media item. </p>
+<h2>Edit other media types </h2>
+<p>The edit interface is the same for all types of media, apart from one difference: avatars have the voice dropdown menu and <strong>Test Voice</strong> button, and audio items have a <strong>Test Audio</strong> button, which allows you to listen to the file.</p>
+</div>
+<p><span id="ch027_creating-graphics-for-upstage.xhtml"></span></p>
+<h1>Creating Graphics for UpStage</h1>
+<p><span id="ch027_creating-graphics-for-upstage.xhtml#_Toc110935634"><span lang="EN-NZ"><span></span></span><span lang="EN-NZ"></span></span><span lang="EN-NZ"></span></p>
+<p><span lang="EN-NZ">Avatars, backdrops and props for UpStage can be created using standard graphics applications such as Gimp, </span><span lang="EN-NZ">Photoshop, Fireworks,</span><span lang="EN-NZ"> Flash etc. However, before you go ahead and upload something you prepared earlier, please read this chapter as there are many important points to ensure that your graphics appear the way you want them once uploaded to UpStage.</span></p>
+<h2>Format and size </h2>
+<p><span lang="EN-NZ">The recommended formats for your original graphics files are <strong>.swf or .png</strong>. </span>Vector-based images will appear much cleaner than pixel images (such as .gif and .jpeg), as they resize in UpStage to match the dimensions of individual screens and browsers. You can use .gif and .jpg but your images will lose quality (note – as the exception to the rule, backdrops are fine as jpegs). </p>
+<p><span lang="EN-NZ">Avatars and props will appear on stage approximately two to three times larger than the original file. This is because the stage is not in a fixed-size window: it allows for different screen resolutions and sizes, and different sizes of browser window. The aspect ratio is 7:3 (see the backdrop diagram below).</span></p>
+<p><span lang="EN-NZ">The recommended size for the original file for a &quot;standard&quot; size avatar is approximately 100x100 pixels – obviously you will want bigger and smaller ones, but this gives you somewhere to start. In order to test the size of your avatar, you must upload it, assign it to a stage, then look at it on that stage (the same applies to props, and also for backdrops if you are working out what is going to be obscured by the chat window).</span></p>
+<p><span lang="EN-NZ">It can be a time-consuming process getting your graphics to the size you want, so it’s a good idea to make a couple of samples first and then base the rest of your graphics on those once you have got them the size you want. If you upload graphics that are not the right size, please remember to <strong>delete your unwanted files</strong>, to keep the server tidy.</span></p>
+<h2><span id="ch027_creating-graphics-for-upstage.xhtml#_Toc524237068"></span><span id="ch027_creating-graphics-for-upstage.xhtml#_Toc110935635"><span lang="EN-NZ"><span></span></span><span lang="EN-NZ">Creating .</span><span lang="EN-NZ">pngs</span></span><span lang="EN-NZ"></span></h2>
+<p><span lang="EN-NZ">The .png file format is good for avatars and props, as it allows for transparency (</span>unlike .gif or .jpg) and gives a good quality image. Most graphics applications will allow you to save your files as .png. In the <strong>File</strong> menu, choose <strong>Save As</strong> and look for the .png option.</p>
+<p><span lang="EN-NZ">Do NOT interlace the file when you save it.</span></p>
+<h2><span id="ch027_creating-graphics-for-upstage.xhtml#_Toc524237070"></span><span id="ch027_creating-graphics-for-upstage.xhtml#_Toc110935636"><span lang="EN-NZ"><span></span></span><span lang="EN-NZ">Creating .</span><span lang="EN-NZ">swfs</span></span><span lang="EN-NZ"></span></h2>
+<p><span lang="EN-NZ">Although UpStage itself is open source and we've done everything we can to make it cross-everything, everything is ultimately delivered to the browser with the help of the Flash Player plug-in; because of this, the most successful graphics format is .swf. </span></p>
+<p><span lang="EN-NZ">To create .swf files, you need the Flash application (note: open source applications that convert other formats to .swf are available - if you know of something that works well, please let us know!). <br />
+</span></p>
+<p><span lang="EN-NZ">Please note that the following information is by no means a comprehensive Flash tutorial. If you do not know how to use Flash at all, or if the following steps are not clear to you, we recommend that you look on the web for a Flash tutorial.</span></p>
+<p>At the time of writing, UpStage only supports Actionscript 2; please make sure that you save your files correctly, as files saved with Actionscript 3 will not work. </p>
+<p><span lang="EN-NZ">The basic steps for producing a single frame avatar or prop using Flash is as follows:</span></p>
+<ol>
+<li>Start with a .png file in which you have clear-cut your image and given it a transparent background. Keep the .png image at a large size – around 500px square for a standard-sized avatar is a good guide, as much larger will result in an unnecessarily large .swf file but a smaller file will start to lose quality.</li>
+<li>Open Flash and from the <strong>File</strong> menu, choose <strong>Import</strong>; navigate to your .png file and import it into Flash.</li>
+<li>Click on the image to select it – a grey border appears around it.</li>
+<li>In the <strong>Insert</strong> menu, choose <strong>Convert to symbol</strong> – the border will change to a thin blue line.</li>
+<li>Resize it (<strong>Modify &gt; Transform</strong>), remembering that avatars and props will increase in size by about 2-3 times when uploaded into UpStage. Around 100 pixels is a good size to begin with if you don’t know what size you want.</li>
+<li>Once you have reduced it to the required size, adjust the document size to match.</li>
+<li>From the <strong>File</strong> menu, choose <strong>Export Image</strong>. Put the jpeg quality up to 100% and save the .swf file.</li>
+</ol>
+<h2><span id="ch027_creating-graphics-for-upstage.xhtml#_Toc524237071"></span><span id="ch027_creating-graphics-for-upstage.xhtml#_Toc110935637"><span lang="EN-NZ"><span></span></span><span lang="EN-NZ">Animated avatars and backdrops</span></span><span lang="EN-NZ"></span></h2>
+<p><span lang="EN-NZ">UpStage supports both animated sequences and Flash movie clips. </span></p>
+<p><span lang="EN-NZ"></span>You can create an animated sequence either in Flash (an .swf with a series of frames) or by creating a series of .pngs (or .jpgs or .gifs) and uploading them with the multiframe option in UpStage. <span lang="EN-NZ">When you put sequenced (frame-by-frame, or motion or shape tweened) animation onto the stage it will appear static with the image in the first frame. To change to other frames of the animation, type <strong>/a 2</strong>, <strong>/a 3</strong>, etc. To make the avatar animate, type <strong>/a 0</strong> and to return to the first frame type <strong>/a 1</strong>.</span> </p>
+<p><span lang="EN-NZ">If you have saved your .swf as a movie clip animation it does not need any commands, it will automatically loop and can be used on stage either as a continuously looping animation or as a series of still avatars that are swapped using the <strong>/a</strong> command, as above.</span></p>
+<p><span lang="EN-NZ">Props and backdrops can also be animated using Flash. But bear in mind that Flash animations can end up as larger files, which will increase the time it takes to load your stage. </span></p>
+<h3>Animated sequence</h3>
+<p><span lang="EN-NZ">To create an animated sequence, follow these steps:</span></p>
+<ol>
+<li>Create a series of .png files and give them numbered filenames.</li>
+<li>Open Flash and from the <strong>File</strong> menu, choose <strong>Import</strong> and navigate to the first .png file; Flash will ask if you want to import the series, say &quot;yes&quot;. This will create a frame for each image.</li>
+<li>On each frame in turn, click on the image to select it (a border appears around it); from the <strong>Insert</strong> menu, choose <strong>Convert to symbol</strong> (the border will change to a thin blue line) </li>
+<li>Resize (<strong>Modify &gt; Transform</strong>), remembering that avatars and props will increase in size by about 2-3 times when uploaded into UpStage.</li>
+<li>Once the images are all reduced to the required size, adjust the document size to match; if your images are not all exactly the same size make sure you have made the document size as big as the largest image.</li>
+<li>From the first frame, and with the image selected (the blue line should appear around it), go to the <strong>Insert</strong> menu and select <strong>Create motion tween</strong>.</li>
+</ol>
+<ul>
+<li><span lang="EN-NZ">To check that the tweening has happened, go to the <strong>Control</strong> menu and select <strong>play</strong> – your sequence of images should play.</span></li>
+<li><span lang="EN-NZ">From the <strong>File</strong> menu, choose <strong>Export Movie</strong>; put the jpeg quality up to 100% and save the file.</span></li>
+</ul>
+<p><span lang="EN-NZ">Sounds can be embedded into Flash movie clips, but it takes a bit of trickery to be able to control the sound.</span></p>
+<p><span lang="EN-NZ">When using Flash to create animated avatars and props, be sure to check the the frame rate and whether it is set up to loop.  If the frame rate is, for example, 24 fps and it is set to loop, the image will reload 24 times a second, regardless whether anything else is changing on the screen. Making your still flash pictures run at, for example, 1 fps and/or switching off looping will ease the load on everyone’s browser. Very slow animation, for example tweened over 40 or so frames and looping, will cause the least strain and can create some very effective movement.</span></p>
+<p><span lang="EN-NZ">UpStage doesn't cope with movie clips nested within the frames of a Flash animation, but it is possible to import Quicktime movies into Flash and then export as a .swf. You will need to experiment with file sizes and perhaps remove some of the frames from the Quicktime movie in order to keep the file size down.</span></p>
+<p><span lang="EN-NZ">Once again, this manual does not pretend to provide a comprehensive Flash tutorial. Please look on the web for more detailed information on using Flash.</span></p>
+<h2><span id="ch027_creating-graphics-for-upstage.xhtml#_Toc524237072"></span><span id="ch027_creating-graphics-for-upstage.xhtml#_Toc110935638"><span lang="EN-NZ"></span><span lang="EN-NZ">Backdrops</span></span><span lang="EN-NZ"></span></h2>
+<p><span lang="EN-NZ">As long as the original image is 380x240px or larger, a backdrop will fill the UpStage screen, including going behind the text chat window. You may wish to create a backdrop that has a blank area on the right where the text chat window is to ensure that important parts of your backdrop are not hidden behind the chat window.</span></p>
+<p><span lang="EN-NZ">The proportions of the whole image are:</span></p>
+<p><span lang="EN-NZ">total width : total height - 800 : 500 (or multiples of these proportions)</span></p>
+<p><span lang="EN-NZ">width of stage area : width of chat area - 5 : 3.5 (if your image is 800 wide, the chat will begin at 550).  </span></p>
+<p><span lang="EN-NZ">minimum width : height – 380 : 240 pixels</span> </p>
+<p><img src="static/baackdropaspectratio.jpg" /><br />
+</p>
+<p><span lang="EN-NZ">Bear in mind that everyone’s screen size and browser window size can be different – your backdrop will stretch to fill the space.</span></p>
+<p><span lang="EN-NZ">Note that in the Player view of the stage, an strip along the bottom of the backdrop will be obscured by the Backdrop and Prop Image Galleries – but as these tools are not seen by the audience, it is recommended that your backdrop extend below that strip. </span></p>
+<p><span lang="EN-NZ"><strong>TIP</strong>: it's a good idea to look at your stage in audience view as well as player view; you can do this while you're working by having it open in two browsers, one where you are logged in and one not.<br />
+</span></p>
+<p><span lang="EN-NZ">Backdrops can be created as .png, .swf, .gif or .jpeg; as with avatars and props, .png or .swf will give the best quality results, however generally a .jpg backdrop will also be fine. If you are using .gif or .jpeg, upload a test backdrop to see if it’s going to be good enough, and remember to delete unwanted images.</span></p>
+<p>Note that .png files should NOT be interlaced when saving.  </p>
+<h2><span id="ch027_creating-graphics-for-upstage.xhtml#_Toc110935639"><span lang="EN-NZ"></span><span lang="EN-NZ">File Sizes</span></span><span lang="EN-NZ"></span></h2>
+<p><span lang="EN-NZ">UpStage has a default file size limit of 1MB for each media item uploaded. This can be over-ridden by giving a player unlimited upload permission, but in general it's a good idea to keep your files as small as possible. The larger the files you upload, and the more media assigned to your stage, the slower the stage will load. </span></p>
+<p><span lang="EN-NZ">What is a &quot;reasonable&quot; file size for your original graphic? This is very hard to say, as it’s completely different for a small static flat graphic prop which may be only 1K, and an animated flash backdrop or multiframe avatar, which could be over 500K. And a stage with a single large graphic may load faster than one with many medium sized graphics.</span></p>
+<p><span lang="EN-NZ">If your original files are larger than 500K, check whether you can resize them and save them again to a smaller file size. Remember that screen resolution is only 72ppi so there is no need for your originals to be at a higher resolution.</span></p>
+<h2><span id="ch027_creating-graphics-for-upstage.xhtml#_Toc110935640"><span lang="EN-NZ"><span></span></span><span lang="EN-NZ">Deleting Graphics</span></span><span lang="EN-NZ"></span></h2>
+<p><span lang="EN-NZ">It is good practice to delete unwanted graphics in order to keep the server tidy and minimise digital storage requirements. </span></p>
+<ol>
+<li>From <strong>Edit/View Media</strong>, browse to find the item you wish to delete and select it.</li>
+<li>If the item is a assigned to one or more stages, tick the checkbox at the bottom of the screen <strong>Delete even if in use.</strong></li>
+<li>Click <strong>Delete media</strong>. </li>
+</ol>
+<p><span lang="EN-NZ">If you are working on a server that is used by many players, such as the Open UpStage (http://upstage.org.nz:8084) please do not delete anything that has been uploaded by someone else. But also be aware that we operate a Creative Commons policy, so your media may be &quot;borrowed&quot; by others, for learning and playing; no-one should use someone else's media in a performance without the original creator's permission.</span></p>
+<h2><span id="ch027_creating-graphics-for-upstage.xhtml#_Toc110935641"><span lang="EN-NZ"><span></span></span><span lang="EN-NZ">Embedding links in graphics</span></span><span lang="EN-NZ"></span></h2>
+<p><span lang="EN-NZ">Active hyperlinks can be created by typing a URL into the text chat window (use right-click or ctrl+click to open or copy the link); however s</span><span lang="EN-NZ">ometimes it’s useful to have a graphic onstage that provides a hyperlink to another stage or a different web site.</span></p>
+<p><span lang="EN-NZ"> The way to do this is to create a .swf image with an ActionScript button containing the following code:</span> </p>
+<blockquote>
+<p><span lang="EN-NZ">on (release) {</span></p>
+<p><span lang="EN-NZ">            getURL(&quot;http://desired.url&quot;, &quot;_self&quot;);</span></p>
+<p><span lang="EN-NZ">}</span></p>
+</blockquote>
+<p><span lang="EN-NZ">This could be an avatar or a prop that is placed on the stage at the time that you want the audience to follow the link.</span></p>
+<h2>More Flash tricks</h2>
+<p>If you are experienced in using Flash and Actionscript, you can do a lot more with it in UpStage; most (but not all!) interactivity that can be achieved in a web page using Flash, can be achieved in UpStage. Performances that have enhanced audience interactivity through sophisticated Flash programming include Virtual Theatre's <em>Lines</em> (090909 Festival) and <em>Murder 2.0</em> (101010 Festival), and <em>The Best Air-Guitar Album in the World Vol II</em> by Anaesthesia Associates (070707 Festival).</p>
+<p>The purpose of this manual is not to teach you how to use Flash, but there are some relevant tutorials on the <a href="http://upstage.org.nz/blog/?page_id=2556">UpStage web site</a> which you may find helpful. </p>
+<p><span id="ch028_creating-audio-for-upstage.xhtml"></span></p>
+<h1>Creating Audio for UpStage</h1>
+<p>As well as sound created in real-time by avatar voices, prerecorded .mp3 files can be uploaded to UpStage and played via the <strong>audio palette</strong> in the on-stage player tools.</p>
+<p>Prerecorded audio can include music, sound effects, human voices, etc. At this stage, ONLY the .mp3 format works. Another possibility for adding audio to your performance is to embed audio in a Flash animation, if you have the skills and ability to do this.</p>
+<p>There is a 1MB file size limit for all media uploads, to ensure that the server doesn't get unnecessarily filled up with enormous files and that stage load times are not too long and tedious for the audience. It is possible to over-ride the 1MB limit by giving a player unlimited upload permission, but remember that when the audience enters your stage, all of the media assigned to the stage must be loaded to their computer, therefore the bigger the files, the longer the load time.</p>
+<h2>Converting files to .mp3 </h2>
+<p>There are many ways to create, convert and compress .mp3 audio files; we recommend that you refer to other manuals for more information on this if you are not familiar with it. </p>
+<p>If you are a Mac user, a simple method to convert an audio file from another format to .mp3 is to open the file in iTunes, and from the <strong>Advanced</strong> menu select <strong>Create MP3 Version</strong>.</p>
+<div>
+<br />
+
+</div>
+<p><span id="ch030_webcams.xhtml"></span></p>
+<h1>Webcams</h1>
+<h1><span lang="EN-NZ"></span></h1>
+<p><span lang="EN-NZ">Players wanting to use a live video feed in UpStage need to have a web cam and a separate application that allows the player to FTP their video to the server as motion JPEGs.</span> <br />
+</p>
+<h2><span id="ch030_webcams.xhtml#_Toc524237061"></span><span id="ch030_webcams.xhtml#_Toc110935650"><span lang="EN-NZ"></span><span lang="EN-NZ">Web Cam FTP Software</span></span><span lang="EN-NZ"></span><span lang="EN-NZ"></span></h2>
+<p><span lang="EN-NZ">FTP freeware or shareware is available for the major operating systems. Theoretically any web cam FTP application should work, however the following software has been researched and tested for compatability with UpStage. Please note that this is by no means all the available software, and as time passes there will be more and better options.</span></p>
+<p><span lang="EN-NZ">The main features that we have looked for in web cam FTP applications are:</span></p>
+<ul>
+<li><span lang="EN-NZ">ease of use</span></li>
+<li><span lang="EN-NZ">free or cheap, with no advertising on the image</span></li>
+<li><span lang="EN-NZ">the ability to resize the web cam image to custom sizes</span></li>
+<li><span lang="EN-NZ">any special effects are a bonus.</span></li>
+</ul>
+<h3><span id="ch030_webcams.xhtml#_Toc524237062"></span><span id="ch030_webcams.xhtml#_Toc110935651"><span lang="EN-NZ"><span></span></span><span lang="EN-NZ">Recommended Webcam FTP Software</span></span></h3>
+<p>Please scroll down this page for screenshots showing how to configure each of the applications listed below. This information is also available at <a href="http://upstage.org.nz/blog/?page_id=1304" class="uri" title="webcam configuration">http://upstage.org.nz/blog/?page_id=1304</a>. </p>
+<h4><span lang="EN-NZ">Windows: Fwink</span></h4>
+<p><span lang="EN-US">Fwink (version 0.9.95 beta) is free, has no ads, allows customised sizing and has some special effects including text messages and overlay images.</span><span lang="EN-NZ"><a href="http://lundie.ca/fwink/"></a></span></p>
+<p><span lang="EN-NZ"><a href="http://lundie.ca/fwink/" class="uri" title="Fwink">http://lundie.ca/fwink/</a></span></p>
+<h4><span lang="EN-NZ">Mac: Evocam</span><span lang="EN-NZ"></span></h4>
+<p><span lang="EN-NZ">&quot;EvoCam is the ultimate webcam software for Mac OS X. Use EvoCam to publish a webcam with streaming video, view and record video from network cameras and video servers, create timelapse movies, or use it as part of your home security system with its configurable motion sensors - these are just a few of the things you can do with this easy-to-use yet incredibly powerful webcam software!&quot;</span></p>
+<p><span lang="EN-NZ">Evocam is not open source, and it's not free (but it is pretty cheap!) but at the moment it seems to be the most reliable and featured-packed webcam ftp app for Mac. It has useful features such as customisable sizing of the window and a variety of effects.</span><span lang="EN-NZ"><a href="http://www.evological.com/evocam.html"></a></span></p>
+<p><span lang="EN-NZ"><a href="http://www.evological.com/evocam.html" class="uri" title="Evocam">http://www.evological.com/evocam.html</a></span></p>
+<h4><span lang="EN-NZ">Linux: Camstream</span><span lang="EN-NZ"></span></h4>
+<p><span lang="EN-NZ">CamStream is a tool for webcams and TV grabber cards that allows for streaming video from multiple video sources. It can save and/or upload (FTP) timed snapshots. It provides a GUI frontend to control the video devices.</span></p>
+<p><span lang="EN-NZ"><a href="http://freshmeat.net/projects/camstream/" class="uri" title="Camstream">http://freshmeat.net/projects/camstream/</a></span></p>
+<h3><span id="ch030_webcams.xhtml#_Toc524237065"></span><span id="ch030_webcams.xhtml#_Toc110935654"><span lang="EN-NZ"><span></span></span><span lang="EN-NZ">Web Cam FTP Configuration</span></span><span lang="EN-NZ"></span><span lang="EN-NZ"></span></h3>
+<p><span lang="EN-NZ">Once you have chosen and installed the appropriate web cam software, you will need to configure it to send the web cam images to your UpStage server. Following are the settings you will need:</span></p>
+<ul>
+<li>Host: URL of your UpStage server (e.g. upstage.org.nz)</li>
+<li>username: (set by your UpStage administrator)</li>
+<li>password: (set by your UpStage administrator)</li>
+<li>filepath: filename.jpg</li>
+<li>Port 21 (or other, set by your UpStage administrator)</li>
+</ul>
+<p><span lang="EN-NZ"></span></p>
+<p><span lang="EN-NZ"></span></p>
+<p><span lang="EN-NZ">Before you begin to upload your web cam image to UpStage, check the pixel size, bearing in mind that images increase in size when they are uploaded as avatars to UpStage. If it is 320 x 240 or larger, it will take up half the stage or more, and impact on the speed and performance of UpStage for everyone. We strongly recommend using a web cam FTP application that allows you to scale your image to custom sizes.</span><span lang="EN-NZ"></span><span lang="EN-NZ"></span></p>
+<p><span lang="EN-NZ">You will need to set a trigger that tells the application how often to take a new image; we recommend 2-3 seconds, as any faster is likely to be faster than the image can travel from your computer to the server and out to the other players and audience.</span></p>
+<p><span lang="EN-NZ">Once you have configured your web cam and are sending a live stream to your UpStage server, go to <strong>Upload Media</strong>, select the <strong>Video Avatar radio button</strong> and look for the filename of your web cam stream in the list of available video streams. </span></p>
+<p><span lang="EN-NZ">You can then create an avatar using that stream, assign it to a stage, and use it on the stage as you would a normal avatar. </span></p>
+<h4><span lang="EN-NZ">Passive or active?</span></h4>
+<p><span lang="EN-NZ">You will need to set the FTP upload to passive or active mode according to the configuration of your server. At <a href="http://upstage.org.nz">upstage.org.nz</a> the server is set to active.</span></p>
+<p><span lang="EN-NZ">We have recently had issues which suggest that this setting will also vary according to your client computer's platform: with the new (2010) UpStage server, we have discovered that Fwink on Windows needs to be in passive mode to work, whereas Evocam on Mac and Camstream on Linux do not work in passive mode, and need to have this option toggled off.</span></p>
+<p><span lang="EN-NZ"></span><span lang="EN-NZ">If you are having trouble with web cam FTP, the first thing to try is toggling passive mode.</span></p>
+<h4><span lang="EN-NZ">Fwink configuration:</span></h4>
+<p><img src="http:/en.flossmanuals.net/_booki/upstage-user-manual/static/fwink3.jpg" width="471" height="373" /></p>
+<p><img src="http:/en.flossmanuals.net/_booki/upstage-user-manual/static/fwink2.jpg" width="469" /></p>
+<p><img src="http:/en.flossmanuals.net/_booki/upstage-user-manual/static/fwink7.jpg" /> <br />
+</p>
+<h4>Evocam configuration:</h4>
+<p><img src="http:/en.flossmanuals.net/_booki/upstage-user-manual/static/evocam1.jpg" /></p>
+<p><img src="http:/en.flossmanuals.net/_booki/upstage-user-manual/static/evocam2.jpg" /> </p>
+<p><img src="http:/en.flossmanuals.net/_booki/upstage-user-manual/static/evocam3.jpg" /> <br />
+</p>
+<h4>Camstream configuration: <br />
+</h4>
+<p><img src="http:/en.flossmanuals.net/_booki/upstage-user-manual/static/camstream.jpg" width="574" height="231" /></p>
+<p><img src="http:/en.flossmanuals.net/_booki/upstage-user-manual/static/camstream3.jpg" /> </p>
+<p><span id="ch032_glossary.xhtml"></span></p>
+<h1>Glossary</h1>
+<p><span lang="EN-NZ">Here are definitions for some of the terms that are used in this manual. Please <a href="mailto:info@upstage.org.nz">let us know</a> if something is missing.</span></p>
+<p><span lang="EN-NZ"><strong>Audience:</strong></span><span lang="EN-NZ"> people present online at a performance, but not logged in. The audience can participate via the text chat, but do not have access to the same tools as the players.<strong> </strong></span></p>
+<p><span lang="EN-NZ"><strong>Avatar: </strong></span><span lang="EN-NZ">a graphical icon that can be held and moved around the stage by a player, and that can speak.</span> <br />
+</p>
+<p><span lang="EN-NZ"><strong>Backdrop:</strong></span><span lang="EN-NZ"> a graphic which fills the stage behind any avatars and props that are placed on it. A backdrop can also extend behind the text chat.</span> <br />
+</p>
+<p><span lang="EN-NZ"><strong>Chatters</strong></span><span lang="EN-NZ">: the online audience are also referred to as &quot;chatters&quot;, as they contribute to the performance via a text chat function.</span> <br />
+</p>
+<p><span lang="EN-NZ"><strong>Cyberformance:</strong></span><span lang="EN-NZ"> live online performance where remote players and/or audience use internet technologies to come together in real time.</span> <a href="http://en.wikipedia.org/wiki/Cyberformance" class="uri" title="Cyberformance">http://en.wikipedia.org/wiki/Cyberformance</a></p>
+<p><span lang="EN-NZ"><strong>Drawing: </strong></span><span lang="EN-NZ">functionality that allows real time drawing directly onto the stage.</span> <br />
+</p>
+<p><span lang="EN-NZ"><strong>Foyer:</strong></span><span lang="EN-NZ"> the home page of an UpStage server – where the audience can come to see what's on, and where players can log in.</span> <br />
+</p>
+<p><span lang="EN-NZ"><strong>Mirror:</strong></span><span lang="EN-NZ"> the square on a stage that shows a player which avatar they are currently holding.</span> <br />
+</p>
+<p><span lang="EN-NZ"><strong>Palette:</strong></span><span lang="EN-NZ"> e.g. &quot;drawing palette&quot; or &quot;audio palette&quot; – a set of tools for a particular function.</span> <br />
+</p>
+<p><span lang="EN-NZ"><strong>Player:</strong></span><span lang="EN-NZ"> a logged-in participant in a performance. Players have access to on-stage tools which allow them to manipulate avatars, backdrops and props, and can have different levels of permissions to allow them to access the Workshop and administration tools.</span><br />
+</p>
+<p><span lang="EN-NZ"><strong>Prop:</strong></span><span lang="EN-NZ"> a graphic which can be held by an avatar or placed on the stage using an invisible avatar.</span> <br />
+</p>
+<p><span lang="EN-NZ"><strong>Splash screen:</strong></span><span lang="EN-NZ"> a sort of &quot;curtain&quot; that appears over the stage while it loads; the splash screen shows the name of the stage, a loading progress indicator and an editable welcome message.</span> <br />
+</p>
+<p><span lang="EN-NZ"><strong>Stage:</strong></span><span lang="EN-NZ"> a dynamic web page where you can place and move avatars, props and backdrops to create a performance.</span> <br />
+</p>
+<p><span lang="EN-NZ"><strong>Stage tools:</strong></span><span lang="EN-NZ"> tools visible on the stage to logged-in players (but not visible to the audience) that enable the players to manipulate media on the stage in real time. </span></p>
+<p><span lang="EN-NZ"><strong>Text chat:</strong></span><span lang="EN-NZ"> an input field and text chat window, where avatars’ speech and audience text appears and is visible to everyone; the text chat window can be scrolled up and down to read text that has been entered previously, and can be accessed for saving by adding /log to the end of the stage url.</span> <br />
+</p>
+<p><span lang="EN-NZ"><strong>Tools:<em> </em></strong></span><span lang="EN-NZ">the buttons, sliders and icons that allow logged-in players to manipulate media.</span> </p>
+<p><strong>UpStage:</strong> UpStage is an open source platform for cyberformance: remote performers combine images, animations, audio, web cams, text and drawing in real-time for an online audience. Players and audience need only a standard web browser with the Flash player plug-in. For more information about the UpStage, visit the web site: <a href="http://www.upstage.org.nz" title="UpStage">www.upstage.org.nz</a>.</p>
+<p><span lang="EN-NZ"><strong>Wardrobe:</strong></span><span lang="EN-NZ"> the interface through which players can select avatars on a stage; an alphabeticised and scrollable list of the icons and names of the avatars assigned to that particular stage.</span> <br />
+</p>
+<p><span lang="EN-NZ"><strong>Whispering:</strong></span><span lang="EN-NZ"> silent text communication between logged-in players that is not visible to the audience. </span></p>
+<p><strong>Workshop:</strong> the &quot;back stage&quot; interface where logged-in players can upload media, view and edit existing media, create and manage stages and manage players.</p>
+<p><span id="ch033_text2speech-voices.xhtml"></span></p>
+<h1>Text2Speech Voices</h1>
+<p><span lang="EN-NZ">UpStage's speech is generated by the Festival Speech Synthesiser, developed at the Centre for Speech Technology Research at Edinburgh University (<a href="http://www.cstr.ed.ac.uk/projects/festival/" class="uri" title="Festival">http://www.cstr.ed.ac.uk/projects/festival/</a>).</span></p>
+<p><span lang="EN-NZ">An avatar's voice is selected from a dropdown menu when uploading or editing an avatar. There are currently about 100 voices on the <a href="http://upstage.org.nz:8084" title="Open UpStage">Open UpStage</a> server; if you are setting up your own UpStage server, please see the <a href="https://sourceforge.net/apps/trac/upstage/wiki/documentation" title="technical documentation">technical documentation</a> regarding installing voices.</span></p>
+<p>Note that at the moment, it is only possible to use characters from the Roman alphabet (including letters with accents such as é, ñ, ø, ü) in the text chat, but not other alphabets such as Cyrillic, Greek, etc.  </p>
+<h2><span id="ch033_text2speech-voices.xhtml#_Toc110935656"><span lang="EN-NZ"></span><span lang="EN-NZ">Voices currently available on UpStage</span></span></h2>
+<p><span lang="EN-NZ">The voices currently available with UpStage have a filenaming system that gives a clue as to what kind of voice each one is. Some of the voices speak English with a foreign accent, some speak English with different English accents, and some are designed to speak other languages more-or-less accurately. We have endeavoured to include a good variety of accents as well as male and female voices.</span></p>
+<p><span lang="EN-NZ">The format is: [&quot;e&quot; or &quot;emb&quot;] _ [native language] - [en] - [modifications]</span></p>
+<p><span lang="EN-NZ">For example:</span></p>
+<blockquote>
+<ul>
+<li>e_de – speaks and reads German</li>
+<li>e_en – speaks and reads English</li>
+<li>e_en-fast-f1 – speaks English quickly, in a female voice</li>
+<li>e_en-wm – speaks english in a west midland accent. </li>
+</ul>
+</blockquote>
+<p><span lang="EN-NZ">Other accents in the e_en series are &quot;n&quot; for north, &quot;sc&quot; for Scots, &quot;rp&quot; for RP, &quot;r&quot; for</span><span lang="EN-NZ"> rhotic (which means it pronounces the r in words like church).</span></p>
+<blockquote>
+<ul>
+<li>emb_af1 – speaks and reads Afrikaans</li>
+<li>emb_af1-en – speaks English in an Afrikaans accent</li>
+<li>emb_de4-en-low-slow – speaks english, lowly and slowly, in a german accent</li>
+</ul>
+</blockquote>
+<p><span lang="EN-NZ"></span></p>
+<p><span lang="EN-NZ">You can test the voices on the avatar upload and edit screens, by selecting different voices from the drop down menu and entering the text you want to test.</span><span lang="EN-NZ"> </span> </p>
+<p></span></p>
+<p><span lang="EN-NZ">We are in the process of compiling descriptions for all the voices; following is the information so far:</span><span lang="EN-GB"> <br />
+</span></p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p><span lang="EN-GB">Voice</span></p></td>
+<td><p><span lang="EN-GB"><strong>Male</strong></span></p></td>
+<td><p><span lang="EN-GB"><strong>Female</strong></span></p></td>
+<td><p><span lang="EN-GB"><strong>Accent</strong></span></p></td>
+<td><p><span lang="EN-GB"><strong>Non-Eng</strong></span></p></td>
+<td><p><span lang="EN-GB"><strong>Description</strong></span></p></td>
+</tr>
+<tr class="even">
+<td><p><span lang="EN-GB">awb_cmu</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">Scottish</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">Soft, slightly muffled</span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span lang="EN-GB">awb_nitech</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">Scottish</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">Clear, not very deep</span></p></td>
+</tr>
+<tr class="even">
+<td><p><span lang="EN-GB">bdl_cmu</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">English?</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">A little bit quavery</span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span lang="EN-GB">bdl_nitech</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">English?</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">Firmer than bdl_cmu, a bit higher, but clearer</span></p></td>
+</tr>
+<tr class="even">
+<td><p><span lang="EN-GB">bud</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">NZ?</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">Deep, calm</span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span lang="EN-GB">clb_nitech</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p><span lang="EN-GB">NZ?</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">Robotic, soft</span></p></td>
+</tr>
+<tr class="even">
+<td><p><span lang="EN-GB">crunchy</span></p></td>
+<td><p> </p></td>
+<td><p> </p></td>
+<td><p> </p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">Crunchy - good for witches &amp; effects</span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span lang="EN-GB">default</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p><span lang="EN-GB">NZ?</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">Smooth, young</span></p></td>
+</tr>
+<tr class="even">
+<td><p><span lang="EN-GB">e_en-fast-f1</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">NZ?</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">fast, boyish</span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span lang="EN-GB">e_en-r-f3</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">NZ?</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">fast, boyish</span></p></td>
+</tr>
+<tr class="even">
+<td><p><span lang="EN-GB">e_en-wm-slow</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">Australian??</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">nasal drawl</span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span lang="EN-GB">e_en-wm-slow-f3</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">Australian??</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">boyish nasal drawl, computerish &amp; like a learner-reader reading</span></p></td>
+</tr>
+<tr class="even">
+<td><p><span lang="EN-GB">e_eo</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">foreign</span></p></td>
+<td><p> </p></td>
+</tr>
+<tr class="odd">
+<td><p><span lang="EN-GB">emb_de4</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">German</span></p></td>
+<td><p><span lang="EN-GB">German</span></p></td>
+<td><p><span lang="EN-GB">neutral German male</span></p></td>
+</tr>
+<tr class="even">
+<td><p><span lang="EN-GB">emb_de4-en</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">German</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">mid-range, clean, English w/German accent</span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span lang="EN-GB">emb_de4-en-low-slow</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">German</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">pimp's voice: low &amp; lecherous (English w/German accent)</span></p></td>
+</tr>
+<tr class="even">
+<td><p><span lang="EN-GB">emb_de5</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">German</span></p></td>
+<td><p><span lang="EN-GB">German</span></p></td>
+<td><p><span lang="EN-GB">slow low somewhat distorted voice</span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span lang="EN-GB">emb_de5-en</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">German</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">slow high somewhat distorted voice, English w/German accent</span></p></td>
+</tr>
+<tr class="even">
+<td><p><span lang="EN-GB">emb_de5-en-high-slow</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">German</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">mid-high slightly strangulated male, English w/German accent</span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span lang="EN-GB">emb_de7</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">German</span></p></td>
+<td><p><span lang="EN-GB">German</span></p></td>
+<td><p><span lang="EN-GB">middle somewhat slow and drawn out male, German</span></p></td>
+</tr>
+<tr class="even">
+<td><p><span lang="EN-GB">emb_en1-high</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">English</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">soft mid-range male voice</span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span lang="EN-GB">emb_fr1-en-low</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">European</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">low &amp; lecherous</span></p></td>
+</tr>
+<tr class="even">
+<td><p><span lang="EN-GB">emb_fr4-en-high-slow</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">European</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">mid-high male voice, sounds like he has trouble speaking</span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span lang="EN-GB">emb_hu1-en-slow</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p><span lang="EN-GB">European?</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">low soft female voice with slight European accent</span></p></td>
+</tr>
+<tr class="even">
+<td><p><span lang="EN-GB">emb_nl2</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">Dutch</span></p></td>
+<td><p><span lang="EN-GB">mid-low male</span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span lang="EN-GB">emb_nl2-en</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">European?</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">mid-low male voice with slight European accent</span></p></td>
+</tr>
+<tr class="even">
+<td><p><span lang="EN-GB">emb_pl1</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">Polish?</span></p></td>
+<td><p><span lang="EN-GB">mid-low calm female</span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span lang="EN-GB">emb_pl1-en</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p><span lang="EN-GB">Polish?</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">mid-low calm female with European accent</span></p></td>
+</tr>
+<tr class="even">
+<td><p><span lang="EN-GB">emb_ro1-en</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p> </p></td>
+<td><p> </p></td>
+<td><p> </p></td>
+</tr>
+<tr class="odd">
+<td><p><span lang="EN-GB">emb_sw1-en-fast</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">Swedish?</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">mid-low male speaking quickly</span></p></td>
+</tr>
+<tr class="even">
+<td><p><span lang="EN-GB">emb_sw2-en-high-slow</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p><span lang="EN-GB">Swedish?</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">mid-high female with European accent</span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span lang="EN-GB">high</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p><span lang="EN-GB">Computer</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">boyish computer monotone</span></p></td>
+</tr>
+<tr class="even">
+<td><p><span lang="EN-GB">rms-faster</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">American</span></p></td>
+<td><p> </p></td>
+<td><p> </p></td>
+</tr>
+<tr class="odd">
+<td><p><span lang="EN-GB">rms-nitech</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">American</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">Deeper than roger, clear, little bit emphatic</span></p></td>
+</tr>
+<tr class="even">
+<td><p><span lang="EN-GB">roger</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">English</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">Thin, proper-sounding, not deep</span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span lang="EN-GB">slow</span></p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">computer</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">gets slower &amp; lower, very good for effects</span></p></td>
+</tr>
+<tr class="even">
+<td><p><span lang="EN-GB">slt-cmu</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p><span lang="EN-GB">American</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">Flat, slightly muffly</span></p></td>
+</tr>
+<tr class="odd">
+<td><p><span lang="EN-GB">slt-nitech</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">X</span></p></td>
+<td><p><span lang="EN-GB">American</span></p></td>
+<td><p> </p></td>
+<td><p><span lang="EN-GB">Flat, a bit clearer &amp; stronger than slt-cmu</span></p></td>
+</tr>
+</tbody>
+</table>
+<h2><span lang="EN-NZ"></span><span id="ch033_text2speech-voices.xhtml#_Toc110935657"><span lang="EN-NZ">Adding more voices</span></span></h2>
+<p><span lang="EN-NZ">You can install additional speech plug-ins on your own server to extend the range of voices available to the avatars. As long as you don't mind messing around with the source code a little bit it's not difficult – Patricia Jung explains how she did it (for Linux, using UpStage V1 - note that this is now several years old):</span></p>
+<div>
+<p><span lang="EN-NZ">Just add another entry in the VOICES section in Upstage/upstage/voices.py like:</span></p>
+<p><span lang="EN-NZ"> </span></p>
+<p><span lang="EN-NZ"> #txt2pho/mbrola:</span></p>
+<p><span lang="EN-NZ"> 'de1': (&quot;| /usr/local/mbrola/pipefilt | /usr/local/mbrola/preproc /usr/local/mbrola/Hadifix.abk /usr/local/mbrola/Rules.lst | /usr/local/mbrola/txt2pho -p /usr/local/mbrola/data/ |/usr/local/mbrola/mbrola /usr/local/mbrola/de1/de1 - -&quot;,</span></p>
+<p><span lang="EN-NZ">                      _fest),</span></p>
+<p><span lang="EN-NZ"> </span></p>
+<p><span lang="EN-NZ">I know, it looks awful but this is only because the command is an awful chain consisting of four commands with a couple of options each and the relevant path:</span></p>
+<p><span lang="EN-NZ">           &quot;| pipefilt ...| preproc ... | txt2pho ... | mbrola ...&quot;</span></p>
+<p><span lang="EN-NZ"> </span></p>
+<p><span lang="EN-NZ">It does some preprocessing (like exchanging all appearances of &quot;z.B.&quot; with &quot;zum Beispiel&quot;), then hands the resulting text over to txt2pho and to mbrola.</span></p>
+<p><span lang="EN-NZ"> </span></p>
+<p><span lang="EN-NZ">As long as your command or command chain takes text input from the standard input and outputs the result as sound in raw format on the standard output chain (Unix stuff, ask me if you haven't heard about it) you can put whatever you like in between the &quot;| and the &quot;.</span></p>
+<p><span lang="EN-NZ"> </span></p>
+<p><span lang="EN-NZ">The above mentioned awful command chain will work when one has installed the txt2pho frontend; it uses the de1 female mbrola voice, and you can choose it in the web interface using the name de1.</span></p>
+<p><span lang="EN-NZ"> </span></p>
+<p><span lang="EN-NZ">The only problem with this kind of reconfiguration is: as config.py isn't a nice configuration file but a python script one needs to know at least that python is very picky about vertical alignment: It's extremely important that your new voice entries have the same amount of whitespaces at the beginning of the line as the other voice entries.</span></p>
+<p><span lang="EN-NZ"> </span></p>
+<p><span lang="EN-NZ">The reason it took me so long was TTS: I failed completely and utterly in making the German festival extensions for use with mbrola voices:</span></p>
+<p><span lang="EN-NZ"> </span></p>
+<p><span lang="EN-NZ"><a href="http://www.ims.uni-stuttgart.de/phonetik/synthesis/festival_opensource.html" class="uri">http://www.ims.uni-stuttgart.de/phonetik/synthesis/festival_opensource.html</a></span></p>
+<p><span lang="EN-NZ"> </span></p>
+<p><span lang="EN-NZ">work. Then I tried txt2pho with mbrola:</span></p>
+<p><span lang="EN-NZ"> </span></p>
+<p><span lang="EN-NZ"><a href="http://www.ikp.uni-bonn.de/dt/forsch/phonetik/hadifix/HADIFIXforMBROLA.html" class="uri">http://www.ikp.uni-bonn.de/dt/forsch/phonetik/hadifix/HADIFIXforMBROLA.html</a></span></p>
+<p><span lang="EN-NZ"> </span></p>
+<p><span lang="EN-NZ">(<a href="http://bogmog.sourceforge.net/document_show.php3?doc_id=34" class="uri">http://bogmog.sourceforge.net/document_show.php3?doc_id=34</a> has a nice installation description), ignoring Festival, and this worked at once.</span></p>
+</div>
+<p><span id="ch034_troubleshooting.xhtml"></span></p>
+<h1>Troubleshooting</h1>
+<p>UpStage is a work in progress: it is being maintained and developed by volunteer programmers, which means that things happen but sometimes slowly, and sometimes things break as we go. We welcome input from anyone who has the time and skills to work with us on the development of UpStage - please visit the <a href="https://sourceforge.net/projects/upstage/" title="Sourceforge">SourceForge site</a> for more information, and join the <a href="https://lists.sourceforge.net/lists/listinfo/upstage-list" title="UpStage Developer List">developer's list</a>.</p>
+<p>If you encounter a problem that isn't listed here, or that you still can't find an answer to, please:</p>
+<ul>
+<li>check the <a href="http://upstage.org.nz/blog/?page_id=115" title="UpStage FAQs">FAQ page on the UpStage web site</a>, maybe there's an answer there;</li>
+<li>visit the <a href="https://sourceforge.net/tracker/?group_id=97481&amp;atid=618269" title="Bug tracker">bug tracker on SourceForge</a> to see if it's something that we're working on (if it is, please add comments as more information can help to find a solution); <br />
+</li>
+<li><a href="http://upstage.org.nz/blog/?page_id=5" title="UpStage">contact the UpStage team</a> - we will try to help. <br />
+</li>
+</ul>
+<h2><span id="ch034_troubleshooting.xhtml#_Toc110935659"><span lang="EN-NZ">Browser Problems</span></span></h2>
+<h3></h3>
+<p><span lang="EN-NZ">We are constantly monitoring browser compatibility, so if you experience problems connected to your choice of browser, please </span><a href="http://upstage.org.nz/blog/?page_id=5" title="Contact us">contact us</a><span lang="EN-NZ">.</span> <br />
+</p>
+<p><span lang="EN-NZ">If you are having browser problems, we recommend the following:</span><span lang="EN-NZ"><span></span></span></p>
+<ul>
+<li><span lang="EN-NZ">ensure that you have at least version of the <a href="http://www.adobe.com/products/flashplayer/" title="Flash player plugin">Flash player</a> installed;</span><span lang="EN-NZ"></span></li>
+<li><span lang="EN-NZ">close your browser window, open a new window and log in again. If you still have problems after doing this, quit your browser application and restart it.</span></li>
+</ul>
+<p><strong>Note</strong>: due to an issue in Chrome for Mac, at the time of writing it is not possible to upload .swf files from a Mac computer using the Chrome browser. Until such time as Chrome fixes this issue, you will need to use an alternative browser such as Safari or Firefox to upload .swf files. <br />
+</p>
+<h2><span id="ch034_troubleshooting.xhtml#_Toc110935660"><span lang="EN-NZ">Stage Won’t Load</span></span></h2>
+<h3></h3>
+<p><span lang="EN-NZ">If the stage fails to load properly, and the splash screen remains over the stage with the message <strong>Couldn’t load all images</strong>, this could mean that there is a corrupted image assigned to the stage. </span></p>
+<p><span lang="EN-NZ">The first thing to do is try reloading, as it could just have been a blip in the data flow; either use the <strong>reload</strong> button on the splash screen, or use the back button in your browser to return to where you came from and click on the link to the stage again.</span> <br />
+</p>
+<p><span lang="EN-NZ">If this doesn't work, you may need to remove a rogue image from the stage. If you had just assigned a new graphic to the stage before you encountered this problem, then that is most likely to be that one that’s causing the problem. Try unassigning that image from the stage, and see if it will load.</span> <br />
+</p>
+<p><span lang="EN-NZ">If you don’t know which image it is, you may need to take everything off the stage and reassign them one by one or alternatively, delete the stage and make a new one.</span> </p>
+<h2>Missing voices</h2>
+<p>On the Open UpStage server, we have had a lot of problems with some voices disappearing or ceasing to function; this may be caused by server restarts or upgrades, but it is quite random and very frustrating.</p>
+<p>If the voice of an avatar assigned to a stage has disappeared, it may cause all of the sound on that stage to stop, and other problems. If it is not possible to reinstall missing voices immediately, we recommend changing any missing voices to similar ones that are still working, to avoid possible on-stage problems. </p>
+<h2><span id="ch034_troubleshooting.xhtml#_Toc110935661"><span lang="EN-NZ">Fonts look bad</span></span></h2>
+<h3></h3>
+<p><span lang="EN-NZ">If an .swf file has been saved as low quality (in the original file), it can force the whole stage to appear &quot;low quality&quot;. This can be changed by right-clicking (on a Mac, ctrl+click) on the stage, and selecting <strong>Quality</strong> from the menu that appears. If Low is selected, change it to High and you will see that the fonts now display properly.</span> <br />
+</p>
+<p><span lang="EN-NZ">However, this will only correct the problem on your machine; your audience may not know how to change the quality. A better solution is to work out which image is causing the problem, delete it and resave the original file as high quality. </span></p>
+<h2><span id="ch034_troubleshooting.xhtml#_Toc110935662"><span lang="EN-NZ">Linux Fonts</span></span></h2>
+<h3></h3>
+<p><span lang="EN-NZ">If you are using UpStage on Linux you may find that fonts are not appearing on stage. This problem is fixed by installing additional packages:</span></p>
+<ul>
+<li><span lang="EN-NZ">apt-get install gsfonts gsfonts-x11</span></li>
+<li><span lang="EN-NZ">and <a href="http://www.macromedia.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash&amp;P2_Platform=Linux&amp;P3_Browser_Version=Netscape4%20untar/gzip">http://www.macromedia.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash&amp;P2_Platform=Linux&amp;P3_Browser_Version=Netscape4 untar/gzip</a></span></li>
+<li><span lang="EN-NZ">close all browsers, run the installer (see installation instructions on the url above)</span><span lang="EN-NZ"></span> </li>
+</ul>
+</body>
+</html>

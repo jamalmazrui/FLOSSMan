@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="The Contributors" />
+  <title>GSoC Mentoring</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">GSoC Mentoring</h1>
+<p class="author">The Contributors</p>
+<p class="date">2011.01.09-15.13</p>
+</header>
+<p><span id="ch001_about-this-manual.xhtml"></span></p>
+<h1>About This Manual</h1>
+<p>This manual was written during a Book Sprint sponsored by Google and facilitated by FLOSS Manuals. The manual was written in two days but the maintenance of the manual is an ongoing process to which you may wish to contribute. A second sprint occurred in 2010 to update the manual (adding the Org Admin section) and write the Students Guide (&quot;Flipping Bits not Burgers&quot;).</p>
+<p>Since the manual may be updated at any time, you may wish to periodically check here for updated versions:<br />
+<a href="http://www.flossmanuals.net" class="uri">http://www.flossmanuals.net</a></p>
+<p>You can also find the electronic book (for use with Android ebook readers software, Sony Reader etc) here:<br />
+<a href="http://objavi.flossmanuals.net/books/" class="uri">http://objavi.flossmanuals.net/books/</a></p>
+<h2>How to Contribute to This Manual</h2>
+<p>If you would like to contribute then follow these steps:</p>
+<ol>
+<li>Register On the front page <span>(http://www.booki.cc)</span> by clicking on <strong>Sign in / Create Account</strong> at the top of the screen.<br />
+</li>
+<li><p>Under <strong>Create Account</strong> add your desired details</p></li>
+<li>Click <strong>Create Account</strong>.</li>
+<li>Booki will generate the account and display a Your account has been created message before redirecting you to your <strong>Profile Page</strong>.  Your user page is also accessed through <strong>My Profile</strong> on the menu. </li>
+<li>Contribute text by visiting <a href="_edit">http://booki.flossmanuals.net/GSoCMentoring/_edit</a>. Press 'edit' and start work on a chapter.</li>
+<li><strong>Mailing List</strong><br />
+For discussing all things about FLOSS Manuals join our mailing list:<a href="http://lists.flossmanuals.net/listinfo.cgi/discuss-flossmanuals.net%20"><br />
+http://lists.flossmanuals.net/listinfo.cgi/discuss-flossmanuals.net</a></li>
+</ol>
+<p>For more information on using FLOSS Manuals you may also wish to read our manual:<br />
+<a href="http://en.flossmanuals.net/FLOSSManuals" class="uri">http://en.flossmanuals.net/FLOSSManuals</a></p>
+<h2>About the Authors</h2>
+<p>This manual exists as a dynamic document on flossmanuals.net, and over time will have an ever-increasing pool of authors and contributors.</p>
+<p>Except were noted the following individuals were part of both the 2009 and 2010 GSoCBook Sprint. We thank them for their tireless efforts to create this first-of-its-kind volume.</p>
+<p><strong>Alexander Pico</strong><br />
+Alex works at the Gladstone Institutes in San Francisco as a Bioinformatics Software Engineer. He holds a PhD in Molecular Neurobiology and Biophysics and has over 10 years of bioinformatics experience in data mining, analysis, visualization and integration. Over the past 5 years he has led the GenMAPP pathway analysis project, managing software development and coordinating research projects involving wet lab biologists and senior programmers. Alex is a member of the Cytoscape core development team, a creator of SNPLogic.org, and a founder of WikiPathways.org. He has also administered GenMAPP's participation in the Google Summer of Code program for the last 4 consecutive years.<br />
+<a href="http://nextnucleus.org" class="uri">http://nextnucleus.org</a></p>
+<p><strong>Bart Massey<br />
+</strong>Bart Massey graduated Reed College in 1987 and spent two years as a software engineer at Tektronix, Inc.  He received his this MSc in Computer Science from University of Oregon in 1992 and his PhD in 1999 for work with the Computational Intelligence Research Laboratory there.  Since then, Bart has taught at Portland State University, where he is currently an Associate Professor, and for the Oregon Master of Software Engineering program. Bart is Secretary of the X.Org Foundation Board; his current research interests include open tech, software engineering, desktop interfaces and state space search.<br />
+<a href="http://www.cs.pdx.edu/~bart" class="uri">http://www.cs.pdx.edu/~bart</a></p>
+<p><strong>Jonathan &quot;Duke&quot; Leto</strong><br />
+Jonathan is an open source hacker who currently focuses on the Parrot Virtual Machine and Rakudo, Perl 6 on Parrot, as well as being the maintainer of many CPAN modules, many with a focus on scientifc computing and cryptography. He first was a mentor for Math::GSL in GSoC 2008 and then became organization administrator for The Perl Foundation's involvement in GSoC 2009 as well as being the mentor for Math::Primality. Jonathan received a masters in mathematics from University of Central Florida and has published several papers in the field of differential equations. Currently he works in the Bioinformatics sector and consults for Git migrations and training. He enjoys discovering wheels within wheels.<br />
+<a href="http://leto.net%20"></a><a href="http://leto.net" class="uri">http://leto.net</a></p>
+<p><strong>Jennifer Redman</strong><br />
+Jennifer is the founder and CEO of Buunabet, a technical consulting company that helps businesses and organizations integrate open source software into their computing infrastructure. Jennifer is currently the Associate Systers-Keeper for Systers, the oldest International online community of technical women. One of the founders of the Systers open source project, she participated in GSoC 2009 and 2010 as an org admin and mentor. Previous careers include canvassing for Greenpeace and as a staff member on a national (and successful) presidential campaign. She also likes to travel and reads a lot of books.<br />
+<a href="http://buunabet.com" class="uri">http://buunabet.com</a></p>
+<p><strong>Selena Deckelmann</strong><br />
+Selena is a major contributor to the PostgreSQL project. She founded Open Source Bridge conference, a conference for open source citizens. She helps run PDXPUG, a PostgreSQL Users Group, and is part of Code n Splode, a programming group whose goal is to get more women involved in open source. In her spare time, she likes to mix drinks for her local user groups, and fetch eggs from her chickens.<br />
+<a href="http://chesnok.com/daily%20"></a><a href="http://chesnok.com/daily" class="uri">http://chesnok.com/daily</a></p>
+<p><strong>Carol Smith</strong> (2010)<br />
+Carol works for the Open Source Programs Office at Google administering the Google Summer of Code program.  She has worked at Google for 5 years in a variety of positions. She has a degree in photojournalism from California State University, Northridge and is an avid cyclist.<br />
+<a href="http://www.fossygirl.com%20">http://www.fossygirl.com</a><br />
+</p>
+<p><strong>Malveeka Tewari</strong>  (2010)<br />
+Malveeka is currently a graduate student in the CS dept at UC, San Diego. She participated in GSoC 2009 as a student for Systers and again as a mentor for Systers in GSoC 2010.  She is also a member of Systers and WIC (Women in Computing) group at UC, San Diego and has helped in organizing events in her school for engaging and encouraging women in computing. Her favorite past times including hiking, cooking and reading books. She is a big fan of P.G. Wodehouse and Agatha Christie.<br />
+<a href="http://cseweb.ucsd.edu/~mtewari/%20">http://cseweb.ucsd.edu/~mtewari/</a></p>
+<div title="Page Break">
+
+</div>
+<h2>2009 Particpants</h2>
+<p><strong>Olly Betts</strong> <br />
+Olly is the lead developer of the Xapian search engine library. He's been working on Xapian for 10 years, and makes a living as a freelance developer and consultant on Xapian-related projects. In GSoC, he's represented SWIG as a mentor in 2008, and a mentor and co-admin in 2009.  Olly is originally from the UK where he studied mathematics and then computer science at Cambridge University, but now lives near Wellington in New Zealand. He once broke a toe falling off a cliff in Majorca. <br />
+<a href="http://survex.com/~olly/" class="uri">http://survex.com/~olly/</a>  </p>
+<p><strong>Leslie Hawthorn </strong><br />
+Leslie held various roles at Google before joining the Open Source Programs Office in March 2006. Her first project after joining the team was spinning up Google Summer of Code 2006 and she has managed the program ever since. She also conceived, launched and managed the Google Highly Open Participation Contest, an initiative inspired by GSoC that helps pre-university students get involved with all aspects of open source development. Mentoring in open source communities is one of her personal passions, along with humanitarian uses for open source software. She loves to cook, read and can occasionally be found pining for illuminated manuscripts. She also likes to think of herself as a superb filker. <br />
+<a href="http://www.hawthornlandings.org/">http://www.hawthornlandings.org</a> </p>
+<h2>Facilitation (2009 &amp; 2010)<br />
+</h2>
+<p>The Book Sprints were facilitated by :</p>
+<p><strong>Adam Hyde</strong><br />
+Adam is the founder of FLOSS Manuals and project manager for Booki. FLOSS Manuals is a community of 1500 (at the time of writing) volunteers that create quality free documentation about free software. FLOSS Manuals is pioneering the Book Sprint methodology that enables the development of well written manuals on free software in 2-5 days. Adam has facilitated over 15 Book Sprints on Free Software including Inkscape, OLPC, Sugar, CiviCRM, Firefox, Introduction to the Command Line, Digital Foundations (conversion to free software examples), Ogg Theora, How to Bypass Internet Censorship, Open Translation Tools, PureData, Video Subtitling and now the Google Summer of Code Mentors Guide. Adam is also the Project Manager for the development of 'Booki' - the free software Collaborative Authoring Platform (see below).<br />
+adam@flossmanuals.net</p>
+<div title="Page Break">
+
+</div>
+<h2>The Platform</h2>
+<p>This book was written using Booki and output to templated HTML, book formatted PDF, and epub by the same platform. Please consider helping us develop this wonderful collaborative authoring and book production software. It is GPL and more info available at <a href="http://booki-dev.flossmanuals.net">http://booki-dev.flossmanuals.net.</a>  You can also see booki at <span>http://www.booki.cc</span></p>
+<p><span id="ch002_what-is-gsoc.xhtml"></span></p>
+<h1>What is Google Summer of Code?</h1>
+<p>Google Summer of Code (GSoC) is a program that matches  mentoring organizations with college and university student developers who are paid to write open source code. Each year, Google works with many open source, free software and technology-related groups to identify and fund proposals for student open source projects.</p>
+<p>GSoC pairs accepted student applicants with mentors from participating projects. Accepted students gain exposure to real-world software development and an opportunity for employment in areas related to their academic pursuits. In turn, participating organizations are able to identify and bring in new developers more easily. Best of all, more source code is created and released for the use and benefit of all; all code produced as part of the program is released under an open source license.<br />
+</p>
+<p>This program has brought together thousands of students and mentors from over 100 countries worldwide. At the time of writing, over 200 open source projects, from areas as diverse as operating systems and community services, have participated as mentoring organizations for the program. Successful students have widely reported that their participation in GSoC made them more attractive to potential employers and that the program has helped greatly when embarking on their technical careers.</p>
+<h2>Goals of the Program</h2>
+<p>The program has several goals:</p>
+<ul>
+<li>Get more open source code written and released for the benefit of all.</li>
+<li>Inspire young developers to begin participating in open source development.</li>
+<li>Help open source projects identify and bring in new developers.</li>
+<li>Provide students the opportunity to do work related to their academic pursuits during the summer: &quot;flip bits, not burgers.&quot;</li>
+<li>Give students more exposure to real-world software development (for example, distributed development and version control, software licensing issues, and mailing list etiquette).</li>
+</ul>
+<h2></h2>
+<div id="ch002_what-is-gsoc.xhtml#pagebreak" title="Page Break">
+
+</div>
+<p>A Brief History of Google Summer of Code</p>
+</h2>
+<p>Google Summer of Code began in 2005 as a complex experiment with a simple goal: helping students find work related to their academic pursuits during their school holidays. In GSoC's first year, 40 projects and 400 students participated. In 2010, the sixth Google Summer of Code wrapped up to the best results yet - more than 89% of the 1,026 student participants in the program successfully completed their projects. Best of all, most of the organizations participating over the past six years reported that the program helped them find new community members and active committers.</p>
+<p>See the appendix for a more extensive history of the program.</p>
+<h2>Participant Roles</h2>
+<p>There are four roles in the Google Summer of Code program: <strong></strong></p>
+<p><strong>Program Administrator</strong>: Program administrators are employees of Google's Open Source Programs Office who run the program. These folks do a variety of tasks: select the participating open source projects each year, create and analyze the program evaluations, administer the program mailing lists, ensure that participants are paid, and send out the all-important program t-shirt. Program administrators do not select which student proposals are accepted into Google Summer of Code.</p>
+<p>More broadly, program administrators provide useful advice to both new and seasoned participants in a variety of areas, relying on their experience with the program and mentoring process. Not sure how to handle a disappearing student? Don't know which mailing list has the latest information on payments? Wondering how to best improve your organization's application for the program? Find a program administrator and ask away!</p>
+<p><strong>Organization Administrator</strong>: Org admins are the &quot;cat herders&quot; for GSoC open source projects. These people submit the organization's application to participate in the program to Google, ensure that mentors fill out evaluations in a timely fashion, and generally organize their project's participation in GSoC. The org admin acts as Google's go-to person if any issues arise. There are also some trivial administrative tasks in GSoC's online system that can only be completed by organization administrators, all of which are enumerated in the system documentation. Some org admins also mentor students during GSoC, and that's perfectly fine; it is just highly recommended that folks know they have enough time to execute both roles simultaneously.</p>
+<p>Org admins are the final authority about matters such as which student projects will be accepted and who will mentor whom. On the social side, if a mentor and student have difficulties communicating or making progress, an org admin will often step in as a neutral party to help the two work together more effectively. Org admins also help track down disappearing participants, whether mentors or students.</p>
+<p><strong>Mentor</strong>: Mentors are people from the community who volunteer to work with a student. Mentors provide guidance such as pointers to useful documentation, code reviews, etc. In addition to providing students with feedback and pointers, a mentor acts as an ambassador to help student contributors integrate into their project's community. Some organizations choose to assign more than one mentor to each of their students. Many members of the community provide guidance to their project's GSoC students without mentoring in an &quot;official&quot; capacity, much as they would answer anyone's questions on the project's mailing list or IRC channel.</p>
+<p><strong>Student</strong>: A student participant in GSoC is typically a college or university student;  the only academic requirement is that the accepted applicants be enrolled in an accredited academic institution. Students must also be at least 18 years of age in order to participate. Students come from a variety of academic backgrounds, and though most students are enrolled in a Computer Science program there is no requirement that they be studying CS; past student participants in GSoC have come from disciplines as varied as Ecology, Medicine, and Music.</p>
+<p>Students submit project proposals to the various organizations participating in GSoC. The organizations select which student proposals they would like to see funded by Google. Many student participants have gone on to become important members of the open source community. Many students have also gone on to become mentors and even org admins for the program.</p>
+<h2>Program Structure</h2>
+<p>All of the program rules are enumerated in the GSoC FAQs each year. Provided all of the rules regarding eligibility for the program are followed, Google takes a fairly hands-off approach to GSoC. Each organization structures its participation in GSoC in whichever way makes the most sense for its technical and community needs.</p>
+<p><strong>Organization Applications</strong>: The GSoC program is announced each year on the Official Google Blog (<a href="http://googleblog.blogspot.com/">http://googleblog.blogspot.com</a>) among other places, and this announcement provides application deadlines for projects. Each organization must apply to participate. The questions asked in the organization application are published in advance and linked from the Program FAQ. Organizations usually have one week to apply for the program. Following receipt of applications, Google's program administrators select which organizations will participate in that year's Google Summer of Code.</p>
+<p><strong>Student Applications</strong>: Students are encouraged to begin talking to the participating organizations as soon as the list of accepted organizations is published. Prior to the opening of applications, it is important to take some time to talk to potential student applicants. This helps them refine their ideas so that they will produce a better quality proposal. Each organization is asked to provide a proposal template, but the best student applications go far beyond the template and an organization's ideas list. Students are given at least a week to complete their applications.</p>
+<p>Following the student application deadline, organizations begin reviewing the proposals they received. During the review phase, organizations maintain an open dialogue with their student applicants, asking them to refine their proposals. They may also conduct further interviews to determine which students are most likely to be a good fit for the community and work required. Over the course of several weeks, each organization prioritizes its list of proposals. Google lets each organization know how many student proposals it will fund, and organizations select their top proposals.</p>
+<p>Sometimes a student has proposals accepted by more than one organization. Google leaves it to the organizations and the student to decide which organization the student will work with during the course of the program. While the organizations are not required to involve the student in the decision process, it is good practice to take the student's preferences into account.<br />
+</p>
+<p><strong>Community Bonding Period</strong>: Before students are expected to start working, there is a six-to-eight-week period built into the program to allow them to get up to speed without the pressure to execute on their proposals. During this time, students are expected to get to know their project communities and participate in project discussion. During this time, students should also set up their development environments, learn how their project's source control works, refine their project plans, read any necessary documentation, and otherwise prepare to complete their project proposals. Mentors should spend this time helping their students understand which resources will be most useful to them, introducing them to the members of the community who will be most helpful with their projects, and generally acculturating them.</p>
+<p><strong>Start of Coding</strong>: Start of coding is the date the program officially begins; students are expected to start executing on their project proposals. At start of coding Google provides an initial payment to the student, around 10% of the overall stipend. At this point, students should begin regular check-ins and regular patch submissions.</p>
+<p><strong>Midterm Evaluations</strong>: Approximately halfway through the program, Google requires that mentors submit evaluations of their students' progress. If the project is not proceeding effectively, it is discontinued and the student is dropped from the program. Students who receive a successful evaluation from their mentors continue working on their projects and receive a second program payment, approximately 45% of the overall stipend. Google also asks students to submit an evaluation reviewing their project to date, their mentor's and organization's performance, and any obstacles to their progress. Google may also ask org admins and mentors without students assigned to submit a general evaluation of the program during this phase.</p>
+<p>Because software development is an iterative process, the original project plan must often be reworked and new milestones set. Directly following midterm evaluations is the perfect time for mentors and students to review progress to date and to reset goals for the project as needed.</p>
+<p><strong>Pencils Down</strong>: At the final deadline for coding, students are welcome and encouraged to continue work on their projects, but only work done before the &quot;pencils down&quot; date can be evaluated. Google suggests that all work be complete about a week earlier to give the student time for last-minute improvements and corrections, as well as preparing their work for delivery.</p>
+<p><strong>Final Evaluations</strong>: Final evaluations should be based only on work the student has completed during the program. If the project goals have not been met to the mentor's satisfaction, the student is dropped from the program and receives nothing more from Google. As with midterm evaluations, students are asked to submit an evaluation of their overall success. Google will ask all participants from each organization to submit an evaluation of the overall success of GSoC.</p>
+<p><strong>Post Final Evaluations</strong>: Students who successfully complete their final evaluations are asked to submit a code sample to Google. These students then receive the final program stipend payment, a certificate of completion and a truly spiffy t-shirt. All program mentors and org admins also receive a t-shirt.</p>
+<p>It's a goal of Google Summer of Code that the student participants stick around long after the program has ended and continue contributing to their project communities. Great mentors continue working with their students to encourage them to do so. It's also customary during this time for organizations to publish a post-GSoC wrap up report. Mentors and students take a well-deserved break, but energetic organizations begin planning for the next GSoC during this time.</p>
+<p><span id="ch003_why-gsoc-matters.xhtml"></span></p>
+<h1>Why GSoC Matters</h1>
+<p>In addition to the great code produced, the GSoC experience is about building open source communities. By focusing on students, we are going to the source of all future open source efforts. The ultimate success of the GSoC program is thus measured by the quality of the student experience. Each organization and each mentor plays a crucial role in creating this experience through their project ideas, developer culture, and the guidance they provide. They are rewarded by new code and by adding skilled new developers to their ranks. But don’t take our word for it! Heres what some of the students had to say:</p>
+<p>“Overall, this is the most productive summer I ever had. It increased my confidence as a developer and as a person that I can actually pull off a project like this and interact with awesome people like you. I also become a part of a growing community and hope to help it grow further.”<br />
+<em>Chetan Bansal</em></p>
+<p>“There aren’t many opportunities for computational biology enthusiasts to make a difference in the field while still in school. GSOC at [my org] was one such gem of an opportunity that illustrated exactly why writing software for biological research is benefited by a background in biology. The experience I have gained here is definitely irreplaceable. The fundamentals of open-source programming and the rhythm associated with regular coding and problem solving helped nourish an intellectual side of me that I will not forget in a hurry. This is definitely not the last time you will see me.”<br />
+<em>Chinmoy Bhatiya</em></p>
+<p>“This was the first time I took part into either GSoC or an Open Source project, and it was also one of the most exciting things I’ve ever done! This project gave me the chance to spend ~3 months learning lot of new things, having fun, doing something for the community and even getting pay for that! That’s an amazing combination! …I will remain as an active participant of [my org's] community beyond the official end of GSoC 2009!”<br />
+<em>Gerardo Huck</em></p>
+<p>“It was definitely a very good learning experience for me. …But I have some unfinished works… So I’ll continue this project after GSoC, and be help to drive [my org's] development.”<br />
+<em>Kozo Nishida</em></p>
+<p>“It was the first time that I worked with an open source community and it was really a great experience. I am very thankful to Google and [my org] for providing me this great opportunity. I would like to thank [my mentors] for their excellent support during the summer. Looking forward to working with you again.”<br />
+<em>Srinivasarao Vundavalli</em></p>
+<p>“It was a GREAT experience to work with [my org] during GSoC 2009!!! The administrators and mentors were very helpful during bounding and coding periods. Whenever I had problems they were always responsive and offered me help in time. Under their guidance, I’ve improved my programming and communication skill, and learned how to work within a group. I would like to express my gratitude to all my mentors in [my org]. If I can participate in GSoC next summer, I would like to work with [my org] again:)“<br />
+<em>Xuemin (Helen) Liu</em></p>
+<p>&quot;Get over yourself. Understand there are people smarter than you or people better at some things than you. Just the same, you're still needed. JFDI (Just Fabulously Do It) and find your niche.&quot;<br />
+<em>Justin Hunter</em></p>
+<p>&quot;This year's GSoC was my first contribution to the open source world and I will like to continue my contributions to open source whenever I get the opportunity. The best thing about open source is the huge opportunity it provides to everyone who wants to explore their career in the technical world and develop in their field of interest. The way people from different streams come together, exploit their talents, cooperate, coordinate, focus their collective efforts towards a common goal that will help many more people in the end is the best part about open source.&quot; <br />
+<em>Kanika Vats</em></p>
+<p>&quot;So, we've now gotten to the end of it all. It does feel a bit sad, I really did have a great time coding this summer and hopefully I can do it again. I don't think I've ever learned this much in a summer job and everybody working with me have been really fantastic.&quot; <br />
+<em>Anna Granudd</em></p>
+<p><span id="ch005_notes-for-first-year-organizations.xhtml"></span></p>
+<h1>Notes for First Year Organizations</h1>
+<p>Dear 2012 First Year Organization,</p>
+<p>Congrats! We know you're excited to participate in GSoC. We also know you're overwhelmed, so we have some advice: DON'T PANIC. The GSoC team has done this before and knows what it's doing. The program is well documented, but to get you started, here are a few tips.</p>
+<p>General:</p>
+<p>* This is about building the STUDENT’S experience. Getting code in your project is a nice side effect.</p>
+<p>* Know and meet the deadlines for every part of participation: organization administration, student participation, and mentor participation. Use Google Calendars’ alert feature.</p>
+<p>* Search the wiki, but don’t be afraid to ask questions on the appropriate mailing list. </p>
+<p>* Talk to experienced organizations for advice; talk to new organizations for brainstorming.</p>
+<p>* There’s a GSoC book. Read it: http://www.booki.cc/gsoc-mentoring/</p>
+<p>* Spread (don’t spam) the word that your organization is participating in GSoC.</p>
+<p>Students, mentors, and slots:</p>
+<p>* Students are not experienced project members and will take longer to write code than the core team. Plan accordingly.</p>
+<p>* Mentors should expect to spend at least 10 hours a week for each student.</p>
+<p>* The mentor/student process is:</p>
+<p>** Receive mentor applications.</p>
+<p>** Receive student applications.</p>
+<p>** Request a number of slots for students.</p>
+<p>** Receive confirmation of number of slots.</p>
+<p>** Select students and mentors.</p>
+<p>* The application process is a great initial test of the student’s dedication and skills, so don’t offer students too much help during it. </p>
+<p>* Use code tests and personal conversation to help select students. The student with the best proposal might not be the student who can produce the best code.</p>
+<p>* Request 1 student slot for every 2 mentors you have. As a first year organization you will probably receive fewer than 4 students. THIS IS A GOOD THING. Use your first year to get used to the process. Expand in your second year.</p>
+<p>Coding, community, and communication:</p>
+<p>* Treat the student like a core contributor. Private repos or branches can prevent the student from blocking releases, but can also isolate the student from the rest of the project.</p>
+<p>* Publish weekly or daily goals. This helps to keep scope, show progress, and keep students active.</p>
+<p>* It’s okay to fail a student. If a student doesn’t meet agreed deadlines or doesn’t communicate, he or she should be failed.</p>
+<p>* Make all communication public. If it didn’t happen in public, it didn’t happen.</p>
+<p>* Show; don’t tell. Screen sharing and pair programming are often more effective than conversation.</p>
+<p>If you have any questions just ask. We know you’ll be awesome!</p>
+<p>Best wishes,</p>
+<p>GSoC 2011 First Year Organizations </p>
+<p><span id="ch006_what-makes-a-good-mentor.xhtml"></span></p>
+<h1>What Makes a Good Mentor?</h1>
+<p>Mentoring a student can be a very rewarding experience. However, being a good mentor is <em>not</em> just a matter of winding up the student and watching them go. Quality mentoring requires a substantial time commitment and the willingness and ability to take a leadership role.</p>
+<p>There are specific skills that you can work on in order to be more effective; even experienced mentors can improve. This chapter highlights some of the capabilities of top mentors, by suggesting some self-assessment questions that can help you to evaluate your strengths and weaknesses in this role.</p>
+<p><strong>Are you already part of the developer community?</strong> If you are not then you are going to be less effective at introducing a student to the local culture and practices. Similarly, you are less likely to be able to propose, guide and integrate successful projects relevant to the larger effort. If you are new to the community, working as a backup mentor on a project may be an excellent way to get involved.  Note that some projects are more community-oriented than others; assess the community skillset needed for your target group.</p>
+<p><strong>Do you have a real interest in potential GSoC projects?</strong> As a GSoC mentor you will be taking ownership of a project idea and seeing it through the summer. If you are not excited about the project, mentoring will be more difficult. You are an integral part of the process from project proposal to delivery.</p>
+<p><strong>Are you willing to dedicate significant time?</strong> While the time requirements for mentoring vary, you should seriously consider your prior mentoring experiences and your available time before committing to this role. If you really don't want to mentor, or really won't have a reasonable amount of time each week, <em>then don't offer.</em></p>
+<p><strong>Are you keenly interested in mentoring students?</strong> A main goal of GSoC is mentoring students. Mentoring is important to the future of open source software, our immediate projects and the overall culture. Mentoring a student requires a combination of passion, responsibility and patience. A good mentor is willing to engage with students throughout their learning process.</p>
+<h2>Be Prepared to Seek Help</h2>
+<p>At all times don't forget that you have access to people, tools and resources that can make your job much easier <em>and</em> make you a better mentor. Make use of your org admin when you are not sure what is expected of you or have a difficult situation with your student. Make use of other mentors in your organization and the thousands of mentors on the mentor mailing list. Though it may be an annoying list at times <em>(don't feed the trolls!)</em>, it is a valuable resource. The GSoC admins are another important resource. They set the tone and standards for the entire program. They have heard it all, so don't hesitate to contact them when a problem arises.</p>
+<h2>Backup Mentors</h2>
+<p>An organization may choose to assign backup mentors.  Backup mentors are recognized by GSoC, but not officially responsible for the project or evaluations. Backup mentors are useful during absences by the primary mentor. They may also have relevant expertise.</p>
+<h2>What To Expect From Under-Mentoring</h2>
+<p><strong>The student's project is never properly defined.</strong> The project goals and deliverables are unclear, and the work schedule is not set. The consequences of this are serious and impact the project if left unchecked.</p>
+<p><strong>The mentor has little idea what the student is doing.</strong> The state of the project is unclear, and its progress is uncertain. Evaluation is impossible to do well.</p>
+<p><strong>The student produces code that isn't useful.</strong>  The student starts off on 'the wrong path',  failing to use existing functions or established project idioms.  Rather than fixing problems as they arise they keep on adding more.  The code is never integrated into the main codebase because it doesn't work well enough and would require more work to fix than it is worth.</p>
+<p><strong>The student gets stuck.</strong> The student seems to be engaged, and to be working hard, but no apparent progress is being made. Alternatively, the student's communications are infrequent and terse, and seem to always be on the same issue or milestone.</p>
+<p><strong>The student disappears, perhaps for days or weeks at a time.</strong> If the student is under-mentored, it may be difficult to determine when this period began, and thus to know when to panic. Insufficient information is available for evaluation; thus it becomes impossible to fairly evaluate the student.</p>
+<p><span id="ch007_defining-a-project.xhtml"></span></p>
+<h1>Defining a Project</h1>
+<p>The process of defining ideal GSoC projects is not just a &quot;summertime&quot; activity. Such projects are generally useful to the overall open source software development effort. The same qualities that go into a good GSoC project go into entry projects for new developers and even projects that help recruit new developers.</p>
+<p>Putting together a well-defined GSoC project also forces you to think about your project from a new point of view. This is a valuable exercise for defining the current scope of, and potential new avenues for, your work. In other words, it can be much more than just getting help with your existing workload.</p>
+<p>Your goal for GSoC is to generate a list of project ideas that capture the development needs of your organization, attract the interest of students, and help you get things done. This is often done as a community effort that involves as many potential mentors as possible, helps create buy-in from these mentors, and gives a broad range of perspectives on organizational needs. Creating your list of project ideas should also be part of an ongoing long-term strategy, rather than a rushed act to meet the application deadline. Many organizations maintain such project lists year-round.</p>
+<p>There is an art to writing a project description that leads to good student applications. It is tempting to write a detailed project plan for the student to follow. However, students tend to echo such plans in their applications, making it difficult to evaluate their quality. It is better to briefly describe a general high-level need, and the motivation behind that need. Keeping the scope modest helps encourage more applicants, while adding a &quot;stretch&quot; goal to the project description may encourage stronger students to take on the challenge of meeting it.</p>
+<p>One strategy is to leave an opening for students to propose their own original project ideas. Some great ideas can come out of this process. Emphasize that the student proposing something original must engage with the community strongly before or during the application period to get feedback and guidance to improve the proposal.</p>
+<p>Note that the quality of the project descriptions on an organization's &quot;ideas page&quot; is one criterion for the organization's admittance into GSoC. It is worth spending some extra effort to ensure that the projects you propose are worthy of the GSoC banner.</p>
+<p>There are many ways to define a good GSoC project—probably as many ways as there are student-mentor pairings. Here are just a few:</p>
+<p><strong>Low-hanging fruit</strong>: These projects require minimal familiarity with the codebase and basic technical knowledge. They are relatively short, with clear goals.</p>
+<p><strong>Risky/Exploratory</strong>: These projects push the scope boundaries of your development effort. They might require expertise in an area not covered by your current development team. They might take advantage of a new technology. There is a reasonable chance that the project might be less successful, but the potential rewards make it worth the attempt.</p>
+<p><strong>Fun/Peripheral</strong>: These projects might not be related to the current core development focus, but create new innovations and new perspective for your project.</p>
+<p><strong>Core development</strong>: These projects derive from the ongoing work from the core of your development team. The list of features and bugs is never-ending, and help is always welcome.</p>
+<p><strong>Infrastructure/Automation</strong>: These projects are the code that your organization uses to get its development work done; for example, projects that improve the automation of releases, regression tests and automated builds. This is a category in which a GSoC student can be really helpful, doing work that the development team has been putting off while they focus on core development.</p>
+<p>The project you propose will define the tone and scope of your organization's participation in GSoC. It is a key part of your organization's application. Further, it may be the first impression made on a potential student applicant.</p>
+<p><strong>Pro Tip</strong>: Maintain an &quot;ideas page&quot; with a running list of entry projects year-round. This can benefit your development effort throughout the year. It can also make your organization's GSoC application easier to put together the following summer.</p>
+<p><strong>Don't Be That Guy</strong>: Don't propose projects that neither you nor anyone else wants to mentor.</p>
+<p><span id="ch008_selecting-a-student.xhtml"></span></p>
+<h1>Selecting a Student</h1>
+<p>Successful participation in GSoC is based on a three-way fit between mentor, student, and project. As a mentor, your role in finding that fit is two-fold: to help the organization identify and select strong students appropriate for your projects, and to find a pairing between yourself and a student that is productive and pleasant. Fortunately, these goals are quite compatible.</p>
+<h2>Understanding Student Motivations</h2>
+<p>A helpful starting point for finding, evaluating and selecting students is to look at the process from their point of view. Why do students apply to GSoC?</p>
+<p><strong>&quot;I want to be rich.&quot;</strong> The stipend that students can earn for the summer is an important motivator for many. One of Google's explicit goals is to enable students to spend the summer coding &quot;instead of flipping burgers&quot;.</p>
+<p><strong>&quot;I want to be famous.&quot;</strong> Being a GSoC student carries a certain amount of prestige. However, the desire for fame is not always a sustaining long-term motivation. Be aware of the difference between a student who wants to be &quot;accepted&quot; versus &quot;successful&quot;.</p>
+<p><strong>&quot;I want to learn.&quot;</strong> Students may want to learn various things as part of their GSoC experience, such as how to work in the organization's project, how to do open source development in general. It is important as a mentor that you are cognizant of the basic skill set required for the project.</p>
+<p><strong>&quot;I want a t-shirt.&quot;</strong> Some motivations are simple, and easy to accommodate.</p>
+<p>Students should want to participate because they have something to contribute to the organization's project. This is obviously an exciting and promising kind of GSoC applicant to receive. Assuming that the student has good technical skills and can interact well, a good result is almost inevitable.</p>
+<h2>Selecting a Student</h2>
+<p>There are some student qualifications that are important for any successful GSoC experience. The student needs to be technically skilled, needs to have good communication skills, and needs to be a hard worker with sufficient available time to succeed. Given only a brief application document and some tiny amount of remote interaction, determining whether a student has the necessary qualifications is exceedingly difficult. Hopefully the organization has an application process in place that helps. However, as a mentor you will normally be expected to assist in the evaluation that will ultimately decide who gets accept to GSoC from your organization.</p>
+<p>You have several techniques at your disposal for helping your organization evaluate students. First and foremost, your expertise is key in evaluating student proposals. Is a given proposal technically realistic? Is it useful to the organization? Does it meet the organization's overall goals for GSoC?</p>
+<p>Some of the student applications your organization receives will be obvious winners, about which little discussion is needed. Many more will be obvious losers that need no discussion at all. Applications that fail to conform to the organization submission rules, are extremely short, or are difficult to read or understand almost inevitably come from students who would fail miserably if accepted. The middle ground in student applications is where the action is. There are several techniques for assessing these promising but troubled applications:</p>
+<p><strong>Send an early query to the student asking for more information.</strong> Failure to respond well or in a timely fashion almost guarantees problems with the student later on.</p>
+<p><strong>Watch the student's community interaction.</strong> The best students interact with your organization's community during or even well before the application period. A mediocre application is much less concerning if it looks like the student is already moving forward.</p>
+<p><strong>Inquire about the student's GSoC history.</strong> A student who has participated in GSoC before may be easy to figure out. Past performance is usually an indicator of future GSoC success. This information could be included in your organization's student application template, or obtained from a general web search.</p>
+<p><strong>Find out where else the student has applied.</strong> Does the student have other GSoC applications? Did they copy-paste the same application over and over? There are often opportunities for negotiation with other organizations around a student who has applied several places.</p>
+<p><strong>Look at the student's other summer plans.</strong> A student who at least claims to be solely focused on GSoC is more likely to be successful.</p>
+<h2>Finding a Match</h2>
+<p>As a mentor you want to do more than just help your organization select the best students. You also want to ensure that they select a student and project that you will enjoy working with.</p>
+<p>This may involve more than just finding a bright student with the right area of expertise. It is worthwhile to look at the personality type and work style a student application reflects. If you are a methodical, organized person, for example, a loose and casual student style might not be an ideal fit for you. Mentoring a student geographically far from you can be a bit challenging, but also quite enlightening. Be aware of timezone differences that might require early morning or late night schedules for live meetings, which are critical for effective mentoring.</p>
+<p>For those unfortunate students that don't make the cut for logistical reasons (e.g., not enough mentors or funded slots), consider providing feedback to let them know their applications were valued.  This is a service both to the student and to the organization. These students will be more likely to stay engaged, possibly even contributing outside of the official GSoC program, and returning next year with an even stronger application.</p>
+<h2>Google's Selection Process</h2>
+<p>The Google Open Source Program Office (OSPO) has an internal process to select mentoring organizations and allocate GSoC positions; understanding it may help you make better student selections. Refer to the ample documentation updated yearly for guidance on its workings.</p>
+<p>In brief, OSPO allocates each organization a number of &quot;slots&quot; based primarily (but not solely) on the number of student applicants. The organization is then responsible for ranking its student projects. The top-ranked projects equal to the number of allocated slots are then the accepted projects for your organization. You should also understand how student selection and mentoring can affect the eligibility of an organization. In particular, note that a poor job of mentoring may lead to a poor outcome, making it less likely that your organization will be selected in future years.</p>
+<h2></h2>
+<div title="Page Break">
+
+</div>
+<p>Starting at the Beginning</p>
+</h2>
+<p>A successful GSoC project begins with a successful initiation. Finding the right three-way fit between mentor, student and organization can make success incredibly easy. Conversely, failing to find this fit makes it difficult or impossible for the project to succeed.</p>
+<p>Once a fit is found, the project is ready to be elaborated. You and your student are prepared to embark upon a grand adventure. Excelsior!</p>
+<p><strong>Pro Tip</strong>: <strong></strong> One temptation to be avoided is to give a promising student excessive help in rewriting their application. It is likely that the result will be an application stronger than the student it represents. Students' communication, organization and logical thinking skills rarely improve over the course of a summer.</p>
+<p><strong>Pro Tip</strong>: If in doubt about a student applicant's final ranking after allocation, err on the side of rejecting. Limited program budget and mentor time can most certainly be better spent on another student in your or another organization. Yes, you can release slots to other organizations!</p>
+<p><strong>Don't Be <em></em> That Guy</strong>: Don't even think about selecting a student with whom you've had no contact. You should establish an active back-and-forth prior to making a decision. If you or your student have failed to make this happen, <em>do not proceed</em>.</p>
+<p><span id="ch010_community-basics.xhtml"></span></p>
+<h1>Community Basics</h1>
+<p>Your community is the collection of people who work on or with your project. Helping your student become familiar with those people makes them a more effective contributor during GSoC and helps to make them feel part of your community, which encourages involvement after their GSoC project is completed.</p>
+<h2>Set the Tone</h2>
+<p>As a mentor, you can really help to set the tone for your student's initial experiences by facilitating community. Encourage your student to introduce themselves on mailing lists and IRC, and invite comments on their proposal. If your project maintains biographical information on contributors, ask your student to read through this information, and spend some time talking with your student about the people with whom they may interact.</p>
+<p>Once a student has a feeling for who's who in the community, they are more likely to communicate and seek advice from others. This increases their chances of getting issues resolved more quickly and effectively than if they relied on only their mentor for help.</p>
+<h2>Encourage Questions</h2>
+<p>Asking effective questions is a skill, not an innate talent. There are many resources for learning how to ask questions effectively, and Eric Raymond's classic <em>&quot;How to ask good questions&quot;</em> (<a href="http://catb.org/~esr/faqs/smart-questions.html" class="uri">http://catb.org/~esr/faqs/smart-questions.html</a>) is a great place for students to start.  Another useful resource is Simon Tatham's <em>&quot;How to Report Bugs Effectively&quot;</em> (<a href="http://www.chiark.greenend.org.uk/~sgtatham/bugs.html" class="uri">http://www.chiark.greenend.org.uk/~sgtatham/bugs.html</a>) which isn't explicitly about asking questions, but does cover aspects of effective communication about technical issues.</p>
+<p>Before your student asks a question, it's often helpful for them to take a minute to struggle with it and attempt to find the answer on their own. That extra effort often helps your student to solve their own problem. If not, it sharpens the question they ultimately ask.</p>
+<h2>Criticism Happens</h2>
+<p>Discussion in open source communities can be very direct. People will often criticize the bad points of a patch or suggestion, but fail to praise what is good about it. Explain to the student that comments aren't meant to be critical of them as a person, but are aimed toward improving the patch or idea and the project in general. Making potential new contributors feel welcome in your community is also important outside of GSoC.</p>
+<p><strong>Pro Tip</strong>: When you announce to the community that you're taking part in GSoC, make a point of explicitly asking people to make the students feel welcome.</p>
+<p><span id="ch011_best-practices.xhtml"></span></p>
+<h1>Best Practices</h1>
+<p>Effective communication between mentor and student is absolutely vital to a successful and rewarding GSoC experience. Here are some tips for encouraging good communication:</p>
+<p><strong>Share contact details</strong>: Swap contact information with your student and org admin early on. If your contact information changes, be sure to tell people, and make sure your student does too. Be sure to keep the org admin informed about when you may be unavailable to your student, so that they are not caught unaware when your student contacts them.</p>
+<p>You need to take care if you are planning a trip during the summer, especially if it is more than a few days, or near milestones in the GSoC timeline. If you coordinate with your student beforehand and give them sufficient work to chew on, it can go smoothly. What you don't want is for your student to be blocked on something while you are inaccessible and do nothing until you return. Make sure to give your student many different tasks to work on, so that she can work on something else if you are not available. This is a great time to utilize a secondary mentor to act as a backup in your absence.</p>
+<p><strong>Choose communication channels</strong>: Decide upfront how you are going to communicate with your student and what type of technology or medium you are going to use. Don't wait until mid-way through GSoC to figure out that one of you can't get your microphone working on your desktop for voice chat.</p>
+<p>It's good to make use of multiple means of communication, as different platforms can complement each other. Instant methods like IRC or IM are great for getting a quick answer or for interactive discussion, but require both parties to be available at once. Public communications are generally preferable to private ones.</p>
+<p>Although many people prefer text-only communication, it is very helpful to talk on the phone or video-chat with your student at least once at the beginning of the program. Hearing a voice or seeing a face can help people feel more connected, creating a sense of mutual respect and responsibility.</p>
+<p><strong>Decide on the frequency of reports</strong>: Discuss and decide the frequency and form of status reports upfront. Many organizations require students to deliver weekly status reports. Make sure you clearly delineate in what format the reports should be delivered and what information needs to be included.  Providing an outline or template can be helpful<strong>.</strong></p>
+<p><strong>Establish frequent chatter</strong>: You really want to be hearing from your student more often than once a week, as this is a long time for a student to be stuck or heading up a blind alley. Be sure to encourage and instigate communication throughout the week.</p>
+<p><strong>Provide a safe environment</strong>: Create an environment in which your student feels comfortable enough to ask questions that may sound &quot;stupid&quot;. This will help the student to avoid getting stuck, and foster positive mentor-student and student-community relationships. Good relationships are extremely important for GSoC success, and for fostering and encouraging long-term contributors.</p>
+<p>Here are some ways to help your student understand that his question is valuable:</p>
+<p><strong>Avoid gruff “RTFM” replies</strong>: It's likely the student will ask questions which are answered somewhere in your project's documentation. However, do take a few moments extra to politely point to the information, or you'll risk the student feeling reluctant to ask next time he has a question.</p>
+<p><strong>Ask some stupid questions yourself</strong>: Chances are your student knows some things you don't know or that you’ve just forgotten. Don't be afraid to ask your student questions.</p>
+<p><strong>Be inclusive</strong>: If you're asked a question which someone else in your project could answer better, put your student in touch with them. Invite your student to participate in your community events, not just the core development processes. Invite your student to attend group retreats or related conferences.</p>
+<p><strong>Introduce your student to the community's communication style</strong>: Some groups have developed codes of conduct, such as the Fedora IRC Helpers Code of Conduct (<a href="http://fedoraproject.org/wiki/IRC_helpers_code_of_conduct" class="uri">http://fedoraproject.org/wiki/IRC_helpers_code_of_conduct</a>), which help initiate new members and guide the interactions of existing members. You are encouraged to read the code of conduct and think about which issues and solutions might apply to your group.</p>
+<p><strong>Follow mailing list etiquette</strong>: The GSoC mentors mailing list has more than 3000 subscribers. If you have a question for the Google team, mail <a href="mailto:ospoadmin@gmail.com">ospoadmin@gmail.com</a> <strong></strong> instead of the list. Please take a moment to review list etiquette (<a href="http://www.gweep.ca/~edmonds/usenet/ml-etiquette.html" class="uri">http://www.gweep.ca/~edmonds/usenet/ml-etiquette.html</a>).</p>
+<p><strong>Address communication disconnects</strong>: When working with people for the first time, a best practice is to assume that they do not mean any harm. If your student makes a comment via email that offends another member of the community, it's appropriate and constructive to speak up and address the issue. Assuming that the comment was the result of misunderstanding, rather a result of malice, allows you to ask questions and help your student adjust to your community's communication style.</p>
+<p>After asking questions, you can then offer an explanation to a person or a suggestion on how they could behave or phrase their comments differently in the future. When offering coaching on how to behave, be mindful of embarrassing your student in public about what's happened, or demanding apologies. If possible, talk to your student one on one, using an immediate communication medium like IM, IRC, the telephone or a face-to-face conversation. This is better than sending email. Remember that you're telling someone that they did something wrong; keep in mind how you'd feel if someone was telling you that you'd made a mistake.</p>
+<p><strong>Apologize</strong> <strong>Effectively</strong>: Making apologies is a fact of human life, and open source communities are no exception. In the event that you or a student finds themselves needing to make an apology, there are a few things that might help you apologize effectively:</p>
+<ul>
+<li>Make the apology as soon as possible</li>
+<li>Make it clear in the subject line that you're apologizing</li>
+<li>Make it an honest apology and not a defensive statement in disguise<br />
+</li>
+</ul>
+<h2>Giving and Receiving Criticism</h2>
+<p>Mailing list culture and public code review can be a rude awakening for newcomers. Submitting a patch to a mailing list might be a student's first experience with public critique of their code.</p>
+<p>Project policies vary widely on how contributions are treated. Some encourage committing early and often, hopefully maintaining a stable branch for bug-fixes. Others refuse to commit code to the core repository until a patch is fully discussed, tested and documented. Most projects lie somewhere in between.</p>
+<p>All projects engage in some form of code review and the inevitable criticism. Having people look at and ask questions about your code is a fact of working in the open source world. Direct code review is one of the great strengths of open source development. Direct review helps people hone their coding skills and learn rapidly from others. Bugs are found quickly and fixed. The whole process is documented in source control repositories and mailing lists and made available online.</p>
+<p>Here are some ways that you can help students prepare for code review:</p>
+<ul>
+<li>Provide example mailing list threads or a list of the types of questions that are asked about code.</li>
+<li>Direct students to review coding standards that apply to your project.</li>
+<li>Go through an example code review on the student's first code sample submission that matches as closely as possible the process that your project normally uses.</li>
+</ul>
+<p>People are more likely to respond positively to criticism from those that they trust and respect. Try introducing students to the people that are likely to comment on their code, and explaining the role that those people play in the group. Also, encourage students to both defend technical decisions, and be gracious in admitting mistakes.</p>
+<p>Code, in addition to being mathematical and scientific, has been compared to poetry or creative writing. Most developers associate a sense of ownership and creative discovery with their code. You may have &quot;gotten over&quot; the bruised ego you received the first time that someone criticized your variable name or algorithm choice. However, your student may be experiencing this pain for the first time. A simple &quot;thank you&quot; when students publish code, send email to a mailing list or make other contributions goes a long way.</p>
+<p>Make an effort to assist a student in their first steps into your community. Offer to proofread emails, blog posts, or patches. You don't want to do all the work for them, but you can help students feel confident in their communication, especially when they're just starting out.</p>
+<p><strong>Pro Tip</strong>: A good status report should include a few items that went well during the previous period, and a few problems that were encountered and how they were addressed.</p>
+<p><strong>Don't Be That Guy</strong>: Don’t ever give your student the impression that you think that only stupid people ask questions.  Be nice.  Remember that you were once a beginner.</p>
+<p><span id="ch012_warning-signs.xhtml"></span></p>
+<h1>Warning Signs</h1>
+<p>As a GSoC mentor, you are in the best position to identify &quot;red flags&quot; and warning signs early on. This is critical to addressing problems before they get out of hand. Learn from the mistakes of others, and learn how to identify and mitigate the following warning signs.</p>
+<p><strong>Not enough hours in the day</strong>: If your student has a full-time job or is attempting to defend a graduate thesis during the summer, that is probably going to not work. Even though your student thinks they will have enough extra time, don't believe them. They won't. If your student has every single minute of every day completely booked, any unexpected event, such as getting sick or a family emergency, derails this plan beyond repair. If your student cannot commit to a specified time schedule, this is an immediate red flag that they need serious help with time management.</p>
+<p><strong>Missing student</strong>:  Missing a predefined meeting is a serious warning sign that your student is not taking the process seriously and this should be remedied as early as possible.  If your student was in such a deep &quot;coding zone&quot; that they forget the meeting, and you have it later on, that might be acceptable.</p>
+<p><strong>&quot;My village was invaded by aliens&quot;</strong>: What is a valid excuse? Students have been known to come up with outlandish excuses as to why they are not meeting their milestones. <em>(You did agree on milestones beforehand, right?)</em> If you think that your student is lying to you, that is a huge warning that things are going sour. Make sure to remind them that &quot;real life just got in the way, I will redouble my efforts next week&quot; is always better than &quot;my village was invaded by aliens.&quot;</p>
+<p><strong>Bad students happen to good mentors</strong>: One thing to keep in mind: <em>Sometimes bad students happen to good mentors.</em> Don't take it personally. If a mentor tries their hardest and their student fails, this does not reflect badly on the mentor.</p>
+<h2>&quot;Actions Speak Louder Than Words&quot;</h2>
+<p>This bit of folk wisdom is proven year after year during GSoC. A mentor will write to the mentors mailing list asking for advice about a student that has not performed or gone missing for a period of time. Mid-term evaluations are coming up and the student has reappeared, reinvigorated, with no shortage of excuses. Now the mentor must decide: &quot;Should I pass this student?&quot;.</p>
+<p>The GSoC mailing list contains story after story from other mentors who ignored the warning signs, only to be disappointed later.  A mentor considers this advice, but focuses on the unique aspects of their particular situation and passes the student...and their story is added to the list the following year.</p>
+<p>Here are some specific scenarios to watch out for:</p>
+<p><strong>The Disappearing Student</strong>: A student submits a great proposal and is enthusiastic about discussing the project and getting started. You rank them high, they get accepted, and then they drop off the face of the earth. <strong>Fail.</strong></p>
+<p><strong>Underperformance</strong>: The student sticks around for the community bonding period, but then it comes time to work. When it comes to actually writing code, they seriously under perform. They offer excuses when pressed, and offer scraps of code here and there. Then comes the mid-term evaluation and start committing like crazy. <strong>Fail.</strong></p>
+<p><strong>Wrong Priorities</strong>: The student passes the mid-term and then goes on an unscheduled holiday for two weeks or starts a part-time job and the quality or quantity of work is seriously affected. You discuss this with them immediately and they promise to reprioritize, but the work is not produced. <strong>Fail.</strong></p>
+<p>Depending on your personality type, some of these might seem harsh. You might also shoulder some of the blame because you think that if you had been a better mentor, more on top of the situation, it would have been avoided. But even if you are partly to blame, so is the student. And it is up to the student to perform when expectations are communicated and agreed upon.</p>
+<p><strong>Pro Tip</strong>: In the event your student's boat is sinking, all mentors are equipped with emergency rocket-propelled jet skis.</p>
+<p><span id="ch013_open-source-culture.xhtml"></span></p>
+<h1>Open Source Culture</h1>
+<p>When you encounter an open source group for the first time, it may be a bewildering experience. Whether posting to a mailing list for the first time, blogging about the project you're taking on or hanging out on an IRC channel - the way people interact, and what they expect from each other is pretty different than in classroom or with friends and family.</p>
+<h2>Openness and Sharing</h2>
+<p>Open source communication can vary a lot. A core value held in common is that sharing code is good. Regardless of license, language or indentation style, open source developers create, share and modify source code together.</p>
+<p>Working on code together means a lot of things: transparency, directness and cooperation are words that are often mentioned by developers when describing the process. It can involve bug reports, code refactoring, implementing new features, documentation, project management and advocacy.</p>
+<p>Amazingly, the ways in which people actually share code are as varied as the individuals involved. Even if you have previous experience with other open source projects, keep in mind that you still need to take the time to learn how the new open source project works, and acquaint yourself with their particular brand of sharing.</p>
+<p>One aspect of &quot;open culture&quot; is that people are informal. People address each other by first name. They tend to speak directly to one another, regardless of social status or formal title. Disagreements about code, whether as profound as which algorithm is most appropriate, or as seemingly mundane as how many spaces are used for indentation, are aired in public. This process is very intimidating to newcomers, who might be concerned about having their words immortalized on the Internet, and worse, saying something wrong or embarrassing. The only way to get over this fear is to practice and participate publicly.</p>
+<p>Although &quot;open culture&quot; is generally informal, it is important to remember that you still need to mind your manners when participating in conversations. </p>
+<h2></h2>
+<div title="Page Break">
+
+</div>
+<p>Remote Communication</p>
+</h2>
+<p>Many projects involve individuals who are working not only in different cities, countries and continents, but collaborating across major cultural and language differences. And rather than having procedures or policies on how to interact with one another handed down from HR departments or other authorities, communication practices evolve between individuals over time.</p>
+<p>Because there are few rules around working together on open source projects, there is a lot of freedom to share directly with one another. This freedom is at the core of what attracts many people to open source software. Multi-cultural projects offer an incredible opportunity to share knowledge between individuals directly. With sharing, however, comes a responsibility to inform new participants about expectations for communication and ways to solve misunderstandings to the benefit of all.</p>
+<p>Be mindful of cultural assumptions about race, gender, sexual orientation and disability. People often make assumptions, have stereotypes or are biased in ways that no one can control. The best practice is to assume that people don't mean any harm, and when they're told respectfully that they've offended or hurt someone, that they'll stop whatever it is that they are doing that is harmful.</p>
+<p>All that tolerant rhetoric aside, it is never productive for an open source project to allow individuals who consistently try to cause harm to others to do so. If you are causing undue problems don't be surprised if you are asked to discontinue your participation regardless of your contributions. It's often better for an open source project to ask someone to leave, than to allow them to harm others and in turn, cause other productive members of your team to depart.</p>
+<h2>Abbreviations and Slang</h2>
+<p>People come up with abbreviations and slang that are meaningful inside the group, but not necessarily to outsiders. Ask questions when you don't understand a term, a joke or some arcane bit of project lore.</p>
+<p>Here are a few useful resources for teasing out meaning from initialisms, acronyms and abbreviations:</p>
+<ul>
+<li>Urban Dictionary (<a href="http://www.urbandictionary.com/">http://www.urbandictionary.com</a>) <br />
+</li>
+<li>Webster's Online Dictionary (<a href="http://www.websters-online-dictionary.org/" class="uri">http://www.websters-online-dictionary.org/</a>) <br />
+</li>
+<li>Acronym Finder (<a href="http://www.acronymfinder.com/" class="uri">http://www.acronymfinder.com/</a>) <br />
+</li>
+<li>A to Z word finder <a href="http://www.a2zwordfinder.com/)">(</a><a href="http://www.a2zwordfinder.com/" class="uri">http://www.a2zwordfinder.com/</a>)  </li>
+</ul>
+<h2>Volunteerism and Gift Economies</h2>
+<p>Donated time are the life blood of open source projects. Many individuals contribute their time and energy without any expectation of compensation or even a simple &quot;thank you&quot; in return.</p>
+<p>Contributions to projects are often self-directed, with developers having a personal itch to scratch in the form of a new feature, by correcting a bug that they've encountered or by implementing something from a TODO list. Projects operating in this way may seem chaotic if you are only familiar with top-down management - where teachers, professors or bosses tell you what to do and when. Of course, some projects do have clearly defined project management, with milestones and tasks meted out carefully.</p>
+<p>Because many (or in some cases all) contributors are volunteering, methods of coercion available to businesses are not available. The best way to collaborate is to behave in a way that encourages others, and ultimately, makes people want to contribute. Some easy ways to encourage volunteerism include:</p>
+<ul>
+<li>Saying thank you</li>
+<li>Giving compliments when they are deserved, regularly and in public</li>
+<li>Publicizing cool hacks and features as they are implemented, in blog posts and on the mailing lists</li>
+<li>Promptly committing useful code</li>
+<li>Responding promptly to requests for information</li>
+<li>Clearly defining ways to contribute to your project (TODO lists are great!)</li>
+</ul>
+<p>Consider treating every patch like it is a gift. Being grateful is good for both the giver and the receiver, and invigorates the cycle of virtuous giving.</p>
+<p>Overall, your goal is to help create and maintain an atmosphere around contribution that is enjoyable. What that means will vary significantly depending on the project, but certainly the above points apply to any project. <br />
+</p>
+<p><span id="ch015_mind-the-gap.xhtml"></span></p>
+<h1>Mind the Gap</h1>
+<p>The community bonding period is the 6-8 weeks between GSoC student acceptance and the start of coding date. Here are some of the goals of this period:</p>
+<ul>
+<li>Prepare students to immediately start writing code at the official start of coding.</li>
+<li>Get students engaged socially in the project.</li>
+<li>Provide time for students to learn about the development practices of the organization.</li>
+<li>Ensure that students have a development environment set up. This includes getting set up with the project version control system and reading up on necessary documentation.</li>
+<li>Further refine the strategic plan for project completion.</li>
+<li>Get required forms filled out, such as the tax forms required by Google, any contributor license agreements, and any paperwork that your project requires.</li>
+</ul>
+<p>This period was added in 2007 to help students integrate with their development community and so encourage them to become lifetime contributors. New contributors to a project outside of GSoC often lurk in a project's IRC channel and/or mailing lists for weeks or months before submitting their first patch. The community bonding period is an attempt to improve that experience.</p>
+<p>Successful completion of your student's GSoC project depends a lot on the bonding period. Make sure that you and your student make good use of this time and make significant progress on preliminary tasks. The community bonding period is also a good chance for the students to start interacting with each other. Early connections can help the students support each other during coding.</p>
+<p>Ideally students are ready to start writing code at the official start of coding, and are already engaged socially. During the community bonding period students are expected to learn about the development processes of their organization, ensure they have a development environment set up, get set up with the project version control system, read up on necessary documentation, and further refine the strategic plan for successful project completion.</p>
+<p>Plan weekly activities for your student that only take an hour or two. The community bonding period occurs when students are likely to still be taking classes and have a full load of course work. It's unreasonable to expect that the student will be available full-time to work on GSoC at that point.</p>
+<p><strong>Pro Tip</strong>: Students are meant to be &quot;in good standing with their community&quot; to receive the initial payment at the start of coding. If you don't hear anything at all from your accepted student during community bonding, or the student explicitly drops out, tell Google.  It may even be possible to select a replacement student.</p>
+<p><span id="ch016_setting-expectations.xhtml"></span></p>
+<h1>Setting Expectations</h1>
+<p>Successful mentors set expectations at the start of their projects. This includes communication frequency, project goals, availability and ways of delivering feedback. While the mentor should take the lead in expectation setting, the process of creating and documenting the expectations must be collaborative. Students and mentors need to agree on what is expected, or success becomes quite difficult.</p>
+<h2>Defining Success</h2>
+<p>Performance measures make it easier to provide feedback, to help your student get back on track if she veers off-course. Clearly stated measures also help you make a fair determination that a student needs to removed from the program.</p>
+<p><strong>Get student input:</strong> Make sure your student has input into the types of performance measures used to determine success or failure. It is very important that your student helps create the performance measures to determine project success and failures. Your relationship should be a highly collaborative one.</p>
+<p><strong>Set achievable goals:</strong> Help your student come up with manageable project goals. Rather than defining the project as one giant chunk, help your student break the project goals down into smaller pieces or &quot;inchstones&quot; that allow a change in direction if necessary. It is sad to work the entire summer on one giant deliverable, only find out in the last few weeks that the architecture or design is defective. <strong></strong></p>
+<p><strong>Anticipate time away:</strong> Make sure to set expectations for known or planned time away from the project, such as course work, vacation trips or holiday time. Talk about how many hours or deliverables per week would be reachable goals and what amount would be a good stretch goal.</p>
+<h2>Managing Output</h2>
+<p>Decide in advance what happens when project goals aren’t met. Remember to be flexible if your student has made good progress or has obviously worked hard but needs to re-scope the project at mid-term. Good project management is hard. Your performance measures will help you manage project modifications.</p>
+<p><strong>Plan for Slippage</strong>: Have a plan to deal with scope-creep and timeline slippage. What if something happens that prevents your student from working successfully for an extended period of time? At which point do you need to terminate the project? Have a plan in place for these scenarios.</p>
+<p><strong>Gather Feedback</strong>: Your student's wishes and desires for a successful project are as important as the project goals. Make sure that you solicit and incorporate her feedback when coming up with initial goals, performance measures and communication methods.</p>
+<p>Overall, communicate and be reasonable when it comes to your students. Be ready to revise project plans if an unexpected requirement or bug occurs.</p>
+<p><strong>Pro Tip</strong>: Ask about the weather and local stability of public services. Is your student using the cafe down the street for Internet access? Are there seasonal weather conditions that may lead to flooding and the subsequent inability to turn-on one’s computer? Work on a plan to address these types of environmental issues that can affect both communication and output.</p>
+<p><strong>Don't Be That Guy</strong>: No one likes dictators.  Work with your student on the development of expectations, rather then barking out orders.</p>
+<p><span id="ch017_workflow.xhtml"></span></p>
+<h1>Workflow</h1>
+<p>Make sure that your student is familiar with the workflow of your community as early as possible. Learning the toolchain a project uses, such as libraries, version control systems and bugtrackers, is high priority. Workflow also encompasses code review, talking with other developers about which algorithm is best for the problem at hand and other meta-questions about how to best get from specification to implemented solution.</p>
+<p>The best kind of workflows for the GSoC projects are iterative. That means that small, quantifiable goals are defined and then acted upon. For instance, an example of an iterative workflow is:</p>
+<ul>
+<li>Write a test that demonstrates what feature will be added.</li>
+<li>Run the test to verify that it fails in the way you think it should.</li>
+<li>If it fails in an unexpected way, your test may be wrong. This is a great time to ask your mentor for guidance.</li>
+<li>If it passes, you are done! You just added test coverage to an already existing feature, and that is great!</li>
+<li>Add the feature (also known as &quot;a simple matter of programming&quot;).</li>
+<li>Run the test to verify that it passes.</li>
+<li>Write documentation about your feature.</li>
+<li>Rejoice appropriately.</li>
+</ul>
+<p>This iterative workflow is known as Test Driven Development (TDD). This workflow gets applied to each feature that will be implemented, so a TDD workflow will consist of many cycles of the above steps, each for a different feature. The polar opposite of this workflow looks something like this:</p>
+<ul>
+<li>Write code the first 1/3rd of the summer</li>
+<li>Write tests the next 1/3rd of the summer</li>
+<li>Write documentation for the last 1/3rd of the summer</li>
+</ul>
+<p>This is almost always doomed to failure, since people are always optimistic about time estimates for completing something. Sometimes you must debug a weird issue. You can't predict how long it might take to resolve the issue. What usually happens in this workflow is that the code gets written, but takes longer, half the tests get written and no documentation is written because the students have run out of time.</p>
+<p>Take an approach which produces usable code even if parts of your plan fail, or are never attempted. Be humble and flexible about your development model. The student may teach you something!</p>
+<p><strong>Pro Tip</strong>: Progressive milestones may allow code to be merged progressively.</p>
+<p><span id="ch018_managing-the-plan.xhtml"></span></p>
+<h1>Managing the Plan</h1>
+<p>The student and organization application process to GSoC helps all participants think about how to run the Google Summer of Code at a community level. One important tool is the creation of a strategic plan. The phrase &quot;project plan&quot; frequently elicits a Pavlovian response of groans, shrieks and malaise in techies. An even more severe reaction has been observed in open source communities.  So let's talk about a &quot;strategic plan&quot; instead, and how it can help your student be successful.</p>
+<h2>Creating a Strategic Plan</h2>
+<p>The GSoC application process assists in developing a good preliminary outline of a strategic plan for the student's accepted project. To increase the probability of program success you should spend time with your student, and your development community, refining the plan developed in the application period. This can be done during the community bonding period. A good strategic plan includes:</p>
+<p><strong>A high-level design document</strong>: Think about the architecture and design of the new feature or enhancements that you are making to your community's project. Take some time to teach your student to think about usability by writing a few quick use cases and scenarios, and consider the introduction of any new dependencies.</p>
+<p><strong>Progressive milestones that build on the previous work</strong>: At the completion of each milestone you and your student should take the opportunity to celebrate the accomplishment and reflect upon it. Using progressive milestones also gives you a good measure of how far you have come, which can be very useful during periods of frustration. Additionally, if you don't reach all of the final goals of the project, you will have tangible achievements to point to when reviewing progress with your student. Reinforcement of a student's tangible accomplishments encourages them to stick around and helps to create life-time contributors.</p>
+<p><strong>Target completion dates for each milestone</strong>: In reality, completion dates are going to move. Nonetheless, a target date gives you a time frame for closure and helps control &quot;scope creep&quot;. Coach your students in how to recognize that a milestone is going to be missed,  and to notify the project participants before the dates passes.</p>
+<p><strong>Tasks associated with each milestone</strong>: Because your milestones are most likely going to be chunks of of code, each milestone needs to include both testing and documentation around that particular &quot;chunk.&quot; This approach helps guarantee that you and your student don't end up with a pile of code that hasn't been tested or documented at the end of GSoC.</p>
+<h2>Following the Plan</h2>
+<p>After you create a strategic plan, you actually need to follow it. Some ways you can use your strategic plan to stay on track are:</p>
+<p><strong>Collect regular status reports</strong>: Status reports are an important communication tool. They are also important in making sure that time-line slippages and scope creep are addressed in a proactive manner. You do not want to find out two weeks after a milestone due date that your student has slipped the date because they have been unable to solve a simple problem.</p>
+<p><strong>Check off associated milestone tasks</strong>: Find a way to keep track of tasks, and then indicate when they are completed. This can be as simple as keeping an informal to-do list in that is referenced in weekly status reports. You can also use the project management software that the rest of your organization uses. Do what works best within your community, but make sure you do something.</p>
+<p><strong>Set an expectation of prior notification of missed deadlines</strong>: Your student is going to miss project deadlines. Make sure that he understands that it is important to notify you of the missed deadline well in advance. Understanding how long something is going to take to complete is a valuable skill, but it is one that is learned through ongoing evaluation.</p>
+<p><strong>If your student misses a deadline, make sure you discuss why</strong>: Helping your student understand where he become bogged down or stuck helps with future strategic plan development. Remember that you are cultivating a long-time contributor.</p>
+<p><strong>Be a good example</strong>: If you, the mentor, need to miss a deadline, make sure you communicate this to your student well in advance.</p>
+<h2>Delivering Feedback</h2>
+<p>Throughout the project you should be delivering effective feedback to your student about their code, communication, and documentation. </p>
+<p><strong>Deliver feedback early</strong>: Don't wait until several issues have come up, or until your student has impressed you multiple times with their efficiency. Let them know right away what you think about their work.<br />
+<strong></strong></p>
+<p><strong>Make a point to give positive feedback</strong>: The open source community parcels out comments all too frugally. When a student completes a task on time, and especially when they exceed your expectations, let them know! Early praise is a far better motivator than late criticism.</p>
+<p><strong>Don't avoid critique, but don't be a jerk</strong>: Try to put yourself in your student's shoes, and consider how you might want to hear constructive criticism. Phrase suggestions positively.  If criticism is personal in nature (i.e. tone of an email, timeliness or other non-code issues), deliver it in private rather than in a public forum. When in doubt, ask for advice from more experienced mentors or from your organization's administrator.</p>
+<p><strong>Pro Tip</strong>: Don't let the development of your design document become your GSoC project. It's useful to set a date for completion of your strategic plan and add a &quot;Start of Coding&quot; milestone.</p>
+<p><strong>Don't Be That Guy</strong>: Don't be overly-critical of date slippage. It happens.  Fanatical adherence to dates does not lead to successful project completion, nor does it make your student feel excited to contribute to your community long-term.</p>
+<p><span id="ch019_evaluations.xhtml"></span></p>
+<h1>Evaluations</h1>
+<p>Evaluations are a critical component of the GSoC program. Both at mid-term and at the end, evaluations serve to expose process flaws, assess performance, and precipitate pass/fail decisions. Taking time to evaluate the progress and workflow of the project provides an opportunity to correct course and address underlying issues. Most importantly, it provides a structure in which to give valuable criticism and praise to the students. After all, they are supposed to be actively learning (not just working) and effective learning requires evaluation.</p>
+<p>Unlike code critique, which happens openly on mailing lists or other public forums, performance evaluations are personal in nature. Delivering the mentor-student evaluations should be done privately. And more generally, remember the maxim: criticize in private, praise in public.</p>
+<p>There are four types of evaluations:</p>
+<p><strong>Student evaluations</strong>: Each student fills out a mid-term and final evaluation pertaining to their experience and their interaction with mentors.</p>
+<p><strong>Mentor evaluations</strong>: Each mentor fills out a mid-term and final evaluation covering their participation and their student's performance.</p>
+<p><strong>Org Admin evaluations</strong>: Each org admin fills out a mid-term and final evaluation about their role in the program.</p>
+<p><strong>Program evaluations</strong>: Every participant in GSoC answers questions about how the program is operating over all.</p>
+<p>These are provided online by Google at specified times with deadlines. The deadlines are important for organizing the payments to students based on the pass/fail decisions by their mentors, so you should ensure that you complete your evaluations on time. Remember, if a student fails at the mid-term, they will no longer be part of the program and will not receive any more payments from Google.</p>
+<h2>They Won't Know Unless You Tell Them</h2>
+<p>It is important to note that other than the pass/fail status, students do not have direct access to the evaluations of their performance. Mentors are welcome to make a copy of their evaluation and share it with students directly. Students are welcome to do the same, but it is not required for either the mentor or student to share their evaluations with the other. Make sure to thoroughly check the topics covered by the evaluations regardless of your choice to share them with one another.</p>
+<p>Mentors may not have access to student evaluations. Org admins have access to all evaluations submitted by their org's mentors and students.  Mentors have access only to their own evaluations, not to the evaluations submitted by their student.  Thus, if you want to give feedback to your student (and you should!) you need to send this feedback directly to them; you cannot rely on Google to do it for you.  While this may change in the future, it is important for mentors and org admins to coordinate in assessing the student and mentor evaluations and taking appropriate follow-up action.</p>
+<p>Evaluations should result in a direct review of the student's progress and should be conducted using a real-time communication medium. This can be by phone, your favorite voice-over-IP service, or in person. The discussion should be frank and in the context of periodic review so that the student is prepared for criticism and to work with you to revise workflows, timelines and habits. Take time to explain the value of learning how to take criticism and praise in a professional setting.</p>
+<p>When delivering reviews of student performance, be specific about both positive and negative aspects of a student's performance. Make the suggestions for change or improvement relevant to what your student is currently working on, and provide specific examples. As you prepare for your student's review, you might write it out as though you were sending an email; this will help you to frame your thoughts and to ensure that you are providing a balanced perspective. Make the student aware of the review schedule well in advance. If you provide a written copy of the review, schedule time for discussion immediately after the student reads it.</p>
+<h2>When in Doubt, Fail the Student Early</h2>
+<p>This is harsh-sounding advice. However, Leslie Hawthorn reports based on a back-of-the-envelope calculation that more than 85% of the students who are reported as marginal at or before the midterm eventually fail GSoC.  Whatever problems your student is currently having, they are likely to be worse than you currently appreciate, and to get worse rather than better over time.  You are not doing your student, much less yourself, a service by prolonging the agony.  Most GSoC students and their mentors have a great time and get a lot done.  If you are having the other kind of experience, cut your losses and try again next year.</p>
+<p>Note that GSoC gives mentoring orgs quite a bit of flexibility and cuts them a lot of slack. In particular, if a student fails during the community bonding period, there is likely an opportunity for the organization to substitute another student, or to give the slot to another organization to do so.  Students need to understand that they are being evaluated from before they are accepted to the end of the program, and that you take the GSoC experience seriously and expect them to do likewise. </p>
+<h2>It's Not <em>Impossible</em> to Turn Things Around</h2>
+<p>A true story: Once upon a time there was a student with limited English. The mentor considered the communication difficulty as a potential issue, but the student was enthusiastic, and hoped to use GSoC as an opportunity to improve his English.</p>
+<p>The community bonding went well, but during the first half of coding, progress drifted off track. The student's mentor was much busier with work than was anticipated, and the student became stuck several times with various issues. The student failed to proactively ask for help, and the mentor didn't catch this, so the student became disheartened.</p>
+<p>At the midterm, progress was disappointing, and the project came close to failing the student. But as the mentors looked at how they might try to rescue the situation, and after discussion with the student, the project came up with a concrete plan.  The student had a job in the lab for about 8 hours a week, which he agreed to put on hold until the end of GSoC. Each day the student updated a Google document with what he was working on. This included reviewing any outstanding issues which might block progress.  The student would camp on IRC during the hours he worked on his project.</p>
+<p>Additionally, a second mentor was brought in, so that a mentor would always be available when the student might be working. Progress was discussed daily. The organization also made it clear that if the plan didn't succeed, that the failure would reflect badly on both the organization and the student. All those involved were happy to work to address any additional issues that might come up.</p>
+<p>By the final evaluation, the student was almost back on his original project plan, and had completed all the required goals.</p>
+<p>It is possible to rescue a failing student, but you need to really consider the issues, and come up with a plan to address them which everyone involved buys into. You also need to be prepared for the project to fail, and be okay with the extra energy you have invested not resulting in the outcome you wanted.</p>
+<h2>Mentor, Heal Thyself</h2>
+<p>This is also an important time for self-evaluation. Are you managing your time adequately? Do you know where the project is at and where it is going? Are you enforcing the deadlines you set? Are you integrating your student into your community?</p>
+<p>Take the evaluation period as an opportunity to get feedback from students. Is there any way that you could have helped the student more? How does the student think you be more effective as a mentor? Ask your student directly for feedback.</p>
+<p><span id="ch021_upstream-integration.xhtml"></span></p>
+<h1>Upstream Integration</h1>
+<p>Every project wants to get useful code. And once you get that code, you'd love to be able to commit it to your project and make use of it! The following are some helpful hints on making that process easier on both the students and the committers to your project.</p>
+<p><strong>Note</strong>: We use the term 'committer' throughout this section to mean the person or people responsible for adding or merging code to your organizations authoritative source code repository. Terminology and source control methods vary so widely, that it was difficult to choose a single term. Committer seemed to cover the widest variety of situations.</p>
+<h2>Recruit Committers Early</h2>
+<p>Typically, one or more committers to your project will be involved in GSoC. For very large projects, it can be helpful to alert all committers to upcoming student submissions. You can ask for them to be a second reviewer on patches from students, or simply keep them informed of your student's work schedule. This helps them know approximately when to expect code submissions.</p>
+<h2>Get The Code</h2>
+<p>It's best if you can get the code committed to your project's repository as early as possible. Whether you commit this to your project's equivalent of HEAD, to a development branch or a feature-specific branch, getting student's code into a publicly available and canonical location early is a good thing.</p>
+<p>Even if your organization is unwilling to have student code drop directly into a released or releasable version of the org's project, it is a good idea to make sure that it is captured by the organization somehow. This ensures that you and your organization has a backup copy of the student's work. Getting the student's code into an unstable version or feature branch at the start of GSoC ensures that everything of value will be captured, decreases the eventual integration burden, and provides a better mechanism for community review of student code.</p>
+<h2>Dividing Up Patches</h2>
+<p>Many organizations take student code submissions in the form of patches.  It is considered best practice to keep patches confined to a single feature at a time. Sometimes this is not possible, but encouraging students to submit their changes as they are working is always better than a massive &quot;patch bomb&quot; at the end of the program.</p>
+<p>You can help your student by talking with them about how to divide their code into reasonable submissions to the project. This should include setting time-based milestones, grouping certain features and implementation details together and requiring that tests or specifications be written first. Using pseudocode, rapid prototyping and iterative design methodologies can be helpful in structuring your student's work and keeping you in the loop.</p>
+<p>Be sure to set aside some time to teach your students how to use your revision control system, and especially its code merge tools, during the bonding period. This is both for their benefit and to save your time. If the student already knows how to test merging their changes before submitting them, it is far more likely that less time will be spent fixing patches which don't apply.</p>
+<h2>Patch Review</h2>
+<p>Make review of submitted patches an explicit task. By doing so, you make it easier to hand some or all of the review off to another member of your community. This kind of delegation makes the student more a part of your development community, and reduces the overall work that is required from you.</p>
+<p>Ultimately, you'll be responsible for understanding and performing a final review of the code for the student's GSoC evaluation. However, there's nothing wrong with bringing other people into the process.</p>
+<p>Some projects have a documented review process. A good example is on the PostgreSQL Developers Wiki (<a href="http://wiki.postgresql.org/wiki/Reviewing_a_Patch" class="uri">http://wiki.postgresql.org/wiki/Reviewing_a_Patch</a>), some of which was used as a reference for this section.</p>
+<p>Many people feel that they're not qualified to do a full review of a patch. But review includes many different tasks, and even if you can't do all of them, a reviewer can help your organization by taking on some or all of pre-commit tasks.</p>
+<p>If you can apply a patch and you can use the new feature, you're already qualified to start reviewing it.</p>
+<p>A reviewer does not need to guarantee some level of quality, but they do need to report any problems they find. The review is done if you think the patch is ready for in-depth review from a committer. See this patch review at <a href="http://archives.postgresql.org/pgsql-hackers/2009-07/msg01103.php" class="uri">http://archives.postgresql.org/pgsql-hackers/2009-07/msg01103.php</a> as one example of the output a thorough review might produce. Reviews for other patches might, of course, contain different sections or for that matter, look completely different.</p>
+<p>Questions a patch reviewer might ask include:</p>
+<ul>
+<li>Does it include reasonable tests, necessary documentation, an overview of features, etc?</li>
+<li>Does the patch actually implement what the author intends and work as advertised?</li>
+<li>Does it follow a relevant specification, RFC or the community-agreed behavior?</li>
+<li>Are there corner cases or failure situations the author has failed to consider?</li>
+<li>Does the patch slow down simple tests or other features?</li>
+<li>Does it follow the project coding guidelines? For an example, see <a href="http://developer.postgresql.org/pgdocs/postgres/source.html" class="uri">http://developer.postgresql.org/pgdocs/postgres/source.html</a></li>
+<li>Will it work on all supported operating system and hardware platforms?</li>
+<li>Are the comments sufficient and accurate? Are there any comments at all?</li>
+<li>Does it produce compiler warnings?</li>
+<li>Can you make it crash?</li>
+<li>Is everything done in a way that fits together coherently with other features/modules?</li>
+</ul>
+<p><span id="ch022_building-a-lifetime-contributor.xhtml"></span></p>
+<h1>Building a Lifetime Contributor</h1>
+<p>The work of transforming your summer students into lifetime contributors begins on the first day. Actually, it begins even earlier with the preparation of your development community for student participation and inclusion. In as many ways as possible, you should aim to make the students full members of their community by the end of the program. Actively encourage students to attend community meetings and retreats. Highlight their work within your community. Part of being a mentor is being a cheerleader.</p>
+<p><strong>Say &quot;thank you&quot; often</strong>: People like to be thanked for their contributions—publicly and privately. Creating an environment of appreciation makes students want to keep contributing.</p>
+<p><strong>Be gentle with criticism</strong>: Remember that you are cultivating a long-time contributor.  Positive, constructive comments are the most useful as well as the most pleasant to receive.</p>
+<p><strong>Don't airbrush your community</strong>: If you want a student to stick around, you might as well make the experience as realistic as possible. Creating a bubble for the student takes a lot of effort. When it inevitably bursts, they will be disillusioned.</p>
+<p><strong>Credit where due</strong>: Open source has something of a &quot;reputation economy&quot;. Create a &quot;CREDITS&quot; file in your code repository dedicated to identifying those people who have contributed to your project, and make sure that they are mentioned by name in the release notes.   As these contributions are credited, mention this publicly on a mailing list or in a blog post. Remember to also acknowledge contributions in public: when your student completes important project milestones, announce their successes to your development community.</p>
+<p><strong>Solicit talks at conferences</strong>: Recommend that students present their work at open source conferences. If you can, offer to co-present with them and help with designing their talks. If your organization can offer travel support for the student, this is quite helpful.  If you know people who do work that your student is interested in, or that your student would be impressed to be introduced to, take the time to make introductions.</p>
+<p><strong>Professional development</strong>: If appropriate, offer written professional recommendations to students. Your help in career advice, job searches or referrals can be invaluable for a student.</p>
+<p><strong>Retreats and hackfests</strong>: If your organization is having a retreat or hosting a hackfest, invite your students along! Find ways of integrating them into your group the same way you would any other contributor.</p>
+<p><strong>Stay in contact</strong>: Open source organizations typically sustain themselves through the personal connections developers have to each other. Many contributors consider each other friends, and communicate non-technical information to each other. Remember though, that this is a student and GSoC is their job, so when in doubt err on the side of communicating professionally—no matter how informal the tone of your overall community.</p>
+<p>Communicate early and communicate often! Try sending periodic emails to check in, pass on an interesting link or share a photo. Social networks can be useful for maintaining contact without a lot of overhead. Examples include: Identi.ca, Flickr, and GitHub. Use what works for you, and don't feel pressured to get involved with a social network.  The telephone is also a valuabe resource; studies of open source communications have shown that VOIP technology is used with surprising frequency in open source projects, and it is a very personal and friendly form of communication.</p>
+<p><strong>Don't Be That Guy</strong>: Be socially and culturally sensitive. If you and your student don't share the same cultural background, ask respectful questions so you get to know about the similarities and differences a bit more. Also, make sure to maintain appropriate boundaries in your communications. For example, a student calling in the middle of the night to ask for relationship advice is not a pleasant situation for anyone; leave those conversations for their college friends.</p>
+<p><span id="ch024_making-your-ideas-page.xhtml"></span></p>
+<h1>Making Your Ideas Page</h1>
+<p>It all begins with the &quot;Ideas Page&quot;. This is where you compile a list of possible summer projects for your organization. The Ideas Page is a major piece of your organization's application to Google. It also serves as a recruiting and selection tool for students and mentors alike.</p>
+<p>Depending on how your organization operates, the source of material for your Ideas Page may come from an existing list of projects maintained by your community year-round, from potential mentors as they are recruited, or from the org admin. Regardless of how it is generated, an Ideas Page should have the following:</p>
+<ul>
+<li>Brief descriptions of projects that can be completed in about 12 weeks.</li>
+<li>For each project, a list of prerequisites, description of programming skills needed and estimation of difficulty level.</li>
+<li>A list of potential mentors.</li>
+</ul>
+<p>The best pages include links to more detailed descriptions and related materials for each project. They might even include actual use cases!<br />
+</p>
+<p><em>Keep in mind that this page is often the first view of your organization by Google and potential student applicants</em><strong>.</strong> A link to your bug tracker does not an Ideas Page make. Put your best foot forward. In addition to a basic list, you might also consider providing links to relevant resources for mentors and students, particular FAQ entries, the timeline, etc. You might include a section on communication, giving specific advice on which mailing lists, channels and emails to use and how to use them. If your organization puts together an application template for students, you should include that on your page as well. Think of your Ideas Page as the GSoC portal to your organization.</p>
+<p><strong><em>Pro Tip:</em></strong> Maintain an Ideas Page year-round to continually recruit new contributors and cultivate community involvement.</p>
+<p><span id="ch025_selecting-projects-and-mentors.xhtml"></span></p>
+<h1>Selecting Students and Mentors</h1>
+<p>A key activity for org admins is setting up and supervising the process by which student proposals are prioritized and matched with mentors. There are many good ways to do this. There are also a few common ways to proceed that are not so good. In any case, understanding how organizations commonly approach student and mentor selection can help to ensure a better outcome from this critical step.</p>
+<h2>The Formal Process</h2>
+<p>Conceptually, the process of selecting students and mentors is simple. In practice, the process of prioritizing proposals and assigning mentors can be difficult and contentious.</p>
+<p>During the student application period, organizations prioritize the student proposals, discard proposals unworthy of consideration and investigate proposals further. At some point, Google tells the organization how many &quot;slots&quot; the organization will be allowed to fund. The highest-priority projects at the close of the application period will be funded (&quot;slotted&quot;) by Google. If something causes a student to drop out later on, the organization's priority list is used to fill in a replacement. Mentors must be assigned to all projects that the organization wants considered for slotting, preferably as early in the process as possible.</p>
+<p>Proposal volumes tend to be high, and the nature of the activity can lead to disagreements and bruised egos. Make the process for deciding on projects clear early, and be consistent.</p>
+<h2>Slot Count</h2>
+<p>Google asks your organization how many slots you want twice during the selection process; once when your organization is accepted, and again shortly before slot allocation. The actual number of slots you receive is mostly a function of the number of reasonable-quality applications your organization receives during the proposal period, but there are limits.</p>
+<p>Every accepted organization is allocated at least one slot. First-year organizations rarely get more than five slots. No organization ever get more slots than they asked for.</p>
+<p>There is no net advantage to getting as many slots as possible. Sure, more students get paid, and the org gets paid a little more. However, accepting less-than-great applications has a huge cost in time and grief. Google's process for choosing organizations includes the pass/fail ratio. Poor ratios may endanger future participation in GSoC. If you must pad slot requests, pad them only slightly, and be prepared to return slots to Google or to sister organizations when you find you have extras.</p>
+<p>If you discover that you haven't gotten the number of slots you were hoping for, Google's program administrators will start a waiting list to move slots around amongst the organizations.<br />
+</p>
+<h2>Deduplication</h2>
+<p>Students are allowed to submit proposals to many organizations each year.  When organizations have slotted their desired students, it is inevitably the case that a few students are sought by more than one organization.  Ideally, selecting a fit for these &quot;duplicate&quot; students will happen before the end of the proposal period.  At the end of this period, any remaining duplicates are resolved online in a large IRC &quot;deduplication&quot; meeting.  A representative of each organization with a slotted duplicate student must attend the deduplication meeting; otherwise they will lose that student.</p>
+<p>The deduplication process involves interaction with peer open source organizations. It is critically important that you are polite and cordial, and put the needs of the student first.  Whenever possible, student preferences should be honored. Keep in mind that you may have to work with these organizations outside GSoC; generating ill will here is not worth it. Also keep in mind that Google's program admins emphatically do not want to have to deal with hostility and conflict here. Don't endanger your future participation in GSoC just because some other organization wants some student as much as you do.  Be nice and get out of the way.</p>
+<h2>Melange</h2>
+<p>Most organizations use the Google-sponsored open source Melange web tool to manage their student selection and mentor matching. This software is the result of a complicated evolutionary process, and has it's idiosyncracies.</p>
+<p>Melange supports the basic activities of prioritizing applications and adjusting those priorities, of assigning mentors to projects, and of collecting comments and ratings.  Since Google uses Melange for slot allocation, slotting and deduplication, all organizations need to interact with Melange to some degree.  It is a good idea to get things set up there early, so that issues that arise with the software can be dealt with in a timely fashion.</p>
+<h2>Acquiring and Assigning Mentors </h2>
+<p>Building a mentor pool and matching mentors with projects and students is one of the most challenging tasks for the org admin. For many organizations, the mentor will be selected by project when the ideas page is constructed. For others, mentors will be assigned once students have been selected and matched to projects.</p>
+<p>Look critically at mentor volunteers. Wanting the job is not a sufficient qualification. The mentor should be well-known to the community, and known to be someone reasonable and collegial. The best technical person is not necessarily the best mentor; look for teaching and...well..mentoring skills.</p>
+<p>Do not be afraid to reach out to folks in the organization who have not volunteered. The ideal mentor for a project may not have heard of GSoC, or may not have considered herself a candidate for mentoring.  She may be flattered to be asked.</p>
+<p>Make sure you have enough mentors, including quite a few spares. Folks who would be capable of mentoring a variety of projects are especially welcome. Strongly consider having enough backup or secondary mentors that every project has an alternate of some sort. </p>
+<p>If you (or the mentor) are insecure about their qualifications having them join the project as a back-up mentor is a great strategy to encourage future participation.</p>
+<h2>Cheating and Proposals From Outer Space</h2>
+<p>Use Melange's &quot;ignore&quot; feature to avoid spending time on proposals that were not tailored to your project.</p>
+<p>Occasionally a student does not understand the importance of attribution when drawing on material from outside sources. Make sure she understands, early on, that plagiarism is not tolerated. In blatant cases, a good response is to reject the proposal and consider informing the administration at the academic institution the student is affiliated with. The article <a href="http://tesl-ej.org/ej10/a2.html" class="uri">http://tesl-ej.org/ej10/a2.html</a> has some context to avoid surprises.</p>
+<h2>Selection Strategies</h2>
+<p>Probably the best that can be done in suggesting selection strategies is to provide a few simple ideas that organizations have used effectively in the past. Your organization will build its own selection process over time; these ideas are just a starting point:</p>
+<p><strong>Get outsider help.</strong> Having a perspective from outside the &quot;GSoC bubble&quot; may help you see student proposals in a new light. Sometimes, even folks from outside your organization can provide useful review, especially if they have relevant technical expertise.</p>
+<p><strong>Use your mentors wisely.</strong> The mentors are in the best position to select students and proposals for themselves. After all, it is they who will have to work with these students. Be careful, though, of mentors who may be less experienced in the ways that GSoC students and projects can go wrong. A few well-chosen war stories can be helpful in this situation.</p>
+<p><strong>Interact with the students during the proposal period.</strong> There should be no remaining questions by the time students are slotted. Finding out that a student will not interact, or cannot interact well, is absolutely crucial.</p>
+<p><strong>Don't be afraid to take charge.</strong> At the end of the day, the org admin is responsible for the student and mentor selection decisions. If your org doesn't give you full veto power, or gives you grief about executive decisions, consider stepping down. Sometimes somebody has to make the final decision.</p>
+<p><span id="ch026_org-application.xhtml"></span></p>
+<h1>Org Application</h1>
+<p>Successful applications can come in many forms. You should approach the organization application like you would a resume: this is the avenue through which you convince Google's program administrators that you are qualified for the job of mentoring students.</p>
+<p>The most important part of GSoC is providing the students an excellent experience over the summer, and Google chooses organizations that they feel confident can do this based on their application.</p>
+<h2>The Ideas Page</h2>
+<p>The ideas page is the most important part of the organization application. Please see the Ideas Page chapter of this manual for more information.</p>
+<h2>Past Success</h2>
+<p>One question Google consistently asks of an organization on the application is whether they have participated in previous years, and if so, what their students' pass/fail ratio was. While pass/fail ratio is but one indicator of the success of the previous year, it does weigh against other components of the application. </p>
+<h2>New Orgs vs. Returning Orgs</h2>
+<p>Every year Google tries to make room for new organizations in the open source world who can provide a different perspective or different opportunities to the students who participate in GSoC. This can sometimes mean rejecting an org that has successfully participated in years past to allow space for new organizations. Often these decisions are very difficult for us to make, because they don't have much to do with the returning orgs' success in previous years. </p>
+<h2></h2>
+<div title="Page Break">
+
+</div>
+<p>What Not to Do</p>
+</h2>
+<p>Incomplete applications are common and hard for us to review. Not answering questions on the form, not taking time with the quality of your Ideas Page, and not executing well on your application can all be avenues to rejection. For example, don't submit an ideas page in the form of a Google Wave our administrators don't have access to. Google doesn't have the time or capacity to iterate with you on your application, unfortunately. Take the time to create a thoughtful proposal. </p>
+<h2>Just Because You Did Everything Right...</h2>
+<p>...doesn't mean you'll be accepted. Every year Google receives many more applications for organizations that want to participate in GSoC than it has capacity to accommodate. Some of the decisions about which organizations are accepted and which aren't come down entirely to space available in the program. Every year, Google offers an opportunity for rejected orgs to receive feedback via email or IRC on what they could improve in their application for next year. Sometimes the feedback is specific to the application, but sometimes the feedback is simply: &quot;We can't accommodate everyone; please try again next year.&quot;</p>
+<h2>A Note on Umbrella Orgs</h2>
+<p>Google's program administrators actually look quite fondly on the umbrella organizations that participate each year. It serves a dual purpose: it allows Google to accept more organizations in the &quot;space&quot; of just one, and also gives an opportunity to accept a marginally-topical org by putting it under the umbrella of a related org. </p>
+<p>If your application is rejected, the following you may want to consider reaching out to an accepted umbrella org that might be able to accommodate you.</p>
+<p><span id="ch027_managing-the-mentors.xhtml"></span></p>
+<h1>Managing Your Mentors</h1>
+<p>As an org admin, your primary responsibilities are managing the GSoC program administrative requirements and helping your mentors effectively mentor.  Below are some guidelines to help you accomplish both objectives.</p>
+<h2>Establish a Private Communication Channel </h2>
+<p>It is important for mentors and org admins to have a communication channel that does not involve students, so org admins can speak candidly with mentors. This usually takes the form of a private mailing list or IRC channel, but any agreed-upon medium will work.</p>
+<h2>Managing across Timezones </h2>
+<p>Org admins should have a list of mentors and students along with their timezones and preferred contact information and availability. This is essential for umbrella organizations, which sometimes have so many people spread across so many countries and time zones that it is impossible for an org admin to keep track.</p>
+<p>GSoC is often the first time people ever have to collaboratively work with others across many timezones, so it is worth taking time in the beginning of the summer to figure out these details. The fact that Daylight Savings Time is different depending on where people are complicates things even more. Usually it is best to set times in UTC so that DST will not complicate things. The World Clock website (http://www.timeanddate.com/worldclock/) is also a good resource for determining the time in a certain location. </p>
+<h2>Setting Expectations</h2>
+<p>As an org admin, you need to rely on your mentors to manage the day-to-day activities related to student projects. This means you should have a discussion before students are accepted—if possible before you even apply for GSoC—about how your are going to handle some basic logistical items that are essential for a smoothly running and effective program.  </p>
+<h3>Set up-front guidelines on how students, projects and mentors are selected</h3>
+<p>Occasionally, you'll find yourself with mentors for projects with no students and good project ideas with no mentors. Figure out up front how you plan to evaluate and accept students, projects and mentors. Make sure that your open source community concurs and the guidelines are clearly posted in your community GSoC documentation. See the chapter on <em>Selecting Students and Mentors</em> for details.</p>
+<h3>Determine a schedule and format for regular student project updates</h3>
+<p>Regular student progress reports to the open source project community are a great tool for keeping your development community engaged and helpful to the students. It also helps provide documentation if there is any doubt about a student's progress, and can help your community identify problem areas for newcomers. Weekly reports via a blog or mailing list post are best; at the very least ask for bi-weekly student reports to your community. Discuss report format and submission timelines before the student application period opens and make sure your potential students understand their reporting responsibilities.</p>
+<p>Make sure the mentors understand they are primarily responsible for encouraging their students to submit regular reports.</p>
+<h3>Establish up-front guidelines for mentor time involvement</h3>
+<p>How often should mentors meet with their students? What happens if a mentor needs to be unavailable for several weeks during GSoC? Make sure the mentors understand expected time commitments before they are assigned to a student, and how to arrange for backup if they need to go missing for a bit.</p>
+<h3>Clearly communicate mentor GSoC administrative responsibilities</h3>
+<p>Mentors at the very minimum are responsible for submitting timely student evaluations at midterms and finals. Make sure your mentor team is clear about when they need to submit evaluations and what to do if they are not available to submit the evaluations.  </p>
+<h3>Create a decision process for determining if a student should pass or fail</h3>
+<p>Unfortunately, at some point your organization is probably going to encounter a situation where you need to determine if you should fail a student at midterms or finals. Talk to your mentors before the GSoC program begins about criteria for passing and failing a student. Communicate clearly who makes the final decision about whether a student pass or fails.</p>
+<h2>Sorting Out Conflicts</h2>
+<p>At some point in your org admin career you are going to need to step in to help resolve conflicts. Sometimes these are mentor-student conflicts, cross-project conflicts or mentor-mentor conflicts; they may be something completely unexpected.  Here are a few guidelines to help you find the best-approach for resolution:</p>
+<ul>
+<li>Get involved early, before things spiral out of control.</li>
+<li>Discuss the conflict privately and separately with those involved.</li>
+<li>Whenever possible don't take sides, but rather attempt to function as a mediator. </li>
+<li>Remember that you are a senior representative of your open source community within the larger GSoC program community.  </li>
+<li>Ask for advice from the GSoC program staff.</li>
+</ul>
+<p>If you've done a good job of setting expectations with your mentors, conflict resolution <em>should</em> be fairly straight-forward.</p>
+<p><span id="ch028_student-mentor-facilitation.xhtml"></span></p>
+<h1>Student - Mentor Facilitation</h1>
+<p>The key to a successful GSoC experience is good communication. It is both a challenge and an opportunity. You are often dealing with students who have never participated in open source or collaborative development. Your mentors may be volunteering time they don't have. Neither may have worked across the time and cultural spans commonly found in GSoC.</p>
+<p>It is up to the org admin to stress communication strategies and expectations for both students and mentors.</p>
+<ul>
+<li>Make sure your mentors set expectations for time commitment, meetings, reports and code check-ins, and that these have been clearly communicated (if not collaboratively developed) with their students.<br />
+</li>
+<li>Make sure both mentors and students have established more than one channel of communication with each other.</li>
+<li>Create internal contact groups for all your mentors and all your students. Use these email lists for general statements and advice regarding who should be doing what and when, and for asking, &quot;Do you know where your student [or mentor] is?&quot;<br />
+</li>
+</ul>
+<p>The number one reason why projects fail is poor communication. It is often the first sign of a project in trouble. Poor communication may originate as much with the mentor as with the student.  A big part of your role as org admin is to lay out guidelines and advice at the start of the program, and then to keep track of progress. The org admin should be aware of communication problems early on. The only way to make sure you know what's going on is to periodically check-in with individual students and mentors. The week before evaluations is a good time to make contact and ensure there are no surprises coming.  You should also stress to your mentors and students that they should contact you whenever there is a communication breakdown.</p>
+<p><span id="ch029_other-possible-issues.xhtml"></span></p>
+<h1>Other Possible Issues</h1>
+<p>Here are some things that might go wrong during the program, and how you can handle them.    <br />
+</p>
+<p><strong>Issue: Things just don't work out for a mentor.<br />
+Solution: Call for backup.</strong> </p>
+<p>Sometimes &quot;life&quot; happens and things don't go according to plan. It is best to come up with a plan at the beginning of the summer to deal with a mentor that suddenly don't have as much free time as he thought he would, or even worse, a mentor that goes missing.</p>
+<p>Having additional mentors assigned to each student is a very good idea, and helps with situations where the primary mentor is not available. Google does not have a policy on additional mentors, so this is something that an org admin needs to decide to have—the earlier the better.</p>
+<p><strong>Issue: Communication between participants breaks down.<br />
+Solution: Stage an intervention</strong></p>
+<p>First off, it is important to create a schedule for communication before coding begins.<strong> </strong>The org admin and mentors should agree on a frequency of communication that is appropriate for communicating with students and each other. This should be at least once per week, because it is very easy to let a few weeks slip by and then realize that the timeline for the project is nearly impossible to follow.</p>
+<p>If, in spite of all your best efforts, you have to deal with a communication breakdown, you will need to step in and restart communication yourself. Meet separately with the parties using the most personal medium available, and then make sure they meet with each other. Reestablish a regular schedule of communication, and find a way to monitor it. </p>
+<p><strong>Issue: Submissions from students are duplicated across organizations.<br />
+Solution: The deduplication process. </strong></p>
+<p>Deduplication can be a tricky process to navigate. Make sure it is clear to everyone involved what the student's preference is, what your policy on choosing the duplicate students is, and how strongly your org feels about each particular student's proposal.</p>
+<p><span id="ch030_end-of-year-report.xhtml"></span></p>
+<h1>End of Year Report</h1>
+<p>Phew! You made it. There may have been some rough spots along the way, perhaps even some failures, but you made it. Your work is <em>almost</em> done. It's time to take a look back and produce an End-of-Year Report. Make it fun and it'll be painless. Heck, people might even read it! In fact, Google will include your report in their code blog, which is great publicity for your organization.</p>
+<p>The report should be written for a general audience, so include an introduction to your organization and your main goals. You might mention how many years you've participated in GSoC and the number of students you've mentored.  Depending on how many projects you ran, you should highlight what they were about, how much code was written, and code integration plans. Were there any special events or face-to-face meetings over the summer? Any positive surprises?</p>
+<p>In the end, the report is all about the students. Be sure to mention any blogs that were maintained by your students, and any public references to their work. Links to screenshots or video demonstrations are quite effective. Including student quotes is a fun way to represent not only their experience but also your organization, through the eyes of new contributors.</p>
+<p><span id="ch032_the-quick-guide.xhtml"></span></p>
+<h1>The Quick Guide</h1>
+<p>The process begins with proposing projects and selecting students over about a four week period. This is followed by six to eight weeks of community bonding. The coding phase runs for twelve weeks. A final one-week &quot;pencils-down&quot; phase wraps up the project.</p>
+<ul>
+<li><p>During the student selection phase the mentor will be responsible for helping find a fit between project, student proposal and mentor. This will include defining the proposal process, assisting in the evaluation of proposals, querying the students, providing them feedback about their proposals and ultimately finding a student proposal to mentor.</p></li>
+<li><p>During the community bonding phase, the mentor and student will further define the student's project and prepare for development. An important part of this phase, as the name implies, is to get the student connected with both the mentoring organization and the larger open source community.</p></li>
+<li><p>During the coding phase the student will be implementing the project. The mentor will be providing advice not just on the technical aspects of development, but on issues related to the interaction of the student's work with the organization. At midterm the mentor will evaluate the student's progress to determine whether the student will continue with the project and be issued a payment by Google.</p></li>
+<li><p>During the final phase the mentor will help the student submit a code sample to Google. The mentor will also perform an evaluation of the student's work to determine whether Google should issue a final payment.</p></li>
+</ul>
+<h2>Quick Tips on Effective Mentoring</h2>
+<p>The tips in this section are no substitute for reading this book.  However, they may serve as an introduction to the material herein.</p>
+<p><strong>Project Definition</strong>: An ideas page is the starting point for project definition.  You should include projects that you are interested in mentoring for the summer and that appeal to students and to your organization.</p>
+<p><strong>Selecting Students</strong>: Students come with many motivations; try to understand why your applicant is applying. It is better to give up a student slot than to select a student whose performance is likely to be poor.</p>
+<p><strong>Communication</strong>: Engage with your student as early as possible. Integrate the student into your community and its communication channels. Make sure that communication with your student is frequent and regular.</p>
+<p><strong>Collaboration</strong>: Start by working with your student to set solid expectations and goals for the project. Develop a detailed project plan, with deadlines and milestones. Be prepared for slippage, and be willing to revise the plan as necessary, especially at midterm. Student learning is a primary goal of GSoC, so try to provide a learning experience.</p>
+<p><strong>Evaluation</strong>: Keep your student evaluations objective; base them on your project plan.  Keep in mind that it is better to fail a student earlier rather than later—data shows that students doing poorly at midterm rarely complete a GSoC project.  Make sure your students hear your evaluations: deliver praise in public, and criticism in private.</p>
+<p>If you follow the above advice, and the rest of the advice given in this book, you have a good chance to have a successful experience. Positive outcomes might include recruiting a permanent developer to your community, developing a lifelong relationship with your student, and helping the open source community grow and thrive.</p>
+<p><span id="ch033_history-of-gsoc.xhtml"></span></p>
+<h1>The History of GSoC</h1>
+<p>Google Summer of Code began in 2005 as a complex experiment with a simple goal: helping students find work related to their academic pursuits during their school holidays. Larry Page, one of Google's co-founders, was pondering the age-old problem of scholastic backsliding: students work hard and learn a great deal during the academic year, but without the right employment opportunities and other pursuits outside of school, technical skills atrophy rather than get honed and expanded. Larry wanted Google to help solve this problem.</p>
+<p>The obvious solutions failed on geographical grounds. If a student wasn't in the optimal location, obtaining a useful internship could be difficult or impossible. Finances were also a problem; many internships are low paying or entirely unpaid, making it difficult for students to take the right job while still paying the bills. Finally, even if a job was available in a technical field, it would not necessarily introduce a student to the broad set of skills required to do software development well. For example, creating a website for a local non-profit requires technical skill and would no doubt be personally gratifying, but wouldn't necessarily require using an IDE, checking into source control, or creating tests.</p>
+<p>The perfect answer? Encourage students to participate in open source projects. Open source development occurs online, solving the geography problem and giving students the chance to work in a globally distributed team. Working on an open source project provides exposure to the entire software development process and toolchain. Students enjoy the benefit of having a body of reference work available to future employers and university admissions committees. Even better, students get the chance to work on a codebase under active development rather than a lab project or other single-use assignment.</p>
+<p>The Google Summer of Code program provides a cash stipend from Google to students for work with recognized open source communities. This stipend allows students to focus on their development work rather than getting a job unrelated to their academic pursuits. A key piece of the puzzle is finding projects that are excited to find new contributors and to provide helpers to get new student contributors up to speed both technically and socially.</p>
+<p>The first year 40 projects participated—400 students began the experiment.</p>
+<p>In 2010, the sixth Google Summer of Code wrapped up with the best results yet. More than 89% of the 1,026 student participants in the program successfully completed their projects. Best of all, most of the organizations participating over the past six years reported that the program helped them find new community members and active committers.</p>
+<p>You can find more information about each year of Google Summer of Code on the program statistics page of the GSoC Knowledge Base: <a href="http://code.google.com/p/google-summer-of-code/wiki/ProgramStatistics" class="uri">http://code.google.com/p/google-summer-of-code/wiki/ProgramStatistics</a></p>
+<p><span id="ch034_additional-resources.xhtml"></span></p>
+<h1>Additional Resources</h1>
+<p>We've collected our favorite and most useful resources specific to GSoC here.</p>
+<h2>General Resources</h2>
+<p>If your organization has participated in GSoC previously, chances are there are mailing lists already set up and useful information in their archives; take a moment to look through them, especially around the launch times (February to March), community bonding period (April) and evaluation times (mid-July and end of August), for more details. The archives of the program mailing lists, particularly the private mentors list (below), are also quite useful.</p>
+<p>No matter what, you want to take a look at the Program Frequently Asked Questions each year to make sure you have a good idea of the rules for the program for both yourself and your students. There's a wealth of information included in the FAQs each year, even for experienced participants. You can always find the latest information, including a link to the FAQs, at <a href="http://code.google.com/soc/" class="uri">http://code.google.com/soc/</a>.</p>
+<p>Additionally, these resources are quite helpful: <strong></strong></p>
+<p><strong>Program IRC Channel</strong>: Several knowledgeable folks hang out in #gsoc on Freenode and would be happy to give you a pointer in the right direction. <strong></strong></p>
+<p><strong>Blog Posts</strong>: You can find material related to GSoC on the Google Open Source Blog at <a href="http://google-opensource.blogspot.com/search/label/gsoc" class="uri">http://google-opensource.blogspot.com/search/label/gsoc</a>. Your project may have a blog or newsletter where GSoC information was published in the past, as well. <strong></strong></p>
+<p><strong>Knowledge Base</strong>: If you're looking for advice for mentors or students, program promotional materials, presentations about GSoC, etc., start with the knowledge base <a href="http://code.google.com/p/google-summer-of-code/" class="uri">http://code.google.com/p/google-summer-of-code/</a>, particularly the wiki <a href="http://code.google.com/p/google-summer-of-code/wiki/WikiStart" class="uri">http://code.google.com/p/google-summer-of-code/wiki/WikiStart</a>. <strong></strong></p>
+<p><strong>Mentor Summit Wiki</strong>: Google has traditionally held an annual mentor summit after GSoC wraps up each year. During the summit, many great discussions are held on all sorts of topics regarding the program and open source overall. Check out the summit wiki for session notes and to do some further collaboration. Instructions for getting a login account on the wiki are available on the private mentors list, or ping the program administrators for help. Anyone can view the wiki's contents at <a href="http://gsoc-wiki.osuosl.org/" class="uri">http://gsoc-wiki.osuosl.org/</a>.</p>
+<p><strong>List of Organizations</strong>: Each year, the community creates a list of categorized list of mentoring organizations. You can find it linked from the Knowlege Base: Advice for Students page.<a href="http://code.google.com/p/google-summer-of-code/wiki/AdviceforStudents"><br />
+http://code.google.com/p/google-summer-of-code/wiki/AdviceforStudents</a><br />
+</p>
+<ul>
+</ul>
+<h2>Mailing Lists</h2>
+<p>There are four program mailing lists. <strong></strong></p>
+<p><strong>Announcement Only List</strong>: For announcements from Google's program administrators only. Used infrequently.<br />
+<a href="http://groups.google.com/group/google-summer-of-code-announce" class="uri">http://groups.google.com/group/google-summer-of-code-announce</a> <strong></strong></p>
+<p><strong>Program Discussion List</strong>: Open subscription list for the program. General talk about the program, light traffic except during the launch phase of the program each year. Typically this list is not hugely relevant except just prior to the announcement of accepted organizations and accepted students, as neither organizations nor students have access to the private lists until acceptance unless they have previously participated in the program. It is always excellent for you to stop by and encourage a newbie, though, so please don't totally ignore this list.<br />
+<a href="http://groups.google.com/group/google-summer-of-code-discuss" class="uri">http://groups.google.com/group/google-summer-of-code-discuss</a></p>
+<p><strong>Students List</strong>: Private, invite-only list; students are subscribed to the list soon after they are accepted into GSoC. Successful student participants from previous years and students currently working on GSoC are subscribed to this list. Students who are dropped from the program are also removed from the list. While this list is supposed to give students a private place to discuss anything and everything so they aren't worried about looking silly elsewhere, more often than not the list traffic is mostly discussions of tracking numbers for shipments, tax forms and grumbles about t-shirt loss.<br />
+<a href="http://groups.google.com/group/google-summer-of-code-students-list" class="uri">http://groups.google.com/group/google-summer-of-code-students-list</a> <strong></strong></p>
+<p><strong>Mentors List</strong>: Private, invite-only list; mentors are subscribed to the list after their organization is accepted into the program and they register as mentors in the GSoC online system. This list is higher traffic at the beginning of the program and around the times of evaluations. Some great advice can be found on this list and in the archives, but it can also be noisy at times. <a href="http://groups.google.com/group/google-summer-of-code-mentors-list"><br />
+http://groups.google.com/group/google-summer-of-code-mentors-list</a></p>
+<h2>Books</h2>
+<p><strong>Producing Open Source</strong><br />
+Written by Karl Fogel. Excellent guide to Open Source development. Its available free online.<br />
+<a href="http://producingoss.com/%20">http://producingoss.com/</a></p>
+<p><strong>Google Summer of Code Mentors Guide</strong><br />
+<a href="http://www.flossmanuals.net%20">http://www.flossmanuals.net</a></p>
+<p><a href="http://www.flossmanuals.net%20"></a> <strong>Google Summer of Code Students Guide</strong> <br />
+<a href="http://www.flossmanuals.net%20/">http://www.flossmanuals.net </a></p>
+<h2>Associated Projects</h2>
+<p><strong>Teaching Open Source</strong><br />
+<a href="http://teachingopensource.org" class="uri">http://teachingopensource.org</a><br />
+irc : freenode #teachingopensource</p>
+<h2>What to Do When the Unexpected Happens? <strong><br />
+</strong></h2>
+<p><strong>Contact your Organization Administrator</strong>: He or she can help you figure out what to do next or contact Google for more help. <strong></strong></p>
+<p><strong>Talk to Google's Program Administrators</strong>: They have plenty of experience with all the corner cases and strange issues that can arise during GSoC. Email <a href="mailto:ospoadmin@gmail.com">ospoadmin@gmail.com</a> for help if you can't find one of the program admins in #gsoc on Freenode.</p>
+<p><span id="ch035_glossary.xhtml"></span></p>
+<h1>Glossary</h1>
+<h2>+1</h2>
+<p>The shortest way in the geek world to say &quot;I agree with this&quot; or &quot;This is a great idea&quot;. It is often used when others have already fleshed out the details and a consensus of how many agree/disagree with the sentiment. It is worth noting to your students if your project uses this as a voting signal so they do not accidentally comment on issues when, as newbies, they should be observing rather than commenting/voting.</p>
+<h2>-1</h2>
+<p>The opposite of +1. Often accompanied by an explanation why, if you are lucky.</p>
+<h2>Committer</h2>
+<p>An individual who has special rights in an open source project. While the scope of this term varies by project, the general idea is that this individual is able to check in source code to the project's main repository.</p>
+<h2>Community Bonding Period</h2>
+<p>The period of time between when accepted students are announced for a particular year of GSoC and the time these students are expected to start coding. This time is an excellent one to introduce students to the community, get them on the right mailing lists, etc. See the &quot;Mind the Gap&quot; section for more details.</p>
+<h2>DVCS</h2>
+<p>Distributed version control system. A version control system that does not require talking to a centralized server.</p>
+<h2>FLOSS</h2>
+<p>Free/Libre Open Source Software. Likely the most inclusive acronym to describe the software produced for GSoC.</p>
+<h2>GSoC</h2>
+<p>Google Summer of Code</p>
+<h2>IDE</h2>
+<p>Integrated Development Environment</p>
+<h2>IM</h2>
+<p>Instant Messenger</p>
+<h2>IRC</h2>
+<p>Internet Relay Chat</p>
+<h2>ISP</h2>
+<p>Internet Service Provider</p>
+<h2>JFDI</h2>
+<p>Just Fabulously Do It. Use your imagination. Ask for forgiveness, not for permission. :)</p>
+<h2>Mentor</h2>
+<p>Someone who helps a student with their project proposal. See the What is GSoC section for more details.</p>
+<h2>Organization</h2>
+<p>An open source, free software or technology-related project that mentors students for Google Summer of Code. Also known as a mentoring organization.</p>
+<h2>Organization Admin (Org Admin)</h2>
+<p>Cat herders for each open source project participating in the program. Often abbreviated to org admin. See the What is GSoC section for more details.</p>
+<h2>Program Administrator</h2>
+<p>Google employees who run the program. See the What is GSoC section for more details.</p>
+<h2>RTFM</h2>
+<p><strong>R</strong>ead <strong>T</strong>he <strong>F</strong>LOSS <strong>M</strong>anual ;)</p>
+<h2>Secondary Mentor</h2>
+<p>A person who helps out a student's assigned mentor. At time of writing this manual, the GSoC online system only allows one mentor to be officially assigned to a student proposal, as one person must be responsible for submitting evaluations, etc. However, it is quite common to have multiple mentors for one student.</p>
+<h2>SMOP</h2>
+<p>Simple Matter of Programming</p>
+<h2>Summer</h2>
+<p>Not so much a season as a state of being. While the program is run during the Northern Hemisphere's Spring and Summer, the &quot;Summer&quot; in Google Summer of Code is actually a play on the &quot;Summer of Love.</p>
+<h2>TDD</h2>
+<p>Test Driven Development</p>
+<h2>Use Case</h2>
+<p>A use case describes what a user can do with a particular software system. <a href="http://en.wikipedia.org/wiki/Use_case" class="uri">http://en.wikipedia.org/wiki/Use_case</a></p>
+<h2>Waterfall Model</h2>
+<p>A sequential software development process.</p>
+<p><span id="ch036_credits.xhtml"></span></p>
+<h1>Credits</h1>
+<p><strong>Note : </strong>&quot;Google Summer of Code&quot; (GSoC) is a trademark of Google Inc. <br />
+</p>
+<p>All chapters copyright of the authors (see below). Unless otherwise stated all chapters in this manual licensed with <strong>Creative Commons SA-BY 3.0</strong></p>
+<p>The following is attribution information for 2010. </p>
+<p>What Is GSoC? <br />
+© Google Inc And The Contributors 2009 / 2010<br />
+Modifications: <br />
+dukeleto - Jonathan &quot;Duke&quot; Leto 2010<br />
+adamhyde - adam hyde 2010<br />
+</p>
+<hr />
+<p>Why GSoC Matters <br />
+©  Google Inc And The Contributors 2009 / 2010 <br />
+Modifications: <br />
+dukeleto - Jonathan &quot;Duke&quot; Leto 2010<br />
+adamhyde - adam hyde 2010<br />
+</p>
+<hr />
+<p>About This Manual <br />
+©  Google Inc And The Contributors 2009 / 2010<br />
+Modifications: <br />
+dukeleto - Jonathan &quot;Duke&quot; Leto 2010<br />
+adamhyde - adam hyde 2010<br />
+booki - Booki Book 2010<br />
+</p>
+<hr />
+<p>What Makes a Good Mentor <br />
+©  Google Inc And The Contributors 2009 / 2010<br />
+Modifications: <br />
+dukeleto - Jonathan &quot;Duke&quot; Leto 2010<br />
+adamhyde - adam hyde 2010<br />
+</p>
+<hr />
+<p>Defining a Project <br />
+©  Google Inc And The Contributors 2009 / 2010<br />
+Modifications: <br />
+dukeleto - Jonathan &quot;Duke&quot; Leto 2010<br />
+adamhyde - adam hyde 2010<br />
+</p>
+<hr />
+<p>Selecting a Student <br />
+©  Google Inc And The Contributors 2009 / 2010<br />
+Modifications: <br />
+dukeleto - Jonathan &quot;Duke&quot; Leto 2010<br />
+adamhyde - adam hyde 2010<br />
+</p>
+<hr />
+<p>Community Basics <br />
+©  Google Inc And The Contributors 2009 / 2010 <br />
+Modifications: <br />
+dukeleto - Jonathan &quot;Duke&quot; Leto 2010<br />
+adamhyde - adam hyde 2010<br />
+</p>
+<hr />
+<p>Best Practices <br />
+©  Google Inc And The Contributors 2009 / 2010<br />
+Modifications: <br />
+dukeleto - Jonathan &quot;Duke&quot; Leto 2010<br />
+adamhyde - adam hyde 2010<br />
+</p>
+<hr />
+<p>Warning Signs <br />
+©  Google Inc And The Contributors 2009 / 2010<br />
+Modifications: <br />
+dukeleto - Jonathan &quot;Duke&quot; Leto 2010<br />
+adamhyde - adam hyde 2010<br />
+</p>
+<hr />
+<p>Open Source Culture <br />
+©  Google Inc And The Contributors 2009 / 2010 <br />
+Modifications: <br />
+dukeleto - Jonathan &quot;Duke&quot; Leto 2010<br />
+AlexanderPico - Alex Pico 2010<br />
+adamhyde - adam hyde 2010<br />
+</p>
+<hr />
+<p>Mind the Gap <br />
+©  Google Inc And The Contributors 2009 / 2010<br />
+Modifications: <br />
+dukeleto - Jonathan &quot;Duke&quot; Leto 2010<br />
+BartMassey - Bart Massey 2010<br />
+adamhyde - adam hyde 2010<br />
+</p>
+<hr />
+<p>Setting Expectations <br />
+©  Google Inc And The Contributors 2009 / 2010 <br />
+Modifications: <br />
+dukeleto - Jonathan &quot;Duke&quot; Leto 2010<br />
+BartMassey - Bart Massey 2010<br />
+adamhyde - adam hyde 2010<br />
+</p>
+<hr />
+<p>Workflow <br />
+©  Google Inc And The Contributors 2009 / 2010<br />
+Modifications: <br />
+dukeleto - Jonathan &quot;Duke&quot; Leto 2010<br />
+BartMassey - Bart Massey 2010<br />
+adamhyde - adam hyde 2010<br />
+</p>
+<hr />
+<p>Managing the Plan <br />
+©  Google Inc And The Contributors 2009 / 2010<br />
+Modifications: <br />
+BartMassey - Bart Massey 2010<br />
+</p>
+<hr />
+<p>Evaluations <br />
+©  Google Inc And The Contributors 2009 / 2010<br />
+Modifications: <br />
+dukeleto - Jonathan &quot;Duke&quot; Leto 2010<br />
+BartMassey - Bart Massey 2010<br />
+adamhyde - adam hyde 2010<br />
+</p>
+<hr />
+<p>Upstream Integration <br />
+©  Google Inc And The Contributors 2009 / 2010<br />
+Modifications: <br />
+dukeleto - Jonathan &quot;Duke&quot; Leto 2010<br />
+adamhyde - adam hyde 2010<br />
+</p>
+<hr />
+<p>Building a Lifetime Contributor <br />
+©  Google Inc And The Contributors 2009 / 2010 <br />
+Modifications: <br />
+BartMassey - Bart Massey 2010<br />
+</p>
+<hr />
+<p>Making Your Ideas Page <br />
+©  Google Inc And The Contributors 2009 / 2010<br />
+Modifications: <br />
+adamhyde - adam hyde 2010<br />
+AlexanderPico - Alex Pico 2010<br />
+dukeleto - Jonathan &quot;Duke&quot; Leto 2010<br />
+BartMassey - Bart Massey 2010<br />
+selenamarie - Selena Deckelmann 2010<br />
+</p>
+<hr />
+<p>Selecting Projects and Mentors <br />
+©  Google Inc And The Contributors 2009 / 2010<br />
+Modifications: <br />
+adamhyde - adam hyde 2010<br />
+BartMassey - Bart Massey 2010<br />
+jenred - Jennifer Redman 2010<br />
+selenamarie - Selena Deckelmann 2010<br />
+malveeka - Malveeka Tewari 2010<br />
+</p>
+<hr />
+<p>Org Application <br />
+©  Google Inc And The Contributors 2009 / 2010<br />
+Modifications: <br />
+adamhyde - adam hyde 2010<br />
+carols - Carol Smith 2010<br />
+AlexanderPico - Alex Pico 2010<br />
+BartMassey - Bart Massey 2010<br />
+selenamarie - Selena Deckelmann 2010<br />
+</p>
+<hr />
+<p>Managing the Mentors <br />
+©  Google Inc And The Contributors 2009 / 2010<br />
+Modifications: <br />
+adamhyde - adam hyde 2010<br />
+dukeleto - Jonathan &quot;Duke&quot; Leto 2010<br />
+jenred - Jennifer Redman 2010<br />
+BartMassey - Bart Massey 2010<br />
+AlexanderPico - Alex Pico 2010<br />
+</p>
+<hr />
+<p>Student - Mentor Facilitation <br />
+©  Google Inc And The Contributors 2009 / 2010<br />
+Modifications: <br />
+adamhyde - adam hyde 2010<br />
+AlexanderPico - Alex Pico 2010<br />
+BartMassey - Bart Massey 2010<br />
+</p>
+<hr />
+<p>Other Possible Issues <br />
+©  Google Inc And The Contributors 2009 / 2010 <br />
+Modifications: <br />
+adamhyde - adam hyde 2010<br />
+dukeleto - Jonathan &quot;Duke&quot; Leto 2010<br />
+carols - Carol Smith 2010<br />
+AlexanderPico - Alex Pico 2010<br />
+selenamarie - Selena Deckelmann 2010<br />
+BartMassey - Bart Massey 2010<br />
+</p>
+<hr />
+<p>End of Year Report <br />
+©  Google Inc And The Contributors 2009 / 2010<br />
+Modifications: <br />
+adamhyde - adam hyde 2010<br />
+AlexanderPico - Alex Pico 2010<br />
+BartMassey - Bart Massey 2010<br />
+</p>
+<hr />
+<p>The Quick Guide <br />
+©  Google Inc And The Contributors 2009 / 2010<br />
+Modifications: <br />
+adamhyde - adam hyde 2010<br />
+BartMassey - Bart Massey 2010<br />
+dukeleto - Jonathan &quot;Duke&quot; Leto 2010<br />
+</p>
+<hr />
+<p>History of GSoC <br />
+©  Google Inc And The Contributors 2009 / 2010 <br />
+Modifications: <br />
+BartMassey - Bart Massey 2010<br />
+adamhyde - adam hyde 2010<br />
+dukeleto - Jonathan &quot;Duke&quot; Leto 2010<br />
+</p>
+<hr />
+<p>Additional Resources <br />
+©  Google Inc And The Contributors 2009 / 2010<br />
+Modifications: <br />
+adamhyde - adam hyde 2010<br />
+</p>
+<hr />
+<p>Glossary <br />
+©  Google Inc And The Contributors 2009 / 2010 <br />
+Modifications: <br />
+adamhyde - adam hyde 2010<br />
+</p>
+<hr />
+<p>Credits <br />
+©  Google Inc And The Contributors 2009 / 2010 <br />
+Modifications: <br />
+adamhyde - adam hyde 2010<br />
+</p>
+<hr />
+<p>The below is legacy information for attribution prior to 2010. <br />
+</p>
+<h2>Authors</h2>
+<p><em>THE QUICK GUIDE</em> <br />
+© Google Inc And The Contributors 2009 <br />
+Modifications: <br />
+adam hyde 2009 <br />
+Alexander Pico 2009 <br />
+Anne Gentle 2009 <br />
+Bart Massey 2009 <br />
+James Crook 2009 <br />
+Jonathan Leto 2009 <br />
+</p>
+<hr />
+<p><em>ABOUT THIS MANUAL</em> <br />
+© Google Inc And The Contributors 2009 <br />
+Modifications: <br />
+adam hyde 2009 <br />
+Alexander Pico 2009 <br />
+Anne Gentle 2009 <br />
+Jennifer Redman 2009 <br />
+Jonathan Leto 2009 <br />
+Leslie Hawthorn 2009 <br />
+Olly Betts 2009 <br />
+selena deckelmann 2009 <br />
+</p>
+<hr />
+<p><em>COMMUNITY BASICS</em> <br />
+© Google Inc And The Contributors 2009 <br />
+Modifications: <br />
+adam hyde 2009 <br />
+Alexander Pico 2009 <br />
+Jennifer Redman 2009 <br />
+Jonathan Leto 2009 <br />
+Olly Betts 2009 <br />
+selena deckelmann 2009 <br />
+</p>
+<hr />
+<p><em>CREDITS</em> <br />
+© Google Inc And The Contributors 2006 <br />
+Modifications: <br />
+adam hyde 2006, 2007, 2009 <br />
+</p>
+<hr />
+<p><em>EVALUATIONS</em> <br />
+© Google Inc And The Contributors 2009 <br />
+Modifications: <br />
+adam hyde 2009 <br />
+Alexander Pico 2009 <br />
+Bart Massey 2009 <br />
+Leslie Hawthorn 2009 <br />
+Olly Betts 2009 <br />
+selena deckelmann 2009 <br />
+</p>
+<hr />
+<p><em>OPEN SOURCE CULTURE</em> <br />
+© Google Inc And The Contributors 2009 <br />
+Modifications: <br />
+adam hyde 2009 <br />
+Alexander Pico 2009 <br />
+Jennifer Redman 2009 <br />
+Jonathan Leto 2009 <br />
+Leslie Hawthorn 2009 <br />
+Olly Betts 2009 <br />
+selena deckelmann 2009 <br />
+</p>
+<hr />
+<p><em>SELECTING A STUDENT</em> <br />
+© Google Inc And The Contributors 2009 <br />
+Modifications: <br />
+adam hyde 2009 <br />
+Alexander Pico 2009 <br />
+Bart Massey 2009, 2010 <br />
+Leslie Hawthorn 2009 <br />
+selena deckelmann 2009 <br />
+</p>
+<hr />
+<p><em>GLOSSARY</em> <br />
+© Google Inc And The Contributors 2009 <br />
+Modifications: <br />
+adam hyde 2009 <br />
+Jonathan Leto 2009 <br />
+Leslie Hawthorn 2009 <br />
+</p>
+<hr />
+<p><em>HISTORY OF GSoC</em> <br />
+© Google Inc And The Contributors 2009 <br />
+Modifications: <br />
+adam hyde 2009 <br />
+Alexander Pico 2009 <br />
+Jonathan Leto 2009 <br />
+Leslie Hawthorn 2009 <br />
+Olly Betts 2010 <br />
+</p>
+<hr />
+<p><em>WHAT IS GSoC?</em> <br />
+© Google Inc And The Contributors 2006 <br />
+Modifications: <br />
+adam hyde 2006, 2007, 2009 <br />
+Alexander Pico 2009 <br />
+Anne Gentle 2009 <br />
+Jonathan Leto 2009 <br />
+Leslie Hawthorn 2009 <br />
+Olly Betts 2009, 2010 <br />
+William Abernathy 2009 <br />
+</p>
+<hr />
+<p><em>BUILDING A LIFETIME CONTRIBUTOR</em> <br />
+© Google Inc And The Contributors 2009 <br />
+Modifications: <br />
+adam hyde 2009 <br />
+Alexander Pico 2009 <br />
+Bart Massey 2009 <br />
+Jennifer Redman 2009 <br />
+Leslie Hawthorn 2009 <br />
+selena deckelmann 2009 <br />
+</p>
+<hr />
+<p><em>MIND THE GAP</em> <br />
+© Google Inc And The Contributors 2009 <br />
+Modifications: <br />
+adam hyde 2009 <br />
+Alexander Pico 2009 <br />
+Jennifer Redman 2009 <br />
+Jonathan Leto 2009 <br />
+Leslie Hawthorn 2009 <br />
+Olly Betts 2009 <br />
+selena deckelmann 2009 <br />
+</p>
+<hr />
+<p><em>MANAGING THE PLAN</em> <br />
+© Google Inc And The Contributors 2009 <br />
+Modifications: <br />
+adam hyde 2009 <br />
+Alexander Pico 2009 <br />
+Bart Massey 2009 <br />
+Jennifer Redman 2009 <br />
+Leslie Hawthorn 2009 <br />
+selena deckelmann 2009 <br />
+</p>
+<hr />
+<p><em>ADDITIONAL RESOURCES</em> <br />
+© Google Inc And The Contributors 2009 <br />
+Modifications: <br />
+adam hyde 2009 <br />
+Alexander Pico 2009 <br />
+Jennifer Redman 2009 <br />
+Leslie Hawthorn 2009 <br />
+selena deckelmann 2009 <br />
+</p>
+<hr />
+<p><em>WHAT MAKES A GOOD MENTOR</em> <br />
+© Google Inc And The Contributors 2009 <br />
+Modifications: <br />
+adam hyde 2009 <br />
+Alexander Pico 2009 <br />
+Bart Massey 2010 <br />
+James Crook 2009 <br />
+Jonathan Leto 2009 <br />
+Olly Betts 2009 <br />
+</p>
+<hr />
+<p><em>DEFINING A PROJECT</em> <br />
+© Google Inc And The Contributors 2009 <br />
+Modifications: <br />
+adam hyde 2009 <br />
+Alexander Pico 2009 <br />
+Bart Massey 2009 <br />
+Jennifer Redman 2009 <br />
+selena deckelmann 2009 <br />
+William Abernathy 2009 <br />
+</p>
+<hr />
+<p><em>SETTING EXPECTATIONS</em> <br />
+© Google Inc And The Contributors 2009 <br />
+Modifications: <br />
+adam hyde 2009 <br />
+Alexander Pico 2009 <br />
+Anne Gentle 2009 <br />
+Bart Massey 2009 <br />
+Jennifer Redman 2009 <br />
+Jonathan Leto 2009 <br />
+Olly Betts 2009 <br />
+selena deckelmann 2009 <br />
+</p>
+<hr />
+<p><em>BEST PRACTICES</em> <br />
+© Google Inc And The Contributors 2009 <br />
+Modifications: <br />
+adam hyde 2009 <br />
+Alexander Pico 2009 <br />
+Jennifer Redman 2009 <br />
+Olly Betts 2009 <br />
+selena deckelmann 2009 <br />
+</p>
+<hr />
+<p><em>WHY GSoC MATTERS</em> <br />
+© Google Inc And The Contributors 2009 <br />
+Modifications: <br />
+adam hyde 2009 <br />
+Alexander Pico 2009 <br />
+Jennifer Redman 2009 <br />
+Jonathan Leto 2009 <br />
+</p>
+<hr />
+<p><em>UPSTREAM INTEGRATION</em> <br />
+© Google Inc And The Contributors 2009 <br />
+Modifications: <br />
+adam hyde 2009 <br />
+Alexander Pico 2009 <br />
+Bart Massey 2009 <br />
+Jonathan Leto 2009 <br />
+Olly Betts 2009 <br />
+selena deckelmann 2009 <br />
+</p>
+<hr />
+<p><em>WARNING SIGNS</em> <br />
+© Google Inc And The Contributors 2009 <br />
+Modifications: <br />
+adam hyde 2009 <br />
+Alexander Pico 2009 <br />
+Jennifer Redman 2009 <br />
+Jonathan Leto 2009 <br />
+Olly Betts 2009 <br />
+</p>
+<hr />
+<p><em>WORKFLOW</em> <br />
+© Google Inc And The Contributors 2009 <br />
+Modifications: <br />
+adam hyde 2009 <br />
+Alexander Pico 2009 <br />
+Jonathan Leto 2009 <br />
+Olly Betts 2009 <br />
+selena deckelmann 2009 </p>
+</body>
+</html>

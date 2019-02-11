@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="The Contributors" />
+  <title>Etherpad</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">Etherpad</h1>
+<p class="author">The Contributors</p>
+<p class="date">2013.10.12-17.36</p>
+</header>
+<p><span id="ch001_introduction.xhtml"></span></p>
+<h1>Introduction</h1>
+<p>Etherpad is a real time collaborative editor. Etherpad can and has been used for the following: </p>
+<ul>
+<li>Taking minutes for online or offline meetings, workshops or any event about which you wish to keep records.</li>
+<li>Real time or asynchronous, text-based planning of projects<br />
+</li>
+<li>A tool for education and reflection</li>
+<li>Collating resources, research and other forms of data </li>
+</ul>
+<p>If you want to test out Etherpad there are may installations that are open to all. These include: <br />
+</p>
+<ul>
+<li><a href="http://beta.etherpad.org" class="uri">http://beta.etherpad.org</a></li>
+<li><a href="https://pad.riseup.net" class="uri">https://pad.riseup.net</a></li>
+<li><a href="http://notes.occupy.net/" class="uri">http://notes.occupy.net/</a></li>
+</ul>
+<ul>
+</ul>
+<h2>About Etherpad</h2>
+<p>Etherpad is an almost complete rewrite of a different but similar software called &quot;EtherPad&quot;. They are based on different technical foundations and written by different authors. While the original EtherPad had quite big system requirements, The new Etherpad, (previously called  Etherpad Lite) is written in a way that makes it much easier to set up and maintain (server side javascript). The original EtherPad software is no longer promoted or updated.</p>
+<p>Any references to Etherpad in this manual refer to the new version which can be downloaded from http://etherpad.org.<br />
+</p>
+<h2>Common Features</h2>
+<p><img src="static/eth_multiple_4.png" /> </p>
+<p>Because Etherpad is software that can be installed on many different servers in many different places, there are different features which may be enabled. Here are some of the most common features.</p>
+<p><strong>Creating Pads:</strong> Normally, it is possible for anyone create a new collaborative document, known as a &quot;pad&quot;. Each pad has its own web address (URL) , if you are sent this URL then you will be able to edit the pad.</p>
+<p><strong>Clear Collaboration:</strong> It is possible to see changes being made by other people in real time. Each participant is identified by a color and a name.<br />
+</p>
+<p><strong>Chat:</strong> By default there is the ability to 'chat' with other people who are using the pad.<strong><br />
+</strong></p>
+<p><strong>Recording Revisions:</strong> The pad is saved at and participants can permanently save specific versions checkpoints at any time. A time slider allows anyone to explore the history of the pad in a very user-friendly way. </p>
+<p><strong>Exporting work:</strong> The text contained in the pad document can be downloaded in plain text, HTML, Open Document, Microsoft Word, or PDF format.<br />
+</p>
+<h2>Technical Overview</h2>
+<p>Etherpad is a real time collaborative editor. Etherpad is written in a way that makes it easy for developers to maintain and add new features. It does this via a full-featured plugin framework, because of this Etherpad has many available plug ins. Once you have Etherpad installed it is possible to for the administrators to visit the plugin page and take control.</p>
+<p><img src="static/eth_plugins_1.png" width="600" height="286" /> </p>
+<p>Etherpad is designed to be easily embeddable and provides different ways of allowing web applications like WordPress to manage pads, users and groups. Etherpad comes with translations into most languages. Users are automatically delivered the correct language for their local settings or users can change settings manually.</p>
+<p><br />
+</p>
+<p><span id="ch002_case-studies.xhtml"></span></p>
+<h1>Case Studies</h1>
+<p>The following case studies should give you some background information and ideas about how Etherpad can be used. <br />
+</p>
+<h2><strong>Case Study: P2PU.org Community calls<br />
+</strong></h2>
+<p>Etherpad is used as a tool for the Peer to Peer University community for their &quot;community calls&quot; and on-going planning. Invitations with a link to the pad are circulated. While other tools are used the pad is the key tool. A link to a Google HangOut (an online chat tool), links to additional pads detailing past meetings and projects.<br />
+</p>
+<p>Using Etherpad helps to removes the barriers to entry. Anyone can click on the link and start editing. For this community there are conventions to the use of the pad. One of those conventions is to make it clear to see who is editing what part of the pad, new users sign in as attendees. This will link their names to whatever they write.</p>
+<p><img src="static/eth_p2pu_2.png" width="469" height="362" /> </p>
+<p>The pad is used in combination with voice and text chat. Sometimes the talk will go quiet and people will concentrate on adding information to the Etherpad adding it form memory, cutting and pasting text from from different sources or linking out to more in depth information. The weekly meeting process encourages the disparate team to pool information to have it visible in one space. The real time element focuses attention on the task and ensures that there isn't a project drift in terms of not finishing the work in time.</p>
+<h2><strong><strong>Case Study: Pads for use in activism</strong></strong></h2>
+<p>Etherpads have been used by many activist communities. Often these pads are not secure in the sense that they are password protected but they do offer the possibility of anonymous collaboration. Two commonly used pads are pad.riseup.net and piratepad.net. Pads have been used for a wide variety of causes from Anonymous to co-ordinate hacktivism <span id="ch002_case-studies.xhtml#InsertNoteID_8_marker9" class="InsertNoteMarker"><sup><a href="case-studies#InsertNoteID_8">1</a></sup></span>  to groups in Spain for civic action. <span id="ch002_case-studies.xhtml#InsertNoteID_6_marker7" class="InsertNoteMarker"><sup><a href="case-studies#InsertNoteID_6">2</a></sup></span>  </p>
+<p>Unlike a tool like Google Docs where users need to log in to collaborate, this is not needed for Etherpads. While most large scale services log information like the IP address (identifying addresses) of connecting users, it is possible to configure an Etherpad server not to keep any record of the users who connect to it. However,  removal of logs in this way  and the lack of user log-ins make these pads practically anonymous.</p>
+<p><img src="static/eth_riseup_1.png" width="430" height="386" /> </p>
+<p>There is more written on the security elements of Etherpads later in this guide.   </p>
+<h2><strong>Case Study: Primary Pad<br />
+</strong></h2>
+<p>Primary Pad is an installation of Etherpad set up by a teacher who saw the value of pads for school-based educators. It is based at the website <a href="http://primarypad.com" class="uri">http://primarypad.com</a>.  The list of potential uses listed on the Primary pad include: <br />
+</p>
+<ul>
+<li>Generating ideas and lists<br />
+</li>
+<li>Collaborating with others on one document in real time</li>
+<li>Sharing pieces of information when working in a group or collaborative environment</li>
+<li>Improving important typing and written skills as well as critical thinking<br />
+</li>
+<li>Task management</li>
+<li>Story writing </li>
+</ul>
+<p><img src="static/front_primary.png" width="600" height="438" /><br />
+</p>
+<p>The site contains links to other resources <a href="http://digitalclass.wordpress.com/2009/04/07/two-uses-of-etherpad-in-the-classroom-to-promote-higher-order-thinking-skills/">which outline</a> ideas <span id="ch002_case-studies.xhtml#InsertNoteID_21_marker22" class="InsertNoteMarker"><sup><a href="case-studies#InsertNoteID_21">3</a></sup></span>   for how Etherpad can be <a href="http://ideastoinspire.co.uk/presentations/primarypad.htm?iframe=true&amp;width=720&amp;height=579">used in the class room</a>. <span id="ch002_case-studies.xhtml#InsertNoteID_7_marker8" class="InsertNoteMarker"><sup><a href="case-studies#InsertNoteID_7">4</a></sup></span>  </p>
+<p><br />
+</p>
+<ol>
+<li><span id="ch002_case-studies.xhtml#InsertNoteID_8">http://www.theatlantic.com/technology/archive/2010/12/what-its-like-to-participate-in-anonymous-actions/67860/<span id="ch002_case-studies.xhtml#InsertNoteID_8_LinkBacks"><sup><a href="case-studies#InsertNoteID_8_marker9">^</a></sup></span></span></li>
+<li><span id="ch002_case-studies.xhtml#InsertNoteID_6">http://arstechnica.com/tech-policy/2011/05/german-police-seize-pirate-party-servers-looking-at-anons-toolkit/<span id="ch002_case-studies.xhtml#InsertNoteID_6_LinkBacks"><sup><a href="case-studies#InsertNoteID_6_marker7">^</a></sup></span></span></li>
+<li><span id="ch002_case-studies.xhtml#InsertNoteID_21">http://digitalclass.wordpress.com/2009/04/07/two-uses-of-etherpad-in-the-classroom-to-promote-higher-order-thinking-skills/ <span id="ch002_case-studies.xhtml#InsertNoteID_21_LinkBacks"><sup><a href="case-studies#InsertNoteID_21_marker22">^</a></sup></span></span></li>
+<li><span id="ch002_case-studies.xhtml#InsertNoteID_7">http://ideastoinspire.co.uk/presentations/primarypad.htm?iframe=true&amp;width=720&amp;height=579<span id="ch002_case-studies.xhtml#InsertNoteID_7_LinkBacks"><sup><a href="case-studies#InsertNoteID_7_marker8">^</a></sup></span></span></li>
+</ol>
+<p> </p>
+<p><span id="ch004_getting-started-with-etherpad.xhtml"></span></p>
+<h1>Getting Started with Etherpad</h1>
+<p>When getting  started with Etherpad you are likely to start in one of two ways. You may be the person who is initiating the writing. In this case you will want to chose an Etherpad service and create a new pad. Alternatively, you may be someone invited to contribute to an already existing pad. </p>
+<h2>How to get started<br />
+</h2>
+<h3>Create a pad</h3>
+<p>To create a pad, point your browser to a service which is running Etherpad. If you want to be independent then you may want to install Etherpad on your own server.</p>
+<p>Some existing services at the time of writing are:</p>
+<ul>
+<li><a href="http://beta.etherpad.org" class="uri">http://beta.etherpad.org</a> (use only for evaluation)<br />
+</li>
+<li><a href="https://pad.riseup.net" class="uri">https://pad.riseup.net</a></li>
+<li><a href="http://notes.occupy.net/" class="uri">http://notes.occupy.net/</a></li>
+</ul>
+<p>Once you land on these pages there are different ways of creating a pad. Some servers will give you an automatically generated pad name. Others allow you to enter your own name.</p>
+<p><img src="static/eth_create_1.png" width="414" height="277" /></p>
+<p>To invite others to collaborate with you on this pad you can click on the <strong>&lt;/&gt;</strong> Icon to show options for sharing the pad.</p>
+<p><img src="static/eth_share_3.png" width="264" height="84" /><br />
+</p>
+<p>In this case copy the link to share the pad.</p>
+<p><img src="static/eth_share_4.png" width="494" height="232" /></p>
+<p>You can now send this link via email or and instant messaging service inviting other people to join you in the writing of the document you have just started.</p>
+<h3>Start work on an existing pad</h3>
+<p>To start work on an exiting pad you will normally be sent a link to the pad. This will normally happen via an email written by the person inviting you.</p>
+<p>Often you will be able to click on the link being sent to you. If not you can copy it and paste it into the address bar of your web browser.</p>
+<h2>Single author writing in your pad</h2>
+<p>To start writing you can use the pad in the same way that you would a normal word processor or the writing window of an email editor.</p>
+<p>If you have just created the pad yourself you will see some existing text already there. You can select this and delete it.</p>
+<p><img src="static/eth_write_1_1.png" width="600" height="186" /> <br />
+</p>
+<p>You can now type text into the editor.<br />
+</p>
+<p><img src="static/eth_write_6.png" width="600" height="125" /><br />
+</p>
+<p>You can format the text using the provided buttons on above the text box. </p>
+<p><img src="static/eth_write_3.png" width="249" height="36" /></p>
+<p>These are in order: Bold, Italic, Underline, Strikethough, Numbered list, Unordered list, Indent, Outdent, Undo and Redo. Some of these formatting styles are show below.</p>
+<p><img src="static/eth_write_4.png" width="595" height="242" /><br />
+</p>
+<p>As you type you may notice that there is a background color behind what you type.This color is called an Authorship Color. If other people start writing to the pad their text will show up as a different color. If you are only writing by yourself then this may be distracting and you can choose to remove these Authorship Colors by clicking on the multicolored icon.</p>
+<p><img src="static/eth_write_5.png" width="30" height="35" /></p>
+<h2>Multiple author writing in your pad<br />
+</h2>
+<p>As other people join the pad and start to type their text will appear in other colors. This allows you to keep track of who has written what.</p>
+<p>To make this easier, it is a good idea for you to link our name with your color. To do this click on the icon of the head and shoulders at the top right of your page. </p>
+<p><img src="static/eth_multiple_2.png" width="295" height="114" /></p>
+<p>This will prompt you to enter your name.</p>
+<p><img src="static/eth_multiple_3.png" width="307" height="156" /></p>
+<p>Type in a name or a nickname or pseudonym and press Enter.</p>
+<p><img src="static/eth_multiple_1.png" width="299" height="168" /></p>
+<p>As more users start to edit the document they will appear in this list.This allows you to see who has written which text. </p>
+<p><img src="static/eth_multiple_4.png" width="600" height="253" /></p>
+<h2>Interacting with other writers</h2>
+<p>One of the core reasons for using Etherpad is to be able to collaborate in real time with other writers remotely. Etherpad provides a Chat window which allows you to talk in real time with other writers.<br />
+</p>
+<p>To activate the chat on on a default installation, click on the  chat icon .</p>
+<p> <img src="static/eth_chat_2.png" width="141" height="57" /></p>
+<p>If you type text in the small text field at the bottom this is now visible to the other people currently looking at the document. </p>
+<p><img src="static/eth_chat_1.png" width="206" height="230" /> </p>
+<p>The chat tools is a great way of exchanging information about what you are writing or simply to greet others and make them feel welcome in the collaborative writing process. </p>
+<p>It is possible to display chat more permanently. You can do this by clicking on the left of the two icons above the chat window. </p>
+<p><img src="static/eth_chat_4.png" width="252" height="38" /><br />
+</p>
+<h2>Recording changes and revisions</h2>
+<p>One of the key features of Etherpad is that it keeps a record of all the changes that are made to the document. </p>
+<p>To view these changes click on the icon that looks like a clock to show the time slider of the project.</p>
+<p> <img src="static/eth_time_1.png" width="183" height="33" /></p>
+<p>There is a playing head slider which you can drag to the left to move between versions.The playing head starts at the right with the latest version of the pad.</p>
+<p><img src="static/eth_time_3.png" width="600" height="179" /></p>
+<p>Dragging this playing head back to version 0 should show the default message and the time when the pad was created.</p>
+<p><img src="static/eth_time_4.png" width="273" height="101" /><br />
+</p>
+<p>*When you drag the playing head you will see the text alter. This is a visual representation of the changes that have been made to the text.</p>
+<p><img src="static/eth_time_5.png" width="70" height="59" /><br />
+</p>
+<p>It is possible to click on the play button to the right of this timeline screen to replay these changes at a speed where you can generally keep a track of what happened.<br />
+</p>
+<p>Practically, this is useful because  you or a collaborator may have deleted some text by mistake which  you might want to restore. It is also very interesting to see how your collaboration progresses. This is a great visualisation of collaborative creativity in action.<br />
+</p>
+<p>When  you are finished you can click on the <em><strong>Return to the pad</strong></em> link.</p>
+<h3>Intentional Saved Revisions</h3>
+<p>While Etherpad saves all work and changes in small increments by default, you may want to set intentional versions or revisions. This is done by clicking on the star icon.</p>
+<p>If you go to the Timeline view of a pad where these saved revisions have been used you will see the intentionally saved revisions as stars marked along the timeline.</p>
+<p><img src="static/eth_time_6.png" width="600" height="126" /><br />
+</p>
+<p>You can skip back to one of the 'starred', intentional versions by double clicking on it. <br />
+</p>
+<h3>Importing and exporting documents</h3>
+<p>You may want to start a pad with a word processing document you have already created.When you have finished collaborating you may also want to export the document you have created.<br />
+</p>
+<p>It is possible to do this in many different formats. To start click on the Icon with two arrows facing opposite directions in the tool bar on the top right. </p>
+<p><img src="static/eth_io_3.png" width="183" height="33" /> </p>
+<p>You can choose to export to a number of different file types. These include HTML, Plain text, Microsoft Word, PDF, ODF (Open Document Format), DokuWiki and MediaWiki.<br />
+</p>
+<p><img src="static/eth_io_1.png" width="423" height="217" /> </p>
+<p><br />
+</p>
+<p><span id="ch005_installing-etherpad.xhtml"></span></p>
+<h1>Installing Etherpad</h1>
+<p>This chapter will look at some of the issues surrounding installing Etherpad.<br />
+</p>
+<h2><strong>What are the pros and cons of installing your own installation of Etherpad? </strong></h2>
+<p>Some of the questions you may want to ask yourself are: </p>
+<ul>
+<li>Is anonymity a high concern for your project?<br />
+</li>
+<li>Is there an already existing service running that I can trust?</li>
+<li>What are the general privacy limitations of using an online services for sensitive information? </li>
+</ul>
+<h2><strong>How to Install Etherpad</strong></h2>
+<p>These notes are adapted from the installation notes here. <span id="ch005_installing-etherpad.xhtml#InsertNoteID_6_marker7" class="InsertNoteMarker"><sup><a href="installing-etherpad#InsertNoteID_6">1</a></sup></span> </p>
+<p><strong>GNU/Linux and other UNIX-like systems<br />
+</strong><br />
+You'll need gzip, git, curl, libssl develop libraries, python and gcc.<br />
+For Debian/Ubuntu:</p>
+<pre><code>apt-get install gzip git-core curl python libssl-dev pkg-config build-essential</code></pre>
+<p>Additionally, you'll need node.js installed, Ideally the latest stable version, be careful of installing nodejs from apt.<br />
+<br />
+As any user (we recommend creating a separate user called etherpad-lite):<br />
+</p>
+<ul>
+</ul>
+<p>Move to a folder where you want to install Etherpad Lite. Clone the git repository</p>
+<pre><code>git clone git://github.com/ether/etherpad-lite.git</code></pre>
+<p>Change into the new directory containing the cloned source code</p>
+<pre><code>cd etherpad-lite</code></pre>
+<p>Run</p>
+<pre><code>bin/run.sh </code></pre>
+<p>Now open http://127.0.0.1:9001 in your browser.</p>
+<p><br />
+You can update to the latest version with</p>
+<pre><code>git pull origin </code></pre>
+<p>The next time you start Etherpad -<br />
+</p>
+<pre><code>bin/run.sh </code></pre>
+<p>will update the dependencies.  You can initially modify the settings in settings.json. Once you have access to your /admin section settings can be modified through the web browser.  You should use a dedicated database such as &quot;mysql&quot;, if you are planning on using etherpad-in a production environment.</p>
+<h2><strong>Installing Abiword</strong></h2>
+<p>You should install Abiword if you want to  importing and exporting word processing documents</p>
+<p>This can be handy for many users. If you don't install it then you get a message prompting you to do so when you click on the Import / Export button.</p>
+<p><img src="static/apadforus_Etherpad_20130525-173045.png" width="444" height="209" /></p>
+<p>Follow these instructions to install Abiword on your server. <br />
+</p>
+<p>https://github.com/ether/etherpad-lite/wiki/How-to-enable-importing-and-exporting-different-file-formats-in-Ubuntu-or-OpenSuse-or-SLES-with-AbiWord</p>
+<p>When you have installed abiword you can configure Etherpad to use it by altering the file settings.json in a text editor.  Find the line that says:<br />
+</p>
+<pre><code>&quot;abiword&quot; : null,</code></pre>
+<p><br />
+and change it to:<br />
+<br />
+</p>
+<pre><code>&quot;abiword&quot; : &quot;/usr/bin/abiword&quot;,</code></pre>
+<h2><strong>Password Protecting Etherpad/Installing Reverse Proxy</strong><br />
+</h2>
+<p>For better security and stability it is good practice to use a webserver as a <a href="https://github.com/ether/etherpad-lite/wiki/How-to-put-Etherpad-Lite-behind-a-reverse-Proxy">reverse proxy</a> for Ethepad. <span id="ch005_installing-etherpad.xhtml#InsertNoteID_21_marker22" class="InsertNoteMarker"><sup><a href="installing-etherpad#InsertNoteID_21">2</a></sup></span> <br />
+</p>
+<p>This will allow you password protect your installation and to set the default connection to SSL / HTTPS.  How this is set up will depend on what webserver you are running. If you are not familiar with these concepts then you will need to do research or ask a specialist to help you. There is more help on the Etherpad wiki on how to do it for Apache, ngnix and other webserver on the wiki pages of the project.  <span id="ch005_installing-etherpad.xhtml#InsertNoteID_19_marker20" class="InsertNoteMarker"><sup><a href="installing-etherpad#InsertNoteID_19">3</a></sup></span></p>
+<p>This will also allow you to have nice URLs for your pad, like <a href="http://etherpad.example.com/padname%22.">&quot;http://etherpad.example.com/padname&quot;.</a> <br />
+</p>
+<h2><strong>Integrating Etherpad with other platforms</strong></h2>
+<p>You may be in a position where it is an advantage to integrate Etherpad with other online web application like WordPress or Moodle.  As we mentioned in the introduction to this guide, Etherpad is very popular with educators. There is a plug in to be able to include <a href="https://moodle.org/plugins/view.php?plugin=mod_etherpad">Etherpad in Moodle</a>. <span id="ch005_installing-etherpad.xhtml#InsertNoteID_7_marker8" class="InsertNoteMarker"><sup><a href="installing-etherpad#InsertNoteID_7">4</a></sup></span><br />
+</p>
+<p>It is possible to restrict access to pads with existing usernames and passwords. Integration means users can log in using their existing usernames and this information can be used to create author information.</p>
+<p><img src="static/pad_group_id_600.png" width="600" height="185" /> </p>
+<h2>Contribute to Etherpad</h2>
+<p><br />
+Etherpad is an open source project. That means that everything, from this website to the core of the application itself, has been contributed by passionate, helpful individuals (such as yourself) who liked what they saw and wanted to make something even better. So if you like what you see, and want to make something even better, we'd like to see your contributions. It doesn't matter how familiar you are with real-time applications, or whether you know how to write programs for Node.js. There are plenty of ways to be helpful! Just ask!<br />
+<br />
+One of the first things you should do is actually use Etherpad, and get to know it, read about it, be evangelical about it, and engage with the wider community. Learn how to write plugins or translate the user interface to your mother tongue. Be creative!<br />
+</p>
+<h2>Helpful resources</h2>
+<p>The Etherpad wiki is a helpful resource for Tutorials and How-to's. <span id="ch005_installing-etherpad.xhtml#InsertNoteID_10_marker11" class="InsertNoteMarker"><sup><a href="installing-etherpad#InsertNoteID_10">5</a></sup></span> <br />
+</p>
+<p>If you're new to node.js, which Etherpad is built on have a look at with Ryan Dahl's Introduction to Node.js. <span id="ch005_installing-etherpad.xhtml#InsertNoteID_8_marker9" class="InsertNoteMarker"><sup><a href="installing-etherpad#InsertNoteID_8">6</a></sup></span> <br />
+</p>
+<p> </p>
+<ol>
+<li><span id="ch005_installing-etherpad.xhtml#InsertNoteID_6">https://github.com/ether/etherpad-lite/blob/master/README.md<span id="ch005_installing-etherpad.xhtml#InsertNoteID_6_LinkBacks"><sup><a href="installing-etherpad#InsertNoteID_6_marker7">^</a></sup></span></span></li>
+<li><span id="ch005_installing-etherpad.xhtml#InsertNoteID_21">http://en.wikipedia.org/wiki/Reverse_proxy<span id="ch005_installing-etherpad.xhtml#InsertNoteID_21_LinkBacks"><sup><a href="installing-etherpad#InsertNoteID_21_marker22">^</a></sup></span></span></li>
+<li><span id="ch005_installing-etherpad.xhtml#InsertNoteID_19">https://github.com/ether/etherpad-lite/wiki/How-to-put-Etherpad-Lite-behind-a-reverse-Proxy <span id="ch005_installing-etherpad.xhtml#InsertNoteID_19_LinkBacks"><sup><a href="installing-etherpad#InsertNoteID_19_marker20">^</a></sup></span></span></li>
+<li><span id="ch005_installing-etherpad.xhtml#InsertNoteID_7">https://moodle.org/plugins/view.php?plugin=mod_etherpad <span id="ch005_installing-etherpad.xhtml#InsertNoteID_7_LinkBacks"><sup><a href="installing-etherpad#InsertNoteID_7_marker8">^</a></sup></span></span></li>
+<li><span id="ch005_installing-etherpad.xhtml#InsertNoteID_10">https://github.com/ether/etherpad-lite/wiki<span id="ch005_installing-etherpad.xhtml#InsertNoteID_10_LinkBacks"><sup><a href="installing-etherpad#InsertNoteID_10_marker11">^</a></sup></span></span></li>
+<li><span id="ch005_installing-etherpad.xhtml#InsertNoteID_8">http://youtu.be/jo_B4LTHi3I<span id="ch005_installing-etherpad.xhtml#InsertNoteID_8_LinkBacks"><sup><a href="installing-etherpad#InsertNoteID_8_marker9">^</a></sup></span></span></li>
+</ol>
+<p><span id="ch006_taking-etherpad-further.xhtml"></span></p>
+<h1>Taking Etherpad Further</h1>
+<p>The features described in this chapter may not be available in all versions of Etherpad as they may depend on your adding other plugins. We will be clear about which plugins are required. If you do not have admin access you can still find this chapter useful as you may be able to request the administrator to add some of the following plugins to the installed Etherpad version you are  using.<br />
+</p>
+<h2>Adding plugins to your installation</h2>
+<p>This requires you to to have an admin log in to your installation of Etherpad. If you have not set one up yet you can skip to the installation section. Point your web browser to the admin page of your Etherpad installation and log in. Add /admin/ to the end of the URL.  eg http://yourpadsite.org<em><strong>/admin/</strong></em><br />
+</p>
+<p>If you click on the <em><strong>Plugin Manager</strong></em> link at the side of you page you will see the following screen.</p>
+<p><img src="static/eth_admin_1.png" width="600" height="350" /><br />
+</p>
+<p> It may take a minute or two for the <em><strong>Available plugins</strong></em> section to update.</p>
+<p>You can browse the descriptions of the plugins to see if they do something you want. To install a plugin click on the Install button.</p>
+<p><img src="static/eth_admin_2.png" width="540" height="95" /></p>
+<p>After installing, the plugin should then be visible in the installed plugins section.</p>
+<p><img src="static/eth_admin_4.png" width="564" height="130" /></p>
+<p>You can point your browser back to your Etherpad installation to see if the changes have taken place.</p>
+<p>Many plugins are accessed from the Settings menu button. <br />
+</p>
+<h2>Using Etherpad Settings<br />
+</h2>
+<p>You can access other settings for Etherpad documents by clicking on the cog icon.</p>
+<p><img src="static/eth_settings_3.png" width="183" height="33" /> </p>
+<p>Depending on the installation of Etherpad you are using you will have different options available to you. This depends on how much extra functionality or plugins have been added to the basic installation.<br />
+</p>
+<p>You can see the simple Pad Settings of a newly installed Etherpad below.</p>
+<p><img src="static/eth_settings_1.png" width="586" height="268" /><br />
+</p>
+<p>If you go to a more advanced site like the one maintained at <a href="http://beta.etherpad.org">http://beta.etherpad.org,</a>  you can see that clicking on the setting icon gives you many more options.<br />
+</p>
+<p><img src="static/eth_settings_2.png" width="504" height="459" /></p>
+<p>You can find out more about these additional options in other parts of this guide including <em><strong>Taking Ethernet Further</strong></em>.</p>
+<p> </p>
+<h2>Adding Heading and Styles to your text</h2>
+<p>If you are used to organising your written text with headings then you may feel the lack of this ability on the most basic etherpad installations. Luckily there is a plugin which allows for this functionality. </p>
+<p><img src="static/eth_furth_1.png" width="293" height="206" /></p>
+<h2>Align</h2>
+<p>Added the <em><strong>Align</strong></em> plug in adds a toolbar option to align your text to the left, right, center or justified.<br />
+</p>
+<p><img src="static/eth_align_1.png" width="144" height="132" /> </p>
+<h2>Search for Pads</h2>
+<p> The <em><strong>adminpads</strong></em> plug in allows admins to see a list or to search for the different pads on an Etherpad installation.</p>
+<p>After installing this plug in click on the new menu item called <em><strong>Manage Pads</strong></em>.<br />
+</p>
+<p><img src="static/Padadministration_20130525-170452.png" width="627" height="237" /> You can also delete pads easily using this plug in. <br />
+</p>
+<h2>List of Pads</h2>
+<p>There is a similar plugin called List Pads which creates a list of pads on the home page of your installation.</p>
+<p>These pads are listed by the first letter of your pad so it will always help to know what a pad  is called if you are browsing for it. <br />
+</p>
+<p><img src="static/Etherpad_20130525-171919.png" width="517" height="202" /></p>
+<h2>Email Notifications<br />
+</h2>
+<p>This is useful if you want to know if people are editing your pad. When the plug in is installed you can sign up to get email notifications on  each pad by clicking on the Cog image to access the pad settings.</p>
+<p><img src="static/eth_email_1.png" width="222" height="154" /><br />
+</p>
+<p>Put a tick in the <em><strong>Email Notifications</strong></em> box and you will see option appear to add your email and select an option to choose if you want to receive an email when someone starts editing or finishes editing the Pad.</p>
+<h2>Chat Always on Screen</h2>
+<p>This option, when installed it allows users to always displays the chat to the right of the pad. This is useful if you always use this feature.</p>
+<p><img src="static/eth_chat_5.png" width="219" height="70" /> </p>
+<p><br />
+</p>
+<p><span id="ch007_etherpad-security-and-privacy.xhtml"></span></p>
+<h1>Etherpad, Security and Privacy</h1>
+<p>Etherpad is a tool for public collaboration. By default all pads are open to general users of the Internet. As such, it is not advisable to use this tool for information that you do not want to be in the public domain.</p>
+<p>However, it is possible to install Etherpad so little information can be gathered which can be used to incriminate users. There are limits to this level of anonymity. It may be possible to check that you have connected to a website even if the contents of what you have read or written can not be detected. This chapter deals with these aspects and suggests different tools which may be useful to you.<br />
+</p>
+<h2>User level security<br />
+</h2>
+<h3>Using Etherpad with HTTPS / SSL</h3>
+<p>It is possible to connect to Etherpad to using HTTPS connections. There is more information on HTTPS (also called SSL) in other guides like the FIrefox Manual. Very briefly, HTTPS connections encrypt the data between your computer and the website you are connecting to.</p>
+<p><img src="static/eth_sec_1.png" width="397" height="292" /></p>
+<p>If this kind of digital 'eavesdropping' is a concern for you then choose an Etherpad where HTTPS is available. In the Firefox browser, you can tell you are connected via HTTPS in the location bar. If you are connected, you will see <em><strong>https://</strong></em> and a image of a lock.</p>
+<p>You can also investigate using other security and bypassing censorship techniques. Details of these tools can be found in similar guides on Bypassing Censorship and the Firefox browser.<br />
+</p>
+<h2>Administrator level security</h2>
+<h3>IP address logging and automatically deleting unused pads</h3>
+<p>IP addresses are numbers which can identify you when you browse the Internet. When authorities track Internet use or take possession of Internet servers as part of investigations, it is often these IP addresses which are used to incriminate Internet users.<br />
+</p>
+<p>It is possible to set up a server so that it does not make a record of IP addresses. One way of doing this if you are using an Apache webserver is to use the <a href="https://we.riseup.net/debian/apach">remove_ip modul</a>e. <span id="ch007_etherpad-security-and-privacy.xhtml#InsertNoteID_6_marker7" class="InsertNoteMarker"><sup><a href="etherpad-security-and-privacy#InsertNoteID_6">1</a></sup></span> <br />
+</p>
+<p>Rather than leaving data hanging around on the Internet you may choose to use an Etherpad service that deletes data after a certain amount of time if it is not being used. This is true of the service at <a href="http://pad.riseup.net">pad.riseup.net</a>  which deletes pads after 30 days of inactivity.<br />
+</p>
+<h3>Password Protecting Etherpads<br />
+</h3>
+<p>It is possible to place a password on Etherpad when it is installed. This may be something you could ask an Internet administrator to do for your project. If you have technical skills you can find out how to do this in the section on Installing Etherpad.</p>
+<p><img src="static/eth_admin_5.png" width="459" height="200" /><br />
+ </p>
+<p>If you do use an Etherpad with password protection, it is important to always use HTTPS to connect to it. Otherwise your password will be sent in an unencrypted way.</p>
+<h2>Other types of good practices</h2>
+<h3>Do you know what you are doing?</h3>
+<p>As with many aspects of Internet security, for very sensitive information it is best not to publish it to a webserver on the Internet at all. Before running a service and declaring it to be a secure tool you should ensure you have  good depth of knowledge on your subject.<br />
+</p>
+<h3>Choosing the right tool for the job<br />
+</h3>
+<p>If you choose not to use Etherpad as you collaboration tool then there are other services and software that may be useful to you.<br />
+</p>
+<p><strong>Crabgrass</strong><br />
+</p>
+<p>Crabgrass is web software and a service provided at <a href="http://we.riseup.net">http://we.riseup.net.</a> It is a tool used by many grass roots activists.</p>
+<p><img src="static/crabgrass_1.png" /> </p>
+<p>It provides a secure space to collaborate with your friends and colleagues by allowing you to create different spaces and use tools for collaborative writing, organising and decision making.<br />
+</p>
+<p><strong>OwnCloud</strong><br />
+</p>
+<p>OwnCloud is Free Software that provides an online storage area for data (cloud storage) for you. Versions until 4.5 featured the ability to encrypt your files.  </p>
+<p><img src="static/owncloud_web_600.png" /></p>
+<p>The system is mainly designed for the sharing of existing files but there are also simple tools for editing documents and it is possible to integrate Etherpad. There is also the ability to use shared calendars. You can download or find out more about OwnCloud at <a href="http://owncloud.org/">http://owncloud.org/.</a><br />
+</p>
+<p><strong>IRC</strong><br />
+</p>
+<p>IRC <a href="https://techtoolsforactivism.org/content/instant-messaging">(Internet Relay Chat) i</a>s a well tested way of chatting in real time with many people. It is possible to keep a log of your chats and have encrypted chats making it a good tool for quick collaboration on texts.</p>
+<p><img src="static/irc_1.png" /></p>
+<p>There is <a href="https://techtoolsforactivism.org/content/instant-messaging">more information about IRC</a> and the <a href="https://techtoolsforactivism.org/content/instant-messaging">different clients you can use here</a>. <span id="ch007_etherpad-security-and-privacy.xhtml#InsertNoteID_22_marker23" class="InsertNoteMarker"><sup><a href="etherpad-security-and-privacy#InsertNoteID_22">2</a></sup></span> <br />
+</p>
+<p><strong>Booktype<br />
+</strong></p>
+<p>Booktype is a more advanced tool for collaborative writing, It has a focus on producing printed books or booklets. As such, there are many options for laying out images and text. </p>
+<p><img src="static/booktype_1.png" /><br />
+</p>
+<p>It is possible to hide books from general users however Booktype has not been designed as a secure space for sensitive documents. You can try out, download or find out more information on Booktype at <a href="http://www.sourcefabric.org/en/booktype/" class="uri">http://www.sourcefabric.org/en/booktype/</a><br />
+</p>
+<p><strong>Wikis</strong><br />
+</p>
+<p>Although most wikis are not designed to be private or encrypted, they can be password protected.</p>
+<p>There are good tools in most wikis for keeping a track on edits that have been made and reversing destructive changes. For formatting wikis use something called &quot;wiki markup&quot; which can make wikis more tricky to use that other tools in this guide. This is especially true if you want to add images to your documents.</p>
+<p>If you are interested in trying a more secure wiki tool, which allows for encrypted use, you can try <a href="http://stickwiki.sourceforge.net/">Wiki on a Stick</a>. <span id="ch007_etherpad-security-and-privacy.xhtml#InsertNoteID_24_marker25" class="InsertNoteMarker"><sup><a href="etherpad-security-and-privacy#InsertNoteID_24">3</a></sup></span></p>
+<p><strong>Encrypted Email and Attachments</strong></p>
+<p>While there are many advantages to using online collaboration tools not many of them have been designed to be very secure. To avoid this problem you may want to use more tried and tested ways of communicating securely. For example, it is possible encrypt emails using a technology called GPG. </p>
+<p><img src="static/Eavesdropper_1.jpg" /></p>
+<p>There is a manual on <a href="https://flossmanuals.net/thunderbird-workbook/">Encrypting Email</a> <span id="ch007_etherpad-security-and-privacy.xhtml#InsertNoteID_16_marker17" class="InsertNoteMarker"><sup><a href="etherpad-security-and-privacy#InsertNoteID_16">4</a></sup></span>  with GPG and the cross platform email client Thunderbird.<br />
+</p>
+<ol>
+<li><span id="ch007_etherpad-security-and-privacy.xhtml#InsertNoteID_6">https://we.riseup.net/debian/apache<span id="ch007_etherpad-security-and-privacy.xhtml#InsertNoteID_6_LinkBacks"><sup><a href="etherpad-security-and-privacy#InsertNoteID_6_marker7">^</a></sup></span></span></li>
+<li><span id="ch007_etherpad-security-and-privacy.xhtml#InsertNoteID_22">https://techtoolsforactivism.org/content/instant-messaging<span id="ch007_etherpad-security-and-privacy.xhtml#InsertNoteID_22_LinkBacks"><sup><a href="etherpad-security-and-privacy#InsertNoteID_22_marker23">^</a></sup></span></span></li>
+<li><span id="ch007_etherpad-security-and-privacy.xhtml#InsertNoteID_24">http://stickwiki.sourceforge.net<span id="ch007_etherpad-security-and-privacy.xhtml#InsertNoteID_24_LinkBacks"><sup><a href="etherpad-security-and-privacy#InsertNoteID_24_marker25">^</a></sup></span></span></li>
+<li><span id="ch007_etherpad-security-and-privacy.xhtml#InsertNoteID_16">https://flossmanuals.net/thunderbird-workbook/<span id="ch007_etherpad-security-and-privacy.xhtml#InsertNoteID_16_LinkBacks"><sup><a href="etherpad-security-and-privacy#InsertNoteID_16_marker17">^</a></sup></span></span></li>
+</ol>
+</body>
+</html>

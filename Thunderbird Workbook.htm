@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="The Contributors" />
+  <title>Thunderbird Workbook</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">Thunderbird Workbook</h1>
+<p class="author">The Contributors</p>
+<p class="date">2012.05.25-16.32</p>
+</header>
+<p><span id="ch001_about-this-workbook.xhtml"></span></p>
+<h1>About this Workbook</h1>
+<p>This workbook is designed to complete specific goals with Thunderbird by providing you with information on how to  use the software. This workbook is not aiming to be a complete manual. There is a great online manual online at http://en.flossmanuals.net/thunderbird<span id="ch001_about-this-workbook.xhtml#InsertNoteID_6_marker7" class="InsertNoteMarker"><sup><a href="about-this-workbook#InsertNoteID_6">1</a></sup></span> .<br />
+<br />
+The material in this work book is based on chapters in the manual Basic Internet Security<span id="ch001_about-this-workbook.xhtml#InsertNoteID_8_marker9" class="InsertNoteMarker"><sup><a href="about-this-workbook#InsertNoteID_8">2</a></sup></span> .<br />
+</p>
+<p><img src="http:/en.flossmanuals.net/basic-internet-security/_booki/basic-internet-security/static/Eavesdropper_1.jpg" /></p>
+<p>This workbook is arranged in to groups of chapters called a challenge. Each chapter lists a specific task and gives detailed instructions on how to perform it. <br />
+</p>
+<p>The challenges are designed to be as self contained as possible to make it easier to reuse this material. We imagine that the material in the workbook will be useful for some of the following;</p>
+<ul>
+<li>creating online courses, eg in Peer to Peer University http://p2pu.org</li>
+<li>as printed handouts</li>
+<li>as html pages to be included in other websites</li>
+<li>included in other manuals on related subjects eg Online Security</li>
+</ul>
+<h2>Keeping up to date<br />
+</h2>
+<p><img src="http:/en.flossmanuals.net/basic-internet-security/_booki/basic-internet-security/static/Pictogram_Further%20Reading.png" />Publications about the digital world become outdated fast and a viable solution today could be serious threat tomorrow. Therefore we created this book as open source, so it can be easily updated and will be free for others to update, extend and redistribute. The focus in this book is also on free and open source tools.</p>
+<p>There is a wide range of books dealing with different aspects of secure communication in a digital age. We have combined our knowledge with existing publications and our contributions can be re-used and revised as well. This is the advantage of having a growing pool of excellent reusable content at FLOSS Manuals - its becoming easier in this field to make books quickly by combining existing materials using this resource.</p>
+<h3>Contributing to this Workbook</h3>
+<p>If you are an educator or if you use this Workbook in other ways and would like to help improve or maintain this resource then please sign up to the Flossmanuals discuss email list<span id="ch001_about-this-workbook.xhtml#InsertNoteID_19_marker20" class="InsertNoteMarker"><sup><a href="about-this-workbook#InsertNoteID_19">3</a></sup></span>  and introduce yourself.<br />
+<br />
+</p>
+<ol>
+<li><span id="ch001_about-this-workbook.xhtml#InsertNoteID_6">http://en.flossmanuals.net/thunderbird<span id="ch001_about-this-workbook.xhtml#InsertNoteID_6_LinkBacks"><sup><a href="about-this-workbook#InsertNoteID_6_marker7">^</a></sup></span></span></li>
+<li><span id="ch001_about-this-workbook.xhtml#InsertNoteID_8">http://en.flossmanuals.net/basic-internet-security/<span id="ch001_about-this-workbook.xhtml#InsertNoteID_8_LinkBacks"><sup><a href="about-this-workbook#InsertNoteID_8_marker9">^</a></sup></span></span></li>
+<li><span id="ch001_about-this-workbook.xhtml#InsertNoteID_19">http://lists.flossmanuals.net/listinfo.cgi/discuss-flossmanuals.net<span id="ch001_about-this-workbook.xhtml#InsertNoteID_19_LinkBacks"><sup><a href="about-this-workbook#InsertNoteID_19_marker20">^</a></sup></span></span></li>
+</ol>
+<p><span id="ch002_introduction.xhtml"></span></p>
+<h1>Introduction to Thunderbird<br />
+</h1>
+<p>These days many people manage their email on the web using services such as Gmail or Hotmail. These services offer access to email accounts through any web browser. It is convenient because you can get your email from almost any computer. If you live in New York and you are backpacking in Thailand, just find an Internet cafe, log on to a computer, and check your email. <br />
+</p>
+<p><img src="http:/en.flossmanuals.net/thunderbird/index/_booki/thunderbird/static/Thunderbird-introduction-thunderbird_logo-en.png" alt="thunderbird_logo" width="150" height="150" /></p>
+<p>Another way to handle your email is to use an <em>email client</em> program installed on your own computer. A program like this offers many advantages over using a web email client. It lets you organize your email exactly how you want, it enables you to check email when you are not connected to the Internet, and you can manage multiple email accounts in one place. That said, desktop email clients and web email clients can coexist side-by-side. Using an email client at home doesn't preclude you from using web email when you want to check your account while you are on the road.</p>
+<p>Mozilla Thunderbird is a feature-rich, reliable, and secure tool for managing your email.<br />
+</p>
+<p><br />
+</p>
+<p><span id="ch004_why-encrypt-and-sign-email.xhtml"></span></p>
+<h1>Why Encrypt and Sign Email</h1>
+<p><strong>Some background information about email and how you can install software to sign and encrypt it  [30-45 mins]</strong><br />
+</p>
+<p><img src="http:/en.flossmanuals.net/basic-internet-security/ch022_introduction-to-email-safety/_booki/basic-internet-security/static/Pictogram_Message%20Open.png" />E-mail is one of the oldest forms of communication on the Internet. We often use it to communicate very personal or otherwise sensitive information. It is very important to understand why e-mail in its default configuration is <em>not secure</em>. In the following tasks we will describe the different methods necessary to secure your e-mail against known threats.</p>
+<p><br />
+</p>
+<h2>No sender verification: you cannot trust the 'from' address</h2>
+<p><img src="http:/en.flossmanuals.net/basic-internet-security/ch022_introduction-to-email-safety/_booki/basic-internet-security/static/pictogram_pgp_1.jpg" />Most people do not realize how trivial it is for any person on the Internet to forge an e-mail by simply changing the identity profile of their own e-mail program. This makes it possibly for anyone to send you an e-mail from some known e-mail address, pretending to be someone else. This can be compared with normal mail; you can write anything on the envelope as the return address, and it will still get delivered to the recipient (given that the destination address is correct). We will describe a method for <em>signing e-mail messages</em>, which prevents the possibility of forgery.<br />
+</p>
+<h2>E-mail communications can be tapped, just like telephones</h2>
+<p>An e-mail message travels across many Internet servers before it reaches its final recipient. Every one of these servers can look into the content of messages, including subject, text and attachments. Even if these servers are run by trusted infrastructure providers, they may have been compromised by hackers or by a rogue employee, or a government agency may seize  equipment and retrieve your personal communication.</p>
+<p><img src="http:/en.flossmanuals.net/basic-internet-security/ch022_introduction-to-email-safety/_booki/basic-internet-security/static/Unencrypted_mail.jpg" /> </p>
+<p>There are two levels of security that protect against such e-mail interception. The first one is making sure the connection to your e-mail server is secured by an encryption mechanism. The second is by encrypting the message itself, to prevent anyone other than the recipient from understanding the content. This challenge covers E-mail encryption using PGP within Thunderbird.</p>
+<h2>Installing Thunderbird, Enigmail &amp; PGP / GPG</h2>
+<p>Thunderbird is an email client which has many options and add ons which give you better email security. One of these add ons is a tool called Enigmail. Enigmail needs another bit of software called GPG (which is also known as PGP) to work. What Enigmail does when it is installed is to add a menu item called OpenPGP to your Thunderbird email client when you are checking or sending emails.</p>
+<p><img src="static/encrypt_your_email_1_a.png" width="571" height="326" /><br />
+</p>
+<p>Before we can continue we need to make sure you have the right tools for the job. In some operating systems it is quite easy to install these tools so that they work well together. It should only take you 5 minutes if you are using Ubuntu. However in other operating systems getting these three tools to play nicely together can be a bit tricky. You may have to do some troubleshooting. We really wish that this stage was easier. If you run in problems, try to have patience and read the instruction well help you if you get stuck.</p>
+<hr />
+<h1><strong>Task</strong></h1>
+<p><strong>Install Thunderbird, PGP and Enigmail and set up an email account. </strong></p>
+<p>If you don't already have Thunderbird, PGP and Enigmail tools installed then;<br />
+</p>
+<ul>
+<li>Read the installation instructions for your operating system in the Thunderbird Workbook here: <a href="http://en.flossmanuals.net/thunderbird-workbook/" class="uri">http://en.flossmanuals.net/thunderbird-workbook/</a></li>
+<li>Install the latest version of Thunderbird for your operating system.</li>
+<li>Install PGP and the Enigmail plugin for Thunderbird. </li>
+<li>Set up an account with Thunderbird to use an email<br />
+</li>
+</ul>
+<p><span id="ch005_creating-your-pgp-keys.xhtml"></span></p>
+<h1>Creating your PGP keys</h1>
+<p><strong>How to use Enigmail to create a pair of keys needed before you can sign and encrypt your email [15 mins] <br />
+</strong></p>
+<p>You are now ready to start encryption your mails with PGP. You can do this by using Enigmail <em>within</em> Thunderbird. Enigmail comes with a nice wizard to help you with the initial setup and the important aspect of creating a public/private key pair (see the chapter introducing PGP for an explanation). You can start the wizard at any time within Thunderbird by selecting <strong>OpenPGP &gt; Setup Wizard</strong> from the menu on top.</p>
+<p><strong>Step 1.</strong> This is what the wizard looks like. Please read the text on every window carefully. It provides useful information and helps you setup PGP to your personal preferences. In the first screen, click on Next to start the configuration.</p>
+<p><img src="static/pgpwizard_ubuntu11.04_step1.png" /></p>
+<p><strong>Step 2.</strong> The wizard asks you whether you want to sign all your outgoing mail messages. If you do not chose to sign all your messages, you will have to specify per recipient if you want to sign your e-mail. Signing all your messages is a good choice. Click on the 'Next' button after you have made a decision.</p>
+<p><img src="static/pgpwizard_ubuntu11.04_step2.png" /></p>
+<p><strong>Step 3.</strong> On the following screen, the wizard asks you whether you want to encrypt <em>all</em> your outgoing mail messages. Unlike signing of mails, encryption requires the recipient to have PGP software installed. Therefore you should answer 'no' to this question, to make sure you can still send normal mails. Only answer 'yes' here if you want to prevent Thunderbird from ever sending unencrypted mails. After you have made your decision, click on the 'Next' button.</p>
+<p><img src="static/pgpwizard_ubuntu11.04_step3.png" /></p>
+<p><strong>Step 4:</strong> On the following screen the wizard asks if he can change some of your mail formatting settings to better work with PGP. It is a good choice to answer 'Yes' here. The only serious thing is that it will prevent you from doing is sending HTML mail messages. Click on the 'Next' button after you have made your decision.</p>
+<p><img src="static/pgpwizard_ubuntu11.04_step4.png" /></p>
+<p><strong>Step 5:</strong> Now it is time to start creating the keys. In the following screen you can select one of your mail accounts, or the default one is selected for you if you have only one mail account. In the 'Passphrase' text box you have to give a password. This is a <em>new</em> password which is used to protect your private key. It is <strong>very important</strong> both to remember this password, because you cannot read your own encrypted emails any more when you lose it, and to make it a <strong>strong</strong> password. It should be at least 8 characters long, not contain any dictionary words and it should preferably be a <strong>unique</strong> password. Using the same password for multiple purposes severely increases the chance of it being intercepted at some point. After you have selected your account and created a passphrase, click on the 'Next' button.</p>
+<p><img src="static/pgpwizard_ubuntu11.04_step9.png" /></p>
+<p><strong>Step 6:</strong> In the following screen the wizard basically wraps up what actions it will take to enable PGP encryption for your account. If you are satisfied with the options you chose in the previous windows, click on the 'Next' button.</p>
+<p><strong><img src="static/pgpwizard_ubuntu11.04_step14.png" /></strong></p>
+<p><strong>Step 7:</strong> Your keys are being created by the wizard. Have some patience. The progress bar should slowly fill up to the right. The wizard will tell you when the keys have been successfully created, then you can click on the 'Next' button again.<br />
+</p>
+<p><img src="static/pgpwizard_ubuntu11.04_step7.png" /></p>
+<p><strong>Step 8:</strong> You now have your own PGP key-pair. The wizard will ask you if you also want to create a special file, called a 'Revocation certificate'. This file allows you to inform others that your key-pair should no longer be considered valid. Think of it as a 'kill switch' for your PGP identity. You can use this certificate in case you have generated a new set of keys, or in case your old key-pair has been compromised. It is a good idea to create the file and keep it somewhere in a safe place. Click on the 'Generate Certificate' button if you want to create the file, otherwise 'Skip'.<br />
+</p>
+<p><img src="static/pgpwizard_ubuntu11.04_step16.png" /></p>
+<p><strong>Step 9:</strong> Assuming you have decided to generate a revocation certificate, the wizard will ask you where the file should be saved. The dialog may appear a bit different on your particular operating system. It is a good idea to rename the file to something sensible like my_revocation_certificate. Click on 'Save' when you you have decided on a location.</p>
+<p><img src="static/pgpwizard_ubuntu11.04_step17.png" /></p>
+<p><strong>Step 10:</strong> Assuming you have decided to generate a revocation certificate, the wizard informs you it has been successfully stored.</p>
+<p><img src="static/pgpwizard_ubuntu11.04_step18.png" /></p>
+<p><strong>Step 11:</strong> The wizard will inform you it has completed its setup.</p>
+<p><img src="static/pgpwizard_ubuntu11.04_step8.png" /></p>
+<hr />
+<h1><strong>Task</strong></h1>
+<p>Follow the instructions above to;<br />
+</p>
+<ul>
+<li>Create a PGP key pair</li>
+<li>Create a revocation certificate</li>
+</ul>
+<p><span id="ch006_send-and-receive-public-keys.xhtml"></span></p>
+<h1>SEND AND RECEIVE PUBLIC KEYS</h1>
+<p><span>A</span><strong>dd keys to your keyring and send your public key [25 mins]</strong></p>
+<p>Our task is to send and receive encrypted and signed email. To do this we will need to exchange public keys with the person that we want to send emails to. Normally to exchange public keys you will contact that person and ask them to send you their key via email or you will download it from the Internet. Conversely, you can then send them your key via email or put in online for them to download. </p>
+<h2>Receiving public keys and adding them to your keyring</h2>
+<h3>Downloading keys from the web</h3>
+<p>Many people put their public keys on the web so that it is possible for others to download their key. Later challenges will cover the use of <strong>key servers</strong> as another way of receiving and sending keys.  </p>
+<p>To continue with this task you may want to use the following key and email to test your ability to send encrypted mail.</p>
+<blockquote>
+<p><strong>PGP key:</strong>  <a href="http://clearerchannel.org/keys/mickfuzz.gpg" class="uri">http://clearerchannel.org/keys/mickfuzz.gpg</a><br />
+<strong>Associated email: </strong> mickfuzz@clearerchannel.org</p>
+</blockquote>
+<p>To be able to send an encrypted email to this address you first need to add that key to your <strong><em>keyring</em></strong> in Thunderbird. To do this click on the link to the PGP key and download that file to your computer. </p>
+<p>Then, in the Thunderbird application go to <strong>OpenPGP &gt; Key Management</strong></p>
+<p>In the Key Management window select <strong>File &gt; Import Keys from File</strong></p>
+<p>Browse to the place where you saved the public key you downloaded and then select it and click on the <strong>Open</strong> button</p>
+<p>You should then receive an alert message saying that The key(s) were successfully imported.</p>
+<p><img src="/thunderbird-workbook/_edit/static/thunderbird_key_management_1.png" /></p>
+<p>You should now be able to progress to sign and encrypt email.</p>
+<h3>Receiving keys by email</h3>
+<p>Let's say are able to request and receive a public key from a friend by mail. The key will show up in Thunderbird as an <em>attached file</em>. Scroll down the message and below you will find tabs with one or two file names. The extension of this public key file will be .asc, different from the extension of an attached PGP signature, which ends with .asc.sig</p>
+<p>Look at the example email in the next image, which is a received, signed PGP message containing an attached public key. We notice a yellow bar with a warning message: 'OpenPGP: Unverified signature, click on 'Details' button for more information'. Thunderbird warns us that the sender is not known yet, which is correct. This will change once we have accepted the public key.</p>
+<p>What are all those strange characters doing in the mail message? Because Thunderbird does not recognize the signature as valid, it prints out the entire raw signature, just as it has received it. This is how digitally signed PGP messages will appear to those recipients who do not have your public key.</p>
+<p>The most important thing in this example is to find the attached PGP public key. We mentioned it is a file that ends with an .asc. In this example it's the first attachment on the left, which is in the red circle. Double-clicking on this attachment would make Thunderbird recognize the key.</p>
+<p><img src="http:/en.flossmanuals.net/basic-internet-security/ch032_daily-pgp-usage/_booki/basic-internet-security/static/enigmail_windows7_receivepgpkey4.PNG" /></p>
+<p>In the example image above, we should double-click on the attached .asc file to import the PGP public key.</p>
+<p>After we have clicked on the attachment, the following pop-up will appear.</p>
+<p><img src="http:/en.flossmanuals.net/basic-internet-security/ch032_daily-pgp-usage/_booki/basic-internet-security/static/enigmail_windows7_receivepgpkey2.PNG" /></p>
+<p>Thunderbird has recognized the PGP public key file. Click on 'Import' to add this key to your keyring. The following pop-up should appear. Thunderbird says the operation was successful. Click on 'OK' and you are done. You now have the ability to send this friend encrypted messages.</p>
+<p><img src="http:/en.flossmanuals.net/basic-internet-security/ch032_daily-pgp-usage/_booki/basic-internet-security/static/enigmail_windows7_receivepgpkey3.PNG" /></p>
+<h2>Sending public keys</h2>
+<p>There are multiple ways to distribute your public key to friends or colleagues. By far the simplest way is to attach the key to a mail. In order for your friend to be able to <em>trust</em> that the message actually came from you, you should inform them in person (if possible) and also require them to reply to your mail. This should at least prevent easy forgeries. You have to decide for yourself what level of validation is necessary. This is also true when receiving emails from third-parties containing public keys. Contact your correspondent through some means of communication other than e-mail. You can use a telephone, text messages, Voice over Internet Protocol (VoIP) or any other method, but you must be absolutely certain that you are really talking to the right person. As a result, telephone conversations and face-to-face meetings work best, if they are convenient and if they can be arranged safely.</p>
+<p>Sending your public key is easy.</p>
+<p>1. In Thunderbird, click on the <img src="http:/en.flossmanuals.net/basic-internet-security/ch032_daily-pgp-usage/_booki/basic-internet-security/static/enigmail_windows7_write.png" /> icon.</p>
+<p>2. Compose a mail to your friend or colleague and tell them you are sending them your PGP public key. If your friend does not know what that means, you may have to explain them and point them to this documentation.</p>
+<p>3. Before actually sending the mail, click to <strong>OpenPGP &gt; Attach My Public Key</strong> option on the menu bar of the mail compose window. Next to this option a marked sign <img src="http:/en.flossmanuals.net/basic-internet-security/ch032_daily-pgp-usage/_booki/basic-internet-security/static/enigmail_windows7_marker.PNG" /> will appear. See the example below.</p>
+<p><img src="http:/en.flossmanuals.net/basic-internet-security/ch032_daily-pgp-usage/_booki/basic-internet-security/static/enigmail_windows7_attachkey.PNG" /></p>
+<p>4. Send your mail by clicking on the <img src="http:/en.flossmanuals.net/basic-internet-security/ch032_daily-pgp-usage/_booki/basic-internet-security/static/enigmail_windows7_send.png" /> button.</p>
+<hr />
+<h1><strong>Task</strong></h1>
+<ul>
+<li>Import someone else's public key via email or by downloading it from the web</li>
+<li>Send your public key to someone. You can try <a href="mailto:mickfuzz@clearerchannel.org">mickfuzz@clearerchannel.org</a> <br />
+</li>
+</ul>
+<p> </p>
+<p><span id="ch007_get-and-receive-pgp-keys.xhtml"></span></p>
+<h1>SEND AN ENCRYPTED AND SIGNED EMAIL</h1>
+<p><strong>Send and sign encrypted mail in Thunderbird [10 mins]</strong></p>
+<h2>Signing emails to an individual</h2>
+<p>Digitally signing email messages is a way to prove to recipients that you are the actual sender of a mail message. Those recipients who have received your public key will be able to <em>verify</em> that your message is authentic.</p>
+<p>1. Offer your friend your public key, using the method described earlier in this chapter.</p>
+<p>2. In Thunderbird, click on the <img src="http:/en.flossmanuals.net/basic-internet-security/ch032_daily-pgp-usage/_booki/basic-internet-security/static/enigmail_windows7_write.png" /> icon.</p>
+<p>3. Before actually sending the mail, enable the <strong>OpenPGP &gt; Sign Message</strong> option via the menu bar of the mail compose window, if it is not enable already. Once you have enabled this option, by clicking on it, a marked sign <img src="http:/en.flossmanuals.net/basic-internet-security/ch032_daily-pgp-usage/_booki/basic-internet-security/static/enigmail_windows7_marker.PNG" /> will appear. Clicking again should disable encryption again. See the example below.</p>
+<p><img src="http:/en.flossmanuals.net/basic-internet-security/ch032_daily-pgp-usage/_booki/basic-internet-security/static/enigmail_windows7_signexample.PNG" /></p>
+<p>5. Click on the <img src="http:/en.flossmanuals.net/basic-internet-security/ch032_daily-pgp-usage/_booki/basic-internet-security/static/enigmail_windows7_send.png" /> button and your signed mail will be sent.</p>
+<h2>Sending encrypted mails to an individual</h2>
+<p>1. You should have received the public key from the friend or colleague you want to email and you should have accepted their public key, using the method describe earlier in this chapter.</p>
+<p>2. In Thunderbird, click on the <img src="http:/en.flossmanuals.net/basic-internet-security/ch032_daily-pgp-usage/_booki/basic-internet-security/static/enigmail_windows7_write.png" /> icon.</p>
+<p>3. Compose a mail to the friend or colleague, from who you have previously received their public key. <strong>Remember the subject line of the message will not be encrypted</strong>, only the message body itself, and any attachments.</p>
+<p>4. Before actually sending the mail, enable the <strong>OpenPGP &gt; Encrypt Message</strong> option via the menu bar of the mail compose window, if it is not enabled already. Once you have enabled this option, by clicking on it, a marked sign <img src="http:/en.flossmanuals.net/basic-internet-security/ch032_daily-pgp-usage/_booki/basic-internet-security/static/enigmail_windows7_marker.PNG" /> will appear. Clicking again should disable encryption again. See the example below.</p>
+<p><img src="http:/en.flossmanuals.net/basic-internet-security/ch032_daily-pgp-usage/_booki/basic-internet-security/static/enigmail_windows7_enablecrypto.PNG" /> 5. Click on the <img src="http:/en.flossmanuals.net/basic-internet-security/ch032_daily-pgp-usage/_booki/basic-internet-security/static/enigmail_windows7_send.png" /> button and your encrypted mail will be sent.</p>
+<hr />
+<p><br />
+</p>
+<h1><strong>Task</strong></h1>
+<p>Follow the instructions above to;</p>
+<ul>
+<li>Send an encrypted and signed email to someone to who you have sent your public key.<br />
+</li>
+<li>Ask them to check back with you to tell you if they can read it.<br />
+</li>
+</ul>
+<p><span id="ch008_receive-encrypted-mail.xhtml"></span></p>
+<h1>RECEIVE ENCRYPTED MAIL</h1>
+<p><strong>Using Thunderbird and Enigmail to receive encrypted e-mails [5 mins]</strong></p>
+<p>The decryption of e-mails is handled automatically by Enigmail, the only action that may be needed on your behalf is to enter the pass-phrase to your secret key. In order to complete this part of the challenge you will need to ask someone you have exchanged keys with to send you an encrypted email.<br />
+</p>
+<h2>Entering your pass-phrase</h2>
+<p>For security reasons, the pass-phrase to your secret key is stored temporarily in memory. Every now and then the dialog window below will pop-up. Thunderbird asks you for the pass-phrase to your secret key. This should be different from your normal email password. It was the pass-phrase you have entered when creating your key-pair in the previous chapter. Enter the pass-phrase in the text-box and click on 'OK'</p>
+<p><img src="http:/en.flossmanuals.net/basic-internet-security/ch032_daily-pgp-usage/_booki/basic-internet-security/static/enigmail_windows7_sendprompt.PNG" /></p>
+<p> </p>
+<h2>Verifying incoming e-mails</h2>
+<p>Decrypting email messages sent to you will be fully automatic and transparent. But it is obviously important to see whether or not a message to you <em>has</em> in fact been encrypted or signed. This information is available by looking at the special bar above the message body.<br />
+</p>
+<p>A valid signature will be recognized by a green bar above the mail message like the example image below.</p>
+<p><img src="http:/en.flossmanuals.net/basic-internet-security/ch032_daily-pgp-usage/_booki/basic-internet-security/static/enigmail_windows7_validsignature.PNG" /></p>
+<p>The last example message was signed but <em>not</em> encrypted. If the message had been encrypted, it would show like this:</p>
+<p><img src="http:/en.flossmanuals.net/basic-internet-security/ch032_daily-pgp-usage/_booki/basic-internet-security/static/enigmail_windows7_validencryption.PNG" /></p>
+<p>When a message which has been encrypted, but <em>not</em> signed, it could have been a forgery by someone. The status bar will become gray like in the image below and tells you that while the message was sent securely (encrypted), the sender could have been someone else than the person behind the email address you will see in the 'From' header. The signature is necessary to verify the real sender of the message. Of course it is perfectly possible that you have published your public key on the Internet and you allow people to send you emails anonymously. But is it also possible that someone is trying to impersonate one of your friends.<br />
+</p>
+<p><img src="http:/en.flossmanuals.net/basic-internet-security/ch032_daily-pgp-usage/_booki/basic-internet-security/static/enigmail_windows7_onlycrypt.PNG" /></p>
+<p>Similarly if you receive a <em>signed</em> email from somebody you know, and you have this persons public key, but still the status bar becomes yellow and displays a warning message, it is likely that someone is attempting to send you forged emails!</p>
+<p><img src="http:/en.flossmanuals.net/basic-internet-security/ch032_daily-pgp-usage/_booki/basic-internet-security/static/enigmail_windows7_sigunknown.PNG" /></p>
+<p>Sometimes secret keys get stolen or lost. The owner of the key will inform his friends and send them a so-called revocation certificate (more explanation of this in the next paragraph). Revocation means that we no longer trust the old key. The thief may afterwards still try his luck and send you a falsely signed mail message. The status bar will now look like this:<br />
+</p>
+<p><img src="http:/en.flossmanuals.net/basic-internet-security/ch032_daily-pgp-usage/_booki/basic-internet-security/static/enigmail_windows7_stupidrevoke.PNG" /></p>
+<p>Strangely enough Thunderbird in this situation will still display a green status bar! It is important to look at the contents of the status bar in order to understand the encryption aspects of a message. PGP allows for strong security and privacy, but only if you are familiar with its use and concepts. Pay attention to warnings in the status bar.<br />
+</p>
+<h2>
+<hr />
+</h2>
+<h1><strong>Task</strong></h1>
+<p>Test your learning by following the instructions above to;<br />
+</p>
+<ul>
+<li>Send them a signed and encrypted email and ask them if it worked</li>
+</ul>
+<h2></h2>
+<p><span id="ch010_installing-in-windows.xhtml"></span></p>
+<h1>Installing Thunderbird on Windows</h1>
+<p>Thunderbird runs on Windows 2000, Windows XP, Windows Server 2003, Windows Vista, and Windows 7. Thunderbird will run on a computer with at least the following hardware:</p>
+<ul>
+<li>Pentium 233 MHz. Mozilla recommends Pentium 500 MHz or greater</li>
+<li>Windows 7, Windows Vista, and Windows XP: 768 MB of memory. Mozilla recommends 1 GB of memory or more</li>
+<li>Windows 2000: 256 MB of memory or more<br />
+</li>
+<li>52 MB of hard drive space</li>
+</ul>
+<h2>Installing Thunderbird</h2>
+<p>Installing Thunderbird involves two steps: first, downloading the software and then running the installation program. Here is how to do that:</p>
+<ol>
+<li><p>Use your web browser to visit the Thunderbird download page at <a href="https://www.mozilla.org/en-US/thunderbird/" class="uri">https://www.mozilla.org/en-US/thunderbird/</a><a href="http://www.mozillamessaging.com/en-US/thunderbird/"></a>. This page detects your computer's operating system and language, and it recommends the best version of Thunderbird for you to use.</p>
+<p>If you want to use Thunderbird in a different language or with a different operating system, click the <em>Other Systems and Languages</em> link and select the version that you need.</p></li>
+<li>Click the download button to save the installation program to your computer.</li>
+<li>Close all applications running on your computer.<br />
+</li>
+<li><p>Find the setup file on your computer (it's usually in the Downloads folder) and then double-click it to start the installation. The first thing that the installer does is display the <strong>Welcome to the Mozilla Thunderbird Setup Wizard</strong> screen.</p>
+<p><img src="static/Thunderbird-installation-tbird_win_install_start-en.jpg" alt="tbird_win_install_start.jpg" width="503" height="389" /></p>
+<p>Click the <strong>Next</strong> button to start the installation. If you want to cancel it, click the <strong>Cancel</strong> button.</p></li>
+<li><p>The next thing that you see is the <strong>Setup Type</strong> screen. For most users the Standard setup option is good enough for their needs. The Custom setup option is recommended for experienced users only. Note that Thunderbird installs itself as your default mail application. If you do not want this, clear the checkbox labeled <strong>Use Thunderbird as my default mail application</strong>.</p>
+<p><img src="static/Thunderbird-installation-tbird_win_install_setup_type-en.jpg" alt="tbird_win_install_setup_type.jpg" width="503" height="389" /></p>
+<p>Click the <strong>Next</strong> button to continue the installation. The <strong>Back</strong> button takes you to the Welcome screen and the Cancel button stops the installation.</p></li>
+<li><p>After Thunderbird has been installed, click the <strong>Finish</strong> button to close the setup wizard.</p>
+<p><img src="static/Thunderbird-installation-tbird_win_install_finish-en.jpg" alt="tbird_win_install_finish.jpg" width="503" height="389" /></p>
+<p>If the <strong>Launch Mozilla Thunderbird now</strong> checkbox is selected, Thunderbird starts after it has been installed.</p></li>
+</ol>
+<p><span id="ch011_installing-pgp-in-windows.xhtml"></span></p>
+<h1>Installing PGP on Windows</h1>
+<p>To complicate matters a little - PGP is the protocol used for encrypting e-mail by various softwares. To get PGP to work with Thunderbird we need to install GPG - a free software implementation of PGP <em>and</em> Enigmail - an extension of Thunderbird that allows you to use GPG... Confused?! Don't worry about it, all you have to know is how to encrypt your email with PGP and you need to install <em>both</em> GPG and Enigmail. Here is how to do it...</p>
+<h2>Installing PGP (GPG) on Microsoft Windows</h2>
+<p>The GNU Privacy Guard (GnuPG) is software which is required to send PGP encrypted or signed emails. It is necessary to install this software before being able to do any encryption.</p>
+<p>Head to the website of the Gpg4win project. Go to <a href="http://gpg4win.org/" class="uri">http://gpg4win.org/</a></p>
+<p>On the left side of the website, you will find a 'Download' link. Click on it.</p>
+<p><img src="/basic-internet-security/_edit/static/gpg_4_win.png" /> </p>
+<p>This will take you to a page where you can download the Gpg4Win. Click on the button which offers you the latest stable version (not beta) of Gpg4Win.</p>
+<p><img src="/basic-internet-security/_edit/static/gpg_4_win_2.png" /><br />
+</p>
+<p>This will download you an .exe file. Depending on your browser, you may have to double-click on this downloaded file (which will be called something like gpg4qin-2.1.0.exe) before something happens. Windows will ask you if you are sure you want to install this program. Answer yes.</p>
+<p>Then complete the installation by agreeing to the license, choosing appropriate language and accepting the default options by clicking 'Next', unless you have a particular reason not to. <br />
+</p>
+<p>The installer will ask you where to put the application on your computer. The default setting should be fine but make a note of it as we may need this later. Click on 'Next' when you agree.</p>
+<h2>Installing with the Enigmail extension</h2>
+<p>After you have successfully installed the <strong>PGP</strong> software as we described above you are now ready to install the <strong>Enigmail</strong> add-on.</p>
+<p>Enigmail is a Thunderbird add-on that lets you protect the privacy of your email conversations. Enigmail is simply an interface that lets you use PGP encryption from within Thunderbird.<br />
+</p>
+<p>Enigmail is based on public-key cryptography. In this method, each individual must generate her/his own personal key pair. The first key is known as the private key. It is protected by a password or passphrase, guarded and never shared with anyone.</p>
+<p>The second key is known as the public key. This key can be shared with any of your correspondents. Once you have a correspondent's public key you can begin sending encrypted e-mails to this person. Only she will be able to decrypt and read your emails, because she is the only person who has access to the matching private key.</p>
+<p>Similarly, if you send a copy of your own public key to your e-mail contacts and keep the matching private key secret, only you will be able to read encrypted messages from those contacts.</p>
+<p>Enigmail also lets you attach digital signatures to your messages. The recipient of your message who has a genuine copy of your public key will be able to verify that the e-mail comes from you, and that its content was not tampered with on the way. Similarly, if you have a correspondent's public key, you can verify the digital signatures on her messages.</p>
+<h2>Installation steps</h2>
+<p>To begin installing <strong>Enigmail</strong>, perform the following steps:</p>
+<p><strong>Step 1</strong>. <strong>Open Thunderbird</strong>, then <strong>Select Tools &gt; Add-ons</strong> to activate the <em>Add-ons</em> window; the <em>Add-ons</em> window will appear with the default <em>Get Add-ons</em> pane enabled.</p>
+<p><strong>Step 2.</strong> Enter enigmail in the search bar, like below, and click on the search icon.</p>
+<p><img src="http:/en.flossmanuals.net/basic-internet-security/ch028_installing-gnupg/_booki/basic-internet-security/static/enigmail_windows7_install1.PNG" /></p>
+<p><strong>Step 3.</strong> Simply click on the 'Add to Thunderbird' button to start the installation.</p>
+<p><strong>Step 4.</strong> Thunderbird will ask you if you are certain you want to install this add-on. We trust this application so we should click on the 'Install now' button.</p>
+<p><img src="http:/en.flossmanuals.net/basic-internet-security/ch028_installing-gnupg/_booki/basic-internet-security/static/enigmail_windows7_install2.PNG" /></p>
+<p><strong>Step 5</strong>. After some time the installation should be completed and the following window should appear. Please click on the 'Restart Thunderbird' button.<br />
+</p>
+<p><img src="http:/en.flossmanuals.net/basic-internet-security/ch028_installing-gnupg/_booki/basic-internet-security/static/enigmail_windows7_install3.PNG" /></p>
+<p><strong>Be aware that you will have to restart Thunderbird to use the functionality of this extension! </strong><br />
+</p>
+<h2>Testing and Troubleshooting</h2>
+<p>To test if this has been successful you can progress to the next part of this challenge and try to generate a keypair. If you get errors when you try to do this then either share them with the person leading this course or post them to the Enigmail forum.<span id="ch011_installing-pgp-in-windows.xhtml#InsertNoteID_21_marker22" class="InsertNoteMarker"><sup><a href="installing-pgp-in-windows#InsertNoteID_21">1</a></sup></span> </p>
+<h3>One Common Installation Problem</h3>
+<p>One common problem when using Windows is that Enigmail can't find the GPG programme. If this is the case you can try to solve this by updating where Enigmail goes to try to find GPG.<br />
+</p>
+<p>In the main window you should go <strong>OpenGPG &gt; Preferences &gt; Advanced</strong>  (you may need to tick Expert Settings) and in the <strong>Override With</strong> box browse to the gpg.exe file in the folder where you installed GPG. If this doesn't help then try the Enigmail forum.<br />
+</p>
+<ol>
+<li><span id="ch011_installing-pgp-in-windows.xhtml#InsertNoteID_21">http://www.mozilla-enigmail.org/forum/<span id="ch011_installing-pgp-in-windows.xhtml#InsertNoteID_21_LinkBacks"><sup><a href="installing-pgp-in-windows#InsertNoteID_21_marker22">^</a></sup></span></span></li>
+</ol>
+<p><span id="ch013_installing-thunderbird-in-ubuntu.xhtml"></span></p>
+<h1>Installing Thunderbird on Ubuntu</h1>
+<p>There are two procedures for installing Thunderbird on Ubuntu: one for version 10.04 or later, and one for earlier versions of Ubuntu. We take a look at both below: <br />
+</p>
+<p>Thunderbird will not run without the following libraries or packages installed on your computer:</p>
+<ul>
+<li>GTK+ 2.10 or higher</li>
+<li>GLib 2.12 or higher</li>
+<li>Pango 1.14 or higher</li>
+<li>X.Org 1.0 or higher</li>
+</ul>
+<p>Mozilla recommends that a Linux system also has the following libraries or packages installed:<br />
+</p>
+<ul>
+<li>    NetworkManager 0.7 or higher</li>
+<li>    DBus 1.0 or higher</li>
+<li>    HAL 0.5.8 or higher</li>
+<li>    GNOME 2.16 or higher</li>
+</ul>
+<h2>Installing Thunderbird on Ubuntu 10.04 or newer<br />
+</h2>
+<p>If you're using Ubuntu 10.04 or newer, the easiest way to install Thunderbird is through the Ubuntu Software Center.<br />
+</p>
+<ol>
+<li><p>Click <strong>Ubuntu Software Center</strong> under the Applications menu.</p>
+<p><img src="static/Thunderbird-installation-Screenshot_Ubuntu_Software_Center-en.png" alt="Screenshot_Ubuntu_Software_Center.png" width="600" height="350" /></p></li>
+<li>Type &quot;Thunderbird&quot; in the search box and press the Enter on your keyboard. The Ubuntu Software Center finds Thunderbird in its list of available software.</li>
+<li>Click the <strong>Install</strong> button. If Thunderbird needs any additional libraries, the Ubuntu Software Center alerts you and installs them along with Thunderbird.</li>
+</ol>
+<p>You can find the shortcut to start Thunderbird in the Internet option under the Applications menu:</p>
+<p><img src="static/Thunderbird-installation-install_ubuntu_menu-en.png" title="install_ubuntu_menu" alt="install_ubuntu_menu" width="408" height="276" /><br />
+</p>
+<h2>Installing Thunderbird on older versions of Ubuntu</h2>
+<p>If you are installing Thunderbird under a version of Ubuntu older than 10.04, you can do it with either</p>
+<p>the Ubuntuzilla package or with Synaptic Package Manager. You can get more information about Ubuntuzilla here: <a href="http://sourceforge.net/apps/mediawiki/ubuntuzilla/index.php" class="uri" title="Ubuntuzilla home page">http://sourceforge.net/apps/mediawiki/ubuntuzilla/index.php</a>.</p>
+<h3>To install Thunderbird using the Synaptic Package Manager</h3>
+<ol>
+<li><p>Click <strong>Administration</strong> under the System menu, then click <strong>Synaptic Package Manager</strong>.</p>
+<p><img src="static/Thunderbird-installation-install_ubuntu_synaptic-en.png" title="install_ubuntu_synaptic" alt="install_ubuntu_synaptic" width="295" height="404" /></p></li>
+<li>You'll be asked to enter your root password. This is the password that you use to log into Ubuntu.</li>
+<li>In the Quick search box, type &quot;Thunderbird&quot; and then press Enter on your keyboard.<br />
+A list of software that you can install (called <em>packages</em>) appears.</li>
+<li>Find Thunderbird in the list, right click on it, and then click on <strong>Mark for installation</strong> from the menu that appears.</li>
+<li>If Thunderbird needs any additional libraries, Synaptic Package Manager alerts you and marks those packages for installation along with Thunderbird.</li>
+<li>Click the <strong>Apply</strong> button.<br />
+</li>
+</ol>
+<h2>Installing from a Personal Package Archive</h2>
+<p>If you want to stay on the cutting edge of Thunderbird, you can install it from a Personal Package Archive (PPA). A PPA is special repository for Ubuntu software that's separate from ones you would normally use either with the Ubuntu Software Center or Synaptic Package Manager. A PPA contains more frequent updates to software -- updates which are often created nightly.</p>
+<p>Remember that the software that you get from a PPA is 'cutting edge'. It may be buggy or unstable. Use it at your own risk.<br />
+</p>
+<h3>To install Thunderbird from a PPA</h3>
+<ol>
+<li>Go to the Mozilla PPA at <a href="https://launchpad.net/~ubuntu-mozilla-daily/+archive/ppa" class="uri" title="Mozilla Daily PPA for Ubuntu">https://launchpad.net/~ubuntu-mozilla-daily/+archive/ppa</a>.</li>
+<li><p>At the Mozilla PPA site, select your version of Ubuntu from the <strong>Display sources.list entries for:</strong> list. Two lines, which look like the following, appear below the list:</p>
+<p>deb <a href="http://ppa.launchpad.net/ubuntu-mozilla-daily/ppa/ubuntu" class="uri">http://ppa.launchpad.net/ubuntu-mozilla-daily/ppa/ubuntu</a> maverick main<br />
+deb-src <a href="http://ppa.launchpad.net/ubuntu-mozilla-daily/ppa/ubuntu" class="uri">http://ppa.launchpad.net/ubuntu-mozilla-daily/ppa/ubuntu</a> <span id="ch013_installing-thunderbird-in-ubuntu.xhtml#series-deb-src">maverick</span> main</p></li>
+<li>In Ubuntu, click <strong>Administration</strong> under the System Menu and then click <strong>Software Sources</strong>.</li>
+<li><p>You'll be asked to enter your root password. This is the password that you use to log into Ubuntu. The Software Sources window appears.</p>
+<p><img src="static/Thunderbird-installation-ubuntu_install_software_sources-en.png" title="ubuntu_install_software_sources" alt="ubuntu_install_software_sources" width="384" height="378" /></p></li>
+<li><p>In the Software Sources window, click the <strong>Other Software</strong> tab and then click <strong>Add</strong>.</p>
+<p><img src="static/Thunderbird-installation-ubuntu_install_add_sources-en.png" title="ubuntu_install_add_sources" alt="ubuntu_install_add_sources" width="280" height="162" /></p></li>
+<li>Copy the first line from list of sources that you created in step 2, paste it into the <strong>APT Line</strong> field, and then click <strong>Add Source</strong>.</li>
+<li>Repeat steps 5 and 6 for the second line from list of sources that you created in step 2.</li>
+<li>In the Software Sources window, click <strong>Close</strong>. Ubuntu will update the list of software sources that it uses.</li>
+<li>Once that's done, you can install Thunderbird using Synaptic Package Manager.<br />
+</li>
+</ol>
+<p><span id="ch014_installing-pgp-in-ubuntu.xhtml"></span></p>
+<h1>Installing PGP on Ubuntu</h1>
+<p>We will use the Ubuntu Software Centre for installing PGP (Enigmail and accessories). First open the Ubuntu Software Center through Applications -&gt; Ubuntu Software Center:</p>
+<p><img src="static/Ubuntu%20Software%20Center_001.png" /></p>
+<p>Type into the search field 'Enigmail' and search results should be returned automatically:</p>
+<p><img src="static/Ubuntu%20Software%20Center_002.png" /></p>
+<p>Highlight the Enigmail item (it should be highlighted by default) and click 'Install' and you will be asked to authenticate the installation process.</p>
+<p><img src="static/Ubuntu_Authenticate_003.png" /></p>
+<p>Enter your password and click 'Authenticate'. The installation process will begin.</p>
+<p><img src="static/Ubuntu%20Software%20Center_005.png" /></p>
+<p>When the process is completed you get very little feedback from Ubuntu. The progress bar at the top left disappears. The 'In Progress' text on the right also disappears. Enigmail should now be installed.</p>
+<p><span id="ch016_installing-in-osx.xhtml"></span></p>
+<h1>Installing Thunderbird on Mac OS X</h1>
+<p>Thunderbird runs on Mac OS X 10.4.x and later. Thunderbird will run on a computer with at least the following hardware:</p>
+<ul>
+<li>An Intel x86 or PowerPC G3, G4, or G5 processor</li>
+</ul>
+<ul>
+<li>256 MB of memory. Mozilla recommends 512 MB of memory or more<br />
+</li>
+</ul>
+<ul>
+<li>200 MB hard drive space</li>
+</ul>
+<h2>Download and Install Thunderbird</h2>
+<ol>
+<li><p>Use your web browser to visit the Thunderbird download page at<a href="http://www.mozillamessaging.com/en-US/thunderbird/"></a> <a href="https://www.mozilla.org/en-US/thunderbird/" class="uri">https://www.mozilla.org/en-US/thunderbird/</a>. This page detects your computer's operating system and language, and it recommends the best version of Thunderbird for you to use.</p>
+<p>If you want to use Thunderbird in a different languages or with a different operating system, click the <em>Other Systems and Languages</em> link on the right side of the page and select the version you need.</p></li>
+<li><p>Download the Thunderbird disk image. When the download is complete, the disc image may automatically open and mount a new volume called <em>Thunderbird</em>.<br />
+If the volume did not mount automatically, open the Download folder and double-click the disk image to mount it. A Finder window appears:</p>
+<p><img src="static/Thunderbird-installation-drag_to_apps-en.png" alt="drag_to_apps.png" width="267" height="215" /></p></li>
+<li>Drag the Thunderbird icon into your Applications folder. You've installed Thunderbird!<br />
+</li>
+<li><p>Optionally, drag the Thunderbird icon from the Applications folder into the Dock. Choosing the Thunderbird icon from the Dock lets you quickly open Thunderbird from there.</p>
+<p><img src="static/Thunderbird-installation-drag_to_dock-en.png" alt="drag_to_dock.png" width="249" height="197" /></p></li>
+</ol>
+<p><strong>Note:</strong> When you run Thunderbird for the first time, newer versions of Mac OS X (10.5 or later) will warn you that the application Thunderbird.app was downloaded from the Internet.<br />
+</p>
+<p>If you downloaded Thunderbird from the Mozilla site, click the <strong>Open</strong> button. <br />
+</p>
+<p><img src="static/Thunderbird-installation-downloaded_from_internet_osx-en.png" alt="downloaded_from_internet_osx.png" width="420" height="162" /></p>
+<p><span id="ch017_installing-pgp-in-osx.xhtml"></span></p>
+<h1>Installing PGP on OSX</h1>
+<p><img src="static/pictogram_pgp_1.jpg" /></p>
+<p>The GNU Privacy Guard (GnuPG) is software which enables you to send PGP encrypted or signed emails. It is necessary to install this software before being able to do any encryption. This chapter covers the installation steps required to install GnuPG on Mac OSX.</p>
+<p>Getting started</p>
+<p>For this chapter we assume you have the latest version of:</p>
+<ul>
+<li>OSX installed (10.6.7)</li>
+<li>Thunderbird (3.1.10)</li>
+</ul>
+<p><img src="static/Pictogram_Information.png" /></p>
+<blockquote>
+<p><strong>Note on OSX Mail</strong>: It is possible to use PGP with the build-in mail program of OSX. But we do not recommend this because this option relies on a hack of the program which is neither open or supported by its developer and breaks with every update of the mail program. So unless you really have no other option we advice you to switch to Mozilla Thunderbird as your default mail program if you want to use PGP.</p>
+</blockquote>
+<h2>Downloading and installing the Software</h2>
+<p>For OSX there is a bundle available which will install everything you need in one installation. You can get it by directing your browser to <a href="http://www.gpgtools.org">http://www.gpgtools.org/</a> and clicking on the big blue disk with &quot;<a href="http://www.gpgtools.org/installer/index.html">Download GPGTools Installer</a>&quot; written under it. It will redirect you to another page on <a href="http://www.gpgtools.org/installer/index.html" class="uri">http://www.gpgtools.org/installer/index.html</a> where you can actually download the software.</p>
+<p>(<em>nb. We are using the latest version Firefox for this manual, so the screens might look a little bit different if you are using a different browser</em>)</p>
+<p><img src="static/GPGTools_OSX_Download1.jpg" /></p>
+<p>2. Download the software by choosing 'Save File' and clicking 'OK' in the dialogue.</p>
+<p><img src="static/GPGTools_OSX_Download3.jpg" /></p>
+<p>3. Navigate to the folder where you normally store your downloads (Mostly the desktop or the downloads folder surprisingly) en double click the '.DMG' file to open the virtual disk containing the installer.</p>
+<p><img src="static/GPGTools_OSX_Install1.jpg" /></p>
+<p>4. Open the installer by double-clicking on the icon.</p>
+<p><img src="static/GPGTools_OSX_Install2.jpg" /></p>
+<p>5. The program will check your computer to see if it can run on the computer.</p>
+<blockquote>
+<p><em>(Note, if you're Mac is bought before 2006 it will not have an intel processor required to run this software and the installation will fail. Sadly it is beyond the scope op this manual to also take into account computers over five year old)</em></p>
+</blockquote>
+<p><img src="static/GPGTools_OSX_Install3.jpg" /></p>
+<p>You will be guided by the program through the next steps like accepting the license agreement. But stop pressing all the OK's and Agrees as soon as you come to the 'Installation Type' screen:</p>
+<p><img src="static/GPGTools_OSX_Install5.jpg" /></p>
+<p>6. Clicking 'Customize' will open this screen where you several options of programs and software to install. You can click on each one of them to get a little bit of information on what is is, what it does and why you might need it.</p>
+<p><img src="static/GPGTools_OSX_Install6.jpg" /></p>
+<p>As said in the intro; we advice against using Apple Mail in combination with PGP. Therefore you won't be needing 'GPGMail', as this enables PGP on Apple Mail, and you can uncheck it.</p>
+<p>'<strong>Enigmail</strong>' on the other hand is very important as it is the component that will enable Thunderbird to use PGP. In the screen shot here it is greyed out as the installer wasn't able to identify my installation of Thunderbird. Since this seems to be a bug. You can also install Enigmail from within Thunderbird as is explained in another chapter.</p>
+<p>If the option is not greyed out in your installation, you should tick it.</p>
+<p>After you checked all the components you want to install click 'Install' to proceed. The installer will ask you for your password and after you enter that the installation will run and complete; Hooray!</p>
+<p><img src="static/GPGTools_OSX_Install7.jpg" /></p>
+<h2>Installing up Engimail</h2>
+<p><strong>Step 1</strong>. <strong>Open Thunderbird</strong>, then <strong>Select Tools &gt; Add-ons</strong> to activate the <em>Add-ons</em> window; the <em>Add-ons</em> window will appear with the default <em>Get Add-ons</em> pane enabled.</p>
+<p>In the Add-On window, you can search for 'Enigmail' and install the extension by clicking 'Add to Thunderbird ...'</p>
+<p>2. After you open the Add-On window, you can search for 'Enigmail' and install the extension by clicking 'Add to Thunderbird ...'</p>
+<p><img src="static/GPGTools_OSX_Install9.jpg" /></p>
+<p>3. Click on 'Install Now' to download and install the extension.</p>
+<p><img src="static/GPGTools_OSX_Install10.jpg" /></p>
+<p><strong>Be aware that you will have to restart Thunderbird to use the functionality of this extension!</strong></p>
+<h2>Testing and Troubleshooting</h2>
+<p>To test if this has been successful you can progress to the next part of this challenge and try to generate a keypair. If you get errors when you try to do this then either share them with the person leading this course or post them to the Enigmail forum.<span id="ch017_installing-pgp-in-osx.xhtml#InsertNoteID_21_marker22" class="InsertNoteMarker"><sup><a href="installing-pgp-in-osx#InsertNoteID_21">1</a></sup></span> </p>
+<h3>One Common Installation Problem</h3>
+<p>One common problem when using Mac OSX is that Enigmail can't find the GPG programme. If this is the case you can try to solve this by updating where Enigmail goes to try to find GPG.<br />
+</p>
+<p>In the main window you should go <strong>OpenGPG &gt; Preferences &gt; Advanced</strong>  (you may need to tick Expert Settings) and in the <strong>Override With</strong> box browse to the gpg.exe file in the folder where you installed GPG. If this doesn't help then try the Enigmail forum.<br />
+</p>
+<ol>
+<li><span id="ch017_installing-pgp-in-osx.xhtml#InsertNoteID_21">http://www.mozilla-enigmail.org/forum/<span id="ch017_installing-pgp-in-osx.xhtml#InsertNoteID_21_LinkBacks"><sup><a href="installing-pgp-in-osx#InsertNoteID_21_marker22">^</a></sup></span></span></li>
+</ol>
+<p><span id="ch019_account-set-up.xhtml"></span></p>
+<h1>Account Setup</h1>
+<p>There are two way to create new email accounts in Thunderbird. The first way is an automated process that guides you through the set up routine. The second is manual, where you enter all of the account information yourself. Let's take a look at both.</p>
+<h2>Automated Setup</h2>
+<p>The automated setup process runs the first time that you start Thunderbird. Remember that you can also run the setup at anytime by going to the <strong>File</strong> menu, pointing at <strong>New</strong>, and clicking <strong>Mail Account</strong>.</p>
+<p>Here's how to work your way through the automated setup process:<br />
+</p>
+<ol>
+<li>Make sure that your computer is connected to the Internet and then start Thunderbird.</li>
+<li><p>On the first setup screen, enter your name, your email address, your password. Your password is your current email password. If you want Thunderbird to remember your password (so you don't need to keep typing it every time you check your mail), click the <strong>Remember password</strong> checkbox.</p>
+<p><img src="static/Thunderbird-set_up-first_startup_account_wizard_mail_setup_1-en.JPG" alt="first_startup_account_wizard_mail_setup_1.JPG" width="332" height="115" /></p></li>
+<li>Click the <strong>Continue</strong> button to go to the next step. Click the <strong>Cancel</strong> button to stop the set up process.</li>
+<li><p>Thunderbird tries to get your account settings by connecting to the database of Internet Service Providers (ISPs) that is maintained by Mozilla.</p>
+<p>If Thunderbird finds the information for your email provider it automatically enters that information for you. Click the <strong>Create Account</strong> button to add the account. Click the <strong>Cancel</strong> button to stop the set up process. </p>
+<p><img src="static/Thunderbird-set_up-first_startup_account_wizard_mail_setup_2-en.JPG" alt="first_startup_account_wizard_mail_setup_2.JPG" width="454" height="287" /></p></li>
+<li>If Thunderbird cannot find information for your email provider, click the <strong>Manual config </strong>button in the Mail Account Setup window. For more information on what to do, read the <em>Manual Set Up</em> section below.</li>
+<li><p>Once your account is created, Thunderbird asks you if you want it to be the default application for email, newsgroups, or feeds. Make your choices by clicking the checkboxes.</p>
+<p>If you use Microsoft Windows, you use the Windows Search feature to find messages. Do this by selecting the <strong>Allow Windows to search messages</strong> checkbox. Click the <strong>OK</strong> button to save the settings and the <strong>Cancel</strong> button to leave them unchanged.</p>
+<p><img src="static/Thunderbird-set_up-first_startup_account_wizard_mail_setup_3-en.JPG" alt="first_startup_account_wizard_mail_setup_3.JPG" width="260" height="161" /></p>
+<p><strong>Note</strong>: Thunderbird will create your account even if you click <strong>Cancel</strong> at this point.</p></li>
+<li><p>Your account has been created and you're ready to go!</p>
+<p><img src="static/Thunderbird-set_up-first_startup_account_wizard_mail_setup_4-en.JPG" alt="first_startup_account_wizard_mail_setup_4.JPG" width="487" height="471" /></p></li>
+<li>Repeat this process for as many accounts as you want to add to Thunderbird.</li>
+</ol>
+<h2>Manual Set Up</h2>
+<p>If the automated set up process does not work or if the database of ISPs that Mozilla maintains doesn't contain information about your email provider, you can set up your account manually. Your email provider should supply you with the information that you'll to set up an account. You can usually find this information on your email provider's website, or by contacting their technical support department.<br />
+</p>
+<ol>
+<li><p>Go to the <strong>Tools</strong> menu and click <strong>Account Settings</strong> to open the Account Settings screen.</p>
+<p><img src="static/Thunderbird-set_up-account_edit_account_settings-en.JPG" alt="account_edit_account_settings.JPG" width="408" height="396" /></p></li>
+<li><p>Go to Account Actions and click <strong>Add Mail Account</strong>.</p>
+<p><img src="static/Thunderbird-set_up-add_mail_account_1-en.jpg" alt="add_mail_account_1.jpg" width="167" height="556" /></p></li>
+<li><p>Thunderbird tries to use the automated process to create your account.</p>
+<p><img src="static/Thunderbird-set_up-first_startup_account_wizard_mail_setup_1-en.JPG" alt="first_startup_account_wizard_mail_setup_1.JPG" width="339" height="118" /></p>
+<p>Enter your name, your email address, and email password and then click the <strong>Continue</strong> button.</p></li>
+<li><p>Thunderbird will attempt to use database of Internet Service Providers (ISPs) that is maintained by Mozilla to get the account settings. You can stop this process by clicking the <strong>Stop</strong> button.</p>
+<p>At this point, click the <strong>Stop</strong> button to start creating the account manually:</p>
+<ul>
+<li>Click <strong>POP or IMAP</strong> in the <strong>Incoming</strong> row. You won't be able to change from POP to IMAP or IMAP to POP after you have clicked <strong>Manual Setup</strong> so please double check that you have selected POP or IMAP as appropriate!</li>
+<li>Click the <strong>Manual Config</strong> button.</li>
+</ul></li>
+<li>The Account Settings screen will open for your new account. The screen contains your account name, your name, and your email address.</li>
+<li><p>Click <strong>Server Settings</strong> to configure your account to receive email.</p>
+<p><img src="static/Thunderbird-set_up-account_edit_server_settings-en.JPG" alt="account_edit_server_settings.JPG" width="412" height="396" /></p>
+<p>The IMAP and POP screens look slightly different than the Windows screens. For more information on IMAP and POP, read this short Gmail help article:  <a href="https://mail.google.com/support/bin/static.py?page=ts.cs&amp;ts=1668960" title="mail.google.com">https://mail.google.com/support/bin/static.py?page=ts.cs&amp;ts=1668960 </a></p></li>
+<li>Enter the following settings for your email provider:
+<ul>
+<li>Server Name</li>
+<li>User Name</li>
+<li>Port</li>
+<li>Security Settings<br />
+</li>
+</ul></li>
+<li><p>Click <strong>Outgoing Server (SMTP)</strong> to setup the account to send email.</p>
+<p><img src="static/Thunderbird-set_up-account_edit_smtp_settings_1-en.JPG" alt="account_edit_smtp_settings_1.JPG" width="417" height="401" /></p>
+<p>In Outgoing Server (SMTP) Settings click the <strong>Add</strong> button.</p></li>
+<li><p>Enter the settings for sending email that you got from your email provider.</p>
+<p><img src="static/Thunderbird-set_up-account_edit_smtp_settings_2-en.JPG" alt="account_edit_smtp_settings_2.JPG" width="361" height="272" /><br />
+</p>
+<ul>
+</ul>
+<p>Click the <strong>OK</strong> button to continue.</p></li>
+<li>To complete the set up process, click the <strong>OK</strong> button on the Account Settings screen.<br />
+</li>
+<li>Thunderbird asks for your password the first time that you try to get or send email. When this happens you can have Thunderbird remember your email.<br />
+</li>
+</ol>
+<h2>Remove an Account</h2>
+<p> Here's how to remove an email account from Thunderbird.<br />
+</p>
+<ol>
+<li>Go to the account Manual Set Up screen.</li>
+<li>Select the account that you want to remove.</li>
+<li>Click <strong>Account Actions</strong> and select <strong>Remove Account</strong> from the list.<br />
+</li>
+<li><p>Thunderbird confirms that you want to remove the account. Click the <strong>OK</strong> button to continue removing the account.</p>
+<p><img src="static/Thunderbird-set_up-remove_account_1-en.JPG" alt="remove_account_1.JPG" width="288" height="80" /></p>
+<p>The account is removed from Thunderbird and is no longer in the Account Settings screen.</p></li>
+</ol>
+</body>
+</html>

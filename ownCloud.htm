@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="The Contributors" />
+  <title>ownCloud</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">ownCloud</h1>
+<p class="author">The Contributors</p>
+<p class="date">2013.12.02-11.00</p>
+</header>
+<p><span id="ch001_introduction.xhtml"></span></p>
+<h1>Introduction</h1>
+<p>The main focus of ownCloud is storing and sharing documents, calendars and contacts in a secure way, which also embraces open standards.</p>
+<p>There are two main reasons why you or your group may want to use ownCloud rather than a similar service like Google Docs or Dropbox. The first is that it offers more security for the files that you store, because you store them on your own server and can also encrypt them. The second reason is that by using ownCloud, you are supporting a more decentralized and less monitored internet. If you are uncomfortable about the level of data analysis and surveillance involved in signing up for corporate internet services, then ownCloud provides a very usable alternative.</p>
+<h2><strong>About this manual</strong></h2>
+<p>This manual is aimed to be a complement to the existing documentation at <a href="http://doc.owncloud.org" class="uri">http://doc.owncloud.org</a>. Our focus is to create beginner level help which is very visual, which includes screenshots of the interface and explains technical terms when they are used. </p>
+<p>We also separate out the use of ownCloud by 'user level'. This means the guide begins with the tasks that are easiest to perform and gets progressively more technical. In this way new users can get started with this manual without being bogged down with advanced terminology.</p>
+<p>The guide begins by focusing on using an ownCloud instance that someone else has installed. We cover simple admin of ownCloud via the web interface and follow that with detailed information on keeping information in-sync between devices. Only then in the <em><strong>ownCloud Server Admin</strong></em> section will there be a chapter on how to install it and begin to configure its use.</p>
+<p>This manual was written by Donna Metzlar, Anna Morris and Mick Fuzz for FLOSS Manuals. The guide has been commissioned as part of the Human Rights Connect project of Internews Europe.<br />
+</p>
+<h2><strong>Overview of ownCloud’s features</strong></h2>
+<h3>Sharing files <strong></strong></h3>
+<p>Once you log in you will see an interface for sharing files under the Files menu on the left. You have options for uploading new files and folders, and for sharing these with other users on your ownCloud installation. </p>
+<p><img src="static/owncloud1.png" width="600" height="250" /></p>
+<p>You can connect to online ownCloud folders without having to log in via your web browser. You can do this by downloading the ownCloud client and setting it up to share folders on your computer. This client works in a similar way to the popular Dropbox client. This piece of software can be installed on any desktop operating system – from Windows to Mac OS X to Linux – it is completely cross-platform.</p>
+<p><img src="static/owncloud2.png" width="546" height="334" /></p>
+<h3>Sharing calendars</h3>
+<p>You can use the shared calendar in the ownCloud web interface by clicking on the Calendar tab; or if you use Thunderbird as your email client you can connect to various calendars and display them under an Events tab in Thunderbird.</p>
+<p><img src="static/owncloud4.png" width="600" height="264" /></p>
+<p>The calendars that ownCloud uses support the creation of 'tasks', making it suitable for simple project planning.</p>
+<h3>Sharing contacts <strong></strong></h3>
+<p>To use ownCloud as a shared repository of contacts, you can export your contacts as vCard (.vcf) files from your email service – from Thunderbird or Gmail, for example. You can then import these contacts into your ownCloud account. You can also use Thunderbird to manage your shared contacts by setting up a remote address book.   </p>
+<p><img src="static/owncloud5.png" width="534" height="275" /></p>
+<h3>Using ownCloud as an alternative to Google Docs</h3>
+<p>While ownCloud works well as a file-sharing platform, it still lags behind in terms of real-time collaborative document editing compared to Google Docs. However: you could use Etherpad, an open-source collaborative editing program, to collectively edit the document, and then save it to ownCloud when you're finished.</p>
+<h2><strong>Some background on ownCloud</strong></h2>
+<p>ownCloud was started and is still maintained by the German open source software developer Frank Karlitschek. He first presented it at <a href="http://dot.kde.org/2010/01/24/kde-gears-free-cloud%20">Camp KDE in 2010</a>.</p>
+<p>The name of the software partly explains the main goal of ownCloud. The term 'own' refers to running the service yourself, i.e. not being dependent on third-party services like Dropbox and WeTransfer. The term 'Cloud' refers to the service being on the internet as opposed to on your desktop computer or laptop. Because the software is running on a server on the internet the way to find or reach it is through an URL or web link.</p>
+<h3>Tiers of the cloud</h3>
+<p>Cloud computing refers to a range of different technologies and has been rather over-used in marketing. However, in this context we can understand it as technologies that take advantage of virtual server technology which means you no longer have to own or rent a physical computer in a data center to take advantage of the benefits of running a server.<br />
+</p>
+<p>The term <em><strong>cloud</strong></em> has been associated with this centralization of servers in the hands of smaller numbers of providers. However, not all companies that use 'cloud technology' rent space from huge corporations.<br />
+</p>
+<p>There are initiatives like OpenStack that bring an open source approach to cloud computing and many independent ISPs and hosting companies are embracing the efficiencies brought by server virtualization. Because of these advantages the cost of renting server space has fallen dramatically. You may be surprised at how cheaply space to run your own cloud space is available via a VPS (virtual private server).</p>
+<p><embed src="http:/clearerchannel.org/piwik/piwik.php?idsite=1" /></p>
+<p><span id="ch002_admins-and-users.xhtml"></span></p>
+<h1>Case Studies</h1>
+<p>We look at three groups that can benefit from using ownCloud: home users, smaller organizations including media and NGOs, and larger businesses. </p>
+<p>Your options for file sharing are Dropbox, WeTransfer or other commercial services on the internet. Good news however, ownCloud is a free and open source file sharing alternative. It is actively being developed and rapidly gaining popularity.<br />
+</p>
+<h2>Home users sharing files</h2>
+<p>Imagine you have a relative or friend who lives on the other side of the world and you want to share photos and home movies with each other. Or, you are part of a local community or interest group that wants to share contacts. You don't want to upload these personal documents to a commercial file sharing space because you are concerned about the integrity of your data. Or maybe you are uncomfortable with the increasing monopoly of huge corporations controlling data sharing.</p>
+<p>If you already have some server space or a VPS, you can take full advantage of ownCloud. </p>
+<p><img src="static/photo_preview_2.png" alt="undefined" width="600" height="437" /></p>
+<p><em>Previewing images from within your pictures area</em></p>
+<p>Using ownCloud is also a good way to learn about how to set up a web application and undertake server administration. Use this guide as a starting point to teach yourself how to set it up and keep ownCloud running. It can become a valuable service for your family, friends or community.<br />
+</p>
+<h2>NGOs, media organizations and similar projects<br />
+</h2>
+<p>While some businesses can afford expensive in-house or third-party implementations for sharing documents and working collaboratively, there are also many charities, NGOs and smaller journalism outlets that do not have large budgets. They often rely on free tools for collaboration including <em><strong>Google Drive</strong></em> (docs) and sharing services like <em><strong>Dropbox</strong></em>.<br />
+</p>
+<p>However, many of these organizations also work with confidential info that needs to be protected. Anyone holding data with regards to investigating regimes, authorities or corporations should be careful about the information systems they are using. This includes contact details or information on 'who is meeting who and when'. Prevent private data from becoming public data.<br />
+</p>
+<p><img src="static/UncleSamListensIn_2.jpg" width="600" height="532" /><br />
+</p>
+<p>ownCloud includes an app to encrypt your data. This is to prevent the system administrators on your VPS from being able to view your data. The encryption app is still under development and hasn't been widely tested. However, simply by having your documents, calendar and contacts on your own servers rather than those controlled by large corporations is a major step in preventing your data from being accessed by governments, agencies and associated contractors.</p>
+<h2>Business use</h2>
+<p>Businesses are a primary target group for ownCloud. So much so, that ownCloud Inc. provides a commercial service which runs from the website ownCloud.com. Some of the following material is adapted from documentation provided on ownCloud.com.</p>
+<p>There are also other organizations like OwnCube that provide hosting for business.</p>
+<h3>Ways a small business could use ownCloud</h3>
+<p>If you run a business with just a few people, or even alone, ownCloud could save you time, keep you organized and make collaborating easier. You could use it for<br />
+</p>
+<ul>
+<li>Backing up important files</li>
+<li>Keeping master copies of files that several people use (such as your business logo)</li>
+<li>Keeping libraries of important files, for example product photos<br />
+</li>
+<li>Keeping 'your data at your fingertips': for example, having a central copy of your cash-flow allows everyone to check the impact of their spending/selling quickly<br />
+</li>
+<li>Sharing files easily with customers, e.g. sharing your product specifications/photos with your retailers</li>
+<li>Avoiding sending large attachments by email, instead you could just send a download link (may save you money/bandwidth)</li>
+<li>Keeping you mobile – allows you to access important info when you are 'on the shop floor' or 'out of the office' on your mobile or tablet</li>
+<li>Keeping a centralized address book</li>
+<li>Minimizing problems caused when a colleague leaves or is off sick</li>
+</ul>
+<p>By making use of free and open source software such as OwnCloud, you can maximize your efficiency (and compete better) without spending lots of money and becoming vendor-locked to specific companies and products. This keeps you flexible, enabling you to grow and change as you need without extra expense. It lowers the risk of trying something new and enables you to have the tools of big business on your side, without having a huge IT department behind you.<br />
+</p>
+<h3>Businesses: keeping control of your data<br />
+</h3>
+<p>One of the major issues faced by businesses is the widespread use of consumer services – such as Dropbox – by their staff. If accounts are hacked or opened up to the public by mistake, businesses lose their competitive advantage. Employee behavior bypasses all of the hard work done by the IT department of the company to protect intellectual property. As as business you have essentially no control of a document once it goes into someone's personal cloud file share. Business management is based on information. If you don't know exactly where the data goes next, you can't reliably plan and steer your business.<img src="static/dropbox1.png" width="645" height="329" /></p>
+<p><em>Image from https://owncloud.com/owncloud-overview</em><br />
+</p>
+<p>There are some statistics on the ownCloud.com website which are aimed at those making decisions about IT for their company.<br />
+</p>
+<ul>
+<li>More than 75 percent of businesses have shared or stored sensitive company information on public cloud services – Symantec</li>
+<li>40% experienced the exposure of confidential information</li>
+<li>40% reported that they had lost data in the cloud and had to restore it from backups</li>
+<li>One out of five users surveyed said they use the consumer file-sync-and-share system with work documents – Nasuni, an enterprise storage management company</li>
+<li>Half of those users do this even though they know it’s against the rules.</li>
+<li>Average cost of a data breach equaled $5.5 Million in 2011 – Infosecisland.com</li>
+</ul>
+<p>The reason that employees use Dropbox, their personal email accounts and home internet connections is mainly due to the ease of use of these services compared to the more clunky solutions offered by the traditional business's IT department.</p>
+<p>ownCloud is presented as a user-friendly and reliable solution to sharing, that is also easily  maintained and monitored by IT departments.<br />
+</p>
+<p><br />
+</p>
+<p><br />
+</p>
+<ul>
+</ul>
+<p><span id="ch004_interaction.xhtml"></span></p>
+<h1>File Uploading and Sharing</h1>
+<p>Depending on the operating system and browser you're using, the log will look something the image below:</p>
+<p><img src="static/us-01-b.png" width="395" height="487" /></p>
+<p>One needs a name and password to use ownCloud. Once you're logged into your account you see the following:</p>
+<p><img src="static/us-02-b.png" width="594" height="386" /></p>
+<p>To upload a file click on the arrow. Hovering over it you will see how large the upload may be. The default value is: <em><strong>Upload max. 512MB</strong></em>.</p>
+<p>Once you've uploaded an image and a sound file (music or podcast) you will see them listed in the <em><strong>Music</strong></em> and <em><strong>Pictures</strong></em> menus in the navigation bar on the left. Click the icons to access the media player and image viewing functions of ownCloud.</p>
+<h2>Creating new files and folders<br />
+</h2>
+<p>Clicking on the New button will result in a menu with three options: create a new <em><strong>Text file</strong></em>, a new <em><strong>Folder</strong></em> or to create a new file <em><strong>From link</strong></em>.</p>
+<p><img src="static/us-03-b.png" width="129" height="127" /></p>
+<h3></h3>
+<p>Creating folders<br />
+</p>
+<p>The most common use will be creating <em><strong>Folders</strong></em> to help you to organize the files in your ownCloud.</p>
+<p>You can create as many folders as you like. Inside the folder you can once again upload and create new files. One reason to create folders is that they allow you to manage access to the data within those folders for different users or groups. For example, the homework folder you only want to share with fellow students, and not with friends and colleagues.<br />
+</p>
+<p><img src="static/us-04-b.png" width="228" height="224" /> </p>
+<h3>Creating text files<br />
+</h3>
+<p>You can create a simple text file. This can be edited fom right inside the browser - to start editing click on the file name.</p>
+<p><img src="static/a_a_rr_4.png" width="591" height="177" /><br />
+</p>
+<p>Unlike Google docs or blogging software, there is no WYSIWIG (for formatting) in ownCloud so creating a text file is simply a matter of giving it a name, opening it and entering text. There is also the option to <em><strong>Search</strong></em> the text.<br />
+</p>
+<p>When you're finished click <em><strong>Save</strong></em> (or <em><strong>Close</strong></em> if you don't want to save the changes). </p>
+<h3>Importing files from links</h3>
+<p>The import <em><strong>From link</strong></em> can be used to import a file from the web URL into your files section. Click on <em><strong>From link</strong></em> text then type/paste the URL of the file you want to import into the box and press Enter. </p>
+<p><img src="static/a_a_rr_3.png" width="369" height="153" /></p>
+<p>The file will be downloaded into your current folder.<br />
+</p>
+<h2>Managing files</h2>
+<h3>Renaming, downloading and versions of files</h3>
+<h3></h3>
+<p>You may want to change a file's settings, for example to <em><strong>Rename</strong></em>, <em><strong>Download</strong></em>, revert to older <em><strong>Versions</strong></em>,  <em><strong>Share</strong></em> or delete the file (marked by the <em><strong>X</strong></em>). If you hover over the file with the cursor you will see the options to achieve these things.<br />
+</p>
+<p><img src="static/us-08-b.png" width="503" height="166" /><br />
+</p>
+<p>Most of the options are self explanatory, after clicking one of the above options either the action will proceed right away, or a pop-up or a field appears. There is more information on <em><strong>Versions</strong></em> elsewhere in the guide.<br />
+</p>
+<h3>Sharing files and folders<br />
+</h3>
+<p>To share a file or folder with other people click on the Share icon. </p>
+<p><img src="static/a_a_rr_5.png" width="583" height="189" /><br />
+</p>
+<p>At first one only sees the <em><strong>Share with</strong></em> field and an option <em><strong>Share with link</strong></em>.</p>
+<p><strong>Sharing with users or groups</strong><br />
+</p>
+<p>To share with another user or group on you ownCloud enter the name of the user or group in the <em><strong>Share with</strong></em> box.  You can find a list of groups in the <em><strong>Personal</strong></em> menu item under your name in the top right hand corner.</p>
+<p>In the example below, the folder is being shared with other family members.<br />
+</p>
+<p><img src="static/uas-17-b.JPG" width="336" height="489" /></p>
+<p>One can choose to give the group different access levels. These include the ability to edit, update, create and delete files.<br />
+</p>
+<p>If you don't want to run the risk of someone in the group accidentally deleting or wrongly editing files you leave only the <em><strong>share</strong></em> setting activated.</p>
+<p><strong>Sharing with a link</strong><br />
+</p>
+<p>It is also possible to share a file or folder with a link. This is a very useful option for sharing with people quickly, especially if you don't want to give them an account on your ownCloud, or if you want to share one file with several people (even a mailing list). Once you've activated it copy the link and paste it into an email to the person/people you want to share with.<br />
+</p>
+<p><img src="static/a_a_rr_6.png" width="359" height="315" /> </p>
+<p>When the recipient clicks on the link in the email they will instantly be redirected to either the file or list of files in the folder you have shared on your ownCloud website.  </p>
+<p>There is also the ability to</p>
+<ul>
+<li>Password protect the link you are sharing</li>
+<li>Enter the email of the person you want to send a link to</li>
+<li>Allow people to upload into the folder you are sharing</li>
+</ul>
+<p>We can see and example of a shared folder containing some images below. You will notice the ability to <em><strong>Upload</strong></em>. This is a simple way of sharing files with and receiving them in return via the web and very suitable for group working.</p>
+<p><img src="static/a_a_rr_7.png" width="600" height="215" /><br />
+</p>
+<p>It is good practice to set an expiration date for shared files of folders. Your shared files are normally publicly available on the Web. If there was no expiration date there is a chance that a piece of software trawling the internet for data will find the link eventually and download or index your files. This might make them turn up in search engines and be shared in this way and this is not really what ownCloud is designed for. </p>
+<h3>Deleting and downloading multiple files</h3>
+<p>To select more than one file or folder to delete or download click on the check-boxes to the left of name of the file or folder.</p>
+<p>You will now see the option to either download or delete all in one go:<br />
+</p>
+<p><img src="static/us-05-b.png" width="526" height="203" /> </p>
+<h3></h3>
+<h2>Searching</h2>
+<p>ownCloud has a new full text search engine where you can find files files by name and content. If you want to search for something, type into the search box, located at the top right of your screen.<br />
+</p>
+<p><img src="static/search2.png" width="417" height="226" /> </p>
+<p>Hit return to search. You can see in the example below, files are suggested and scored on their relevance to your search term.<br />
+</p>
+<p><img src="static/us-07-b.png" width="588" height="221" /> </p>
+<p>There seem to be some bugs in ownCloud 5 with the search, which are set to be fixed in oc6. One particular issue seems to be searching in shared folders, and also a delay in how long items take to turn up in searches. <a href="https://github.com/owncloud/core/issues/744%20">https://github.com/owncloud/core/issues/744</a><br />
+</p>
+<p><span id="ch005_installing-server.xhtml"></span></p>
+<h1>Editing your Details and Previewing Files</h1>
+<h1></h1>
+<p>This section covers altering your user details, previewing photos, music and text based files. <br />
+</p>
+<h2>Changing your password and other details<br />
+</h2>
+<p><img src="static/uas-10-b.JPG" width="344" height="190" /></p>
+<p>To change your own passwords you can do this in your Personal settings page.</p>
+<p>Click on your user name and select the <em><strong>Personal</strong></em> option.<br />
+</p>
+<p><img src="static/uas-19-b.JPG" width="511" height="551" /><br />
+</p>
+<p>Here you can change also the <em><strong>Language</strong></em> of ownCloud's user interface, your display name and your password. You also see how much of your space allowance you have used. Users can ask the ownCloud administrator to change this setting if the limit is too low.</p>
+<p>It is highly recommended that users enter valid email accounts as your email address is used by the system for sending password reset details.<br />
+</p>
+<p><img src="static/uas-09-b.JPG" width="482" height="483" /></p>
+<p>If you forget your password click on the red field <em><strong>Lost your password?</strong></em> <span lang="EN-AU"></span> and enter the email address that corresponds with the email address that you added to your ownCloud account, in the Personal menu.<br />
+</p>
+<p> <img src="static/uas-12-b.JPG" width="352" height="322" /></p>
+<p>After clicking on <em><strong>Request reset</strong></em> you should receive an email with a link to reset your password.<br />
+</p>
+<p> <img src="/owncloud/_edit/static/uas-13-b.JPG" /></p>
+<p>If you don't receive an email perhaps the ownCloud server's mail settings have not been installed or are broken. Contact the administrator to take a look at the problem.</p>
+<h2>Previewing photos</h2>
+<p>There are two ways to preview photos in ownCloud, both are quick and simple.</p>
+<h3>Previewing images from within your files and folders.</h3>
+<p>This method is best suited to situations where you know roughly where your image is already. First, find the photo that you want to preview by by clicking the <em><strong>Files</strong></em> icon in your navigation bar and searching through your folders.<br />
+</p>
+<p><img src="static/photo_preview_1.png" /></p>
+<p>To preview an image from within this files viewer, simply click on the file name.<br />
+</p>
+<p><img src="static/photo_preview_1_1.png" width="654" height="228" /></p>
+<p> Your image will then appear in a pop-up window within the browser screen.</p>
+<p><img src="static/photo_preview_2.png" width="600" height="437" /></p>
+<h3>Previewing images from within your pictures area</h3>
+<p>This method is best suited to situations when you are unsure where the image stored, or when you do not have a specific image in mind and simply wish to browse all images.</p>
+<p>First, click on the <em><strong>Pictures</strong></em> icon in your navigation bar and browse through the thumbnail images till you find an image which you would like to preview.</p>
+<p>Then click on the image,</p>
+<p><img src="static/photo_preview_5.png" width="458" height="392" /></p>
+<p>and view it in the image viewer, using the left and right arrows to navigate further.</p>
+<p><img src="static/photo_preview_6.png" width="450" height="389" /></p>
+<h3>Previewing music and audio files<br />
+</h3>
+<p>Music and audio files can also be previewed using your web interface. First click on the <em><strong>Music</strong></em> icon in the navigation bar.</p>
+<p><img src="static/music_view_1.png" /><br />
+</p>
+<p>The web interface will then collect all the music files together into one place for you to preview. The first song may auto-play. To select a new song click on the file name.</p>
+<p><img src="static/music_view_2.png" width="548" height="142" /></p>
+<p>You can use the play, pause, forward, backwards and volume controls just as you would in any music player.<br />
+</p>
+<h3>Previewing other documents</h3>
+<p>You can preview various types of documents in your ownCloud web interface by clicking on the file.<br />
+</p>
+<p><img src="static/file_preview_1.png" width="612" height="232" /></p>
+<p>For example you can preview .odt word processing files,</p>
+<p><img src="static/file_preview_3.png" width="428" height="477" /></p>
+<p>and .ods spreadsheet files,</p>
+<p><img src="static/file_preview_2.png" width="537" height="566" /></p>
+<p>and plain text files.<br />
+</p>
+<p><img src="static/file_preview_4.png" width="448" height="299" /></p>
+<p>Plain text files including html or code files can also be edited from within the web interface.</p>
+<h3>Other preview and editing apps</h3>
+<p>There may be ownCloud apps that are available that allow you to preview or edit other kinds of files that you use. </p>
+<p>There is a section on how apps work and how to install new ones elsewhere in this guide.<br />
+</p>
+<p><span id="ch006_conclusion.xhtml"></span></p>
+<h1>Using the Web Calendar<br />
+</h1>
+<p>This section is called Using <strong><em>Web</em></strong> Calendars, as it is possible to access ownCloud calendars in other ways <span lang="EN-AU">– </span>via desktop synch applications or on mobile devices. This section concentrates only on using your web browser to use calendars.<br />
+</p>
+<p>To start using web calendars, Select the <em><strong>Calendar</strong></em> button in the navigation bar.</p>
+<p><img src="static/a_a_rand_1.png" width="362" height="168" /><br />
+</p>
+<p>When you use the calendar the first time, there will be already a calendar called <em><strong>Default calendar</strong></em>. To alter the settings click on the image of the cog in the top right.<br />
+</p>
+<p><img src="static/calendar_1.png" width="600" height="509" /><br />
+</p>
+<p>In this <em><strong>Settings</strong></em> area you can add, edit, export, enable, share and delete your calendars. You can also configure the right timezone. Without the correct timezone there will be a time offset between the events on the server and on your desktop when using ownCloud's synchronization functionality. You may be asked to set your timezone automatically so it is a good idea to accept this request to help ownCloud keep all the devices in sync.  </p>
+<p>The URLs listed in the <em><strong>Settings</strong></em> area are for <em><strong>CalDAV</strong></em> access. <em><strong>CalDAV</strong></em> is a way of syncing your calendar with other applications on your phone or desktop computer. This process is covered in another chapter.</p>
+<p>To start we will add a new calendar for a project. Click on the <em><strong>New Calendar</strong></em> button and fill in the details and choose a color for this calendar. <br />
+</p>
+<p><img src="static/calendar_3.png" width="509" height="216" /><br />
+</p>
+<h2>Creating events</h2>
+<p>To create an event just click on the date in the month view and enter the event details. </p>
+<p>We can see an option to choose between our <em><strong>Default calendar</strong></em> and any new calendars we have created.<br />
+<br />
+<img src="static/calendar_4.png" width="600" height="492" /><br />
+Click on the <em><strong>Advanced Options</strong></em> to set the description and the location of the event. There is also an option to create repeating events in the <em><strong>Repeating</strong></em> tab. </p>
+<p>Viewing events can be done by <em><strong>Week</strong></em>, <em><strong>Month</strong></em> or as a <strong><em>List</em></strong> of upcoming dates. </p>
+<p><img src="static/calendar_12.png" width="600" height="455" /><br />
+</p>
+<h2>Sharing calendars</h2>
+<p>To share a calendar with other users on your ownCloud set up, first go the the Calendar settings area. </p>
+<p><img src="static/calendar_9.png" width="536" height="192" /><br />
+</p>
+<p>Click on the Share icon shown above. Then enter the name of the person you want to share with.</p>
+<p><img src="static/calendar_8.png" width="280" height="412" /></p>
+<p>We can see that if we allow the user to edit our calendar there are different options available for us to control their level of access and set an expiry date too.<br />
+</p>
+<h2>Exporting / importing events</h2>
+<h3>Exporting<br />
+</h3>
+<p>You can export either a single event or a whole calendar. If you want to export a single event click on it and press the <em><strong>Export</strong></em> button in the bottom right corner.</p>
+<p><img src="static/calendar_5_2.png" width="504" height="394" /><br />
+ </p>
+<p>If you want to export a whole calendar click on the <em><strong>Settings</strong></em> cog, and then click the <em><strong>Download</strong></em> link arrow of the calendar you want to export.</p>
+<p><img src="static/calendar_6.png" width="592" height="225" /><br />
+</p>
+<p>ownCloud generates an <em><strong>.ics file</strong></em> when exporting an event or calendar. The iCalendar format must not be confused with Apple's old email application which was called iCal. iCalendar is build on the previous vCalendar format which generates <em><strong>.vcs</strong></em> files.<br />
+</p>
+<p><img src="static/calendar_7.png" width="501" height="341" /> </p>
+<p>iCalendar files can be understood by nearly all email or calendar applications.</p>
+<h3>Importing<br />
+</h3>
+<p>Imagine the case in which a colleague has done some planning in their own calendar for the coming months. They want to share this planning with you and have mailed the calendar file to you. You save it to your computer and need to import into your ownCloud now.</p>
+<p>Click on the calendar file you've saved and follow the instructions to import it into a new calendar or into an already existing calendar.</p>
+<p><img src="static/calendar_10.png" width="600" height="377" /><br />
+</p>
+<h3>Syncing calendars between computers and devices</h3>
+<p>Importing and exporting is a good way of moving calendars between devices. However, it would be better if they were automatically synchronized so that when altered or added to in one place they are updated automatically everywhere we access the calendar.  You can find out how to do this in another section of this guide.<br />
+</p>
+<h3></h3>
+<ul>
+</ul>
+<p><span id="ch007_contacts.xhtml"></span></p>
+<h1>Using Web Contacts</h1>
+<p>ownCloud has a simple web interface to manage your contacts. It works by allowing you to create, import and export contacts in the vCard (vcf) file format. There is another section in this guide on how to connect to your ownCloud contacts with the Thunderbird email client and an Android App.<br />
+</p>
+<h2>Adding contacts</h2>
+<p>To add a new contact, click on the <strong><em>Contacts</em></strong> icon in your navigation bar.</p>
+<p><img src="static/create_contact_0_1.png" width="67" height="64" /></p>
+<p>Then click <em><strong>Add Contact</strong></em> or <em><strong>New Contact.</strong></em><br />
+</p>
+<p><img src="static/create_contact_0_2.png" width="175" height="103" /><img src="static/create_contact_0_3.png" width="162" height="60" /></p>
+<p>You are now ready to input your contact information.<br />
+</p>
+<p>  <img src="static/create_contact_1_1.png" width="600" height="433" /><br />
+</p>
+<p>Fill in some or all of the boxes.</p>
+<p><img src="static/create_contact_2_1.png" width="600" height="433" /><br />
+</p>
+<p>When you have finished editing the contact, click <em><strong>Close</strong>.</em><br />
+</p>
+<p><img src="static/create_contact_3.png" width="784" height="570" /></p>
+<p>There are various types of additional information that you can add to your contact. It's a good idea to take time to explore the contact dialogues so you can get the most complete contact list right from the start.</p>
+<p>While editing your contacts, click on the <em><strong>Add</strong></em> drop-down menu to add details such as <em><strong>Phone</strong></em>, <em><strong>Email Address</strong></em> and <em><strong>Web site</strong></em>.<br />
+</p>
+<p><img src="static/add_contact_info_1.png" width="206" height="308" /></p>
+<h2>Viewing and editing your contact</h2>
+<p>To view your contact, click on the contact name.</p>
+<p><img src="static/create_contact_6.png" width="437" height="109" /></p>
+<p>To edit the contact information, click on the part that you wish to edit, and a cursor will appear. You can add to or replace information by typing in the box.<br />
+</p>
+<p><img src="static/create_contact_5.png" width="302" height="214" /></p>
+<p>You do not need to save the contact, changes are saved automatically.</p>
+<p>You can also add photos of your contacts by clicking on the up arrow. This may help you to 'put a name to a face' or to remember more about your interactions with the contact.</p>
+<p><img src="static/add_contact_info_3.png" width="296" height="274" /><br />
+</p>
+<p> </p>
+<h2>Organizing your contacts<br />
+</h2>
+<p>To organize your contacts you are recommended to use groups. This can make it easier to find your contacts, and can be useful for compartmentalizing your contacts between different jobs, for example, or between social and work.</p>
+<p>When you are editing a contact you can click on the <em><strong>Select Groups</strong></em> drop-down to put your contact into a group of similar contacts.<br />
+</p>
+<p><img src="static/add_contact_info_5.png" width="468" height="113" /></p>
+<p>It is possible to add your contacts to many different groups.<br />
+</p>
+<p><img src="static/add_contact_info_2.png" width="323" height="198" /></p>
+<p>You can also drag and drop contacts into groups from the main <em><strong>Contacts</strong></em> window.</p>
+<p>To do this, click on the contact name and drag it to the left and drop it over the group you want to add it to.</p>
+<p><img src="static/add_contact_info_8.png" width="692" height="239" /><br />
+</p>
+<p>You can also add additional groups by clicking on the <em><strong>New Group</strong></em> icon.<br />
+</p>
+<p><img src="static/add_contact_info_4.png" width="248" height="96" /></p>
+<p>For example, you could break your work contacts down into Donors, Leads, Staff, Interns, Designers, Fund-raisers<span></span>font-family: &quot;Times New Roman&quot;;mso-ansi-language:EN-AU;mso-fareast-language:DE&quot; lang=&quot;EN-AU&quot;&gt;– anything you like.<br />
+</p>
+<p><img src="static/add_contact_info_6.png" width="444" height="582" /></p>
+<h2>How to import contacts from other sources <span lang="EN-AU">–</span> vCards</h2>
+<p>If you have a contact stored in another location, for example, in Thunderbird email client, Gmail web mail, or in another CRM system, you may be able to export it as a <em><strong>vCard</strong></em>. If so, you can import the contact, rather than manually inputting all the data. This will save you time and reduce inputting errors.</p>
+<p>First export the contact, here is an example using Google mail.<br />
+</p>
+<p><img src="static/importing_1.png" width="241" height="269" /></p>
+<p><img src="static/importing_2.png" width="203" height="158" /></p>
+<p>To upload your <em><strong>vCard</strong></em> click on the cog-shaped settings icon (bottom left).<br />
+</p>
+<p><img src="static/importing_3.png" width="146" height="102" /></p>
+<p>Then click the up-arrow to import.</p>
+<p><img src="static/importing_4.png" width="200" height="111" /></p>
+<p>Locate the file on your computer (try in your downloads file) and click open (or similar, depending on your operating system).<br />
+</p>
+<p><img src="static/importing_5.png" width="410" height="156" /></p>
+<p>Your contact will then be uploaded, and should appear in your contacts list. You can then add it to groups, and add additional information as normal.<br />
+</p>
+<p><img src="static/importing_6.png" width="600" height="362" /><br />
+</p>
+<h2>Sharing and exporting your contacts</h2>
+<p>By clicking on the cog-shaped setting menu, you reveal a series of buttons for sharing and exporting your contacts. If you click the share button,<br />
+</p>
+<p><img src="static/share_1.png" width="267" height="156" /><br />
+</p>
+<p>you can share ALL your contacts with another person on your team. Start typing their user name and you will be able to choose them from a list of suggested people by clicking on their name.</p>
+<p><img src="static/share_2_1.png" width="600" height="455" /><br />
+</p>
+<p>All of your contacts will then be displayed in a sub-folder of their contacts.</p>
+<p><img src="static/share_3.png" width="448" height="492" /></p>
+<p>You can export/download ALL of your contacts together, by clicking on the second icon in the set.</p>
+<p><img src="static/share_4.png" width="340" height="173" /> </p>
+<p>You can save your contacts as a .CSV or open them in an application, such as your email client.</p>
+<p><img src="static/share_6.png" width="508" height="384" /></p>
+<p>However, if you just want to download an individual contact, then there is an option for this within the contact information box. Click on the contact name, and click on the <em><strong>Download</strong></em> button.</p>
+<p><img src="static/share_9.png" width="379" height="326" /><br />
+</p>
+<p>The third icon in the set of sharing buttons, found in the setting menu, is CardDAV link. This is used by other applications to connect to your ownCloud contacts.<br />
+</p>
+<h3>Limitations of contacts web interface</h3>
+<p>There several noticeable limitations to the way you can work with contacts currently in the web interface of ownCloud especially when it comes to sharing and organizing groups of contacts.<br />
+</p>
+<p>You may want to explore using the CardDAV connection method in a more advanced client like Thunderbird to use the more advanced functionality and link this to your ownCloud site. This is explained in another chapter of this guide.</p>
+<p><span id="ch009_personal-settings.xhtml"></span></p>
+<h1>User Management</h1>
+<p>If you are the user who first logged in to your ownCloud install or if you are in the admin group, you have more powers than other users. You will have more options available to you including the ability to do user management.<br />
+</p>
+<p>This section covers the tasks of creating and configuring user accounts and resetting the passwords of other users.</p>
+<h2>Creating user accounts<br />
+</h2>
+<p>ownCloud is a file sharing service which means that while it is possible for only a single person to use it, there will normally be more people using an instance. Each person needs their own account and this will be created and managed by any user in the <em><strong>admin</strong></em> group.</p>
+<p>Once an administrator is logged in, they can click on the triangle to the right of their username, in the top right hand corner.</p>
+<p>In the case below the user's name is <em><strong>admin</strong></em>. This account was the first one to be created during installation. The first user is in the <em><strong>admin</strong></em> group by default. It is possible to add more administrators simply by adding more users to the admin group. <br />
+<br />
+</p>
+<p><img src="static/uas-01-b.JPG" width="371" height="307" /><br />
+</p>
+<p>After clicking the triangle a menu unfolds with options to enter the following sections: <em><strong>Personal</strong></em>, <em><strong>Users, Apps, Admin, Help</strong></em> and <em><strong>Log out</strong></em>.</p>
+<p>Click on the <em><strong>Users</strong></em> item to get an overview of which accounts are already installed.<br />
+</p>
+<p><img src="static/uas-02-b.JPG" width="953" height="399" /></p>
+<p>Groups are normally used for sharing files between users. One of the first things to do after a new installation is to create groups based on how you imagine people will be grouped on your server.</p>
+<p>Only an <em><strong>admin</strong></em> group exists in the beginning.<br />
+</p>
+<p><img src="static/uas-03-b.JPG" width="249" height="194" /></p>
+<p>Why not add two or three groups, for example <em><strong>friends</strong></em>, <em><strong>family</strong></em> or <em><strong>colleagues</strong></em>? Or if this a work related installation <em><strong>outreach</strong></em>, <em><strong>planning</strong></em>, <em><strong>monitoring</strong></em>, etc.<br />
+</p>
+<p>To do this go to the <em><strong>Groups</strong></em> field and wait for the menu to open. Hover over the <em><strong>+ add group</strong></em> field, enter a name for the group and hit enter.</p>
+<p>Now one can start adding users and adding them to specific groups. To create other administrators add them to the admin group.<br />
+</p>
+<p>Simply enter the new user's name, a password, check a group and press <em><strong>Create</strong></em>.</p>
+<p><img src="static/uas-04-b.JPG" width="538" height="231" /></p>
+<p>If you have problems with your page not refreshing, press <em><strong>Ctrl-R</strong></em> to refresh the page and make sure your new entry is visible.</p>
+<p><img src="static/uas-06-b.JPG" width="897" height="254" /></p>
+<h3>Storage and upload settings<br />
+</h3>
+<p>By default <em><strong>Default Storage</strong></em> is set to <em><strong>Unlimited</strong></em>. This may increase the chance of a server accidentally filling up. To have more control over the growth of data on the server, set a limit for how much data each group can upload.<br />
+</p>
+<p>A related setting can be found in the <em><strong>Admin</strong></em> menu. Here you set how much a user can upload at a time. You may need to raise this from the default <em><strong>512MB</strong></em>, say if you share home movies with family members.<br />
+</p>
+<p><img src="static/uas-07-b.JPG" width="498" height="200" /></p>
+<p>Another setting to consider is that users can only share with other users in their group or with anyone. This setting is located in the <strong><em>Sharing</em></strong> section in the Admin menu. The default is set to <em><strong>Allow users to share with anyone</strong></em>.<br />
+</p>
+<p><img src="static/uas-18-b.JPG" width="497" height="329" /><br />
+</p>
+<p>To summarize, the steps involved in creating a new user are entering a name and password, and delegating the user to a group. The new user can now log in to ownCloud and start uploading and downloading files.<br />
+</p>
+<h1>Changing passwords and groups<br />
+</h1>
+<p>In the <em><strong>Users</strong></em> window, any user in the admin group can change their own password and that of other users.</p>
+<p><img src="static/admin_1.png" width="569" height="204" /></p>
+<p>Click in the <em><strong>Password</strong></em> field for the relevant user and enter a new password. Admins can also change the <em><strong>Groups</strong></em> users are in.</p>
+<p><br />
+</p>
+<p><span id="ch010_tasks.xhtml"></span></p>
+<h1>Using Version Control</h1>
+<p>The process of creating a document often involves creating many updates of a file. During the process one may want to go back and use something from a previous version that has been deleted. Using version control makes reverting to a particular point in time easy. It is used by teams and individuals from the software development, graphic design, writing and editing sectors.</p>
+<h2>Deleted files<br />
+</h2>
+<p>Version control can also be used as a backup server. If someone deletes a file by accident it is easy to recover it. ownCloud has included this feature, namely the <em><strong>Deleted files</strong></em> button.</p>
+<p><img src="static/vc-06-b.PNG" width="337" height="225" /></p>
+<p>Files that are deleted in ownCloud are moved to a trash bin folder.</p>
+<p><img src="static/vc-07-b.PNG" width="635" height="166" /><br />
+</p>
+<p>Here one can 'undo' the deletion of a file by clicking on <em><strong>Restore</strong></em>.</p>
+<p>In addition one can delete a file permanently by clicking on the <em><strong>X</strong></em>. This is something to keep in mind when you are running out of available space. By default, deleted files stay in the trash bin for 180 days.</p>
+<h2>Versions<br />
+</h2>
+<p>ownCloud comes with a built in version control system called <em><strong>Versions</strong></em>. It can be viewed and disabled by logging in with the administrator account and going to the Apps menu.</p>
+<p><img src="static/vc-00-b.png" width="164" height="268" /></p>
+<p>The way that <em><strong>Versions</strong></em> works is that it copies new and deletes old files, following a specific routine. Copying files every minute will result in rapid data growth, hence the regular deleting of files.</p>
+<p><strong>Tech note:</strong> Other version control systems store only the differences between old and new versions of a file, but PHP <span lang="EN-AU">–</span> the language that ownCloud is written in <span lang="EN-AU">–</span> can't handle working with these incremental changes.<br />
+</p>
+<p> <img src="static/vc-01-b.png" width="634" height="664" /></p>
+<p><em><strong> Versions</strong></em> uses the following scheme of copying files:<br />
+</p>
+<ul>
+<li>For the first 10 seconds ownCloud keeps one version every 2 seconds</li>
+<li>For the first hour ownCloud keeps one version every minute</li>
+<li>For the first 24 hours ownCloud keeps one version every hour</li>
+<li>For the first 30 days ownCloud keeps one version every day</li>
+<li>After the first 30 days ownCloud keeps one version every week</li>
+</ul>
+<p>The app is set to never use more than 50% of the user's available free space. When the stored versions of files exceed this limit, <em><strong>Versions</strong></em> deletes the oldest files until it meets the storage usage limit again. </p>
+<p>Hover over the file you want to revert or restore and select the <em><strong>Versions</strong></em> option. It can be found between the <em><strong>Download</strong></em> and <em><strong>Share</strong></em> options.</p>
+<p><img src="static/vc-02-b.png" width="757" height="124" /></p>
+<p>Clicking on this item, a drop down menu appears with two options. Either you click the little arrow to the right and get a list of all the versions of the file saved, or the option to enter an <em><strong>All versions...</strong></em> page.</p>
+<p> <img src="static/vc-03-b.png" width="502" height="161" /></p>
+<p> Clicking on the arrow will produce a list of all the versions saved so far.</p>
+<p><img src="static/vc-05-b.png" width="271" height="157" /></p>
+<p>Clicking on <em><strong>All versions...</strong></em> will open a new page with all the versions saved so far.</p>
+<p> <img src="static/vc-08-b.PNG" width="435" height="227" /><br />
+</p>
+<p>After clicking <em><strong>Revert</strong></em> the page returns a sentence in the color green, stating that the file has been restored to a particular version.</p>
+<p>At writing the <em><strong>Versions</strong></em> app was at version 1.0.3. It is stable but there is room for improvement. One weakness for example is that the history listed does not show the name of the user who saved a version of the file.</p>
+<p> <br />
+</p>
+<p><span id="ch011_installing-sync-client.xhtml"></span></p>
+<h1>About ownCloud Apps</h1>
+<h1></h1>
+<ul>
+</ul>
+<p>ownCloud apps provide you with optional features and enhancements. They are similar to Android apps or WordPress and Firefox plug-ins. Apps are divided into 'internal' apps, which are made by ownCloud themselves, and 'third party' apps which are made by other developers and companies.</p>
+<p>A number of internal and external apps are made available during the ownCloud installation. One can enable or disable them in the <em><strong>Apps</strong></em> menu item. Other applications can be installed from the ownCloud apps store:</p>
+<p>http://apps.owncloud.com/<br />
+</p>
+<h2>How to view your apps</h2>
+<p>To view, enable, disable and install apps you can click on the <em><strong>Apps</strong></em> menu, which is in the drop-down menu that appears when you click on your user name (in the top right hand corner of the web interface).<br />
+</p>
+<p><img src="static/apps1.png" width="114" height="310" /></p>
+<p>In the <em><strong>Apps</strong></em> menu there is a long list of apps: these give ownCloud much of its functionality. Those in bold and with a grey background are enabled by default, the rest are disabled.</p>
+<p><img src="static/se-03-b.PNG" width="245" height="140" /></p>
+<p>The active apps provide many features you will be familiar with already, for example document viewers, image viewers, contacts and calendars.<br />
+</p>
+<p><img src="static/apps3.png" width="427" height="750" /></p>
+<p>The other pre-installed third party apps, made by independent people or companies, can be enabled here. Their functionality can vary from necessary to frivolous. Keep in mind that there are no guarantees about the degree to which they are kept up to date and whether they will work in the next ownCloud core update.</p>
+<h2>How to activate an app</h2>
+<p>To activate a pre-installed app, locate the app in the list and click on the app name.<br />
+</p>
+<p><img src="static/apps4.png" width="387" height="523" /></p>
+<p>Then click <em><strong>Enable</strong></em>.<br />
+</p>
+<p><img src="static/apps5.png" width="600" height="255" /><br />
+</p>
+<p> The app is now enabled.</p>
+<p><img src="static/apps6.png" width="506" height="269" /><br />
+</p>
+<p>You will see that it has integrated with your ownCloud, in this instance you have a new icon in your navigation area.</p>
+<p><img src="static/apps7.png" width="298" height="222" /></p>
+<p>Another example is the <em><strong>ownCloud dependencies info</strong></em> app. This is something a server administrator normally wants to know.<br />
+</p>
+<p><img src="static/se-08-b.png" width="698" height="141" /></p>
+<p>Once enabled, you can find the information in the <em><strong>Admin</strong></em> menu.</p>
+<p><img src="static/se-09-b.png" width="236" height="172" /></p>
+<h2>How to deactivate an app</h2>
+<p>Good practice is to only enable what is needed. For example, if you don't use the ownCloud instance for PIM (personal information management) tasks, then you should disable the <em><strong>Calendar</strong></em> and <em><strong>Contacts</strong></em> apps.</p>
+<p><img src="static/se-04-b.PNG" width="578" height="220" /></p>
+<p>Once disabled the icon disappears from the left hand column and the apps are no longer highlighted. You can always enable them again at a later stage.</p>
+<h2>The more apps button</h2>
+<p>In the apps window there is a button labelled <em><strong>More Apps</strong></em>.<br />
+</p>
+<p><img src="static/apps8.png" width="380" height="177" /></p>
+<p>Clicking on <em><strong>Add your App</strong></em> opens a new tab in the browser for page <a href="http://owncloud.org/developer/" class="uri">http://owncloud.org/developer/</a>, the ownCloud Developer Center, and clicking on <em><strong>More Apps</strong></em> opens a new tab for <a href="http://apps.owncloud.com/,">http://apps.owncloud.com/</a>, the app market of ownCloud.</p>
+<p><img src="static/apps9.png" width="600" height="368" /><br />
+</p>
+<p>Be mindful of the fact that adding apps can cause issues on a server. Third party apps are not verified by the ownCloud community or by employed developers. Read reviews and comments about an app before installing it, and have a backup system in place. If you run into problems you can restore the ownCloud instance to a point in time when it was stable.</p>
+<p>To install an app proceed with the following steps:</p>
+<ul>
+<li>Download the app code from <a href="http://apps.owncloud.com/,">http://apps.owncloud.com/</a>. It is provided as a zip file<br />
+</li>
+<li>Unzip this file and upload the resulting folder into the /apps folder of your ownCloud installation<br />
+</li>
+<li>Make sure this folder and all files in the /apps directory are owned by <em><strong>www-data</strong></em></li>
+<li>The app should appear in your list of apps, enable it in the normal way<br />
+<br />
+</li>
+</ul>
+<p>Good news! A new, simple app installer is being designed at the moment.<br />
+<br />
+</p>
+<p><span id="ch012_using-tasks-and-bookmarks-apps.xhtml"></span></p>
+<h1>Using Tasks and Bookmarks Apps</h1>
+<p>This chapter documents a couple of the most popular apps for ownCloud. It assumes that you know how to activate apps.<br />
+</p>
+<h2>The bookmarks app</h2>
+<p>Activate your bookmarks app and then click on the <em><strong>Bookmarks</strong></em> button in your navigation bar.<br />
+</p>
+<p><img src="static/apps7.png" width="298" height="222" /> </p>
+<p>Drag the <em><strong>Read It Later</strong></em> button, displayed in the bookmarks window, to the bookmark area of your browser. (You may need to configure your browser to show this if it isn't present already.) Your browser should indicate when you are in the correct place (in the example below, a small yellow arrow and a separator line appeared).<br />
+</p>
+<p><img src="static/apps10.png" width="636" height="402" /> </p>
+<p>The button should stay/stick in your browser and will be there all the time.</p>
+<p><img src="static/apps11.png" width="139" height="126" /></p>
+<p>When you are browsing the web and you find a page that is important, perhaps a site you use as a reference tool, news center or simply something fun you might want to share or see again sometime, you can click the <em><strong>Read Later</strong></em> button.</p>
+<p>This will bring up a dialogue window to help you categorize and save the bookmark to your ownCloud instance.</p>
+<p><img src="static/apps13.png" width="550" height="470" /><br />
+</p>
+<p>The page name and web address will be recorded automatically.</p>
+<p>To help you find the <em><strong>Bookmark</strong></em> easily next time you need it, enter some tags by typing in the box, and hitting enter at the end of each tag (at which point they turn blue). A moment taken here to think of which tags to put will save you time looking for your links later.<br />
+</p>
+<p><img src="static/apps14.png" width="600" height="462" /><br />
+</p>
+<p>You can also include a description. Click <em><strong>Save</strong></em>, and the window will close. Your bookmark, and any new tags you used, will appear in your ownCloud instance (you may have to refresh the page).</p>
+<p>You can also use the search bar of ownCloud in the top right of your screen to find saved bookmarks.</p>
+<p> <img src="static/apps15_1.png" width="600" height="233" /></p>
+<h2>The tasks app<br />
+</h2>
+<p>Enable tasks in your apps section, and a new icon will appear in your navigation bar.<br />
+</p>
+<p><img src="static/tasks1.png" width="96" height="85" /></p>
+<p>Click on the <em><strong>Tasks</strong></em> icon to go to your tasks window.<br />
+</p>
+<p><img src="static/tasks2.png" width="600" height="160" /></p>
+<p>To add a new task click <em><strong>Add Task</strong>. <strong></strong></em></p>
+<p><img src="static/tasks3.png" width="128" height="69" /></p>
+<p>This will bring up an untitled, empty task. Click on the text reading &lt;no title&gt; to name your task.</p>
+<p><img src="static/tasks4.png" width="717" height="120" /></p>
+<p> <img src="static/tasks5_1.png" width="227" height="103" /></p>
+<p>Then fill in the details if you need to. You can chose a category, which will function like a to-do list.</p>
+<p><img src="static/tasks6.png" width="379" height="227" /></p>
+<p>You can set a due date for the task.<br />
+</p>
+<p><img src="static/tasks7.png" width="374" height="365" /></p>
+<p>You can set a time for the task, in hours and minutes.</p>
+<p><img src="static/tasks8.png" width="411" height="296" /></p>
+<p>You can add notes, and even a location.<br />
+</p>
+<p><img src="static/tasks9.png" width="600" height="93" /></p>
+<p>To mark a task as complete, click the tick-box next to the task name.<br />
+</p>
+<p><img src="static/tasks10.png" width="176" height="66" /></p>
+<p>To minimize a task so you only see the name, click the little black arrow.</p>
+<p><img src="static/tasks11.png" width="217" height="124" /></p>
+<p>If you have several tasks you can order them using the filter buttons at the top of the page.<br />
+</p>
+<p><img src="static/tasks12.png" width="600" height="170" /></p>
+<p>You can also use the tags down the side of the page to view individual lists. This relies on you reliably linking tasks with list categories. It can be easy to lose tasks once you start using the list filters. It seems advisable to only use a few of the list categories, for example, just use work and personal. You can only add each task to one list.</p>
+<p> </p>
+<p><span id="ch013_guide-for-admin-users.xhtml"></span></p>
+<div class="title">
+<h1>System Admin in the Web Interface</h1>
+</div>
+<p>The system administration tasks covered in this chapter can be found in the Admin menu. There is another section on administration in this guide which goes into more detail. For a deeper look at configuring ownCloud via the text based config files please refer to the ownCloud <a href="http://doc.owncloud.org/server/5.0/admin_manual/">administrator documentation here</a> and especially the section on <a href="http://doc.owncloud.org/server/5.0/admin_manual/configuration/index.html">configuration here</a>. </p>
+<p>Select <em><strong>Admin</strong></em> from your user menu on the top right of your page.<br />
+</p>
+<p><img src="static/se-02-b.png" width="96" height="241" /> </p>
+<h2>File handling and backups<br />
+</h2>
+<p>The first item on this <em><strong>Admin</strong></em> page is <em><strong>File handling</strong></em>.<br />
+</p>
+<p><img src="static/se-10-b.png" width="469" height="189" /></p>
+<p>If you are going to share movies for example, you can change the Maximum upload size to 1 or 2 GB. But for file sharing documents and photos and music 100-200 MB may be a good setting. You can increase this limit later if needed.<br />
+</p>
+<p>The <em><strong>Enabled ZIP-download</strong></em> is activated because it is <em><strong>Needed for multi-file and folder downloads</strong></em>. Entering <em><strong>0MB</strong></em> in this field means that users can download <em><strong>unlimited</strong></em> data.<br />
+</p>
+<p>The next item <span lang="EN-AU">–</span> <em><strong>Updater</strong></em> <span lang="EN-AU">–</span> allows you to update your ownCloud instance from the web interface.</p>
+<p><img src="static/se-11-b.png" width="266" height="97" /></p>
+<p>Once you've clicked <em><strong>Update Center</strong></em> you see:</p>
+<p><img src="static/se-12-b.png" width="705" height="297" /></p>
+<p>If you are up to date, clicking <em><strong>Backup Management</strong></em>, <em><strong>Update</strong></em> (top right) or  <em><strong>Update</strong></em> (bottom) does not return anything. However, when there is a new version available this tool allows you to update automatically.</p>
+<p>It is good to make a manual back up before trying this in case there are problems and you have to update manually following<a href="http://doc.owncloud.org/server/5.0/admin_manual/maintenance/update.html">these instructions from the official ownCloud manual</a>.<br />
+</p>
+<p>The next item <span lang="EN-AU">–</span> <em><strong>Export this ownCloud instance</strong></em> <span lang="EN-AU">–</span> is very useful. An administrator can use this to migrate or backup data.</p>
+<p><img src="static/se-13-b.png" width="520" height="206" /> </p>
+<p>Each option needs to be exported separately. Activating one and clicking on <em><strong>Export</strong></em> will result in a pop-up asking what to do with the ZIP file.<br />
+</p>
+<p><img src="static/se-14-b.PNG" width="457" height="329" /> </p>
+<h2>Background jobs</h2>
+<p>A system like ownCloud sometimes requires tasks to be done on a regular basis without blocking the user interface. For that purpose you, as a system administrator, can define background jobs which make it possible to execute tasks without any need of user interaction, e.g. database clean-ups etc. For the sake of completeness it is additionally worth knowing that  background jobs can also be defined by installed apps.<br />
+<br />
+Three methods are given in the <em><strong>Admin</strong></em> menu. While <em><strong>AJAX</strong></em> is the default setting, using the system's <em><strong>Cron</strong></em> service is a better way to run scripts.</p>
+<p><img src="static/se-15-b.PNG" width="697" height="210" /><br />
+</p>
+<p>There are no cron jobs activated by default. The file cron.php in the ownCloud directory does some basic housekeeping. It checks for locked files (perhaps after an unexpected shutdown) and cleans up the /tmp directory. It is good to activate this job. Using the <em><strong>AJAX</strong></em> method will trigger this cron job when a user logs in. But this may not be often enough so it is recommended to <em><strong>Use systems cron service</strong></em> and create a cron job on the server:<br />
+</p>
+<p><img src="static/se-16-b.PNG" width="459" height="111" /><br />
+</p>
+<p>Here you see that user www-data (that runs the web server) will trigger the cron.php file every 15 minutes.</p>
+<p>The command <em><strong>crontab -e</strong></em> is to edit the cron file and <em><strong>crontab -l</strong></em> is to list its content. For more information on background jobs and cron <a href="http://doc.owncloud.org/server/5.0/admin_manual/configuration/background_jobs.html">see this page</a>.<br />
+</p>
+<h2>Sharing, security and logs</h2>
+<p>Next you see the <em><strong>Sharing</strong></em> item and all options are enabled. Some of these options may be too 'open' for your set up. </p>
+<p>You could start by allowing <em><strong>apps to use the Share API</strong></em> and <em><strong>Allow links</strong></em>, and enable other functions if they are required by users.<br />
+</p>
+<p><img src="static/se-17-b.PNG" width="483" height="312" /></p>
+<p>The next item is <em><strong>Security</strong></em>.<br />
+</p>
+<p><img src="static/se-18-b.PNG" width="635" height="130" /></p>
+<p>Unless you are connected via HTTPS the option <em><strong>Enforce HTTPS</strong></em> will be grey and you won't be able to tick it. To enable HTTPS see the section on security elsewhere in this guide. It involves enabling a SSL certificates.</p>
+<p>The final item, <em><strong>Log</strong></em>, concerns viewing the system log files. It is useful to be able to view them via a web interface. There are various levels to choose from.<br />
+</p>
+<p><img src="static/se-20-b.PNG" width="103" height="122" /><br />
+</p>
+<p>At the very bottom of the <em><strong>Admin</strong></em> menu page you can see what version your ownCloud installation is at, which is useful to know and easily check.  </p>
+<p>In conclusion, the web interface gives a good selection of items for a system administrator to view and tweak.</p>
+<p>However, the best degree of control over the ownCloud installation is still from the command line interface, when logged into the server.<br />
+</p>
+<p><span id="ch015_owncloud-client.xhtml"></span></p>
+<h1>Syncing Files in ownCloud</h1>
+<p>At the core of services like ownCloud and DropBox is the ability to store, share and synchronize files between different computers, mobile devices and the web.<br />
+</p>
+<p>We have covered sharing and file versioning in other parts of the guide but it would be a good idea to explore what syncing files really involves and how ownCloud approaches it.</p>
+<p>A real benefit of syncing is that the web service seamlessly integrates into each device. For example on a desktop you can use your ownCloud instance <span></span>without opening a browser. The folder is then integrated into the local file system.</p>
+<p><img src="static/syn-01-b.png" width="440" height="236" /><br />
+</p>
+<h2>What is syncing? </h2>
+<p><img src="static/Arrows.png" width="253" height="253" />Syncing or sychronizing is the process of making sure that different repositories of information contain the same data.</p>
+<p>There are different ways of syncing your data. For calendar and contact information the process is different than the process for files. Please see other chapters dealing with contact and calendar syncing.</p>
+<p>The ownCloud system operates by having the web server act as the main repository for data. When a computer or device (client) connects with the server it updates its own list of the data that remains the same and the data that has changed.</p>
+<p>This is more efficient than downloading all the files every time you log into ownCloud. The client only gets and sends the files that have been changed. This speeds up the process of  scanning through a lot of files and analyzing which files need to be updated and in which direction.<br />
+</p>
+<p><strong>Tech Note:</strong> If you are interested in the technology behind the syncing in ownCloud there is <a href="http://doc.owncloud.org/desktop/1.4/architecture.html">more information here</a>. In short, the library<span> 'csync'</span> is used in combination with WebDAV technology.<br />
+</p>
+<h2>Tools to sync your files in ownCloud<br />
+</h2>
+<p>For the syncing of files there two main options<br />
+</p>
+<ul>
+<li>WebDAV folder sharing using the default File Manager / Finder application<br />
+</li>
+<li>Clients <span lang="EN-AU">–</span> applications which connect to the ownCloud server to allow synching<br />
+</li>
+</ul>
+<p>WebDAV is a well established protocol for sharing files via the internet. It can be set up in a simple way to act like a network drive on your computer or device. </p>
+<p>However, although it may be simple theoretically, in practice you may run into complications and limitations. Try setting up WebDAV to connect and sync to your ownCloud server using the instructions on this page.</p>
+<p>If this easy way of syncing doesn't work in the way you want or if you need more functionality, you can try using a sync 'client'. </p>
+<p>There are several clients which can be used with ownCloud but  this guide will focus on the use of the ownCloud client. This is covered in another chapter of this guide. </p>
+<h2>Synchronization of files via WebDav</h2>
+<h3>Setting up WebDAV in Nautilus (GNOME)<br />
+</h3>
+<p>Nautilus is a popular file manager for Linux based operating systems. If you are using a major distribution of Linux is it likely to be your default file manager.</p>
+<p>Connecting to an ownCloud server from your file manager has several advantages. It is quick, easy and will probably fit into your normal way of working with files.</p>
+<p>To star the process, start Nautilus and Select <em><strong>File</strong></em> &gt; <em><strong>Connect to server</strong></em>. </p>
+<p><img src="static/a_webdav_1.png" width="600" height="312" /> </p>
+<p>You will normally choose <em><strong>WebDAV (HTTP)</strong></em>.<br />
+</p>
+<p><img src="static/a_webdav_2.png" width="442" height="327" /> </p>
+<p>You can also choose <em><strong>Secure WebDAV</strong></em> if your server has that option (via using SSL / https).</p>
+<p><img src="static/a_webdav_3.png" width="442" height="139" /><br />
+</p>
+<p><br />
+The URL that you have to enter into the <em><strong>Server:</strong></em> box is the same as the URL you use to log in via the web, but with <em><strong>/remote.php/webdav</strong></em> added to the end.<br />
+For example: <em>youraddress.com/owncloud/remote.php/webdav</em></p>
+<p><img src="static/a_webdav_4.png" width="442" height="327" /> <br />
+</p>
+<p>You should now see your ownCloud server as a connection in the sidebar of your file browser.</p>
+<p>This may appear in a different way depending on your settings in Nautilus.</p>
+<p><img src="static/a_webdav_5.png" width="498" height="215" /><br />
+<br />
+Any new folders you create or files that you add to this directory will be transferred to your ownCloud server.<br />
+</p>
+<h3>Setting up WebDAV in Mac OSX<br />
+</h3>
+<p>In the Finder choose <em><strong>Go &gt; Connect to Server</strong></em>, type the address of the server in the Server Address field and click Connect.<br />
+<br />
+<img src="static/osx_webdav1.png" width="503" height="427" /><br />
+<br />
+The URL that you have to use to connect to the ownCloud installation in Finder is:<br />
+<br />
+</p>
+<pre><code>http://youraddress.com/owncloud/remote.php/webdav</code></pre>
+<p><strong>Note:</strong> Finder in Mac should only be used if the ownCloud server runs on Apache with mod_php enabled. If not, please use the ownCloud client.<br />
+<br />
+</p>
+<h3>Setting up WebDAV in Windows</h3>
+<p>Using Windows Explorer right-click on Computer and select <em><strong>Map network drive</strong></em>.</p>
+<p>Choose a local network drive to which you wish to map ownCloud.  Finally, enter the address to your ownCloud instance, followed by /remote.php/webdav, e.g.<br />
+</p>
+<pre><code>https://youraddress.com/owncloud/remote.php/webdav</code></pre>
+<p>For an SSL protected server. Check <em><strong>Reconnect at logon</strong></em> to make this mapping permanent each time you restart your computer. If you wish to connect as another user, check <em><strong>Connect using different credentials.</strong></em></p>
+<p><img src="static/explorer_webdav.png" width="628" height="458" /><br />
+<br />
+After pressing Finish, Windows Explorer will map the network drive and your ownCloud instance should be available.<br />
+</p>
+<p>To summarize, there are two ways of syncing local devices with the remote ownCloud server. Either you use the system's file manager and connect to the the WebDAV URL or you download and install the <em><strong>ownCloud client</strong></em>. There are clients for both desktop computers and mobile devices.<br />
+</p>
+<p> </p>
+<p><img src="static/syn-02-b.png" width="456" height="360" /></p>
+<p> </p>
+<p><img src="static/syn-03-b.png" width="404" height="359" /> </p>
+<p><br />
+</p>
+<p><span id="ch016_using-owncloud-client.xhtml"></span></p>
+<h1>Using ownCloud Desktop Clients</h1>
+<p>In other parts of this guide we explain how version control and synchronizing folders and files works using <em><strong>WebDAV</strong></em> and the file manager of your operating system.<br />
+</p>
+<p>The ownCloud client is a good way to have more control over the way files are synchronized between your ownCloud server on the web and your computer. This can be helpful if a simple <em><strong>WebDAV</strong></em> set up isn't performing as it should or if you want to take advantage of the extra settings the ownCloud client gives you. These include limiting the bandwidth used, viewing the space allocated and used, and setting certain files and folders to be ignored during the syncing process. </p>
+<h2>Installing client on Windows and Mac</h2>
+<p>Point your browser to <a href="http://owncloud.org/install/" class="uri">http://owncloud.org/install/</a>  and click on the button for either Windows or Mac and follow the instructions to download and install your client.</p>
+<p><img src="static/a_a_rr_2.png" width="458" height="368" /> <br />
+</p>
+<h2>Installing client on Ubuntu</h2>
+<p>First you will need to add a new repository to your software sources list. To do this, open the <em><strong>Software Center</strong></em>.</p>
+<p>Click the <em><strong>Other Software</strong></em> tab.</p>
+<p><img src="static/install_a_1.png" width="568" height="450" /> </p>
+<p>Click on <em><strong>Add</strong></em> source.</p>
+<p>Enter one of the following lines into the box, choosing the correct one for your version of Ubuntu. The version numbers are in bold: </p>
+<pre><code>deb http://download.opensuse.org/repositories/isv:ownCloud:devel/xUbuntu_13.10/ /</code></pre>
+<pre><code>deb http://download.opensuse.org/repositories/isv:ownCloud:devel/xUbuntu_13.04/ /</code></pre>
+<pre><code>deb http://download.opensuse.org/repositories/isv:ownCloud:devel/xUbuntu_12.10/ /</code></pre>
+<pre><code>deb http://download.opensuse.org/repositories/isv:ownCloud:devel/xUbuntu_12.04/ /</code></pre>
+<h2><img src="static/install_a_2.png" width="600" height="219" /></h2>
+<p>Select <em><strong>Add Source</strong></em>. </p>
+<p>Click <em><strong>Close</strong></em>. You will need to enter your admin password for your Ubuntu install.<br />
+</p>
+<p>Now you have installed the repository, you can search for <em><strong>owncloud-client</strong></em> in the top right of the <em><strong>Software Center</strong></em>.</p>
+<p><img src="static/install_a_3.png" width="600" height="261" /><br />
+</p>
+<p>Select the ownCloud client and click on <em><strong>Install</strong></em>. Enter your password to confirm.</p>
+<h2>Setting up your ownCloud client</h2>
+<p>After you have installed ownCloud you should be able to follow the ownCloud connection wizard to configure your client. If the wizard doesn't start automatically after install you can either restart your computer to trigger it or type the command 'owncloud' from your terminal window. </p>
+<p><strong>Note:</strong> if the wizard doesn't start, read on to configure it in a different way.<br />
+</p>
+<p>When the the ownCloud wizard starts follow these steps: <br />
+</p>
+<p>Enter the <em><strong>Server Address</strong></em> of your client.<br />
+</p>
+<p><img src="static/install_b_2.png" width="600" height="389" /></p>
+<p>Enter your <em><strong>Username</strong></em> and <em><strong>Password</strong></em>. </p>
+<p><img src="static/install_b_3.png" width="602" height="389" /></p>
+<p>Next, choose a directory to use as your <em><strong>Local Folder</strong></em> to be synchronized with the server.<br />
+</p>
+<p>By default the wizard may choose a directory called <em><strong>ownCloud</strong></em> in your home directory / My Documents. </p>
+<p><img src="static/a_client_3.png" width="602" height="389" /> </p>
+<p>You can click on the button next to <em><strong>Local Folder,</strong></em> highlighted in red in the image above, to choose another folder.<br />
+</p>
+<p>If these stages were successful you should see a green tick next to the icon of the cloud detailing your local folder in the <em><strong>Sync Status</strong></em> window. This means the local file is being synced with the remote files.<br />
+</p>
+<p><img src="static/install_b_1.png" width="597" height="380" /> </p>
+<h2>Using the ownCloud client</h2>
+<p>Once the ownCloud client is installed and configured you can view, edit and save files using the directory that you have set to sync to your ownCloud. These changes will be be available to you on the server and on other computers that you have synced-up to the server.</p>
+<p>There are also also a helpful status icon and toolbar menu available to you.</p>
+<p>In Ubuntu or other similar operating systems this toolbar menu is available at the top right of the desktop. If all is going well it should consist of an icon of a cloud and a green tick sign.</p>
+<p> <img src="static/a_client_4.png" width="231" height="270" /></p>
+<p>You will see some useful options here which you can select:</p>
+<ul>
+<li><strong>Open ownCloud in browser:</strong> This will direct you to log in to your ownCloud server via a web page</li>
+</ul>
+<ul>
+<li><strong>Open folder 'ownCloud':</strong> This will open your local version of your ownCloud directory, which you created when you set up the client</li>
+</ul>
+<ul>
+<li><strong>X% of x G/MB in user:</strong>  This is a quick way of seeing how much storage space is available to you and how much of your quota you have used</li>
+</ul>
+<ul>
+<li><strong>Recent Changes:</strong>  Clicking on this will show recent activity, such as which files have been uploaded or downloaded to/from the server to keep the folders in sync. Clicking on Details will show this information in greater detail as a table</li>
+</ul>
+<ul>
+<li><strong>Settings...:</strong>  This opens the settings window of your client including options for Account, General and Network</li>
+</ul>
+<ul>
+<li><strong>Help:</strong>  Takes you to the relevant help pages online</li>
+</ul>
+<ul>
+<li><strong>Quit ownCloud:</strong>  This exits the ownCloud settings until you restart your computer</li>
+</ul>
+<h2>Configuring the ownCloud client</h2>
+<p>After opening the Settings window, as described in the section above, there are three main tabs which allow you to configure the use of the client. These are <strong><em>Account</em></strong>, <em><strong>General</strong></em> and <em><strong>Network</strong></em>.<br />
+</p>
+<h3>Account settings<br />
+</h3>
+<p>In account settings you have the option to add new folders to snyc, to remove existing ones and to pause syncing.<br />
+</p>
+<p><img src="static/a_webdav_8.png" width="600" height="410" /></p>
+<p>There is a useful section on <em><strong>Storage Usage</strong></em> which shows you how much of your allocation of space on the server you have used. </p>
+<p>The <em><strong>Info</strong></em> button gives a more detailed view of the files that have been transferred or any problems with the synchronization. </p>
+<p><img src="static/a_webdav_9.png" width="579" height="402" /></p>
+<p>There is also an option to <em><strong>Edit Ignored Files</strong></em>. This opens the <em><strong>Ignored Files Editor</strong></em>.<br />
+</p>
+<p>This option allows you to not sync certain files or folders on your local or remote server.</p>
+<p>By default you can see that there are already some files that are ignored. These are normally files that are automatically created by other applications, rather than files you would normally use yourself. <br />
+</p>
+<p><img src="static/a_webdav_10.png" width="473" height="388" /></p>
+<p>There is also an option to add patterns for file or folder names/types to be ignored. There is more information on this <a href="http://doc.owncloud.org/desktop/1.4/visualtour.html#ignoredfileseditor-label">in the ownCloud documentation</a>.<br />
+</p>
+<h3>General settings</h3>
+<p>Under the <em><strong>General settings</strong></em> tab there are options to disable or <em><strong>Show Desktop Notifications</strong></em> which show next  to your client icon when files are synced successfully. </p>
+<p>There is also an option to stop your ownCloud client from loading automatically when you start your computer, called <em><strong>Launch on System Startup</strong></em>. </p>
+<p>Both of these options are enabled by default. Remove the tick in the relevant box to stop this functionality.<br />
+</p>
+<p><img src="static/a_webdav_7.png" width="600" height="410" /><br />
+</p>
+<h3>Configuring network settings</h3>
+<p>In the <em><strong>Network</strong></em> tab, you can change the <em><strong>Bandwith Limits</strong></em> depending on the bandwidth of your connection. If you have a slower connection and don't want to overload it (which would slow down your internet access every time you are syncing) then you can set these limits to be low.<br />
+</p>
+<p><img src="static/a_webdav_6.png" width="600" height="410" /><br />
+</p>
+<p>There also options for setting up <em><strong>Proxy Settings:</strong></em><br />
+<br />
+</p>
+<ul>
+<li><strong>No Proxy:</strong> Check this if you do not wish ownCloud client to use the default proxy</li>
+</ul>
+<ul>
+<li><strong>Use system proxy:</strong> This is the default option. ownCloud will then use your computer's proxy settings<br />
+</li>
+</ul>
+<ul>
+<li><strong>Specify proxy manually as:</strong> This allows users to fill in custom proxy settings<br />
+</li>
+</ul>
+<p><span id="ch017_owncloud-android-client.xhtml"></span></p>
+<h1>ownCloud Android Client</h1>
+<p>This chapter focuses on the Android Client available for ownCloud. There is also an app available for iPhones and iPads which works in a similar way. </p>
+<p>Key features of the Android app include:<br />
+</p>
+<ul>
+<li>Browsing your files and folders</li>
+<li>Downloading and viewing files</li>
+<li>Uploading videos and pictures from your phone to the server</li>
+<li>Ability to set a security password</li>
+</ul>
+<h2>Installing your mobile app</h2>
+<p>You can install the ownCloud client from the Google Play store or through the <a href="https://f-droid.org/">F-Droid</a> store. There is a charge to download the app from the Google Play store but F-Droid do not charge you for apps.<br />
+</p>
+<p>There are other advantages to using F-Droid instead of Google Play:</p>
+<ul>
+<li>F-Droid respects your privacy. They don’t track you, or your device<br />
+</li>
+<li>Apps in the F-Droid store are all free and open source software</li>
+<li>All apps are advert free (unless you enable adverts) and cannot track you (unless you enable tracking)</li>
+</ul>
+<p>There are instructions for how to install from F-Droid at the end of this section.</p>
+<h2>Using the ownCloud Android client app<br />
+</h2>
+<h2>  <img src="static/client_10.png" width="480" height="320" /></h2>
+<p>First add your <em><strong>Server Address</strong></em> <span lang="EN-AU">–</span> this is the web address of your ownCloud instance.<br />
+</p>
+<p>The app will try to make a connection <span lang="EN-AU">–</span> if it is successful it will say <em><strong>Secure Connection Available</strong></em> or <em><strong>Secure Connection Unavailable</strong></em>.</p>
+<p>If the app fails to make the connection it will tell you so in red text: in this instance check the URL and try again.</p>
+<p><img src="static/client_11_1.png" width="480" height="320" /> </p>
+<p>Next, put in your <em><strong>Username</strong></em> and <em><strong>Password</strong></em>, the same ones you use to access your ownCloud normally, and click <strong><em>Connect.</em></strong></p>
+<p><img src="static/client_12_2.png" width="480" height="320" /><br />
+ </p>
+<p>You are now logged on and can access your Cloud. What you see on your phone is synchronized with what is on your Cloud. From the menu you can access a wide range of features, including <em><strong>Refresh</strong></em> (which re-synchronizes) to create directory and upload.<br />
+</p>
+<p><img src="static/client_14.JPG" width="600" height="82" /><br />
+</p>
+<h2>Securing your client</h2>
+<p>In the <em><strong>Menu &gt; Settings</strong></em> you can set up a pin to protect your ownCloud. This means that if some one steals your phone, or finds it unlocked, there is an additional password to protect your data. To add this password:<br />
+</p>
+<p><img src="static/client_14.png" width="480" height="320" /></p>
+<p>Click  <em><strong>App PIN</strong></em>,<br />
+</p>
+<p><img src="static/client_15.png" width="480" height="320" /></p>
+<p>and enter, then confirm your pin. From this point you will need to enter this pin each time you open your client.</p>
+<h2>Installing the ownCloud Android client in F-Droid<br />
+</h2>
+<p>To install the ownCloud client through F-Droid make sure you have 3rd party applications install enabled in your <em><strong>Settings&gt; Applications</strong></em> menu.</p>
+<p><img src="static/client_1.png" width="480" height="320" /></p>
+<p>Then scan the QR code below, </p>
+<p> <img src="static/andorid_client_d-droid_QR_2.png" width="280" height="280" /></p>
+<p>and choose <strong><em>Open Browser</em></strong>.<br />
+</p>
+<p><img src="static/client_2.png" width="480" height="320" /><br />
+ </p>
+<p>Click the large button which says <strong><em>Download F-Droid</em></strong>. <strong></strong></p>
+<p> <img src="static/client_3.png" width="480" height="320" /></p>
+<p>Once the download has finished, click <em><strong>Install</strong>.</em></p>
+<p> <img src="static/client_4.png" width="480" height="320" /></p>
+<p>Click <em><strong>Open:</strong></em></p>
+<p><img src="static/client5.png" width="480" height="320" /></p>
+<p>You are now in the F-Droid store.</p>
+<p>Next you can can download the ownCloud client app. Click your menu, and then chose <em><strong>Search</strong></em>.</p>
+<p>Type in ownCloud and click <em><strong>Go</strong>. <strong></strong></em></p>
+<p> <img src="static/client_6.png" width="480" height="320" /></p>
+<p>Choose the <em><strong>ownCloud client</strong></em> from the list of applications.</p>
+<p> <img src="static/Client_7.png" width="480" height="320" /></p>
+<p> Select the starred version (which is the best version for your phone),<br />
+</p>
+<p> <img src="static/client_8.png" width="480" height="320" /></p>
+<p>and click <em><strong>Install</strong></em> and then <em><strong>Open</strong>. <strong></strong></em></p>
+<p><img src="static/Client_9.png" width="480" height="320" /> </p>
+<p>You are now running the ownCloud client app for Android.<br />
+</p>
+<p> </p>
+<p><span id="ch018_calendar-clients-and-synching.xhtml"></span></p>
+<h1>Syncing Calendars and Contacts <br />
+</h1>
+<p>If you have a laptop at home, a desktop at work, and have a mobile device like a smartphone or a tablet then it can be hard work keeping all of your calendars and contacts up to date. ownCloud has a good way of doing this so one no longer has to resort to using Google calendars and Google contacts to manage your personal information system.</p>
+<p>ownCloud uses the web standards CalDAV and CardDAV to achieve being always up-to-date. They are open standards and are used by many applications to send and receive information to keep everything synchronized.</p>
+<p><img src="static/a_a_rand_3.jpg" width="600" height="358" /> </p>
+<p>A quick search on the web will reveal a lot of different CalDAV and CardDAV personal information managers to choose from. We will cover the popular email client Thunderbird as it is cross platform and works with both CalDAV and CardDAV. We will also look at a couple of apps available for Android devices. <br />
+</p>
+<h2>Synchronizing calendars with CalDAV</h2>
+<p>Install the latest version of Thunderbird from <a href="http://www.mozilla.org/thunderbird/" class="uri">http://www.mozilla.org/thunderbird/</a><br />
+</p>
+<p>Then install the latest version of Lightning and the Sogo Connector plugin for Thunderbird from this address <a href="http://www.sogo.nu/english/downloads/frontends.html" class="uri">http://www.sogo.nu/english/downloads/frontends.html</a>. These plugins will give you the ability to add a remote calendar and address book to Thunderbird. You may need to restart Thunderbird to see your calendar.<br />
+</p>
+<p>Activate your Thunderbird calendar by selecting <em><strong>Events and Tasks &gt; Calendar Book</strong></em>. <br />
+<br />
+Now select <em><strong>File &gt; New &gt; Calendar</strong>.</em></p>
+<p><img src="static/calendar_s_1.png" width="477" height="366" /> </p>
+<p>Select <em><strong>On the Network</strong></em>.<br />
+</p>
+<p><img src="static/calendar_s_2.png" width="581" height="326" /></p>
+<p>Then enter the <em><strong>CalDAV Link</strong></em> URL of the chosen calendar from ownCloud.</p>
+<p><img src="static/calendar_s_3.png" width="534" height="177" /></p>
+<p>Click the globe in your calendar settings to get the right link. </p>
+<p><img src="static/calendar_s_4.png" width="581" height="326" /></p>
+<p>Give the calendar a name and choose a color. <br />
+</p>
+<p>Then link it with your email. </p>
+<p><img src="static/calendar_s_5.png" width="555" height="199" /></p>
+<p>Insert the <em><strong>User Name</strong></em> and <em><strong>Password</strong></em> that you use for ownCloud and click <em><strong>OK</strong></em>.</p>
+<p><img src="static/calendar_s_6.png" width="600" height="308" /><br />
+</p>
+<p>You should now be able to read and write to your calendar from inside Thunderbird. You can repeat this process with other remote calendars.<br />
+</p>
+<h2>Synchronising contacts with CardDAV</h2>
+<p>The following is a guide to the process of using an <strong><em>Address Book</em></strong> in the cross platform Thunderbird email client. A similar approach should work for other CardDAV enabled applications.</p>
+<p>Install Thunderbird and Sogo Connector plugin as detailed in the section above.<br />
+</p>
+<p>Activate your Thunderbird address book by selecting <em><strong>Tools &gt; Address Book</strong></em>. <br />
+<br />
+Now select <em><strong>File &gt; New &gt; Remote Addressbook</strong></em>.<br />
+</p>
+<p><img src="static/contact_s_1.png" width="485" height="223" /> </p>
+<p><strong>Name:</strong> Enter a name for your address book. </p>
+<p><strong>URL:</strong> Add the relevant CardDAV URL from your ownCloud <em><strong>Contacts</strong></em> area.</p>
+<p> <img src="static/contact_s_3.png" width="494" height="168" /></p>
+<p>To find the URL, click on the settings cog in the bottom left of your contacts area.<br />
+</p>
+<p> <img src="static/s_contacts_1.png" width="535" height="309" /></p>
+<p>Each address book has it's own <em><strong>CardDAV link</strong></em> indicated by the globe icon.</p>
+<p><img src="static/contact_s_2.png" width="347" height="229" /> </p>
+<p>Back in Thunderbird, synchronize with the remote address book by right clicking select <em><strong>Synchronize</strong></em>.</p>
+<p><img src="static/s_contacts_4.png" width="585" height="285" /></p>
+<p>You’ll see your local address book fill with the contacts in ownCloud. Similarly, adding or editing your contacts in Thunderbird will trigger a sync with the ownCloud server.<br />
+</p>
+<p><br />
+<strong>Note:</strong> Be careful when arranging your contacts. Moving a contact from from a remote 'OwnCloud address book' to a local address book removes the contact from the OwnCloud server, (thus deleting it from all the other synchronized installations). Take care and be sure to copy not move if you don't want this to happen. <br />
+</p>
+<h2>Connecting contacts and calendar to mobile devices</h2>
+<p>There are instructions for connecting iCal and contacts of Apple devices to ownCloud in the official ownCloud documentation. </p>
+<ul>
+<li><a href="http://doc.owncloud.org/server/5.0/user_manual/pim/sync_ios.html">iOS Calendar</a></li>
+<li><a href="http://doc.owncloud.org/server/5.0/user_manual/pim/sync_osx.html">Mac OSX</a></li>
+</ul>
+<p><br />
+</p>
+<h3>Contacts and syncing on Android devices</h3>
+<p>There are several apps available to sync your Android device contacts with those on a CardDAV compatible service like ownCloud. We have documented one called <em><strong>CardDAV sync beta free</strong></em> which we have tested and concluded that it works well. </p>
+<p>Search and install the app in your usual way.</p>
+<p><img src="static/a_andcard_2.png" width="480" height="248" /><br />
+</p>
+<p><img src="static/a_andcal_3.png" width="480" height="623" /><br />
+ </p>
+<p>Once installed start the app in the normal way.</p>
+<p>Select CardDAV from the options presented. </p>
+<p><img src="static/a_andcard_4.png" width="480" height="464" /><br />
+</p>
+<p>Enter your user details and the URL of the CardDAV address book that you want to connect to.</p>
+<p><br />
+</p>
+<p><img src="static/a_andcard_5.png" width="480" height="486" /> </p>
+<p>If you have SSL/https enabled on your server keep the tick in the <em><strong>Use SSL</strong></em>. If not take the tick out. See the chapter on security for the reasons why using SSL increases the security of ownCloud.</p>
+<p>If you are entering a normal URL you can find it in the settings of your ownCloud <em><strong>Contact Settings</strong></em>. Look for the <em><strong>CardDAV link</strong></em>.<br />
+</p>
+<p><img src="static/a_andcard_1.png" width="545" height="266" /><br />
+</p>
+<p>Make sure to enter the link details exactly. A typo will result in an error. Then click on <strong><em>Next</em></strong><em>.</em></p>
+<p>You should be presented with the name of your default address book. If you have added, or have other address books shared with you they should also appear in your list to choose from. You can only choose one now, however you can repeat the process with other address books.</p>
+<p><img src="static/a_andcard_6.png" width="480" height="303" /> </p>
+<p>You can then give another name to the address book if needed. </p>
+<p><img src="static/a_andcard_7.png" width="480" height="314" /><br />
+</p>
+<p>You are given the option to <em><strong>Sync from server to phone only</strong></em>. If you un-tick this then changes that you make on your devices will by synced back up to the server.</p>
+<p>When using contacts in Android or via the ownCloud server you may find it slightly clumsy. This area is still quite experimental and changes are being made to make it more user-friendly.</p>
+<p>You may want to choose a more mature system like the Thunderbird email client to be the interface where you manage your contacts. Changes you make there will be updated to your server and to any android clients that you have synced.</p>
+<h3>Calendars and syncing on Android devices</h3>
+<p>Android does not support <em><strong>CalDAV</strong></em> by default, so we need to install an app to allow our devices to do this.</p>
+<p>Searching for CalDAV in the Google Play store will give you a number of choices.<br />
+</p>
+<p><img src="static/a_andcal_4.png" width="600" height="283" /></p>
+<p>The first two results are called <em><strong>CalDAV Sync</strong></em> and <em><strong>CalDAV Sync Free</strong></em>. These have been shown to be effective by people using ownCloud.</p>
+<p>We recommend that you install them and repeat a similar process to that listed above for syncing Contacts in Android and Calendars in Thunderbird. </p>
+<p><br />
+</p>
+<p><br />
+</p>
+<p><span id="ch020_owncloud-server.xhtml"></span></p>
+<h1>Installing ownCloud Server</h1>
+<p>At the time of writing this manual, version 5.0.13 is the stable version of ownCloud server.<br />
+</p>
+<p>ownCloud can be installed on either Linux or Windows servers. Due to an issue with Mac OS Unicode support, installing ownCloud Server 5.0 on Mac OS is currently not supported.</p>
+<p><img src="static/a_a_inst_4.png" width="568" height="165" /> </p>
+<p>There are many ways to install ownCloud. This guide covers two ways, via the web installer and by uploading the latest code via a tar/zip file to your webspace.</p>
+<h2>What you need to install ownCloud</h2>
+<p>It is beyond the scope of this document to fully describe the setup of the hosting part of running a server. If you are new to the process we would recommend a LAMP set up which involves (Linux, Apache, MySql and PHP).</p>
+<p>Most hosting plans can provide an already working LAMP set up. If you a running your own server with root access there is good help online for 'setting up a LAMP server'.<br />
+</p>
+<p>Here are the prerequisites for installing ownCloud. You will need:</p>
+<ul>
+<li>webspace as part of a hosting package or VPS (virtual private server)<br />
+</li>
+<li>php5 (&gt;= 5.3)  php5-gd &amp; php-xml-parser<br />
+</li>
+<li>file server (probably Apache if you are unsure but Nginx or Lighttpd are also good options)</li>
+<li>a way of accessing your files on the server and changing their 'owner' and 'permissions' (ftp, ssh and cpanel are the most normal ways) </li>
+</ul>
+<p>There are other optional requirements that allow for additional functionalities. These include: </p>
+<ul>
+<li>MySql<br />
+</li>
+<li>php5-intl php5-sqlite (&gt;= 3) php5-mysq php5-pgsql (or php-pgsql depending on your distro)</li>
+</ul>
+<p>You can choose to use an external database like MySql or the more simple file based system SqLite.</p>
+<p>By default ownCloud installs with SQLite are not recommended for large ownCloud installations. The most popular database on Linux is MySQL but MariaDB or PostgreSQL are also good options.<br />
+</p>
+<p>There is fuller detail about this aspect and details of how to install these prerequisites, if they are already active on your server, at <a href="http://doc.owncloud.org/server/5.0/admin_manual/installation/installation_source.html">this page of the official ownCloud documentation.</a></p>
+<h3>Installing on Debian / Ubuntu<br />
+</h3>
+<p>As an example here are some commands to install some needed components for Ubuntu and Debian using a LAMP (Apache) setup. Run these commands on the command line as root:<br />
+</p>
+<pre><code>apt-get install apache2 php5 php5-gd php-xml-parser php5-intl
+apt-get install php5-sqlite php5-mysql php5-pgsql smbclient curl libcurl3 php5-curl</code></pre>
+<p>If using Apache, you need to have the <em><strong>rewrite</strong></em> and <em><strong>headers</strong></em> modules enabled so run:<br />
+</p>
+<pre><code>a2enmod rewrite
+a2enmod headers</code></pre>
+<p>And restart your server for these settings to take effect:<br />
+</p>
+<pre><code>service apache2 restart </code></pre>
+<h3>Enabling .htaccess and Apache modules<br />
+</h3>
+<p>You need to allow the .htaccess file of ownCloud space to be active. If you are a beginner to web administration you may need help with this aspect.<br />
+</p>
+<p>The most direct way is to changing <em><strong>None</strong></em> to <em><strong>All</strong></em> in the <em><strong>&lt;Directory /var/www/&gt;</strong></em> section of the VirtualHost file which is normally located here:  <em><strong>etc/apache2/sites-enables/000-default</strong></em></p>
+<p>So an example could be:</p>
+<pre><code>         &lt;Directory /var/www/&gt;
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride None
+                Order allow,deny
+                allow from all
+        &lt;/Directory&gt;</code></pre>
+<p>This process can be done in different ways to make your server more secure. You may need to do some research or get support to find the most secure way for you to achieve this for your particular server.  <br />
+</p>
+<p>We are also aware that it is possible to install your ownCloud directory in different folders on your server depending on how it is set up. In this guide we will presume that <em><strong>/var/www/</strong></em> is the root folder for your web server and we are going to install ownCloud inside there. If this is not appropriate we use <em><strong>/path/to/owncloud/</strong>.</em> If you see this you should replace it with the correct path to where you are installing ownCloud on your server.<br />
+</p>
+<h2>Installing with Web Installer</h2>
+<p>This section covers how to install ownCloud with the web installer and using an external database MySql.<br />
+</p>
+<p>Point your browser at <a href="http://www.owncloud.org">www.owncloud.org</a>  and find the link to the <em><strong>Install</strong></em> page:<br />
+</p>
+<p><img src="static/si-04-b.png" width="600" height="50" /><br />
+</p>
+<p>The list of three options link to instructions on installing ownCloud manually (downloading the <em><strong>Tar or Zip File</strong></em>), the <strong><em>Web Installer</em></strong> and installing ownCloud using distribution specific <em><strong>packages</strong></em>.<br />
+</p>
+<p><img src="static/si-05-b.png" width="600" height="184" /></p>
+<p>Clicking the <em><strong>Web Installer</strong></em> link results in a pop-up window with instructions. <br />
+</p>
+<p> <img src="static/a_a_rr_8.png" width="556" height="348" /></p>
+<p>Before following these instructions, the web directory should be owned by the web server. This user must have read, write and execute permissions on the directory, plus read and write permissions on all the files in the directory. Finally, all future files created in this directory must have the same permissions:<br />
+</p>
+<pre><code>chown -R www-data:www-data /var/www/
+chmod 775 /var/www/
+chmod 664 /var/www/*
+chmod g+s /var/www/</code></pre>
+<p>Go to the web directory and download the script that ownCloud calls the <em><strong>Web Installer</strong></em>:</p>
+<p>cd /var/www<br />
+</p>
+<p>curl -O -L https://download.owncloud.com/download/community/setup-owncloud.php</p>
+<p>In a browser point it to your web server where you have installed ownCloud to run the setup script:</p>
+<p><img src="static/si-07-b.png" width="240" height="47" /> </p>
+<p>If all goes well you should see a page welcoming you to the setup wizard; click Next. The dependency check is run and one is served the following page:</p>
+<p><img src="static/si-08-b.PNG" width="373" height="455" /><br />
+</p>
+<p>One can change the <em><strong>owncloud</strong></em> subdirectory to anything you like, for example <em><strong>mydocs</strong></em>. Click <em><strong>Next</strong></em> and wait about half a minute while the script creates the necessary files. You should see <em><strong>Success</strong></em> and press <em><strong>Next</strong></em>.<br />
+</p>
+<p>The final step is to create an database and a user:</p>
+<p><img src="static/si-10-b.PNG" width="356" height="581" /><br />
+</p>
+<p>Make sure you have the details at hand for a <em><strong>Database user</strong></em> and <em><strong>Database password</strong></em>  and <em><strong>Database name</strong></em>. You may need to create your database in phpmyadmin, cPanel or via the mySql command line. If this is not possible you may need to ask your hosting company or server admin to help you.<br />
+</p>
+<p>The <em><strong>Username</strong></em> for the <em><strong>admin account</strong></em> can be anything you wish to make it.<br />
+</p>
+<p>On completion of the ownCloud <em><strong>Web Installer</strong></em> you will automatically logged into your new ownCloud server setup. Congratulations! Happy saving, syncing and sharing of your own data.</p>
+<h2>Installing by downloading Tar/Zip file</h2>
+<p>This section covers how to install ownCloud by downloading the code to your website. We will use the simple method of using the default SqLite system and FTP to upload our files.</p>
+<p>Point your browser to the install page of ownCloud at <a href="http://owncloud.org/install/" class="uri">http://owncloud.org/install/</a></p>
+<p>Click on the <em><strong>Tar or Zip File</strong></em> link.<br />
+</p>
+<p><img src="static/a_a_inst_3.png" width="568" height="165" /></p>
+<p>Choose either the tar download for Linux or the zip download for Windows (or Mac).</p>
+<p><img src="static/a_a_inst_2.png" width="554" height="285" /> </p>
+<p>Save the downloaded file to your computer and double click on it to uncompress it.</p>
+<p>The next stage involves uploading this unzipped code to your web space. You can do this in different ways either via a (s)ftp client, a cPanel File Manager or other command line tools.</p>
+<p>In this example we will use FileZilla, a (s)FTP client.</p>
+<p><img src="static/a_a_inst_5.png" width="600" height="341" /> </p>
+<p>Connect to the server with your server login details and copy all the unzipped files to the directory on your server you are going to use as the home for your ownCloud directory.</p>
+<p>When we point our browser to the URL that we have linked to this web directory we will see an error that we need to fix. <strong>Cannot create data directory (/path/to/owncloud/)</strong><br />
+</p>
+<p><img src="static/a_a_inst_6.png" width="550" height="309" /></p>
+<p>This message is asking us to change the ownership setting of some of the folders on the install. Specifically for this Linux server to be owned by the web server user <em><strong>www-data</strong></em>.<br />
+</p>
+<p>Unfortunately there isn't a way of doing this in FTP or even most SFTP clients. But we have a few options.</p>
+<p>For Cpanel users to change permissions this is done in the File Manager section see<a href="http://www.hostmysite.com/support/cpanel/linux/modifypermissions/">this page for more help on using cPanel.</a><br />
+</p>
+<p>If you are renting space you can ask them to set the ownership of the <em><strong>/data</strong></em> <em><strong>/apps</strong></em> and <em><strong>/config</strong></em> folders to be owned by the web server. You can point them to this for more info. </p>
+<p>We can learn how to get command line access to the server and enter the following commands as root user. </p>
+<pre><code>cd /path/to/owncloud/
+mkdir data
+chown -R www-data:www-data data config apps</code></pre>
+<p>The exact commands may be different depending on what server you are running. <a href="http://doc.owncloud.org/server/5.0/admin_manual/installation/installation_source.html#set-the-directory-permissions">See this page for cross platform instructions.</a><br />
+</p>
+<p>If you return to the web page where ownCloud was installed the error should be replaced with a welcome screen asking you to create an admin user with the first log in.<br />
+</p>
+<p><img src="static/a_a_inst_7.png" width="565" height="403" /><br />
+</p>
+<p>If you just want to get started with a basic install then enter your details, click <em><strong>Finish setup</strong></em> and continue using ownCloud.</p>
+<p>If you want to change the data directory or install with MySql you can click on the <em><strong>Advanced</strong></em> link.</p>
+<p><img src="static/a_a_inst_8.png" width="413" height="274" /><br />
+</p>
+<h2>Troubleshooting<br />
+</h2>
+<p>Complementary documentation is available at:<br />
+<a href="http://doc.owncloud.org/server/5.0/admin_manual/" class="uri">http://doc.owncloud.org/server/5.0/admin_manual/</a></p>
+<p>There is also a very useful user forum at:<br />
+<a href="http://forum.owncloud.org" class="uri">http://forum.owncloud.org</a></p>
+<p> </p>
+<p><span id="ch021_theming.xhtml"></span></p>
+<h1>Theming OwnCloud<br />
+</h1>
+<p>The standard ownCloud theme is very attractive but changing it to fit your own organization's house style will make users, for example, customers, volunteers and donors feel more at home on your website. This can be achieved with a few simple tweaks to the color scheme and images. We call the changing of the look of websites 'theming'. <br />
+</p>
+<p>In the following guide we will change the splash screen image or logo, the logo in the top left hand corner when logged in, and the favicon. To change these you will need to be able to upload images to the ownCloud server, with FTP or SCP to the owncloud/core/img directory.<br />
+</p>
+<h2>Changing the log in logo</h2>
+<p>The default ownCloud logo is the pile of circles looking like a cloud. We are going to replace this image with our own organization's logo.<br />
+</p>
+<p><img src="static/logo_change_1.png" width="567" height="572" /><br />
+</p>
+<p>First prepare a version of your own logo. It must be approximately 252x122 pixels (width x height). Use an image manipulation application like GIMP or Inkscape to make the image.<br />
+</p>
+<p><img src="static/logo_change_2.png" width="600" height="408" /><br />
+</p>
+<p>Save the file in the <em><strong>SVG</strong></em> (use Inkscape) format and call it logo.svg. This format is preferable to .jpg or .png because it is a vector file and does not degrade in quality. Scaling a vector image (as opposed to a bitmap image) preserves the shapes.</p>
+<p>Backup the original ownCloud logo. Then replace the logo.svg file on the server with your own logo.svg file. The name of the file must be logo.svg.<br />
+</p>
+<p>The file path will look something like this:</p>
+<p><em><strong>yourowncloud.org/core/img/logo.svg</strong></em><br />
+</p>
+<p><img src="static/logo_change_5.png" width="405" height="333" /></p>
+<p>Once you have put your new logo on the server you will see the image change on the splash or log in screen.</p>
+<p><img src="static/logo_change_3.png" width="523" height="580" /></p>
+<h2>Changing the logo seen when logged in<br />
+</h2>
+<p>You can also change the logo that displays at the top of your ownCloud web interface using a similar method. This logo is much smaller <span lang="EN-AU">–</span> only 140w x 32h pixels.</p>
+<p>The path to replace that is <em><strong>owncloud/core/img/logo-wide.svg</strong>.</em></p>
+<h2>Changing the favicon</h2>
+<p>Upload your own 32x32 pixel favicon.png file to <em><strong>owncloud/core/img/</strong>.</em><br />
+</p>
+<h2>Using new themes</h2>
+<p>Above we have been editing images of the core website. This works just fine but ideally we should use the <em><strong>owncloud/themes</strong></em> directory to change the look and feel of an ownCloud. In this way one does not change the core code and makes migrating or updating ownCloud less prone to data loss.<br />
+</p>
+<p>Get an example theme online:<br />
+</p>
+<p>https://github.com/owncloud/themes/tree/master/responsive</p>
+<p>Upload the files into <em><strong>owncloud/themes/responsive</strong></em> on your ownCloud server.  Because ownCloud is written in PHP there are no HTML files so one needs to change the CSS files.<br />
+</p>
+<p>Place the CSS and image files you've made in the new theme folder. To activate the theme edit <em><strong>owncloud/config/config.php</strong></em> by adding the following line to the file:<br />
+</p>
+<p><em><strong>'theme' =&gt; 'responsive',</strong></em></p>
+<h2>Changing ownCloud colors</h2>
+<p>We can change the color scheme of our ownCloud by either editing the core CSS file, or by making a new theme. As child themes prevent your changes from being lost when you update the server we will explain that process.<br />
+</p>
+<p>Copy the css file from <em><strong>/core/css/styles.css</strong></em> into our example theme directory <em><strong>/themes/example/core/css/styles.css</strong>.</em></p>
+<p> In the style sheet, a bit further down, is a set that looks something like this:<br />
+<br />
+</p>
+<pre><code>/* HEADERS */
+
+#body-user #header, #body-settings #header { position:fixed; top:0; z-index:100; width:100%; height:2.5em; padding:.5em; background:#1d2d42; -moz-box-shadow:0 0 10px rgba(0, 0, 0, .5), inset 0 -2px 10px #222; -webkit-box-shadow:0 0 10px rgba(0, 0, 0, .5), inset 0 -2px 10px #222; box-shadow:0 0 10px rgba(0, 0, 0, .5), inset 0 -2px 10px #222; }
+
+background: -moz-linear-gradient(top, #33537a 0%, #1d2d42  100%); /* FF */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F1B3A4), color-stop(100%,#1d2d42)); /* Chrome,Safari4+ */</code></pre>
+<p>This section deals with the headers for different browser types.</p>
+<p>We can change the <em><strong>#35537a</strong></em> (lighter blue) and <em><strong>#ld2d42</strong></em> (dark blue) color to the colors of our choice.</p>
+<p>The log in page background has a horizontal gradient. The first hex number, #35537a, is the top color of the gradient at the log in screen. The second hex number, #ld2d42 is the bottom color of the gradient at the log in screen. You can change these colors to the hex color number of your choice, save the file and refresh the web page to see the new log in screen.</p>
+<p>The other major color scheme is the blue header bar on the main navigation page under once you log in to ownCloud. This can be changed under #header in the code above change the value of:<br />
+</p>
+<pre><code>background:#1d2d42</code></pre>
+<p>Save the file and refresh the browser for the changes to take affect.</p>
+<h3>A handy color picker <br />
+</h3>
+<p>To find out the HTML color values for the colors on your website use a color picker or check what the values are in your website's source code. One useful tool is the <em><strong>Firebug</strong></em> plugin for Firefox, another, the little program <strong>Gpick</strong>.</p>
+<p><img src="static/themeing_1.png" width="600" height="496" /></p>
+<p>More information about theming can be found at the developer manual:</p>
+<p><a href="theming/%20http:/doc.owncloud.org/server/5.0/developer_manual/core/theming.html%20"></a></p>
+<p><a href="theming/%20http:/doc.owncloud.org/server/5.0/developer_manual/core/theming.html%20">http://doc.owncloud.org/server/5.0/developer_manual/core/theming.html</a></p>
+<p><br />
+</p>
+<h2><br />
+</h2>
+<p><span id="ch022_owncloud-and-security.xhtml"></span></p>
+<h1>ownCloud and Security</h1>
+<p>We don't discuss general security aspects of system administration here. We only detail that which is specific to ownCloud. We can recommend doing some reading around this subject specifically for the following areas:</p>
+<ul>
+<li><a href="https://www.google.com/?q=web+administration+and++file+permissions">File and folder permissions</a><br />
+</li>
+<li>Installing third party apps / plugins</li>
+<li><a href="https://www.google.co.uk/search?&amp;q=choosing+strong+passwords">Choosing strong passwords</a><br />
+</li>
+</ul>
+<p>A quick recommendation to ownCloud administrators is to subscribe to the Announcements mailing list: <a href="http://mailman.owncloud.org/mailman/listinfo/announcements" class="uri">http://mailman.owncloud.org/mailman/listinfo/announcements</a></p>
+<p>This will keep an admin up to date with new, stable releases. It is good practice to keep one's server up to date. And to get an impression when the next major release is due.</p>
+<p><img src="static/se-22-b.png" width="510" height="490" /><br />
+</p>
+<p>In this chapter we cover two aspects where ownCloud offers system administrators a way of increasing the level of security of their installed instance. One, the Encryption app, is found under the Apps menu and the other, the Enforce HTTPS setting, in the Admin menu. <br />
+</p>
+<h2>Encryption</h2>
+<p>Why would you use the Encryption app? The cheapest and easiest and most common way to have your own server these days is to hire a VPS (virtual private server), from a hosting provider. The system administrators of the hosting provider have access to all the data on all the VPSs. To obfuscate your data from these sysadmins you can choose to use ownCloud's built in encryption app.<br />
+</p>
+<p>In the Apps menu find the Encryption app and enable it:</p>
+<p><img src="static/sec-01-b.png" width="591" height="249" /> </p>
+<p>Log out and log in again. You will not notice a change. Looking in the /var/www/owncloud/data/ directory on the server you will see two new files:</p>
+<p><img src="static/sec-02-b.png" width="600" height="47" /><br />
+</p>
+<p>Before encryption a sysadmin can view your files with the commands <em><strong>less</strong></em> or <em><strong>cat</strong></em>. After encryption, this is what a sysadmin sees in your secret file:</p>
+<p><img src="static/sec-03-b.png" width="600" height="169" /><br />
+</p>
+<h3>Limitations of encryption app</h3>
+<p>This app has had issues in the past involving data loss and corruption after upgrades. It is not well tested or mature yet. We encourage people to try it but not to rely on it. We feel it is worthwhile to evaluate different encryption methods and to get into the habit of using it. Be aware that you may lose data. Keep an offline backup of your data. Encryption is an incredibly complex but important topic. ownCloud may offer an easy way for us to start encrypting our online data by default. <br />
+</p>
+<p>There is no way to decrypt your files directly on the server if you decide to stop using the Encryption app. The only way to get a complete copy of your unencrypted data is to download/sync all files as long as the Encryption app is enabled. After the Encryption app is disabled you can upload your unencrypted data again. It is already planned to add a option to switch from encrypted to unencrypted files directly on the server. For more info see <a href="http://doc.owncloud.org/server/5.0/user_manual/files/encryption.html">this page</a>. <br />
+<br />
+Below one can see a screenshot where  we can't read the contents of a file because it was made when the Encryption app was enabled and we are viewing after it has been disabled.</p>
+<p><img src="static/sec-04-b.png" width="600" height="508" /></p>
+<h2>Enforce HTTPS</h2>
+<p>The Hypertext Transfer Protocol (HTTP) is the networking protocol used by browsers that allows communication between you and a site you are visiting. Because communication is transmitted in plain text it is unsafe, especially when using wireless networks. It is like transmitting a message with personal information on a postcard. Data, such as user names and passwords, sent to and received by websites, is easily read by third parties.</p>
+<p>To solve this problem the Hypertext Transfer Protocol Secure (HTTPS) was invented to provide encrypted communication and secure identification of a network web server. Most major websites, including Google, Wikipedia, and popular social networking platforms such as Facebook and Twitter can also be reached via a secure connection, but not necessarily by default. Note that most sites do not provide encryption.</p>
+<p><img src="static/HTTPS-Schema.jpg" width="600" height="285" /><br />
+</p>
+<p>Using SSL (secure socket layer) for your ownCloud website makes it almost impossible to view your traffic. Everything that is done on a website, for example logging in, opening new pages, uploading and downloading files, will be encrypted with the help of certificates. The URL of your site will need to be opened with https:// as opposed to simply using http://<br />
+</p>
+<p>There are three parts to getting your website to use https: install the software, generate key and certificate, and configure the web server.<br />
+</p>
+<h3>Installation</h3>
+<p>On your Debian 7 (codename Wheezy) Linux server run:</p>
+<p>apt-get install openssl<br />
+</p>
+<h3>Generate key and certificate</h3>
+<p>As root user log into your server and execute the following string of commands:</p>
+<p>openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout myowncloud.key -out myowncloud.crt<br />
+</p>
+<ul>
+<li>The req command creates and processes certificate requests<br />
+</li>
+<li>The -x509 option outputs a self-signed certificate instead of a certificate request</li>
+<li>Nodes stands for 'no DES'. When -nodes is given as an argument, OpenSSL will not encrypt the private key</li>
+<li>The -days option is needed when using x509, i.e. generating a self-signed certificate. The default is 30 days</li>
+<li>The -newkey option creates a new certificate request and a new private key. If one types -new instead of -newkey, only a new certificate request will be generated</li>
+<li>If the -keyout option is not specified then the newly created private key file name will be taken from the one present in the configuration file</li>
+<li>The -out option specifies the certificate file name</li>
+</ul>
+<p>You now have two new files on your server, a certificate and a private key.</p>
+<p><img src="static/sec-05-b.png" width="571" height="155" /><br />
+</p>
+<h3>Configure web server<br />
+</h3>
+<p>As root user log into your server and execute the following:</p>
+<pre><code>a2enmod ssl</code></pre>
+<p>Create a new VirtualHost, for example naming it ocvh and add the following lines:</p>
+<pre><code>&lt;VirtualHost *:443&gt;
+      ServerName 192.168.178.20
+      SSLEngine
+      SSLCertificateFile /etc/ssl/filename.crt
+      SSLCertificateKeyFile /etc/ssl/filename.key
+      DocumentRoot /var/www/owncloud
+&lt;/VirtualHost&gt;</code></pre>
+<p>Your <em><strong>ServerName</strong></em>, <em><strong>DocumentRoot</strong></em> and file names will differ.</p>
+<p>Activate the VirtualHost by running:</p>
+<pre><code> a3ensite ocvh</code></pre>
+<p>Restart the web server:</p>
+<pre><code>service apache2 restart</code></pre>
+<p>Open your ownCloud instance with a browser. Remember to use HTTPS. Since we are using a self-signed certificate you will see an 'untrusted connection' page.</p>
+<p> <img src="static/sec-06-b.png" width="600" height="510" /></p>
+<p>Be aware that every browser handles self-signed certificates in a slightly different way.</p>
+<p>To continue click on <em><strong>I Understand the Risks</strong></em> and <em><strong>Add exception</strong></em>... A pop-up will open. Click on Confirm security exception and you should see the log in page of ownCloud.<br />
+</p>
+<h3>Additional documentation<br />
+</h3>
+<p>If you get stuck there is additional documentation for these steps here.<br />
+<a href="http://ubuntuserverguide.com/2013/04/how-to-setup-owncloud-server-5-with-ssl-connection.html" class="uri">http://ubuntuserverguide.com/2013/04/how-to-setup-owncloud-server-5-with-ssl-connection.html</a><br />
+</p>
+</body>
+</html>

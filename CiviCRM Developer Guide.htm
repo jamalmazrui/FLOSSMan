@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="The Contributors" />
+  <title>civicrm developer guide</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">civicrm developer guide</h1>
+<p class="author">The Contributors</p>
+<p class="date">2011.09.01-11.04</p>
+</header>
+<p><span id="ch001_introduction.xhtml"></span></p>
+<h1>Introduction</h1>
+<p>This manual contains developer documentation for working with CiviCRM. It is intended as a warm up for developers. It is aimed at both experienced developers who need to know their way around CiviCRM and experienced CiviCRM users who want to extend their skills and customise their systems further. Organizations that want to ensure that their developers are using best practices to extend CiviCRM may also find it useful.</p>
+<p>We hope it will help you and encourage you to engage with the CiviCRM community.</p>
+<h2>Configuring, customising and extending</h2>
+<p>CiviCRM is very flexible. It aims to cater to the majority of non-profit needs through its many configuration options. When you reach the limit of configuration, it is time to start customising and extending.  In this manual when we use the word configure, we are referring to something that you can do via the user interface.  When we use the words customise and extend, we are referring to writing code.</p>
+<p>It is important to remember that there are many techniques (adding fields, profiles, components, Drupal modules and Joomla! extensions) that can be used to configure CiviCRM without writing a line of code. To get the most out of CiviCRM through these techniques, and to avoid unnecessary coding, we recommend you read the CiviCRM user manual and consult with the community before starting any coding project.</p>
+<p>Once you are sure that what you want to do cannot be achieved through the user interface, it is time to start writing custom code.  So read this manual - it is written for you!</p>
+<p>Some of the more popular ways to code with CiviCRM are:<br />
+</p>
+<ol>
+<li>
+<p>Edit the templates. This technique is useful to change the layout of forms, and to add more data or features via AJAX.</p>
+</li>
+<li>
+<p>Write code that implement hooks. Hooks are called at specific points in the code as users interact with CiviCRM and are useful in many different circumstances, for example</p>
+</li>
+<ol>
+<li>to change the default behaviour when you create, update or delete an entity</li>
+<li>create a new custom mail merge token</li>
+<li>populate a custom field automatically based on your own business logic.</li>
+</ol>
+<li>
+<p>Write and package an extension.  Useful as a technique to add a custom search, report, payment processors, etc.</p>
+</li>
+<li>
+<p>Override and/or patch existing code.  Small changes and improvements to the way in which CiviCRM works can be achieved by editing the existing code.  You should definitely chat with the developer community before embarking on any code that changes existing code and you should submit a patch to CiviCRM if the code will benefit others.</p>
+</li>
+<li>
+<p>Write a new CiviCRM component. This is a major undertaking and only recommended for the seasoned CviCRM developer.  You'll definitely want to discuss and collaborate with other CiviCRM developers if this is the path you choose.</p>
+</li>
+</ol>
+<p>Regardless of your chosen method, chances are that someone else will be interested in what you are doing. Right from the start, you should talk about - and share - your ideas with the community.</p>
+<p><span id="ch002_first-steps.xhtml"></span></p>
+<h1>BEFORE YOU START</h1>
+<p>Before you start on any code to extend CiviCRM, it is really important to discuss your ideas with the community. Here are a few of the reasons why this is a good idea:</p>
+<ul>
+<li>It may have been done already</li>
+<li>You'll get suggestions and advice on suitable ways to approach the problem</li>
+<li>Other people will know what you are doing, and be able to contact you if they want to collaborate</li>
+</ul>
+<p>A typical pre-development workflow will start with a discussion on the forum about what you want to do. Here you'll receive feedback from other members of the community and core team about your ideas. You might be lucky and find out that there is a already a way to do what you want using the user interface (and that no coding is necessary). Or it might be that someone has done something similar already and all that is required is a few tweaks to their code. </p>
+<p>If and when you have confirmed that some coding is required, it is good practice, even for relatively small projects, to write</p>
+<ul>
+<li>a requirements document which describes in detail what you want the finished code to do</li>
+<li>a specification that outlines how you are going to meet these requirements with CiviCRM</li>
+</ul>
+<p>The requirements are typically written to be understandable to end users, and the specification can be thought of as a translation of those requirements into the language of CiviCRM. Both requirements and specification should go on the wiki.</p>
+<p>Once you've written the requirements and specification document, you should go about soliciting feedback.  Get feedback on the requirements from your end users and feedback on the requirements and the specification from anyone that is willing to comment. To encourage more discussion, you can write a post on CiviCRM's blog, tweet it out with the #civicrm hashtag, tell similar CiviCRM users and organisations and so on.  The more feedback you can get the better.</p>
+<p>If you get stuck writing your requirements and specification, or would like to get more background, have a look at some requirements and specifications written by others - there are plenty on the wiki.</p>
+<h2>Make it happen</h2>
+<p>If you need or would like extra resources for your code improvement, you should consider a 'make it happen' (MIH for short).  </p>
+<p>Make it happen is a crowd-sourcing initiative for CiviCRM, which incidentally, is built using CiviCRM.  Around 15 MIH's were selected for the 4.0 release, and more Make it Happens are likely to be selected for future releases.  MIH work is carried out by the core team or trusted consultants.  You can see a list of current MIH online at http://civicrm.org/mih.  If you think your project would make a good MIH, discuss it with the core team.</p>
+<p><span id="ch003_the-development-community.xhtml"></span></p>
+<h1>The developer community</h1>
+<p>Like many open source projects, CiviCRM is shaped, guided, and driven by its community, a far-flung ecosystem of users, developers, and implementers who utilize CiviCRM in many different ways and bring to it a wide array of skills, experiences, and perspectives.  As might be expected of a web-based software project, much of the CiviCRM community's activity occurs online. English is the predominant language for discussion and contributions.</p>
+<h2>Where do developers hang out?</h2>
+<p>There are a few places to find developers online.  Top four are:</p>
+<ul>
+<li>The wiki - http://wiki.civicrm.org</li>
+<li>The forum - http://forum.civicrm.org/<br />
+</li>
+<li>IRC - #civicrm on irc.freenode.net</li>
+<li>blogs - http://civicrm.org/blog/</li>
+</ul>
+<p>The wiki is a gold mine of useful information for developers. What it lacks in coherence, it makes up for in content.  Think of it and treat it as CiviCRM's collective notepad. A place for recipes, new ideas and to do lists to be jotted down without too much attention to getting everything in exactly the right place or completely perfect.</p>
+<p>The forum is also a great place for developers. Here you'll find discussions on a range of topics from both developers and from users. It is a great place to find answers to the millions of questions that have already been asked about CiviCRM, and to ask ones that haven't been asked already.</p>
+<p>When looking on the wiki and the forum, bear in mind that content does go out of date. If the discussion or article you are looking is dated a while ago, you'd be well advised to check that the there isn't a new approach to the problem.</p>
+<p>IRC is a great place to go for any technical questions. Here, with a bit of luck, you'll often find an instant answer to your question or a pointer in the right direction. Definitely go here if you feel like you are banging your head against a wall. Writing your question down in itself can often help you find the answer and if not then perhaps someone else will understand your issue and offer to help. </p>
+<p>If you follow this path and no one answers don't be offended. If no one answers your question  they may be away from their computer or busy. As with all online communities a little bit of patience and understanding goes a long way.</p>
+<p>The CiviCRM blog (<a href="http://civicrm.org/blog" class="uri">http://civicrm.org/blog</a>) is another good source of information and discussion. Blog posts are written by both the CiviCRM core team and other community members and cover a wide range of topics.</p>
+<p>A fair amount of developer discussion also occurs outside of these official channels. Using your favorite engine to search for CiviCRM will turn up many articles and posts from other folks' websites and blogs. The CiviCRM team is good at keeping an eye out for these posts and often publicize them through Twitter. To keep abreast of the stream of comments, follow @civicrm and find CiviCRM tweets and tag your own tweets with the #civicrm hashtag.</p>
+<p>Additionally you may wish to look at the Jira bug reporting system which contains useful notes on issues past and present. JIRA provides issue tracking and project tracking for software development teams to improve code quality and the speed of development. This is where you should log bugs but it can also be a useful guide when starting to investigate problems. </p>
+<p>Log on to Jira, and the the wiki using your civicrm.org login. If you would like your account to be upgraded so you can blog please email info@civicrm.org.</p>
+<p>You'll hopefully find these CiviCRM resources to be great sources of help.  Everyone who interacts online is encouraged to give back to the community by responding to questions and requests for help and contributing their own ideas and feedback to the conversations. Simply asking your own questions is also a significant contribution to the community. It's likely that someone else is having the same problems or wondering the same thing, and the responses you solicit help build the community's knowledge base.</p>
+<h2>Hooking In Offline</h2>
+<p>Though the online community is both accessible and active, participating in the CiviCRM community offline can be even more rewarding and can help you connect with others in your area who are developing, implementing, and using CiviCRM.</p>
+<p>Many cities and regions hold CiviCRM meet-ups where people gather to learn about CiviCRM, share new ideas, developments, and use cases, and meet other folks involved with the community. You can find out more about meet-ups at <a href="http://civicrm.org" class="uri">http://civicrm.org</a>. Some meet-up and local user groups (or LUGs) also maintain discussion boards at <a href="http://civicrm.org/groups" class="uri">http://civicrm.org/groups</a>. Contact the CiviCRM crew if you'd like a discussion board for your own group on the site.</p>
+<p>CiviCRM core team and others also conduct developer training in cities around the globe. Check out <a href="http://civicrm.org" class="uri">http://civicrm.org</a> for info about upcoming trainings and contact CiviCRM if you'd like to host meetups or trainings in your own area.</p>
+<p><span id="ch004_how-to-contribute.xhtml"></span></p>
+<h1>Fixing bugs</h1>
+<p>So you've found a bug and you want to fix it. What next? The first thing you should do is congratulate yourself on stepping up to fix the bug. The second thing you should do is to make sure that you are familiar with the content of this chapter so that you can fix the bug in the best possible way.</p>
+<p>The three things that make up a great bug fix are:</p>
+<ol>
+<li>a detailed bug report</li>
+<li>a patch file</li>
+<li>tests</li>
+</ol>
+<h2>Writing good bug reports</h2>
+<p>The best bug reports give lots of background and context. Don't forget that the way you are using CiviCRM is most likely very specific to your organisation. The more background you can give on the bug, the better.</p>
+<p>The best bug reports clearly state</p>
+<ul>
+<li>What you did</li>
+<li>What you expected to happen</li>
+<li>What actually happened</li>
+</ul>
+<h2>Creating patches</h2>
+<p>A patch is a text based file format that shows the difference between one or more files.  Once you have submitted your patch, CiviCRM core developers can apply it to the development version of CiviCRM.</p>
+<p>You should create your patch against the appropriate version of CiviCRM.  If you are in doubt as to which version this is, there'll likely be someone on IRC that can give you a immediate answer.  Otherwise ask on the forum.</p>
+<p>The standard way to create a file is by using the diff command. </p>
+<pre><code>$diff /path/to/old/file.php /path/to/new/file.php &gt; changes.patch</code></pre>
+<p>The above will create a patch called changes.patch that you can attach to your issue.</p>
+<p>There are cleverer techniques that you can use to generate patches if you are using version control systems.</p>
+<h2>Access to SVN</h2>
+<p>SVN is a free/open source version control system. It manages the changes made to the source code by multiple developers. SVN allows you to recover older versions, examine the history of how the code has changed, and receive and publish changes.</p>
+<p>If you are submitting a lot of changes (patches), feel free to ask on IRC for an SVN account so you can directly apply your code contributions.</p>
+<h2>Adding tests to bug reports</h2>
+<p>US Federal law prohibits the submission of a patch to the CiviCRM code base without a suite of tests that have been shown to demonstrate the correct functioning of the code. It is also a contravention of European Union directive E842317 and enshrined in the UN universal declaration on human rights Article 31.  Well not quite! But you might think so if you asked the CiviCRM community, and for good reasons.  </p>
+<p>Clever CiviCRM developers know that it is in their interest to submit one or more tests with their bug reports.  There are at least three important reasons to submit a comprehensive set of tests with your patch.</p>
+<ul>
+<li>it minimises the chances that you will be bitten by the same bug in the future as CiviCRM developers are committed to having the test suite complete successfully before each point release.</li>
+<li>it providers developers with an easy way to find out whether they have actually fixed your bug</li>
+<li>they are often the best way to explain complex user interface bugs.</li>
+</ul>
+<p><span id="ch005_the-codebase.xhtml"></span></p>
+<h1>THE CODEBASE</h1>
+<p>Having a general overview of the codebase and high level understanding of how it is organised, where to find specific types and bits of code, etc. is really useful when you are getting started with developing CiviCRM. This chapter looks at a few key parts of the code base to give you an idea of how everything fits together.</p>
+<p>Download CiviCRM from sourceforge.net unzip it and have a look around the codebase.  The rest of this chapter explores the directories inside the CiviCRM zip file.</p>
+<h2>Object oriented </h2>
+<p>The CiviCRM codebase is object oriented. If you aren't familiar with object oriented programming, spend a little time reading some beginner tutorials on the net.  Object orientated programming might be a little intimidating at first, but isn't actually that complicated when it comes down to it, and it is very useful.</p>
+<h2>Business logic</h2>
+<p>Most of the business logic of CiviCRM, that is to say the part of CiviCRM that defines what it does and how it behaves (e.g. that allows people to register on events) is found in the <strong>CRM directory </strong>('CIVICRM_ROOT/CRM').  Looking in this directory, you'll find directories for core CiviCRM functionality like contacts, groups, profiles, deduping, importing, and the CiviCRM components like CiviCampaign, CiviMail, Pledges, etc.</p>
+<p>Each of these directories is slightly different depending on what they do but there are some subdirectories that you'll find in most of them, for example BAO, DAO, Form and Page.  So what can you expect to find in these directories?</p>
+<h3>DAO</h3>
+<p>DAO stands for data access object.  Code in this directory exposes the contents of the database.  The DAOs are automatically generated for each release based on the data schema (which is why you won't see them - and will have to generate them - if you checkout CiviCRM from SVN). DAO objects tend to be instantiated in BAO classes.</p>
+<p>The DAO has a property for each field (using the actual field name, not the unique name).  They also have standard create retreive update delete type functions, etc.</p>
+<p>BAO</p>
+<p>BAO stands for business access object.  BAOs map to DAOs and extend them with the business logic of CiviCRM.  A lot of the meat of CiviCRM is found in the BAOs, for example they have the code that creates follow up activities when an activity is created, or create activities and populating custom fields when a pledge is created.</p>
+<h3>Form</h3>
+<p>In general each page in CiviCRM which contains a form that maps to a file in one of the form directories.  Form files contain a class that extends CRM_Core_Form.  This class has different methods that are used before the form is displayed to do things like check permissions, retreive information (preProcess), display the form (buildForm), validate the form (formRule) and carry out tasks once the form is submitted (postProcess).  Forms can take information from the BAO to be displayed to users and call the BAO on submission. In general, each form has an associated template (see below) which is used to create the html of the form.  Perhaps the best way to get to grips with the Forms is by experience and experimentation.</p>
+<h3>Page</h3>
+<p>If a CiviCRM screen isn't a Form, it is probably a page.  Pages files contain a class that extend CRM_Core_Page.  Similar to the form class, Pages have methods that are called before the page is displayed to control access, set the title, etc. (preProcess), and when the page is displayed (run). Pages tend to take information from the BAO to be displayed to users. In general, each page has an associated template (see below) which is used to create the html of the page.</p>
+<h3>xml</h3>
+<p>This directory contains a menu directory which maps urls to CRM form or page classes and controls access to these URLs using permissions.</p>
+<h2>Templates</h2>
+<p>The templates directory contains all the HTML for pages and forms.  Directly inside the templates directory is a CRM directory.  In general, all templates map to a form or page class.  CiviCRM chooses a template for the form or page based on the class name.<br />
+</p>
+<p>For example, the class CRM_Member_Form_MembershipRenewal looks for a template in templates/CRM/Member/Form/MembershipRenewal.tpl</p>
+<p>Templates are written in smarty, a common PHP template engine.  Variables can be passed to smarty using the assign() method which is available to all Form and Page classes.</p>
+<p>Customising templates is discussed in more detail in 'Techniques'</p>
+<h2>The API</h2>
+<p>The application programming interface (API) is stored in the api root directory.  Best practice for using the API is discussed in more detail in 'Techniques'</p>
+<h2>bin scripts</h2>
+<p>The bin directory contains a variety of scripts that can be run to carry out specific functions.  Some of these scripts are run on a regular basis, for example the CiviMail 'send' and 'process' scripts.  Others are run on a one of or occasional basis, e.g. update geo-coding.</p>
+<h2>SQL</h2>
+<p>The SQL directory is automatically generated as part of a release.  It contains useful files like the SQL to create the database and insert demo data. Most developers won't need to edit files in this directory.</p>
+<h2>l10n</h2>
+<p>This directory contains lots of automatically generated localisation files.  You should not need to edit this directory directly.  You should instead use CiviCRM's online translation tool transifex.</p>
+<h2>packages</h2>
+<p>CiviCRM makes use of a lot of 3rd party packages for things like the database, form, javascript and pdf libraries, wysiwyg editors and so on.  You shouldn't need to edit these packages directory.</p>
+<h2>Database structure</h2>
+<p>The database structure is defined in a series of XML files.  These files are not packaged in the releases but are available in the SVN repository. They are located in Civicrm/xml/Schema. All the folders within this directory also have folders in the main CRM folder which contain a DAO folder and generally a BAO folder too.</p>
+<p>Looking in CiviCRM/xml/Schema/Pledge we see 4 files:</p>
+<ul>
+<li>files.xml</li>
+<li>Pledge.xml</li>
+<li>PledgePayment.xml</li>
+<li>PledgeBlock.xml</li>
+</ul>
+<p>files.xml is just a list of the other files. Each of the others represents a table in the Database. The XML files describe the database and are used to build both the DAO files and the new database sql generation script.</p>
+<p>The XML describes fields, foreign keys and indexes, an example of a field definition is:</p>
+<p>&lt;field&gt;<br />
+       &lt;name&gt;amount&lt;/name&gt;<br />
+       &lt;uniqueName&gt;pledge_amount&lt;/uniqueName&gt;<br />
+       &lt;title&gt;Total Pledged&lt;/title&gt;<br />
+       &lt;type&gt;decimal&lt;/type&gt;<br />
+       &lt;required&gt;true&lt;/required&gt;<br />
+       &lt;import&gt;true&lt;/import&gt;<br />
+       &lt;comment&gt;Total pledged amount.&lt;/comment&gt;<br />
+       &lt;add&gt;2.1&lt;/add&gt;<br />
+  &lt;/field&gt;</p>
+<h2>When should I edit core CiviCRM?</h2>
+<p>The above should have given you a reasonable idea of what the CiviCRM code based looks like.  Remember that most of the time, editing the core code base directly is not the recommended way for developers to customise and extend CiviCRM.</p>
+<p>There are other recommended ways for the majority of scenarios - for example the APIs and hooks. Be sure that any edits that you make to the core code base are really necessary.</p>
+<p>To help you decide, here are a couple of principles:</p>
+<ul>
+<li>Bug fixes should always be applied to core.</li>
+<li>Some (but not all) new features make sense to put in core, especially if they would be useful to others.</li>
+</ul>
+<p>If you aren't familiar with CiviCRM, by far the best way to get a sense if you should be editing core is by talking with the CiviCRM developer community on IRC, the forums, etc.</p>
+<p><span id="ch007_basic-set-up.xhtml"></span></p>
+<h1>BASIC SET UP</h1>
+<p>When writing CiviCRM customizations and extensions make sure you don't do it in a production environment! You don't want to interrupt your organisations or users' work or corrupt the data in the database. Instead you should always create a separate local development environment where you can do whatever you want to CiviCRM without disturbing anyone else.</p>
+<p>If your computer runs Linux or Mac OS X, running CiviCRM on your local machine is pretty easy. If your computer runs Windows, you have a little more work to do, but it's not impossible - you could consider running Linux inside a virtual machine. There's a free program called VirtualBox that makes this pretty easy. We recommend running the latest version of Ubuntu Linux inside the virtual machine. You can download that here: <a href="http://www.ubuntu.com/" class="uri">http://www.ubuntu.com/</a></p>
+<h2>Installing CiviCRM</h2>
+<p>http://wiki.civicrm.org/confluence/display/CRMDOC40/Installation+and+Upgrades outlines pre-installation requirements and gives step by step instructions for installing CiviCRM.</p>
+<p><a href="http://wiki.civicrm.org/confluence/display/CRMDOC/Installation+and+Upgrades"></a></p>
+<h2>Installing from SVN</h2>
+<p>CiviCRM developers use SVN to collaborate.  If you are doing a lot of development in collaboration with the core team or other developers, you might want to install from SVN.</p>
+<p>Instructions on installing from SVN are available here:http://wiki.civicrm.org/confluence/display/CRMDOC40/Installing+CiviCRM+from+subversion+%28SVN%29+repository</p>
+<h2>Using source control management</h2>
+<p>It is good practice to put any code customisations that you write under version control.  Keeping your code in a repository means that you have access to all previous versions of the code and can revert back if anything goes wrong (which with any complex project, will inevitably happen one day).  Although CiviCRM uses SVN, we recommend you consider using Git for any code that you write.  CiviCRM will migrate to Git at some point in the future.</p>
+<p>Putting your source code in a public repository is even better as it makes it public from day one and easy to share.</p>
+<h2>Logging emails to a file</h2>
+<p>If you have a local test environment set up and want to test processes that involve sending emails, you can set CiviCRM up to log emails to a file rather than sending them.  To do this, modify your CiviCRM settings (<a href="http://civicrm.settings.php/">http://civicrm.settings.php</a>) and add following line:</p>
+<pre><code>define(&#39;CIVICRM_MAIL_LOG&#39;, &#39;/path/to/mail.log&#39;);</code></pre>
+<p><span id="ch008_debugging.xhtml"></span></p>
+<h1>DEBUGGING</h1>
+<p>When your code isn't doing what you want it to do, it's time to debug.  There are lots of options for debugging and there is lots you can do without setting up a sophisticated debugging environment.  This chapter contains some simple debugging tips and tricks to get you started and also instructions on setting up XDebug, which is the recommended debugging tool for CiviCRM when you have bugs which you are finding it really hard to squish.</p>
+<h2>Printing PHP variables</h2>
+<p>CRM_Core_Error::debug($name, $variable = null, $log = true, $html = true); can be called to print any variable. It is a wrapper around print_r($variable); which does some clever stuff, but print_r($variable); is often all you need.</p>
+<p>Following your print_r(); with and exit; to stop the script execution at that point is often useful or necessary.</p>
+<h2>Debug mode</h2>
+<p>CiviCRM has a debug mode which you can enable to give you quick access to a couple of useful diagnostic tools, including access to all the smarty variables that make up a page, and access to the backtrace (read more about backtrace below). It also provides shortcut methods to empty the file based cache and session variables.</p>
+<p>These tools are activated by adding parameters to the URL that makes up the page, e.g. &amp;backtrace=1. Go to <strong>Admin &gt; Global config &gt; Debugging</strong> to enable debug mode and read more about the available options.</p>
+<h2>Printing smarty variables</h2>
+<p>When debug mode is enabled, you can display all the smarty variables that have been added to the page by adding  &amp;smartyDebug=1 to any URL.</p>
+<h2>Backtrace</h2>
+<p>A backtrace is a list of all the functions that were run in the execution of the page, and the php files that contain these functions.  It can be really useful in understanding the path that was taken through code, what gets executed where, etc.</p>
+<p>If display backtrace is enabled in Debugging options then the backtrace will be displayed when an error occurs.</p>
+<p>You can also force the backtrace to be printed at any point in the code by adding a call to &quot;CRM_Core_Error::backtrace();&quot;</p>
+<h2>Clearing the cache</h2>
+<p>Using Drupal, you can clear all caches with the <span class="Apple-style-span"><strong>drush</strong></span> command civicrm-cache-clear.</p>
+<p>Alternatively, you can call the following two methods:</p>
+<ul>
+<li>CRM_Core_Config::clearDBCache();</li>
+<li>CRM_Core_Config::cleanup();</li>
+</ul>
+<p>which clear the database and file cache respectively.</p>
+<h2>Check the queries fired by Dataobject</h2>
+<pre><code>define( &#39;CIVICRM_DAO_DEBUG&#39;, 1 );</code></pre>
+<h2>XDebug</h2>
+<p>XDebug is our main recommendation for developers that want to go into hardcore debugging. Readers familiar with what a debugger is and how it works should feel free to skip ahead to the &quot;Setting Up XDebug&quot; section.</p>
+<h3>What is a debugger?</h3>
+<p>A debugger is a software program that watches your code while it executes and allows you to inspect, interrupt, and step through the code. That means you can stop the execution right before a critical juncture (for example, where something is crashing or producing bad data) and look at the values of all the variables and objects to make sure they are what you expect them to be. You can then step through the execution one line at a time and see exactly where and why things break down. It's no exaggeration to say that a debugger is a developer's best friend. It will save you countless hours of beating your head against your desk while you insert print statements everywhere to track down an elusive bug.</p>
+<p>Debugging in PHP is a bit tricky because your code is actually running inside the PHP interpreter, which is itself (usually) running inside a web server. This web server may or may not be on the same machine where you're writing your code. If you're running your CiviCRM development instance on a separate server, you need a debugger that can communicate with you over the network. Luckily such a clever creature already exists: XDebug.</p>
+<h3>Setting Up XDebug</h3>
+<p>XDebug isn't the only PHP debugger, but it's the one we recommend for CiviCRM debugging.</p>
+<p>The instructions for downloading and installing XDebug are here: <a href="http://xdebug.org/docs/install" class="uri">http://xdebug.org/docs/install</a></p>
+<p>Those instructions are a bit complex, however. There is a far simpler way to install it if you happen to be running one of the operating systems listed here.</p>
+<h4>Debian / Ubuntu Linux</h4>
+<pre><code>sudo apt-get install php5-xdebug</code></pre>
+<h4>Red Hat / CentOS Linux</h4>
+<pre><code>sudo yum install php-pecl* php-devel php-pear
+sudo pecl install Xdebug</code></pre>
+<h4>Mac OS X</h4>
+<pre><code>sudo port install php5-xdebug</code></pre>
+<h4>Next Step for All Operating System <span class="Apple-style-span"></span></h4>
+<p>Tell XDebug to start automatically (don't do this on a production server!) by adding the following two lines to your <span class="Apple-style-span">php.ini</span> file (your php.ini file is a php configuration file which is found somewhere on your server.  Calling the phpinfo() function is probably the  easiest way to tell you where this file is in your case.</p>
+<pre><code>xdebug.remote_enable = On
+xdebug.remote_autostart = 1</code></pre>
+<p>Once XDebug is installed and enabled in your PHP configuration, you'll need to restart your web server.</p>
+<h3>Installing an XDebug Front-End</h3>
+<p>After you have XDebug running on your PHP web server, you need to install a front-end to actually see what it is telling you about your code. There are a few different options available depending on what operating system you use:</p>
+<h4>All Operating Systems</h4>
+<p>NetBeans is a heavyweight Java IDE (Integrated Development Environment). It offers lots of features, but isn't exactly small or fast. However, it is very good at interactive debugging with XDebug. And since it's written in  Java, it should run on any operating system you want to run it on. You can find it at <a href="http://www.netbeans.org/" class="uri">http://www.netbeans.org/</a></p>
+<p>After installing NetBeans, open your local CiviCRM installation in NetBeans and click the Debug button on the toolbar. It will fire up your web browser and start the debugger on CiviCRM. You may went to set a breakpoint in CRM/Core/Invoke.php to make the debugger pause there. For more information, see the NetBeans debugging documentation.</p>
+<h4>Mac OS X</h4>
+<p>A much lighter-weight option for Mac users is a program called MacGDBp. You can download it here: <a href="http://www.bluestatic.org/software/macgdbp/" class="uri">http://www.bluestatic.org/software/macgdbp/</a></p>
+<p>After installing MacGDBp, launch it and make sure it says &quot;Connecting&quot; at the bottom in the status bar. If it doesn't, click the green &quot;On&quot; button in the upper-right corner to enable it. The next time you access CiviCRM, the web browser will appear to hang. If you click on MacGDBp, you'll see that it has stopped on the first line of code in CiviCRM. From there you can step through the code to the part you're interested in. But it's probably a better idea to set a breakpoint in the part of the code you're interested in stopping at. See the MacGDBp documentation for more information.</p>
+<p><span id="ch009_testing.xhtml"></span></p>
+<h1>TESTING</h1>
+<p>CiviCRM is a complex piece of software which is constantly evolving through the contributions of many people. As you can imagine, making sure everything is working correctly (i.e. making sure everything is bug free) is not a trivial task. Tests are one method that CiviCRM uses to ensure that things are working as expected.  </p>
+<p>There are already a great number of tests in CiviCRM, and the number of tests is growing all the time.  All tests are collected together in a test suite which is run periodically on the development version of the code base. The results of tests are available at <a href="http://tests.dev.civicrm.org/." class="uri">http://tests.dev.civicrm.org/.</a></p>
+<p>During CiviCRM development, if someone introduces a bug in the code for which there is a test, that test will fail. The bug can then be fixed before the next stable release.</p>
+<h2>Writing tests</h2>
+<p>All developers and users of CiviCRM are strongly encouraged to write tests to which have a direct impact on the quality of CiviCRM.</p>
+<p>There are two types of test in CiviCRM: code tests, and web tests, and we use two different tools for each type of test.</p>
+<p>To ensure consistency all tests should be carried out using the standard CiviCRM example data.</p>
+<h2>Code tests</h2>
+<p>Code tests ensure that CiviCRM code is working as expected, for example that a contact is created when you call the 'contact create' API method, or a contribution type is retrieved as expected when you call the contribution type BAO. Code tests are written with PHP Unit which is a PHP based testing framework. </p>
+<p>PHP Unit tests help you understand your own code better and force you to think about how your code will be used before you write any of it. If you submit unit tests with patches you guarantee that your patch will continue to work as expected and you will make the core team very happy.  </p>
+<p>There is good documentation on writing PHP unit tests at http://www.phpunit.de/manual/3.2/en/database.html and the wiki has a growing page of example code at  <a href="http://wiki.civicrm.org/confluence/display/CRM/Writing+a+PHPUnit+testcase+HOWTO" class="uri">http://wiki.civicrm.org/confluence/display/CRM/Writing+a+PHPUnit+testcase+HOWTO</a>  </p>
+<h2>Web tests</h2>
+<p>Web tests are designed to ensure the interface is working as expected, for example, that the right things happen when you click on the right buttons. Examples of web tests include that the event confirmation screen is displayed when I hit the register for an event button, or that all 23 contacts are displayed when I search for contacts that live in France (in an instance of CiviCRM that has 23 contacts living in France).</p>
+<p>You can record tests using the Selenium IDE which you can download from the Selenium website http://seleniumhq.org/. Web tests should be recorded using an instance of CiviCRM that has standard sample data. The demo (running the latest stable version of CiviCRM) and sandbox (running the latest development version) are good candidates to use for writing selenium tests because they have the demo data installed.</p>
+<h2>Setting up a local test environment</h2>
+<p>If you want to run tests locally, you need to set up a testing environment. If you want to submit PHP unit tests you will need to code these locally first. Note that you don't need a local testing environment to record selenium test.</p>
+<p>To create a test environment, start with a local development environment and then follow the instructions here: http://wiki.civicrm.org/confluence/display/CRM/Setting+up+your+personal+testing+sandbox+HOWTO</p>
+<p><span id="ch011_hooks.xhtml"></span></p>
+<h1>Hooks</h1>
+<p>Hooks are a common way to extend systems. The way they work in CiviCRM is that, at key points in processing - such as saving a change or displaying a page - CiviCRM checks to see whether you've &quot;hooked in&quot; some custom code, and runs any valid code it finds.</p>
+<p>For example, let's say you want to send an email message to someone in your organization every time a contact in a particular group is edited. Hooks allow you to do this by defining a function with a specific name and adding it to your organisation's CiviCRM installation. The name of the function indicates the point at which CiviCRM should call it. CiviCRM looks for appropriate function names and calls the functions whenever it performs the indicated operations.</p>
+<p>Hooks are a powerful way to extend CiviCRM's functionality, incorporate additional business logic, and even integrate CiviCRM with external systems. Many CiviCRM developers find themselves using them in nearly every customization project.</p>
+<p>A good test for whether or not to use a hook is to ask yourself whether what you're trying to do can be expressed with a sentence like this: &quot;I want <em>X</em> to happen every time someone does <em>Y</em>.&quot;</p>
+<h2>How to use hooks</h2>
+<p>How you use hooks depends on whether you're using CiviCRM with Drupal or Joomla!.</p>
+<h3>Using hooks with Drupal</h3>
+<p>Check the CiviCRM wiki page for the most up-to-date information on setting up hooks with Drupal: <a href="http://tiny.booki.cc/?hooks-in-drupal"><strong>http://tiny.booki.cc/?hooks-in-drupal</strong></a> <a href="http://wiki.civicrm.org/confluence/display/CRMDOC40/CiviCRM+hook+specification#CiviCRMhookspecification-Proceduresforimplementinghooks(forDrupal)">http://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+hook+specification#CiviCRMhookspecification-Proceduresforimplementinghooks%28forDrupal%29</a>  </p>
+<p>In order to start using hooks with a Drupal-based CiviCRM installation, you or your administrator needs to do the following:</p>
+<ol>
+<li><p>Create a file with the extension <em>.info</em> (for instance, <em>myhooks.info</em>) containing the following lines. Replace the example text in the first 2 lines with something appropriate for your organization:<br />
+</p>
+<pre><code>name = My Organization&#39;s Hooks
+description = Module containing the CiviCRM hooks for my organization
+dependencies[] = civicrm
+package = CiviCRM
+core = 6.x
+version = 1.0</code></pre></li>
+<li>Create a new file with the extension <em>.module</em> (for instance, <em>myhooks.module</em>) to hold your PHP functions.<strong></strong></li>
+<li>Upload both the <em>.info</em> and <em>.module</em> files to the server running CiviCRM, creating a new directory for them under <em>/sites/all/modules</em> (for instance, <em>/sites/all/modules/myhooks/</em>) inside your Drupal installation. The directory name you create should be short and contain only lowercase letters, digits, and underlines without spaces.</li>
+<li>Enable your new hooks module through the Drupal administration page.</li>
+</ol>
+<h3>Using hooks with Joomla!</h3>
+<p>Check the CiviCRM wiki for the most up-to-date information on setting up hooks with Joomla!: <a href="http://tiny.booki.cc/?hooks-in-joomla"><strong>http://tiny.booki.cc/?hooks-in-joomla</strong></a> (http://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+hook+specification#CiviCRMhookspecification-Proceduresforimplementinghooks%28forJoomla%29)</p>
+<p>In order to use hooks with Joomla!, you or your administrator needs to do the following:</p>
+<ol>
+<li>Create a file named <em>civicrmHooks.php</em> to contain your functions.<strong></strong></li>
+<li>Create a new directory anywhere on your server outside of your Joomla! / CiviCRM installation (so that upgrades will leave your hooks alone). <em>/var/www/civicrm_hooks</em> might be a good choice.</li>
+<li>Upload the <em>civicrmHooks.php</em> file to the directory you just created.</li>
+<li>Go to: CiviCRM Administer &gt; Global Settings &gt; Directories. Change the value of <strong>Custom PHP Path Directory</strong> to the absolute path to the new directory (e.g., &quot;/var/www/civicrm_hooks&quot; if you used that suggestion in the earlier step).</li>
+</ol>
+<h3>Refine what you want to act upon</h3>
+<p>When you create a hook, it will be called for all the types of entities. For instance, a civicrm_post is called after the creation or modification of any object of any type (contact, tag, group, activity, etc.). But usually, you want to launch an action only for a specific type of entity.</p>
+<p>So a hook generally starts with a test on the type of entity or type of action. For instance, if you want to act only when a new individual contact is created or modified<span class="Apple-style-span">(does this match the code?)</span>, start your civicrm_post hook with:</p>
+<pre><code>if ($objectName != &quot;Individual&quot; || $op != &quot;edit&quot;) {
+  return;
+}</code></pre>
+<p>On the other hand, if you want to run multiple hooks within the same function, you don't want to return from any single hook. Instead, you can nest the entire code for each hook within your test:</p>
+<pre><code>if ($objectName == &quot;Individual&quot; &amp;&amp; $op == &quot;edit&quot;) {
+  // Your hook
+}</code></pre>
+<h3>Pitfalls of hooks</h3>
+<p>Because you have little control over what CiviCRM passes to your hook function, it is very helpful to look inside those objects (especially <strong>$objectRef</strong>) to make sure you're getting what you expect. A good debugger is indispensable here. See the Developer Tips &amp; Tricks chapter at the end of this section for more information on setting up a debugger for your development environment. </p>
+<h2>Examples of using hooks</h2>
+<p>Some example hooks follow. Consult the hooks reference documentation on the CiviCRM wiki to see the full extent of what you can do: <a href="http://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+hook+specification" class="uri">http://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+hook+specification</a></p>
+<p>In all of these examples, you'll put the code we provide into your <em>myhooks.module</em> file if using Drupal, or the <em>civicrmHooks.php</em> file if using Joomla!. Be sure to upload the file after each change to the appropriate location on your server to see the new code take effect.</p>
+<p>Additionally, if you are using Drupal and add a new hook to an existing module, you will need to clear the cache for the hook to start operating. One way of doing this is by visiting the page Admin &gt; Build &gt; Modules.</p>
+<h3>Sending an email message when a contact in a particular group is edited</h3>
+<p>In order to have CiviCRM tell you when a contact is edited, define the civicrm_pre hook. This lets you see the incoming edits as well as the values of the existing record, because you may want to include that information in the email.</p>
+<p>If you are using Drupal, create a function named <em>myhooks</em><strong>_civicrm_pre</strong>. If using Joomla!, create a function named <strong>joomla_civicrm_pre</strong>. We'll assume you're using Drupal for the rest of the example, so please adjust the code accordingly if you're using Joomla! instead. </p>
+<pre><code>&lt;?php
+
+function myhooks_civicrm_pre( $op, $objectName, $objectId, &amp;$objectRef ) {
+    # configuration stuff
+    $theGroupId = 1; # group id we want the contacts to be in
+    $emailRecipient = &#39;johndoe@example.org&#39;; # person to e-mail
+
+    # Make sure we just saved an Individual contact and that it was edited
+    if ($objectName == &quot;Individual&quot; &amp;&amp; $op == &quot;edit&quot;) {
+
+        # Now see if it&#39;s in the particular group we&#39;re interested in
+        require_once &#39;api/v2/GroupContact.php&#39;;
+        $params = array(&#39;contact_id&#39; =&gt; $objectId);
+        $groups = civicrm_group_contact_get( $params );
+        $found = false;
+        foreach ($groups as $group) {
+            if ($group[&#39;group_id&#39;] == $theGroupId) {
+                $found = true;
+            }
+        }
+        # Exit now if contact wasn&#39;t in the group we wanted
+        if (! $found) {
+            return;
+        }
+
+        # We found the contact in the group we wanted, send the e-mail
+        $emailSubject = &quot;Contact was edited&quot;;
+        $emailBody = &quot;Someone edited contactId $objectId\n&quot;;
+        # Here&#39;s where you may want to iterate over the fields
+        # and compare them so you can report on what has changed.
+        mail( $emailRecipient, $emailSubject, $emailBody );
+    }
+}</code></pre>
+<h3>Validating a new contribution against custom business rules</h3>
+<p>If you have experience with other hook-based systems, you might think that the civicrm_pre hook is the one to use for validations. But this is not the case in CiviCRM because, even though the civicrm_pre hook is called before the record is saved to the database, you cannot abort the action from this hook.</p>
+<p>This is where validation hooks come in. When you return true from a validation hook, CiviCRM saves the new or updated record. When you return an error object instead, CiviCRM aborts the operation and reports your error to the user.</p>
+<p>An example follows of using a validation hook to validate new contributions against a business rule that says campaign contributions must have a source associated with them. In this example, we'll assume you are using Joomla!, so if you are using Drupal instead, be sure to change the function name accordingly.</p>
+<pre><code>&lt;?php
+
+function joomla_civicrm_validate( $formName, &amp;$fields, &amp;$files, &amp;$form ) {
+    # configuration stuff
+    $campaignContributionTypeId = 3; # adjust for your site if different
+
+    $errors = array();
+
+    # $formName will be set to the class name of the form that was posted
+    if ($formName == &#39;CRM_Contribute_Form_Contribution&#39;) {
+        require_once &#39;CRM/Utils/Array.php&#39;;
+        $contributionTypeId = CRM_Utils_Array::value( &#39;contribution_type_id&#39;,
+            $fields );
+        if ($contributionTypeId == $campaignContributionTypeId) {
+            # see if the source field is blank or not
+            $source = CRM_Utils_Array::value( &#39;source&#39;, $fields );
+            if (strlen( $source ) &gt; 0) {
+                # tell CiviCRM to proceed with saving the contribution
+                return true;
+            } else {
+                # source is blank, bzzzzzzzzzzzt!
+                # assign the error to a key corresponding to the field name
+                $errors[&#39;source&#39;] =
+        &quot;Source must contain the campaign identifier for campaign contributions&quot;;
+                return $errors;
+            }
+        } else {
+            # not a campaign contribution, let it through
+            return true;
+        }
+    }
+}</code></pre>
+<h3>Automatically filling custom field values based on custom business logic</h3>
+<p>This example uses a hook to write some data back to CiviCRM. You can make a custom field read-only and then set its value from a hook. This is very handy for storing and displaying data that are derived from other attributes of a record based on custom business logic.</p>
+<p>For example, let's say you are storing employee records and you want to auto-generate their network login account when new employees are added. By doing it in your code, you can enforce a policy for login account names. For this example, let's say the policy is first initial + last name. So if your name is Jack Frost, your network login name would be <em>jfrost</em>.</p>
+<p>Add a new read-only custom field to CiviCRM called &quot;Network Login&quot; and then find its ID. You can find it either by:</p>
+<ul>
+<li>Checking the civicrm_custom_field table in your CiviCRM database.</li>
+<li>Editing a contact and check the name of the Network Login field.</li>
+</ul>
+<p>The code must refer to the ID as <strong>custom_</strong><em>id</em>. So if you find that the id of the new field is 74, refer to is as <strong>custom_74</strong> in your code.</p>
+<p>Now that we have our Network Login field, let's see how to populate it automatically with a hook. We'll switch back to the Drupal naming convention for this example.</p>
+<p>Note that we use the civicrm_post hook here because we need the new contact record's ID in order to save a value to one of its custom fields. New records don't have an ID until they have been saved in the database, so if we ran this code in the civicrm_pre hook, it would fail.</p>
+<pre><code>&lt;?php
+
+function myhooks_civicrm_post( $op, $objectName, $objectId, &amp;$objectRef ) {
+    # configuration stuff
+    $customId = 74;
+
+    if ($objectName == &#39;Individual&#39; &amp;&amp; $op == &#39;create&#39;) {
+        # generate the login
+        $firstName = $objectRef-&gt;first_name;
+        $lastName = $objectRef-&gt;last_name;
+        $firstInitial = substr( $firstName, 0, 1 );
+        $networkLogin = strtolower( $firstInitial . $lastName );
+
+        # assign to the custom field
+        $customParams = array(&quot;entityID&quot; =&gt; $objectId,
+            &quot;custom_$customId&quot; =&gt; $networkLogin);
+        require_once &#39;CRM/Core/BAO/CustomValueTable.php&#39;;
+        CRM_Core_BAO_CustomValueTable::setValues( $customParams );
+    }
+}</code></pre>
+<h3>Custom mail merge token</h3>
+<p>The CiviMail component lets you customise a bulk email message using mail merge tokens. For instance, you can begin your message with, &quot;Hi, {recipient.first_name}!&quot; and when John Doe receives it, he'll see, &quot;Hi, John!&quot; whereas when Suzy Queue receives it, she'll see, &quot;Hi, Suzy!&quot; You can find out more details about working with custom tokens on the CiviCRM wiki: <a href="http://wiki.civicrm.org/confluence/display/CRMDOC/Mail-merge+Tokens+for+Contact+Data" class="uri">http://wiki.civicrm.org/confluence/display/CRMDOC/Mail-merge+Tokens+for+Contact+Data</a>.</p>
+<p>Besides the built-in tokens, you can use a hook to create new custom tokens. Let's make a new one that will show the largest contribution each recipient has given in the past. We'll use Drupal syntax again for this one.</p>
+<pre><code>&lt;?php
+
+# implement the tokens hook so we can add our new token to the list of tokens
+# displayed to CiviMail users
+function myhooks_civicrm_tokens( &amp;$tokens ) {
+    $tokens[&#39;contribution&#39;] =
+        array(&#39;contribution.largest&#39; =&gt; &#39;Largest Contribution&#39;);
+    /*  just array(&#39;contribution.largest&#39;); in 3.1 or earlier */
+}
+
+# now we&#39;ll set the value of our custom token;
+# it&#39;s better in general to use the API rather than SQL queries to retrieve data,
+# but in this case the MAX() function makes it very efficient to get the largest
+# contribution, so let&#39;s make an exception
+function myhooks_civicrm_tokenValues( &amp;$details, &amp;$contactIDs ) {
+    # prepare the contact ID(s) for use in a database query
+    if ( is_array( $contactIDs ) ) {
+        $contactIDString = implode( &#39;,&#39;, array_values( $contactIDs ) );
+        $single = false;
+    } else {
+        $contactIDString = &quot;( $contactIDs )&quot;;
+        $single = true;
+    }
+
+    # build the database query
+    $query = &quot;
+      SELECT contact_id,
+         max( total_amount ) as total_amount
+      FROM   civicrm_contribution
+      WHERE  contact_id IN ( $contactIDString )
+      AND    is_test = 0
+      GROUP BY contact_id
+    &quot;;
+
+    # run the query
+    $dao = CRM_Core_DAO::executeQuery( $query );
+    while ( $dao-&gt;fetch( ) ) {
+        if ( $single ) {
+            $value =&amp; $details;
+        } else {
+            if ( ! array_key_exists( $dao-&gt;contact_id, $details ) ) {
+                $details[$dao-&gt;contact_id] = array( );
+            }
+            $value =&amp; $details[$dao-&gt;contact_id];
+        }
+
+        # set the token&#39;s value
+        $value[&#39;contribution.largest&#39;] = $dao-&gt;total_amount;
+    }
+}</code></pre>
+<p><span id="ch012_templates.xhtml"></span></p>
+<h1>Developing Page Templates</h1>
+<p>CiviCRM uses page template files to display all the pages. This makes it possible for a person to customize any CiviCRM screen to suit a special requirement or preference. The HTML for CiviCRM pages is not embedded in PHP code, instead a template engine (Smarty) sends the correct page to the web browser.</p>
+<p>You should be familiar with HTML and CSS syntax to be comfortable editing page templates.  Some page templates additionally make use of JavaScript and an Ajax utility, JQuery.</p>
+<h2>Changing page templates is the wrong choice when ...</h2>
+<ol>
+<li>it is possible to make the needed changes by updating the CSS styles. For example, if a requirement is to hide or move some information or form fields on a screen, a CSS style for that HTML element can be changed to display: none, or position: absolute within the CSS file.</li>
+<li>there is a CiviCRM hook available that can control the page. For example, there is a hook that can modify the information on the Contact Summary screen</li>
+<li>there is no process in place to update the page templates after an upgrade to a new version of CiviCRM. Page templates are stored in a separate folder and are not touched during an upgrade, However new versions of CiviCRM often change which placeholder elements are available in various templates. Proper source control procedures are needed to simplify upgrades to new versions.</li>
+</ol>
+<h2>Smarty templates introduction</h2>
+<p>CiviCRM uses a page template engine called Smarty.  This documentation is focused on how Smarty is used within the CiviCRM environment.  Every Smarty element is enclosed between braces like these: &quot;{}&quot;. All the other text is going to be displayed directly as HTML in the rendered page.</p>
+<p>Each page template is stored in a file with the extension <em>.tpl</em>. The PHP code assigns variables for content that needs to be displayed, and then lets the template engine take care of presenting it.</p>
+<p>The Smarty template engine always does this process :</p>
+<ol>
+<li>Load the contents of a <em>.tpl</em> file.<br />
+</li>
+<li>Scan the <em>.tpl</em> file for placeholder elements.</li>
+<li>Replace each placeholder element with the corresponding variable value.</li>
+<li>Send the resulting HTML to the web browser.<br />
+</li>
+</ol>
+<p>These are the most commonly used Smarty template elements:</p>
+<ul>
+<li>{$Name}: To display the value of a variable named &quot;Name&quot;</li>
+<li>{$row.Name}: To display the value of the attribute Name in the object Row</li>
+<li>{foreach from=$rows item=row}...{/foreach}: To loop though all the items of the Rows array <br />
+</li>
+<li>{literal} JavaScript code{/literal} to indicate to Smarty the &quot;{}&quot; aren't smarty elements but JavaScript code, enclose JavaScript between {literal}</li>
+<li><span class="Apple-style-span">{ldelim} and {rdelim} are alternative ways to generate { and }.  This is often useful if you have a simple JavaScript code that needs a lot of values from Smarty variables </span></li>
+<li>{include file=&quot;CRM/path/to/template.tpl&quot; param1=xxx}: includes the result of the <em>template.tpl</em>. Some included files expect to have extra param (e.g., <em>param1</em>).<br />
+</li>
+</ul>
+<p>Please read the Smarty documentation for more information.</p>
+<p><strong>Tip</strong>:  To see what variables have been assigned to the template, enable debug (Administer -&gt; Configure -&gt; Global Settings -&gt; Debugging) and on any URL, add <strong>&amp;smartyDebug=1</strong>. It opens a new browser window listing all the variables and values.<br />
+</p>
+<p>CiviCRM introduces some extra features to Smarty:</p>
+<ul>
+<li>{ts}Any text{/ts}: It will display the translated text (if you don't use US English)</li>
+<li>{crmURL p='civicrm/contact/view' q=&quot;reset=1&amp;cid=`$row.source_contact_id`&quot;}. Generates the proper CiviCRM URL that works both on Joomla! and Drupal.</li>
+<li>{crmAPI} Allows retrieval and display of extra data that is not assigned to the template already. Read about the CiviCRM API  for more information.</li>
+</ul>
+<h2>How to find and modify the templates?</h2>
+<p>All the templates are under the folder <em>templates/CRM</em> in your CiviCRM installation. Finding which template is used on a given page can be difficult, but the easiest way to find out the answer is to view the source of the page from a web browser and search for &quot;.tpl&quot;. For example, for the Contact Summary page, use the web browser to open the Contact Summary page, then click &quot;View Source&quot; in the browser.  You should find an HTML comment such as:<strong><br />
+</strong></p>
+<pre id="ch012_templates.xhtml#line230"><code>&lt;!-- .tpl file invoked: CRM/Contact/Page/View/Summary.tpl. 
+      Call via form.tpl if we have a form in the page. --&gt;</code></pre>
+<p>You can then view the file at <em>templates/CRM/Contact/Page/View/Summary.tpl</em> to see how the HTML is generated. If you want to modify the layout; for instance to reorder the content, do <strong>not</strong> modify directly these files, as all the modifications will be lost on the next upgrade of CiviCRM. The proper way is to create a new folder outside of your CiviCRM folder, then navigate to &quot;Administer -&gt; Configure -&gt; Global settings -&gt; Directories&quot; in the navigation menu, and set the complete path of the folder that is going to contain your custom templates in the field <em>Custom Templates</em>.</p>
+<h2>Scenario: The Contact Summary screen needs to be changed</h2>
+<p>If you want to alter the Contact Summary page template for Acme organization, perform these steps:</p>
+<ol>
+<li>Create the folder <em>/var/www/civi.custom/acme/templates/CRM/Contact/Page/View</em></li>
+<li>Update the Custom Template field in the Global Settings directories  to <em>/var/www/civi.custom/acme/templates.</em> You can use any directory. We found it easier to put the custom templates under <em>/var/www/civi.custom/yourorganisation</em>.</li>
+<li>copy <em>templates/Contact/Page/View/Summary.tpl</em> from your CiviCRM install to <em>/var/www/civi.custom/acme</em></li>
+</ol>
+<p><strong>Tip</strong>:  Say you want to modify the template for a specific profile form, or a specific event. Instead of copying the Form template to its default place (<em>templates/CRM/Profile/Form/Edit.tpl</em>), you can create a subfolder with the ID of the profile and put the template file you want to change in the subfolder (<em>templates/CRM/Profile/Form/42/Edit.tpl</em> to modify only the form for ProfileID 42).</p>
+<p>You might want to modify a template that isn't directly the page you load, but added later via Ajax. For instance, perhaps you want to change all the tabs beside the Content Summary (Activities, Groups, etc.). The easiest way to do this is to install a development oriented plug-in to your web browser. If using Mozilla Firefox, the Firebug plug-in is indispensable.  Open the Firebug console (or equivalent in your browser)  and click the tab. You will see what URL has been loaded for the tab (e.g., for the notes tab:  <em>http://example.org/civicrm/contact/view/note?reset=1&amp;snippet=1&amp;cid=1</em>). Open it in a new window or new tab of the web browser, and view the source. It also contains a comment identifying the template used (<em><span class="comment">CRM/Contact/Page/View/Note.tpl</span></em>).</p>
+<p>Keep in mind that when you modify a template, you might have a template that doesn't work properly anymore after an upgrade of CiviCRM, because the layout has changed or the name of variables assigned to the template was modified. In our experience, the easiest is to use a source code management system (SCM) to keep track  of the changes you have made. Before doing any modification of the template you copied, add it to your SCM, and obviously also commit the template after having modified it. That way, you can easily generate a patch of your changes, and see how to apply them to the latest version of the template.</p>
+<h2>Semantically meaningful HTML attributes</h2>
+<p>To make it as easy as possible for you to style any element in the page (e.g. put a yellow background on all the contacts of the subtype &quot;members&quot;), or add Ajax (clicking on the status of the activity changes it to complete), we strive to have a consistent and coherent schema for class names and ids for the generated HTML. This makes it easier to isolate the elements you want to alter from a custom style or from JavaScript:</p>
+<ul>
+<li>There is a class <strong>crm-entityName</strong> defining the type of the entity bubbled up as high as possible in the DOM. For instance, each line on a list of activity has <em>&lt;tr class=&quot;crm-activity ...&quot;&gt;</em></li>
+<li>There is an id <strong>crm-entityName_entityID</strong> allowing to find the id of the entity bubbled up. <em></em> e.g., on a list of contacts, the contact number 42  has a &lt;<em>tr id=&quot;crm-contact_42&quot; ...</em>&gt; </li>
+<li>Each field or column contains a class identifying it, e.g., <strong>&quot;crm-activity-subject&quot;</strong></li>
+<li>Each field or column that contains a value with a fixed set of possible values (e.g., a Status, a Role, a Contact Type) contains a class identifying it. It doesn't contain the human readable version (that can be changed), but the id or a name that can't be modified by the end-user; such as <strong>class=&quot;crm-activity-status-id_42&quot;</strong>. This is on the top of the class identifying the field name, so the complete HTML is <em>&lt;td class=&quot;crm-activity-status crm-activity-status-id_42&quot;&gt;Hitchhiked&lt;/td&gt;</em>.</li>
+</ul>
+<p>At the time of the writing, some of the templates don't follow these conventions. Please update them and submit a bug tracking issue with a patch if you need to use a template that isn't yet complying. For more information about submitting a bug or issue, read About the CiviCRM community. </p>
+<h2>Displaying more content and adding Ajax features</h2>
+<p>If your modifications go further than &quot;simple&quot; modifications of the layout, but need to display more content than the one assigned to the template by default, or to add Ajax functionality, use the CiviCRM API. Please read more information about using the CiviCRM API from Ajax to pursue this approach.</p>
+<p>In most cases, using the CiviCRM APIs should be simple and only takes a few extra lines of modifications.</p>
+<h2>Some useful variables and examples</h2>
+<p>On each page template, you have extra Smarty variables populated by CiviCRM.</p>
+<p><strong>{$config} </strong> Contains a lot of useful information about your environment (including the URL, if it's Drupal or Joomla!, etc.)</p>
+<p><strong>{$session}</strong> Contains information about the user.</p>
+<p>If you want to modify the template only for a logged-in user but leave it identical for anonymous users, do the following:</p>
+<pre><code>{if $session-&gt;get(&#39;userID&#39;) &gt; 0}
+Insert your modifications here
+{/if}</code></pre>
+<p><span id="ch013_api.xhtml"></span></p>
+<h1>The API</h1>
+<p>CiviCRM has a stable comprehensive API (Application Programming Interface) that can be used to access much of the functionality of CiviCRM. The API is the recommended way for any external programme to interact with CiviCRM.</p>
+<h2>Why use the API?<br />
+</h2>
+<p>If you're not familiar with APIs, you might ask why you would use the API when you could access the core functions (e.g. the BAO files) directly?</p>
+<p>The answer is that the API is guaranteed to remain stable between releases, and warn developers well in advance of any changes, where as BAOs offer no such guarantee.</p>
+<p>There are two current versions of the API: version 2 and version 3.  Version 2 is present to retain backwards compatibility with older code: it should not be used for new projects. </p>
+<p>Version 3 is one of the seven wonders of CiviCRM.  It is much more consistent than version 2 and has much improved test coverage: it should be used for all new projects.</p>
+<h2>Learning about (and experimenting with) the API V3</h2>
+<p>The best place to learn about the API is your own <em><strong>test</strong></em> install of CiviCRM.  Be wary about using the API on your live site because the the API does not ask for confirmation, and therefore you can easily make significant changes to your data.<br />
+</p>
+<p>Each install comes with two tools that are useful for this.  The <strong>API parameter list</strong>, which shows all available entities which can be manipulated by the API and is available at http://[CIVICRM_URL]/civicrm/api/doc, and the API explorer, which is available at http://[CIVICRM_URL]/civicrm/api/explorer.</p>
+<p><span class="Apple-style-span">How to use the API</span></p>
+<p>There are at least 5 different ways of using an API function:</p>
+<ol>
+<li>as a php function, to run your own code on the same server as CiviCRM <br />
+</li>
+<li>via the AJAX interface, to be called from JavaScript code</li>
+<li>via the REST* interface, can be called from another server via http calls</li>
+<li>as a Smarty function to add data to templates <br />
+</li>
+<li>from drush on the command line for Drupal installations. <br />
+</li>
+</ol>
+<h3>Calling the API in PHP </h3>
+<p>If you write custom code that is going to run within the same environment as CiviCRM, calling the API as a PHP function is the recommended way of modifying or fetching data. You will see examples of API calls throughout the developer documentation. For example, you could create several tags from a script rather than doing it manually from the CiviCRM admin page. The code below shows you how to do it using the API. </p>
+<p>The recommended way to call the API in PHP is</p>
+<pre><code>require_once &#39;api/api.php&#39;;
+$result = civicrm_api ($entity,$action,$params); </code></pre>
+<p>where $entity is the object you want to manipulate (a contact, a tag, a group, a relationship), and$action is get (to retrieve a list or a single entity), create (to create or update if you provide the id), delete, update and getFields (that provide the list of fields of this entity, including the custom fields).</p>
+<p>So with real data:</p>
+<pre><code>require_once &#39;api/api.php&#39;;
+$contact = civicrm_api(&#39;Contact&#39;,&#39;Get&#39;,array(&#39;first_name&#39; =&gt; &#39;Michael&#39;, &#39;last_name&#39; =&gt; &#39;McAndrew&#39;, &#39;version&#39; =&gt;3)); </code></pre>
+<h3>Calling the API from smarty</h3>
+<p>CiviCRM defines a smarty function {<span class="Apple-style-span">crmAPI</span>} which can be used to call the API from the template layer.</p>
+<pre><code>{crmAPI var=&quot;ContactS&quot; entity=&quot;Contact&quot; action=&quot;get&quot; version=&quot;3&quot; first_name=&quot;Michael&quot; first_name=&quot;McAndrew&quot; }
+{foreach from=$ContactS.values item=Contact}
+  &lt;li&gt;{$Contact.example}&lt;/li&gt;
+{/foreach} </code></pre>
+<h3>Calling the API via javascript</h3>
+<p>It also defines a javascript function crmAPI() which can be used to call the API from javascript. </p>
+<pre><code> $().crmAPI (&#39;Contact&#39;,&#39;get&#39;,{&#39;version&#39; :&#39;3&#39;, &#39;first_name&#39; :&#39;Michael&#39;, &#39;first_name&#39; :&#39;McAndrew&#39;}}
+  ,{ success:function (data){    
+       $.each(data, function(key, value) {// do something  });
+     }
+ });</code></pre>
+<h3>Calling the API via Ajax or REST</h3>
+<p>You can also call the API via Ajax or REST.  Have a look at the api explorer for examples of how you call the API with these methods.</p>
+<p><span class="Apple-style-span">Calling the API from an external server via the REST API</span></p>
+<p>The syntax and principle are identical to the other methods, but with one major difference: the external server needs to authenticate itself before being able to use any API functions.<br />
+</p>
+<p>To call the API with a browser, use:</p>
+<div class="code panel">
+<div class="codeContent panelContent">
+<pre class="code-java"><code>http://www.example.org/path/to/civi/codebase/civicrm/extern/rest.php?q=civicrm/&lt;function&gt;</code></pre>
+</div>
+</div>
+<p>The first call is to authenticate the caller on the CiviCRM server:<br />
+</p>
+<div class="code panel">
+<div class="codeContent panelContent">
+<pre class="code-java"><code>https://eg.org/path/to/civi/codebase/civicrm/extern/rest.php?q=civicrm
+   /login&amp;name=user&amp;pass=password&amp;key=yoursitekey&amp;json=1</code></pre>
+</div>
+</div>
+<p>The key is in the CIVICRM_SITE_KEY variable defined in your civicrm.settings.php file.<a href="http://civicrm.settings.php"></a></p>
+<p>Note: On the first call, you might get an error message like &quot;This user does not have a valid API key in the database, and therefore cannot authenticate through this interface&quot;. This means that you need to generate a key for the user, and add it to the api_key field in the civicrm_contact table in the database.</p>
+<pre class="code-java"><code>{&quot;is_error&quot;:0,&quot;api_key&quot;:&quot;as-in-your-setting.civicrm.php&quot;,
+   &quot;PHPSESSID&quot;:&quot;4984783cb5ca0d51a622ff35fb32b590&quot;,
+   &quot;key&quot;: &quot;2e554f49c9fc5c47548da4b24da64681b77dca08&quot;}</code></pre>
+<p>It returns a session id. You can then use any API adding the extra param PHPSESSID = the value returned by the log-in call.</p>
+<p>For example:<br />
+</p>
+<div class="code panel">
+<div class="codeContent panelContent">
+<pre class="code-java"><code>http://www.example.org/civicrm/ajax/rest?fnName=civicrm/contact/search&amp;json=1&amp;key=
+yoursitekey&amp;PHPSESSID=4984783cb5ca0d51a622ff35fb32b590</code></pre>
+</div>
+</div>
+<p>Note: An action that modifies the database (such as creating a contact or group) should have the parameters passed as POST, not GET. The REST interface accepts both a GET and a POST, but you should follow the web standard and use POST for things that alter the database. You'll win the respect of your peers and the admiration of your friends and family.</p>
+<h2><span class="Apple-style-span">Autocomplete and search contacts (API v2)</span></h2>
+<p>Note that the instructions below are for API v2.  </p>
+<p>If you create a profile for individual contacts that contains the current employer, you might want to add an autocomplete on that field, such as you have on the normal contact edit form. When a user starts to type the name of the current employer, the system will attempt to autocomplete the name from your database of organisation contacts. <br />
+</p>
+<p>For security reasons, the Ajax interface is restricted to users who have access to CiviCRM - otherwise, it would be fairly easy for anyone to download all the contacts you have in your database. So that's the first thing we check for here: <br />
+</p>
+<pre><code>{if $session-&gt;get(&#39;userID&#39;) &gt; 0}
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;/civicrm/{$config-&gt;resourceBase}js/rest.js&quot;&gt;&lt;/script&gt;{literal}
+&lt;script&gt;
+jQuery(document).ready(function($){
+  $(&#39;#current_employer&#39;).crmAutocomplete({params:{contact_type:&#39;Organization&#39;}});
+});
+&lt;/script&gt;
+{/literal}
+
+{/if}</code></pre>
+<p>You might want to add additional filters. For instance in a profile &quot;new volunteer from a member&quot;, you want to populate the list only with the organisations that belong to the group &quot;members&quot; (group id 42).</p>
+<pre><code>$(&#39;#current_employer&#39;).crmAutocomplete({params:{contact_type:&#39;Organization&#39;,group:42}});</code></pre>
+<h3><span class="Apple-style-span"></span></h3>
+<p><span class="Apple-style-span">Extending the API</span></p>
+<p>It should be noted that it's extremely easy to extend the api if you want to add some funky features: add a Magic.php file under api/v3, create a function civicrm_magic_getpony and voila, you have civicrm_api (&quot;magic&quot;,&quot;getpony&quot;), the smarty, the ajax, the REST, and it's also directly usable from the api explorer at /civicrm/ajax/doc </p>
+<div>
+<br />
+
+</div>
+<p></span></p>
+</h3>
+<p><span id="ch014_imports.xhtml"></span></p>
+<h1>Importing data</h1>
+<p>The CiviCRM import system can be used to import contacts, activities, contributions, event participants, and memberships. You can extend the import system to allow it to parse different data sources, such as XML, JSON, Excel, or OpenDocument. The import system is especially useful when you have legacy data in another system (such as a spreadsheet), or have data you need to migrate from one system to another.</p>
+<p>The import system has a few important limitations. It is currently not very good at importing:</p>
+<ul>
+<li>Large data sets<br />
+</li>
+<li>Data sets which contain information for more than component (such as contact data that also contains contributions)</li>
+<li>Data sets which should be imported into more than one group or tag (currently, you can choose only one group or tag for the entire import rather than specifying the value in a field of the imported data set).</li>
+</ul>
+<p>These limitation apply to any extensions you build on the import. To overcome these limitations, one strategy would be to write a custom script using the CiviCRM API that parses the incoming data and makes the appropriate API calls to import it.<br />
+</p>
+<p>Note: If you're reading this in a printed copy, you may want to access the online version so you can copy and paste the code examples more easily. You can find the online version here: <a href="http://en.flossmanuals.net/civicrm" class="uri">http://en.flossmanuals.net/civicrm</a></p>
+<h2>Data Sources</h2>
+<p>The import system supports two data sources out of the box. CSV and SQL. CSV is exported by most spreadsheets, many web sites, and a lot of legacy systems. SQL is the language of relational databases.<br />
+</p>
+<p>Here's your first insider tip on the import system: <em>Every</em> import is an SQL import. The CSV import data source, for example, starts out by dumping the CSV into a temporary database table and then running an SQL import on those data. If you write a custom data source, it's important to remember this because it will save you a lot of mental energy. You don't need to worry about formatting or validating the import data at all. Just get it into a database table and let CiviCRM take it from there.</p>
+<p>When would you want to write an import data source? It might be useful if, say, a client were migrating from another CRM to CiviCRM and wanted to import their data themselves. Another example would be to support a different import file format.<br />
+</p>
+<p>To make things easy on yourself, check for an existing PHP library that can read the format of the data you want to import. If you fine one, use that library to read the data into a database table.</p>
+<h2>Data Source API</h2>
+<p>The data source API is essentially a set of functions you should implement in a new PHP class. Many software developers refer to this as an &quot;interface&quot; or &quot;protocol.&quot; The abstract class that defines this interface is located in <em>CRM/Import/DataSource.php</em>. You should also look at the <em>CRM/Import/DataSource/CSV.php</em> file, because this implements the interface for the CSV import feature.<br />
+</p>
+<p>Here are the functions you will implement and what they should do:</p>
+<pre><code>getInfo(); # should return an array with the title of your data source plugin
+
+preProcess( &amp;$form ); # if you need to set anything up before the form is
+displayed, this iss the place to do it
+
+buildQuickForm( &amp;$form ); # here you should build a form snippet that asks the user
+for the appropriate information to access the incoming data
+
+postProcess( &amp;$params, &amp;$db ); # this is where you dump the incoming data into the
+database table</code></pre>
+<p>After defining your import data source, you need a new Smarty template to create your form snippet. This is pretty specific to the type of import data source you're defining. Let's look at an example of a real custom data source.<br />
+</p>
+<h2>Example Data Source</h2>
+<p>This example of a custom import data source reads a JSON file and imports its contents as new contacts. This file should be named <em>JSON.php</em> and be added to the <em>CRM/Import/DataSource/</em> directory.<br />
+</p>
+<pre><code>&lt;?php
+
+/* My awesome JSON importer of dubious utility and efficiency (but still awesome!)
+ *
+ * JSON should look like this:
+ * {
+ *   &quot;contacts&quot; : [
+ *      {
+ *        &quot;first_name&quot; : &quot;Foo&quot;,
+ *        &quot;last_name&quot; : &quot;Bar&quot;,
+ *        &quot;other_field&quot; : &quot;baz&quot;
+ *      },
+ *      {
+ *        &quot;first_name&quot; : &quot;Other&quot;,
+ *        &quot;last_name&quot; : &quot;Contact&quot;,
+ *        &quot;something_else&quot; : &quot;yep&quot;
+ *      }
+ *   ]
+ * }
+ */
+
+require_once &#39;CRM/Import/DataSource.php&#39;;
+
+class CRM_Import_DataSource_JSON extends CRM_Import_DataSource
+{
+    function getInfo()
+    {
+        return array(&#39;title&#39; =&gt; ts(&#39;JavaScript Object Notation (JSON)&#39;));
+    }
+
+    function preProcess(&amp;$form)
+    {
+        # nothing to do here, but we still define the function
+    }
+
+    function buildQuickForm(&amp;$form)
+    {
+        ### In this function we&#39;re calling a lot of QuickForm functions.
+        ### If you&#39;re unfamiliar with that library, it might be good
+        ### to look up the documentation for it.
+
+        # define a hidden field that tells the system which
+        # data source class we&#39;re using
+        $form-&gt;add( &#39;hidden&#39;, &#39;hidden_dataSource&#39;, &#39;CRM_Import_DataSource_JSON&#39; );
+
+        # grab the config object so we respect some system settings
+        $config = CRM_Core_Config::singleton();
+
+        # get the max upload file size from the config
+        $uploadFileSize = $config-&gt;maxImportFileSize;
+        $uploadSize = round( ( $uploadFileSize / (1024*1024) ), 2 );
+
+        # assign the max upload file size to a template variable
+        # see the template documentation for more info on this
+        $form-&gt;assign( &#39;uploadSize&#39;, $uploadSize );
+
+        # add the file selection field to the form
+        $form-&gt;add( &#39;file&#39;, &#39;uploadFile&#39;, ts(&#39;Import Data File&#39;),
+            &#39;size=30 maxlength=60&#39;, true );
+
+        # now set the max file size so the form enforces it
+        $form-&gt;setMaxFileSize($uploadFileSize);
+        $form-&gt;addRule( &#39;uploadFile&#39;,
+            ts(&#39;File size should be less than %1 MBytes (%2 bytes)&#39;,
+            array(1 =&gt; $uploadSize, 2 =&gt; $uploadFileSize)),
+            &#39;maxfilesize&#39;, $uploadFileSize );
+
+        # not a very smart rule, but it&#39;ll do for now
+        $form-&gt;addRule( &#39;uploadFile&#39;, ts(&#39;Input file must be in JSON format&#39;),
+            &#39;utf8File&#39; );
+
+        # make sure we end up with a file after the form posts
+        $form-&gt;addRule( &#39;uploadFile&#39;, ts(&#39;A valid file must be uploaded.&#39;),
+            &#39;uploadedfile&#39; );
+    }
+
+    function postProcess(&amp;$params, &amp;$db)
+    {
+        # grab the name of the file that was uploaded
+        $file = $params[&#39;uploadFile&#39;][&#39;name&#39;];
+
+        # call a helper function we&#39;ll define below to parse the JSON
+        $result = self::_JsonToTable( $db, $file,
+            CRM_Utils_Array::value( &#39;import_table_name&#39;, $params ) );
+
+        # grab the import table name (CiviCRM determines this for us)
+        $table = $result[&#39;import_table_name&#39;];
+
+        # create a new ImportJob object for our table
+        require_once &#39;CRM/Import/ImportJob.php&#39;;
+        $importJob = new CRM_Import_ImportJob( $table );
+
+        # the ImportJob modifies the table name a bit, so let&#39;s update it
+        $this-&gt;set( &#39;importTableName&#39;, $importJob-&gt;getTableName() );
+    }
+
+    /**
+     * We define this function just to keep things cleaner, the import data source
+     * interface doesn&#39;t look for it; it&#39;s a private function. We use an
+     * underscore at the beginning of the name to indicate this.
+     */
+    private static function _JsonToTable(&amp;$db, $file, $table )
+    {
+        # read the JSON into a string variable
+        $jsonString = file_get_contents($file);
+        if (!$jsonString) {
+            # oops, reading the file didn&#39;t work, generate an error
+            CRM_Core_Error::fatal(&quot;Could not read $file&quot;);
+        }
+
+        # grab the config object again
+        $config = CRM_Core_Config::singleton();
+
+        # this is a bit presumptuous of us, but oh well
+        $db-&gt;query(&quot;DROP TABLE IF EXISTS $table&quot;);
+
+        # create the table where we&#39;ll store the incoming data
+        $create = &quot;CREATE TABLE $table LIKE civicrm_contact&quot;;
+        $db-&gt;query($create);
+        # drop the id column because the import system will add one
+        $dropId = &quot;ALTER TABLE $table DROP COLUMN id&quot;;
+        $db-&gt;query($dropId);
+
+        # decode the JSON and INSERT the records one by one;
+        # it might be more efficient to build one big multi-insert,
+        # but we&#39;ll leave that as an exercise for the reader
+
+        ### BE CAREFUL THAT YOU DON&#39;T RUN THIS ON A MASSIVE JSON FILE!!
+        ### It creates one big object from the entire JSON file, so you&#39;ll quickly
+        ### eat up every bit of memory PHP can use if you try to import a large
+        ### file.
+
+        # this requires that the JSON PECL extension is installed and
+        # enabled in PHP
+        $importObj = json_decode( $jsonString, true );
+
+        # loop through each record in the JSON object, put it into an SQL query,
+        # and insert it into the database
+        foreach ($importObj[&#39;contacts&#39;] as $newContact) {
+            $fields = array_map( &#39;_civicrm_mysql_real_escape_string&#39;,
+                array_keys( $newContact ) );
+            $sqlFields = &quot;(&quot; . implode( &#39;,&#39;, $fields ) . &quot;)&quot;;
+            $values = array_map( &#39;_civicrm_mysql_real_escape_and_quote_string&#39;,
+                $newContact );
+            $sqlValues = &quot;VALUES (&quot; . implode( &#39;,&#39;, $values ) . &quot;)&quot;;
+
+            # construct the query and run it
+            $sql = &quot;INSERT IGNORE INTO $table $sqlFields $sqlValues&quot;;
+            $db-&gt;query($sql);
+        }
+
+        # get the import tmp table name and return it
+        $result = array( );
+        $result[&#39;import_table_name&#39;] = $table;
+        return $result;
+    }
+}
+
+# Another couple private helper functions we define
+function _civicrm_mysql_real_escape_and_quote_string( $string ) {
+    return _civicrm_mysql_real_escape_string( $string, true );
+}
+
+function _civicrm_mysql_real_escape_string( $string, $quote = false ) {
+    static $dao = null;
+    if ( ! $dao ) {
+        $dao = new CRM_Core_DAO( );
+    }
+    $returnString = $quote ? &quot;\&quot;{$dao-&gt;escape( $string )}\&quot;&quot; :
+        $dao-&gt;escape( $string );
+    return $returnString;
+}</code></pre>
+<p>And here's the Smarty template. It should be saved in <em>templates/CRM/Import/Form/JSON.tpl</em>.</p>
+<pre><code>&lt;fieldset&gt;&lt;legend&gt;{ts}Upload JSON File{/ts}&lt;/legend&gt;
+  &lt;table class=&quot;form-layout&quot;&gt;
+    &lt;tr&gt;
+        &lt;td class=&quot;label&quot;&gt;{$form.uploadFile.label}&lt;/td&gt;
+        &lt;td&gt;{$form.uploadFile.html}&lt;br /&gt;
+            &lt;div class=&quot;description&quot;&gt;{ts}File format must be JavaScript
+              Object Notation (JSON). File must be UTF8 encoded if it contains
+              special characters (e.g. accented letters, etc.).{/ts}&lt;/div&gt;
+            {ts 1=$uploadSize}Maximum Upload File Size: %1 MB{/ts}
+        &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/fieldset&gt;</code></pre>
+<h2>Summary</h2>
+<p>The CiviCRM Import system has a few limitations, but it is by far the easiest way for end users to get data from other systems into CiviCRM. <span class="Apple-style-span">When a client has ongoing data import needs and wants non-technical users to initiate and manage the imports, writing a custom data source may be a good solution. </span><br />
+</p>
+<p>If the import system cannot handle the type or amount of data you need to import, your options are to write a separate import program that calls the CiviCRM API, write your own improvements to the import system, or sponsor other developers to write improvements. If you write or sponsor improvements to the import system, make sure you contribute them back to the core system! The CiviCRM development team would be happy to discuss potential improvements with you. You can find them in the #civicrm IRC channel on irc.freenode.net.<br />
+</p>
+<p><span id="ch016_extensions-framework.xhtml"></span></p>
+<p><span class="Apple-style-span"> </span></p>
+<h1>EXTENSIONS</h1>
+<p>CiviCRM has an extensions framework that allows you share your custom searches, reports and payment processors with the community. Before you being work on writing an extension make sure someone else hasn't already contributed something similar by checking the list of extensions on <a href="http://directory.civicrm.org">http://directory.civicrm.org/</a>.</p>
+<h2>How to create an Extension </h2>
+<p>Before you start, make sure your extensions are enabled! You need to configure a directory, where your extensions will be stored. To do that, you need to go to: &quot;Administer -&gt; Configure -&gt; Global Settings -&gt; Directories&quot;, fill in &quot;CiviCRM Extensions Directory&quot; field and click &quot;Save&quot; at the bottom of the page. It's best to choose a directory outside of $civicrm_root, to avoid potential problems during upgrade. Then follow the seven steps below.</p>
+<h3>1. Choose a unique key for your extension</h3>
+<p>Every extension has a unique name called the extension key. It's built using Java-like reverse domain naming to make it easier with identifying unique extensions and giving developers more flexibility on providing different extensions. So for example, if your website is civiconsulting.com and you're developing custom search showing only event payments, you can choose: com.civiconsulting.search.eventregistration as the key.</p>
+<h3>2. Create an extension directory</h3>
+<p>Go to your extensions directory and create the directory named after your key. This will be the place where you'll put all the extension related files. When you're done, it will also be put into the zip archive for further distribution.</p>
+<h3>3. Create the info.xml file</h3>
+<p>Now you need to create a file which will describe your extension so we know what a given extension does, who wrote it, who supports it and quite a few other things. It needs to be called info.xml. It's in XML format and it's relatively simple. Here's an example:</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;extension key=&quot;org.civicrm.activity&quot; type=&quot;search&quot;&gt;
+  &lt;callback&gt;ActivitySearch&lt;/callback&gt;
+  &lt;name&gt;Activity Search&lt;/name&gt;
+  &lt;description&gt;
+   This custom search allows to search through activities
+   and returns activities as results (not contacts as
+   regular search).
+  &lt;/description&gt;
+  &lt;url&gt;http://civicrm.org&lt;/url&gt;
+  &lt;license&gt;AGPL&lt;/license&gt;
+  &lt;maintainer&gt;CiviCRM Core Team &amp;lt;noreply@civicrm.org&amp;gt;&lt;/maintainer&gt;
+  &lt;releaseDate&gt;2010-09-01&lt;/releaseDate&gt;
+  &lt;version&gt;1.0&lt;/version&gt;
+  &lt;compatibility&gt;
+   &lt;ver&gt;3.3&lt;/ver&gt;
+   &lt;ver&gt;3.4&lt;/ver&gt;
+  &lt;/compatibility&gt;
+  &lt;develStage&gt;beta&lt;/develStage&gt;
+  &lt;comments&gt;For support, please contact project team on the forums. (http://forum.civicrm.org)&lt;/comments&gt;
+&lt;/extension&gt;
+</code></pre>
+<p>Here's a quick description of the XML elements:</p>
+<ul>
+<li><strong>extension</strong> - enclosing element: everything needs to sit inside of it. Attributes are:
+<ul>
+<li><strong>key</strong>: unique name of the extension (should match the name of directory this extension resides in). We're going with Java like reverse domain naming to make it easier with identifying unique extensions and giving developers more flexibility on providing different extensions.</li>
+<li><strong>type</strong>: one of &quot;search&quot;, &quot;payment&quot;, &quot;report&quot; for now, meaning that this extension is - respectively - a custom search, payment processor or custom report.</li>
+</ul></li>
+<li><strong>callback</strong> - the name of the class that should be called in order to run this extension. Following the namespacing convention in CiviCRM, it will also be the name of the php file. Above example means that the file $extension_dir/search/ActivitySearch.php should exist and contain Extension_Search_ActivitySearch class. Extension_Search part of the namespace is obligatory, the rest is under extension author's control.</li>
+<li><strong>name</strong> - well, that one's easy. It's a name of the extension.</li>
+<li><strong>description</strong> - easy as well.</li>
+<li><strong>url</strong> - address to extensions website with documentation, more information, etc.</li>
+<li><strong>license</strong> - the name of the license under given extension is offered.</li>
+<li><strong>mainainer</strong> - self explanatory, hopefully. Email address inside required.</li>
+<li><strong>releaseDate</strong> - date when given extension has been released on.</li>
+<li><strong>version</strong> - version of the extension.</li>
+<li><strong>develStage</strong> - if you want to push out you extension in unstable state, here's the opportunity to be sincere about it. Allowed values are: &quot;alpha&quot;, &quot;beta&quot;, &quot;stable&quot;. Beta is the default if you don't define develStage - 'cause you must have been unsure, if you forgot to provide such crucial piece of information. :-)</li>
+<li><strong>compatibility</strong>, <strong>ver</strong> - lists compatible versions. It cares only about first two elements of version name and ignores the rest to avoid the need for frequent updating. So if your extension is compatible with CiviCRM 3.3, also means it supports 3.3.beta4. However, if you state it supports 3.3.beta4 (<em>&lt;compatibility&gt;&lt;ver&gt;3.3.beta4&lt;/ver&gt;&lt;/compatibility&gt;</em>), it won't support any other version - no go on 3.3.1.</li>
+<li><strong>comments</strong> - last one, the opportunity to say anything you want. :-)</li>
+</ul>
+<p>Since we love things to be localised, we've added that too and you can provide the extension description in other languages - the optional <strong>localisedInfo</strong> section of the info file does that:</p>
+<pre><code>&lt;extension ...&gt;
+    ...regular stuff
+    &lt;localisedInfo&gt;
+        &lt;pl_PL&gt;
+            &lt;description&gt;Opis po polsku.&lt;/description&gt;
+            &lt;maintainer&gt;Zespół CiviCRM &amp;lt;noreply@civicrm.org&amp;gt;&lt;/maintainer&gt;
+            &lt;comments&gt;Wsparcie dla tego rozszerzenia dostępne na forum CiviCRM (http://forum.civicrm.org).&lt;/comments&gt;
+        &lt;/pl_PL&gt;
+        &lt;pt_BR&gt;
+            ...
+        &lt;/pt_BR&gt;
+    &lt;/localisedInfo&gt;
+&lt;/extension&gt;</code></pre>
+<p> </p>
+<p>Please note though, this only supports name, description, maintainer and comments sections - all other extension information defined here will be ignored.  </p>
+<h3>4. Develop your extension!</h3>
+<p>Depending on the type of extension that you're building, you will need to follow different instructions. Please refer to separate chapters for:</p>
+<ul>
+<li>Creating A Custom Search Extension</li>
+<li>Creating A Report Template Extension</li>
+<li>Creating A Payment Processor Extension</li>
+</ul>
+<h3>5. Test your extension</h3>
+<p>Make sure your extension works as planned! Once you have the info.xml file, you will be able to turn the extension on and off in the Manage CiviCRM Extensions screen - use that to see what errors you're getting and react accordingly.</p>
+<h3>6. Package your extension</h3>
+<p>Once you're done with developing and testing, you need to put all the contents of your extensions directory into a zip file. </p>
+<p></span>We'll start by creating a directory named exactly the same as the unique key that we're choosing for our extension. <span class="Apple-style-span">You need to prepare the info file as described above. Then once you have the info file, you can add the other required files and subdirectories to the extension package. This will be different for Custom Searches, Reports or Payment Processors - see each specific chapter for concrete examples.  </span></p>
+<h3>7. Submit your extension for public distribution</h3>
+<p>We are working on the extension submission system, but in the meantime, just get in touch with us via <a href="mailto:info@civicrm.org">info@civicrm.org</a>  with your extension or on the extensions board of the developer forum. We'll then do some testing and if everything works fine, we'll put your extension into the public distribution. Once there, everyone will be able to install it once they get to &quot;Manage CiviCRM Extensions&quot; screen.</p>
+<h2><br />
+</h2>
+<p></span></p>
+<p><span id="ch017_custom-searches.xhtml"></span></p>
+<h1>Developing Custom Searches</h1>
+<p>A custom search is a method of providing new functionality within the standard CiviCRM navigation structure. This chapter looks at how to develop a Custom Search.</p>
+<p>Custom searches produce a screen showing a set of contacts, from where you can execute actions such as sending email, printing mailing labels, and all the other actions that are available for contact search results within CiviCRM. The results page displays the same as any other search results page, such as results delivered from an Advanced Search, however, a predefined set of functions controls which information is delivered to the result page.<br />
+</p>
+<p>Custom Searches follow the Hollywood principle, &quot;Don't call me, I'll call you.&quot; In this case CiviCRM calls your functions at the appropriate time.<br />
+</p>
+<p><img src="static/CiviCRM_update-CustomSearches-CustomSearches_AggregateTotals-en.jpg" title="CustomSearches_AggregateTotals" alt="CustomSearches_AggregateTotals" width="370" height="242" /></p>
+<p> </p>
+<p><img src="static/CiviCRM_update-CustomSearches-CustomSearches_Results-en.jpg" title="CustomSearches_Results" alt="CustomSearches_Results" width="518" height="352" /><br />
+</p>
+<h2>When to use Custom Searches</h2>
+<h3>A custom search is the right choice when ...</h3>
+<ul>
+<li>you need to access the Actions list after running your search, to send email, add the contacts to a group or other actions (since the list of actions and list of tokens can be extended with developer-created hooks, the combination of a custom search + custom action + custom token is a powerful tool for implementing a special requirement. If you are interested in creating new actions or tokens, read the section on CiviCRM hooks in the chapter Extending CiviCRM.)<br />
+</li>
+<li>you want to create a Smart Group based on the parameters of the custom search</li>
+<li>you want to use the search results to drive a mass mailing in CiviMail</li>
+<li>you want results that can be sorted by clicking any column heading in the results page.</li>
+</ul>
+<h3>A custom search is the wrong choice when ...</h3>
+<ul>
+<li>you can use the Advanced Search or the Search Builder to create the same results</li>
+<li>the information you need is not primarily accessible from the CiviCRM database tables (for example, the information needs to be retrieved from a third-party system or a different database)</li>
+<li>the information you need does not include the CiviCRM contact ID (for example, information related to summarised event income). <br />
+</li>
+</ul>
+<h3>CiviReport is a better choice if ...</h3>
+<ul>
+<li>you need to schedule and send the entire result as an email to one or more people</li>
+<li>you need a summary/detail drill-down style of results page where the detail is not just the contact summary screen</li>
+<li>you want to use the results as a dashlet on your CiviCRM dashboard</li>
+<li>you need multiple report break areas within the results page, such as subtotals after every 5 records as well as grand totals</li>
+<li>you need to include information not related to contacts.<br />
+</li>
+</ul>
+<h2>Getting started creating a new custom search</h2>
+<p>In this section we will create a new custom search called &quot;BirthdaySearch&quot; that will find all contacts whose birthdays fall in June. <br />
+</p>
+<p>Custom searches are written using PHP and SQL. Very little knowledge of PHP is needed, as you start with a template file and only make minor changes. In many cases the only changes are the SQL Select statement and which columns to display in the results.<br />
+</p>
+<h3>Plan and test</h3>
+<p>Before writing the code, it is important to plan and test the SQL query and verify the results. It is valuable at this stage to review the database tables and test the SQL select statements within the database using an SQL tool such as PHPMyAdmin.</p>
+<p>It may be helpful for you to review the information at:<br />
+</p>
+<ul>
+<li>Useful CiviCRM SQL Queries: <a href="http://wiki.civicrm.org/confluence/display/CRMDOC/Useful+SQL+queries" class="uri">http://wiki.civicrm.org/confluence/display/CRMDOC/Useful+SQL+queries</a></li>
+<li>CiviCRM Data Architecture: <a href="http://wiki.civicrm.org/confluence/x/GQDEAQ&amp;nbsp">http://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+data+architecture</a> </li>
+<li>CiviCRM wiki: <a href="http://wiki.civicrm.org/confluence/display/CRM/CiviCRM+Wiki" class="uri">http://wiki.civicrm.org/confluence/display/CRM/CiviCRM+Wiki</a></li>
+</ul>
+<h4>Important Note</h4>
+<blockquote>
+<p>It is important to include the contact_id field from the table civicrm_contact in your select statement. Even if you do intend to display the contact_id field, include it. The reason is that the view and edit links need the value for the cid attribute of the url. Without a value, you can not edit or view information about the contact. Follow the select statement below for guidance.<br />
+</p>
+</blockquote>
+<h3>Setting the filepath</h3>
+<p>Your custom search files can be stored almost anywhere, but you must tell CiviCRM where these files are. </p>
+<ol>
+<li>Within CiviCRM, go to: Administer &gt; Configure &gt; Global Settings &gt; Directories</li>
+<li>Fill in the Custom PHP Path Directory. <strong></strong> This needs to be an absolute path to your PHP directory, such as /home2/jsmith/public_html/civicrm_custom_code/<strong><br />
+</strong></li>
+<li>Create a copy of an existing custom search file, such as the EventAggregate.php file. You will find this file at: <br />
+&lt;joomla root&gt;/administrator/components/com_civicrm/civicrm/CRM/Contact/Form/Search/Custom  <br />
+or<br />
+&lt;drupal root&gt;/sites/all/modules/civicrm/CRM/Contact/Form/Search/Custom</li>
+<li> Place the EventAggregate.php file in the directory: /home2/jsmith/public_html/civicrm_custom_code/CRM/Contact/Form/Search/Custom</li>
+<li>Rename the copied EventAggregate.php file to BirthdaySearch.php</li>
+</ol>
+<h2>Understanding and updating the search code</h2>
+<p>Start by opening the file BirthdaySearch.php in a text editor. The first change needed is to change the class declaration to:</p>
+<pre><code>class CRM_Contact_Form_Search_Custom_UpcomingBirthdays
+   implements CRM_Contact_Form_Search_Interface {
+  </code></pre>
+<h3>Functions you will probably need to modify:</h3>
+<ul>
+<li><strong>function_construct:</strong> this controls the columns that are part of the results page.</li>
+</ul>
+<ul>
+<li><strong>function all:</strong> this function is responsible for returning the SQL select statement to execute that gets the entire set of information. The select statement MUST include a field named &quot;contact_id&quot;. Normally it also contains fields named &quot;name&quot; and &quot;sort_name&quot;. For example:</li>
+</ul>
+<pre><code>if ( $onlyIDs ) {
+     $select  = &quot;DISTINCT civicrm_contact.id as contact_id,
+      civicrm_contact.display_name as name&quot;;
+    } else {
+    $select = &quot;DISTINCT civicrm_contact.id as contact_id, CONCAT(
+     monthname(civicrm_contact.birth_date) , &#39; &#39;, day(civicrm_contact.birth_date))
+     as sort_name , civicrm_contact.display_name as name, &#39;birthday&#39; as oc_type&quot; ;
+
+    }
+   
+    $from  = $this-&gt;from( );
+    $where = $this-&gt;where( $includeContactIDs ) ;
+    $sql = &quot;SELECT $select FROM  $from WHERE $where &quot;;
+
+⁞</code></pre>
+<ul>
+<li><strong>function from:</strong> this function is responsible for returning the from clause of the SQL select statement. It is normally called from the &quot;all&quot; function as well as by CiviCRM.<br />
+</li>
+</ul>
+<ul>
+<li><strong>function where:</strong> this function is responsible for returning the where clause of the SQL select statement.<br />
+</li>
+</ul>
+<ul>
+<li><strong>function buildForm</strong>: this controls the results title as well as the parameters that are available to the person running the search. For this birthday search, you may want the user to be able to choose the month.   </li>
+</ul>
+<h3>Functions you may need to modify:</h3>
+<ul>
+<li><strong>function summary:</strong> this function is needed if some or all columns have summary information, such as total number of birthdays in June.</li>
+</ul>
+<ul>
+<li><strong>function alterRow:</strong> this function allows you to alter the contents of a piece of information before the results are displayed.</li>
+</ul>
+<ul>
+<li><strong>templateFile</strong>: this function returns the name of the Smarty template that CiviCRM will use to present the results. For most purposes, the template CRM/Contact/Form/Search/Custom/Sample.tpl will suffice. </li>
+</ul>
+<h2>Prepare to run the custom search</h2>
+<p>Before you can run the custom search, CiviCRM needs to be informed that it exists. This is accomplished by the following steps:</p>
+<ol>
+<li>Go to: Administer &gt; Customize &gt; Manage Custom Searches.</li>
+<li>Scroll to the bottom of the page and click the button New Custom Search.</li>
+<li>Provide the class path as: CRM_Contact_Form_Search_Custom_BirthdaySearch</li>
+<li>Provide the title as: Birthday Search</li>
+</ol>
+<p>The new Birthday Search should now appear in (and can be run from) the list of custom searches in the navigation menu. It will also appear on the page reached by going to Search &gt; Custom Searches.<br />
+</p>
+<p>The new custom search will not appear in the black navigation menu unless the navigation menu is edited.  This can be done by going to Administer &gt; Customize &gt; Navigation Menu.</p>
+<h2>Testing the custom search</h2>
+<p> Always test the following behaviors of the new search:</p>
+<ul>
+<li>Test for a variety of form values, especially for invalid data. Errors in validation can lead to serious security breaches. Just because there is a drop-down list of valid months, do not assume that only valid months are passed to your custom search. Also test for values with apostrophes and other special characters.<br />
+</li>
+<li>Test the previous and next page links for a variety of different size results. </li>
+<li> Test the first/last page links for a variety of different size results. </li>
+<li> Make a Smart Group from it and send a CiviMailing to that group.</li>
+<li> Test other actions in the Action menu such as Send an Email, or create PDF letters with mail merge tokens.</li>
+</ul>
+<div>
+<h2><span lang="EN-US">An example of creating a custom search extension</span></h2>
+<p><span lang="EN-US">Once you’ve created your custom search, you can start packaging it. Let's say you will be doing an activity search.</span>You need to prepare the info file as described in the Extensions Framework Chapter.</p>
+<p><span class="Apple-style-span">Sample info.xml file</span></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;extension key=&quot;org.civicrm.activity&quot; type=&quot;search&quot;&gt;
+  &lt;callback&gt;ActivitySearch&lt;/callback&gt;
+  &lt;name&gt;Activity Search&lt;/name&gt;
+  &lt;description&gt;
+   This custom search allows to search through activities
+   and returns activities as results (not contacts as
+   regular search).
+  &lt;/description&gt;
+  &lt;url&gt;http://civicrm.org&lt;/url&gt;
+  &lt;license&gt;AGPL&lt;/license&gt;
+  &lt;maintainer&gt;CiviCRM Core Team &amp;lt;noreply@civicrm.org&amp;gt;&lt;/maintainer&gt;
+  &lt;releaseDate&gt;2010-09-01&lt;/releaseDate&gt;
+  &lt;version&gt;1.0&lt;/version&gt;
+  &lt;compatibility&gt;
+   &lt;ver&gt;3.3&lt;/ver&gt;
+   &lt;ver&gt;3.4&lt;/ver&gt;
+  &lt;/compatibility&gt;
+  &lt;develStage&gt;beta&lt;/develStage&gt;
+  &lt;comments&gt;For support, please contact project team on the forums. (http://forum.civicrm.org)&lt;/comments&gt;
+&lt;/extension&gt;
+</code></pre>
+<p> </p>
+<p>Then once you have the info file, you can start putting the extension package together. We'll choose &quot;org.civicrm.activity&quot; to be the unique identifier of the extension, so we need to give the same name to the directory that will contain our extension. Once you've created that, put the info.xml file in it.</p>
+<p><span lang="EN-US">Remember the &quot;callback&quot; section in info file? We've put the value &quot;ActivitySearch&quot; in there. Now it's time to prepare our custom search PHP class to fit in the package. First of all, put it in the file named exactly after the callback value minus the file extension part. So now we have a second file in our extension directory: ActivitySearch.php. The name of the class that is inside this file should be constructed the following way: <strong>&quot;Extension_&lt;Type&gt;_&lt;key&gt;_&lt;callback&gt;&quot;</strong> - which means in our case it will be: Extension_Search_org_civicrm_activity_ActivitySearch. It's rather long, but we want to avoid any problems with class name duplication. Please also note, that the extension type is capitalised, but extension key is not.</span></p>
+<p><span lang="EN-US">Ok, we've got the info file, there is a custom search class ready, so the last thing is a template. Just create a subdirectory of org.civicrm.activity named <strong>templates</strong> and put your template file there. You should name the template the same as your PHP file - so it should be ActivitySearch.tpl.</span></p>
+<p><span lang="EN-US">You should end up with the following structure:</span></p>
+<div>
+<pre><code>org.civicrm.activity/
+|-- ActivitySearch.php
+|-- README.txt 
+|-- templates
+|   `-- ActivitySearch.tpl
+`-- info.xml</code></pre>
+</div>
+Let's come back to the PHP class for a minute. There are two small 
+</div>
+<p><span id="ch018_reports.xhtml"></span></p>
+<h1>Writing custom reports</h1>
+<p>This chapter is a brief introduction to creating a new report in the CiviReport system. You can use the same programming techniques to extend an existing report template. These tasks call for a strong grasp of PHP. More details are available in the wiki page on customizing reports: <a href="http://wiki.civicrm.org/confluence/display/CRMDOC/CiviReport+structure+and+customization"><br />
+http://wiki.civicrm.org/confluence/display/CRMDOC/CiviReport+structure+and+customization</a>.</p>
+<h2>Creating or changing a report template is the wrong choice when ...</h2>
+<p>If you want a batch action on an existing result set. CiviReport does not support most of the batch actions. If your main purpose is to print or send an email to a list of contacts that meet specific criteria, write a custom search.</p>
+<h2>Report specification</h2>
+<p>Before starting on a custom report, fill out the form on the CiviCRM wiki for report specifications. Add your specification there and ask for comments in the forum or on IRC.</p>
+<h2>Creating a custom template</h2>
+<p>This section creates a custom report listing all contacts' Display Name, First Name and Last Name. Note that we'll be talking about both Smarty templates (<em>.tpl</em> files) and PHP report templates--be careful not to confuse the two.<br />
+Replacing an existing report with your own version is not recommended because you may need the original too, and because an upgrade of CiviCRM will overwrite your changes with the CiviCRM version. In this section, therefore, we'll create a new Smarty template and a new PHP template for the report. You can also copy a template and report to a new location and edit them to create your custom report.</p>
+<p>All reports are located under <em>CRM/Report/Form/</em> and grouped by component.<br />
+</p>
+<p>Create a new Smarty template and a new PHP template for the report. Because this example creates a report about contacts, we'll create a new report template named <em>Contact.php</em> and a Smarty template named <em>Contact.tpl</em>, both in a custom directory (the <em>Contact.php</em> in the custom directory for php scripts, the <em>Contact.tpl</em> in the custom directory for templates). The paths will look like:<br />
+</p>
+<pre><code>PHP_CUSTOM_PATH/CRM/Report/Form/Contact/Contact.php
+
+TPL_CUSTOM_PATH/CRM/Report/Form/Contact/Contact.tpl
+ </code></pre>
+<p>Add a base class named <strong>CRM_Report_Form_Contact_Contact</strong> in <em>Contact.php</em>, Your class must inherit the form class used for the report framework. So <em>Contact.php</em> looks like:<br />
+</p>
+<pre><code>&lt;?php
+require_once &#39;CRM/Report/Form.php&#39;;
+class CRM_Report_Form_Contact_Contact extends CRM_Report_Form {
+}</code></pre>
+<p>Your Smarty template file must include the report framework template. Thus, <em>Contact.tpl</em> is:<br />
+</p>
+<pre><code>{include file=&quot;CRM/Report/Form.tpl&quot;}</code></pre>
+<p>Register your report template in CiviCRM. Go to: Administer -&gt; CiviReport -&gt; Register Report. Enter the details shown in the following screenshot.<br />
+<img src="static/CiviCRM_update-report1-en.jpg" title="Reports_register" alt="Reports_register" width="598" height="388" /><br />
+In a constructor, create an array to hold a contact, which in turn hold an array specifying two fields you want to display.<br />
+</p>
+<pre><code>function __construct( ) {
+    $this-&gt;_columns = array( &#39;civicrm_contact&#39; =&gt;
+    array(
+        &#39;dao&#39; =&gt; &#39;CRM_Contact_DAO_Contact&#39;,
+        &#39;fields&#39; =&gt; array( &#39;first_name&#39; =&gt; array( &#39;title&#39; =&gt; ts( &#39;First Name&#39; ) ), &#39;last_name&#39; =&gt; array( &#39;title&#39; =&gt; ts( &#39;Last Name&#39; ) ),
+    ) ) );
+parent::__construct( );
+}</code></pre>
+<p>Build the display by issuing a SELECT against the database. You can create column headers and fill in each field in the display with the results returned by the SELECT.<br />
+</p>
+<pre><code>    function preProcess( ) {
+        parent::preProcess( );
+    }
+// build select query based on display columns selected
+    function select( ) {
+        $select = $this-&gt;_columnHeaders = array( );
+        foreach ( $this-&gt;_columns as $tableName =&gt; $table ) {
+            if ( array_key_exists(&#39;fields&#39;, $table) ) {
+                foreach ( $table[&#39;fields&#39;] as $fieldName =&gt; $field ) {
+                    if ( CRM_Utils_Array::value( &#39;required&#39;, $field ) ||
+                    CRM_Utils_Array::value( $fieldName, $this-&gt;_params[&#39;fields&#39;] )) {                       $select[] = &quot;{$field[&#39;dbAlias&#39;]} as {$tableName}_{$fieldName}&quot;;           // initializing columns as well
+           $this-&gt;_columnHeaders[&quot;{$tableName}_{$fieldName}&quot;][&#39;type&#39;]  =
+               CRM_Utils_Array::value( &#39;type&#39;, $field );
+           $this-&gt;_columnHeaders[&quot;{$tableName}_{$fieldName}&quot;][&#39;title&#39;] = $field[&#39;title&#39;];
+                    }
+                }
+            }
+        }
+        $this-&gt;_select = &quot;SELECT &quot; . implode( &#39;, &#39;, $select ) . &quot; &quot;;
+    }
+    function from( ) {
+        $this-&gt;_from = &quot;FROM civicrm_contact {$this-&gt;_aliases[&#39;civicrm_contact&#39;]}&quot;;
+    }</code></pre>
+<p>Your custom report template is ready. Press the Preview button to see the results.<img src="static/CiviCRM_update-CiviReport-resized_600x244_report2-en.jpg" title="Contact Report" alt="Contact Report" /><br />
+After you've installed and tested your report, add it to the CiviCRM wiki as a patch to the project so that it can be used by others in the community.</p>
+<h2><span lang="EN-US">An example of creating a custom report extension</span></h2>
+<p><span class="apple-style-span">Custom reports are made of a PHP class and the template. Once we have that, we can go ahead and package it.</span></p>
+<p><span lang="EN-US">You need to prepare the info file as described in the Extensions Framework Chapter. </span></p>
+<h3><span lang="EN-US">Sample info.xml file for custom report</span></h3>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;extension key=&quot;org.civicrm.report.grant&quot; type=&quot;report&quot;&gt;
+  &lt;callback&gt;Grant&lt;/callback&gt;
+  &lt;name&gt;Grant Report&lt;/name&gt;
+  &lt;description&gt;Grant Report allows you to see the summary of grants that
+  have been admitted to your consitutents by your organisation.  &lt;/description&gt;
+  &lt;url&gt;http://civicrm.org&lt;/url&gt;
+  &lt;license&gt;AGPL&lt;/license&gt;
+  &lt;maintainer&gt;CiviCRM Core Team &amp;lt;noreply@civicrm.org&amp;gt;&lt;/maintainer&gt;
+  &lt;releaseDate&gt;2010-09-01&lt;/releaseDate&gt;
+  &lt;version&gt;1.0&lt;/version&gt;
+  &lt;develStage&gt;stable&lt;/develStage&gt;
+  &lt;compatibility&gt;&lt;ver&gt;3.3&lt;/ver&gt;&lt;/compatibility&gt;
+  &lt;comments&gt;For support, please contact project team on the forums. (http://forum.civicrm.org)&lt;/comments&gt;
+&lt;/extension&gt; </code></pre>
+<p>⁞Then once you have the info file, you can start putting the extension package together. We'll choose &quot; org.civicrm.report.grant &quot; to be the unique identifier of the extension, so we need to give the same name to the directory that will contain our extension. Once you've created that, put the info.xml file in it.</p>
+<ul>
+<li>Create the directory org.civicrm.report.grant and add the info file</li>
+<li>Put the report PHP class file in the directory. Remember to name it the same way as the callback attribute in your info.xml, also don't forget to follow the convention in class naming (&quot;Extension_&lt;Type&gt;_&lt;key&gt;_&lt;callback&gt;&quot; - Extension_Report_org_civicrm_report_grant_Grant in this case).</li>
+<li>Create org.civicrm.report.grant/templates directory and put your report's template file there</li>
+</ul>
+<p><span lang="EN-US">Report needs some additional information compared with custom search and we need to define it somewhere. Therefore, we'll create another XML file called report.xml. That will simply provide the extension framework with all the necessary information needed for adding it to the system. Here's how it looks:</span></p>
+<div>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+  &lt;report_template key=&quot;org.civicrm.report.grant&quot;&gt;
+    &lt;report_url&gt;grant/summary&lt;/report_url&gt;
+    &lt;component&gt;CiviGrant&lt;/component&gt;
+  &lt;/report_template&gt;</code></pre>
+</div>
+<p><span lang="EN-US">Attributes explained:</span></p>
+<ul>
+<li>report_url  - the url under which this report will be server within CiviCRM. It's relative to CiviCRM's base URL.</li>
+<li>component - the name of the component this report works with. Currently accepted options are: Contact, CiviEvent, CiviContribute, CiviMember, CiviMail, CiviGrant, CiviPledge, CiviCase. If unknown value is put here, &quot;Contact&quot; is assumed.</li>
+</ul>
+<p><span lang="EN-US">We should have following directory structure containing following files:</span></p>
+<div>
+<pre><code>org.civicrm.report.grant/
+|-- Grant.php
+|-- info.xml
+|-- report_template.xml
+`-- templates
+    `-- Grant.tpl</code></pre>
+</div>
+<p><span lang="EN-US">Looks similar to what you have on your sandbox? Then the last thing required is to put it in the archive - &quot;zip&quot; it and call the file after the key defined at the beginning: org.civicrm.report.grant.zip. Congratulations, you have now packaged your first custom report. </span></p>
+<h3><br />
+</h3>
+<p><span id="ch019_payment-processors.xhtml"></span></p>
+<h1>PAYMENT PROCESSOR PLUGINS</h1>
+<p>CiviCRM has a plugin architecture for integration of payment processors/gateways. The core team has built plugins for PayPal Pro, PayPal Express, PayPal Web Payments Standard with IPN, and Google Checkout. JMA Consulting (Joe Murray) sponsored Alan Dixon to build and contribute a plugin for Moneris. Marshall Newrock for Ideal Solutions contributed a plugin for Authorize.net. Eileen and Lucas collaborated to contribute a plugin for DPS PaymentExpress and also wrote this document. Eileen wrote the Payment processors for FirstData, Elavon and PayflowPro - which are in the core as of v 3.1. Peter Barwell wrote eWay. Circle Interactive wrote the processors for WorldPay and SagePay. </p>
+<h2>How to Write a Payment Processor</h2>
+<h3>Understand the processor you are setting up</h3>
+<p>You need to check your processor's documentation and understand the flow of the processor's process and compare it to existing processors.</p>
+<p>Factors you should take note of are:</p>
+<ul>
+<li>Does your processor require the user to interact directly with forms/pages on their servers (like PayPal Express), or are the data fields collected by the CiviContrib form and submitted &quot;behind the scenes&quot;?</li>
+<li>What fields are required?</li>
+<li>What authentication method(s) are used between Civi and the payment processor servers?</li>
+<li>What format is data submitted in(soap/xml, arrays...)?</li>
+<li>What are the steps in completing a transaction (e.g. simple POST and response, vs multi-step sequence...). Are transaction results returned real-time (PayPal Pro/Express and I think Moneris) - or posted back in a separate process (PayPal Standard w/ IPN)?</li>
+</ul>
+<p>Note that none of the plugins distributed with CiviCRM use a model where the donor's credit card info is stored in the CiviCRM site's database. For PayPal Pro, Authorize.net and PayJunction - Credit card numbers, exp date and security codes are entered on the CiviCRM contribution page and immediately passed to the processor / not saved. For PayPal Std, Google Checkout - the info is entered at the processors' site.</p>
+<h3>Determine what 'type' of processor you are dealing with.</h3>
+<p>Figuring this out will set you on the right track. In CiviCRM there are three 'billing types':</p>
+<p><strong>form</strong> - a form is where the credit card information is collected on a form on your site and submitted to the payment processor</p>
+<p><strong>button</strong> -  buttons rely on important information (success, variables etc) being communicated directly between your server and the payment processor. (E.g. in the paypal express method, the customer is transferred to the server to enter their details but the transaction is not pushed through until an html request is sent from your server to the processor and the server replies with the response. The server also uses html to query certain variables from the server. CURL is used for this.) The user's session remains intact but I'm not sure if session variables or variables sent from the payment processor are used to identify the transaction and customise what the user sees </p>
+<p><strong>notify</strong> - the notify method deals with a situation where there is not a direct two way communication between your server and the processor and there is a need for your server to identify which transaction is being responded to. Some processors may have more than one confirmation: e.g. one html GET via the user's browser and a later html GET from the payment processor server. If the user's browser never returns the processor needs to be able to figure out which transaction is involved &amp; to complete it. If the GET is from the user's browser it needs to do the same thing but also redirect the user appropriately. </p>
+<h3>Add the processor into the processor_types table</h3>
+<p>Add a line to `civicrm_payment_processor_type` - eg. using php myadmin or mysql</p>
+<p>Fields are:</p>
+<pre><code>ID   - unique ID
+DomainID - generally 1
+Name - this name needs to be used as the name for the various php files as well.
+Description (optional field)
+Isactive  - boolean
+Isdefault - boolean
+user_name_label - this is what the username field is described as in the configure payment instruments screen
+password_label - likewise
+signature_label
+class_name - name of class (in code) should be Payment_xxx where xxx is the same as the name field
+various self-explanatory url fields &amp; then
+BillingID - number from 1-4 - this is the important one - will add more later
+Isrecurr - boolean</code></pre>
+<p>The BillingID will determine the process followed. ID types are:</p>
+<p>1 = form (onsite processing with SSL set up)</p>
+<p>3 = button (e.g. PayPal Express)</p>
+<p>4 = notify (redirect to offsite processing)</p>
+<h3>Store any function files from your payment processor</h3>
+<p>Create an appropriately named folder in the 'packages' directory for any files provided by your payment processor which have functions you need.</p>
+<h3>Create files in the components for your processor</h3>
+<p>There needs to be a file for your processor in CRM\Event\Payment and in CRM\Contribute\Payment. The name needs to be the same as the name you inserted into the processor_types table. These are pretty easy to copy from others as they don't have much in them.</p>
+<h3>Write your processor </h3>
+<p>OK, the groundwork is laid but writing the processor is the hard bit.</p>
+<p>Depending on your billing mode there are different considerations - I have less information and it is less checked on the first two. The file will live in CRM\Core\Payment and have the same name as entered into your processor_type table.</p>
+<h3>Test your processor</h3>
+<p>Some suggestions of what you might test are here</p>
+<p>http://wiki.civicrm.org/confluence/display/CRMDOC/Testing+Processor+Plugins</p>
+<h2><span class="Apple-style-span">Examples of processor code</span></h2>
+<h3>Form Mode </h3>
+<p>The function called by this billing mode is</p>
+<pre><code>doDirectPayment()</code></pre>
+<p>If you return to the calling class at the end of the function the contribution will be confirmed. Values from the $params array will be updated based on what you return.  If the transaction does not succeed you should return an error to avoid confirming the transaction.</p>
+<p>The params available to doDirectPayment() are: -</p>
+<pre><code>qfKey -
+email-(bltID) -
+billing_first_name (=first_name)
+billing_middle_name (=middle_name)
+- billing_last_name (=last_name)
+- location_name-(bltID) = billing_first_name + billing_middle_name + billing_last_name
+- streeet_address
+-(bltID)
+- city-(bltID)
+- state_province_id-(bltID) (int)
+- state_province-(bltID) (XX)
+- postal_code-(bltID)
+- country_id-(bltID) (int)
+- country-(bltID) (XX)
+- credit_card_number
+- cvv2 - credit_card_exp_date - M - Y
+- credit_card_type
+- amount
+- amount_other
+- year (credit_card_exp_date =&gt; Y)
+- month (credit_card_exp_date =&gt; M)
+- ip_address
+- amount_level
+- currencyID (XXX)
+- payment_action
+- invoiceID (hex number. hash?)</code></pre>
+<p>bltID = Billing Location Type ID. This is not actually seen by the payment class.</p>
+<h3>Button Mode</h3>
+<p>the function called by this billing mode is</p>
+<pre><code>setExpressCheckout()</code></pre>
+<p>The customer is returned to confirm.php with the rfp value set to 1 and</p>
+<pre><code>getExpressCheckoutDetails()</code></pre>
+<p>is called when the form is processed</p>
+<pre><code>doExpressCheckout()</code></pre>
+<p>is called to finalise the payment - a result is returned to the CiviCRM site.</p>
+<h2> Notify mode</h2>
+<p>The function called is</p>
+<pre><code>doTransferCheckout()</code></pre>
+<p>The details from here are processor specific but you want to pass enough details back to your function to identify the transaction. You should be aiming to have these variables to passthrough the processor to the confirmation routine:</p>
+<pre><code>contactID
+contributionID
+contributionTypeID
+invoiceID
+membershipID(contribution only)
+participantID (event only)
+eventID (event only)
+component (event or contribute)
+qfkey </code></pre>
+<p>Handling the return can be the tricky part.</p>
+<p>In order to keep the return url short (because paymentexpress appends a long hex string) our return url goes to a file (in the extern folder) which redirects through to the 'main' routine in paymentExpressIPN.php (IPN = instant payment notification).  </p>
+<p>note - you need to  re-initialise the environment to get civi functions to work</p>
+<pre><code>require_once &#39;../civicrm.config.php&#39;;
+require_once &#39;CRM/Core/Config.php&#39;;
+$config =&amp; CRM_Core_Config::singleton();
+ An appropriate structure for the return routine file is:
+function newOrderNotify( $success, $privateData, $component,$amount,$transactionReference ) {
+        $ids = $input = $params = array( );
+}</code></pre>
+<p>this version in the paymentexpress file is not processor specific - pass it the variables above and it will complete the transaction. Success is boolean, the private data array holds, the component is (lower case) 'event' or 'contribute' , amount is obvious, transaction reference is any processor related reference.</p>
+<p>contactID, contributionID, contributionTypeID,invoiceID, membershipID(contribution only), participantID (event only), eventID (event only)</p>
+<p>static function getContext( $privateData, $orderNo)</p>
+<p>generic function - taken from google version - retrieves information to complete transaction (required?)</p>
+<p>private data as above</p>
+<p>orderno - transactionreference is OK</p>
+<p>Static function main (blah, blah,  blah)</p>
+<p>this function is processor specific - it  converts whatever form your processor response is into the variables required for the above function and if necessary redirects the browser using</p>
+<p>CRM_Utils_System::redirect( $finalURL );</p>
+<h2>Testing Payment Processor Plugins </h2>
+<p><span class="Apple-style-span"> </span></p>
+<p><strong>CiviCRM Payment Processor Test Spec</strong></p>
+<p>Here's some suggestions of what you might test once you have written your payment processor plug in.</p>
+<p><strong>Don't forget that you need to search specifically for TEST transactions</strong></p>
+<p>i.e. from this page /civicrm/contribute/search&amp;reset=1 chose 'find test transactions'</p>
+<p><strong>Std Payment processor tests</strong></p>
+<p>1) Can process Successful transaction from</p>
+<p>            - Event</p>
+<p>            - Contribute Form</p>
+<p>            - Individual Contact Record</p>
+<p>Transaction should show as confirmed in CiviCRM and on the payment processor</p>
+<p>2) Can include , . &amp; = ' &quot; in address and name fields without problems. Overlong ZIP code is handled</p>
+<p>3) Can process a failed transaction from a Contribute form</p>
+<p>Can fix up details &amp; resubmit for a successful transaction</p>
+<p>e-mail address is successfully passed through to payment processor and payment processor sends e-mails if configured to do so.</p>
+<p>The invoice ID is processed and maintained in an adequate manner</p>
+<p>7) Any result references and transaction codes are stored in an adequate manner</p>
+<p><strong>Recurring Payment Processor tests</strong></p>
+<p>NB - IN Paypal Manager the recurring billing profiles are in Service Settings/Recurring Billing/ Manage Profiles</p>
+<p>1) Process a recurring contribution. Check</p>
+<p>            - wording on confirm page is acceptable</p>
+<p>            - wording on thankyou pages is acceptable</p>
+<p>             - wording on any confirmation e-mails is acceptable</p>
+<p>           <strong>-</strong> the payment processor shows the original transaction is successful</p>
+<p>            - the payment processor shows the correct date for the next transaction</p>
+<p>            - the payment processor shows the correct total number of transactions and / or the correct final date</p>
+<p>2) Try processing different types of frequencies. Preferably test a monthly contribution on the last day of a month where there isn't a similar day in the following month (e.g. 30 January)</p>
+<p>3) Process a transaction without filling in the total number of transactions (there should be no end date set)</p>
+<p>4) Process a recurring contribution with the total instalments set to 1 (it should be treated as a one-off rather than a rec urring transaction). It should not show 'recurring contribution' when you search for it in CiviCRM</p>
+<p>5) PayflowPro - check that you can edit the frequencies available on the configure contribution page form</p>
+<p>6) Depending on your processor it may be important to identify the transactions that need to be updated or checked. You may wish to check what it being recorded in the civicrm_contribution_recur table for payment processor id, end date and next transaction date.</p>
+<p><strong>Specific Live tests</strong></p>
+<p>1) Successful and unsuccessful REAL transactions work</p>
+<p>2) Money vests into the bank account</p>
+<p></span></p>
+<p><span class="Apple-style-span">3) For recurring transactions wait for the first recurrent transaction to vest</span> </p>
+<h2>An example of packaging a Payment Processor</h2>
+<p><span lang="EN-US">Start by creating a directory named exactly the same as the unique key that you're choosing for your extension. Let's use the example of a Google Checkout payment processor - both the key and the name of directory will be org.civicrm.googlecheckout.</span><span lang="EN-US"></span></p>
+<p></span></p>
+</p>
+<h3><span lang="EN-US">Sample info.xml file for a Payment Processor</span><span lang="EN-US"></span></h3>
+<p></span></p>
+</h3>
+<div>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+ &lt;extension key=&quot;org.civicrm.googlecheckout&quot; type=&quot;payment&quot;&gt;
+  &lt;callback&gt;Google&lt;/callback&gt;
+  &lt;name&gt;Google Checkout&lt;/name&gt;
+  &lt;description&gt;Google Checkout Payment Processor&lt;/description&gt;
+  &lt;url&gt;http://civicrm.org&lt;/url&gt;
+  &lt;license&gt;AGPL&lt;/license&gt;
+  &lt;maintainer&gt;CiviCRM Core Team&lt;noreply@civicrm.org&gt;&lt;/maintainer&gt;
+  &lt;releaseDate&gt;2010-09-01&lt;/releaseDate&gt;
+  &lt;version&gt;1.0&lt;/version&gt;
+  &lt;develStage&gt;stable&lt;/develStage&gt;
+  &lt;compatibility&gt;&lt;ver&gt;3.3&lt;/ver&gt;&lt;/compatibility&gt;
+  &lt;comments&gt;For support, please contact project team on the forums. (http://forum.civicrm.org)&lt;/comments&gt;
+&lt;/extension&gt;</code></pre>
+</div>
+<p><span class="Apple-style-span">Then once you have the info file, you can start putting the extension package together. </span></p>
+<ul>
+<li>Create the directory org.civicrm.googlecheckout and add the info file</li>
+<li>Put the report PHP class file in the directory. Remember to name it the same way as the callback attribute in your info.xml, also don't forget to follow the convention in class naming (&quot;Extension_&lt;Type&gt;_&lt;key&gt;_&lt;callback&gt;&quot; - Extension_Report_org_civicrm_report_grant_Grant in this case).</li>
+</ul>
+<p><span lang="EN-US">Payment processors do not require templates; however, we need to do some more stuff in order for our extension to work. </span>First of all, this payment processor requires some external libraries to work. Let's put them in packages directory inside org.civicrm.googlecheckout. So now, we have the following structure: </p>
+<div>
+<pre><code>org.civicrm.googlecheckout/
+|-- CRM
+|   |-- Contribute
+|   |   `-- Payment
+|   |       `-- Google.php
+|   `-- Event
+|       `-- Payment
+|           `-- Google.php
+|-- Google.php
+|-- info.xml
+|-- packages
+|   `-- Google
+|       |-- README
+|       |-- demo
+|       |   |-- cartdemo.php
+|       |   `-- responsehandlerdemo.php
+|       |-- googlemessage.log
+|       `-- library
+|           |-- googlecart.php
+|           |-- googleitem.php
+|           |-- googlemerchantcalculations.php
+|           |-- googleresponse.php
+|           |-- googleresult.php
+|           |-- googleshipping.php
+|           |-- googletaxrule.php
+|           |-- googletaxtable.php
+|           `-- xml-processing
+|               |-- xmlbuilder.php
+|               `-- xmlparser.php
+`-- processor-type.xml</code></pre>
+</div>
+<p><span lang="EN-US">Finally, there is one more file. We are going to need some additional information - hence the processor-type.xml file. It's contents reflects the contents of civicrm_payment_processor_type database table. Here's an example for Google Checkout payment processor.</span><span lang="EN-US"></span></p>
+<p></span></p>
+</p>
+<div>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+ &lt;payment_processor_type&gt;
+  &lt;user_name_label&gt;Merchant ID&lt;/user_name_label&gt;
+  &lt;password_label&gt;Key&lt;/password_label&gt;
+  &lt;signature_label&gt;&lt;/signature_label&gt;
+  &lt;subject_label&gt;&lt;/subject_label&gt;
+  &lt;class_name&gt;Payment_Google&lt;/class_name&gt;
+  &lt;url_site_default&gt;https://checkout.google.com/&lt;/url_site_default&gt;
+  &lt;url_api_default&gt;&lt;/url_api_default&gt;
+  &lt;url_recur_default&gt;&lt;/url_recur_default&gt;
+  &lt;url_button_default&gt;https://checkout.google.com/buttons/checkout.gif
+?merchant_id=YOURMERCHANTIDHERE&amp;w=160&amp;h=43&amp;style=white&amp;variant=text&amp;loc=en_US&lt;/url_button&gt;
+ &lt;url_site_test_default&gt;https://sandbox.google.com/checkout/&lt;/url_site_test_default&gt;
+  &lt;url_api_test_default&gt;&lt;/url_api_test_default&gt;
+  &lt;url_recur_test_default&gt;&lt;/url_recur_test_default&gt;
+&lt;url_button_test_default&gt;https://sandbox.google.com/checkout/buttons/checkout.gif
+?merchant_id=YOURMERCHANTIDHERE&amp;w=160&amp;h=43&amp;style=white&amp;variant=text&amp;loc=en_U
+  &lt;billing_mode&gt;notify&lt;/billing_mode&gt;
+  &lt;is_recur&gt;0&lt;/is_recur&gt;
+  &lt;payment_type&gt;1&lt;/payment_type&gt;
+ &lt;/payment_processor_type&gt; </code></pre>
+</div>
+<p>As with other Extensions, the last thing required is to put it in the archive - &quot;zip&quot; it and call the file after the key defined at the beginning: org.civicrm.report.grant.zip. Congratulations, you have now packaged your first Payment  Processor.</p>
+</body>
+</html>

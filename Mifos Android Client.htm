@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="The Contributors" />
+  <title>Mifos Android Client</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">Mifos Android Client</h1>
+<p class="author">The Contributors</p>
+<p class="date">2012.06.01-10.31</p>
+</header>
+<p><span id="ch001_overview.xhtml"></span></p>
+<h1>Overview</h1>
+<p>Mifos Android Client is a mobile version of Mifos – management information system which provides key functionality for microfinance institutions: client management, portfolio management, loan repayment tracking, fee and savings transactions, and reporting. This application provides instance access to customer information and accounts.</p>
+<p>With Mifos Android Client, you can do the following things:</p>
+<ul>
+<li><span>Browse customer details for centers, groups and clients</span></li>
+<li><span>View information for Loan and Savings accounts</span></li>
+<li><span></span><span>Check transaction history</span></li>
+<li><span>Planning the upcoming meetings and prepare for them</span></li>
+<li><span></span><span>Enter collection sheet data to every account</span></li>
+<li><span></span><span>Apply transactions such as repaying loan, applying charges, making deposits, applying adjustments, making withdrawals</span></li>
+</ul>
+<p><span>The Android client is directly connected to the full Mifos version, so every change performed in the mobile application is automatically reflected in the Mifos system.</span> </p>
+<p><span id="ch002_setup.xhtml"></span></p>
+<h1>Setup</h1>
+<h2><span>How to set or change the server address</span></h2>
+<p>First thing, which you have to do if you want to use Mifos Android Client is to the change default server address.  To do it click on the menu button on your phone. You will see a screen like the following with current server address:</p>
+<p> </p>
+<p><img src="static/android_1.jpg" /></p>
+<p><span>Type the appropriate address and click </span><strong>OK</strong><span>. If you don't want to change address at this time, click </span><strong>Cancel</strong><span>.</span></p>
+<h2><span>How to log in and log out Mifos Android Client</span></h2>
+<p>To use Mifos Android Client you must be logged into Mifos system. If you are not logged in and you try to use Mifos Android Client, you will see a screen like this:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p> </p>
+<p>You must type your Username and Password and then click <strong>Log in</strong>.</p>
+<p>If you want to log out, click the menu button on your phone. You will see a menu like this:</p>
+<p> </p>
+<p><img src="static/android_3.jpg" /></p>
+<p>To log out, click on <strong>Log out</strong> button. </p>
+<h2><span>Data entry</span></h2>
+<p>All data entry screens in the system behave in the same way. Note the following:</p>
+<ul>
+<li><span>You can type data into a text field.</span></li>
+<li><span>In a “drop-down list,” there is a predefined list of values; the user must choose one from this list.</span></li>
+<li><span>In some cases, when the data is selected, values that depend on it are displayed automatically and cannot be changed.</span></li>
+<li><span></span><span>Fields that require no data entry are dimmed.</span></li>
+<li><span>Mandatory fields have a red asterisk (*) before the field name. The user must enter data in this field before the form can be completed.</span></li>
+<li><span></span><span>Click on fields to move from one field to another; after you have entered data in a field, click on next to move to the next field.</span> </li>
+</ul>
+<p><span id="ch003_browing-customer-data.xhtml"></span></p>
+<h1>Browsing Customer Data</h1>
+<ul>
+<li><span>How to view client details</span></li>
+<li><span>How to apply charge</span></li>
+<li><span>How to display charge details</span></li>
+<li><span>Client accounts</span></li>
+<li><span>Loan account</span></li>
+<li><span>Savings account</span></li>
+<li><span>Closed loan account</span></li>
+<li><span>How to make transactions for savings account</span></li>
+<li><span>How to make adjustments for savings account</span></li>
+<li><span>How to view the history of all transactions for savings account</span></li>
+<li><span>How to view deposit due details</span></li>
+<li><span>How to make transactions for loan account</span></li>
+<li><span>How to make adjustments for loan account</span></li>
+<li><span>How to apply payment</span></li>
+<li><span>How to apply charges</span></li>
+<li><span>How to repay a loan</span></li>
+<li><span>How to view the history of all transactions for loan account</span></li>
+<li><span>How to view the installment details</span></li>
+<li><span>How to display repayment schedule</span></li>
+</ul>
+<p>MFI can have centers and groups to organize clients. Usually, a single Loan Officer works in a center and has responsibility for several groups.</p>
+<p>Groups usually include clients but also can act on their own and have group loan and savings accounts.</p>
+<p>Clients can act on their own having individual savings and loan accounts, or they can act as part of a group.</p>
+<p>To display all centers, click on <strong>Browse customers</strong> in Mifos Android Client main menu.</p>
+<p><img src="static/android_4.jpg" /></p>
+<p>You may see a screen like this:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td><br />
+</td>
+</tr>
+<tr class="even">
+<td><br />
+</td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p><br />
+</p>
+<table>
+<tbody>
+<tr class="odd">
+<td><br />
+</td>
+</tr>
+<tr class="even">
+<td><br />
+</td>
+</tr>
+</tbody>
+</table>
+<p>In parenthesis there is the number of groups in the center or clients in the group. Do a long click if you want to view center details or click on Center Name to display all groups in a center. If there are a lot of centers to display, you can also type a name of the center to filter the list. You may see a screen like this:</p>
+<p> <img src="static/android_6.jpg" /></p>
+<p>Click on <strong>Group Name</strong> to expand the list and to see all clients in the group. Do a long click on the group to view its details. You may also type a name of group or client to filter the list.</p>
+<h2><span>How to view customer details</span></h2>
+<p>To view Center/Group details you need to long click on its name. Client details can be opened by a normal click on its name.</p>
+<p>Customer details section is divide into three tabs:</p>
+<ul>
+<li><span>Overview</span></li>
+<li><span>Accounts &amp; Charges</span></li>
+<li><span><span> </span></span><span>Additional information</span></li>
+</ul>
+<h3><strong>Overview</strong></h3>
+<p>Overview tab is the first tab of Customer details section. It displays the most important information about Customer:</p>
+<ul>
+<li><span>Client name</span></li>
+<li><span>Client actual status</span></li>
+<li><span>System ID</span></li>
+<li><span>Performance history (summary of opened Loan and Savings accounts)</span></li>
+</ul>
+<p>Client 'Overview' section may look like this: </p>
+<p><img src="/mifos-android-client/_edit/static/android_7.jpg" /> </p>
+<div>
+<h3><strong>Accounts &amp; Charges</strong></h3>
+<p>Accounts &amp; Charges tab gives you access to accounts and charges attached to the Customer. From this tab you can:</p>
+<ul>
+<li><span><span> </span></span><span>Apply charges and view charges details</span></li>
+<li><span>View the list of opened and closed Loan and Savings accounts</span></li>
+<li><span>Directly access Loan and Savings accounts</span></li>
+</ul>
+<p>Client Accounts &amp; Charges section may look like this:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td><br />
+</td>
+</tr>
+<tr class="even">
+<td><br />
+</td>
+</tr>
+</tbody>
+</table>
+<br />
+
+<p><strong> </strong></p>
+<h4><span>How to apply charge</span></h4>
+<p>Your MFI can charge fees for any service, such as membership and loan processing. These fees and charges can be collected from centers, groups, and clients and assessed on loan accounts.</p>
+<p>To apply charge, click on <strong>Apply Charge</strong> button in Accounts &amp; Charges tab. You will see:</p>
+<p><strong> </strong></p>
+<p><img src="static/android_9.jpg" /></p>
+<ol>
+<li><span>Choose appropriate type of the fee from the drop down list.</span></li>
+<li><span> </span><span>If amount is set for this charge, it appears in the Amount box, but you may change it.</span></li>
+<li><span>Click </span><strong>Submit</strong> <span>if you are satisfied with changes you have made click on </span><strong>Cancel</strong> <span>to discard all changes.</span></li>
+</ol>
+<p>Applied charge will appear in the <span class="StrongEmphasis">Upcoming Charges</span> and also in the <span class="StrongEmphasis">Recent Account Activity</span> list.</p>
+<h4><span>How to display charge details</span></h4>
+<p>To check all applied charges, click on <strong>Charge details</strong> in <strong>Accounts &amp; Charges</strong> tab. You will see following attributes:</p>
+<ul>
+<li><span>Account summary</span></li>
+<li><span>Amount due</span></li>
+<li><span>Amount overdue</span></li>
+<li><span>Total</span></li>
+<li><span>Upcoming charges</span></li>
+<li><span>Fee type</span></li>
+<li><span>Amount</span></li>
+<li><span>Recent Account Activity</span></li>
+<li><span>Date</span></li>
+<li><span>Description</span></li>
+<li><span>Amount</span></li>
+<li><span>Recurring Account Fees</span></li>
+<li><span>Fee name</span></li>
+<li><span>Amount</span></li>
+<li><span>Recur Every</span></li>
+</ul>
+<p>A sample screen may look like this:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td><br />
+</td>
+</tr>
+<tr class="even">
+<td><br />
+</td>
+</tr>
+</tbody>
+</table>
+<br />
+
+<h3><strong>Additional Information</strong></h3>
+<p>To display additional information about client, click on <strong>Additional Information</strong> in tab on the top of the screen</p>
+<p>You will see:</p>
+<p><img src="static/android_11.jpg" /><br />
+</p>
+<p><span> </span></p>
+</div>
+<p><span id="ch004_managing-customer-accounts.xhtml"></span></p>
+<h1>Managing Customer Accounts</h1>
+<p>Clients and Groups may have one (or more) loan or savings accounts whereas Centers can have only savings accounts. You may display all accounts belonging to a customer from <strong>Accounts &amp; Charges</strong> screen. To do that, select an account from the list and click on its name.</p>
+<p>A screen may look like following:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<h3><strong><span>How to manage Savings accounts</span></strong></h3>
+<p>Click on <strong>Savings account</strong> to expand the list and display all savings added to client.</p>
+<p><img src="static/android_13.jpg" /><br />
+<strong><span></span></strong></p>
+<p></span></strong></p>
+</p>
+<p>If you click on any savings account, you will see a screen with three tabs:</p>
+<ul>
+<li><span>Account overview</span></li>
+<li><span></span><span>Account transactions</span></li>
+<li><span></span><span>Apply adjustment</span></li>
+<li><span></span><span>Make deposit/withdrawal</span></li>
+<li><span></span><span>Account details</span></li>
+<li><span></span>V<span>iew Transactions History</span></li>
+<li><span></span><span>View Deposit Due Details</span></li>
+</ul>
+<p><img src="static/android_14.jpg" /></p>
+<h3><strong><span>How to manage Loan accounts</span></strong></h3>
+<p>Click on <strong>Loan accounts</strong> to expand the list and display all loans added to client.</p>
+<p><img src="static/android_15.jpg" /><br />
+<strong><span></span></strong></p>
+<p></span></strong></p>
+</p>
+<p>If you click on any loan, you will see screen with three tabs:</p>
+<ul>
+<li><span>Account overview</span></li>
+<li><span></span><span>Account transactions</span></li>
+<li><span></span><span>Apply payment</span></li>
+<li><span></span><span>Apply charges</span></li>
+<li><span></span><span>Apply adjustment</span></li>
+<li><span></span><span>Repay Loan</span></li>
+<li><span></span><span>Account details</span></li>
+<li><span></span><span>View Transactions History</span></li>
+<li><span></span><span><span> V</span></span><span>iew Installment Details</span></li>
+<li><span></span><span>View Repayment Schedule</span></li>
+</ul>
+<p><img src="static/android_16.jpg" /></p>
+<h3><strong><span>How to view Closed loan account</span></strong></h3>
+<p>Mifos Android Client gives you possibility to view not only active Loan Accounts but also closed ones.</p>
+<p><span>To do that, click on </span><strong>Closed</strong><span> </span><strong>Loan Accounts</strong> <span>to expand the list and display all loans added to client.</span></p>
+<p> </p>
+<table>
+<tbody>
+<tr class="odd">
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p>If you click on any loan, you will see screen with three tabs:</p>
+<ul>
+<li><span>Account overview</span></li>
+<li><span>Account transactions</span></li>
+<li><span></span><span>Apply adjustment</span></li>
+<li><span>Account details</span></li>
+<li><span>View Transactions History</span></li>
+<li><span>View Installment Details</span></li>
+<li><span>View Repayment Schedule</span></li>
+</ul>
+<p>A sample screen may look like this:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br />
+<strong><span></span></strong></p>
+<p></span></strong></p>
+<p><strong><span> </span></strong></p>
+<p><strong><span> </span></strong></p>
+<p><strong><span> </span></strong></p>
+<p><strong><span> </span></strong> </p>
+<p><span id="ch005_savings-account-transactions.xhtml"></span></p>
+<h1>Savings Account Transactions</h1>
+<p>On Savings Account, you can perorm the following operations:</p>
+<ul>
+<li><span>Deposits and withdrawal</span></li>
+<li><span>Adjustments</span></li>
+<li><span>Display transaction history</span></li>
+<li><span>Display deposit due details</span></li>
+</ul>
+<h2><span>How to make deposits to or withdrawals from a savings account</span></h2>
+<ol>
+<li><span>Click on </span><strong>Make deposit/withdrawal.</strong> <span>A screen like following may appear:</span></li>
+</ol>
+<p> </p>
+<p><img src="static/android_19.jpg" /></p>
+<p><span>2.</span><span>                  </span><span>Enter information using the descriptions in the following table:</span></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p><strong>Field</strong></p></td>
+<td><p><strong>Description</strong></p></td>
+<td><p><strong>Example</strong></p></td>
+</tr>
+<tr class="even">
+<td><p>Date of transaction</p></td>
+<td><p>The date of this deposit or withdrawal</p></td>
+<td><p>26/03/2012</p></td>
+</tr>
+<tr class="odd">
+<td><p>Transaction type</p></td>
+<td><p>Deposit or withdrawal</p></td>
+<td><p>Deposit</p></td>
+</tr>
+<tr class="even">
+<td><p>Amount</p></td>
+<td><p>The amount of deposit or withdrawal</p></td>
+<td><p>200</p></td>
+</tr>
+<tr class="odd">
+<td><p>Mode of payment</p></td>
+<td><p>The way the money will be transferred</p></td>
+<td><p>Cash</p></td>
+</tr>
+<tr class="even">
+<td><p>Receipt ID</p></td>
+<td><p>The number of the receipt, if you use one</p></td>
+<td><p>00034</p></td>
+</tr>
+<tr class="odd">
+<td><p>Receipt date</p></td>
+<td><p>The date the receipt was issued, if you use one</p></td>
+<td><p>26/03/2012</p></td>
+</tr>
+</tbody>
+</table>
+<p>3.<span>                  </span>When you are satisfied with all changes, click <span class="StrongEmphasis">Submit</span>. You will see summary and status of the transaction.</p>
+<h2><span>How to make adjustments for savings account</span></h2>
+<p>Sometimes errors occur when savings accounts transactions are recorded. If you need to cancel the full amount of the last deposit or withdrawal, you can do this by making an &quot;adjustment.&quot; If you need to cancel several transactions, you must do each one separately.</p>
+<ol>
+<li><span>Click on </span><strong>Apply adjustment.</strong> <span>A screen like following may appear:</span></li>
+</ol>
+<p><img src="static/android_20.jpg" /></p>
+<p>2.<span>                  </span>In the<span class="StrongEmphasis"> Amount field</span>, type the accurate deposit or withdrawal amount.</p>
+<p>3.<span>                  </span>In the <span class="StrongEmphasis">Notes</span> box, type information describing why you made this adjustment.</p>
+<p>4.<span>                  </span>When you have made the adjustment click <span class="StrongEmphasis">Submit</span>.</p>
+<h2><span>How to view the history of all transactions for savings account</span></h2>
+<p>To display history transactions click on <strong>View Transactions History</strong> in Account Details menu.</p>
+<p><img src="static/android_21.jpg" /></p>
+<p>A screen like the following appears:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p>Choose transaction to display and click on it to view its details.</p>
+<p>The next screen will show following transaction details:</p>
+<ul>
+<li><span>Date of transaction</span></li>
+<li><span></span><span>Payment ID</span></li>
+<li><span>Transaction ID</span></li>
+<li><span>Type of transaction</span></li>
+<li><span>General ledger code</span></li>
+<li><span>Amount of debit or credit</span></li>
+<li><span>Client or group name</span></li>
+<li><span>Date posted</span></li>
+<li><span>User who posted the transaction</span></li>
+<li><span>Adjustment notes, if any</span></li>
+</ul>
+<p>Sample screen may look like this:</p>
+<p><img src="static/android_23.jpg" /></p>
+<h2><span>How to view deposit due details</span></h2>
+<p>To display deposit due details click on <strong>View Deposit Details</strong> in Account Details menu.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p>A screen like the following appears:</p>
+<p><img src="static/android_25.jpg" /></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><strong><span> </span></strong> </p>
+<p><span id="ch006_loan-account-transactions.xhtml"></span></p>
+<h1>Loan Account Transactions</h1>
+<p>On Loan Account, you can perorm the following operations:</p>
+<ul>
+<li><span>Apply payment</span></li>
+<li><span></span><span>Making adjustments</span></li>
+<li><span></span><span>Apply charges</span></li>
+<li><span></span><span>Repay loan</span></li>
+<li><span></span><span>View transaction history</span></li>
+<li><span></span><span>View the installment details</span></li>
+<li><span>Display repayment schedule</span></li>
+</ul>
+<h2> <span>How to apply payment</span></h2>
+<p>1.<span>                  </span>Click on <strong>Apply Payment.</strong> A screen like following may appear:</p>
+<p><img src="static/android_26.jpg" /></p>
+<p> <span>2.</span><span>                  </span><span>Enter information using the descriptions in the following table:</span></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p><strong>Field</strong></p></td>
+<td><p><strong>Description</strong></p></td>
+<td><p><strong>Example</strong></p></td>
+</tr>
+<tr class="even">
+<td><p>Date of transaction</p></td>
+<td><p>This shows today's date. If you need to change this date because the payment took place at another time, type the day (XX), month (XX), and year (XXXX) of the payment.</p></td>
+<td><p>26/03/2012</p></td>
+</tr>
+<tr class="odd">
+<td><p>Amount</p></td>
+<td><p>The amount of the payment. If the borrower is making only a partial payment, type the amount of this payment.</p></td>
+<td><p>200</p></td>
+</tr>
+<tr class="even">
+<td><p>Mode of payment</p></td>
+<td><p>The way the payment was made.</p></td>
+<td><p>Voucher</p></td>
+</tr>
+<tr class="odd">
+<td><p>Receipt ID</p></td>
+<td><p>The number of the receipt, if you use one</p></td>
+<td><p>00034</p></td>
+</tr>
+<tr class="even">
+<td><p>Receipt date</p></td>
+<td><p>The date the receipt was issued, if you use one</p></td>
+<td><p>26/03/2012</p></td>
+</tr>
+</tbody>
+</table>
+<p>3.<span>                  </span>When you are satisfied with all changes, click <span class="StrongEmphasis">Submit</span>. You will see summary and status of the transaction.</p>
+<h2><span>How to make adjustments for loan account</span></h2>
+<p>Sometimes errors occur when payments for a loan are recorded. If you need to cancel the full amount of the last repayment, you can do this by making an &quot;adjustment.&quot; If you need to cancel several repayments, you must cancel each one separately.</p>
+<p>When you have made an adjustment, Mifos divides the canceled payment into principal, interest, and fees, and makes adjustments in each of these categories to the total amount still due for the loan.</p>
+<p>1.<span>                  </span>Click on <strong>Apply adjustment</strong>  in Account transaction menu.</p>
+<p><em>Note:</em> If no payments have been made up to the present for this loan, this button does not appears.</p>
+<p><img src="static/android_27.jpg" /></p>
+<p>1.<span>                  </span>In the <span class="StrongEmphasis">Note</span> field, type information describing why you made this adjustment.</p>
+<p>2.<span>                  </span>When you have made the adjustment click <span class="StrongEmphasis">Submit.</span></p>
+<h2><span>How to apply charges</span></h2>
+<p>1.<span>                  </span>Click on <strong>Apply Charges</strong> in Account Transactions menu.</p>
+<p><img src="static/android_28.jpg" /></p>
+<p>2.<span>                  </span>Select appropriate <strong>Fee Type</strong> from drop-down list<strong>.</strong></p>
+<p>3.<span>                  </span>Type amount value. If there is a set amount for this charge, it appears in the Amount box. You may change it if you need.</p>
+<p>1.<span>                  </span>When you are satisfied with all changes, click <span class="StrongEmphasis">Submit</span>.</p>
+<p>Note the following:</p>
+<ul>
+<li><span>In addition to the penalty calculated for delayed repayment, the user can apply a &quot;Misc penalty&quot; amount to the account. If a Misc Penalty amount is applied to the account, the same will be included in the next payment due for the account.</span></li>
+<li><span>If the penalty rate is changed in between two payments, the old penalty rate should be taken for calculation until the date the change was made.</span></li>
+<li><span>A penalty is not calculated until the day after the due date.</span></li>
+</ul>
+<h2><span>How to repay a loan</span></h2>
+<p>There is an option to repay whole loan at one time. To do it follow instructions below:</p>
+<p>1.<span>                  </span>Click on <strong>Repay Loan</strong> in Account Transactions menu.</p>
+<p><img src="static/android_29.jpg" /></p>
+<p>2.<span>                  </span>Enter information using the descriptions in the following table:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><p><strong>Field</strong></p></td>
+<td><p><strong>Description</strong></p></td>
+<td><p><strong>Example</strong></p></td>
+</tr>
+<tr class="even">
+<td><p>Transaction date</p></td>
+<td><p>The date, when transaction was made</p></td>
+<td><p>26/03/2012</p></td>
+</tr>
+<tr class="odd">
+<td><p>Mode of Payment</p></td>
+<td><p>The way the payment was made</p></td>
+<td><p>Cash</p></td>
+</tr>
+<tr class="even">
+<td><p>Receipt ID</p></td>
+<td><p>A number for the receipt, if you use one.</p></td>
+<td><p>00034</p></td>
+</tr>
+<tr class="odd">
+<td><p>Receipt Date</p></td>
+<td><p>The date the receipt was issued, if you use one.</p></td>
+<td><p>26/03/2012</p></td>
+</tr>
+</tbody>
+</table>
+<p>3.<span>                  </span>You may waive all interest due if you mark <strong>Waive all interest due</strong> check-box.</p>
+<p>4.<span>                  </span>When you are satisfied with all changes, click <span class="StrongEmphasis">Submit</span>.</p>
+<h2><span>How to view the history of all transactions for loan account</span></h2>
+<p>To display history transactions click on <strong>View Transactions History</strong> in Account Details menu. A screen like following appears:</p>
+<p><img src="static/android_30.jpg" /></p>
+<p>Choose transaction to display and click on it to view its details.</p>
+<p>The next screen will show following transaction details:</p>
+<ul>
+<li><span>Date of transaction</span></li>
+<li><span>Payment ID</span></li>
+<li><span></span><span>Transaction ID</span></li>
+<li><span>Type of transaction</span></li>
+<li><span>General ledger code</span></li>
+<li><span>Amount of debit or credit</span></li>
+<li><span>Client or group name</span></li>
+<li><span>Date posted</span></li>
+<li><span>User who posted the transaction</span></li>
+<li><span>Adjustment notes, if any</span></li>
+</ul>
+<p>A sample screen may look like following:</p>
+<p><img src="static/android_31.jpg" /></p>
+<h2><span>How to view the installment details</span></h2>
+<p>To display installment details click on <strong>View Installment Details</strong> in Account Details menu.</p>
+<p><img src="static/android_32.jpg" /> </p>
+<p>A screen like following appears:</p>
+<p> </p>
+<p><img src="static/android_33.jpg" /></p>
+<h2><span>How to display repayment schedule</span></h2>
+<p>1.<span>                  </span>Click on <strong>View Repayment Schedule</strong> in Account Details menu.</p>
+<p><img src="static/android_34.jpg" /><br />
+</p>
+<p>2.<span>                  </span>Chose from the list the installment to display its details.</p>
+<p><img src="static/android_35.jpg" /><br />
+</p>
+<p>  </p>
+<p><span id="ch007_task-list-and-upcoming-meetings.xhtml"></span></p>
+<h1>Task List and Upcoming Meetings</h1>
+<h2><strong><span>How to display Upcoming meetings (task-list)<br />
+</span></strong> </h2>
+<p>The list of upcoming meetings allows the Loan Officer to display meetings for all centers (or list of groups if centers are disabled) on a day. This option should help Loan Officer to organize and arrange upcoming meetings.</p>
+<p>You may display seven following days, started from current date. The date is loaded automatically and you cannot change it.</p>
+<p>To display upcoming meetings, click <strong>Upcoming meetings</strong> in Mifos Android Client main menu.</p>
+<p><img src="static/android_36.jpg" /></p>
+<p>You may see a screen like this:</p>
+<p><img src="static/android_37.jpg" /></p>
+<p>Date in drop-down box is automatically set as current date. You may choose a different date from the drop-down list (available is one week started from current date). Under the chosen date, there is a list of upcoming meetings for centers or groups. In parenthesis there is a number of groups in the center or number of clients in the group. To display groups in the center, click on the <strong>Center Name.</strong></p>
+<p>The list of groups may look like this:</p>
+<p><img src="static/android_38.jpg" /></p>
+<p>Do a long click on Group Name to view its details. You may also type a name of group to filter the list. <strong></strong> To display its details do a long click.</p>
+<p>It may look like this:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br />
+</p>
+<p> </p>
+<p><span id="ch008_collection-sheet-data.xhtml"></span></p>
+<h1>Collection Sheet Data</h1>
+<h2><strong><span>How to enter collection sheet data</span></strong></h2>
+<p>The collection sheet data was created for Loan Officer to make collections easy. When Loan Officer returns from the field, he has to enter all collection sheet details in system. After typing date and mode of payment for the center, he may see a form that already includes all payments and deposits that are expected on that date.</p>
+<p>To do that:</p>
+<p>1.<span>                  </span>Click on <strong>Enter collection sheet data</strong> in Mifos Android Client main menu.</p>
+<p><img src="static/android_40.jpg" /><br />
+<strong><span></span></strong></p>
+<p></span></strong></p>
+</p>
+<p>2.<span>                  </span>Choose Center Name from the list (you may type a name of center to filter the list). Inside parenthesis there is a number of groups in the center.</p>
+<p><img src="static/android_41.jpg" /><br />
+<strong><span></span></strong></p>
+<p></span></strong></p>
+</p>
+<p>3.<span>                  </span>You may see a screen like this:</p>
+<p><img src="static/android_42.jpg" /></p>
+<ul>
+<li><strong>Date of transactions</strong><span> is a date of planned meeting and it is loaded automatically. You may not change it.</span></li>
+<li><span>Specify </span><strong>Mode of payment</strong> <span>form</span> <strong></strong> <span>the drop-down list.</span></li>
+<li><span>Optionally type Receipt ID and Receipt date.</span></li>
+<li><span>If all entries are typed click </span><strong>Continue</strong> <span>or if you do not want to change anything at this time, then click </span><strong>Cancel.</strong></li>
+</ul>
+<p>You may see a screen like this:</p>
+<p><img src="static/android_43.jpg" /></p>
+<p>To expand list of groups click on it. Then you will see all clients inside the group.</p>
+<p>If you want to see or modify Center/Group/Client payment details do a long click on it. You may see:</p>
+<p><img src="static/android_44.jpg" /></p>
+<p> </p>
+<p>Click <strong>Continue</strong> to go back to the list of centers/groups/clients.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br />
+<span></span></p>
+<p></span></p>
+<p>Click <strong>Continue</strong> to see summary.</p>
+<p> </p>
+<p><img src="/mifos-android-client/_edit/static/android_46.jpg" /></p>
+<p><span>Click submit to save collection sheet.</span> </p>
+</body>
+</html>

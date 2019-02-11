@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="The Contributors" />
+  <title>AUDACITY</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">AUDACITY</h1>
+<p class="author">The Contributors</p>
+<p class="date">2011-03-01</p>
+</header>
+<p><span id="ch001_introduction.xhtml"></span></p>
+<h1>Audacity</h1>
+<div class="hyphenate">
+<p>The Audacity program is an example of a digital 'audio editor', which means that Audacity can record and edit audio in common digital formats. Typically, one uses Audacity for recording sounds such interviews or musical instruments. You can then use Audacity to combine these sounds and edit them to make documentaries, music, podcasts, etc.</p>
+<p>In the old days, audio editing was done with huge machines that recorded sound to magnetic tape (similar to the tape in tape cassettes).</p>
+<p><img src="static/Audacity-audacity_cover2c-en.gif" alt="audacity_cover2c.gif" width="350" height="225" /></p>
+<p>Audio engineers would then edit these tapes using razor blades and sticky tape. Much of the jargon used in audio editing today comes from this process. Making a &quot;cut&quot; meant literally cutting the audio tape at a certain point. &quot;Multitrack&quot; referred to recording many separate sounds onto extra wide tape to fit more 'tracks'. The recording industry still uses these terms, along with many others, today. Many of the fundamental techniques which formed good audio recording and editing practices in the audio-tape era laid the foundation for recording and editing software.</p>
+<p>While many of the terms and techniques remain the same today, computers replaced tape machines, and digital files succeeded tapes. Hence, one records audio and edits with a computer (using software like Audacity), and stores these sounds in files on a computer. This makes the process much faster and requires a lot less physical storage space and specialized skills and equipment.</p>
+<p><img src="static/Audacity-audacity-en.gif" alt="audacity.gif" width="350" height="225" /></p>
+<p>Audacity is a powerful tool for recording and editing audio on a home computer. It's is a very sophisticated program and can do everything one would expect from a modern audio editor.  As a free, open-source tool, Audacity is not quite as feature-rich as some expensive audio editing software used by professional recording studios, but more and more independent musicians (as well as podcasters and others) are using it in their own audio creations.</p>
+<p>One can install and run Audacity on <strong>Linux</strong>, <strong>Mac OS X</strong> and <strong>Windows</strong>. </p>
+</div>
+<p><span id="ch002_what-is-digital-audio.xhtml"></span></p>
+<p>Audacity: DigitalAudio</p>
+<h1>What is sound?  What is sound recording?</h1>
+<p>Sounds are waves of air. We hear sounds because our ears are sensitive to these waves. One of the easiest types of sound waves to understand is a short, sudden sound like a hand clap. When hands clap together, they create a <em>pressurised</em> wave of air which moves at about 340 meters per second ( &quot;the speed of sound&quot; through sea-level earth atmosphere ). When this wave rea­ches one's ear, it pushes on the eardrum slightly, causing it to vibrate and the individual hears the clap.</p>
+<p><img src="static/Audacity-waveform_clap-en.jpg" alt="waveform_clap.jpg" width="340" height="173" /></p>
+<p>A hand clap is a short event that causes a single wave of air that quickly dies out. The image above shows the shape of the wave (&quot;waveform&quot;) for a typical hand clap. </p>
+<p>Other sound waves are longer events. A ringing bell serves as a good example of this. When a bell rings, after the initial strike, the sound comes from the ongoing &quot;ringing&quot; of the bell. While the bell rings, it vibrates at a particular speed (&quot;frequency&quot;) and this causes the nearby air to vibrate at the same speed. This causes waves of air to travel from the bell, again, at the speed of sound. Pressure waves from continuous vibration look more like this:</p>
+<p><img src="static/Audacity-waveform_sine-en.jpg" alt="waveform_sine.jpg" width="340" height="173" /></p>
+<p>Both of these types of waves are called <strong>sound waves</strong> or <strong>acoustic waves</strong>.</p>
+<h2>Digital recording and playback</h2>
+<p>A <strong>microphone</strong> consists of a small membrane which vibrates when it meets these acoustic waves. The microphone translates movements of the membrane into electrical signals.  Basically, a microphone converts acoustic waves into electrical waves.</p>
+<p>If we examined the shape of an electrical wave from a microphone, we would notice that it looks very similar to the shape of the original sound wave. The following is the sound wave we saw in the above explanation:</p>
+<p><img src="static/Audacity-waveform_sine-en.jpg" title="Sound wave." alt="waveform_sine.jpg" width="340" height="173" /></p>
+<p>The following is the electrical wave created by the microphone (notice the measurement for &quot;Current&quot;):</p>
+<p><img src="static/Audacity-waveform_current-en.jpg" width="340" height="173" /></p>
+<p>One could say that the shape of the electrical wave is <em>analogous to</em> (&quot;similar to&quot;) the shape of the original sound wave. This is why these electrical waves that represent sound waves are called <strong>analog waves</strong>.</p>
+<p>Indeed, earlier methods of sound recording were themselves <strong>analog</strong>: the literal wave-shape of the original sound, as picked up by the microphone, was physically imprinted on the recording device -- first in the form of soft-wax cylinders, then soft-wax master records, and finally magnetic tape where a coating of magnetized iron oxide (or chromium oxide) dust was rearranged by the sound waves.  Magnetic tape became the dominant technology for recording audio as well as video and other data in the second half of the twentieth century, until the advent and rapid adoption of <strong>digital recording.</strong>   </p>
+<p>The main device used in <em>digital</em> <em>recording</em> is an <strong>Analog-to-Digital Converter</strong> (<strong>ADC</strong>). The ADC measures the voltage of an electrical wave thousands of times per second. It then uses these measurements to create a data map of an electrical wave:</p>
+<div class="c1">
+<img src="static/Audacity-waveform_sampled-en.jpg" alt="waveform_sampled.jpg" width="340" height="124" />
+</div>
+<p>Each dot in the figure above represents one audio <em>sample</em>. The more samples per second, the more accurate the mapping of the electrical wave.</p>
+<p><em>Playback</em> of digital audio uses a <strong>Digital-to-Analog Converter</strong> (<strong>DAC</strong>). This takes the samples and converts them back into an electrical wave.  In a computer, this electrical wave is sent to a sound card's headphone or speaker sockets and the speakers recreate the original sound wave by vibrating their diaphragms.</p>
+<p>A computer's sound card comes with an Analog-to-Digital Converter (ADC) for recording, and a Digital-to-Analog Converter (DAC) for playing audio. Your operating system (Windows, Mac OS X, Linux, etc.) relies on the sound card to actually handle the recording and playback, and audio applications rely on your operating system so that you can play sound files, capture sounds to a file, edit them, and mix multiple tracks while playing, etc.</p>
+<h2>Quality</h2>
+<p>Two factors determine the quality of a digital recording:</p>
+<ul>
+<li><p><strong>Sample rate</strong>: this is the rate which the ADC records samples or a DAC plays them back. Sample Rate is measured in Hertz (Hz), or samples per second. A conventional audio CD has a sample rate of 44,100 Hz (often written as &quot;44 KHz&quot; for short). An 'HD' (High-definition) DVD can have a sample rate of 96 KHz or even 176 or 192 KHz.  At the other end of the spectrum, MPEG audio files intended for streaming (especially if they are only recording voice, not music) can have a sample rate as low as 11KHz.  </p></li>
+<li><p><strong>Sample format</strong> or <strong>sample size</strong>: Essentially, this is the number of digits in the digital representation of each sample. Think of the sample rate as the horizontal precision, and the sample format as the vertical precision. An audio CD has a precision of 16 bits.</p></li>
+</ul>
+<p>Higher sampling rates allow a digital recording to accurately record higher frequencies.  Higher sample sizes allow for more dynamic range—better reproduction of  loud and soft sounds.  Both of these, of course, entail the storage of more digitial information, meaning that high-sample-rate/high-sample-size formats are much larger to store and transmit.</p>
+<h2>Audio file formats</h2>
+<p>There are two main types of audio files on a computer:</p>
+<ul>
+<li><p><strong>PCM</strong> stands for <strong>Pulse Code Modulation</strong>. This is just a fancy name for the technique where each number in the digital audio file represents exactly one sample in the waveform. Common examples of PCM files are <strong>WAV</strong> files, <strong>AIFF</strong> files, and <strong>Sound Designer II</strong> files.  </p></li>
+<li><p>Compressed audio files are the other type. Modern compressed audio files use sophisticated <em>psychoacoustic</em> <em>algorithms</em> to represent the essential frequencies of the audio signal -- those audible to the human ear --in far less space than PCM files. Examples include <strong>MP3</strong> (MPEG I, layer 3), <strong>Ogg Vorbis</strong>, and <strong>WMA</strong> (Windows Media Audio). Creating one of these files sacrifices some quality in order to use less disk space.  </p></li>
+<li><p>Thus, for example, an audio recording you make directly to your computer is often stored as a WAV file; if you transfrom that same sound recording into an MP3 file (as you can in Audacity), the resulting file will be far smaller than the original WAV file.  When editing music, it is typically preferable to work with 'raw' sound formats such as WAV or AIFF when possible, then compress to MP3 or similar format only when you are satisfied with the mixed and edited piece. </p></li>
+</ul>
+<p><span id="ch004_ubuntu.xhtml"></span></p>
+<h3>Audacity: Installing on Linux</h3>
+<h2>Installing Audacity on Fedora</h2>
+<p>The simplest way to install Audacity on recent versions of Fedora is to use the command line. You must be root or have administrative privileges to install software. There are 2 versions of Audacity for Fedora: audacity and audacity-freeworld.</p>
+<p>The latter version includes a variety of libraries which are not part of the main Fedora repositories, so you would need to first install rpmfusion-free-release and rpmfusion-nonfree-release. In spite of these additional steps, I would recommend the freeworld version of audacity, since it will have more flexibility with file types it can work with and for export. Go to rpmfusion.org and download the appropriate releases for your version of Fedora. These represent additions to your repositories. On the command line, type</p>
+<pre><code>sudo dnf -y install rpmfusion-free-release... </code></pre>
+<p>where the ellipsis at the end needs to fit the rest of the particular version you need. For example in Fedora 26, it would be <em>rpmfusion-free-release-26.noarch.rpm</em>. Once you have both of these installed, then type</p>
+<pre><code>sudo dnf -y install audacity-freeworld</code></pre>
+<p>after which the assessment of dependencies, downloads and installations should proceed automatically. After installation, your are ready to use it. Simply type 'audacity' on the command line or find the application under Multimedia with your application launcher.</p>
+<h2>Installing Audacity on Ubuntu based systems</h2>
+<p>As there are quite a few flavours of Ubuntu screenshots are not used here however the following advice should be appropriate to most different versions. </p>
+<p><strong>Via the Command Line</strong></p>
+<p>A quick way to install Audacity on Ubuntu is to use the command line. </p>
+<p>On the command line, type</p>
+<pre><code>sudo apt-get install audacity </code></pre>
+<p>You will need to enter your admin password to proceed. </p>
+<p>After installation, your are ready to use it. Simply type 'audacity' on the command line or find the application under Multimedia with your application launcher.</p>
+<p><strong>Via the Ubuntu Software Centre</strong></p>
+<p>Open the Ubuntu Software Centre through your main menu. </p>
+<p>Then use the search for audacity, select it and click on the Install button to proceed. </p>
+<p><img src="static/audacityinstall_sc.png" width="600" height="256" /></p>
+<p>After installation, your are ready to use it. Simply type 'audacity' on the command line or find the application under Multimedia with your application launcher.</p>
+<p><span id="ch005_osx.xhtml"></span></p>
+<h1>Installing Audacity 2.2.1 on OS X</h1>
+<h2>If your Mac has a previous version of Audacity</h2>
+<p>You can update this version by selecting <strong><span class="menu">Help &gt; Check for Updates...</span>.</strong> and skip the rest of this chapter.</p>
+<p>If you have <span>Audacity 2.1.2 or earlier </span>installed in your Mac, read the section titled <strong>&quot;<a href="osx#leftover-plugins" title="Leftover plugins from previous versions of Audacity">Leftover plugins from previous versions of Audacity</a>&quot;</strong> at the end of this chapter. </p>
+<h2>Downloading</h2>
+<ol>
+<li>Using a web browser, go to <a href="https://www.audacityteam.org" title="Leftover plugins from previous versions of Audacity">Audacity's site</a>, and navigate to its <a href="https://www.audacityteam.org/download/mac/" title="Leftover plugins from previous versions of Audacity">webpage where you can download Audacity 2.2.1 for the Mac</a>.<br />
+<br />
+<img src="static/install_audacity_mac_gotosite.png" width="800" height="567" /><br />
+<br />
+<br />
+ </li>
+<li>Click any of the links for downloading Audacity 2.2.1, which include versions of this program with screen readers for the visually impaired.<br />
+<br />
+<img src="static/instalL_audacity_mac_download.png" width="800" height="570" /><br />
+<br />
+<br />
+ </li>
+<li>A webpage saying this file is downloading will appear. <br />
+<br />
+<img src="static/install_audacity_mac_downloading.png" width="800" height="570" /><br />
+ </li>
+</ol>
+<h2>Installing</h2>
+<ol>
+<li>Once it's fully downloaded, go to the folder your browser is set for files to be downloaded into — usually it's the Downloads folder (System/Users/nameofuser/Downloads) — and double-click the audacity-macos-2.2.1.dmg file to open it.<br />
+<br />
+<img src="static/install_audacity_mac_open_dmg.png" width="518" height="388" /><br />
+<br />
+<br />
+ </li>
+<li>Click and drag the Audacity 2.2.1 icon to the Applications icon as instructed in this window. This will install Audacity 2.2.1 to your Mac.<br />
+<br />
+<img src="static/install_audacity_mac_wizard.png" width="600" height="450" /><br />
+<br />
+<br />
+ </li>
+</ol>
+<h2>Setting Up</h2>
+<ol>
+<li>A new window asking if you're sure you want to open Audacity will appear. Click the Open button.<br />
+<br />
+<img src="static/install_audacity_open_1st_time.png" width="481" height="157" /><br />
+<br />
+<br />
+ </li>
+<li>The Audacity interface will appear. You are now ready to use Audacity 2.2.1.<br />
+<br />
+<img src="static/install_audacity_interface.png" width="800" height="435" /><br />
+<br />
+<br />
+ </li>
+</ol>
+<h2><span id="ch005_osx.xhtml#leftover-plugins"></span>Leftover plugins from previous versions of Audacity</h2>
+<p>If you had Audacity 2.1.2 or earlier installed in your Mac before you updated it to Audacity 2.2.1, there will probably a folder named &quot;Audacity&quot; in your Applications folder (<strong>~/Library/Applications/Audacity</strong>).</p>
+<h3>Plugins you want to keep, and Audacity 2.2.1 doesn't have</h3>
+<p>The Audacity folder might have optional plugins that you installed manually into the old version of Audacity.</p>
+<p>If you want to keep these optional plugins, move them to <span>to the new Audacity Plug-Ins folder at </span><strong>~/Library/Application Support/audacity/Plug-Ins</strong>.</p>
+<h3>Disabling and deleting duplicate plugins</h3>
+<p>The Audacity folder will also contain plugins that you will no longer need, since Audacity 2.2.1 now has these plugins bundled inside the application itself.</p>
+<p>You could just delete the Audacity folder, but that will not be enough. If you install Audacity 2.2.1, and open it, these plugins will still appear in certain menus as duplicates whether or not the Audacity folder has already been deleted, and will not work if you select them. So you will need to disable them first.</p>
+<p>There are two ways to disable old plugins.</p>
+<ul>
+<li>Delete <span>the file </span><strong>pluginregistry.cfg</strong> in <strong>~/Library/Application Support/audacity/</strong><span>. You might only want to choose this option if you haven't already put optional plugins in the new Audacity Plug-Ins folder.<br />
+<br />
+<img src="static/audacity_pluginregistry_cfg.png" width="492" height="376" /><br />
+<br />
+<br />
+ </span></li>
+<li>Disable the plugins in Audacity 2.2.1:<br />
+<br />
+
+<ol>
+<li>Select Effect &gt; Add / Remove Plug-ins... in the main menu.<br />
+<br />
+<img src="static/audacity_select_add_remove_plugins.png" /><br />
+<br />
+ </li>
+<li>Choose the plugins you don't want in the Add/Remove Plugins window, and disable them. Then click OK.<br />
+<br />
+<img src="static/audacity_add_remove_plugins_dialog.png" width="800" height="435" /><br />
+<br />
+</li>
+</ol></li>
+</ul>
+<p>Now you can delete the Audacity folder, if you haven't already.</p>
+<p><span id="ch006_windows.xhtml"></span></p>
+<p> </p>
+<p>Audacity: InstallingWindows</p>
+<h1>Installing Audacity on Windows</h1>
+<p><strong>Software name :</strong> Audacity ­<br />
+<strong>Homepage :</strong> <a href="http://audacityteam.org" class="uri" title="http://audacityteam.org">http://audacityteam.org</a></p>
+<p><strong>Software version used for this installation :</strong> 2.2.1<br />
+<strong>Operating System use for this installation :</strong> Microsoft Windows 10</p>
+<p><br />
+<strong>Recommended Hardware :</strong></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Windows version</th>
+<th>Recommended RAM/<br />
+processor speed</th>
+<th>Minimum RAM/<br />
+processor speed</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><ul>
+<li>Windows Vista Home Basic (32/64-bit)</li>
+<li>Windows 7 Starter</li>
+</ul></td>
+<td>1 GB / 1 GHz</td>
+<td>512 MB/1 GHz</td>
+</tr>
+<tr class="even">
+<td><ul>
+<li>Windows Vista Home Business/ Premium/Ultimate (32/64-bit) </li>
+<li>Windows 7 32-bit (except Windows 7 Starter) </li>
+<li>Windows 8 32-bt  </li>
+</ul></td>
+<td>4 GB /1 GHz</td>
+<td>1 GB / 1 GHz</td>
+</tr>
+<tr class="odd">
+<td><ul>
+<li>Windows 7 (64-bit)</li>
+<li>Windows 8 (64-bit)</li>
+<li>Windows 10 (32/64-bit)</li>
+</ul></td>
+<td>4 GB / 2 GHz</td>
+<td>2 GB / 1 GHz</td>
+</tr>
+</tbody>
+</table>
+<p>According to the official documentation, Audacity works best on computers meeting more than the minimum requirements stated above. For lengthy multi-track projects, the Audacity team recommends using machines of substantially higher specification than the minimums.</p>
+<h4>Older versions of Windows/old hardware</h4>
+<p>For Windows 98, ME 2000 and XP see <a href="http://www.audacityteam.org/download/legacy-windows">Legacy Windows Downloads</a>.</p>
+<h2>Downloading Audacity</h2>
+<p>The latest stable version of Audacity for <strong>Microsoft Windows</strong> can be downloaded from <a href="http://www.audacityteam.org/download/windows/" title="http://audacityteam.org"><span>http://www.audacityteam.org/download/windows/</span></a>.  The latest stable version at the time of writing this document is <strong>Audacity 2.2.1.</strong></p>
+<p><img src="static/Audacity%20download%20smaller.png" width="977" height="712" /></p>
+<p> </p>
+<p>Click on the &quot;Audacity 2.2.1 installer&quot; link. This should automatically launch the download of audacity-win-2.2.1.exe.  Once the download is complete, this file should be shown near the bottom of your browser (in this case the browser is Chrome):</p>
+<p><img src="static/Audacity%20download5.png" width="482" height="272" /><br />
+ </p>
+<p>or you can browse directly to your &quot;Downloads&quot; directory, and look for the most recently downloaded file:</p>
+<p><img src="static/download%20directory_1.png" width="647" height="201" /></p>
+<p> </p>
+<p> </p>
+<p>Open this file to begin installing Audacity by double clicking on the icon or clicking on &quot;Open&quot; on the downloads window.</p>
+<p>You should now see a <strong>Setup Wizard</strong> like this:</p>
+<p><img src="static/Audacity-audacity_wizard_win_01-en.JPG" alt="audacity_wizard_win_01.JPG" width="503" height="385" /> </p>
+<p>Click &quot;Next&quot; to proceed.</p>
+<p>The next step asks you to read and accept the <strong>License Agreement</strong>.</p>
+<p><img src="static/Audacity-audacity_wizard_win_02-en.JPG" alt="audacity_wizard_win_02.JPG" width="503" height="385" /></p>
+<p>You cannot continue with the installation until you have accepted the agreement, so click on the <strong>radio button</strong> labelled &quot;I <span>a</span>ccept the agreement&quot; and then click &quot;Next&quot; to continue.</p>
+<p>You should now see an <strong>Information</strong> window like this:</p>
+<p><img src="static/Audacity-audacity_wizard_win_03-en.JPG" alt="audacity_wizard_win_03.JPG" width="503" height="385" /></p>
+<p>This window contains information such as credits and a changelog that you may find useful to read. Click &quot;Next&quot; continue.</p>
+<p>You will now be prompted to select the folder Audacity will be installed into.</p>
+<p><img src="static/Audacity-audacity_wizard_win_04-en.JPG" alt="audacity_wizard_win_04.JPG" width="503" height="385" /></p>
+<p>The <strong>Setup Wizard</strong> will automatically create a folder called &quot;Audacity&quot; in your &quot;Program Files&quot; folder so unless you want to install it somewhere else you can simply click &quot;Next&quot; to continue. If you wish to install Audacity somewhere else click &quot;Browse&quot;.</p>
+<p>You will now be asked to select which additional tasks you would like Setup to perform during the installation.</p>
+<p><img src="static/Audacity-audacity_wizard_win_05-en.JPG" alt="audacity_wizard_win_05.JPG" width="503" height="385" /></p>
+<p>Click the check boxes to select or deselect the additional tasks then click &quot;Next&quot; to continue.</p>
+<p>You will now see a window displaying the destination location and additional tasks.</p>
+<p><img src="static/Audacity-audacity_wizard_win_06-en.JPG" alt="audacity_wizard_win_06.JPG" width="503" height="385" /></p>
+<p>Check that this information all correct and if it is click &quot;Install&quot; to continue. Click &quot;Back&quot; if you wish to change any of the installation settings.</p>
+<p>You should now see a window like this:</p>
+<p><img src="static/Audacity-audacity_wizard_win_07-en.JPG" alt="audacity_wizard_win_07.JPG" width="503" height="385" /></p>
+<p>Click &quot;Finish&quot; to complete the installation. If the check box labelled &quot;Launch Audacity&quot; is ticked Audacity will open straight away.</p>
+<p>Installation is now complete. If you didn't choose &quot;Launch Audacity&quot; in the options above then you can launch Audacity by double clicking the following icon in the Audacity folder (or on your desktop if you checked that checkbox in the second setup screen above):</p>
+<p><img src="static/Audacity-audacity_icon_win_01-en.JPG" alt="audacity_icon_win_01.JPG" width="132" height="59" /></p>
+<p>The first time you launch Audacity you will be prompted to select which language you want it to use.</p>
+<p><img src="static/Audacity-aud1-en.jpg" alt="aud1.jpg" width="355" height="117" /></p>
+<p>Click on the dropdown menu to select the language you want.</p>
+<p><img src="static/Audacity-aud2-en.jpg" alt="aud2.jpg" width="354" height="272" /></p>
+<p>Once you have chosen the language you want, click on &quot;OK&quot; to finish launching Audacity. </p>
+<p>The Audacity interface should look like this:</p>
+<p><img src="static/Audacity%20main%20screen%20smaller.png" width="825" height="659" /></p>
+<p>That's it! You now have Audacity up and running and can begin making and editing recordings.</p>
+<p>You may need to install an extra library to be able to export a file as an mp3. </p>
+<p><span id="ch008_track-bar.xhtml"></span></p>
+<p>Audacity: TrackBar</p>
+<h1>Track Area</h1>
+<p><strong>Software name :</strong> Audacity<br />
+<strong>Software version :</strong> 2.2 </p>
+<p>In Audacity, a single channel of sound is represented by one mono audio track; a two-channel (L/R stereo) sound by one stereo audio track.  The example below is a stereo track labeled 'Fiona', as loaded into Audacity:</p>
+<p><img src="static/sterio%20track.png" width="880" height="326" /></p>
+<p> </p>
+<p>Lets look at some of the controls available to you from this interface (click the arrow next to the track name to get this dropdown menu):</p>
+<p><img src="static/Audacity%20Fiona%20w%20track%20menu.png" width="899" height="657" /></p>
+<p> </p>
+<table>
+<tbody>
+<tr class="odd">
+<td><strong><em>option</em></strong></td>
+<td><strong><em>action</em></strong></td>
+</tr>
+<tr class="even">
+<td>Name</td>
+<td>edit the name of the track</td>
+</tr>
+<tr class="odd">
+<td>Move Track Up/Down/To Bottom</td>
+<td>move Track Up or Down within the larger GUI</td>
+</tr>
+<tr class="even">
+<td>Waveform</td>
+<td>traditional display of audio material.</td>
+</tr>
+<tr class="odd">
+<td>Waveform (dB)</td>
+<td>like Waveform, but logarithmic instead of linear vertical units .</td>
+</tr>
+<tr class="even">
+<td>Spectrogram</td>
+<td>display the frequency spectrum of the audio over time.</td>
+</tr>
+<tr class="odd">
+<td>Swap Stereo Channels</td>
+<td>swap out the Left and Right stereo channels (Left appears above by default)s</td>
+</tr>
+<tr class="even">
+<td>Split Stereo Track</td>
+<td>turn one stereo track into two single channel (mono) tracks, representing the Left and Right stereo tracks</td>
+</tr>
+<tr class="odd">
+<td>Split Stereo to Mono</td>
+<td>create two identical mono tracks, each mixed down from the original L and R stereo tracks.</td>
+</tr>
+<tr class="even">
+<td>Wave Color</td>
+<td>mark different instrumental tracks with up to four different colors</td>
+</tr>
+<tr class="odd">
+<td>Format</td>
+<td>pick the sample format for this track: 16-bit PCM, 24-bit PCM, 32-bit float </td>
+</tr>
+<tr class="even">
+<td>Rate</td>
+<td>set the sampling rate of this track, 8000 to 384000 Hz or custom</td>
+</tr>
+<tr class="odd">
+<td>(greyed out above) Make Stereo Track</td>
+<td>combine a selected mono track with another mono track directly beneath it into a single L/R stereo track</td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<p><img src="static/Audacity-track_solo-en.jpg" alt="track_solo.jpg" width="35" height="16" /> button:<br />
+When multiple tracks are displayed in the project GUI, selecting the 'solo' button on one track will cause only this track to play.</p>
+<p><img src="static/Audacity-track_mute-en.jpg" alt="track_mute.jpg" width="35" height="16" /> button</p>
+<p>When multiple tracks are displayed, selecting the 'Mute' button on one track will mute it during play (all un-muted tracks will be audible). </p>
+<h2>Gain and Pan Controls</h2>
+<p><img src="static/gain%20and%20pan%20controls.png" width="91" height="60" /></p>
+<p>Like the Solo and Mute buttons, these controls will appear on each separate audio track in the project. The top slider controls the track <strong>volume</strong>, or rather the overall gain of that particular track relative to all other tracks displayed in the GUI.</p>
+<p>The bottom slider sets the panning position of a stereo track (moving toward L will emphasize the Left track sounds, moving toward R will emphasize the Right track).</p>
+<p><span id="ch009_menu-bar.xhtml"></span></p>
+<p>Audacity: MenuBar</p>
+<h1>Menu Bar</h1>
+<p><strong>Software name :</strong> Audacity <strong></strong><br />
+<strong>Software version :</strong> 2.2</p>
+<p>Lets look at the basic elements of the Audacity Menu Bar :</p>
+<p><img src="static/Audacity%20menu%20bar.png" width="466" height="29" /></p>
+<p>The <strong>Menu Bar</strong> is a typical element in many applications. It will look slightly different to this if you are not using <strong>Windows</strong>; most notably in <strong>Mac OSX</strong> this Menu Bar is not located on the application window itself but at the top of the screen in the &quot;Apple Menu&quot;.  Let's go through the Menu Bar one item at a time.</p>
+<p> </p>
+<h2>File</h2>
+<p>By clicking on &quot;<span>F</span>ile&quot; in the Menu Bar you get a drop down menu with numerous options to choose from. As with other drop-downs in the menu bar, some options here may be &quot;greyed out,&quot; meaning you can't select them; you will only be able to choose the options that appear in solid black. The options available depend on the state of your Audacity project at the time. For example the following image of the File drop-down displays when Audacity has just been opened and no recording or editing has yet been started (thus no audio tracks are displayed in the GUI).  As in subsequent menus from the menu bar (see below), a '&gt;' symblol following the option name indicates that a submenu will appear, with more specific options or functions:</p>
+<p><img src="static/Audacity%20file%20menu.png" width="217" height="305" /></p>
+<p>The File Menu is where you can add, import and export all the things related to the audio and project (.aup) files.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td><strong><em>option</em></strong></td>
+<td><strong><em>action</em></strong></td>
+</tr>
+<tr class="even">
+<td>New</td>
+<td>creates a new empty project window.</td>
+</tr>
+<tr class="odd">
+<td>Open...</td>
+<td>selecting &quot;Open&quot; presents you with a dialog where you can choose a file to open. Note: if you choose any type of audio file other than an Audacity project file (.aup), you are essentially 'importing' it, as in &quot;Import&quot; below, except that any changes made will be saved to the original file.</td>
+</tr>
+<tr class="even">
+<td>Recent Files</td>
+<td>Shows the ten most recent .aup or other audio files you have opened.</td>
+</tr>
+<tr class="odd">
+<td>Close</td>
+<td>closes the current project window (will prompt you to save the current project if not already done)</td>
+</tr>
+<tr class="even">
+<td>Save Project</td>
+<td>saves the current Audacity project (AUP) file.</td>
+</tr>
+<tr class="odd">
+<td>Save Project As...</td>
+<td>allows you to save the current Audacity project (AUP) file with a different name or in a new location.</td>
+</tr>
+<tr class="even">
+<td>Recent Files...</td>
+<td>Submenu gives a list of recent files you ahve been working on.</td>
+</tr>
+<tr class="odd">
+<td>Export</td>
+<td>Submenu exports the current Audacity project as a standard audio file format such as WAV, MP3 or OGG.  Also allows for the export of Labels, MIDI, as well as combinations of these.  Finally, allows export of just the selected tracks or areas of a track within an open project.</td>
+</tr>
+<tr class="even">
+<td>Import</td>
+<td>Submenu allows you to import audio files, MIDI, Labels and raw data into the current Audacity project</td>
+</tr>
+<tr class="odd">
+<td>Chains</td>
+<td>Allows you to apply a chain or edit chains.  See section on &quot;Chains&quot; below.</td>
+</tr>
+<tr class="even">
+<td>Exit</td>
+<td>closes all project windows and exits Audacity. It will ask you if you want to save changes first.</td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<h2>Edit</h2>
+<p>The <strong>Edit Menu </strong>groups together functions for editing audio tracks, labels or metadata in your project:</p>
+<p><img src="static/Audacity%20edit%20menu.png" width="231" height="320" /></p>
+<table>
+<tbody>
+<tr class="odd">
+<td><em><strong>option</strong></em></td>
+<td><strong><em>action</em></strong></td>
+</tr>
+<tr class="even">
+<td>Undo</td>
+<td>This will undo the last editing operation you performed to your project (in this case a sound track was removed; the label will tell you which operation you are undoing). </td>
+</tr>
+<tr class="odd">
+<td>Redo</td>
+<td>This will redo any editing operations that were just undone. </td>
+</tr>
+<tr class="even">
+<td>Cut</td>
+<td>Removes the selected audio data from the project and places it on the clipboard. </td>
+</tr>
+<tr class="odd">
+<td>Delete</td>
+<td><span>Removes the audio data that is currently selected without copying it to the clipboard.</span></td>
+</tr>
+<tr class="even">
+<td>Copy</td>
+<td>Copies the selected audio data to the clipboard without removing it from the project.</td>
+</tr>
+<tr class="odd">
+<td>Paste</td>
+<td>Inserts whatever is on the clipboard at the position of the selection cursor in the project.</td>
+</tr>
+<tr class="even">
+<td>Duplicate</td>
+<td>Duplicates whatever is selected: a track section, a track or multiple tracks.</td>
+</tr>
+<tr class="odd">
+<td>Remove Special</td>
+<td>Submenu allows for more advanced removal commands: <span>split cut</span> &amp; <span>split delete</span> keeps the material to the right of the selection from moving left; you can also <span>silence selected audio</span> or <span>trim selected audio</span> (removing all audio in a track except for selected part).</td>
+</tr>
+<tr class="even">
+<td>Clip Boundaries...</td>
+<td>Submenu allows you to manipulate the boundarie of 'clips' within a track: <span>split</span> the track into 3 clips on boundaries defined by your selection, do the same and create a <span>new</span> track with the middle 'clip', <span>join</span> several clips together into one, or detach a track into multiple clips at <span>silences</span>.</td>
+</tr>
+<tr class="odd">
+<td>Labels</td>
+<td>Submenu allows you to add <span>labels</span> or text to audio track locations specified by your cursor or selection.  You can also invoke the Labels Editor, which allows editing of all existing project labels.</td>
+</tr>
+<tr class="even">
+<td>Labeled Audio</td>
+<td>Submenu allows you to perform edit operations such as cut, delete, split cut, split delete, silence, copy, join, detach etc on the audio of selected range labels (useful for batch operations on audio with like labels).</td>
+</tr>
+<tr class="odd">
+<td>Metadata...</td>
+<td>Allows you to edit the metadata tags that will be applied to export files.</td>
+</tr>
+<tr class="even">
+<td>Preferences...</td>
+<td><span>Opens a dialog window that lets you configure Audacity.</span></td>
+</tr>
+</tbody>
+</table>
+<h2> </h2>
+<h2>Select</h2>
+<p>The <strong>Select</strong> <strong>menu</strong> provides commands for defining selection regions within your project (which you can then edit, delete, export or apply various effects to in other menus).  These functions can save time and be much more precise than selecting a region manually via your mouse cursor.</p>
+<p> <img src="static/Audacity%20select%20menu.png" width="327" height="218" /></p>
+<table>
+<tbody>
+<tr class="odd">
+<td><em><strong>option</strong></em></td>
+<td> <em><strong>action</strong></em> </td>
+</tr>
+<tr class="even">
+<td>All</td>
+<td>This will select all audio in all tracks in your project.</td>
+</tr>
+<tr class="odd">
+<td>None</td>
+<td>This will deselect all selected regions in your project.</td>
+</tr>
+<tr class="even">
+<td>Tracks</td>
+<td>This submenu <span>has commands to extend the current selection up and/or down into <span>all tracks</span> in the project, or into all Sync-Locked tracks in the currently selected track group.</span></td>
+</tr>
+<tr class="odd">
+<td>Region</td>
+<td>This submenu <span>has commands for defining selection regions by either the playback head (to its right, to its left) or by the cursor position (cursor to track start, cursor to track end)</span><span> and also lets you store and retrieve the position of the editing cursor.</span></td>
+</tr>
+<tr class="even">
+<td>Spectral</td>
+<td>This advanced function is used to make selections that include a frequency range as well as a time range on tracks in Spectrogram view. <a href="http://manual.audacityteam.org/man/spectral_selection.html" title="effects documentation">See Spectral Selection</a> for details.</td>
+</tr>
+<tr class="odd">
+<td>Clip Boundaries</td>
+<td>This submenu allows you to make selections based on any clips you have in a given track: previous clip boundary to cursor; cursor to next clip boundary; all of previous clip; all of next clip.</td>
+</tr>
+<tr class="even">
+<td>Cursor to Stored Cursor Position</td>
+<td>Defines a selected region between the playback head (during playback or record), or in other cases the active editing cursor, and the previously stored cursor position defined by <strong>Select</strong> &gt; <strong>Store Cursor Position.</strong></td>
+</tr>
+<tr class="odd">
+<td>Store Cursor Position</td>
+<td>Stores the position of an editing cursor, or playback head during playback/record, which can then be used with the previous command.  Note that there is no visual cue for the stored cursor position.</td>
+</tr>
+<tr class="even">
+<td>At Zero Crossings</td>
+<td> <span>helps to avoid clicks</span><span> at edit points when making cuts and joins by moving the edges of a selection region (or the cursor position) very slightly so they are at a rising zero crossing </span><span>point.</span></td>
+</tr>
+</tbody>
+</table>
+<h2> </h2>
+<h2>View</h2>
+<p>The <strong>View Menu</strong> is used to manage the display of the tracks (&quot;channels&quot;) for best viewing of track details, and also has various options to show and hide some interface elements:</p>
+<p><img src="static/Audacity%20view%20menu.png" width="212" height="225" /></p>
+<table>
+<tbody>
+<tr class="odd">
+<td><strong><em>option</em></strong></td>
+<td><strong><em>action</em></strong></td>
+</tr>
+<tr class="even">
+<td>Zoom</td>
+<td>This submenu allows you to zoom in by percentage, zoom out by percentage, back to default, and in so that the selected region fills the entire screen size.</td>
+</tr>
+<tr class="odd">
+<td>Track Size</td>
+<td>This submenu allows you to zoom in/out so that the entire project fits the <span>width</span> of the project window or the <span>height</span> of that window; it also allows you to <span>collapse all tracks</span> (hiding their mute, solo, pan and volume controls), and to re-expand collapsed tracks </td>
+</tr>
+<tr class="even">
+<td>Skip to</td>
+<td>This submenu allows you to skip your cursor to the start or the end of a given selected region, without changing the zoom level.</td>
+</tr>
+<tr class="odd">
+<td>History...</td>
+<td><span>Brings up the History window, which lists all undoable actions performed in the current project, including importing and effects, along with their impact on the disk space used by the overall project.</span></td>
+</tr>
+<tr class="even">
+<td>Karaoke...</td>
+<td><span>This shows a bouncing ball that follows text as audio plays. The </span><strong>Karaoke...</strong><span> command is enabled whenever you have at least one label track</span><span>. If you have more than one, it uses only the first one.</span></td>
+</tr>
+<tr class="odd">
+<td>Mixer Board...</td>
+<td><span>This is an alternative view to the audio tracks in the main tracks window, and is analogous to a hardware mixer board. Each audio track is displayed vertically in a Track Strip, with its own pair of meters, gain slider, pan slider, and mute/solo buttons, echoing that track's controls in its track control panel. For more detail see <a href="http://manual.audacityteam.org/man/mixer_board.html" title="effects documentation">Mixer Board</a>.  </span></td>
+</tr>
+<tr class="even">
+<td>Toolbars</td>
+<td><span>This submenu toggles on/off a total of eleven toolbars, of which all but Scrub toolbar and Spectral Selection toolbar are shown by default.</span></td>
+</tr>
+<tr class="odd">
+<td>Extra Menus</td>
+<td><span>Toggles on/off a set of extra navigation menus (after &quot;Help&quot;) with less frequently used commands</span></td>
+</tr>
+<tr class="even">
+<td>Show Clipping</td>
+<td>Toggels on/off the display of clipped samples.</td>
+</tr>
+</tbody>
+</table>
+<h2> </h2>
+<h2>Transport</h2>
+<p>The <strong>Transport</strong> menu includes the record and playback commands also accessible through the record/playback GUI buttons, with some refinements of these:</p>
+<p><img src="static/audacity%20transport%20menu.png" width="205" height="174" /></p>
+<p> </p>
+<table>
+<tbody>
+<tr class="odd">
+<td><strong><em>option</em></strong></td>
+<td><strong><em>action</em></strong></td>
+</tr>
+<tr class="even">
+<td>Play</td>
+<td>This submenu allows you to start, stop, pause or loop playback of a selected track. </td>
+</tr>
+<tr class="odd">
+<td>Record</td>
+<td>This submenu allows you to start, stop, pause a recording, record a new track from current cursor position, or open the Timer Record dialog to schedule when a recording ends and begins.</td>
+</tr>
+<tr class="even">
+<td>Scrubbing</td>
+<td>This submenu allows you to toggle into Scrub and Seek modes.  <span><span>Scrubbing</span> means moving the mouse pointer right or left so as to adjust the position, speed or direction of playback, listening to the audio at the same time.  <span><span>Seeking</span> is similar to Scrubbing except that it is playback with skips, similar to using the seek button on a CD player</span></span></td>
+</tr>
+<tr class="odd">
+<td>Cursor to</td>
+<td>This submenu allows you to move the cursor to the start or end of any selection, track or clip you may have, or to the start or end of the project as a whole.</td>
+</tr>
+<tr class="even">
+<td>Play Region</td>
+<td>This submenu allows you to <span>lock</span> playback to the current position of a playback region (which now appears as a red segment within a track).  While locked, playback is confined to this region.  This region can then be<span> unlocked</span> here as well. </td>
+</tr>
+<tr class="odd">
+<td>Rescan Audio Devices</td>
+<td><span>Rescan for audio devices connected to your computer, and update the playback and recording dropdown menus in the Device Toolbar (see Toolbars section).</span></td>
+</tr>
+<tr class="even">
+<td>Transport Options...</td>
+<td>This submenu allows you to manage and set various options for the record and playback controls.</td>
+</tr>
+</tbody>
+</table>
+<h2> </h2>
+<h2>Tracks</h2>
+<p>The <strong>Tracks menu</strong> features operations allowing for creating, deleting, muting, panning, aligning and labeling multiple tracks at once:</p>
+<p><img src="static/Audacity%20tracks%20menu.png" width="226" height="239" /></p>
+<p> </p>
+<table>
+<tbody>
+<tr class="odd">
+<td><strong><em>option</em></strong></td>
+<td><strong><em>action</em></strong></td>
+</tr>
+<tr class="even">
+<td>Add New</td>
+<td>Submenu allows you to add a new mono or stereo audio track, label track or time track.</td>
+</tr>
+<tr class="odd">
+<td>Mix</td>
+<td>Submenu allows you to mix or render your selected tracks to a single mono or stereo track.</td>
+</tr>
+<tr class="even">
+<td>Resample...</td>
+<td><span>Allows you to resample</span><span> the selected track(s) to a new sample rate for use in the project, leaving the length, and hence playback speed and pitch of the track, </span><span>unchanged.</span></td>
+</tr>
+<tr class="odd">
+<td>Remove Tracks</td>
+<td><span>Remove the selected track(s) from a project (only if part or all of a track has been selected)</span></td>
+</tr>
+<tr class="even">
+<td>Mute/Unmute</td>
+<td><span>Submenu allows you to mute or unmute all project tracks at once.</span></td>
+</tr>
+<tr class="odd">
+<td>Pan</td>
+<td><span>Submenu allows you to change the L/R panning of all selected tracks at once.</span></td>
+</tr>
+<tr class="even">
+<td>Allign Tracks</td>
+<td>Submenu allows you to align selected tracks<span> in relation to each other or to the cursor.</span></td>
+</tr>
+<tr class="odd">
+<td>Sort Tracks</td>
+<td>Submenu allows you to sort tracks (top to bottom in GUI) by their names or start times.</td>
+</tr>
+<tr class="even">
+<td>Sync-Lock Tracks On/Off</td>
+<td>Toggles on/off the <span>sync-lock feature</span>, which<span> ensures that length changes occurring anywhere in a defined group of tracks also take place in all other audio or label tracks in that group, even if those tracks were not selected.</span></td>
+</tr>
+</tbody>
+</table>
+<h2> </h2>
+<h2>Generate</h2>
+<p>The <strong>Generate Menu</strong> allows you to insert various generated audio elements (tones, noises and silence) into a track, either extending the track or replacing a selected region, or inserting the element into a new track:</p>
+<p><img src="static/Audacity%20generate%20menu.png" width="222" height="240" /></p>
+<p>The <span>duration</span> of the generated audio (when inserted into an existing track) is determined by the length of your selection and the position by the left boundary of your selection, or by a specified duration.  If no selection is made and no duration specified, the default length inserted at the cursor position is 30 seconds, or whatever your most recent previous entered duration was.  Please <span>see </span><a href="http://manual.audacityteam.org/man/examples_of_generator_usage.html" title="effects documentation">Examples of Generator Usage</a><span> for some detailed examples of using the Audacity generators</span></p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong><em>name</em></strong></td>
+<td><strong><em>action</em></strong></td>
+</tr>
+<tr class="even">
+<td>Add/Remove Plug-ins...</td>
+<td><p>The default plug-ins for Audacity are shown later in this menu: Pluck, Rhythm Track, Risset Drum and Sample Data Import.  This option invokes a dialog which allows further plug-ins (for effects, generatiors and analyzers) to be added or removed.</p></td>
+</tr>
+<tr class="odd">
+<td>Chirp...</td>
+<td><p><span>Chirp produces four different types of tones like the <span>Tone Generator</span> below, </span><span>but also allows separate setting of the start and end amplitude and frequency (hence the 'chirp' effect). As with Tone, frequencies can be specified anywhere between 1 Hz</span><span> and </span><em>half</em><span> the current project rate as shown in the Selection Toolbar.</span></p></td>
+</tr>
+<tr class="even">
+<td>DTMF Tones...</td>
+<td><span>Generates dual-tone multi-frequency (DTMF) tones like those produced by the keypad on telephones. For each tone you wish to generate, enter numbers from 0 to 9, lower case letters from a to z, and the * and # characters (emulating a telephone keypad).</span></td>
+</tr>
+<tr class="odd">
+<td>Noise...</td>
+<td>Invokes the Noise dialog allowing you to generate 3 different types of noise--white, pink, and Brownian--and specify amplitude and duration of each.  Experiment to get a sense of these different types of noise.</td>
+</tr>
+<tr class="even">
+<td>Silence...</td>
+<td>Generates silence (audio of zero amplidute) either applied to a given selected region of audio, or at the cursor with a designated duration.</td>
+</tr>
+<tr class="odd">
+<td>Tone...</td>
+<td><span>Generates one of four different tone waveforms</span><span>: Sine, Square, Sawtooth and Square (no alias), the name of each corresponding to its appearance when zoomed in </span><span>sufficiently to see each</span><span> waveform cycle.  Experiment to get a sense of these different tones. Frequency, amplitude and duration can all be specified.</span></td>
+</tr>
+<tr class="even">
+<td>Pluck...</td>
+<td><span><span>Creates a single synthesized pluck tone at the cursor with abrupt or gradual fade-out, and selectable pitch corresponding to a MIDI</span><span> note.</span></span></td>
+</tr>
+<tr class="odd">
+<td>Rythm Track...</td>
+<td><span><span><span>The Rythm Track dialog allows you to create a track with regularly spaced sounds at a specified tempo and number of beats per measure (bar), also allowing control of duration (in bars or whole seconds), start time offset, specific beat sound (5 options) and MIDI pitch of strong and weak beat. This is NOT a 'drum track' but could be used as a metronome for synching a drum track.</span></span></span></td>
+</tr>
+<tr class="even">
+<td>Risset Drum...</td>
+<td><span><span><span><span>Produces a single realistic drum sound consisting of a sine wave ring-modulated by narrow band noise, an enharmonic</span><span> tone and a strong sine wave at the fundamental.  Can be copied and synched with other audio to produce a drum track, with beats of various pitch, volume and decay.</span></span></span></span></td>
+</tr>
+<tr class="odd">
+<td>Sample Data Import...</td>
+<td><span><span><span><span>An advanced feature which produces audio from imported numeric data</span></span></span></span></td>
+</tr>
+</tbody>
+</table>
+<h2> </h2>
+<h2>Effect</h2>
+<p>The <strong>Effect Menu</strong> allows you to apply a wide (potentially infinite) range of effects to a selected audio track or region. Note that this menu cannot be accessed while any tracks are in Playback or Record mode.</p>
+<p><img src="static/Audacity%20effects%20menu.png" width="289" height="765" /></p>
+<p>Note that the menu pictured here represents the default effects plug-ins in Audacity as of the 2.2.1 release (and there are a dozen more below those pictured in the menu here).   The following table addresses only some of the most familiar effects from among those available.  Within and beyond this set, you are encouraged to experiment.</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong><em>name</em></strong></td>
+<td><strong><em>action</em></strong></td>
+</tr>
+<tr class="even">
+<td>Add/Remove Plug-in...</td>
+<td>Functions just like the 'Add/Remove Plug-in...&quot; feature of the Generate menu (and Analyze menu).</td>
+</tr>
+<tr class="odd">
+<td>Repeat Last Effect</td>
+<td>Applies the most recently-used effect to a new selected track or region.</td>
+</tr>
+<tr class="even">
+<td>Amplify</td>
+<td>this effect increases or decreases the volume of a track or set of tracks. </td>
+</tr>
+<tr class="odd">
+<td>Bass Boost</td>
+<td>this is a smooth filter which can amplify the lower frequencies while leaving most of the other frequencies alone.</td>
+</tr>
+<tr class="even">
+<td>Change Pitch</td>
+<td>changes the pitch/frequency of the selected audio without changing the tempo.</td>
+</tr>
+<tr class="odd">
+<td>Change Speed</td>
+<td>changes the speed of the audio by resampling. Making the speed higher will also increase the pitch.</td>
+</tr>
+<tr class="even">
+<td>Change Tempo</td>
+<td>changes the tempo (speed) of the audio without changing the pitch.</td>
+</tr>
+<tr class="odd">
+<td>Click Removal</td>
+<td>this effect is designed to remove the annoying clicks on recordings from vinyl records without damaging the rest of the audio. </td>
+</tr>
+<tr class="even">
+<td>Distortion</td>
+<td>applies a distortion effect familiar from much mid- and late-1960s rock music.</td>
+</tr>
+<tr class="odd">
+<td>Compressor</td>
+<td>compresses the dynamic range of the selection so that the loud parts are softer while keeping the volume of the soft parts the same. </td>
+</tr>
+<tr class="even">
+<td>Echo</td>
+<td>this effect repeats the audio you have selected again and again, softer each time. There is a fixed time delay between each repeat.  Effect frequently used for vocal sounds in live performance (and guitar sounds for some groups like The Who).</td>
+</tr>
+<tr class="odd">
+<td>Equalization</td>
+<td>boost or reduce frequencies. </td>
+</tr>
+<tr class="even">
+<td>Fade In</td>
+<td>applies a linear fade-in to the selected audio. </td>
+</tr>
+<tr class="odd">
+<td>Fade Out</td>
+<td>applies a linear fade-out to the selected audio. </td>
+</tr>
+<tr class="even">
+<td>Invert</td>
+<td>this effect flips the audio samples upside-down. This normally does not affect the sound of the audio at all.</td>
+</tr>
+<tr class="odd">
+<td>Noise Removal</td>
+<td>this effect is ideal for removing constant background noise such as fans, tape noise, or hums. It will not work very well for removing talking or music in the background.</td>
+</tr>
+<tr class="even">
+<td>Normalize</td>
+<td>allows you to amplify such that the maximum amplitude is a fixed amount, -3 dB. </td>
+</tr>
+<tr class="odd">
+<td>Nyquist Prompt</td>
+<td>allows you to express arbitrary transormations using a powerful functional programming language (for advanced users).</td>
+</tr>
+<tr class="even">
+<td>Phaser</td>
+<td>the name &quot;Phaser&quot; comes from &quot;Phase Shifter&quot;, because it works by combining phase-shifted signals with the original signal.  Much 1970s rock music makes heavy use of phasing.</td>
+</tr>
+<tr class="odd">
+<td>Repeat</td>
+<td>repeats the selection a certain number of times. </td>
+</tr>
+<tr class="even">
+<td>Reverse</td>
+<td>this effect reverses the selected audio.</td>
+</tr>
+<tr class="odd">
+<td>Wahwah</td>
+<td><p>just like a guitar's wah-wah peddle. </p></td>
+</tr>
+</tbody>
+</table>
+<p>In addition to these and other effects available by default from the Effect menu, many other effect plug-ins are available as <a href="http://manual.audacityteam.org/man/effect_menu_nyquist.html" title="effects documentation">Nyquist effects</a>, <a href="http://manual.audacityteam.org/man/effect_menu_ladspa.html" title="effects documentation">LADSPA effects</a>, <a href="http://manual.audacityteam.org/man/effect_menu_lv2.html" title="effects documentation">LV2 effects</a>, and <a href="http://manual.audacityteam.org/man/effect_menu_vst.html" title="effects documentation">VST effects</a>.  Beyond the specific links supplied here, referencing these different groups of effects, see Audacity's overall <a href="http://manual.audacityteam.org/man/effect_menu.html" title="effects documentation">effects documentation</a> page.  As noted there, some effects do not support the 'Preview' function, which allows you to preview the result of applying an effect to an audio track before applying it permanently.  </p>
+<p> </p>
+<h2>Analyze</h2>
+<p>The Analyze Menu gives you many options for finding out about the characteristics of your audio tracks, and labeling key features.  The five default Audacity plug-ins shown at the bottom of the menu, but many more plug-ins are available.  Rather than modifying your audio tracks, as in Effect functions, Analyze functions typically create a new label track indicating the audio features you are seeking. These labels can then be used for export or edit functions or for mixing.</p>
+<p><img src="static/Audacity%20analyze%20menu.png" width="288" height="218" /></p>
+<table>
+<tbody>
+<tr class="odd">
+<td><strong><em>name</em></strong></td>
+<td><strong><em>action</em></strong></td>
+</tr>
+<tr class="even">
+<td>Add/Remove Plug-ins...</td>
+<td>Action is identical to Add/Remove for Generate and Effect menus</td>
+</tr>
+<tr class="odd">
+<td>Contrast...</td>
+<td><span>Analyzes a selected, single mono audio track to determine the average rms</span><span> </span><span>difference in volume</span><span> (contrast) between </span><em>foreground</em><span> (the speech) and </span><em>background</em><span> (music, audience noise or similar). The purpose is to determine if the speech will be intelligible to the hard of hearing.</span></td>
+</tr>
+<tr class="even">
+<td>Plot Spectrum</td>
+<td>displays the Power Spectrum of the audio over a selected region (ie, a <span>graph of frequencies (the horizontal scale in </span>Hz<span>) against </span>amplitudes<span> (the vertical scale in </span>dB<em></em><span>).</span></td>
+</tr>
+<tr class="odd">
+<td>Find Clipping...</td>
+<td><span>Displays runs of </span><span>clipped</span><span> samples in a </span>Label Track<span>, as a screen-reader accessible alternative to </span><strong><span class="menu">View &gt; Show Clipping</span></strong><span>. A run must include at least one clipped sample, but may include unclipped samples too.</span></td>
+</tr>
+<tr class="even">
+<td>Beat Finder...</td>
+<td><span>Creates a label track which attempts to place </span>labels<span> at <span>beats</span> in a selected audio region which are much louder than the surrounding audio. This tool works better with some genres than others; it will not necessarily work well on a typical modern pop music track with compressed </span><span>dynamic range</span><span>.</span></td>
+</tr>
+<tr class="odd">
+<td>Regular Interval Labels...</td>
+<td><span>Places </span>labels<span> in a long track so as to divide it into smaller, equally sized segments. Can be useful for distributing a large file on the internet. You can choose the number of labels to be created, or the interval between them. Each label produced contains the chosen label text.</span></td>
+</tr>
+<tr class="even">
+<td>Sample Data Export</td>
+<td>Advanced feature: <span>Reads the values of successive samples from the selected audio and prints this data to a plain text, CSV or HTML file.</span></td>
+</tr>
+<tr class="odd">
+<td>Silence Finder</td>
+<td><span>Divides a track by placing point </span>labels<span> inside regions of silence. Useful if you just want to split a recording into tracks at specific boundaries, without removing the silences between them.</span></td>
+</tr>
+<tr class="even">
+<td>Sound Finder</td>
+<td><span>Divides a track by placing region </span>labels<span> for segments of sound that are separated by silence. Use this to make labels showing the exact region of each track to be exported (useful for example if you want to split up a full-length CD or LP recording into individual song tracks for export).</span></td>
+</tr>
+</tbody>
+</table>
+<p><span id="ch010_tool-bar.xhtml"></span></p>
+<p> </p>
+<p>Audacity: ToolBar</p>
+<h1>Tool Bar</h1>
+<p><strong>Software name :</strong> Audacity<br />
+<strong>Software version :</strong> 2.2.1</p>
+<p>The <strong>Tool Bars</strong> are where you choose tools to directly work on the tracks. There are eight main Tool Bars in the Audacity GUI, shown by default:</p>
+<ul>
+<li>Transport toolbar</li>
+<li>Tools toolbar</li>
+<li>Recording Meter toolbar</li>
+<li>Playback Meter toolbar</li>
+<li>Mixer toolbar</li>
+<li>Edit toolbar</li>
+<li>Device toolbar</li>
+<li>Transcription toolbar</li>
+</ul>
+<h2><img src="static/dock1annotated.png" width="807" height="193" /></h2>
+<p>Below we will walk through the individual controls in each toolbar. </p>
+<p> </p>
+<h2>Transport Tool Bar</h2>
+<p><img src="static/transporttoolbar.png" width="327" height="55" /></p>
+<p>These controls will be familiar from most Record/Playback devices.  Let's look at each button:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td><strong><em>button</em></strong></td>
+<td><strong><em>action</em></strong></td>
+</tr>
+<tr class="even">
+<td><img src="static/pause.png" width="53" height="53" /></td>
+<td>Will pause during playback or recording.  Press again to unpause.</td>
+</tr>
+<tr class="odd">
+<td><img src="static/play.png" width="49" height="51" /></td>
+<td>Press the play button to listen to the selected audio (or all audio) in your project.</td>
+</tr>
+<tr class="even">
+<td><img src="static/stop.png" width="49" height="49" /></td>
+<td>P<span>ress the stop button or hit the spacebar to stop playback immediately.</span></td>
+</tr>
+<tr class="odd">
+<td><img src="static/skiptostart.png" width="51" height="49" /></td>
+<td>Press to move playback head to start of track.</td>
+</tr>
+<tr class="even">
+<td><img src="static/skiptoend.png" width="54" height="51" /></td>
+<td>Press to move playback head to end of track.</td>
+</tr>
+<tr class="odd">
+<td><img src="static/record.png" width="53" height="53" /></td>
+<td>press the record button to record a new track from your computer's sound input device.</td>
+</tr>
+</tbody>
+</table>
+<h2> </h2>
+<h2> </h2>
+<h2> </h2>
+<h2> </h2>
+<h2> </h2>
+<h2> </h2>
+<h2> </h2>
+<h2> </h2>
+<h2> </h2>
+<h2> </h2>
+<h2> Tools Toolbar</h2>
+<h2> <img src="static/toolstoolbar.png" width="94" height="55" /></h2>
+<p>This toolbar groups together a range of commonly-used functions that can also be accessed from the Edit, Select, View and Tracks menus.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td><em><strong>button</strong></em></td>
+<td><em><strong>action</strong></em></td>
+</tr>
+<tr class="even">
+<td><img src="static/selection.png" width="24" height="24" /></td>
+<td><strong>Selection</strong> -- <span>Click to select a start point for audio playback, or click and drag to select a range of audio. </span></td>
+</tr>
+<tr class="odd">
+<td> <img src="static/envelope.png" width="25" height="25" /></td>
+<td><strong>Envelope</strong> -- <span>Allows smooth volume changes to be made over the length of a track by means of embedded volume &quot;control points&quot;. Click in the track to create a control point, then set the volume of that point by dragging one of its four vertically arranged &quot;handles&quot;. When you create other control points at different levels, a smooth curve is interpolated between them. See tutorial chapter for example.</span></td>
+</tr>
+<tr class="even">
+<td> <img src="static/samples.png" width="24" height="25" /></td>
+<td><strong>Draw Samples</strong> -- <span>Draw Tool enables you to manually redraw the waveform in a track; it can thus be used to make volume changes to individual samples or to eliminate clicks, noise etc.</span></td>
+</tr>
+<tr class="odd">
+<td><img src="static/zoom.png" width="24" height="23" /> </td>
+<td><strong>Zoom</strong> -- Left-click this button <span>zooms in one step</span> at the position of the mouse pointer.  Click and drag <span>zooms in to the dragged region</span>. The drag draws a dotted region in the waveform which is fitted to the entire track width when you release the drag.  Shift and left-click or right-click <span>zooms out one step</span> at the position of the mouse pointer. Shift and drag <span>zooms out based on the dragged region</span>. The drag draws a dotted region in the waveform and when you release the drag, the audio at the left edge of the dotted region is repositioned at the start of the visible waveform. </td>
+</tr>
+<tr class="even">
+<td> <img src="static/timeshift.png" width="24" height="23" /></td>
+<td><strong>Time-shift</strong> -- When selected, this tool lets you synchronize audio in a project by dragging individual or multiple audio tracks, note tracks or audio clips left or right along the Timeline. Also use this tool to drag individual tracks or clips up or down into another track.</td>
+</tr>
+<tr class="odd">
+<td><img src="static/multi.png" width="24" height="24" /></td>
+<td><strong>Multi-tool</strong> --  For advanced users: This c<span>ombines all five previous tools in one. One tool is available at a time, according to the mouse position and modifier key chosen. The shape of the pointer changes to show which tool is active. If you exit Audacity with Multi-Tool Mode selected, it will be also be enabled next time you launch Audacity.  More detail <span>on Multi-Tool Mode </span><a href="http://manual.audacityteam.org/man/multi_tool.html" title="Device Toolbar">here</a><span>.</span></span></td>
+</tr>
+</tbody>
+</table>
+<h2> </h2>
+<h2>Recording Meter Toolbar</h2>
+<p>When Audacity first launches, this meter will be inactive and thus display &quot;Click to Start Monitoring&quot;, as below.</p>
+<p><img src="static/recordmetertoolbar.png" width="460" height="27" /></p>
+<p>If you click on the toolbar, OR click the record button, this meter will activate and monitor the audio input level from whatever input device you have selected (with separate L and R channels if the input is in stereo).  As shown below, the meter reads green until just before -6 dB, at which point the tip starts turning yellow.  At around -3 dB it turns red, indicating that your recording input is too high or 'hot' and distortion or clipping may occur. </p>
+<p><img src="static/recording_toolbar_in_use.png" width="473" height="33" /></p>
+<p><strong>Dropdown menu: </strong>clicking on the microphone icon will invoke a dropdown menu which allows you to enable/disable monitoring (same as clicking inside the meter itself) and can also launch an &quot;Options&quot; dialog, allowing you to set the<span> meter's style, visual orientation, the scale format and other parameters.</span></p>
+<p> </p>
+<h2>Playback Meter Toolbar</h2>
+<p> <img src="static/playmetertoolbar.png" width="460" height="27" /></p>
+<p>The Playback Meter will activate when you begin Playback on an existing track (with separate L and R channels if the track is stereo).  As with the Recording meter, the Playback meter tip turns yellow around -6 dB, and red just before -3 dB, indicating that the volume on your recorded audio is too high, Audacity may have clipped the audio, and/or distortion may occur on most standard playback devices.</p>
+<p><strong>Dropdown menu</strong>: clicking on the speaker icon will allow you to invoke an &quot;Options&quot; dialog similar to the one for the Recording Meter.</p>
+<p>Note: for both meters, a blue line (as shown above in active recording meter) <span>indicates the <span>maximum peak level</span> attained in that channel during the current playback or recording session.  This line will remain until a new monitoring session is started.  </span></p>
+<p> </p>
+<h2>Mixer Toolbar</h2>
+<p><img src="static/mixertoolbar.png" width="323" height="27" /></p>
+<p>The left-hand slider adjusts the volume level of the input (recording) device you have selected in the Device Toolbar.  The right-hand slider adjusts the volume of the output device you have selected for Playback. </p>
+<p> </p>
+<h2>Device Toolbar</h2>
+<p><img src="static/devicetoolbar.png" width="618" height="27" /></p>
+<p>The Device Toolbar allows you to select which device you would like to use for input (recording) and for output (playback).  The options available in each dropdown will depend on which <strong>Audio Host</strong> you have chosen in the left-hand dropdown, as well as which physical devices are installed in/attached to your machine and enabled with your sound card.  For more on the relationship among these three selectors, for different operating systems, see the official Audacity documentation for the <a href="http://manual.audacityteam.org/man/device_toolbar.html" title="Device Toolbar">Device Toolbar</a>. </p>
+<p> </p>
+<h2>Edit Toolbar</h2>
+<p><img src="static/edittoolbar.png" width="336" height="27" /></p>
+<p>This toolbar provides alternate access to common tools accessible through the &quot;Edit&quot; and &quot;View&quot; menus. Taking the buttons individually:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td><strong><em>button</em></strong></td>
+<td><strong><em>action</em></strong></td>
+</tr>
+<tr class="even">
+<td><img src="static/cut.png" width="26" height="26" /></td>
+<td>removes the selected audio data and places it on the clipboard.</td>
+</tr>
+<tr class="odd">
+<td><img src="static/copy.png" width="23" height="25" /></td>
+<td>copies the selected audio data to the clipboard without removing it from the project.</td>
+</tr>
+<tr class="even">
+<td><img src="static/paste.png" width="25" height="25" /></td>
+<td>inserts whatever is on the clipboard at the position of the selection cursor in the project.</td>
+</tr>
+<tr class="odd">
+<td><img src="static/trimaudio.png" width="22" height="23" /></td>
+<td>deletes everything but the selection.</td>
+</tr>
+<tr class="even">
+<td><img src="static/silenceaudio.png" width="23" height="23" /></td>
+<td>erases the audio data currently selected, replacing it with silence instead of shortening the track.</td>
+</tr>
+<tr class="odd">
+<td><img src="static/undo.png" width="25" height="25" /></td>
+<td>this will undo the last editing operation you performed to your project.</td>
+</tr>
+<tr class="even">
+<td><img src="static/redo.png" width="26" height="23" /></td>
+<td>this will redo any editing operations that were just undone.</td>
+</tr>
+<tr class="odd">
+<td><img src="static/zoomin.png" width="24" height="24" /></td>
+<td>zooms in on the horizontal axis of the audio, displaying more detail and less duration.</td>
+</tr>
+<tr class="even">
+<td><img src="static/zoomout.png" width="23" height="23" /></td>
+<td>zooms out, displaying less detail and more duration.</td>
+</tr>
+<tr class="odd">
+<td><img src="static/zoomselection.png" width="25" height="24" /></td>
+<td>zooms in until the selected audio fills the width of the screen to show the selection in more detail.</td>
+</tr>
+<tr class="even">
+<td><img src="static/fitproject.png" width="24" height="24" /></td>
+<td>fits the entire project in the available screen space.</td>
+</tr>
+</tbody>
+</table>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h2>Transcription Toolbar</h2>
+<p><img src="static/transcriptiontoolbar.png" width="140" height="27" /></p>
+<p>The <strong>Transcription Toolbar</strong><span> is intended to assist with manual text transcription of recorded voice.  It has its own Play-at-Speed button which plays (or restarts playback) at the speed set by the Play-at-Speed slider.  Playback can be paused and resumed at the adjusted speed using the Pause button </span><span title="Pause button"><img src="http:/manual.audacityteam.org/m/images/4/47/pause.png" alt="Pause.png" width="16" height="16" /></span><span> in the </span>Transport Toolbar. Double-clicking on the slider opens up a Playback Speed dialog for more precise adjustment of the playback speed.</p>
+<p><span id="ch012_open-import-a-file.xhtml"></span></p>
+<p>Audacity: OpenFile</p>
+<h1>Open/Import an Audio File</h1>
+<p>You will need to have an audio file available to edit. If you don't have one locally, download an MP3 or .wav from somewhere. Make sure it's not too big: 1-4 minutes is fine for all our tutorial purposes in this book. Choose either the <strong>Open</strong> option or the <strong>Import &gt; Audio</strong> option from the <strong><span>F</span>ile</strong> menu (the difference between <strong>Open</strong> and <strong>Import</strong> will be discussed shortly).</p>
+<p>Please note that these and all following tutorial images are captured from Audacity running on Windows, so if you are running Mac or Linux instead, your GUI might look slightly different. </p>
+<p><img src="static/Audacity%20file%20open.png" width="217" height="305" /></p>
+<p>You will then be presented with a window where you can browse to the location of the audio file on your computer:</p>
+<p><img src="static/Audacity%20select%20one%20or%20more%20files.png" width="928" height="616" /></p>
+<p>You can see in the above example there are a large number of audio files here, some as MP3s and others as Audacity projects (marked with the Audacity logo).   Note that this directory also contains some video (MP4) files and static image files; selecting any of those would trigger an error message.  I will select Fiona.mp3, a dance mix I created previously in Audacity based on vocalization by my cat Fiona:</p>
+<p><img src="static/Audacity%20selecting%20Fiona%20mp3.png" width="821" height="482" /></p>
+<p> </p>
+<p>If I now press OK the file will be imported into Audacity. </p>
+<h3>Open vs Import, Save vs Export</h3>
+<p>It should be noted that for adding the <em><strong>first</strong></em> audio track to a new or empty project, &quot;opening&quot; a standard audio file such as MP3 or .wav is effectively the same as &quot;importing&quot; that same file, through the <strong>Import</strong> function further down in the <strong>File</strong> menu.  In either case Audacity imports the file into its own proprietary format, adding it to an open Audacity project which will be saved as an AUP file.   However, if your open Audacity project <em>already</em> contains one or more audio tracks, additional tracks can <em>only be <strong>imported</strong></em>, not 'opened', to be added to that project.  For this reason it is probably better to get in the habit of always adding standard-format, non-Audacity audio tracks via 'Import' rather than 'Open'. You should reserve the 'Open' function for opening Audacity project (.aup) files themselves (which can <em>only</em> be opened through <strong>Open</strong>, not through <strong>Import</strong>).</p>
+<p>Conversely, after you have edited (or created) audio in Audacity, if you simply select &quot;Save Project&quot; or &quot;Save Project As...&quot; it will save as an AUP file, which is proprietary to Audicity and cannot be played or edited in other software.  To get the audio back to a common file format, you will need to <strong>Export</strong> the open project (for example, as an MP3 or .wav) through the Export function further down the File menu.</p>
+<p> </p>
+<p>Once the import has finished you will see the audio file displayed in the Audacity window.  The file I chose is in stereo format, so both left and right channels are displayed in a single track:</p>
+<p><img src="static/Audacity%20Fiona%20loaded.png" width="832" height="713" /></p>
+<p>That's it!  The audio is now ready for editing or other manipulation.</p>
+<p><span id="ch013_recording.xhtml"></span></p>
+<p>Audacity: RecordingASound</p>
+<h1>Recording a sound</h1>
+<p><strong>Software name :</strong> Audacity<br />
+<strong>Software version :</strong> 2.2.1</p>
+<p>Recording sound with Audacity is very straightforward: you just need to have a computer that has a sound card with at least a <strong>microphone</strong> (<strong>mic</strong>) or <strong>line</strong> input.</p>
+<h2>Getting started</h2>
+<p>Before making a recording you need to make sure that the device you want to record from is connected to the <strong>audio input</strong> of your computer's sound card.  To do this you can <span>use your computer's sound control panel or the custom mixer application for your specific soundcard, selecting the input device you want to use and verifying that you are getting sound into the computer from that device.  Note that y</span>ou can also use Audacity's own Recording meter to test whether your desired recording device is inputting properly, and at appropriate levels.  However, and especially if this is your first attempt to record, it is preferable to first use your OS control panel or sound card's mixer application to verify audio input connectivity.  Then you can launch Audacity.</p>
+<h3>MacOSX Recording Configuration</h3>
+<p>If your Mac has a built-in microphone (most do), Audacity 2.2.1 for OS X should already be connected to it once it is installed. This means you can start recording in Audacity 2.2.1 right away.</p>
+<h4>Recording Sound Using Audacity in OSX</h4>
+<p>To record, simply press the R key, and a new audio track will appear and automatically start recording. You can then speak, and/or play any other sounds on your Mac.</p>
+<p><img src="static/audacity_pressRkey_new_track.png" width="800" height="435" /></p>
+<p> </p>
+<p>You can also record sound by selecting Transport &gt; Record &gt; Record in the main menu:</p>
+<p><img src="static/audacity_record_transport_menu.png" width="800" height="435" /></p>
+<h3>Windows and Linux Recording Configuration</h3>
+<p>Windows and Linux use controls that can be accessed entirely from the Audacity GUI. First you need to choose the input device. As we saw in the Toolbars chapter, the <strong>Device Toolbar</strong> is where you select your desired Recording Device (second dropdown), as well as desired Audio Host (first dropdown: for Windows the options will be MME, Windows DirectSound and Windows WASAPI-- see <a href="http://manual.audacityteam.org/man/device_toolbar.html" title="Device Toolbar">Device Toolbar</a> for more detail on these options).  Here you can also select whether you want Mono or Stereo recording (second dropdown):</p>
+<p><img src="static/devicetoolbar.png" width="618" height="27" /></p>
+<p> </p>
+<h2>Testing Audio Levels</h2>
+<p>Now that you have everything set up and ready to go you can begin the recording process. </p>
+<p>Before making the recording it is important to preview the loudest section of the source audio so that you do not end up with a distorted recording.</p>
+<p>For this you will use the <strong>Recording Toolbar</strong> and <strong>Mixer Toolbar</strong>, as detailed in the Toolbars chapter:</p>
+<p><img src="static/recordmetertoolbar.png" width="460" height="27" /></p>
+<p>The recording meter here will automatically be activated when you begin an actual recording; but since in this case you want a preview, simply click anywhere on the meter to activate monitoring.  Now play the <em>loudest</em> passage of the audio you want to record and, while doing so, look at the recording meter:</p>
+<p><img src="static/recording_toolbar_in_use.png" width="473" height="33" /></p>
+<p>At the <em>loudest</em> point in the audio, the green bar should ideally stretch all the way to around -9 dB (decibals); it's tip wil turn yellow between -9 dB and -6 dB, which is a warning margin, and will turn red just before -3 dB (which indicates that your input is is too loud or 'hot', and may be clipped by Audacity).  Adjust the input/record slider of the <strong>Mixer Toolbar</strong> downward (toward the minus) if you see any red or much yellow; adjust the slider upward if your maximum input or 'peak' is far short of -12 dB.  </p>
+<p><img src="static/mixertoolbar.png" width="323" height="27" /></p>
+<p>While an ideal input level peak is between -12 dB and -9 dB, if you have difficulty hitting this target zone with input slider adjustments, it is better to err on the side of too little recording input (not green all the way to -12) as opposed to too much (a red tip).  The output volume of a quieter recording can always be boosted in a subsequent editing stage; but a too-loud recording will be 'clipped' by Audacity, meaning it is too loud for Audacity to process and the top and bottom of the wave-form will be chopped off, thus losing some of the recorded wave information. </p>
+<p> </p>
+<h2>Recording</h2>
+<p>Now that you've tested your input device and recording levels, you are ready to make your proper recording.<br />
+<br />
+Click the &quot;Record&quot; button on the <strong>Transport toolbar</strong>:</p>
+<p><img src="static/record.png" width="53" height="53" /></p>
+<p>then play the audio you wish to record. Once the sound source has finished click the &quot;Stop&quot; button:</p>
+<p><img src="static/stop.png" width="49" height="49" /></p>
+<p>Your recording is now complete. It should appear in the Audacity GUI as a single audio track, showing either a single channel (if you've chosen mono recording) or dual L/R channels (if you've chosen stereo).  Here I have made a stereo recording of a simple chord riff on accoustic guitar, from my built-in computer mic:</p>
+<p><img src="static/Audacity%20first%20recording.png" width="892" height="728" /></p>
+<p>Note that the &quot;Project Rate (Hz)&quot; dropdown on the bottom left indicates that I have made my recording at a <strong>sample rate</strong> of 44100 Hz (44 KHz).  This sample rate is compatible with traditional music-CD sound quality, and is the defaut for Audacity's recording mode.  However, in the dropdown I could set the rate to as low as 8 KHz or as high as 384 KHz (which would produce a very high-fidelity but very large sound file).</p>
+<p> </p>
+<p>Now listening to your recording with the Play button on the Transport toolbar:</p>
+<p><img src="static/play.png" width="49" height="51" /></p>
+<p>If you are not satisfied with the recording, you can delete it from the project using the X in the upper left corner of the track bar (or by going to <strong>Edit &gt; Delete</strong> in the main menu).  However, before discarding a recording completely, you will want to consider whether it can be edited or otherwise modified, using Audacity's multitude of tools, to bring it closer to what you had in mind.  Only experimentation and practice will help you decide whether to aim for perfection in the recording itself, or edit it after the fact.</p>
+<p>If you decide to save the recording, do so by selecting &quot;Save Project As&quot; from the &quot;File&quot; menu (this will save the wave form as is, including all separate tracks in the project, allowing you to come back later for editing and export).  As this is a new project, you will be prompted for a Project name as well as the location to save the Project file:</p>
+<p><img src="static/Audacity%20save%20project%20as.png" width="928" height="616" /></p>
+<p> </p>
+<p>That's it! Your recording is completed and saved. If you want to access this project again for editing and/or export to a common audio file format such as MP3, use <strong>File &gt; Open</strong> (<em>not</em> Import, which will not work with Aup files) and browse to the location of your saved Audacity project.</p>
+<p> </p>
+<p><span id="ch014_add-a-new-track.xhtml"></span></p>
+<p>Audacity: AddTrack</p>
+<h1>Add Another Audio Track</h1>
+<p><strong>Software name :</strong> ­Audacity­<br />
+<strong>Software version :</strong> 1.2</p>
+<p>Audacity enables you to mix multiple sounds together. You will need Audacity open and an audio file already loaded, and then you can add as many new files (or recorded tracks) as you like.</p>
+<h2>Adding your new track</h2>
+<p>Audacity should be open in front of you and you will have some audio already loaded. In this example we will be working with the audio track 'Fiona' I opened in first tutorial,  so when I reopen the 'Fiona' project my Audacity window looks like this :</p>
+<p><img src="static/Audacity%20Fiona%20loaded.png" width="832" height="713" /></p>
+<p>Now, we wish to add another audio track to this mix--in this case a pre-recorded track that I have on my computer. To do this, in the main <strong>File</strong> menu choose <strong>Import</strong>, then <strong>Audio</strong> from the submenu. (Note that when adding a new track to an existing project with one or more tracks, you <em>must</em> use 'Import' rather than 'Open', which would cause a new project to open rather than adding your new track to the existing project.)</p>
+<p><img src="static/Audacity%20file%20import%20audio.png" width="892" height="728" /></p>
+<p> </p>
+<p>When you have done this a file browser will open, by default in the same directory in which Audacity last opened or imported from, or saved or exported to.  In this case I will chose a recorded guitar riff (as mp3 file) residing in the same directory: </p>
+<p><img src="static/Audacity%20select%20new%20file%20to%20add.png" width="928" height="616" /></p>
+<p>I now press <strong>Open</strong> and the file will be imported.  As explained previously, 'Importing' means that the file will be converted into Audacity's proprietary editing format, and it will appear in the Audacity window as a new track.  The importing process itself can be nearly instantaneous or some seconds long, depending on the length and complexity of the imported file.</p>
+<p>When it is complete the new track can be seen in the Audacity window, directly beneath the existing 'Fiona' track.  The new track is also in stereo, so it too displays both L and R channels:</p>
+<p><img src="static/Audacity%20new%20track%20added.png" width="865" height="728" /></p>
+<p>If you don't see your newly-added track immediately, you might need to scroll down on your Audacity window.  Note that there are several ways to minimize track display vertically so as to see more tracks at once. One way,  as I have done here with the 'Fiona' track, is to hover your mouse over the lower boundary of that track until your cursor becomes an up-and-down-arrow; then that boundary can be dragged up to make the track more narrow.  An efficient alternative is <strong>View &gt; Track Size &gt; Fit to Height</strong>, which will show all tracks within the available window height.</p>
+<h2>Playback and Exporting</h2>
+<p>If you now press the 'Play' Button:</p>
+<p><img src="static/play.png" width="49" height="51" /></p>
+<p>you will hear <em>both</em> tracks playing back at once.  If you were now to <strong>Export</strong> this project (for example as an mp3 or .wav), the tracks would be combined together into one sound file. You've just done your first sound mixing! </p>
+<p>Of course, things can rarely stop at this point.  Note that by default, the new track is added to the project with its starting position flush left (point 0 on the timeline).  Since the original track 'Fiona' also started at point 0, and since the newly added track is considerably longer in duration than the original, this difference shows up both visually (as in the screenshot above) and audibly: during playback, once the 'Fiona' track ends (at about 28 seconds), only the second track is audible for the remainder of its run. To properly mix these two tracks into a coherent sound (or as coherent as a feline dance mix and a slow blues guitar could ever be), you would need to do some advanced editing of one or both tracks, to make them both the same length and/or with matching or complementary beats and sound features.  We will cover some of this in subsequent tutorials.</p>
+<p><span id="ch015_creating-fades.xhtml"></span></p>
+<p>Audacity: EnvelopeTool</p>
+<h1>Envelope Tool</h1>
+<p>The envelope tool is among the most useful editing tools for Audacity users. It allows you to alter the volume of individual tracks in Audacity, which is especially important when you are combining ('mixing') several tracks together.</p>
+<h2>­Open Audacity</h2>
+<p>You will first have to have Audacity open with more than one track. We will begin with my 'Fiona' project from the previous tutorial, with some editing of both tracks so that they are now exactly the same length (I doubled the Fiona track end to end, and slightly truncated the blues guitar track).  At this point, then, my Audacity project looks like this:</p>
+<p><img src="static/Audacity%20first%20Fiona%20mix.png" width="797" height="728" /></p>
+<h2>Activating the Envelope Tool</h2>
+<p>The Envelope Tool has an icon in the Audacity <strong>Tools Toolbar</strong>, which looks like this:</p>
+<p><img src="static/envelope.png" width="25" height="25" /></p>
+<p>When you click on this button, the tracks are surrounded by a blue line. Compare the screenshot above (before activating the Envelope tool) to this one:</p>
+<p><img src="static/Audacity%20fiona%20envelope1.png" width="797" height="728" /></p>
+<p>You can see the Envelop tool button depressed, as well as the blue lines around each channel of each track. This indicates that the envelop tool has been activated.</p>
+<h2>Alter the volume</h2>
+<p>The blue line actually represents the volume of each channel/track. You can now lower the volume on chosen sections of a track by changing the shape of this blue line (as opposed to altering the volume of the <em>entire</em> track, using the volume control to the left). To do this click on the blue line at any particular point in the top track (in this case 'Fiona'), and you will see small white squares, or control points, appear where you clicked :</p>
+<p><img src="static/Audacity%20fiona%20envelope2.png" width="343" height="366" /></p>
+<p>Now you can 'grab' the blue line at the point where these squares appear. To show you how this can change the volume of just one part of the audio, click on the blue line at a separate point near where you first clicked.  A second set of blue squares now appears at that new point on the track (top track only):</p>
+<p><img src="static/Audacity%20fiona%20envelope3.png" width="280" height="375" /></p>
+<p>Now place your mouse cursor on the top white square in this second set (to the right of the first), and while your mouse finger is still down, drag the square downwards to reduce volume:  </p>
+<p><img src="static/Audacity%20fiona%20envelop4.png" width="320" height="185" /></p>
+<p>You will notice that this action reduces the amplitude of the wave (ie, the volume) of both the L and R channels of this (Fiona) track uniformly, taking the earlier, left-hand point as its 'hinge'.  The separate guitar track beneath the Fiona track is unmodified. If you now play back the project you will hear the volume of the modified (top) track 'fade' smoothly, following the shape of the blue lines, and continue at the lower volume while the lower track plays unmodified.</p>
+<h2>Mixing 2 tracks together</h2>
+<p>In mixing two tracks together, sometimes you simply want one track to have a single 'fade out' in relation to the other track, as the above example demonstrates.  More commonly, though, you might want to 'cross fade' the two tracks in a number of different places--ie, fade one track in while fading the other out--so that different segments of the two audio sources are emphasized at different times. To accomplish this, simply click on the blue lines of either track wherever you want to create a 'hinge point' for fading in or out.  The result could look something like the following.  Bear in mind that this is still a very simplified example, as this piece is only about 55 seconds total duration -- a 4-6 minute song could have any number of cross-fade operations: </p>
+<p><img src="static/Audacity%20fiona%20guitar%20mix.png" width="778" height="395" /></p>
+<p>If you have inadvertently added a set of control points (white squares) that you don't need or want for volume adjustment, you can simply grab one of those white squares and drag it entirely up or down out of the track. You can also always use Edit &gt; Undo to undo the most recent operation(s).</p>
+<h3>Inner Control Points for Greater Volume Gain</h3>
+<p>Note that so far we have been using only the <em>outer</em> control points, or the furthest top and bottom white squares, to manipulate the blue envelope lines.  The <em>inner</em> control points have the same effect, but these can be used to increase the volume beyond what is visible in the track view.  For example, if I wanted my lower (guitar) track to come in louder than it does above, I could use the inner control points to accomplish this by dragging the top one up (or the bottom one down); see this effect applied in the screenshot below.  Note that since the entire envelope here cannot be shown in the track view now, the solid blue line has become <em>dotted</em> for that segment. </p>
+<p><img src="static/Audacity%20fiona%20guitar%20mix%202.png" width="778" height="395" /></p>
+<p>Finally, we should note that the envelope control only allows the volume of a given track segment to be increased up to the point where the inner control square touches the track border (as shown here).  If you want to amplify beyond that range, de-activate the Envelope feature, select the section you want amplified and go to <strong>Effects &gt; Amplify...</strong>, which will launch a dialog with various amplification options.  Be advised, though, that depending on the options chosen, using the Amplify effect can easily produce distortion-level amplification, which is nearly impossible with the Envelope tool unless the original track is already extremely loud. </p>
+<p><span id="ch016_basic-editing.xhtml"></span></p>
+<p>Audacity: BasicEditing</p>
+<h1>Basic Editing with Audacity</h1>
+<p><strong>Software name :</strong> Audacity<br />
+<strong>Software version: </strong>2.2.1</p>
+<p>As far as audio editing software goes, Audacity is about as easy as it gets. Which is not to say it's falling off a log: if you haven't edited audio before then the whole concept can get a little bewildering. However with a little practice you should be able to make fast work of editing.</p>
+<p>Firstly, you will have to have some audio to edit. You can either record some audio using Audacity, or open an audio file from your computer. </p>
+<p>There are some simple methods that form the basis of editing with Audacity. We will look at deleting sections of audio ('cutting'), as well as shifting audio. With these two methods you can already do quite a lot.</p>
+<h2>Cutting/Deleting</h2>
+<p>You will need to have Audacity open in front of you with an audio file ready to edit. The process of editing requires that you first know your source file quite well, or more specifically the audio track wave-form of that file loaded into Audacity. You need to know exactly where a cut needs to be made, to achieve some intended effect, so play the audio track repeatedly and listen for where you want to make your first edit.</p>
+<p>Lets assume you have chosen the area to be cut. You need to now select the area by clicking on where the cut should start, holding down the mouse button, and dragging the mouse (either left or right) to the end of the area to be cut. The area to be deleted will be highlighted in a lighter shade of grey than the rest of the track (notice also that when you select an audio region in Audacity, your mouse curser changes into a pointing hand):</p>
+<p><img src="static/Audacity%20DayintheLife%20for%20edit.png" width="820" height="568" /></p>
+<p>In the above example you can see that I have highlighted the area from about <strong>1:32</strong> to <strong>2:17</strong>, a selection of about 45 seconds. To delete this selected region I can now click on the <strong><span>E</span>dit</strong> menu and choose 'Cut':</p>
+<p><img src="static/Audacity%20edit%20cut.png" width="208" height="320" /></p>
+<p>We should observe here that 'Cut' and 'Delete' are distinct functions, with the important difference that with Cut, the selected audio region is removed from the track but loaded onto the clipboard (from which it can later be <strong>Pasted</strong>, if desired), while with Delete that segment simply disappears.  But with either function, once you select it in the Edit menu you will see that the selected region of your audio track has disappeared, and the length of that track will have been reduced by a corresponding duration:</p>
+<p><img src="static/Audacity%20DayintheLife%20cut.png" width="801" height="235" /></p>
+<h3>Focusing on the area to be cut</h3>
+<p>If you have just opened an audio file, press the green play button to listen to the entire track:</p>
+<p><img src="static/play.png" width="49" height="51" /></p>
+<p>Once you have listened to it you may wish to take some notes to help you decide which area you wish to delete/cut. You can take notes that reference the exact time in the timeline, or --probably easier--you can add a label track and insert a label marking the exact point or segment you think might be a candidate for editing. It is also a good idea to replay the segment that you will cut to make sure you are selecting the right area. To do this you can select the area, as described above, and then press the play button and Audacity will only play back the selected area. This will help you decide if the selected area is actually the audio you wish to delete. If it's not, clicking anywhere outside that track will deselect that area, and you can try again.</p>
+<p>If you need to focus closer to the audio to make a 'finer' cut, click on the magnifying glass+ icon:</p>
+<p><img src="static/zoomin.png" width="24" height="24" /></p>
+<p>This will enlarge the time scale shown and give you a more detailed view of the audio wave-form. Remember that this wave-form is an exact visual representation of the audio signal itself: to edit one, at whatever level of detail, is to edit the other.  You can 'zoom out' of the audio again by pressing the magnifying glass with the minus sign in it:</p>
+<p><img src="static/zoomout.png" width="23" height="23" /></p>
+<h2>Pasting</h2>
+<p>If you wish to shift audio from one place to another then you can easily do so with Audacity. First select the area you wish to shift. I will use the same segment I used in the cutting example above.  Now, as before, choose <strong>Edit &gt; Cut</strong> to remove the selected region from the track and place it on the clipboard.</p>
+<p>Finally, click on the remaining audio track at the point you where you want this audio to be shifted to.</p>
+<p><img src="static/Audacity%20DayintheLife%20for%20paste_1.png" width="801" height="160" /></p>
+<p>In the above example you can can see that I have decided to insert the audio at about the <strong>2:47</strong> mark. Now choose the <strong><span>E</span>dit</strong> menu and select <strong>Paste</strong>:</p>
+<p><img src="static/Audacity%20paste.png" width="208" height="320" /></p>
+<p>The audio segment will now be inserted, and you if you look at the Audacity window you should see the selected audio in its new place :</p>
+<p><img src="static/Audacity%20DayintheLife%20pasted.png" width="801" height="160" /></p>
+<p>Now you can experiment with cutting and pasting audio!  In the next chapter we will see more complex examples of cutting, copying and pasting, applied not only to single tracks but to multiple tracks across a project as part of what we call &quot;mixing&quot; audio tracks.  </p>
+<p><span id="ch017_advanced-editing.xhtml"></span></p>
+<p>Audacity: AdvancedEditing</p>
+<h1>Advanced Editing and Mixing</h1>
+<p><strong>Software name :</strong> Audacity <strong></strong><br />
+<strong>Software version :</strong> 2.2.1</p>
+<p>There are many more advanced steps for editing that you can carry out with Audacity. Some of the more common include adding silence, trimming audio, advanced cutting and pasting, splitting and joining tracks, and using panning.  We will cover each of these operations below.</p>
+<h2>Add Silence</h2>
+<p>You may want to add a silence to a track for several reasons. If we take the example of a two track project with one track as music and the other track as a voice track, we can imagine that we might want to insert a silence in the voice track for several seconds to allow us to 'fade in' the music. This would work in a radio advertisement or introduction for a radio show or podcast. </p>
+<p>Here I have loaded an audio track (in mono), and a stereo music track beneath it:</p>
+<p><img src="static/Audacity%20Advanced%20Mixing%201.png" width="899" height="657" /></p>
+<p>We now click in the voice track where we want to insert silence.</p>
+<p>When the voice track is selected you will see the control set of that track go a darker color, and at the point of selection itself your cursor becomes a pointing hand. Here I have selected the very start of the vocal track, as I want to insert silence in that track to allow the music to come in <em>before</em> the voice begins speaking:</p>
+<p><img src="static/Audacity%20voice%20track%20ready%20for%20silence.png" width="880" height="324" /></p>
+<p>We are now ready to insert some silence. Do this by selecting <strong>Generate &gt; Silence</strong> from the menus at the top of the screen.</p>
+<p><img src="static/Audacity%20generate%20silence%201.png" width="899" height="657" /></p>
+<p>Selecting 'Silence...' from the above menu will generate the 'Silence' dialog shown below, where we can set the duration of the silence to be inserted.  The default silence duration is 30 seconds, as shown. 30 seconds would be quite a long silence in our example, but when you are adding Silence it is easier to add more and then delete some of it than to add in additional silence. So I'm going to keep the default 30 seconds to start with: </p>
+<p><img src="static/Audacity%20Silence%20dialog.png" width="474" height="178" /></p>
+<p>Press '<strong>OK'.</strong> We will see the silence appear as a flat line in the relevant track of the project.</p>
+<p><img src="static/Audacity%20silence%20added.png" width="899" height="657" /></p>
+<p>As noted above, 30 seconds is a very long silence for our purposes; after some experimental listening I will end up cutting it down to 11 seconds.  Meanwhile, note that the actual audio wave form of the vocal track has been pushed all the way to the far right of the window; in othe words the total voice track is now 30 seconds longer, including the silence at the beginning. </p>
+<p>After I have trimmed the silence down to 11 seconds (I select the first 18 seconds and use the 'cut' tool, not shown here, to eliminate that segment), I now have an audio mix with 11 seconds of music before the voice comes in.  However, the music is still too loud to serve properly as 'background' to the rest of the voice track.  To fix this I will use the <strong>envelope tool</strong> (see previous chapter) to create a smooth fade out in the music track, just before the voice comes in: </p>
+<p><img src="static/Audacity%20music%20fadeout.png" width="899" height="657" /></p>
+<p>If I determined at this point that the voice track was still too quiet in relation to the music track, I could either increase the overall gain (volume) of the voice track, or decrease that of the music track.  A great deal of audio mixing involves playing with the relative volume of different tracks.</p>
+<h2>Time Shift Tool</h2>
+<p>The time shift tool allows you to alter the time location of the audio on a particular track. This is useful when you are arranging audio on different tracks so that they are heard one after the other in a sequence. Indeed, this would have been an alternative approach to take in addressing our voice-and-music-background scenario above. In the screenshot below, I have deleted the rest of the silence from the vocal track, so that now both the vocal and music tracks begin once more at 0.00 seconds (I've left the 'fade' in the music track, as I will still want it):</p>
+<p><img src="static/Audacity%20Advanced%20Mixing%202.png" width="880" height="324" /></p>
+<p>Our goal now is to shift the voice track to the right, so that it doesn't begin until the appropriate moment in the fade-out of the music track beneath it. To do this, we select the Time Shift tool <img src="static/Audacity-adv_audacity_09-en.jpg" title="adv_audacity_09" alt="adv_audacity_09" width="29" height="28" />  from the <strong>Tools toolbar</strong> at the top of the workspace:</p>
+<p><img src="static/Audacity%20timeshift.png" width="897" height="141" /></p>
+<p>Then we select the track we want to move, and drag it left or right to occupy a new time location.  In this case I'm dragging the voice track to the right, until it begins at the 11-second mark. When I now play the project back, the effect will be exactly the same as when the first 11 seconds were occupied by silence, since Audacity treats the opening blank space exactly as it would a duration of explicitly-defined silence:</p>
+<p><img src="static/Audacity%20voice%20track%20timeshifted.png" width="880" height="324" /></p>
+<p>In other cases, however, you might want one track's waveform to begin only after another track ends entirely, rather than overlapping, as above.  For the screenshot below, I have truncated the music track after the fade, so that it will no longer sound in the background of the voice track:</p>
+<p><img src="static/Audacity%20Advanced%20Mixing%203.png" width="880" height="324" /></p>
+<p>I have actually dragged the voice track just <em>beyond</em> the new end-point of the music track, in order to show that Audacity has guessed what I'm trying to do, and drawn a guideline (often called a 'snap line') for me at the precise point where the lower track ends. In practice, you may or may not want to align your tracks precisely this way, along the guide lines: in this instance, I would probably want to give the music track at least another second or two to fade out completely, as the voice track was coming in. But perfect end-to-end alignment is easy, as you can see.  Indeed, rather than time-shifting manually, you could also use <strong>Tracks &gt; Align Tracks &gt; Align End to End</strong> to exactly align two selected tracks.</p>
+<h2>Trimming Audio</h2>
+<p>Trimming audio tracks is useful when we only want to keep one part of a given track. It is also different from using the cut or delete function as it maintains the time location of the part of the track we want to keep.</p>
+<p>As an example, we are going to trim a music track to only include the segment after the first 32 seconds. First we click the Selection tool from the Tools toolbar:</p>
+<p> <img src="static/selection.png" width="24" height="24" /></p>
+<p>then, using the mouse cursor, we select the region of the track after the 32-second mark.  Note that for purposes of trimming, we select the segment of the track we want to <em>keep</em>, not the part we want to discard:</p>
+<p><img src="static/Audacity%20trimming%201.png" width="899" height="657" /></p>
+<p>As always, when we have selected a particular region of audio it should show up in a lighter color, as above.  Now we click on the <strong>Trim</strong> button of the <strong>Tools toolbar</strong>:</p>
+<p><img src="static/trimaudio.png" width="22" height="23" /></p>
+<p>Once we have clicked the Trim button, only the region we selected should remain in the track:</p>
+<p><img src="static/Audacity%20audio%20trimmed.png" width="899" height="657" /></p>
+<p>Notice that the first 32 seconds is now gone, but the remaining audio waveform has <em>not</em> shifted to the left (to 0 seconds), as it would have had we instead selected the first 32 seconds and used <strong>Edit &gt; Cut</strong> or <strong>Edit &gt; Delete</strong>.  Trimming is therefore a good way to preserve the relative position of a segment of audio track in relation to other tracks in the project, and to the overall timeline.</p>
+<p> </p>
+<h2>Advanced Pasting</h2>
+<p>As we saw in the previous chapter, not only can you <strong>Cut</strong> or <strong>Copy</strong> a segment of audio track in Audacity, you can also <strong>Paste</strong> that segment at a different location, and as many times as you wish.  We do this by selecting the audio segment of interest, then using <strong>Edit &gt; Cut</strong> or <strong>Edit &gt; Copy, </strong>depending on whether we want that segment to remain in its original place.  We can also use the Cut or Copy buttons on the Tools toolbar:</p>
+<p><img src="static/cut.png" width="26" height="26" />  <img src="static/copy.png" width="23" height="25" /></p>
+<p>Both Cut and Copy will load the selected audio segment onto the clipboard, where it will remain until we either end the current Audacity session or Cut/Copy a different segment.  We can then place our mouse cursor wherever we want the segment to go, and use Edit &gt; Paste or the Past button on the toolbar:</p>
+<p><img src="static/paste.png" width="25" height="25" /></p>
+<p>Pasting is useful for any number of reasons.  You might like a particular music segment for background to your voice or other music tracks, but find that it is too short; in this case you can simply copy and paste that segment end to end in the same track until it is the required length with respect to other tracks. </p>
+<p>Of course, pasted segments needn't be end to end, or even be pasted into the same track they were copied from.  One of the most interesting uses of pasting in Audacity is for 'sampling', when you've found a particular (typically short) segment of sound that you want repeated at regular intervals or other appropriate moments in the overall audio project.  Give a listen to the Beatles' &quot;Tomorrow Never Knows&quot; or &quot;Revolution No. 9&quot; for early examples of extremely complex sampling or sound collage of this kind.  In that era, the sound engineers had to literally copy and paste dozens or even hundreds of magnetic tape segments, and sometimes run dozens of tape players with looped tape segments simultaneously, to achieve this kind of sound collage.  Happily, with digital music and editing tools like Audacity, we can achieve complex collage soundscapes with relative ease.  Consider the following example:</p>
+<p><img src="static/Audacity%20Marxist%20blues.png" width="899" height="657" /></p>
+<p>Visible here are the top three tracks of a five-track audio project I created.  It is structured around two main elements: a blues-guitar segment (<span>third track down</span>, duplicated once end-to-end to produce the overall song length), and the purring and vocalization of an old cat named Marx, from an originally quite short sound recording which has been edited and duplicated numerous times in<span> track two</span>, resulting in a continuous 1:45 audio track of purring punctuated by a short plaintive meow at regular intervals.  The short, intense waveform segments pictured in <span>track one</span> represent the sound of a spoon dropped on the kitchen floor, an incidental noise in the original Marx recording that I picked out, amplified and used for further periodic punctuation.  As with any other kind of collage, audio collage like this either 'works' or doesn't for a given listener; you can decide for yourself in this case: https://www.youtube.com/watch?v=oaqPzmURSMo .  The point here is simply to illustrate the enormous scope for creativity made possible by the relative handful of editing tools we have surveyed in Audacity so far.</p>
+<p> </p>
+<h2>Splitting Stereo Tracks and Combining Mono Tracks</h2>
+<p>Sometimes when you are recording you may only record one channel of your track correctly; or there may be some other reason that you want to only work with either the left or right channel.</p>
+<p>Below we see a recorded track with one channel (the left) much louder than the other:</p>
+<p><img src="static/Audacity%20split%20track%201.png" width="899" height="657" /></p>
+<p>Rather than re-recording, we are going to work on only the left channel (the top one). So we need to select <strong>'Split Stereo Track'</strong> from the drop down menu we can invoke by clicking on the track Name:</p>
+<p><img src="static/Audacity%20split%20stereo%20track.png" width="880" height="324" /></p>
+<p>We can then delete the Right channel signal, as it has now become a separate track. Do this by clicking on the X to the left of that track's name:</p>
+<p><img src="static/Audacity%20split%20track%202.png" width="394" height="324" /></p>
+<p>If we now play the one remaining track, we'll be able to hear that the sound is only coming through one channel (L). This can be seen in the green signal of the Playback meter in the screenshot below:</p>
+<p><img src="static/Audacity%20mono%20L%20track.png" width="772" height="514" /></p>
+<p>We will also notice that the Pan slider of this track is all the way to the Left (this happened as soon as we split the one track into two, with the second track's Pan slider all the way to the Right).  So to fix this, we can simply move the slider to the middle, and the track will now play the same mono audio signal through both L and R channels.</p>
+<p>If you need this track to be rendered in stereo again, there are several ways to do this.  First, you can simply Export the track (<strong>File &gt; Export</strong>) as an MP3, which will open a dialog allowing you to choose a <span>Channel Mode</span> of Stereo or Mono (see next chapter for details on Exporting).  Of course, in that case the two channels will be identical as they will have been derived from the single mono track. </p>
+<p>If you wanted instead to have two channels that you could edit or apply effects to separately, you could select the entirety of this track, then go to <strong>File &gt; Duplicate</strong>, which will create a separate, identical mono track below the first one.  Once you've edited one or both mono tracks to your satisfaction, you can recombine them into a single, stereo track by going again to the track dropdown of the top track and selecting <strong>Make Stereo Track</strong>:</p>
+<p><img src="static/Audacity%20make%20stereo%20track.png" width="753" height="302" /></p>
+<p>Of course, the Make Stereo Track function will also work to combine <em>any</em> two mono tracks that are directly adjacent in your Audacity, even if they have separate origins.  Just keep in mind the basic function of stereo sound: any L and R channels that are not perfectly synched up metronomically, and otherwise musically coherent, can make for difficult listening.    </p>
+<p><span id="ch018_exporting.xhtml"></span></p>
+<p>Audacity: ExportingAFile</p>
+<h1>Exporting A File</h1>
+<p><strong>Software name :</strong> ­Audacity<br />
+<strong>Software version :</strong> 2.2.1</p>
+<p>Projects created in <strong>Audacity</strong> are always saved in Audacity's own unique file format that cannot be opened by most other software. It is therefore necessary to <strong>export</strong> projects to more common file formats in order to use them with other audio software or media players.</p>
+<p><strong>Audacity</strong> can export in the following common formats: AIFF, MP3, WAV, Ogg Vorbis.  There are also half a dozen or so additional, more specialized formats that can be selected via <strong>File &gt; Export &gt; Export Audio...</strong>; however we will focus on the more common formats here.</p>
+<p><strong>AIFF</strong> and <strong>WAV</strong> files provide uncompressed CD quality audio, so one of these formats should be used if you want to open your Audacity project with other music production software or CD authoring software. AIFF is proprietary to Apple, while WAV was originally proprietary to Microsoft, so these two formats tend to play better with Apple and Windows tools respectively.</p>
+<p><strong>MP3</strong> and <strong>Ogg Vorbis</strong> are both <span class="twikiNewLink">compressed</span> audio formats so they have lower sound quality but much smaller file sizes, making them ideal for use in media players. An important difference between these two formats is that <strong>Ogg Vorbis</strong> is a completely open standard while <strong>MP3</strong> is not. However, current releases of Audacity incorporate the LAME MP3 encoder, and MP3 is by far the most widely adopted compressed audio format for playback devices today, making it a good choice for reaching the widest audience. (On the other hand, we should note that single-track OGG files can be bundled together as <strong>MOGG</strong> files, which preserve the separate tracks: this latter format cannot be <em>exported</em> from Audacity but it can be <em>opened</em> by Audacity, which may be of interest to rock music fans because many classic rock songs are now available as MOGGs, courtesy of the <em>Rock Band</em> and <em>Guitar Hero</em> games, giving Audacity users access to the original multiple tracks of these songs.)  </p>
+<p>To export a file from Audacity you need to have at least one audio track open in your Audacity project.  If you do not already have a file open from a recording or editing session, see the instructions in the chapter on Opening (Importing) a File (including the differences between &quot;Opening&quot; and &quot;Importing&quot;).  </p>
+<p>Here I have opened my audio file 'Fiona':</p>
+<p><img src="static/Audacity%20Fiona%20loaded_1.png" width="832" height="713" /></p>
+<p>To export this file, go to File &gt; Export, then from the submenu choose the format you want to export as:</p>
+<p><img src="static/Audacity%20export%20as.png" width="772" height="635" /></p>
+<p>Once you have chosen your format, a window will open allowing you to edit the file name and browse to the location where you want to save the file. You will also have various format options, depending on the specific format you have chosen.  Here is the export window with format options for MP3:</p>
+<p><img src="static/Audacity%20export%20format%20options.png" width="928" height="616" /></p>
+<p>Once you are satisfied with your file name, saving location and format options (unless you are a more advanced user it is not a bad idea to stick with the Audacity defaults on the latter), click on &quot;Save&quot; and the Export process will begin.   The time it takes to export the project will depend on the length and complexity of the project (for example, how many separate tracks) as well as the processing speed of your computer.</p>
+<p>When exporting is complete the above window will disappear. You should now be able to see the file in the folder where you chose to save it.</p>
+<p>That's it. You can now enjoy listening to the results of your Audacity project through other audio software, transfer it onto your portable media player, or share it with others.</p>
+<p><span id="ch020_additional-help.xhtml"></span></p>
+<p> </p>
+<p> </p>
+<p>Audacity: Help</p>
+<h1>More Help</h1>
+<p>For more help with <strong>Audacity</strong> you can try these avenues:</p>
+<h2><span id="ch020_additional-help.xhtml#Icecast_Documentation"></span>Audacity User Guide</h2>
+<p>You should first look at the excellent documentation provided by the developers themselves, at <a href="http://manual.audacityteam.org/index.html" class="uri" title="Audacity Wiki">http://manual.audacityteam.org/index.html</a>.  This page links to a multi-dimensional user guide, with interface and menu walk-throughs, tutorials, FAQs and more.</p>
+<h2>Audacity Wiki</h2>
+<p>The <a href="https://wiki.audacityteam.org/wiki/Audacity_Wiki_Home_Page" title="Audacity Wiki">Audacity Wiki</a> provides a wealth of additional information on the past, present and future of Audacity, along with a wide range of tips and tutorials contributed by the large user community.</p>
+<h2><span id="ch020_additional-help.xhtml#Online_Forums"></span> Audacity Forum </h2>
+<p>You can also try searching through the official Audacity forum for information.  </p>
+<p><a href="http://audacityteam.org/forum/" class="uri" title="Audacity Wiki">http://audacityteam.org/forum/</a>   (also linked from the page above)<br />
+<br />
+The forums contain a lot of postings from users on many topics. You can use the search system to locate topics or just browse the categories. If you don't find what you want then try subscribing to the forums and posting your question to the relevant category.</p>
+<p>There are a few things to keep in mind when asking a question in a forum or to a mailing list. First, be as clear as you can with your question and provide any information that you might think would help some to try to help you. You might, for example, include information about the operating system you are using, or various specifics that relate to what you are trying to achieve. Additionally, it is always good practice to also post back to any forum or mailing list if you manage to solve your query and include clear information on how you solved the puzzle. This is so that someone else that may have the same issue can resolve it using what you have found out. If possible post back to the same thread (discussion topic) so that anyone searching through the forum can follow the discussion including the solution.</p>
+<p> </p>
+<h2><span id="ch020_additional-help.xhtml#Mailing_Lists"></span> Mailing Lists</h2>
+<p>Mailing lists are good places to look through for answers to questions. The subscription (also the archives are listed on each info page) information is located here :</p>
+<p><a href="http://audacity.sourceforge.net/contact/lists" class="uri" title="Audacity Wiki">http://audacity.sourceforge.net/contact/lists</a></p>
+<p>You can also subscribe to the mailing lists and ask a question. Please note the suggestions about posting to forums and mailing lists in the above section.</p>
+<h2>YouTube Video tutorials</h2>
+<p>As with nearly everything else these days, you can search YouTube for tutorials on using Audacity. Many of these are also linked from the Audacity Wiki above, but given the nature of YouTube, new tutorials appear regularly.</p>
+<h2><strong>Web Search</strong></h2>
+<p>Aside from YouTube, searching the wider web is always useful. If you are looking for problems arising from errors reported by the Audacity software, try entering the error text itself into a search engine such as Google. Be sure to edit out any information that doesn't look generic when doing this. Some search engines also enable you to try searches of mailing lists, online groups etc, this can also provide good results.</p>
+<p> </p>
+<h2><span id="ch020_additional-help.xhtml#IRC"></span> <strong>IRC</strong></h2>
+<p><strong>IRC</strong> is a type of online chat. It is not the easiest to use if you are not familair with it but it is a very good system. There are a variety of softwares for all operating systems that enable you to use <strong>IRC</strong>. The <strong>IRC</strong> channel for Audacity is where a number of the developers are online and some 'superusers'. So logging into this channel can be useful but it is very important that you know exactly what you are trying to find out before trying this route. The protocol for using the channel is just to log in, and ask the question immediately. Don't try and be too chatty as you are probably going to be ignored. It is also preferable if you have done some research using the other methods above before trying the channel. The details for the <strong>IRC</strong> channel are:</p>
+<ul>
+<li>IRC network: freenode<code></code></li>
+<li><p>Channel: #audacity</p></li>
+</ul>
+<h2> </h2>
+<p> </p>
+<p><span id="ch021_credits.xhtml"></span></p>
+<p>Audacity: Credits</p>
+<h1><span id="ch021_credits.xhtml#License"></span> License</h1>
+<p>All chapters copyright of the authors (see below). Unless otherwise stated all chapters in this manual licensed with <strong>CC-BY-SA licence.<br />
+</strong></p>
+<p> </p>
+<p> </p>
+<h2><span id="ch021_credits.xhtml#Authors"></span> Authors</h2>
+<p> </p>
+<p><em>ADD A NEW TRACK</em><br />
+© adam hyde 2007, 2008<br />
+Modifications:<br />
+Flosstest Two 2007<br />
+TWikiGuest 2010<br />
+douglas 2010</p>
+<p> </p>
+<p><em>REWRITE OF MANUAL FOR AUDACITY 2.x</em></p>
+<p>Mathew Roberts 2017</p>
+<hr />
+<p><em>ADVANCED EDITING</em><br />
+© mick fuzz 2009</p>
+<hr />
+<p><em>BASIC EDITING</em><br />
+© adam hyde 2007, 2008<br />
+Modifications:<br />
+TWikiGuest 2010<br />
+douglas 2010</p>
+<hr />
+<p><em>CREDITS</em><br />
+© adam hyde 2006, 2007, 2008</p>
+<hr />
+<p><em>WHAT IS DIGITAL AUDIO?</em><br />
+© Anthony Oetzmann 2006<br />
+Modifications:<br />
+adam hyde 2006, 2007, 2008<br />
+Aleksandar Erkalović 2008<br />
+mick fuzz 2009<br />
+Rafe DiDomenico 2008<br />
+Seth Woodworth 2008<br />
+TWikiGuest 2010<br />
+douglas 2010</p>
+<hr />
+<p><em>CREATING FADES</em><br />
+© adam hyde 2007, 2008<br />
+Modifications:<br />
+TWikiGuest 2010<br />
+Tom Kleen 2008<br />
+douglas 2010</p>
+<hr />
+<p><em>EXPORTING</em><br />
+© Adam Willetts 2006<br />
+Modifications:<br />
+adam hyde 2007, 2008<br />
+Peter Shanks 2007<br />
+TWikiGuest 2010<br />
+douglas 2010</p>
+<hr />
+<p><em>ADDITIONAL HELP</em><br />
+© adam hyde 2006, 2007, 2008</p>
+<hr />
+<p><em>OSX</em><br />
+© Adam Willetts 2006<br />
+Modifications:<br />
+adam hyde 2006, 2007, 2008<br />
+Carla Morris 2008<br />
+Maria Inmaculada de la Torre 2009<br />
+TWikiGuest 2010<br />
+douglas 2010</p>
+<hr />
+<p><em>UBUNTU</em><br />
+© adam hyde 2007, 2008<br />
+Modifications:<br />
+Maria Inmaculada de la Torre 2009<br />
+TWikiGuest 2010<br />
+Tomi Toivio 2009<br />
+douglas 2010</p>
+<hr />
+<p><em>WINDOWS</em><br />
+© Adam Willetts 2006<br />
+Modifications:<br />
+adam hyde 2006, 2007, 2008<br />
+Carla Morris 2008<br />
+Maria Inmaculada de la Torre 2009<br />
+mick fuzz 2009<br />
+TWikiGuest 2010<br />
+douglas 2010</p>
+<hr />
+<p><em>INTRODUCTION</em><br />
+© Adam Willetts 2006<br />
+Modifications:<br />
+adam hyde 2006, 2007, 2008, 2009<br />
+Rafe DiDomenico 2008<br />
+TWikiGuest 2010<br />
+douglas 2010</p>
+<hr />
+<p><em>MENU BAR</em><br />
+© Anthony Oetzmann 2006<br />
+Modifications:<br />
+adam hyde 2006, 2007, 2008<br />
+TWikiGuest 2010<br />
+douglas 2010</p>
+<hr />
+<p><em>MP3 INSTALLATION WINDOWS</em><br />
+© mick fuzz 2009</p>
+<hr />
+<p><em>OPEN (IMPORT) A FILE</em><br />
+© adam hyde 2007, 2008<br />
+Modifications:<br />
+TWikiGuest 2010<br />
+douglas 2010</p>
+<hr />
+<p><em>RECORDING</em><br />
+© Adam Willetts 2006<br />
+Modifications:<br />
+adam hyde 2006, 2007, 2008<br />
+mick fuzz 2009<br />
+TWikiGuest 2010<br />
+douglas 2010</p>
+<hr />
+<p><em>TOOL BAR</em><br />
+© Anthony Oetzmann 2006<br />
+Modifications:<br />
+adam hyde 2006, 2007, 2008<br />
+Brent Simpson 2008<br />
+TWikiGuest 2010<br />
+douglas 2010</p>
+<hr />
+<p><em>TRACK BAR</em><br />
+© Anthony Oetzmann 2006<br />
+Modifications:<br />
+adam hyde 2006, 2007, 2008<br />
+TWikiGuest 2010<br />
+douglas 2010</p>
+<hr />
+<p> </p>
+<p><a href="http://www.flossmanuals.net/"><img src="static/Floss-100-en.gif" alt="100.gif" width="110" height="54" /></a><br />
+<strong></strong></p>
+<p><sub>Free manuals for free software</sub></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h2><span id="ch021_credits.xhtml#General%20Public%20License"></span> General Public License</h2>
+<p>Version 2, June 1991</p>
+<p>Copyright (C) 1989, 1991 Free Software Foundation, Inc.<br />
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA<br />
+<br />
+Everyone is permitted to copy and distribute verbatim copies<br />
+of this license document, but changing it is not allowed.</p>
+<p><strong>Preamble</strong></p>
+<p>The licenses for most software are designed to take away your freedom to share and change it. By contrast, the GNU General Public License is intended to guarantee your freedom to share and change free software--to make sure the software is free for all its users. This General Public License applies to most of the Free Software Foundation's software and to any other program whose authors commit to using it. (Some other Free Software Foundation software is covered by the GNU Lesser General Public License instead.) You can apply it to your programs, too.</p>
+<p>When we speak of free software, we are referring to freedom, not price. Our General Public Licenses are designed to make sure that you have the freedom to distribute copies of free software (and charge for this service if you wish), that you receive source code or can get it if you want it, that you can change the software or use pieces of it in new free programs; and that you know you can do these things.</p>
+<p> </p>
+<p>To protect your rights, we need to make restrictions that forbid anyone to deny you these rights or to ask you to surrender the rights. These restrictions translate to certain responsibilities for you if you distribute copies of the software, or if you modify it.</p>
+<p>For example, if you distribute copies of such a program, whether gratis or for a fee, you must give the recipients all the rights that you have. You must make sure that they, too, receive or can get the source code. And you must show them these terms so they know their rights.</p>
+<p>We protect your rights with two steps: (1) copyright the software, and (2) offer you this license which gives you legal permission to copy, distribute and/or modify the software.</p>
+<p>Also, for each author's protection and ours, we want to make certain that everyone understands that there is no warranty for this free software. If the software is modified by someone else and passed on, we want its recipients to know that what they have is not the original, so that any problems introduced by others will not reflect on the original authors' reputations.</p>
+<p>Finally, any free program is threatened constantly by software patents. We wish to avoid the danger that redistributors of a free program will individually obtain patent licenses, in effect making the program proprietary. To prevent this, we have made it clear that any patent must be licensed for everyone's free use or not licensed at all.</p>
+<p>The precise terms and conditions for copying, distribution and modification follow.</p>
+<p> </p>
+<p><strong>TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION</strong></p>
+<p><strong>0.</strong> This License applies to any program or other work which contains a notice placed by the copyright holder saying it may be distributed under the terms of this General Public License. The &quot;Program&quot;, below, refers to any such program or work, and a &quot;work based on the Program&quot; means either the Program or any derivative work under copyright law: that is to say, a work containing the Program or a portion of it, either verbatim or with modifications and/or translated into another language. (Hereinafter, translation is included without limitation in the term &quot;modification&quot;.) Each licensee is addressed as &quot;you&quot;.</p>
+<p>Activities other than copying, distribution and modification are not covered by this License; they are outside its scope. The act of running the Program is not restricted, and the output from the Program is covered only if its contents constitute a work based on the Program (independent of having been made by running the Program). Whether that is true depends on what the Program does.</p>
+<p><strong>1.</strong> You may copy and distribute verbatim copies of the Program's source code as you receive it, in any medium, provided that you conspicuously and appropriately publish on each copy an appropriate copyright notice and disclaimer of warranty; keep intact all the notices that refer to this License and to the absence of any warranty; and give any other recipients of the Program a copy of this License along with the Program.</p>
+<p> </p>
+<p>You may charge a fee for the physical act of transferring a copy, and you may at your option offer warranty protection in exchange for a fee.</p>
+<p><strong>2.</strong> You may modify your copy or copies of the Program or any portion of it, thus forming a work based on the Program, and copy and distribute such modifications or work under the terms of Section 1 above, provided that you also meet all of these conditions:</p>
+<dl>
+<dt>
+</dt>
+<dd>
+<p><strong>a)</strong> You must cause the modified files to carry prominent notices stating that you changed the files and the date of any change.</p>
+</dd>
+<dt>
+</dt>
+</dl>
+<p> </p>
+<dl>
+
+<dd><strong>b)</strong> You must cause any work that you distribute or publish, that in whole or in part contains or is derived from the Program or any part thereof, to be licensed as a whole at no charge to all third parties under the terms of this License.
+</dd>
+
+<dd><strong>c)</strong> If the modified program normally reads commands interactively when run, you must cause it, when started running for such interactive use in the most ordinary way, to print or display an announcement including an appropriate copyright notice and a notice that there is no warranty (or else, saying that you provide a warranty) and that users may redistribute the program under these conditions, and telling the user how to view a copy of this License. (Exception: if the Program itself is interactive but does not normally print such an announcement, your work based on the Program is not required to print an announcement.)
+</dd>
+</dl>
+<p>These requirements apply to the modified work as a whole. If identifiable sections of that work are not derived from the Program, and can be reasonably considered independent and separate works in themselves, then this License, and its terms, do not apply to those sections when you distribute them as separate works. But when you distribute the same sections as part of a whole which is a work based on the Program, the distribution of the whole must be on the terms of this License, whose permissions for other licensees extend to the entire whole, and thus to each and every part regardless of who wrote it.</p>
+<p> </p>
+<p>Thus, it is not the intent of this section to claim rights or contest your rights to work written entirely by you; rather, the intent is to exercise the right to control the distribution of derivative or collective works based on the Program.</p>
+<p>In addition, mere aggregation of another work not based on the Program with the Program (or with a work based on the Program) on a volume of a storage or distribution medium does not bring the other work under the scope of this License.</p>
+<p><strong>3.</strong> You may copy and distribute the Program (or a work based on it, under Section 2) in object code or executable form under the terms of Sections 1 and 2 above provided that you also do one of the following:</p>
+<dl>
+<dt>
+</dt>
+<dd>
+<p><strong>a)</strong> Accompany it with the complete corresponding machine-readable source code, which must be distributed under the terms of Sections 1 and 2 above on a medium customarily used for software interchange; or,</p>
+</dd>
+<dt>
+</dt>
+</dl>
+<p> </p>
+<dl>
+
+<dd><strong>b)</strong> Accompany it with a written offer, valid for at least three years, to give any third party, for a charge no more than your cost of physically performing source distribution, a complete machine-readable copy of the corresponding source code, to be distributed under the terms of Sections 1 and 2 above on a medium customarily used for software interchange; or,
+</dd>
+
+<dd><strong>c)</strong> Accompany it with the information you received as to the offer to distribute corresponding source code. (This alternative is allowed only for noncommercial distribution and only if you received the program in object code or executable form with such an offer, in accord with Subsection b above.)
+</dd>
+</dl>
+<p>The source code for a work means the preferred form of the work for making modifications to it. For an executable work, complete source code means all the source code for all modules it contains, plus any associated interface definition files, plus the scripts used to control compilation and installation of the executable. However, as a special exception, the source code distributed need not include anything that is normally distributed (in either source or binary form) with the major components (compiler, kernel, and so on) of the operating system on which the executable runs, unless that component itself accompanies the executable.</p>
+<p> </p>
+<p>If distribution of executable or object code is made by offering access to copy from a designated place, then offering equivalent access to copy the source code from the same place counts as distribution of the source code, even though third parties are not compelled to copy the source along with the object code.</p>
+<p><strong>4.</strong> You may not copy, modify, sublicense, or distribute the Program except as expressly provided under this License. Any attempt otherwise to copy, modify, sublicense or distribute the Program is void, and will automatically terminate your rights under this License. However, parties who have received copies, or rights, from you under this License will not have their licenses terminated so long as such parties remain in full compliance.</p>
+<p><strong>5.</strong> You are not required to accept this License, since you have not signed it. However, nothing else grants you permission to modify or distribute the Program or its derivative works. These actions are prohibited by law if you do not accept this License. Therefore, by modifying or distributing the Program (or any work based on the Program), you indicate your acceptance of this License to do so, and all its terms and conditions for copying, distributing or modifying the Program or works based on it.</p>
+<p><strong>6.</strong> Each time you redistribute the Program (or any work based on the Program), the recipient automatically receives a license from the original licensor to copy, distribute or modify the Program subject to these terms and conditions. You may not impose any further restrictions on the recipients' exercise of the rights granted herein. You are not responsible for enforcing compliance by third parties to this License.</p>
+<p> </p>
+<p><strong>7.</strong> If, as a consequence of a court judgment or allegation of patent infringement or for any other reason (not limited to patent issues), conditions are imposed on you (whether by court order, agreement or otherwise) that contradict the conditions of this License, they do not excuse you from the conditions of this License. If you cannot distribute so as to satisfy simultaneously your obligations under this License and any other pertinent obligations, then as a consequence you may not distribute the Program at all. For example, if a patent license would not permit royalty-free redistribution of the Program by all those who receive copies directly or indirectly through you, then the only way you could satisfy both it and this License would be to refrain entirely from distribution of the Program.</p>
+<p>If any portion of this section is held invalid or unenforceable under any particular circumstance, the balance of the section is intended to apply and the section as a whole is intended to apply in other circumstances.</p>
+<p>It is not the purpose of this section to induce you to infringe any patents or other property right claims or to contest validity of any such claims; this section has the sole purpose of protecting the integrity of the free software distribution system, which is implemented by public license practices. Many people have made generous contributions to the wide range of software distributed through that system in reliance on consistent application of that system; it is up to the author/donor to decide if he or she is willing to distribute software through any other system and a licensee cannot impose that choice.</p>
+<p>This section is intended to make thoroughly clear what is believed to be a consequence of the rest of this License.</p>
+<p><strong>8.</strong> If the distribution and/or use of the Program is restricted in certain countries either by patents or by copyrighted interfaces, the original copyright holder who places the Program under this License may add an explicit geographical distribution limitation excluding those countries, so that distribution is permitted only in or among countries not thus excluded. In such case, this License incorporates the limitation as if written in the body of this License.</p>
+<p> </p>
+<p><strong>9.</strong> The Free Software Foundation may publish revised and/or new versions of the General Public License from time to time. Such new versions will be similar in spirit to the present version, but may differ in detail to address new problems or concerns.</p>
+<p>Each version is given a distinguishing version number. If the Program specifies a version number of this License which applies to it and &quot;any later version&quot;, you have the option of following the terms and conditions either of that version or of any later version published by the Free Software Foundation. If the Program does not specify a version number of this License, you may choose any version ever published by the Free Software Foundation.</p>
+<p><strong>10.</strong> If you wish to incorporate parts of the Program into other free programs whose distribution conditions are different, write to the author to ask for permission. For software which is copyrighted by the Free Software Foundation, write to the Free Software Foundation; we sometimes make exceptions for this. Our decision will be guided by the two goals of preserving the free status of all derivatives of our free software and of promoting the sharing and reuse of software generally.</p>
+<p><strong>NO WARRANTY</strong></p>
+<p> </p>
+<p><strong>11.</strong> BECAUSE THE PROGRAM IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM &quot;AS IS&quot; WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.</p>
+<p><strong>12.</strong> IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY AND/OR REDISTRIBUTE THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+<p><strong>END OF TERMS AND CONDITIONS</strong></p>
+</body>
+</html>
